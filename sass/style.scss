@@ -1,0 +1,72 @@
+/*
+Theme Name: Exa
+Theme URI: http://badgerherald.com/exa
+Author: The Badger Herald Web Department
+Author URI: http://badgerherald.com/
+Description: The sixth iteration of The Badger Herald's website.  The first theme on wordpress.
+Version: 0.1
+License: NONE YET
+License URI: NONE
+Tags: Badger, Herald, University of Wisconsin, Newspaper, Custom post types
+Text Domain: badgerherald-exa
+*/
+
+
+/**
+ * § 1.0 Base
+ *
+ * 1. SCSS functions for dynamic sizing, &c.
+ * 2. CSS Normalize.
+ * 3. Basic font definitions.
+ *
+ */
+@import "functions.scss"; 		/* 1 */
+@import "normalize.scss";		/* 2 */
+@import "fonts.scss";			/* 3 */
+
+/** 
+ * Base Page Syles (much of which is altered in responsive)
+ * 
+ */
+@import "page.scss";
+
+/** 
+ * Masthead Styles
+ * 
+ */
+@import "masthead.scss";
+
+/** 
+ * Navigation Styles
+ * 
+ */
+@import "nav.scss";
+
+/** 
+ * Stream page styling.
+ * Homepage, categories, beats, search, &c.
+ */
+@import "stream.scss";
+
+/** 
+ * Sidebar & Widget stylings
+ */
+@import "sidebar.scss";
+
+/** 
+ * Post page stylings
+ * 
+ */
+@import "post.scss";
+
+/** 
+ * HTML5 Boilerplate helper classes.
+ * 
+ */
+@import "helperclasses.scss";
+
+/** 
+ * Responsive changes
+ * 
+ */
+@import "responsive.scss";

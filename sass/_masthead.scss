@@ -1,0 +1,52 @@
+/**
+ * Base masthead styles
+ */
+
+
+
+#masthead {
+	background: $heraldblack;
+	height: 100%;
+	width: flex(160,1220);
+	position: fixed;
+	top:0;
+}
+
+#masthead {
+	#logo {
+		background: $heraldblue;
+		height:132px;
+		color: #fff;
+	}
+}
+
+/* If logged in, we have to manually push anything fixed down */
+body.admin-bar #masthead { top: 32px !important; } 
+body.admin-bar #wrapper {margin-top: 145px;}
+
+/**
+ * Navigation bar styling
+ */
+
+#nav {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+}
+
+#nav li {
+}
+
+#nav li a {
+	display: block;
+	width: 100%;
+	/* line height is 16px */
+	border-bottom: 1px solid $heralddarkgrey;
+	width: flex(120,160);
+	text-align: right;
+	padding: 8px flex(20,160) 8px flex(20,160);
+	color: $heraldlightgrey;
+	&:hover {
+		color: #fff;
+	}
+}

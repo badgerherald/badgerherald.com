@@ -14,33 +14,47 @@
 		<div class="entry-thumbnail">
 			<?php the_post_thumbnail(); ?>
 		</div>
-		<?php endif; ?>
-
-		<?php if ( is_single() ) : ?>
-		<h1 class="entry-title"><?php the_title(); ?></h1>
-		<?php else : ?>
-		<h1 class="entry-title">
-			<a href="<?php the_permalink(); ?>" rel="bookmark"><?php the_title(); ?></a>
-		</h1>
-		<?php endif; // is_single() ?>
-
-		<div class="entry-meta">
-			<?php twentythirteen_entry_meta(); ?>
-			<?php edit_post_link( __( 'Edit', 'twentythirteen' ), '<span class="edit-link">', '</span>' ); ?>
-		</div><!-- .entry-meta -->
+		<?php endif; /* has post thumbnail */ ?>
 	</header><!-- .entry-header -->
 
-	<?php if ( is_search() ) : // Only display Excerpts for Search ?>
-	<div class="entry-summary">
-		<?php the_excerpt(); ?>
-	</div><!-- .entry-summary -->
-	<?php else : ?>
-	<div class="entry-content">
-		<?php the_content( __( 'Continue reading <span class="meta-nav">&rarr;</span>', 'twentythirteen' ) ); ?>
-		<?php wp_link_pages( array( 'before' => '<div class="page-links"><span class="page-links-title">' . __( 'Pages:', 'twentythirteen' ) . '</span>', 'after' => '</div>', 'link_before' => '<span>', 'link_after' => '</span>' ) ); ?>
-	</div><!-- .entry-content -->
-	<?php endif; ?>
+		<div id="post-sidebar">
 
+			<span class="meta-time"><?php the_time("F m, Y \a\\t g:i:sa") ?></span>
+		
+			<div class="meta-author">
+
+				<div class="meta-author-left">
+					<a class="meta-author-link" title="<?php echo exa_properize(get_the_author()); ?> Profile" href="<?php exa_the_author_link() ?>"><?php the_author() ?></a><br/>
+					<span class="meta-author-role">The Badger Herald</span>
+				</div><!-- class="meta-author-left" -->
+
+				<div class="meta-author-right">
+					<a class="meta-author-avatar" title="<?php echo exa_properize(get_the_author()); ?> Profile" href="<?php exa_the_author_link() ?>">
+						<?php echo get_wp_user_avatar(get_the_author_meta('ID'), 'square'); ?>
+					</a>
+				</div><!-- class="meta-author-right" -->
+			<div class="clearfix"></div>
+			</div><!-- class="meta-author -->
+
+			<?php exa_include_article_square_ad() ?>
+
+
+
+		</div><!-- id="post-sidebar" -->
+		<div id="content">
+			<?php exa_list_categories(true) ?>
+			<h1 class="entry-title"><?php the_title(); ?></h1>
+
+			<div class="article-content">
+			<?php the_content() ?>
+			</div>
+
+			<div class="entry-meta">
+				<?php twentythirteen_entry_meta(); ?>
+				<?php edit_post_link( __( 'Edit', 'twentythirteen' ), '<span class="edit-link">', '</span>' ); ?>
+			</div><!-- .entry-meta -->
+		</div><!-- id="content" -->
+	<?php /*
 	<footer class="entry-meta">
 		<?php if ( comments_open() && ! is_single() ) : ?>
 			<div class="comments-link">
@@ -52,4 +66,5 @@
 			<?php get_template_part( 'author-bio' ); ?>
 		<?php endif; ?>
 	</footer><!-- .entry-meta -->
+	*/ ?>
 </article><!-- #post -->

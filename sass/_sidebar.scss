@@ -1,0 +1,18 @@
+.sidebar-posts {
+	margin: 24px 0 0 0 ;
+	padding: 0;
+	list-style-type: none;
+	li.post-in-sidebar {
+		border-bottom: 1px solid $heraldlightgreyonwhite;
+		border-top: 1px solid $heraldlightgreyonwhite;
+		margin-top:-1px;
+		width: flex(210,300);
+		padding:12px flex(5,300);
+		a.post-permalink {
+			color: $heraldblack;
+			&:hover {
+				color: $heraldblue;
+			}
+		}
+	}
+}

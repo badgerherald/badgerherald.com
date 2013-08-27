@@ -1,0 +1,46 @@
+/* Thumbnail image */
+
+.entry-thumbnail {
+	margin: 0 0 12px 0;
+	img {
+		width: 100%;
+		height: auto;
+	}
+}
+
+/* exerpt-more */
+.excerpt-more {
+	background: url('img/icons/arrow-right-blue.png') no-repeat center right;
+	padding-right:14px;
+}
+
+.stream-post {
+	margin-bottom: 24px;
+}
+
+
+
+/* META DATA
+
+.meta-author a {
+	font-family: $headline;
+	color: $heraldblack;
+	text-transform: uppercase;
+	font-size: em(14,16);
+	line-height: em(14,21);
+}  */
+
+/* Author thumbnail 
+
+.tiny-avatar {
+	border-radius: 2px;
+	overflow: hidden;
+	float:left;
+	width: 18px;
+	height: 18px;
+	margin-right: 10px;
+	img {
+		width: 18px;
+		height: 18px;
+	}
+}*/

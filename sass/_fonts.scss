@@ -1,0 +1,31 @@
+/**
+ * BASE FONTS
+ * ------------------------------------------------------------------------- 
+ */
+
+body {
+	/* TODO: Determine whether Georgia, or Palatino is the best match; */
+	font-family: 	$body; 
+	font-size: 		$base-font-size;
+	line-height: 	$base-line-height;
+}
+
+a {
+	text-decoration: 	none;
+	color:				$heraldblue;
+}
+
+/**
+ * HEADER FONTS
+ * ------------------------------------------------------------------------- 
+ */
+
+h1 {
+	font-family: 	$headline;
+	font-size:		em(40);
+	line-height: 	42px;
+	margin: 0 0 12px 0;
+	a {
+		color: $heraldblack;
+	}
+}

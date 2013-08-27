@@ -57,7 +57,15 @@ if ( version_compare( $GLOBALS['wp_version'], '3.6-alpha', '<' ) )
  *
  * @return void
  */
-function twentythirteen_setup() {
+function exa_setup() {
+
+	/*
+	 * Things added by will
+	 */
+	add_action( 'init', 'register_featured_taxanomy' );
+	add_action( 'init', 'register_sections' );
+
+
 	/*
 	 * Makes Twenty Thirteen available for translation.
 	 *
@@ -67,6 +75,17 @@ function twentythirteen_setup() {
 	 * template files.
 	 */
 	load_theme_textdomain( 'twentythirteen', get_template_directory() . '/languages' );
+
+	/*
+	 * Register different size thumbnail images
+	 *
+	 */
+	add_theme_support('post-thumbnails');
+
+
+//	add_image_size( 'full-post', 540, 10000, false );
+//	add_image_size( 'side-post', 220, 5000, false );
+	
 
 	/*
 	 * This theme styles the visual editor to resemble the theme style,
@@ -93,15 +112,20 @@ function twentythirteen_setup() {
 	 * "standard" posts and pages.
 	 */
 	add_theme_support( 'post-thumbnails' );
-	set_post_thumbnail_size( 604, 270, true );
+	set_post_thumbnail_size( 540, 270, true );
 
 	// Register custom image size for image post formats.
-	add_image_size( 'twentythirteen-image-post', 724, 1288 );
+	add_image_size( 'image-post-size', 860, 470, false );
+	add_image_size( 'small-thumbnail', 280, 140, true );
+	add_image_size( 'large-thumbnail', 540, 270, true );
+
+	// For the Mug
+	add_image_size( 'square', 160, 160, true );
 
 	// This theme uses its own gallery styles.
 	add_filter( 'use_default_gallery_style', '__return_false' );
 }
-add_action( 'after_setup_theme', 'twentythirteen_setup' );
+add_action( 'after_setup_theme', 'exa_setup' );
 
 /**
  * Returns the Google font stylesheet URL, if available.
@@ -561,3 +585,181 @@ function twentythirteen_customize_preview_js() {
 	wp_enqueue_script( 'twentythirteen-customizer', get_template_directory_uri() . '/js/theme-customizer.js', array( 'customize-preview' ), '20130226', true );
 }
 add_action( 'customize_preview_init', 'twentythirteen_customize_preview_js' );
+
+
+/**
+ * Registeres a taxanomy used to select the "importance" of a post.
+ *
+ * Added: July 2013
+ * 
+ * @param Array $sections array of section names 
+ * @return void
+ */
+function register_importance_taxanomy() {
+
+
+}
+
+/**
+ * Registers each section as a custom post type.
+ *
+ * Added: July 2013
+ * 
+ * @param Array $sections array of section names 
+ * @return void
+ */
+function register_sections() {
+
+	$sections = array("News","Oped","Sports","ArtsEtc","Blogs","Multimedia");
+	$taxanomies = array();
+	foreach ($sections as $section) {
+
+		$slug = strtolower($section);
+
+		$labels = array(
+			'name'                => _x( $section, 'Post Type General Name', 'text_domain' ),
+			'singular_name'       => _x( 'Posts', 'Post Type Singular Name', 'text_domain' ),
+			'menu_name'           => __( $section, 'text_domain' ),
+			'parent_item_colon'   => __( 'Parent Post', 'text_domain' ),
+			'all_items'           => __( 'All Posts', 'text_domain' ),
+			'view_item'           => __( 'View Post', 'text_domain' ),
+			'add_new_item'        => __( 'Add New Post', 'text_domain' ),
+			'add_new'             => __( 'New Post', 'text_domain' ),
+			'edit_item'           => __( 'Edit Post', 'text_domain' ),
+			'update_item'         => __( 'Update Post', 'text_domain' ),
+			'search_items'        => __( 'Search posts', 'text_domain' ),
+			'not_found'           => __( 'No posts found', 'text_domain' ),
+			'not_found_in_trash'  => __( 'No posts in trash', 'text_domain' ),
+		);
+		$rewrite = true;
+		$capabilities = array(
+			'edit_post'           => 'edit_posts',
+			'read_post'           => 'read_post',
+			'delete_post'         => 'delete_post',
+			'edit_posts'          => 'edit_posts',
+			'edit_others_posts'   => 'edit_others_posts',
+			'publish_posts'       => 'publish_posts',
+			'read_private_posts'  => 'read_private_posts',
+		);
+		$args = array(
+			'label'               => __( $section, 'text_domain' ),
+			'description'         => __( $section, 'text_domain' ),
+			'labels'              => $labels,
+			'supports'            => array( 'title', 'editor', 'excerpt', 'author', 'thumbnail', 'comments', 'trackbacks', 'revisions', 'custom-fields', 'page-attributes', 'post-formats', ),
+			'taxonomies'          => array( 'post_tag', 'importance' ),
+			'hierarchical'        => false,
+			'public'              => true,
+			'show_ui'             => true,
+			'show_in_menu'        => true,
+			'show_in_nav_menus'   => true,
+			'show_in_admin_bar'   => true,
+			'menu_position'       => 5,
+			'menu_icon'           => '',
+			'can_export'          => true,
+			'has_archive'         => true,
+			'exclude_from_search' => false,
+			'publicly_queryable'  => true,
+			'rewrite'             => $rewrite,
+			'capabilities'        => $capabilities,
+			'query_var'			  => $slug
+		);
+
+		register_post_type( $section, $args );
+
+		register_taxonomy("$slug-beats",$slug,array( 
+							'hierarchical' => true,
+							'label' => 'Beats',
+							'show_ui' => true,
+							'show_admin_column' => true,
+							'query_var' => true,
+							'rewrite' => array(
+									"slug" => "$slug/beats",
+									"with_front" => false,
+									"hierarchical" => true,
+									"ep_mask" => EP_NONE,
+								),
+							'singular_label' => 'Beat') 
+		);
+
+		$taxanomies[] = $slug;
+	}
+
+	register_taxonomy("importance",$taxanomies,array( 
+							'hierarchical' => true,
+							'label' => 'Importance',
+							'public' => 'true',
+							'show_in_nav_menus' => false,
+							'show_admin_column' => true,
+							'query_var' => true,
+							'singular_label' => 'Importance') 
+	);
+
+
+}
+
+/**
+ * Changes the default exerpt tag to include a permalink, and class of class="exerpt-more"
+ *
+ * Added: July 2013
+ * 
+ * @param $more 
+ * @return Anchor tag exerpt link 
+ */
+function new_excerpt_more( $more ) {
+	return ' <a class="excerpt-more" href="'. get_permalink( get_the_ID() ) . '">...</a>';
+}
+add_filter('excerpt_more', 'new_excerpt_more');
+
+
+/**
+ * Alters the query
+ *
+ */
+function alter_queries( $query ) {
+
+	/* Return if this is not the main query, or if it is a back end query */
+    if ( is_admin() || ! $query->is_main_query() )
+        return;
+
+    if ( is_home() ) {
+        $query->set( 'post_type', array( 'news', 'oped', 'artetc', 'sports' )  );
+
+        $query->set( 'tax_query',
+            array(
+                array(
+                    'taxonomy' => 'importance',
+                    'field' => 'slug',
+                    'terms' => array('featured','stream'),
+                    'operator' => 'IN'
+                )
+            )
+        );
+
+        return;
+    }
+
+    if( $query->is_author ) {
+    	$query->set( 'post_type', array( 'news', 'oped', 'artetc', 'sports' )  );
+    }
+
+    /*
+    if ( is_post_type_archive( 'movie' ) ) {
+        // Display 50 posts for a custom post type called 'movie'
+        $query->set( 'posts_per_page', 50 );
+        return;
+    } */
+}
+
+add_action( 'pre_get_posts', 'alter_queries', 1 );
+
+function exa_get_beats() {
+	global $post;
+
+	return wp_get_post_terms(get_the_ID(),get_post_type()."-beats");
+	
+}
+
+function exa_properize($name) {
+	return $name.'\''.($name[strlen($name) - 1] != 's' ? 's' : '');
+}
+

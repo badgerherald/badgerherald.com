@@ -1,0 +1,23 @@
+$base-font-size: 15px;
+$base-line-height: 21px;
+
+@function flex($pixels, $base) {
+    @return percentage(($pixels / $base));
+}
+
+@function em($px, $base: 15) {
+    @return ($px / $base) * 1em;
+}
+
+/*  Fonts */
+$headline: 	yanone kaffeesatz, helvetica, arial, sans-serif;
+$body:		noto serif, oalatino, georgia, serif;
+$caption: 	open sans, helvetica, arial, sans-serif;
+
+/*  Colors */
+$heraldblue:				#2781dd;
+$heraldbluehover: 			#3a97f7;
+$heraldlightgrey: 			#f5f2f2;
+$heraldlightgreyonwhite:	#ededed;
+$heralddarkgrey:  			#95979a;
+$heraldblack:				#191919;

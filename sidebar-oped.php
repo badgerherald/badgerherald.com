@@ -11,7 +11,7 @@
 
 
 $args = array(
-	'post_type'=> array('oped','sports','news','artsetc'),
+	'post_type'=> array('oped'),
 	'posts_per_page' => 40
 );
 // The Query

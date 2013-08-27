@@ -8,6 +8,7 @@
  * @subpackage Twenty_Thirteen
  * @since Twenty Thirteen 1.0
  */
+include('macros.php');
 ?><!DOCTYPE html>
 <!--[if IE 7]>
 <html class="ie ie7" <?php language_attributes(); ?>>
@@ -31,7 +32,26 @@
 </head>
 
 <body <?php body_class(); ?>>
-	<div id="page" class="hfeed site">
+
+	<div id="masthead">
+
+		<a href="<?php bloginfo('url'); ?>"><div id="logo">Badger Herald</div></a>
+
+		<nav role="main">
+		<ul id="nav">
+			<li><a href="<?php bloginfo('url'); ?>/news/">News</a></li>
+			<li><a href="<?php bloginfo('url'); ?>/oped/">Oped</a></li>
+			<li><a href="<?php bloginfo('url'); ?>/artsetc/">ArtsEtc.</a></li>
+			<li><a href="<?php bloginfo('url'); ?>/sports/">Sports</a></li>
+			<li><a href="<?php bloginfo('url'); ?>/shoutouts/">Shoutouts</a></li>
+		</ul>
+		</nav>
+
+	</div>
+
+	<div id="page">
+		<div id="primary">
+		<?php /*
 		<header id="masthead" class="site-header" role="banner">
 			<a class="home-link" href="<?php echo esc_url( home_url( '/' ) ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home">
 				<h1 class="site-title"><?php bloginfo( 'name' ); ?></h1>
@@ -46,6 +66,11 @@
 					<?php get_search_form(); ?>
 				</nav><!-- #site-navigation -->
 			</div><!-- #navbar -->
-		</header><!-- #masthead -->
+		</header><!-- #masthead --> */ ?>
 
 		<div id="main" class="site-main">
+
+		<div id="ad-leaderboard">
+		<a href="#"><img src="<?php bloginfo('template_url'); ?>/img/temp/charter.728x90.jpg"></a>
+		</div>
+

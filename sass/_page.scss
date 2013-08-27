@@ -1,0 +1,57 @@
+#page {
+	width: flex(1060,1220);
+	margin-left: flex(160,1220);
+}
+
+#primary {
+	width: flex(860,1060);
+	margin: 0 auto;
+	max-width:860px;
+}
+
+#stream {
+	width: flex(540,860);
+	float:left;
+}
+
+#sidebar {
+	width: flex(300,860);
+	padding-left: flex(20,860);
+	float: left;
+}
+
+#section-header {
+	width: flex(820,860);
+	padding: 36px flex(20,860) 30px;
+	background: $heraldblack;
+
+	text-transform: uppercase;
+	color: #fff;
+	margin-bottom:24px;
+	h1 {
+		font-size: em(60,15);
+		line-height: 60px;
+		text-shadow: -1px 1px $heraldblack;
+	}
+
+	&.section-header-oped {
+		background: url('img/headers/oped.png');
+	}
+	&.section-header-artsetc {
+		background: url('img/headers/artsetc.png');
+	}
+	&.section-header-sports {
+		background: url('img/headers/sports.png');
+	}
+}
+
+/**
+ * Ads
+ *
+ */
+
+#ad-leaderboard {
+	width: 100%;
+	margin: 18px 0;
+}
+

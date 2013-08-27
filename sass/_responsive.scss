@@ -1,0 +1,22 @@
+@media (max-width: 1219px) {
+
+	#masthead {
+		width: flex(160,980);
+	}
+
+	#page {
+		width: flex(820,980);
+		margin-left: flex(160,960);
+	}
+
+	#primary {
+		width: flex(780,820);
+	}
+	#stream {
+		width: flex(460,780);
+	}
+	#sidebar {
+		width: flex(300,780);
+	}
+
+}

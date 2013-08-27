@@ -1,6 +1,14 @@
 <?php
 /**
- * The template for displaying Author archive pages.
+ * The template for displaying Archive pages.
+ *
+ * Used to display archive-type pages if nothing more specific matches a query.
+ * For example, puts together date-based pages if no date.php file exists.
+ *
+ * If you'd like to further customize these archive views, you may create a
+ * new template file for each specific one. For example, Twenty Thirteen
+ * already has tag.php for Tag archives, category.php for Category archives,
+ * and author.php for Author archives.
  *
  * Learn more: http://codex.wordpress.org/Template_Hierarchy
  *
@@ -11,50 +19,26 @@
 
 get_header(); ?>
 
-	<div id="primary" class="content-area">
-		<div id="content" class="site-content" role="main">
+	<div id="stream">
 
-		<?php if ( have_posts() ) : ?>
+	<?php if ( have_posts() ) : ?>
 
-			<?php
-				/* Queue the first post, that way we know
-				 * what author we're dealing with (if that is the case).
-				 *
-				 * We reset this later so we can run the loop
-				 * properly with a call to rewind_posts().
-				 */
-				the_post();
-			?>
+		<?php /* The loop */ ?>
+		<?php while ( have_posts() ) : the_post(); ?>
+			<?php get_template_part( 'content', 'summary' ); ?>
+		<?php endwhile; ?>
 
-			<header class="archive-header">
-				<h1 class="archive-title"><?php printf( __( 'All posts by %s', 'twentythirteen' ), '<span class="vcard"><a class="url fn n" href="' . esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ) . '" title="' . esc_attr( get_the_author() ) . '" rel="me">' . get_the_author() . '</a></span>' ); ?></h1>
-			</header><!-- .archive-header -->
+		<?php twentythirteen_paging_nav(); ?>
 
-			<?php
-				/* Since we called the_post() above, we need to
-				 * rewind the loop back to the beginning that way
-				 * we can run the loop properly, in full.
-				 */
-				rewind_posts();
-			?>
+	<?php elseif ($query->is_archive) : ?>
+		Aadfasdfasd
+		<?php //get_template_part( 'content', 'none' ); ?>
+	<?php endif; ?>
 
-			<?php if ( get_the_author_meta( 'description' ) ) : ?>
-				<?php get_template_part( 'author-bio' ); ?>
-			<?php endif; ?>
+	</div><!-- id="stream" -->
 
-			<?php /* The loop */ ?>
-			<?php while ( have_posts() ) : the_post(); ?>
-				<?php get_template_part( 'content', get_post_format() ); ?>
-			<?php endwhile; ?>
+	<?php get_sidebar(get_post_type() ); ?>
 
-			<?php twentythirteen_paging_nav(); ?>
+	<div id="clearfix"></div>
 
-		<?php else : ?>
-			<?php get_template_part( 'content', 'none' ); ?>
-		<?php endif; ?>
-
-		</div><!-- #content -->
-	</div><!-- #primary -->
-
-<?php get_sidebar(); ?>
 <?php get_footer(); ?>

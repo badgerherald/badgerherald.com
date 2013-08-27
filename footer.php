@@ -11,8 +11,10 @@
  */
 ?>
 
-		</div><!-- #main -->
-		<footer id="colophon" class="site-footer" role="contentinfo">
+		<div class="clearfix"></div>
+		</div><!-- #primary -->
+	</div><!-- #page -->
+		<?php /* <footer id="colophon" class="site-footer" role="contentinfo">
 			<?php get_sidebar( 'main' ); ?>
 
 			<div class="site-info">
@@ -21,7 +23,7 @@
 			</div><!-- .site-info -->
 		</footer><!-- #colophon -->
 	</div><!-- #page -->
-
-	<?php wp_footer(); ?>
+	*/ ?>
+	<?php wp_footer(); ?> 
 </body>
 </html>
