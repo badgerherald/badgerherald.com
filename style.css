@@ -444,8 +444,10 @@ h1 {
   top: 0; }
 
 #masthead #logo {
-  background: #2781dd;
-  height: 132px;
+  display: block;
+  height: auto;
+  width: 75%;
+  padding: 0 12.5%;
   color: #fff; }
 
 /* If logged in, we have to manually push anything fixed down */

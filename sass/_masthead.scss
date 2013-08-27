@@ -14,15 +14,17 @@
 
 #masthead {
 	#logo {
-		background: $heraldblue;
-		height:132px;
+		display: block;
+		height:auto;
+		width:flex(120,160);
+		padding: 0 flex(20,160);
 		color: #fff;
 	}
 }
 
 /* If logged in, we have to manually push anything fixed down */
 body.admin-bar #masthead { top: 32px !important; } 
-body.admin-bar #wrapper {margin-top: 145px;}
+body.admin-bar #wrapper { margin-top: 145px; }
 
 /**
  * Navigation bar styling

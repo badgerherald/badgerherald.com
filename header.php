@@ -35,7 +35,9 @@ include('macros.php');
 
 	<div id="masthead">
 
-		<a href="<?php bloginfo('url'); ?>"><div id="logo">Badger Herald</div></a>
+		<a href="<?php bloginfo('url'); ?>">
+			<img id="logo" src="<?php bloginfo('template_url') ?>/img/logo/header.png" />
+		</a>
 
 		<nav role="main">
 		<ul id="nav">
