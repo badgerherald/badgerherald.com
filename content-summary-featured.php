@@ -8,7 +8,8 @@
  */
 ?>
 
-<article id="post-<?php the_ID(); ?>" <?php post_class("stream-post"); ?>>
+<?php ?>
+<article id="post-<?php the_ID(); ?>" <?php post_class("stream-post featured-stream-post"); ?>>
 
 	<header class="entry-header">
 		<?php if ( has_post_thumbnail() && ! post_password_required() ) : ?>

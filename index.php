@@ -17,7 +17,13 @@ get_header(); ?>
 
 		<?php /* The loop */ ?>
 		<?php while ( have_posts() ) : the_post(); ?>
-			<?php get_template_part( 'content', 'summary' ); ?>
+
+			<?php if(exa_is_featured()) : ?>
+				<?php get_template_part( 'content', 'summary-featured' ); ?>
+			<?php elseif(exa_is_instream()) : ?>
+				<?php get_template_part( 'content', 'summary-instream' ); ?>
+			<?php endif; ?>
+			<hr />
 		<?php endwhile; ?>
 
 		<?php twentythirteen_paging_nav(); ?>
@@ -31,6 +37,7 @@ get_header(); ?>
 	<?php get_sidebar(); ?>
 
 	<div id="clearfix"></div>
+
 
 
 <?php get_footer(); ?>

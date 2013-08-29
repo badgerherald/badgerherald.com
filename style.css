@@ -364,6 +364,10 @@ body {
   font-size: 15px;
   line-height: 21px; }
 
+p {
+  font-family: noto serif, oalatino, georgia, serif;
+  margin: 12px 0; }
+
 a {
   text-decoration: none;
   color: #2781dd; }
@@ -374,10 +378,18 @@ a {
  */
 h1 {
   font-family: yanone kaffeesatz, helvetica, arial, sans-serif;
-  font-size: 2.667em;
+  font-size: 2.333em;
   line-height: 42px;
   margin: 0 0 12px 0; }
   h1 a {
+    color: #191919; }
+
+h2 {
+  font-family: yanone kaffeesatz, helvetica, arial, sans-serif;
+  font-size: 1.6em;
+  line-height: 24px;
+  margin: 0 0 12px 0; }
+  h2 a {
     color: #191919; }
 
 /* 3 */
@@ -499,7 +511,19 @@ body.admin-bar #wrapper {
   padding-right: 14px; }
 
 .stream-post {
-  margin-bottom: 24px; }
+  margin-bottom: 0px;
+  margin-top: 12px; }
+
+.stream-post.instream-stream-post .entry-thumbnail {
+  width: 40.741%;
+  float: left;
+  padding-top: 12px;
+  padding-right: 20px; }
+.stream-post.instream-stream-post .entry-summary {
+  float: left;
+  width: 55.556%; }
+  .stream-post.instream-stream-post .entry-summary.entry-summary-full {
+    width: 100%; }
 
 /* META DATA
 

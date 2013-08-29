@@ -62,7 +62,7 @@ function exa_setup() {
 	/*
 	 * Things added by will
 	 */
-	add_action( 'init', 'register_featured_taxanomy' );
+//	add_action( 'init', 'register_featured_taxanomy' );
 	add_action( 'init', 'register_sections' );
 
 
@@ -592,11 +592,19 @@ add_action( 'customize_preview_init', 'twentythirteen_customize_preview_js' );
  *
  * Added: July 2013
  * 
- * @param Array $sections array of section names 
  * @return void
  */
-function register_importance_taxanomy() {
+function exa_register_importance_taxanomy() {
 
+	register_taxonomy("importance",$taxanomies,array( 
+							'hierarchical' => true,
+							'label' => 'Importance',
+							'public' => 'true',
+							'show_in_nav_menus' => false,
+							'show_admin_column' => true,
+							'query_var' => true,
+							'singular_label' => 'Importance') 
+	);
 
 }
 
@@ -684,15 +692,7 @@ function register_sections() {
 		$taxanomies[] = $slug;
 	}
 
-	register_taxonomy("importance",$taxanomies,array( 
-							'hierarchical' => true,
-							'label' => 'Importance',
-							'public' => 'true',
-							'show_in_nav_menus' => false,
-							'show_admin_column' => true,
-							'query_var' => true,
-							'singular_label' => 'Importance') 
-	);
+	exa_register_importance_taxanomy();
 
 
 }
@@ -753,13 +753,32 @@ function alter_queries( $query ) {
 add_action( 'pre_get_posts', 'alter_queries', 1 );
 
 function exa_get_beats() {
-	global $post;
 
+	global $post;
 	return wp_get_post_terms(get_the_ID(),get_post_type()."-beats");
-	
+
+}
+
+function exa_is_featured() {
+
+	global $post;
+	return (in_array("Featured",wp_get_post_terms(get_the_ID(),importance,array("fields" => "names"))));
+
+}
+
+function exa_is_instream() {
+
+	global $post;
+	return (in_array("In Stream",wp_get_post_terms(get_the_ID(),importance,array("fields" => "names"))));
+
 }
 
 function exa_properize($name) {
 	return $name.'\''.($name[strlen($name) - 1] != 's' ? 's' : '');
 }
 
+
+function custom_excerpt_length( $length ) {
+	return 24;
+}
+add_filter( 'excerpt_length', 'custom_excerpt_length', 999 );

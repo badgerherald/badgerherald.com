@@ -15,9 +15,30 @@
 }
 
 .stream-post {
-	margin-bottom: 24px;
+	margin-bottom: 0px;
+	margin-top: 12px;
 }
 
+.stream-post.instream-stream-post {
+
+	h1 {
+
+	}
+	.entry-thumbnail {
+		width: flex(220,540);
+		float: left;
+		padding-top: 12px;
+		padding-right:	20px;
+	}
+
+	.entry-summary {
+		float:			left;
+		width: 			flex(300,540);
+		&.entry-summary-full {
+			width: 100%;
+		}
+	}
+}
 
 
 /* META DATA

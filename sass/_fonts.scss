@@ -10,6 +10,11 @@ body {
 	line-height: 	$base-line-height;
 }
 
+p {
+	font-family: $body;
+	margin: 12px 0;
+}
+
 a {
 	text-decoration: 	none;
 	color:				$heraldblue;
@@ -22,8 +27,18 @@ a {
 
 h1 {
 	font-family: 	$headline;
-	font-size:		em(40);
+	font-size:		em(35);
 	line-height: 	42px;
+	margin: 0 0 12px 0;
+	a {
+		color: $heraldblack;
+	}
+}
+
+h2 {
+	font-family: 	$headline;
+	font-size:		em(24);
+	line-height: 	24px;
 	margin: 0 0 12px 0;
 	a {
 		color: $heraldblack;
