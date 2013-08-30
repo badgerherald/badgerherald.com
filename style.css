@@ -392,6 +392,9 @@ h2 {
   h2 a {
     color: #191919; }
 
+hr {
+  border: 1px solid #ededed; }
+
 /* 3 */
 /** 
  * Base Page Syles (much of which is altered in responsive)
@@ -462,6 +465,17 @@ h2 {
   padding: 0 12.5%;
   color: #fff; }
 
+#masthead #tagline {
+  font-family: open sans, helvetica, arial, sans-serif;
+  color: #b6b6b6;
+  text-transform: uppercase;
+  font-size: 0.625em;
+  width: 75%;
+  padding: 12px 12.5% 12px;
+  line-height: 15px;
+  text-align: right;
+  border-bottom: 1px solid #2c2c2c; }
+
 /* If logged in, we have to manually push anything fixed down */
 body.admin-bar #masthead {
   top: 32px !important; }
@@ -481,13 +495,16 @@ body.admin-bar #wrapper {
   display: block;
   width: 100%;
   /* line height is 16px */
-  border-bottom: 1px solid #95979a;
+  border-bottom: 1px solid #2c2c2c;
   width: 75%;
   text-align: right;
-  padding: 8px 12.5% 8px 12.5%;
-  color: #f5f2f2; }
+  padding: 6px 12.5% 6px 12.5%;
+  color: #b6b6b6; }
   #nav li a:hover {
     color: #fff; }
+
+#nav li:first-child a {
+  border-top: 1px solid #2c2c2c; }
 
 /** 
  * Navigation Styles
@@ -513,6 +530,16 @@ body.admin-bar #wrapper {
 .stream-post {
   margin-bottom: 0px;
   margin-top: 12px; }
+  .stream-post .tiny-avatar {
+    border-radius: 2px;
+    overflow: hidden;
+    position: absolute;
+    margin-top: 0px; }
+  .stream-post .tiny-avatar img {
+    width: 24px;
+    height: 23px; }
+  .stream-post .category-bar {
+    padding-left: 35px; }
 
 .stream-post.instream-stream-post .entry-thumbnail {
   width: 40.741%;
@@ -566,6 +593,14 @@ body.admin-bar #wrapper {
       .sidebar-posts li.post-in-sidebar a.post-permalink:hover {
         color: #2781dd; }
 
+.sidebar-posts .entry-thumbnail {
+  margin: 0;
+  padding: 0; }
+
+.most-recent-headline {
+  text-transform: uppercase;
+  font-size: 1.25em; }
+
 /** 
  * Post page stylings
  * 
@@ -577,8 +612,7 @@ body.admin-bar #wrapper {
   list-style-type: none;
   padding: 0;
   margin: 0 0 6px 0;
-  clear: both;
-  width: 100%; }
+  clear: both; }
   .category-bar li {
     float: left;
     margin-right: 10px; }
@@ -590,7 +624,7 @@ body.admin-bar #wrapper {
       float: right;
       margin-right: 0; }
       .category-bar li.edit-link-right a.post-edit-link {
-        color: #95979a;
+        color: #2c2c2c;
         float: right; }
   .category-bar:after {
     content: " ";
@@ -769,4 +803,15 @@ body.admin-bar #wrapper {
     width: 58.974%; }
 
   #sidebar {
-    width: 38.462%; } }
+    width: 38.462%; }
+
+  .stream-post.instream-stream-post .entry-thumbnail {
+    width: 47.826%;
+    float: left;
+    padding-top: 12px;
+    padding-right: 20px; }
+  .stream-post.instream-stream-post .entry-summary {
+    float: left;
+    width: 40.741%; }
+    .stream-post.instream-stream-post .entry-summary.entry-summary-full {
+      width: 100%; } }

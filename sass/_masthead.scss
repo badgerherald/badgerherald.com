@@ -22,6 +22,20 @@
 	}
 }
 
+#masthead {
+	#tagline {
+		font-family: $caption;
+		color : #b6b6b6;
+		text-transform: uppercase;
+		font-size: em(10,16);
+		width:flex(120,160);
+		padding: 12px flex(20,160) 12px;
+		line-height: 15px;
+		text-align: right;
+		border-bottom: 1px solid $heralddarkgrey;
+	}
+}
+
 /* If logged in, we have to manually push anything fixed down */
 body.admin-bar #masthead { top: 32px !important; } 
 body.admin-bar #wrapper { margin-top: 145px; }
@@ -46,9 +60,13 @@ body.admin-bar #wrapper { margin-top: 145px; }
 	border-bottom: 1px solid $heralddarkgrey;
 	width: flex(120,160);
 	text-align: right;
-	padding: 8px flex(20,160) 8px flex(20,160);
-	color: $heraldlightgrey;
+	padding: 6px flex(20,160) 6px flex(20,160);
+	color: #b6b6b6;
 	&:hover {
 		color: #fff;
 	}
+}
+
+#nav li:first-child a {
+	border-top: 1px solid $heralddarkgrey;
 }

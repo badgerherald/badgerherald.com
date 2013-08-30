@@ -1,6 +1,7 @@
 <?php
 
-function exa_list_categories($showedit = false) {
+function exa_list_categories($showedit = false, $showtime = false) {
+	global $post;
 	$beats = exa_get_beats(); 
 	$category_base = get_bloginfo('url')."/".get_post_type()."/";
 	$post_type = get_post_type_object(get_post_type());
@@ -15,6 +16,8 @@ function exa_list_categories($showedit = false) {
 		<?php endforeach; 
 		if($showedit) {
 			 edit_post_link( __( 'Edit Post' ), '<li class="edit-link-right">', '</li>' ); 
+		} elseif($showtime) {
+			echo '<li class="edit-link-right">' . exa_human_time_diff(get_the_time('U')) . '</li>';
 		}
 		?>
 	</ul>

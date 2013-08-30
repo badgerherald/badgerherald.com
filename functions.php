@@ -782,3 +782,30 @@ function custom_excerpt_length( $length ) {
 	return 24;
 }
 add_filter( 'excerpt_length', 'custom_excerpt_length', 999 );
+
+function exa_human_time_diff( $from, $to = '' ) {
+	if ( empty( $to ) )
+		$to = time();
+	$diff = (int) abs( $to - $from );
+	if ( $diff <= HOUR_IN_SECONDS ) {
+		$mins = round( $diff / MINUTE_IN_SECONDS );
+		if ( $mins <= 1 ) {
+			$mins = 1;
+		}
+		/* translators: min=minute */
+		$since = sprintf( _n( '%s min', '%s mins', $mins ), $mins );
+	} elseif ( ( $diff <= DAY_IN_SECONDS ) && ( $diff > HOUR_IN_SECONDS ) ) {
+		$hours = round( $diff / HOUR_IN_SECONDS );
+		if ( $hours <= 1 ) {
+			$hours = 1;
+		}
+		$since = sprintf( _n( '%s hour', '%s hours', $hours ), $hours );
+	} elseif ( $diff >= DAY_IN_SECONDS ) {
+		$days = round( $diff / DAY_IN_SECONDS );
+		if ( $days <= 1 ) {
+			$days = 1;
+		}
+		$since = sprintf( _n( '%s day', '%s days', $days ), $days );
+	}
+	return $since;
+}

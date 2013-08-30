@@ -24,6 +24,7 @@ get_header(); ?>
 				<?php get_template_part( 'content', 'summary-instream' ); ?>
 			<?php endif; ?>
 			<hr />
+			
 		<?php endwhile; ?>
 
 		<?php twentythirteen_paging_nav(); ?>

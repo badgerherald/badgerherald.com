@@ -18,5 +18,25 @@
 	#sidebar {
 		width: flex(300,780);
 	}
+	
+
+	.stream-post.instream-stream-post {
+
+	.entry-thumbnail {
+		width: flex(220,460);
+		float: left;
+		padding-top: 12px;
+		padding-right:	20px;
+	}
+
+	.entry-summary {
+		float:			left;
+		width: 			flex(220,540);
+		&.entry-summary-full {
+			width: 100%;
+		}
+	}
+}
+
 
 }

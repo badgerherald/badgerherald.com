@@ -48,7 +48,17 @@ get_header(); ?>
 
 		<?php /* The loop */ ?>
 		<?php while ( have_posts() ) : the_post(); ?>
-			<?php get_template_part( 'content', 'summary' ); ?>
+
+			<?php if(exa_is_featured()) : ?>
+				<?php get_template_part( 'content', 'summary-featured' ); ?>
+				<hr />
+			<?php elseif(exa_is_instream()) : ?>
+				<?php get_template_part( 'content', 'summary-instream' ); ?>
+				<hr />
+			<?php endif; ?>
+			
+
+
 		<?php endwhile; ?>
 
 		<?php twentythirteen_paging_nav(); ?>

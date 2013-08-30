@@ -16,3 +16,20 @@
 		}
 	}
 }
+
+.sidebar-posts {
+	.entry-thumbnail {
+		// width:flex(80,210);
+		margin: 0;
+		padding: 0;
+	}
+}
+
+.most-recent-headline {
+
+	text-transform: uppercase;
+
+// TODO: Figure out a font size;
+	font-size : em(40,32);
+
+}

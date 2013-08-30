@@ -34,7 +34,9 @@ include('macros.php');
 <body <?php body_class(); ?>>
 
 	<div id="masthead">
-
+		<div id="tagline">
+			UW-Madison's Premier Independent Student Newspaper <strong> &mdash; since 1969</strong>.
+		</div>
 		<a href="<?php bloginfo('url'); ?>">
 			<img id="logo" src="<?php bloginfo('template_url') ?>/img/logo/header.png" />
 		</a>

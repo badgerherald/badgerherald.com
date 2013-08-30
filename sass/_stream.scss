@@ -17,6 +17,20 @@
 .stream-post {
 	margin-bottom: 0px;
 	margin-top: 12px;
+	.tiny-avatar {
+		border-radius: 2px;
+		overflow: hidden;
+		position: absolute;
+		margin-top: -0px;
+	}
+	.tiny-avatar img {
+		width: 24px;
+		height: 23px;
+
+	}
+	.category-bar {
+		padding-left : 35px;
+	}
 }
 
 .stream-post.instream-stream-post {
