@@ -378,17 +378,19 @@ a {
  */
 h1 {
   font-family: yanone kaffeesatz, helvetica, arial, sans-serif;
-  font-size: 2.333em;
-  line-height: 42px;
-  margin: 0 0 12px 0; }
+  font-size: 2em;
+  line-height: 30px;
+  margin: 0 0 6px 0;
+  padding: 0; }
   h1 a {
     color: #191919; }
 
 h2 {
   font-family: yanone kaffeesatz, helvetica, arial, sans-serif;
-  font-size: 1.6em;
-  line-height: 24px;
-  margin: 0 0 12px 0; }
+  font-size: 1.467em;
+  line-height: 27px;
+  margin: 0 0 -6px 0;
+  padding: 0; }
   h2 a {
     color: #191919; }
 
@@ -491,6 +493,10 @@ body.admin-bar #wrapper {
   margin: 0;
   padding: 0; }
 
+#nav li {
+  font-family: open sans, helvetica, arial, sans-serif;
+  text-transform: uppercase; }
+
 #nav li a {
   display: block;
   width: 100%;
@@ -534,21 +540,27 @@ body.admin-bar #wrapper {
     border-radius: 2px;
     overflow: hidden;
     position: absolute;
-    margin-top: 0px; }
+    margin-top: 1px; }
   .stream-post .tiny-avatar img {
-    width: 24px;
-    height: 23px; }
+    width: 20px;
+    height: 20px; }
   .stream-post .category-bar {
-    padding-left: 35px; }
+    padding-left: 32px; }
+  .stream-post h1, .stream-post h2 {
+    color: #2c2c2c;
+    font-weight: normal; }
+    .stream-post h1 a:hover, .stream-post h2 a:hover {
+      color: #2781dd; }
 
 .stream-post.instream-stream-post .entry-thumbnail {
-  width: 40.741%;
+  width: 25.926%;
   float: left;
-  padding-top: 12px;
+  padding-top: 18px;
+  margin-top: 0px;
   padding-right: 20px; }
 .stream-post.instream-stream-post .entry-summary {
   float: left;
-  width: 55.556%; }
+  width: 70.37%; }
   .stream-post.instream-stream-post .entry-summary.entry-summary-full {
     width: 100%; }
 
@@ -579,8 +591,9 @@ body.admin-bar #wrapper {
  * Sidebar & Widget stylings
  */
 .sidebar-posts {
-  margin: 24px 0 0 0;
+  margin: 0px 0 0 0;
   padding: 0;
+  position: relative;
   list-style-type: none; }
   .sidebar-posts li.post-in-sidebar {
     border-bottom: 1px solid #ededed;
@@ -599,7 +612,18 @@ body.admin-bar #wrapper {
 
 .most-recent-headline {
   text-transform: uppercase;
+  margin-bottom: 6px;
+  margin-top: 12px;
+  padding-left: 3px;
   font-size: 1.25em; }
+
+.sidebar-fixed {
+  position: relative;
+  height: 100%; }
+  .sidebar-fixed .sidebar-inner {
+    position: fixed;
+    top: 0;
+    overflow: scroll; }
 
 /** 
  * Post page stylings

@@ -28,6 +28,10 @@ include('macros.php');
 	<!--[if lt IE 9]>
 	<script src="<?php echo get_template_directory_uri(); ?>/js/html5.js" type="text/javascript"></script>
 	<![endif]-->
+
+
+	<?php /* TODO:  Do this in a WP way */ ?>
+	<script src="<?php echo get_template_directory_uri(); ?>/js/exa.js" type="text/javascript"></script>
 	<?php wp_head(); ?>
 </head>
 
@@ -38,7 +42,7 @@ include('macros.php');
 			UW-Madison's Premier Independent Student Newspaper <strong> &mdash; since 1969</strong>.
 		</div>
 		<a href="<?php bloginfo('url'); ?>">
-			<img id="logo" src="<?php bloginfo('template_url') ?>/img/logo/header.png" />
+			<img id="logo" src="<?php bloginfo('template_url') ?>/img/logo/header-2.png" />
 		</a>
 
 		<nav role="main">
@@ -48,6 +52,7 @@ include('macros.php');
 			<li><a href="<?php bloginfo('url'); ?>/artsetc/">ArtsEtc.</a></li>
 			<li><a href="<?php bloginfo('url'); ?>/sports/">Sports</a></li>
 			<li><a href="<?php bloginfo('url'); ?>/shoutouts/">Shoutouts</a></li>
+			<li><a href="<?php bloginfo('url'); ?>/shoutouts/">Comics</a></li>
 		</ul>
 		</nav>
 

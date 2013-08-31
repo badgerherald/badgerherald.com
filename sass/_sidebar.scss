@@ -1,6 +1,7 @@
 .sidebar-posts {
-	margin: 24px 0 0 0 ;
+	margin: 0px 0 0 0 ;
 	padding: 0;
+	position: relative;
 	list-style-type: none;
 	li.post-in-sidebar {
 		border-bottom: 1px solid $heraldlightgreyonwhite;
@@ -26,10 +27,20 @@
 }
 
 .most-recent-headline {
-
 	text-transform: uppercase;
-
-// TODO: Figure out a font size;
+	margin-bottom: 6px;
+	margin-top: 12px;
+	padding-left: 3px;
+//  TODO: Figure out a font size;
 	font-size : em(40,32);
+}
 
+.sidebar-fixed {
+	.sidebar-inner {
+		position:fixed;
+		top:0;
+		overflow:scroll;
+	}
+	position:relative;
+	height:100%;
 }

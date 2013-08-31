@@ -3,7 +3,6 @@
  */
 
 
-
 #masthead {
 	background: $heraldblack;
 	height: 100%;
@@ -51,6 +50,8 @@ body.admin-bar #wrapper { margin-top: 145px; }
 }
 
 #nav li {
+	font-family: $caption;
+	text-transform: uppercase;
 }
 
 #nav li a {
