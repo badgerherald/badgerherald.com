@@ -23,6 +23,8 @@ $sidebarquery = new WP_Query( $args );
 <div class="sidebar-inner">
 
 <h1 class="most-recent-headline">Happening Now</h1>
+
+<div class="sidebar-scroll">
 <ul class="sidebar-posts">
 <?php 
 // The Loop
@@ -64,5 +66,6 @@ wp_reset_postdata();
 ?>
 </ul><!-- class="sidebar-posts" -->
 
+</div><!-- class="sidebar-scroll" -->
 </div><!-- class="inner-sidebar" -->
-</div>
+</div><!-- id="sidebar" -->

@@ -39,13 +39,14 @@
 
 			<div class="social">
 				<!-- AddThis Button BEGIN -->
-				<div class="addthis_toolbox addthis_no_style ">
-				<a class="addthis_button_facebook_like" data-href="http://www.google.com" fb:like:layout="button_count"></a>
-				<a class="addthis_button_tweet"></a>
-				<a class="addthis_button_pinterest_pinit"></a>
-				<a class="addthis_counter addthis_pill_style"></a>
+				<div class="addthis_toolbox addthis_no_style">
+					<ul>
+						<li><span>Like this post</span><a class="addthis_button_facebook_like" data-href="http://www.google.com" fb:like:href="http://google.com" fb:like:layout="button_count"></a> </li>
+						<li><span>Tweet this post</span><a class="addthis_button_tweet"> </a></li>
+						<li><span>Score Karma!</span><a class="addthis_button_reddit"></a> </li>
+				
+					</ul>
 				</div>
-				<script type="text/javascript">var addthis_config = {"data_track_addressbar":true};</script>
 				<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-50c156512b0bcb69"></script>
 				<!-- AddThis Button END -->
 
@@ -53,9 +54,13 @@
 
 			<?php exa_include_article_square_ad() ?>
 
-
-
+			<div class="post-sidebar-headlines">
+			<h3> Top Headlines </h3>
+			<?php include("most-commented.php"); ?>
+			</div>
 		</div><!-- id="post-sidebar" -->
+
+
 		<div id="content">
 			<?php exa_list_categories(true) ?>
 			<h1 class="entry-title"><?php the_title(); ?></h1>

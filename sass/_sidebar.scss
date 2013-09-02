@@ -28,19 +28,40 @@
 
 .most-recent-headline {
 	text-transform: uppercase;
-	margin-bottom: 6px;
-	margin-top: 12px;
+	padding-bottom: 6px;
+	padding-top: 12px;
 	padding-left: 3px;
+	z-index: 100;
+	display: block;
+	width: 100%;
+	background: #fff;
 //  TODO: Figure out a font size;
+	position: absolute;
 	font-size : em(40,32);
+	border-bottom: 2px solid $heraldlightgreyonwhite;
 }
+
+.sidebar-scroll {
+	position: relative;
+	top:48px;
+}
+
+
 
 .sidebar-fixed {
 	.sidebar-inner {
-		position:fixed;
 		top:0;
+		height:100%;
 		overflow:scroll;
+		.sidebar-scroll {
+			
+		}
+		position:fixed;
 	}
 	position:relative;
-	height:100%;
+
+	.most-recent-headline {
+		position: fixed;
+		
+	}
 }

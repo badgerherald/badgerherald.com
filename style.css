@@ -402,7 +402,7 @@ hr {
  * Base Page Syles (much of which is altered in responsive)
  * 
  */
-#page {
+d#page {
   width: 86.885%;
   margin-left: 13.115%; }
 
@@ -512,6 +512,29 @@ body.admin-bar #wrapper {
 #nav li:first-child a {
   border-top: 1px solid #2c2c2c; }
 
+.search-button a {
+  display: none !important; }
+.search-button input {
+  width: 75%;
+  padding: 6px 12.5%;
+  display: block;
+  border: none;
+  background: #191919;
+  border-bottom: 1px solid #2c2c2c;
+  text-align: right;
+  color: #b6b6b6; }
+.search-button input:hover {
+  color: #ffffff !important;
+  cursor: pointer; }
+.search-button input:focus {
+  outline-style: none;
+  text-align: left;
+  color: #fff; }
+.search-button label {
+  display: none; }
+.search-button input[type=submit] {
+  display: none; }
+
 /** 
  * Navigation Styles
  * 
@@ -612,18 +635,30 @@ body.admin-bar #wrapper {
 
 .most-recent-headline {
   text-transform: uppercase;
-  margin-bottom: 6px;
-  margin-top: 12px;
+  padding-bottom: 6px;
+  padding-top: 12px;
   padding-left: 3px;
-  font-size: 1.25em; }
+  z-index: 100;
+  display: block;
+  width: 100%;
+  background: #fff;
+  position: absolute;
+  font-size: 1.25em;
+  border-bottom: 2px solid #ededed; }
+
+.sidebar-scroll {
+  position: relative;
+  top: 48px; }
 
 .sidebar-fixed {
-  position: relative;
-  height: 100%; }
+  position: relative; }
   .sidebar-fixed .sidebar-inner {
-    position: fixed;
     top: 0;
-    overflow: scroll; }
+    height: 100%;
+    overflow: scroll;
+    position: fixed; }
+  .sidebar-fixed .most-recent-headline {
+    position: fixed; }
 
 /** 
  * Post page stylings
@@ -692,6 +727,54 @@ body.admin-bar #wrapper {
           width: 100%;
           height: auto; }
 
+.social {
+  width: 73.333%;
+  margin-left: 26.667%; }
+  .social ul {
+    list-style: none;
+    padding: 0;
+    font-family: yanone kaffeesatz, helvetica, arial, sans-serif;
+    position: relative;
+    margin-top: 0; }
+    .social ul li {
+      font-family: open sans, helvetica, arial, sans-serif;
+      text-transform: uppercase;
+      font-size: 0.813em;
+      padding-bottom: 6px;
+      padding-top: 6px;
+      border-bottom: 2px solid #f5f2f2; }
+      .social ul li a {
+        position: absolute;
+        left: 54.545%; }
+      .social ul li a {
+        color: #191919; }
+      .social ul li a:hover {
+        color: #2781dd; }
+      .social ul li:first-child {
+        border-top: 2px solid #f5f2f2; }
+
+.post-sidebar-headlines {
+  width: 73.333%;
+  margin-left: 26.667%; }
+  .post-sidebar-headlines h3 {
+    border-bottom: 2px solid #f5f2f2;
+    padding-bottom: 12px;
+    margin-bottom: 0; }
+  .post-sidebar-headlines ul {
+    list-style: none;
+    padding: 0;
+    font-family: yanone kaffeesatz, helvetica, arial, sans-serif;
+    font-size: 1.125em;
+    margin-top: 0; }
+    .post-sidebar-headlines ul li {
+      padding-bottom: 6px;
+      padding-top: 6px;
+      border-bottom: 2px solid #f5f2f2; }
+      .post-sidebar-headlines ul li a {
+        color: #191919; }
+      .post-sidebar-headlines ul li a:hover {
+        color: #2781dd; }
+
 #content {
   float: left;
   width: 62.791%; }
@@ -717,6 +800,13 @@ body.admin-bar #wrapper {
     display: block;
     margin-left: auto;
     margin-right: auto; }
+  #content .wp-caption {
+    padding-top: 12px; }
+
+.wp-caption-text {
+  font-family: open sans, helvetica, arial, sans-serif;
+  font-size: 0.875em;
+  font-color: #2c2c2c; }
 
 /** 
  * HTML5 Boilerplate helper classes.

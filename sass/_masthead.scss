@@ -71,3 +71,36 @@ body.admin-bar #wrapper { margin-top: 145px; }
 #nav li:first-child a {
 	border-top: 1px solid $heralddarkgrey;
 }
+
+.search-button {
+	a {
+		display: none !important;
+	}
+	input {
+		width: flex(120,160);
+		padding: 6px flex(20,160);
+		display: block;
+		border: none;
+		background: $heraldblack;
+		border-bottom: 1px solid $heralddarkgrey;
+		text-align: right;
+		color : #b6b6b6;
+	}
+
+	input:hover {
+		color: #ffffff !important;
+		cursor: pointer;
+	}	
+	input:focus {
+		outline-style: none;
+		text-align: left;
+		color: #fff;
+	}
+	label {
+		display: none;
+	}
+	input[type=submit] {
+		display: none;
+	}
+
+}

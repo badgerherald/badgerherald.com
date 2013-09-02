@@ -29,9 +29,6 @@ include('macros.php');
 	<script src="<?php echo get_template_directory_uri(); ?>/js/html5.js" type="text/javascript"></script>
 	<![endif]-->
 
-
-	<?php /* TODO:  Do this in a WP way */ ?>
-	<script src="<?php echo get_template_directory_uri(); ?>/js/exa.js" type="text/javascript"></script>
 	<?php wp_head(); ?>
 </head>
 
@@ -53,6 +50,11 @@ include('macros.php');
 			<li><a href="<?php bloginfo('url'); ?>/sports/">Sports</a></li>
 			<li><a href="<?php bloginfo('url'); ?>/shoutouts/">Shoutouts</a></li>
 			<li><a href="<?php bloginfo('url'); ?>/shoutouts/">Comics</a></li>
+			<li class="search-button">
+				<a href="<?php bloginfo('url'); ?>/search/">Search</a>
+				<?php /*<input type="text" placeholder="Search for..." value="SEARCH" /> */ ?>
+				<?php get_search_form( true ); ?>
+			</li>
 		</ul>
 		</nav>
 
