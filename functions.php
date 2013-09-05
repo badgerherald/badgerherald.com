@@ -42,6 +42,16 @@ require( get_template_directory() . '/inc/custom-header.php' );
 if ( version_compare( $GLOBALS['wp_version'], '3.6-alpha', '<' ) )
 	require( get_template_directory() . '/inc/back-compat.php' );
 
+/* Hide media credit, for now */
+function ignore_media_credit_shortcode( $atts, $content = null ) {
+    return $content;
+}
+global $shortcode_tags;
+if ( !array_key_exists( 'media-credit', $shortcode_tags ) )
+    add_shortcode('media-credit', 'ignore_media_credit_shortcode' );
+
+
+
 /**
  * Sets up theme defaults and registers the various WordPress features that
  * Twenty Thirteen supports.
@@ -67,16 +77,6 @@ function exa_setup() {
 
 
 	/*
-	 * Makes Twenty Thirteen available for translation.
-	 *
-	 * Translations can be added to the /languages/ directory.
-	 * If you're building a theme based on Twenty Thirteen, use a find and
-	 * replace to change 'twentythirteen' to the name of your theme in all
-	 * template files.
-	 */
-	load_theme_textdomain( 'twentythirteen', get_template_directory() . '/languages' );
-
-	/*
 	 * Register different size thumbnail images
 	 *
 	 */
@@ -91,7 +91,8 @@ function exa_setup() {
 	 * This theme styles the visual editor to resemble the theme style,
 	 * specifically font, colors, and column width.
 	 */
-	add_editor_style( 'css/editor-style.css' );
+	// TODO: Style for Herald.
+	//add_editor_style( 'css/editor-style.css' );
 
 	// Adds RSS feed links to <head> for posts and comments.
 	add_theme_support( 'automatic-feed-links' );
@@ -124,76 +125,10 @@ function exa_setup() {
 
 	// This theme uses its own gallery styles.
 	add_filter( 'use_default_gallery_style', '__return_false' );
+
 }
 add_action( 'after_setup_theme', 'exa_setup' );
 
-/**
- * Returns the Google font stylesheet URL, if available.
- *
- * The use of Source Sans Pro and Bitter by default is localized. For languages
- * that use characters not supported by the font, the font can be disabled.
- *
- * @since Twenty Thirteen 1.0
- *
- * @return string Font stylesheet or empty string if disabled.
- */
-function twentythirteen_fonts_url() {
-	$fonts_url = '';
-
-	/* Translators: If there are characters in your language that are not
-	 * supported by Source Sans Pro, translate this to 'off'. Do not translate
-	 * into your own language.
-	 */
-	$source_sans_pro = _x( 'on', 'Source Sans Pro font: on or off', 'twentythirteen' );
-
-	/* Translators: If there are characters in your language that are not
-	 * supported by Bitter, translate this to 'off'. Do not translate into your
-	 * own language.
-	 */
-	$bitter = _x( 'on', 'Bitter font: on or off', 'twentythirteen' );
-
-	if ( 'off' !== $source_sans_pro || 'off' !== $bitter ) {
-		$font_families = array();
-
-		if ( 'off' !== $source_sans_pro )
-			$font_families[] = 'Source+Sans+Pro:400,700,300italic,400italic,700italic';
-
-		if ( 'off' !== $bitter )
-			$font_families[] = 'Bitter:400,700';
-
-		$protocol = is_ssl() ? 'https' : 'http';
-		$query_args = array(
-			'family' => implode( '|', $font_families ),
-			'subset' => 'latin,latin-ext',
-		);
-		$fonts_url = add_query_arg( $query_args, "$protocol://fonts.googleapis.com/css" );
-	}
-
-	return $fonts_url;
-}
-
-/**
- * Loads our special font CSS file.
- *
- * To disable in a child theme, use wp_dequeue_style()
- * function mytheme_dequeue_fonts() {
- *     wp_dequeue_style( 'twentythirteen-fonts' );
- * }
- * add_action( 'wp_enqueue_scripts', 'mytheme_dequeue_fonts', 11 );
- *
- * Also used in the Appearance > Header admin panel:
- * @see twentythirteen_custom_header_setup()
- *
- * @since Twenty Thirteen 1.0
- *
- * @return void
- */
-function twentythirteen_fonts() {
-	$fonts_url = twentythirteen_fonts_url();
-	if ( ! empty( $fonts_url ) )
-		wp_enqueue_style( 'twentythirteen-fonts', esc_url_raw( $fonts_url ), array(), null );
-}
-add_action( 'wp_enqueue_scripts', 'twentythirteen_fonts' );
 
 /**
  * Adds additional stylesheets to the TinyMCE editor if needed.
@@ -204,7 +139,7 @@ add_action( 'wp_enqueue_scripts', 'twentythirteen_fonts' );
  *
  * @param string $mce_css CSS path to load in TinyMCE.
  * @return string The filtered CSS paths list.
- */
+ */ /*
 function twentythirteen_mce_css( $mce_css ) {
 	$fonts_url = twentythirteen_fonts_url();
 
@@ -219,6 +154,7 @@ function twentythirteen_mce_css( $mce_css ) {
 	return $mce_css;
 }
 add_filter( 'mce_css', 'twentythirteen_mce_css' );
+*/
 
 /**
  * Enqueues scripts and styles for front end.
@@ -228,6 +164,7 @@ add_filter( 'mce_css', 'twentythirteen_mce_css' );
  * @return void
  */
 function twentythirteen_scripts_styles() {
+	
 	global $wp_styles;
 
 	/*
@@ -262,7 +199,7 @@ add_action( 'wp_enqueue_scripts', 'twentythirteen_scripts_styles' );
  * @param string $title Default title text for current view.
  * @param string $sep Optional separator.
  * @return string The filtered title.
- */
+ */ /*
 function twentythirteen_wp_title( $title, $sep ) {
 	global $paged, $page;
 
@@ -284,14 +221,14 @@ function twentythirteen_wp_title( $title, $sep ) {
 	return $title;
 }
 add_filter( 'wp_title', 'twentythirteen_wp_title', 10, 2 );
-
+*/
 /**
  * Registers two widget areas.
  *
  * @since Twenty Thirteen 1.0
  *
  * @return void
- */
+ */ /*
 function twentythirteen_widgets_init() {
 	register_sidebar( array(
 		'name'          => __( 'Main Widget Area', 'twentythirteen' ),
@@ -314,7 +251,7 @@ function twentythirteen_widgets_init() {
 	) );
 }
 add_action( 'widgets_init', 'twentythirteen_widgets_init' );
-
+*/ 
 if ( ! function_exists( 'twentythirteen_paging_nav' ) ) :
 /**
  * Displays navigation to next/previous set of posts when applicable.
@@ -322,7 +259,7 @@ if ( ! function_exists( 'twentythirteen_paging_nav' ) ) :
  * @since Twenty Thirteen 1.0
  *
  * @return void
- */
+ */ 
 function twentythirteen_paging_nav() {
 	global $wp_query;
 
@@ -355,7 +292,7 @@ if ( ! function_exists( 'twentythirteen_post_nav' ) ) :
 * @since Twenty Thirteen 1.0
 *
 * @return void
-*/
+*/ 
 function twentythirteen_post_nav() {
 	global $post;
 
@@ -766,7 +703,7 @@ function exa_is_featured() {
 
 }
 
-function exa_is_instream() {
+function exa_is_280tream() {
 
 	global $post;
 	return (in_array("In Stream",wp_get_post_terms(get_the_ID(),importance,array("fields" => "names"))));

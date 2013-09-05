@@ -21,6 +21,7 @@
 		<a class="meta-author-link" title="<?php echo exa_properize(get_the_author()); ?> Profile" href="<?php exa_the_author_link() ?>"><div class="tiny-avatar">
 				<?php echo get_wp_user_avatar(get_the_author_meta('ID'), 'square'); ?>
 		</div></a>
+		
 		<?php exa_list_categories(true); ?>
 
 		<h1 class="entry-title">

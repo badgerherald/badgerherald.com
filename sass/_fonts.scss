@@ -27,9 +27,10 @@ a {
 
 h1 {
 	font-family: 	$headline;
-	font-size:		em(35);
-	line-height: 	42px;
-	margin: 0 0 12px 0;
+	font-size:		em(30);
+	line-height: 	30px;
+	margin: 0 0 6px 0;
+	padding: 0;
 	a {
 		color: $heraldblack;
 	}
@@ -37,9 +38,10 @@ h1 {
 
 h2 {
 	font-family: 	$headline;
-	font-size:		em(24);
-	line-height: 	24px;
-	margin: 0 0 12px 0;
+	font-size:		em(22);
+	line-height: 	27px;
+	margin: 0 0 -6px 0;
+	padding:0;
 	a {
 		color: $heraldblack;
 	}

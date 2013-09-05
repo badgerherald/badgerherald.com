@@ -9,7 +9,10 @@
 
 get_header(); 
 ?>
-
+<script>
+    disqus_shortname = 'badgerherald'; // Required - Replace example with your forum shortname
+    disqus_identifier = '48467';
+</script>
 	
 		
 

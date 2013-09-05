@@ -45,11 +45,14 @@ get_header(); ?>
         <ul class="category-menu">
         	<li><a href="#">Categories</a>
             	<ul>
-                	<li><a href="#">Category 1</a></li>
-                    <li><a href="#">Category 2</a></li>
-                    <li><a href="#">Category 3</a></li>
-                    <li><a href="#">Category 4</a></li>
-                    <li><a href="#">Category 5</a></li>
+                	<li><a href="#">City of Madison</a></li>
+                    <li><a href="#">Higher Education</a></li>
+                    <li><a href="#">State of Wisconsin</a></li>
+                    <li><a href="#">Student Government</a></li>
+                    <li><a href="#">US News</a></li>
+                    <li><a href="#">UW-Madison Campus</a></li>
+                    <li><a href="#">UW Research</a></li>
+                    <li><a href="#">UW System</a></li>
                 </ul>
             </li>
         </ul>
@@ -65,7 +68,7 @@ get_header(); ?>
 			<?php if(exa_is_featured()) : ?>
 				<?php get_template_part( 'content', 'summary-featured' ); ?>
 				<hr />
-			<?php else : //if(exa_is_instream()) : ?>
+			<?php elseif(exa_is_instream()) : ?>
 				<?php get_template_part( 'content', 'summary-instream' ); ?>
 				<hr />
 			<?php endif; ?>

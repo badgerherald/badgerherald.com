@@ -19,41 +19,22 @@
 
 get_header(); ?>
 	
-	<?php 
-		$classes = "";
-		if( is_post_type_archive() ) {
-			$classes.="section-header-".strtolower(post_type_archive_title("",false));
-		}
-		?>
-	<header id="section-header" class="<?php echo $classes ?>">
-		<h1 class="archive-title">
-		<?php
-			if ( is_day() ) :
-				printf( __( 'Daily Archives: %s', 'twentythirteen' ), get_the_date() );
-			elseif ( is_month() ) :
-				printf( __( 'Monthly Archives: %s', 'twentythirteen' ), get_the_date( _x( 'F Y', 'monthly archives date format', 'twentythirteen' ) ) );
-			elseif ( is_year() ) :
-				printf( __( 'Yearly Archives: %s', 'twentythirteen' ), get_the_date( _x( 'Y', 'yearly archives date format', 'twentythirteen' ) ) );
-			elseif ( is_post_type_archive() ) :
-				printf( '%s', post_type_archive_title() );
-				else :
-					_e( 'Archives', 'twentythirteen' );
-				endif;
-				?>
-		</h1>
-        <?php if ( is_post_type_archive() ){ ?>
-        <ul class="category-menu">
+	<header id="section-header" class="section-header-news">
+		<h1 class="archive-title">News</h1>
+        <ul class="category-menu transparent shadow">
         	<li><a href="#">Categories</a>
-            	<ul>
-                	<li><a href="#">Category 1</a></li>
-                    <li><a href="#">Category 2</a></li>
-                    <li><a href="#">Category 3</a></li>
-                    <li><a href="#">Category 4</a></li>
-                    <li><a href="#">Category 5</a></li>
+            	<ul class="shadow">
+                	<li><a href="#">City of Madison</a></li>
+                    <li><a href="#">Higher Education</a></li>
+                    <li><a href="#">State of Wisconsin</a></li>
+                    <li><a href="#">Student Government</a></li>
+                    <li><a href="#">US News</a></li>
+                    <li><a href="#">UW-Madison Campus</a></li>
+                    <li><a href="#">UW Research</a></li>
+                    <li><a href="#">UW System</a></li>
                 </ul>
             </li>
         </ul>
-        <?php }//end if ( is_post_type_archive() ) for category-menu ?>
 	</header>
 	<div id="stream">
 
@@ -65,7 +46,7 @@ get_header(); ?>
 			<?php if(exa_is_featured()) : ?>
 				<?php get_template_part( 'content', 'summary-featured' ); ?>
 				<hr />
-			<?php else : //if(exa_is_instream()) : ?>
+			<?php elseif(exa_is_instream()) : ?>
 				<?php get_template_part( 'content', 'summary-instream' ); ?>
 				<hr />
 			<?php endif; ?>
