@@ -41,6 +41,19 @@ get_header(); ?>
 				endif;
 				?>
 		</h1>
+        <?php if ( is_post_type_archive() ){ ?>
+        <ul class="category-menu">
+        	<li><a href="#">Categories</a>
+            	<ul>
+                	<li><a href="#">Category 1</a></li>
+                    <li><a href="#">Category 2</a></li>
+                    <li><a href="#">Category 3</a></li>
+                    <li><a href="#">Category 4</a></li>
+                    <li><a href="#">Category 5</a></li>
+                </ul>
+            </li>
+        </ul>
+        <?php }//end if ( is_post_type_archive() ) for category-menu ?>
 	</header>
 	<div id="stream">
 
