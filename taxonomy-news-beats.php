@@ -21,20 +21,7 @@ get_header(); ?>
 	
 	<header id="section-header" class="section-header-news">
 		<h1 class="archive-title">News</h1>
-        <ul class="category-menu transparent shadow">
-        	<li><a href="#">Categories</a>
-            	<ul class="shadow">
-                	<li><a href="#">City of Madison</a></li>
-                    <li><a href="#">Higher Education</a></li>
-                    <li><a href="#">State of Wisconsin</a></li>
-                    <li><a href="#">Student Government</a></li>
-                    <li><a href="#">US News</a></li>
-                    <li><a href="#">UW-Madison Campus</a></li>
-                    <li><a href="#">UW Research</a></li>
-                    <li><a href="#">UW System</a></li>
-                </ul>
-            </li>
-        </ul>
+        <?php exa_get_beats_dropdown(array('madison','higheredu','state','studentgov','national','campus','newsUWResearch','uwsystem'), 'news'); ?>
 	</header>
 	<div id="stream">
 

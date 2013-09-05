@@ -19,22 +19,9 @@
 
 get_header(); ?>
 	
-	<header id="section-header" class="section-header-sports">
+	<header id="section-header" class="section-header-sports clearfix">
 		<h1 class="archive-title">Sports</h1>
-        <ul class="category-menu transparent">
-        	<li><a href="#">Categories <span class="arrow">&#8744;</span></a>
-            	<ul>
-                	<li><a href="#">City of Madison</a></li>
-                    <li><a href="#">Higher Education</a></li>
-                    <li><a href="#">State of Wisconsin</a></li>
-                    <li><a href="#">Student Government</a></li>
-                    <li><a href="#">US News</a></li>
-                    <li><a href="#">UW-Madison Campus</a></li>
-                    <li><a href="#">UW Research</a></li>
-                    <li><a href="#">UW System</a></li>
-                </ul>
-            </li>
-        </ul>
+        <?php exa_get_beats_dropdown(array('sportsBaseball','sportsFootball','sportsMensBasketball','sportsMensHockey','sportsMensSwimming','sportsSoftball','sportsVolleyball','sportsWomensBasketball','sportsWomensHockey','sportsWomensSwimming'), 'sports'); ?>
 	</header>
 	<div id="stream">
 
@@ -46,7 +33,7 @@ get_header(); ?>
 			<?php if(exa_is_featured()) : ?>
 				<?php get_template_part( 'content', 'summary-featured' ); ?>
 				<hr />
-			<?php else : ?>
+			<?php elseif(exa_is_instream()) : ?>
 				<?php get_template_part( 'content', 'summary-instream' ); ?>
 				<hr />
 			<?php endif; ?>

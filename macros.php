@@ -48,3 +48,21 @@ function exa_the_author_link() {
 	echo get_bloginfo('url')."/author/".get_the_author_meta("user_nicename");
 
 }
+
+function exa_get_beats_dropdown($beats_slug_list, $category){
+	?>
+	<ul class="beats-menu transparent">
+        <li><a href="#">Beats <span class="arrow">&#9662;</span></a>
+            <ul>
+            <?php foreach($beats_slug_list as $beat_slug): 
+				$beat = get_term_by('slug', $beat_slug, $category.'-beats');
+				$beat_link = get_term_link($beat);
+				if(is_wp_error($beat_link)) continue;
+				?>
+                <li><a href="<?php echo $beat_link; ?>"><?php echo $beat->name; ?></a></li>
+            <?php endforeach; ?>
+            </ul>
+        </li>
+    </ul>
+<?php 
+}

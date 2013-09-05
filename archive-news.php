@@ -25,7 +25,7 @@ get_header(); ?>
 			$classes.="section-header-".strtolower(post_type_archive_title("",false));
 		}
 		?>
-	<header id="section-header" class="<?php echo $classes ?>">
+	<header id="section-header" class="<?php echo $classes ?> clearfix">
 		<h1 class="archive-title">
 		<?php
 			if ( is_day() ) :
@@ -42,20 +42,7 @@ get_header(); ?>
 				?>
 		</h1>
         <?php if ( is_post_type_archive() ){ ?>
-        <ul class="category-menu">
-        	<li><a href="#">Categories</a>
-            	<ul>
-                	<li><a href="#">City of Madison</a></li>
-                    <li><a href="#">Higher Education</a></li>
-                    <li><a href="#">State of Wisconsin</a></li>
-                    <li><a href="#">Student Government</a></li>
-                    <li><a href="#">US News</a></li>
-                    <li><a href="#">UW-Madison Campus</a></li>
-                    <li><a href="#">UW Research</a></li>
-                    <li><a href="#">UW System</a></li>
-                </ul>
-            </li>
-        </ul>
+        <?php exa_get_beats_dropdown(array('madison','higheredu','state','studentgov','national','campus','newsUWResearch','uwsystem'), 'news'); ?>
         <?php }//end if ( is_post_type_archive() ) for category-menu ?>
 	</header>
 	<div id="stream">
