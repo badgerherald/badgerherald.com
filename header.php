@@ -30,6 +30,8 @@ include('macros.php');
 	<![endif]-->
 
 	<?php wp_head(); ?>
+	<!-- Google fonts -->
+	<link href='http://fonts.googleapis.com/css?family=Noto+Serif:400,700,400italic,700italic|Yanone+Kaffeesatz:400,300,700|Open+Sans' rel='stylesheet' type='text/css'>
 </head>
 
 <body <?php body_class(); ?>>

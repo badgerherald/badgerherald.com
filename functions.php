@@ -746,3 +746,27 @@ function exa_human_time_diff( $from, $to = '' ) {
 	}
 	return $since;
 }
+
+
+/*
+ * Exa register Shoutout parameters
+ *
+ */
+function add_query_vars($aVars) {
+	$aVars[] = "so_page"; // represents the name of the product category as shown in the URL
+	return $aVars;
+}
+ 
+// hook add_query_vars function into query_vars
+add_filter('query_vars', 'add_query_vars');
+
+function add_rewrite_rules($aRules) {
+	$aNewRules = array('shoutouts/page/([^/]+)/?$' => 'index.php?pagename=shoutouts&so_page=$matches[1]');
+	$aRules = $aNewRules + $aRules;
+	return $aRules;
+}
+ 
+// hook add_rewrite_rules function into rewrite_rules_array
+add_filter('rewrite_rules_array', 'add_rewrite_rules');
+
+
