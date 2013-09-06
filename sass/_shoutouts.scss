@@ -1,0 +1,24 @@
+.shoutout-header {
+	background: #000 url('./img/shoutouts/shoutout-header.png') no-repeat center right;
+	height: 120px;
+	color: #fff;
+	position: relative;
+	h1 {
+		font-size: 60px;
+		text-transform: uppercase;
+		line-height: 60px;
+		padding: 20px 20px 0px 20px;
+		position: absolute;
+	}
+	h2 {
+		padding: 20px;
+		font-family: $body;
+		font-weight: normal;
+		margin: 0;
+		font-size: 16px;
+		line-height: 16px;
+		position: absolute;
+		top : 66px;
+		opacity: .6px;
+	}
+}

@@ -402,7 +402,7 @@ hr {
  * Base Page Syles (much of which is altered in responsive)
  * 
  */
-d#page {
+#page {
   width: 86.885%;
   margin-left: 13.115%; }
 
@@ -613,6 +613,9 @@ body.admin-bar #wrapper {
 /** 
  * Sidebar & Widget stylings
  */
+#sidebar {
+  position: relative; }
+
 .sidebar-posts {
   margin: 0px 0 0 0;
   padding: 0;
@@ -640,7 +643,7 @@ body.admin-bar #wrapper {
   padding-left: 3px;
   z-index: 100;
   display: block;
-  width: 100%;
+  width: 70%;
   background: #fff;
   position: absolute;
   font-size: 1.25em;
@@ -807,6 +810,32 @@ body.admin-bar #wrapper {
   font-family: open sans, helvetica, arial, sans-serif;
   font-size: 0.875em;
   font-color: #2c2c2c; }
+
+/**
+ * Shoutout page styling
+ *
+ */
+.shoutout-header {
+  background: black url("./img/shoutouts/shoutout-header.png") no-repeat center right;
+  height: 120px;
+  color: #fff;
+  position: relative; }
+  .shoutout-header h1 {
+    font-size: 60px;
+    text-transform: uppercase;
+    line-height: 60px;
+    padding: 20px 20px 0px 20px;
+    position: absolute; }
+  .shoutout-header h2 {
+    padding: 20px;
+    font-family: noto serif, oalatino, georgia, serif;
+    font-weight: normal;
+    margin: 0;
+    font-size: 16px;
+    line-height: 16px;
+    position: absolute;
+    top: 66px;
+    opacity: .6px; }
 
 /** 
  * HTML5 Boilerplate helper classes.

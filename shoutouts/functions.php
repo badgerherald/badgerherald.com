@@ -1,7 +1,34 @@
 <?php
 
-require('/var/www/shoutouts/config.php');
-mysql_selectdb(DB_NAME,$dbh); 
+/* DATABASE CONNECT */
+define('SO_DB_SERVER','localhost'); 
+define('SO_DB_PORT','3306'); 
+define('SO_DB_USERNAME','root'); 
+define('SO_DB_PASSWORD','root'); 
+define('SO_DB_NAME','badgerh_shoutouts'); 
+
+/* TABLE DEFINITIONS */
+define('SO_DB_SHOUTOUTS','shoutouts_new'); 
+
+
+/* URL DEFINITIONS */
+define("SITE_ROOT","http://badgerherald.com/");
+define("SHOUTOUT_ROOT","shoutouts/");
+define("TEPLATE_ROOT","BH/shoutouts/components/");
+define("STYLE_SHEET_LOCATION","BH/shoutouts/components/header.php");
+
+$so_dbh = mysql_connect(SO_DB_SERVER.':'.SO_DB_PORT,SO_DB_USERNAME,SO_DB_PASSWORD); 
+if (!$so_dbh) { 
+	echo "<h3>Unable to connect to database. Please check details in configuration file.</h3>"; 
+	exit(); 
+} 
+
+mysql_selectdb(SO_DB_NAME,$so_dbh); 
+mysql_query("SET NAMES utf8"); 
+mysql_query("SET CHARACTER SET utf8"); 
+mysql_query("SET COLLATION_CONNECTION = 'utf8_general_ci'"); 
+
+
 /** 
   * Class: ShoutoutList
   *
@@ -19,8 +46,12 @@ class ShoutoutList {
 	
 	function __construct($pagenum=NULL,$perpage=NULL,$setid=NULL) {
 		
+		global $so_dbh;
+
+		mysql_selectdb(SO_DB_NAME,$so_dbh);
+
 		if($pagenum==NULL) {
-			$pagenum = 0;
+			$pagenum = 1;
 		}
 		$this->pagenum = $pagenum;
 		
@@ -44,10 +75,13 @@ class ShoutoutList {
 		$start = ($pagenum * $perpage) - $perpage;
 		
 		/* We write a query to fetch all APPROVED shoutouts from the current SETID */
-		$sql = "SELECT text, `date`, `id`, `sonum` FROM shoutouts_new WHERE setid='$setid' AND approved=1 ORDER BY `date` DESC";
+		$sql = "SELECT `text`, `date`, `id`, `sonum` FROM shoutouts_new WHERE setid='$setid' AND approved=1 ORDER BY `date` DESC";
 		$sql .= " LIMIT $start, $perpage";
-		
+
+
+//		echo $sql . "<hr/>";
 		$query = mysql_query($sql);
+//		echo mysql_error();
 
 		/* Load those suckers into an array */
 		while($shoutout = mysql_fetch_assoc($query)) {
@@ -196,15 +230,15 @@ class Shoutout {
 			$referencedText .= $hashtagSplit[$x];
 			$setid = $this->setid;		
 			$hashtags[$x] = trim($hashtags[$x],"#");				
-			$sql = "SELECT id FROM " . DB_SHOUTOUTS . " WHERE setid=$setid AND sonum='$hashtags[$x]' AND approved=1 LIMIT 1";
+			$sql = "SELECT id FROM " . SO_DB_SHOUTOUTS . " WHERE setid=$setid AND sonum='$hashtags[$x]' AND approved=1 LIMIT 1";
 
 
-$dbh = mysql_connect(DB_SERVER.':'.DB_PORT,DB_USERNAME,DB_PASSWORD); 
+$dbh = mysql_connect(SO_DB_SERVER.':'.SO_DB_PORT,SO_DB_USERNAME,SO_DB_PASSWORD); 
 if (!$dbh) { 
 	echo "<h3>Unable to connect to database. Please check details in configuration file.</h3>"; 
 	exit(); 
 } 
-mysql_selectdb(DB_NAME,$dbh); 
+mysql_selectdb(SO_DB_NAME,$dbh); 
 mysql_query("SET NAMES utf8"); 
 mysql_query("SET CHARACTER SET utf8"); 
 mysql_query("SET COLLATION_CONNECTION = 'utf8_general_ci'"); 

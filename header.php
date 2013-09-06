@@ -52,6 +52,7 @@ include('macros.php');
 			<li><a href="<?php bloginfo('url'); ?>/sports/">Sports</a></li>
 			<li><a href="<?php bloginfo('url'); ?>/shoutouts/">Shoutouts</a></li>
 			<li><a href="<?php bloginfo('url'); ?>/shoutouts/">Comics</a></li>
+			<li><a href="<?php bloginfo('url'); ?>/about/">About</a></li>
 			<li class="search-button">
 				<a href="<?php bloginfo('url'); ?>/search/">Search</a>
 				<?php /*<input type="text" placeholder="Search for..." value="SEARCH" /> */ ?>
@@ -82,8 +83,4 @@ include('macros.php');
 		</header><!-- #masthead --> */ ?>
 
 		<div id="main" class="site-main">
-
-		<div id="ad-leaderboard">
-		<a href="#"><img src="<?php bloginfo('template_url'); ?>/img/temp/charter.728x90.jpg"></a>
-		</div>
 

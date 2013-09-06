@@ -703,7 +703,7 @@ function exa_is_featured() {
 
 }
 
-function exa_is_280tream() {
+function exa_is_instream() {
 
 	global $post;
 	return (in_array("In Stream",wp_get_post_terms(get_the_ID(),importance,array("fields" => "names"))));
