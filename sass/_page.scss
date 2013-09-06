@@ -24,7 +24,7 @@
 	width: flex(820,860);
 	padding: 36px flex(20,860) 30px;
 	background: $heraldblack;
-
+	position: relative;
 	text-transform: uppercase;
 	color: #fff;
 	margin-bottom:24px;
@@ -32,6 +32,8 @@
 		font-size: em(60,15);
 		line-height: 60px;
 		text-shadow: -1px 1px $heraldblack;
+		display: inline-block;
+		float: left;
 	}
 
 	&.section-header-oped {
@@ -41,7 +43,94 @@
 		background: url('img/headers/artsetc.png');
 	}
 	&.section-header-sports {
-		background: url('img/headers/sports.png');
+		background: url('img/headers/sports.png'); 
+	}
+}
+ul.beats-menu {
+	float: left;
+	width: auto;
+	height: 36px;
+	margin: 0;
+	padding: 0;
+	list-style-type: none;
+	line-height: 60px;
+	text-align: left;
+	z-index: 100;
+	position: relative;
+	
+	a{
+		display: block;
+		padding: 0 15px;
+		white-space: nowrap;
+		font-family: $headline;
+		font-size: 2em;
+		color: #ffffff;
+		text-shadow: 1px 1px 1px #000;
+		span.arrow{
+			padding-left: 6px;
+		}
+	}
+	li{
+		position: relative;
+		padding: 0;
+		margin: 0;
+		ul{
+			opacity: 0;
+			transition: opacity .5s ease-in-out .5s ,left 0s ease-in-out 1s;
+			-moz-transition: opacity .5s ease-in-out .5s ,left 0s ease-in-out 1s;
+			-webkit-transition: opacity .5s ease-in-out .5s ,left 0s ease-in-out 1s;
+			-o-transition: opacity .5s ease-in-out .5s ,left 0s ease-in-out 1s;
+		}
+		&:hover ul{
+			left: 0;
+			opacity: 1;
+			transition: opacity .5s ease-in-out 0s ,left 0s ease-in-out 0s;
+			-moz-transition: opacity .5s ease-in-out 0s ,left 0s ease-in-out 0s;
+			-webkit-transition: opacity .5s ease-in-out 0s ,left 0s ease-in-out 0s;
+			-o-transition: opacity .5s ease-in-out 0s ,left 0s ease-in-out 0s;
+		}
+	}
+	ul{
+		position: absolute;
+		left: -9999px;
+		overflow: hidden;
+		padding: 0;
+		margin: 0;
+		list-style-type: none;
+		border-radius: 5px;
+		-webkit-box-shadow: 0  6px 6px -3px  $heralddarkgrey;
+	    -moz-box-shadow: 0  6px 6px -3px $heralddarkgrey;
+	    box-shadow: 0 6px 6px -3px $heralddarkgrey;
+		border: 1px solid $heralddarkgrey;
+		
+		li{
+			a{	
+				background: #ffffff;
+				border-radius: 0;
+				border: none;
+				border-bottom: 1px solid $heralddarkgrey;
+				padding-right: 30px;
+				line-height: 36px;
+				text-shadow: none;
+				color: $heraldblue;
+				font-size: .9em;
+				font-family: $caption;
+				&:hover{
+					background: $heraldlightgreyonwhite;
+				}
+			}
+			&:first-child{
+				a{
+					border-radius: 5px 5px 0 0;
+				}
+			}
+			&:last-child{
+				a{
+					border-radius: 0 0 5px 5px;
+					border-bottom: none;
+				}
+			}
+		}
 	}
 }
 	
