@@ -21,7 +21,7 @@
 	        
 	        	// TODO: These should eventually be passed.
 	        	
-            $this->filePath = "/Users/haynes/Sites/bhrld/wordpress/wp-content/themes/exa/cache/disqus/listPopular.json";
+            $this->filePath = get_template_directory() . "/cache/disqus/listPopular.json";
             $this->apiURI = "https://disqus.com/api/3.0/threads/listPopular.json?api_key=qIobfUffjcgzf092RFB6hXjQnlDpiF7BhjRGBNcYlex1uLIGIv9PCurhTiCjVgdE&forum=badgerherald";
             
             // Does the file need to be updated?
