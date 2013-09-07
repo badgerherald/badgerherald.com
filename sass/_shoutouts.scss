@@ -22,3 +22,82 @@
 		opacity: .6px;
 	}
 }
+
+.shoutout-add-header {
+	background: #000 url('./img/shoutouts/shoutout-header-left.png') no-repeat center left;
+	height: 120px;
+	color: #fff;
+	position: relative;
+}
+
+.shoutout-navbar {
+	list-style: none;
+	display: block;
+	font-family: $caption;
+	margin: 0;
+	padding: 0;
+	li {
+		float: left;
+		padding-right : 20px;
+	}
+}
+
+#shoutoutform {
+	width: flex(660,860);
+	margin-left: flex(180,860);
+}
+#shoutoutText {
+	width: 100%;
+	height: 70px;
+	background: transparent;
+	border: none;
+	color:#fff;
+	margin-top: 6px;
+	outline: none;
+	font-size: em(18,16);
+
+	resize: none;
+}
+
+#shoutoutform p {
+	font-family: $caption;
+	font-size: em(10,16);
+	color: $heraldlightgrey;
+	line-height: 12px;
+	margin-top: 9px;
+}
+
+.so-button {
+	background: $heraldblue;
+	border: none;
+	color: #fff;
+	font-family: $headline;
+	text-transform: uppercase;
+	font-weight: 300;
+	padding: 6px 10px;
+
+}
+
+.submit-so-button {
+	float: left;
+
+	margin-top: 6px;
+	margin-right: 20px;	
+}
+
+.add-so-button {
+	position: absolute;
+	right: 180px;
+	top : 45px;
+}
+
+.so-header-wrap {
+	overflow: hidden;
+}
+
+.so-error {
+	background: #d73d3d;
+	padding: 6px 20px;
+	color: #fff;
+	font-family: $caption;
+}

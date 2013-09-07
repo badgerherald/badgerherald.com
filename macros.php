@@ -66,3 +66,10 @@ function exa_get_beats_dropdown($beats_slug_list, $category){
     </ul>
 <?php 
 }
+
+function exa_include_top_leaderboard_ad() { ?>
+	<div id="ad-leaderboard">
+		<a href="#"><img src="<?php bloginfo('template_url'); ?>/img/temp/charter.728x90.jpg"></a>
+	</div>
+<?php } ?>
+}

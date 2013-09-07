@@ -40,7 +40,7 @@ define('SO_DB_SHOUTOUTS','shoutouts_new');
 
 
 /* URL DEFINITIONS */
-define("SITE_ROOT","http://badgerherald.com/");
+define("SITE_ROOT","http://localhost/bhrld/");
 define("SHOUTOUT_ROOT","shoutouts/");
 define("TEPLATE_ROOT","BH/shoutouts/components/");
 define("STYLE_SHEET_LOCATION","BH/shoutouts/components/header.php");

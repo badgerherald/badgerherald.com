@@ -1,21 +1,6 @@
 <?php
 
-/* DATABASE CONNECT */
-define('SO_DB_SERVER','localhost'); 
-define('SO_DB_PORT','3306'); 
-define('SO_DB_USERNAME','root'); 
-define('SO_DB_PASSWORD','root'); 
-define('SO_DB_NAME','badgerh_shoutouts'); 
-
-/* TABLE DEFINITIONS */
-define('SO_DB_SHOUTOUTS','shoutouts_new'); 
-
-
-/* URL DEFINITIONS */
-define("SITE_ROOT","http://badgerherald.com/");
-define("SHOUTOUT_ROOT","shoutouts/");
-define("TEPLATE_ROOT","BH/shoutouts/components/");
-define("STYLE_SHEET_LOCATION","BH/shoutouts/components/header.php");
+require_once('config.php');
 
 $so_dbh = mysql_connect(SO_DB_SERVER.':'.SO_DB_PORT,SO_DB_USERNAME,SO_DB_PASSWORD); 
 if (!$so_dbh) { 
@@ -116,40 +101,78 @@ class ShoutoutList {
 	
 	function getNav($pageLocation) {
 		
-		if($pageLocation==NULL) {
+	//	if($pageLocation==NULL) {
 			$pageLocation = "page/";
-		}
+	//	}
 		
 		$numPages = ceil($this->numShoutouts/$this->perpage);
 		
+		$toReturn = "";
 
-		$toReturn = '<ul class="shoutout-navbar">';
-		
-		for($x = 1; $x <= $numPages; $x++) {
+		if($numPages<=8) {
+
+			$toReturn = '<ul class="shoutout-navbar"><li>Page: </li>';
 			
-		$toReturn .= '<li><a href="';
-		  
-		  if($x==1) {
-			  $toReturn .= SITE_ROOT . SHOUTOUT_ROOT . '"';
-				}
-			else {
-			  $toReturn .= SITE_ROOT . SHOUTOUT_ROOT . $pageLocation . $x . '"';
-		  }
-		  if($x==$this->pagenum) {
-			  $toReturn .= ' class="current-page">';
+			for($x = 1; $x <= $numPages; $x++) {
+				
+			$toReturn .= '<li><a href="';
+			  
+			  if($x==1) {
+				  $toReturn .= SITE_ROOT . SHOUTOUT_ROOT . '"';
+					}
+				else {
+				  $toReturn .= SITE_ROOT . SHOUTOUT_ROOT . $pageLocation . $x . '"';
 			  }
-		  else {
-			  $toReturn .= '>';
-		  	}
-		  	
-			  $toReturn .= $x . "</a>";
+			  if($x==$this->pagenum) {
+				  $toReturn .= ' class="current-page">';
+				  }
+			  else {
+				  $toReturn .= '>';
+			  	}
+			  	
+				  $toReturn .= $x . "</a>";
+			
+			  $toReturn .= "</li>";
+			  
+			}
+			
+			$toReturn .= "</ul>";
 		
-		  $toReturn .= "</li>";
-		  
+		} else {
+
+			$toReturn = '<ul class="shoutout-navbar"><li>Page: </li>';
+			
+			$toReturn .= '<li><a href="' . SITE_ROOT . SHOUTOUT_ROOT . '">1</a></li>';
+
+			if($this->pagenum>3)
+				$toReturn .= '<li class="so-ellipses">...</li>';
+
+			for($x = min(max($this->pagenum-1,2),$numPages-2); $x <= min(max($this->pagenum,2)+1,$numPages-1); $x++) {
+				
+			$toReturn .= '<li><a href="' . SITE_ROOT . SHOUTOUT_ROOT . $pageLocation . $x . '"';
+
+			  if($x==$this->pagenum) {
+				  $toReturn .= ' class="current-page">';
+				  }
+			  else {
+				  $toReturn .= '>';
+			  	}
+			  	
+				  $toReturn .= $x . "</a>";
+			
+			  $toReturn .= "</li>";
+			  
+			}
+
+			if($this->pagenum < $numPages - 2)
+				$toReturn .= '<li class="so-ellipses">...</li>';
+
+			$toReturn .= '<li><a href="' . SITE_ROOT . SHOUTOUT_ROOT . $pageLocation . $numPages . '">' . $numPages . '</li>';
+			
+			$toReturn .= "</ul>";
+
 		}
-		
-		$toReturn .= "</ul>";
-		
+
 		return $toReturn;
 		
 	}
@@ -251,7 +274,7 @@ mysql_query("SET COLLATION_CONNECTION = 'utf8_general_ci'");
 			$referenceSO = (int)$referenceSO[id];				
 			if($x != sizeof($hashtagSplit)-1){
 				if($referenceSO!=NULL) {
-					$referencedText .= "<a target='_blank' href='" . SITE_ROOT . SHOUTOUT_ROOT  . "so.php?id=" . $referenceSO . "' title='Shoutout #" . $hashtags[$x] . "'>";
+					$referencedText .= "<a target='_blank' href='" . SITE_ROOT . SHOUTOUT_ROOT  . "so/" . $referenceSO . "' title='Shoutout #" . $hashtags[$x] . "'>";
 					$referencedText .="#";
 					$referencedText .=$hashtags[$x];
 					$referencedText .="</a>";
