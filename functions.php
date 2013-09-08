@@ -816,4 +816,19 @@ add_filter('rewrite_rules_array', 'add_rewrite_rules');
 if ( function_exists ('register_sidebar') ) {
 	register_sidebar('search');
 }
+
+if ( ! function_exists ('search_refine')) :
+
+function search_refine($query) {
+	$refine = esc_attr($_GET['search_refined']);
+	if ($refine) {
+		if ($query->is_search) {
+			$query->set('s', $refine . ' ' . $query->get('s') );
+		}
+	}
+}
+
+add_filter('pre_get_posts', 'search_refine');
+
+endif;
 ?>
