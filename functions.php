@@ -101,9 +101,9 @@ function exa_setup() {
 	 * This theme supports all available post formats by default.
 	 * See http://codex.wordpress.org/Post_Formats
 	 */
-	add_theme_support( 'post-formats', array(
-		'aside', 'audio', 'chat', 'gallery', 'image', 'link', 'quote', 'status', 'video'
-	) );
+	//add_theme_support( 'post-formats', array(
+	//	'aside', 'audio', 'chat', 'gallery', 'image', 'link', 'quote', 'status', 'video'
+	//) );
 
 	// This theme uses wp_nav_menu() in one location.
 	register_nav_menu( 'primary', __( 'Navigation Menu', 'twentythirteen' ) );
@@ -524,6 +524,36 @@ function twentythirteen_customize_preview_js() {
 add_action( 'customize_preview_init', 'twentythirteen_customize_preview_js' );
 
 
+
+if (is_admin()) :
+
+	function hrld_remove_meta_boxes() {
+
+		// Post Types
+		$sections = array("news","oped","sports","artsetc","blog","multimedia");
+
+		foreach ($sections as $section) {
+
+			if( !current_user_can('manage_options') ) {
+				remove_meta_box('linktargetdiv', $section, 'normal');
+				remove_meta_box('linkxfndiv', $section, 'normal');
+				remove_meta_box('linkadvanceddiv', $section, 'normal');
+				remove_meta_box('trackbacksdiv', $section, 'normal');
+				remove_meta_box('postcustom', $section, 'normal');
+				remove_meta_box('commentstatusdiv', $section, 'normal');
+				remove_meta_box('commentsdiv', $section, 'normal');
+				remove_meta_box('sqpt-meta-tags', $section, 'normal');
+			}
+		}
+	
+	}
+
+	add_action( 'admin_menu', 'hrld_remove_meta_boxes' );
+
+endif;
+
+
+
 /**
  * Registeres a taxanomy used to select the "importance" of a post.
  *
@@ -538,8 +568,9 @@ function exa_register_importance_taxanomy() {
 							'label' => 'Importance',
 							'public' => 'true',
 							'show_in_nav_menus' => false,
-							'show_admin_column' => true,
+							'show_admin_column' => false,
 							'query_var' => true,
+							'show_in_menu' => 'false',
 							'singular_label' => 'Importance') 
 	);
 
@@ -557,9 +588,30 @@ function register_sections() {
 
 	$sections = array("News","Oped","Sports","ArtsEtc","Blogs","Multimedia");
 	$taxanomies = array();
+
+	exa_register_importance_taxanomy();
+
 	foreach ($sections as $section) {
 
 		$slug = strtolower($section);
+
+		register_taxonomy("$slug-beats",$slug,array( 
+							'hierarchical' => true,
+							'label' => 'Beats',
+							'show_ui' => true,
+							'show_admin_column' => true,
+							'query_var' => true,
+							'rewrite' => array(
+									"slug" => "$slug/beats",
+									"with_front" => false,
+									"hierarchical" => true,
+									"ep_mask" => EP_NONE,
+								),
+							'singular_label' => 'Beat') 
+		);
+
+		$taxanomies[] = $slug;
+
 
 		$labels = array(
 			'name'                => _x( $section, 'Post Type General Name', 'text_domain' ),
@@ -590,7 +642,7 @@ function register_sections() {
 			'label'               => __( $section, 'text_domain' ),
 			'description'         => __( $section, 'text_domain' ),
 			'labels'              => $labels,
-			'supports'            => array( 'title', 'editor', 'excerpt', 'author', 'thumbnail', 'comments', 'trackbacks', 'revisions', 'custom-fields', 'page-attributes', 'post-formats', ),
+			'supports'            => array( 'title', 'editor', 'excerpt', 'author', 'thumbnail', 'comments', 'trackbacks', 'revisions', 'custom-fields', 'post-formats', ),
 			'taxonomies'          => array( 'post_tag', 'importance' ),
 			'hierarchical'        => false,
 			'public'              => true,
@@ -611,25 +663,10 @@ function register_sections() {
 
 		register_post_type( $section, $args );
 
-		register_taxonomy("$slug-beats",$slug,array( 
-							'hierarchical' => true,
-							'label' => 'Beats',
-							'show_ui' => true,
-							'show_admin_column' => true,
-							'query_var' => true,
-							'rewrite' => array(
-									"slug" => "$slug/beats",
-									"with_front" => false,
-									"hierarchical" => true,
-									"ep_mask" => EP_NONE,
-								),
-							'singular_label' => 'Beat') 
-		);
-
-		$taxanomies[] = $slug;
+		
 	}
 
-	exa_register_importance_taxanomy();
+
 
 
 }
@@ -685,6 +722,15 @@ function alter_queries( $query ) {
         $query->set( 'posts_per_page', 50 );
         return;
     } */
+
+    if ( is_search() ) {
+        $refine = $_GET['search_refined'];
+        if ($refine) {
+            if ($query->is_search) {
+                $query->set('s', $refine . ' ' . $query->get('s') );
+            }
+        }
+    }
 }
 
 add_action( 'pre_get_posts', 'alter_queries', 1 );
@@ -746,3 +792,56 @@ function exa_human_time_diff( $from, $to = '' ) {
 	}
 	return $since;
 }
+
+
+/*
+ * Exa register Shoutout parameters
+ *
+ */
+function add_query_vars($aVars) {
+	$aVars[] = "so_page"; // represents the name of the product category as shown in the URL
+	$aVars[] = "so_num"; // represents the name of the product category as shown in the URL
+	return $aVars;
+}
+ 
+// hook add_query_vars function into query_vars
+add_filter('query_vars', 'add_query_vars');
+
+function add_rewrite_rules($aRules) {
+	$aNewRules = array('shoutouts/page/([^/]+)/?$' => 'index.php?pagename=shoutouts&so_page=$matches[1]');
+	$aRules = $aNewRules + $aRules;
+
+	$aNewRules = array('shoutouts/so/([^/]+)/?$' => 'index.php?pagename=shoutouts&so_num=$matches[1]');
+	$aRules = $aNewRules + $aRules;
+
+	return $aRules;
+}
+ 
+// hook add_rewrite_rules function into rewrite_rules_array
+add_filter('rewrite_rules_array', 'add_rewrite_rules');
+
+
+/*
+ * Add sidebar for refining search results to search pages.
+ * By Zach Thomae - 9/7/13
+ */
+if ( function_exists ('register_sidebar') ) {
+	register_sidebar('search');
+}
+
+
+/*
+ * Correct all badgerherald.com links to the site root.
+ * By Will Haynes - 9/8/13
+ *
+ */
+ 
+function remove_badgerherald_com($content) {
+	$content = preg_replace("#http://badgerherald.com/#",home_url() . "/",$content );
+	// $content = preg_replace("\[/media-credit\]","",$content );
+	return $content;
+
+} 
+ 
+add_filter( 'the_content', 'remove_badgerherald_com' );
+

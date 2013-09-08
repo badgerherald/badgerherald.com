@@ -22,14 +22,15 @@ include('macros.php');
 <head>
 	<meta charset="<?php bloginfo( 'charset' ); ?>" />
 	<meta name="viewport" content="width=device-width" />
-	<title><?php wp_title( '|', true, 'right' ); ?></title>
+	<title><?php bloginfo('name'); ?> · <?php is_home() ? bloginfo('description') : wp_title(''); ?></title>
 	<link rel="profile" href="http://gmpg.org/xfn/11" />
 	<link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>" />
 	<!--[if lt IE 9]>
 	<script src="<?php echo get_template_directory_uri(); ?>/js/html5.js" type="text/javascript"></script>
 	<![endif]-->
-	<link href='http://fonts.googleapis.com/css?family=Noto+Serif:400,700,400italic,700italic|Yanone+Kaffeesatz:400,300,700|Open+Sans' rel='stylesheet' type='text/css'>
 	<?php wp_head(); ?>
+	<!-- Google fonts -->
+	<link href='http://fonts.googleapis.com/css?family=Noto+Serif:400,700,400italic,700italic|Yanone+Kaffeesatz:400,300,700|Open+Sans' rel='stylesheet' type='text/css'>
 </head>
 
 <body <?php body_class(); ?>>
@@ -50,6 +51,7 @@ include('macros.php');
 			<li><a href="<?php bloginfo('url'); ?>/sports/">Sports</a></li>
 			<li><a href="<?php bloginfo('url'); ?>/shoutouts/">Shoutouts</a></li>
 			<li><a href="<?php bloginfo('url'); ?>/shoutouts/">Comics</a></li>
+			<li><a href="<?php bloginfo('url'); ?>/about/">About</a></li>
 			<li class="search-button">
 				<a href="<?php bloginfo('url'); ?>/search/">Search</a>
 				<?php /*<input type="text" placeholder="Search for..." value="SEARCH" /> */ ?>
@@ -80,8 +82,4 @@ include('macros.php');
 		</header><!-- #masthead --> */ ?>
 
 		<div id="main" class="site-main">
-
-		<div id="ad-leaderboard">
-		<a href="#"><img src="<?php bloginfo('template_url'); ?>/img/temp/charter.728x90.jpg"></a>
-		</div>
 

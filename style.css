@@ -1,4 +1,4 @@
-@charset "IBM437";
+@charset "UTF-8";
 /*
 Theme Name: Exa
 Theme URI: http://badgerherald.com/exa
@@ -403,7 +403,7 @@ hr {
  * Base Page Syles (much of which is altered in responsive)
  * 
  */
-d#page {
+#page {
   width: 86.88525%;
   margin-left: 13.11475%; }
 
@@ -588,7 +588,7 @@ body.admin-bar #wrapper {
 .search-button a {
   display: none !important; }
 .search-button input {
-  width: 75%;
+  width: 100%;
   padding: 6px 12.5%;
   display: block;
   border: none;
@@ -686,6 +686,9 @@ body.admin-bar #wrapper {
 /** 
  * Sidebar & Widget stylings
  */
+#sidebar {
+  position: relative; }
+
 .sidebar-posts {
   margin: 0px 0 0 0;
   padding: 0;
@@ -713,7 +716,7 @@ body.admin-bar #wrapper {
   padding-left: 3px;
   z-index: 100;
   display: block;
-  width: 100%;
+  width: 70%;
   background: #fff;
   position: absolute;
   font-size: 1.25em;
@@ -850,7 +853,8 @@ body.admin-bar #wrapper {
 
 #content {
   float: left;
-  width: 62.7907%; }
+  width: 62.7907%;
+  position: relative; }
   #content .article-content p:first-child {
     font-size: 1.13333em; }
   #content .alignright {
@@ -880,6 +884,109 @@ body.admin-bar #wrapper {
   font-family: open sans, helvetica, arial, sans-serif;
   font-size: 0.875em;
   font-color: #2c2c2c; }
+
+.wp-caption {
+  max-width: 100% !important; }
+
+img.size-full, img.size-large {
+  max-width: 100% !important;
+  height: auto; }
+
+img.size-medium {
+  max-width: 40.74074% !important;
+  height: auto; }
+
+/**
+ * Shoutout page styling
+ *
+ */
+.shoutout-header {
+  background: black url("./img/shoutouts/shoutout-header.png") no-repeat center right;
+  height: 120px;
+  color: #fff;
+  position: relative; }
+  .shoutout-header h1 {
+    font-size: 60px;
+    text-transform: uppercase;
+    line-height: 60px;
+    padding: 20px 20px 0px 20px;
+    position: absolute; }
+  .shoutout-header h2 {
+    padding: 20px;
+    font-family: noto serif, oalatino, georgia, serif;
+    font-weight: normal;
+    margin: 0;
+    font-size: 16px;
+    line-height: 16px;
+    position: absolute;
+    top: 66px;
+    opacity: .6px; }
+
+.shoutout-add-header {
+  background: black url("./img/shoutouts/shoutout-header-left.png") no-repeat center left;
+  height: 120px;
+  color: #fff;
+  position: relative; }
+
+.shoutout-navbar {
+  list-style: none;
+  display: block;
+  font-family: open sans, helvetica, arial, sans-serif;
+  margin: 0;
+  padding: 0; }
+  .shoutout-navbar li {
+    float: left;
+    padding-right: 20px; }
+
+#shoutoutform {
+  width: 76.74419%;
+  margin-left: 20.93023%; }
+
+#shoutoutText {
+  width: 100%;
+  height: 70px;
+  background: transparent;
+  border: none;
+  color: #fff;
+  margin-top: 6px;
+  outline: none;
+  font-size: 1.125em;
+  resize: none; }
+
+#shoutoutform p {
+  font-family: open sans, helvetica, arial, sans-serif;
+  font-size: 0.625em;
+  color: #f5f2f2;
+  line-height: 12px;
+  margin-top: 9px; }
+
+.so-button {
+  background: #2781dd;
+  border: none;
+  color: #fff;
+  font-family: yanone kaffeesatz, helvetica, arial, sans-serif;
+  text-transform: uppercase;
+  font-weight: 300;
+  padding: 6px 10px; }
+
+.submit-so-button {
+  float: left;
+  margin-top: 6px;
+  margin-right: 20px; }
+
+.add-so-button {
+  position: absolute;
+  right: 180px;
+  top: 45px; }
+
+.so-header-wrap {
+  overflow: hidden; }
+
+.so-error {
+  background: #d73d3d;
+  padding: 6px 20px;
+  color: #fff;
+  font-family: open sans, helvetica, arial, sans-serif; }
 
 /** 
  * HTML5 Boilerplate helper classes.

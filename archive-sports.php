@@ -17,7 +17,10 @@
  * @since Twenty Thirteen 1.0
  */
 
-get_header(); ?>
+get_header(); 
+exa_include_top_leaderboard_ad();
+
+?>
 	
 	<?php 
 		$classes = "";
@@ -55,7 +58,7 @@ get_header(); ?>
 			<?php if(exa_is_featured()) : ?>
 				<?php get_template_part( 'content', 'summary-featured' ); ?>
 				<hr />
-			<?php elseif(exa_is_instream()) : ?>
+			<?php else : ?>
 				<?php get_template_part( 'content', 'summary-instream' ); ?>
 				<hr />
 			<?php endif; ?>

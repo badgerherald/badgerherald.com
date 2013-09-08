@@ -33,20 +33,18 @@ get_header(); ?>
 			<?php if(exa_is_featured()) : ?>
 				<?php get_template_part( 'content', 'summary-featured' ); ?>
 				<hr />
-			<?php elseif(exa_is_instream()) : ?>
+			<?php else : ?>
 				<?php get_template_part( 'content', 'summary-instream' ); ?>
 				<hr />
 			<?php endif; ?>
 			
-
-
 		<?php endwhile; ?>
 
 		<?php twentythirteen_paging_nav(); ?>
 
 	<?php elseif ($query->is_archive) : ?>
 		Aadfasdfasd
-		<?php //get_template_part( 'content', 'none' ); ?>
+		<?php get_template_part( 'content', 'none' ); ?>
 	<?php endif; ?>
 
 	</div><!-- id="stream" -->

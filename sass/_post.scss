@@ -145,14 +145,21 @@
 #content {
 	float:left;
 	width: flex(540,860);
+	position: relative;
 	.article-content {
 		p:first-child {
 			font-size: em(17);
 		}
 
 	}
-		.alignright {float:right; margin:0 0 1em 1em}
-		.alignleft {float:left; margin:0 1em 1em 0}
+		.alignright {
+			float:right; 
+			margin:0 0 1em 1em
+		}
+		.alignleft {
+			float:left; 
+			margin:0 1em 1em 0
+		}
 		.aligncenter {display: block; margin-left: auto; margin-right: auto}
 		a .alignright {float:right; margin:0 0 1em 1em}
 		a .alignleft {float:left; margin:0 1em 1em 0}
@@ -167,4 +174,19 @@
 	font-family: $caption;
 	font-size: em(14,16);
 	font-color: $heralddarkgrey;
+
+}
+
+.wp-caption {
+	max-width: 100% !important;
+}
+
+img.size-full, img.size-large {
+	max-width: 100% !important;
+	height: auto;
+}
+
+img.size-medium {
+	max-width: flex(220,540) !important;
+	height: auto;
 }
