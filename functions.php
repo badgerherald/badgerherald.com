@@ -809,3 +809,11 @@ function add_rewrite_rules($aRules) {
 add_filter('rewrite_rules_array', 'add_rewrite_rules');
 
 
+/*
+ * Add sidebar for search.
+ * By Zach Thomae - 9/7/13
+ */
+if ( function_exists ('register_sidebar') ) {
+	register_sidebar('search');
+}
+?>
