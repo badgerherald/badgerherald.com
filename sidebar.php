@@ -11,7 +11,7 @@
 
 
 $args = array(
-	'post_type'=> is_front_page() ? array('oped','sports','news','artsetc') : array(get_post_type()),
+	'post_type'=> is_home() ? array('oped','sports','news','artsetc') : array(get_post_type()),
 	'posts_per_page' => 40
 );
 // The Query
