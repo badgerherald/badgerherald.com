@@ -721,13 +721,13 @@ function alter_queries( $query ) {
     } */
 
     if ( is_search() ) {
-	    $refine = $_GET['search_refined'];
-		if ($refine) {
-			if ($query->is_search) {
-				$query->set('s', $refine . ' ' . $query->get('s') );
-			}
-		}
-	}
+        $refine = $_GET['search_refined'];
+        if ($refine) {
+            if ($query->is_search) {
+                $query->set('s', $refine . ' ' . $query->get('s') );
+            }
+        }
+    }
 }
 
 add_action( 'pre_get_posts', 'alter_queries', 1 );
