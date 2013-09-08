@@ -595,6 +595,24 @@ function register_sections() {
 
 		$slug = strtolower($section);
 
+		register_taxonomy("$slug-beats",$slug,array( 
+							'hierarchical' => true,
+							'label' => 'Beats',
+							'show_ui' => true,
+							'show_admin_column' => true,
+							'query_var' => true,
+							'rewrite' => array(
+									"slug" => "$slug/beats",
+									"with_front" => false,
+									"hierarchical" => true,
+									"ep_mask" => EP_NONE,
+								),
+							'singular_label' => 'Beat') 
+		);
+
+		$taxanomies[] = $slug;
+
+
 		$labels = array(
 			'name'                => _x( $section, 'Post Type General Name', 'text_domain' ),
 			'singular_name'       => _x( 'Posts', 'Post Type Singular Name', 'text_domain' ),
@@ -645,22 +663,7 @@ function register_sections() {
 
 		register_post_type( $section, $args );
 
-		register_taxonomy("$slug-beats",$slug,array( 
-							'hierarchical' => true,
-							'label' => 'Beats',
-							'show_ui' => true,
-							'show_admin_column' => true,
-							'query_var' => true,
-							'rewrite' => array(
-									"slug" => "$slug/beats",
-									"with_front" => false,
-									"hierarchical" => true,
-									"ep_mask" => EP_NONE,
-								),
-							'singular_label' => 'Beat') 
-		);
-
-		$taxanomies[] = $slug;
+		
 	}
 
 
