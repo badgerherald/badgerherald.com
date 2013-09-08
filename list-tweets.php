@@ -9,7 +9,7 @@
  * @since Twenty Thirteen 1.0
  */
 
-    class Disqus {
+    class Tweets {
  
         var $filePath = "";
         var $apiURI = "";
@@ -41,7 +41,7 @@
             $cachetime = 100000; //(60 * 60 * 24); // One day.
  
             // Get the file time
-            $filetimemod = @filemtime($this->filePath) + $cachetime;
+            $filetimemod = filemtime($this->filePath) + $cachetime;
  
             // If the renewal date is smaller than now, return true; else false (no need for update)
             
@@ -55,7 +55,7 @@
  
         function getExternalInfo() {
         
-        	if(@copy($this->apiURI,$this->filePath)) {
+        	if(copy($this->apiURI,$this->filePath)) {
         		echo "copied";
 	        	return true;
         	} else {
@@ -67,7 +67,7 @@
  
         function listPopular() {
 
-	      	$arr = @json_decode(file_get_contents($this->filePath),true);
+	      	$arr = json_decode(file_get_contents($this->filePath),true);
 	       	return $arr['response'];
 	      	
         }
