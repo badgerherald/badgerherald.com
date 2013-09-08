@@ -829,4 +829,19 @@ if ( function_exists ('register_sidebar') ) {
 	register_sidebar('search');
 }
 
-?>
+
+/*
+ * Correct all badgerherald.com links to the site root.
+ * By Will Haynes - 9/8/13
+ *
+ */
+ 
+function remove_badgerherald_com($content) {
+	$content = preg_replace("#http://badgerherald.com/#",home_url() . "/",$content );
+	// $content = preg_replace("\[/media-credit\]","",$content );
+	return $content;
+
+} 
+ 
+add_filter( 'the_content', 'remove_badgerherald_com' );
+
