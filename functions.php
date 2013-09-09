@@ -853,6 +853,10 @@ function exa_user_custom_fields( $user ){
         	<th><label for="twiter">Twitter</label></th>
             <td>@<input type="text" name="twitter" id="user-meta-twitter" value="<?php echo esc_attr( get_the_author_meta( 'twitter', $user->ID ) ); ?>" class="regular-text" /><br /><span class="description">Please enter your Twitter username.</span></td>
         </tr>
+        <tr>
+        	<th><label for="position">Position</label></th>
+            <td><input type="text" name="position" id="user-meta-position" value="<?php echo esc_attr( get_the_author_meta( 'position', $user->ID ) ); ?>" class="regular-text" /><br /><span class="description">Please enter your staff Position.</span></td>
+        </tr>
     </table>
 <?php }
 
@@ -867,7 +871,8 @@ function save_exa_user_custom_fields( $user_id ){
 	if (!current_user_can('edit_user', $user_id))
 		return false;
 	
-	update_usermeta($user_id, 'twitter', $_POST['twitter']);
+	update_user_meta($user_id, 'twitter', $_POST['twitter']);
+	update_user_meta($user_id, 'position', $_POST['position']);
 }
 
 add_action('personal_options_update', 'save_exa_user_custom_fields');
