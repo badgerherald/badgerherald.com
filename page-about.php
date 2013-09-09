@@ -11,79 +11,32 @@
  * @since Twenty Thirteen 1.0
  */
 
-include("shoutouts/functions.php");
-get_header(); 
+get_header(); ?>
 
+	<div id="primary" class="content-area">
+		<div id="content" class="site-content" role="main">
 
+			<?php /* The loop */ ?>
+			<?php while ( have_posts() ) : the_post(); ?>
 
-if(isset($wp_query->query_vars['so_page'])) {
+				<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
+					<header class="entry-header">
+						<?php if ( has_post_thumbnail() && ! post_password_required() ) : ?>
+						<div class="entry-thumbnail">
+							<?php the_post_thumbnail(); ?>
+						</div>
+						<?php endif; ?>
 
-	$so_page = $wp_query->query_vars['so_page'];
+						<h1 class="entry-title"><?php the_title(); ?></h1>
+					</header><!-- .entry-header -->
 
-} // End if
+					<div class="entry-content">
+						<?php the_content(); ?>
+						<?php wp_link_pages( array( 'before' => '<div class="page-links"><span class="page-links-title">' . __( 'Pages:', 'twentythirteen' ) . '</span>', 'after' => '</div>', 'link_before' => '<span>', 'link_after' => '</span>' ) ); ?>
+					</div><!-- .entry-content -->
+				</article><!-- #post -->
+			<?php endwhile; ?>
 
-if(!$so_page) {
-	$so_page = 1;
-}
-
-$shoutouts = new ShoutoutList($so_page,40);
-
-
-?>
-	
-	<?php /* The loop */ ?>
-	<?php while ( have_posts() ) : the_post(); ?>
-
-		<header class="entry-header about-header">
-			<h1 class="entry-title"> <?php the_title(); ?></h1>
-			<h2 class="shoutout-tagline">Madison's other daily page since 2004</h2>
-		</header><!-- .entry-header -->
-
-
-
-		<!-- Navigation -->
-
-
-
-		<ul>
-			<li><a href="#">Masthead</a></li>
-			<li><a href="#">History</a></li>
-			<li><a href="#">Staff</a></li>
-		</ul>
-
-
-		<!-- About -->
-
-
-		<article>
-
-
-
-
-		</article>
-
-
-
-
-		<!-- Staff -->
-
-
-
-
-
-
-
-
-
-		<!-- History -->
-
-
-
-
-
-
-
-
-	<?php endwhile; // Wordpress while ?>
-
+		</div><!-- #content -->
+	</div><!-- #primary -->
 <?php get_footer(); ?>
