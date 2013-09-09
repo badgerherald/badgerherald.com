@@ -22,7 +22,7 @@ exa_include_top_leaderboard_ad();
 
 ?>
 	
-	<header id="section-header" class="section-header-news clearfix">
+	<header id="section-header" class="section-header-oped clearfix">
 		<h1 class="archive-title">Oped</h1>
         <?php exa_get_beats_dropdown(array('column','editorial','opinion-desk','letter','public-editor','oped-top-story'), 'oped'); ?>
 	</header>
