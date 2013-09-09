@@ -845,3 +845,34 @@ function remove_badgerherald_com($content) {
  
 add_filter( 'the_content', 'remove_badgerherald_com' );
 
+/*
+ * Add extra custom fields to user profiles
+ *
+ */
+function exa_user_custom_fields( $user ){
+	?>
+	<h3>Extra Information</h3>
+    <table class="form-table">
+    	<tr>
+        	<th><label for="twiter">Twitter</label></th>
+            <td>@<input type="text" name="twitter" id="user-meta-twitter" value="<?php echo esc_attr( get_the_author_meta( 'twitter', $user->ID ) ); ?>" class="regular-text" /><br /><span class="description">Please enter your Twitter username.</span></td>
+        </tr>
+    </table>
+<?php }
+
+add_action('show_user_profile', 'exa_user_custom_fields');
+add_action('edit_user_profile', 'exa_user_custom_fields');
+
+/*
+ * Save the extra user custom fields
+ *
+ */
+function save_exa_user_custom_fields( $user_id ){
+	if (!current_user_can('edit_user', $user_id))
+		return false;
+	
+	update_usermeta($user_id, 'twitter', $_POST['twitter']);
+}
+
+add_action('personal_options_update', 'save_exa_user_custom_fields');
+add_action('edit_user_profile_update', 'save_exa_user_custom_fields');

@@ -20,7 +20,7 @@
 get_header(); ?>
 	
 	<header id="section-header" class="section-header-news clearfix">
-		<h1 class="archive-title">News</h1>
+		<h1 class="archive-title">Oped</h1>
         <?php exa_get_beats_dropdown(array('column','editorial','opinion-desk','letter','public-editor','oped-top-story'), 'oped'); ?>
 	</header>
 	<div id="stream">

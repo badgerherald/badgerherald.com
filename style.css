@@ -394,6 +394,8 @@ h2 {
   padding: 0; }
   h2 a {
     color: #191919; }
+  h2.author-title {
+    padding-top: 6px; }
 
 hr {
   border: 1px solid #ededed; }
@@ -458,11 +460,13 @@ ul.beats-menu {
     padding: 0 15px;
     white-space: nowrap;
     font-family: yanone kaffeesatz, helvetica, arial, sans-serif;
-    font-size: 1.5em;
+    font-size: 1.25em;
     color: #ffffff;
-    text-shadow: 1px 1px 1px #000; }
+    text-shadow: -1px 1px #191919; }
     ul.beats-menu a span.arrow {
-      padding-left: 6px; }
+      padding-left: 4px;
+      position: relative;
+      top: -2px; }
   ul.beats-menu li {
     position: relative;
     padding: 0;
@@ -483,13 +487,12 @@ ul.beats-menu {
   ul.beats-menu ul {
     position: absolute;
     left: -9999px;
-    overflow: hidden;
     padding: 0;
     margin: 0;
     list-style-type: none;
-    -webkit-box-shadow: 0 4x 4px -2px #2c2c2c;
-    -moz-box-shadow: 0 4px 4px -2px #2c2c2c;
-    box-shadow: 0 4px 4px -2px #2c2c2c;
+    -webkit-box-shadow: 0 4x 4px -2px #f5f2f2;
+    -moz-box-shadow: 0 4px 4px -2px #f5f2f2;
+    box-shadow: 0 4px 4px -2px #f5f2f2;
     border: 1px solid #2c2c2c; }
     ul.beats-menu ul li a {
       background: #191919;
@@ -505,6 +508,22 @@ ul.beats-menu {
         color: #ffffff; }
     ul.beats-menu ul li:last-child a {
       border-bottom: none; }
+    ul.beats-menu ul:before, ul.beats-menu ul:after {
+      content: ' ';
+      height: 0;
+      position: absolute;
+      width: 0;
+      border: 10px solid transparent; }
+    ul.beats-menu ul:before {
+      border-bottom-color: #191919;
+      top: -19px;
+      z-index: 200;
+      left: 25px; }
+    ul.beats-menu ul:after {
+      border-bottom-color: #2c2c2c;
+      top: -21px;
+      left: 25px;
+      z-index: 199; }
 
 /**
  * Ads

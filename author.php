@@ -22,11 +22,10 @@ get_header(); ?>
 	
 
 	<?php if ( have_posts() ) : ?>
-    <?php get_template_part('author', 'bio'); ?>
 	<div id="stream">
 		<?php /* The loop */ ?>
 		<?php while ( have_posts() ) : the_post(); ?>
-			<?php get_template_part( 'content', 'summary-featured' ); ?>
+			<?php get_template_part( 'content', 'summary-instream' ); ?>
 		<?php endwhile; ?>
 
 		<?php twentythirteen_paging_nav(); ?>
@@ -38,7 +37,7 @@ get_header(); ?>
 	
 	<?php endif; ?>
     </div><!-- id="stream" -->
-	<?php get_sidebar(get_post_type() ); ?>
+	<?php get_sidebar('author'); ?>
 
 	<div id="clearfix"></div>
 

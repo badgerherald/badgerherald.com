@@ -63,11 +63,13 @@ ul.beats-menu {
 		padding: 0 15px;
 		white-space: nowrap;
 		font-family: $headline;
-		font-size: 1.5em;
+		font-size: 1.25em;
 		color: #ffffff;
-		text-shadow: 1px 1px 1px #000;
+		text-shadow: -1px 1px $heraldblack;
 		span.arrow{
-			padding-left: 6px;
+			padding-left: 4px;
+			position: relative;
+			top: -2px;
 		}
 	}
 	li{
@@ -93,13 +95,12 @@ ul.beats-menu {
 	ul{
 		position: absolute;
 		left: -9999px;
-		overflow: hidden;
 		padding: 0;
 		margin: 0;
 		list-style-type: none;
-		-webkit-box-shadow: 0  4x 4px -2px  $heralddarkgrey;
-	    -moz-box-shadow: 0  4px 4px -2px $heralddarkgrey;
-	    box-shadow: 0 4px 4px -2px $heralddarkgrey;
+		-webkit-box-shadow: 0  4x 4px -2px  $heraldlightgrey;
+	    -moz-box-shadow: 0  4px 4px -2px $heraldlightgrey;
+	    box-shadow: 0 4px 4px -2px $heraldlightgrey;
 		border: 1px solid $heralddarkgrey;
 		
 		li{
@@ -123,6 +124,26 @@ ul.beats-menu {
 				}
 			}
 		}
+		&:before, &:after{
+			content: ' ';
+			height: 0;
+			position: absolute;
+			width: 0;
+			border: 10px solid transparent;
+		}
+		&:before{
+			border-bottom-color: $heraldblack;
+			top: -19px;
+			z-index: 200;
+			left: 25px;
+		} 
+		&:after{
+			border-bottom-color: $heralddarkgrey;
+			top: -21px;
+			left: 25px;
+			z-index: 199;
+		}
+		
 	}
 }
 	

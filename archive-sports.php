@@ -45,7 +45,7 @@ exa_include_top_leaderboard_ad();
 				?>
 		</h1>
         <?php if ( is_post_type_archive() ){ ?>
-        <?php exa_get_beats_dropdown(array('sportsBaseball','sportsFootball','sportsMensBasketball','sportsMensHockey','sportsMensSwimming','sportsSoftball','sportsVolleyball','sportsWomensBasketball','sportsWomensHockey','sportsWomensSwimming'), 'sports'); ?>
+        <?php exa_get_beats_dropdown(array('baseball','sports-column','football','mens-basketball','mens-hockey','mens-swimming','softball','volleyball','womens-basketball','womens-hockey','womens-swimming'), 'sports'); ?>
         <?php }//end if ( is_post_type_archive() ) for category-menu ?>
 	</header>
 	<div id="stream">
