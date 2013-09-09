@@ -1,3 +1,7 @@
+body {
+	min-width: 1060px;
+}
+
 #page {
 	width: flex(1060,1220);
 	margin-left: flex(160,1220);
@@ -7,6 +11,7 @@
 	width: flex(860,1060);
 	margin: 0 auto;
 	max-width:860px;
+//	min-width: 
 }
 
 #stream {

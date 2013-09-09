@@ -64,12 +64,10 @@ body.admin-bar #wrapper { margin-top: 145px; }
 	width: 100%;
 	/* line height is 16px */
 	border-bottom: 1px solid $heralddarkgrey;
-
 	width: flex(120,160);
 	text-align: right;
 	padding: 6px flex(20,160) 6px flex(20,160);
 	color: #b6b6b6;
-
 	&:hover {
 		color: #fff;
 	}

@@ -190,3 +190,11 @@ img.size-medium {
 	max-width: flex(220,540) !important;
 	height: auto;
 }
+
+.entry-post-thumbnail-caption {
+	font-family: $caption;
+	color : #b6b6b6;
+	background: $heraldblack;
+	padding: 12px 20px;
+	font-size: em(14,16);
+}
