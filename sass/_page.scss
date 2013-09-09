@@ -42,13 +42,16 @@ body {
 	}
 
 	&.section-header-oped {
-		background: url('img/headers/oped.png');
+		background: url('img/headers/oped.png') bottom left;
+	}
+	&.section-header-news {
+		background: url('img/headers/news.png');
 	}
 	&.section-header-artsetc {
 		background: url('img/headers/artsetc.png');
 	}
 	&.section-header-sports {
-		background: url('img/headers/sports.png'); 
+		background: url('img/headers/sports.png')  center right;
 	}
 }
 ul.beats-menu {
