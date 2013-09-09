@@ -21,7 +21,7 @@ get_header(); ?>
 	
 	<header id="section-header" class="section-header-news clearfix">
 		<h1 class="archive-title">News</h1>
-        <?php exa_get_beats_dropdown(array('madison','higheredu','state','studentgov','national','campus','newsUWResearch','uwsystem'), 'news'); ?>
+        <?php exa_get_beats_dropdown(array('madison','higher-edu','wisconsin','student-gov','us','campus','uw-research','uw-system'), 'news'); ?>
 	</header>
 	<div id="stream">
 

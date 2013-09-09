@@ -51,8 +51,8 @@ function exa_the_author_link() {
 
 function exa_get_beats_dropdown($beats_slug_list, $category){
 	?>
-	<ul class="beats-menu transparent">
-        <li><a href="#">Beats <span class="arrow">&#9662;</span></a>
+	<ul class="beats-menu">
+        <li><a href="#" class="transparent">Beats <span class="arrow">&#9662;</span></a>
             <ul>
             <?php foreach($beats_slug_list as $beat_slug): 
 				$beat = get_term_by('slug', $beat_slug, $category.'-beats');

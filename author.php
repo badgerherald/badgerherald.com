@@ -35,8 +35,9 @@ get_header(); ?>
 		<?php //get_template_part( 'content', 'none' ); ?>
 	
 
-	</div><!-- id="stream" -->
+	
 	<?php endif; ?>
+    </div><!-- id="stream" -->
 	<?php get_sidebar(get_post_type() ); ?>
 
 	<div id="clearfix"></div>

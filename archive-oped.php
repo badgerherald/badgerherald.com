@@ -42,7 +42,7 @@ get_header(); ?>
 				?>
 		</h1>
         <?php if ( is_post_type_archive() ){ ?>
-        <?php exa_get_beats_dropdown(array('sportsBaseball','sportsFootball','sportsMensBasketball','sportsMensHockey','sportsMensSwimming','sportsSoftball','sportsVolleyball','sportsWomensBasketball','sportsWomensHockey','sportsWomensSwimming'), 'sports'); ?>        <?php }//end if ( is_post_type_archive() ) for category-menu ?>
+        <?php exa_get_beats_dropdown(array('column','editorial','opinion-desk','letter','public-editor','oped-top-story'), 'oped'); ?>        <?php }//end if ( is_post_type_archive() ) for category-menu ?>
 	</header>
 	<div id="stream">
 

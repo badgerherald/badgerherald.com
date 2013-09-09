@@ -19,31 +19,9 @@
 
 get_header(); ?>
 	
-	<?php 
-		$classes = "";
-		if( is_post_type_archive() ) {
-			$classes.="section-header-".strtolower(post_type_archive_title("",false));
-		}
-		?>
-	<header id="section-header" class="<?php echo $classes ?> clearfix">
-		<h1 class="archive-title">
-		<?php
-			if ( is_day() ) :
-				printf( __( 'Daily Archives: %s', 'twentythirteen' ), get_the_date() );
-			elseif ( is_month() ) :
-				printf( __( 'Monthly Archives: %s', 'twentythirteen' ), get_the_date( _x( 'F Y', 'monthly archives date format', 'twentythirteen' ) ) );
-			elseif ( is_year() ) :
-				printf( __( 'Yearly Archives: %s', 'twentythirteen' ), get_the_date( _x( 'Y', 'yearly archives date format', 'twentythirteen' ) ) );
-			elseif ( is_post_type_archive() ) :
-				printf( '%s', post_type_archive_title() );
-				else :
-					_e( 'Archives', 'twentythirteen' );
-				endif;
-				?>
-		</h1>
-        <?php if ( is_post_type_archive() ){ ?>
-        <?php exa_get_beats_dropdown(array('madison','higher-edu','wisconsin','student-gov','us','campus','uw-research','uw-system'), 'news'); ?>
-        <?php }//end if ( is_post_type_archive() ) for category-menu ?>
+	<header id="section-header" class="section-header-news clearfix">
+		<h1 class="archive-title">News</h1>
+        <?php exa_get_beats_dropdown(array('art','corner','books','chew-on-this','arts-column','film','food','herald-arcade','hump-day','low-fat-tue','arts-media','music','arts-point-counterpoint','tv'), 'artsetc'); ?>
 	</header>
 	<div id="stream">
 
@@ -60,8 +38,6 @@ get_header(); ?>
 				<hr />
 			<?php endif; ?>
 			
-
-
 		<?php endwhile; ?>
 
 		<?php twentythirteen_paging_nav(); ?>
