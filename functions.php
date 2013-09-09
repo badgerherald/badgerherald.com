@@ -697,7 +697,7 @@ function alter_queries( $query ) {
     }
 
     if ( is_front_page() ) {
- 		$query->set( 'post_type', array( 'news', 'oped', 'artetc', 'sports' )  );
+ 		$query->set( 'post_type', array( 'news', 'oped', 'artsetc', 'sports' )  );
 
         $query->set( 'tax_query',
             array(
