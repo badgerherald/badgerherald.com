@@ -89,7 +89,7 @@ get_header();
 		<div class="so-header-wrap">
 			<header <?php if(!$error['success']) { ?> style="display:none" <?php } ?> class="entry-header shoutout-header">
 				<h1 class="entry-title"> <?php the_title(); ?></h1>
-				<h2 class="shoutout-tagline">Madison's other daily page since 2004</h2>
+				<h2 class="shoutout-tagline"></h2>
 				<a style="display:none" class="so-button add-so-button" href="http://badgerherald.com/shoutouts/add">Add a Shoutout</a>
 			</header><!-- .entry-header -->
 

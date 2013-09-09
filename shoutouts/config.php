@@ -31,9 +31,9 @@ $config = array(
 /* DATABASE CONNECT */
 define('SO_DB_SERVER','localhost'); 
 define('SO_DB_PORT','3306'); 
-define('SO_DB_USERNAME','root'); 
-define('SO_DB_PASSWORD','root'); 
-define('SO_DB_NAME','badgerh_shoutouts'); 
+define('SO_DB_USERNAME','hrld_so'); 
+define('SO_DB_PASSWORD','2qEstrF6567MQvfc'); 
+define('SO_DB_NAME','hrld_so'); 
 
 /* TABLE DEFINITIONS */
 define('SO_DB_SHOUTOUTS','shoutouts_new'); 
