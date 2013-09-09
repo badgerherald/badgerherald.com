@@ -17,8 +17,10 @@
  * @since Twenty Thirteen 1.0
  */
 
-get_header(); ?>
-	
+get_header(); 
+exa_include_top_leaderboard_ad();
+
+?>	
 	<header id="section-header" class="section-header-news clearfix">
 		<h1 class="archive-title">News</h1>
         <?php exa_get_beats_dropdown(array('madison','higher-edu','wisconsin','student-gov','us','campus','uw-research','uw-system'), 'news'); ?>

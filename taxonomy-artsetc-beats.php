@@ -17,9 +17,11 @@
  * @since Twenty Thirteen 1.0
  */
 
-get_header(); ?>
-	
-	<header id="section-header" class="section-header-news clearfix">
+get_header(); 
+exa_include_top_leaderboard_ad();
+
+?>
+	<header id="section-header" class="section-header-artsetc clearfix">
 		<h1 class="archive-title">Artsect</h1>
         <?php exa_get_beats_dropdown(array('art','corner','books','chew-on-this','arts-column','film','food','herald-arcade','hump-day','low-fat-tue','arts-media','music','arts-point-counterpoint','tv'), 'artsetc'); ?>
 	</header>

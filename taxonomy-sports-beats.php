@@ -17,8 +17,10 @@
  * @since Twenty Thirteen 1.0
  */
 
-get_header(); ?>
-	
+get_header(); 
+exa_include_top_leaderboard_ad();
+
+?>
 	<header id="section-header" class="section-header-sports clearfix">
 		<h1 class="archive-title">Sports</h1>
         <?php exa_get_beats_dropdown(array('baseball','sports-column','football','mens-basketball','mens-hockey','mens-swimming','softball','volleyball','womens-basketball','womens-hockey','womens-swimming'), 'sports'); ?>
