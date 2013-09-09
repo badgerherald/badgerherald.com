@@ -440,11 +440,13 @@ body {
     display: inline-block;
     float: left; }
   #section-header.section-header-oped {
-    background: url("img/headers/oped.png"); }
+    background: url("img/headers/oped.png") bottom left; }
+  #section-header.section-header-news {
+    background: url("img/headers/news.png"); }
   #section-header.section-header-artsetc {
     background: url("img/headers/artsetc.png"); }
   #section-header.section-header-sports {
-    background: url("img/headers/sports.png"); }
+    background: url("img/headers/sports.png") center right; }
 
 ul.beats-menu {
   float: left;
