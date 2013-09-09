@@ -1,4 +1,3 @@
-@charset "IBM437";
 /*
 Theme Name: Exa
 Theme URI: http://badgerherald.com/exa
@@ -388,7 +387,7 @@ h1 {
 
 h2 {
   font-family: yanone kaffeesatz, helvetica, arial, sans-serif;
-  font-size: 1.46667em;
+  font-size: 1.467em;
   line-height: 27px;
   margin: 0 0 -6px 0;
   padding: 0; }
@@ -406,26 +405,26 @@ hr {
  * 
  */
 #page {
-  width: 86.88525%;
-  margin-left: 13.11475%; }
+  width: 86.885%;
+  margin-left: 13.115%; }
 
 #primary {
-  width: 81.13208%;
+  width: 81.132%;
   margin: 0 auto;
   max-width: 860px; }
 
 #stream {
-  width: 62.7907%;
+  width: 62.791%;
   float: left; }
 
 #sidebar {
-  width: 34.88372%;
-  padding-left: 2.32558%;
+  width: 34.884%;
+  padding-left: 2.326%;
   float: left; }
 
 #section-header {
-  width: 95.34884%;
-  padding: 36px 2.32558% 30px;
+  width: 95.349%;
+  padding: 36px 2.326% 30px;
   background: #191919;
   position: relative;
   text-transform: uppercase;
@@ -543,7 +542,7 @@ ul.beats-menu {
 #masthead {
   background: #191919;
   height: 100%;
-  width: 13.11475%;
+  width: 13.115%;
   position: fixed;
   top: 0; }
 
@@ -556,14 +555,15 @@ ul.beats-menu {
 
 #masthead #tagline {
   font-family: open sans, helvetica, arial, sans-serif;
-  color: #b6b6b6;
+  color: #fff;
   text-transform: uppercase;
   font-size: 0.625em;
   width: 75%;
   padding: 12px 12.5% 12px;
   line-height: 15px;
   text-align: right;
-  border-bottom: 1px solid #2c2c2c; }
+  border-bottom: 1px solid #2c2c2c;
+  background: #2781dd; }
 
 /* If logged in, we have to manually push anything fixed down */
 body.admin-bar #masthead {
@@ -633,7 +633,7 @@ body.admin-bar #wrapper {
  */
 /* Thumbnail image */
 .entry-thumbnail {
-  margin: 0 0 12px 0; }
+  margin: 0 0 18px 0; }
   .entry-thumbnail img {
     width: 100%;
     height: auto; }
@@ -645,7 +645,7 @@ body.admin-bar #wrapper {
 
 .stream-post {
   margin-bottom: 0px;
-  margin-top: 12px; }
+  margin-top: 18px; }
   .stream-post .tiny-avatar {
     border-radius: 2px;
     overflow: hidden;
@@ -663,14 +663,15 @@ body.admin-bar #wrapper {
       color: #2781dd; }
 
 .stream-post.instream-stream-post .entry-thumbnail {
-  width: 25.92593%;
+  width: 25.926%;
   float: left;
   padding-top: 18px;
-  margin-top: 0px;
+  margin-top: 3px;
+  margin-bottom: 12px;
   padding-right: 20px; }
 .stream-post.instream-stream-post .entry-summary {
   float: left;
-  width: 70.37037%; }
+  width: 70.37%; }
   .stream-post.instream-stream-post .entry-summary.entry-summary-full {
     width: 100%; }
 
@@ -713,7 +714,7 @@ body.admin-bar #wrapper {
     border-top: 1px solid #ededed;
     margin-top: -1px;
     width: 70%;
-    padding: 12px 1.66667%; }
+    padding: 12px 1.667%; }
     .sidebar-posts li.post-in-sidebar a.post-permalink {
       color: #191919; }
       .sidebar-posts li.post-in-sidebar a.post-permalink:hover {
@@ -784,8 +785,8 @@ body.admin-bar #wrapper {
     visibility: hidden; }
 
 #post-sidebar {
-  width: 34.88372%;
-  padding-right: 2.32558%;
+  width: 34.884%;
+  padding-right: 2.326%;
   float: left; }
   #post-sidebar .meta-time {
     text-align: right;
@@ -794,8 +795,8 @@ body.admin-bar #wrapper {
   #post-sidebar .meta-author {
     margin: 0 0 24px 0; }
     #post-sidebar .meta-author .meta-author-left {
-      width: 73.33333%;
-      margin-right: 6.66667%;
+      width: 73.333%;
+      margin-right: 6.667%;
       float: left;
       text-align: right; }
       #post-sidebar .meta-author .meta-author-left .meta-author-link {
@@ -804,7 +805,7 @@ body.admin-bar #wrapper {
         text-transform: uppercase;
         font-size: 1.2em; }
       #post-sidebar .meta-author .meta-author-left .meta-author-role {
-        font-size: 0.86667em; }
+        font-size: 0.867em; }
     #post-sidebar .meta-author .meta-author-right {
       width: 20%;
       float: left; }
@@ -818,8 +819,8 @@ body.admin-bar #wrapper {
           height: auto; }
 
 .social {
-  width: 73.33333%;
-  margin-left: 26.66667%; }
+  width: 73.333%;
+  margin-left: 26.667%; }
   .social ul {
     list-style: none;
     padding: 0;
@@ -829,13 +830,13 @@ body.admin-bar #wrapper {
     .social ul li {
       font-family: open sans, helvetica, arial, sans-serif;
       text-transform: uppercase;
-      font-size: 0.8125em;
+      font-size: 0.813em;
       padding-bottom: 6px;
       padding-top: 6px;
       border-bottom: 2px solid #f5f2f2; }
       .social ul li a {
         position: absolute;
-        left: 54.54545%; }
+        left: 54.545%; }
       .social ul li a {
         color: #191919; }
       .social ul li a:hover {
@@ -844,8 +845,8 @@ body.admin-bar #wrapper {
         border-top: 2px solid #f5f2f2; }
 
 .post-sidebar-headlines {
-  width: 73.33333%;
-  margin-left: 26.66667%; }
+  width: 73.333%;
+  margin-left: 26.667%; }
   .post-sidebar-headlines h3 {
     border-bottom: 2px solid #f5f2f2;
     padding-bottom: 12px;
@@ -867,10 +868,10 @@ body.admin-bar #wrapper {
 
 #content {
   float: left;
-  width: 62.7907%;
+  width: 62.791%;
   position: relative; }
   #content .article-content p:first-child {
-    font-size: 1.13333em; }
+    font-size: 1.133em; }
   #content .alignright {
     float: right;
     margin: 0 0 1em 1em; }
@@ -907,7 +908,7 @@ img.size-full, img.size-large {
   height: auto; }
 
 img.size-medium {
-  max-width: 40.74074% !important;
+  max-width: 40.741% !important;
   height: auto; }
 
 /**
@@ -953,8 +954,8 @@ img.size-medium {
     padding-right: 20px; }
 
 #shoutoutform {
-  width: 76.74419%;
-  margin-left: 20.93023%; }
+  width: 76.744%;
+  margin-left: 20.93%; }
 
 #shoutoutText {
   width: 100%;
@@ -1108,28 +1109,28 @@ img.size-medium {
  */
 @media (max-width: 1219px) {
   #masthead {
-    width: 16.32653%; }
+    width: 16.327%; }
 
   #page {
-    width: 83.67347%;
-    margin-left: 16.66667%; }
+    width: 83.673%;
+    margin-left: 16.667%; }
 
   #primary {
-    width: 95.12195%; }
+    width: 95.122%; }
 
   #stream {
-    width: 58.97436%; }
+    width: 58.974%; }
 
   #sidebar {
-    width: 38.46154%; }
+    width: 38.462%; }
 
   .stream-post.instream-stream-post .entry-thumbnail {
-    width: 47.82609%;
+    width: 47.826%;
     float: left;
     padding-top: 12px;
     padding-right: 20px; }
   .stream-post.instream-stream-post .entry-summary {
     float: left;
-    width: 40.74074%; }
+    width: 40.741%; }
     .stream-post.instream-stream-post .entry-summary.entry-summary-full {
       width: 100%; } }

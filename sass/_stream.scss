@@ -1,7 +1,7 @@
 /* Thumbnail image */
 
 .entry-thumbnail {
-	margin: 0 0 12px 0;
+	margin: 0 0 18px 0;
 	img {
 		width: 100%;
 		height: auto;
@@ -16,7 +16,7 @@
 
 .stream-post {
 	margin-bottom: 0px;
-	margin-top: 12px;
+	margin-top: 18px;
 	.tiny-avatar {
 		border-radius: 2px;
 		overflow: hidden;
@@ -47,7 +47,8 @@
 		width: flex(140,540);
 		float: left;
 		padding-top: 18px;
-		margin-top:0px;
+		margin-top:3px;
+		margin-bottom: 12px;
 		padding-right:	20px;
 	}
 
