@@ -80,7 +80,7 @@
     $d = array();
     ?>
     <ul class="top-headlines">
-    <?php for ($i = 0; $i<25; $i+=1) :
+    <?php for ($i = 0; $i<15; $i+=1) :
     
     	$d = $dq[$i];
 

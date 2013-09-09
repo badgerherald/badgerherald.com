@@ -13,7 +13,27 @@
 		<?php if ( has_post_thumbnail() && ! post_password_required() ) : ?>
 		<div class="entry-thumbnail">
 			<?php the_post_thumbnail(); ?>
+
+		<div class="entry-post-thumbnail-caption">
+	<?php
+$thumb_id = get_post_thumbnail_id($post->id);
+		$args = array(
+	'post_type' => 'attachment',
+	'post_status' => null,
+	'post_parent' => $post->ID,
+	'include'  => $thumb_id
+	); 
+
+   $thumb_images = get_posts($args);
+   foreach ($thumb_images as $thumb_image) {
+   echo $thumb_image->post_excerpt;
+   }
+
+?>   </div>
 		</div>
+
+	
+
 		<?php endif; /* has post thumbnail */ ?>
 	</header><!-- .entry-header -->
 

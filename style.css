@@ -404,6 +404,9 @@ hr {
  * Base Page Syles (much of which is altered in responsive)
  * 
  */
+body {
+  min-width: 1060px; }
+
 #page {
   width: 86.885%;
   margin-left: 13.115%; }
@@ -654,8 +657,6 @@ body.admin-bar #wrapper {
   .stream-post .tiny-avatar img {
     width: 20px;
     height: 20px; }
-  .stream-post .category-bar {
-    padding-left: 32px; }
   .stream-post h1, .stream-post h2 {
     color: #2c2c2c;
     font-weight: normal; }
@@ -911,6 +912,13 @@ img.size-medium {
   max-width: 40.741% !important;
   height: auto; }
 
+.entry-post-thumbnail-caption {
+  font-family: open sans, helvetica, arial, sans-serif;
+  color: #b6b6b6;
+  background: #191919;
+  padding: 12px 20px;
+  font-size: 0.875em; }
+
 /**
  * Shoutout page styling
  *
@@ -1134,3 +1142,6 @@ img.size-medium {
     width: 40.741%; }
     .stream-post.instream-stream-post .entry-summary.entry-summary-full {
       width: 100%; } }
+@media (max-width: 1060px) {
+  #masthead {
+    position: absolute; } }
