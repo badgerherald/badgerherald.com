@@ -28,7 +28,12 @@ function exa_list_categories($showedit = false, $showtime = false) {
 function exa_include_sidebar_square_ad() { ?>
 
 	<div id="ad-leaderboard">
-		<a href="#"><img width="300" height="250" src="<?php bloginfo('template_url'); ?>/img/temp/carbone.336x280.jpg"></a>
+<!-- Sitewide.Rectangle.Sidebar.336x280 -->
+<div id='div-gpt-ad-1378705451226-2'>
+<script type='text/javascript'>
+googletag.cmd.push(function() { googletag.display('div-gpt-ad-1378705451226-2'); });
+</script>
+</div>
 	</div>
 
 <?php
@@ -38,7 +43,12 @@ function exa_include_sidebar_square_ad() { ?>
 function exa_include_article_square_ad() { ?>
 
 	<div id="ad-leaderboard">
-		<a href="#"><img width="300" height="250" src="<?php bloginfo('template_url'); ?>/img/temp/carbone.336x280.jpg"></a>
+<!-- Sitewide.Rectangle.Sidebar.336x280 -->
+<div id='div-gpt-ad-1378705451226-2'>
+<script type='text/javascript'>
+googletag.cmd.push(function() { googletag.display('div-gpt-ad-1378705451226-2'); });
+</script>
+</div>
 	</div>
 
 <?php
@@ -67,9 +77,29 @@ function exa_get_beats_dropdown($beats_slug_list, $category){
 <?php 
 }
 
-function exa_include_top_leaderboard_ad() { ?>
+function exa_include_top_leaderboard_ad() { 
+
+	if( is_front_page() ) :
+	?>
 	<div id="ad-leaderboard">
-		<a href="#"><img src="<?php bloginfo('template_url'); ?>/img/temp/charter.728x90.jpg"></a>
+<!-- front-leaderboard -->
+<div id='div-gpt-ad-1378705451226-0' style='width:728px; height:90px;'>
+<script type='text/javascript'>
+googletag.cmd.push(function() { googletag.display('div-gpt-ad-1378705451226-0'); });
+</script>
+</div>
 	</div>
+
+	<? else : ?>
+	<div id="ad-leaderboard">
+<!-- sitewide.leaderboard.top.728x90 -->
+<div id='div-gpt-ad-1378705451226-1' style='width:728px; height:90px;'>
+<script type='text/javascript'>
+googletag.cmd.push(function() { googletag.display('div-gpt-ad-1378705451226-1'); });
+</script>
+</div>
+	</div>
+
+	<?php endif; ?>
 <?php } ?>
 }
