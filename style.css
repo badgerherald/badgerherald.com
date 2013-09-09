@@ -1,7 +1,3 @@
-<<<<<<< HEAD
-@charset "IBM437";
-=======
->>>>>>> Made the top of the masthead blue.  Better?
 /*
 Theme Name: Exa
 Theme URI: http://badgerherald.com/exa
@@ -618,7 +614,7 @@ body.admin-bar #wrapper {
  */
 /* Thumbnail image */
 .entry-thumbnail {
-  margin: 0 0 12px 0; }
+  margin: 0 0 18px 0; }
   .entry-thumbnail img {
     width: 100%;
     height: auto; }
@@ -630,7 +626,7 @@ body.admin-bar #wrapper {
 
 .stream-post {
   margin-bottom: 0px;
-  margin-top: 12px; }
+  margin-top: 18px; }
   .stream-post .tiny-avatar {
     border-radius: 2px;
     overflow: hidden;
@@ -651,7 +647,8 @@ body.admin-bar #wrapper {
   width: 25.926%;
   float: left;
   padding-top: 18px;
-  margin-top: 0px;
+  margin-top: 3px;
+  margin-bottom: 12px;
   padding-right: 20px; }
 .stream-post.instream-stream-post .entry-summary {
   float: left;
