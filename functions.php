@@ -697,19 +697,17 @@ function alter_queries( $query ) {
     }
 
     if ( is_front_page() ) {
-    //    $query->set(   );
-   		// echo "is front page";
-        
+ 		$query->set( 'post_type', array( 'news', 'oped', 'artetc', 'sports' )  );
+
         $query->set( 'tax_query',
             array(
                 array(
                     'taxonomy' => 'importance',
                     'field' => 'slug',
                     'terms' => array('featured','stream'),
-                    'operator' => '='
+                    'operator' => 'IN'
                 )
-            ),
-            'post_type', array( 'news', 'oped', 'artsetc', 'sports' )
+            )
         );
 
         return;
