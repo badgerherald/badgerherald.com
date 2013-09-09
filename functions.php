@@ -692,36 +692,32 @@ add_filter('excerpt_more', 'new_excerpt_more');
 function alter_queries( $query ) {
 
 	/* Return if this is not the main query, or if it is a back end query */
-    if ( is_admin() || ! $query->is_main_query() )
+    if ( is_admin() || ! $query->is_main_query() ) {
         return;
+    }
 
-    if ( is_home() ) {
-        $query->set( 'post_type', array( 'news', 'oped', 'artetc', 'sports' )  );
-
+    if ( is_front_page() ) {
+    //    $query->set(   );
+   		// echo "is front page";
+        
         $query->set( 'tax_query',
             array(
                 array(
                     'taxonomy' => 'importance',
                     'field' => 'slug',
                     'terms' => array('featured','stream'),
-                    'operator' => 'IN'
+                    'operator' => '='
                 )
-            )
+            ),
+            'post_type', array( 'news', 'oped', 'artsetc', 'sports' )
         );
 
         return;
-    }
+   } 
 
     if( $query->is_author ) {
-    	$query->set( 'post_type', array( 'news', 'oped', 'artetc', 'sports' )  );
+    	$query->set( 'post_type', array( 'news', 'oped', 'artsetc', 'sports' )  );
     }
-
-    /*
-    if ( is_post_type_archive( 'movie' ) ) {
-        // Display 50 posts for a custom post type called 'movie'
-        $query->set( 'posts_per_page', 50 );
-        return;
-    } */
 
     if ( is_search() ) {
         $refine = $_GET['search_refined'];
@@ -731,6 +727,8 @@ function alter_queries( $query ) {
             }
         }
     }
+
+    return;
 }
 
 add_action( 'pre_get_posts', 'alter_queries', 1 );
@@ -837,7 +835,7 @@ if ( function_exists ('register_sidebar') ) {
  */
  
 function remove_badgerherald_com($content) {
-	$content = preg_replace("#http://badgerherald.com/#",home_url() . "/",$content );
+	$content = preg_replace("#http://badgerherald.com/#","http://218.70.82.28/" . "/",$content );
 	// $content = preg_replace("\[/media-credit\]","",$content );
 	return $content;
 
