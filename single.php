@@ -10,14 +10,7 @@
 get_header(); 
 ?>
 
-<div id="ad-leaderboard">
-	<a href="#"><img src="<?php bloginfo('template_url'); ?>/img/temp/charter.728x90.jpg"></a>
-</div>
-
-<script>
-    disqus_shortname = 'badgerherald'; // Required - Replace example with your forum shortname
-    disqus_identifier = '48467';
-</script>
+<?php exa_include_top_leaderboard_ad(); ?>
 
 <?php /* The loop */ ?>
 <?php while ( have_posts() ) : the_post(); ?>

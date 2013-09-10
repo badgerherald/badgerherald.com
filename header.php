@@ -57,6 +57,9 @@ googletag.enableServices();
 });
 </script>
 
+<link rel="icon" 
+      type="image/png" 
+      href="favicon.png?v=exa6">
 
 </head>
 
@@ -73,11 +76,10 @@ googletag.enableServices();
 		<nav role="main">
 		<ul id="nav">
 			<li><a href="<?php bloginfo('url'); ?>/news/">News</a></li>
-			<li><a href="<?php bloginfo('url'); ?>/oped/">Oped</a></li>
+			<li><a href="<?php bloginfo('url'); ?>/oped/">Opinion</a></li>
 			<li><a href="<?php bloginfo('url'); ?>/artsetc/">ArtsEtc.</a></li>
 			<li><a href="<?php bloginfo('url'); ?>/sports/">Sports</a></li>
 			<li><a href="<?php bloginfo('url'); ?>/shoutouts/">Shoutouts</a></li>
-			<li><a href="<?php bloginfo('url'); ?>/shoutouts/">Comics</a></li>
 			<li><a href="<?php bloginfo('url'); ?>/about/">About</a></li>
 			<li class="search-button">
 				<a href="<?php bloginfo('url'); ?>/search/">Search</a>

@@ -61,7 +61,7 @@ $thumb_id = get_post_thumbnail_id($post->id);
 				<!-- AddThis Button BEGIN -->
 				<div class="addthis_toolbox addthis_no_style">
 					<ul>
-						<li><span>Like this post</span><a class="addthis_button_facebook_like" data-href="http://www.google.com" fb:like:href="http://google.com" fb:like:layout="button_count"></a> </li>
+						<li><span>Like this post</span><a class="addthis_button_facebook_like" fb:like:layout="button_count"></a> </li>
 						<li><span>Tweet this post</span><a class="addthis_button_tweet"> </a></li>
 						<li><span>Score Karma!</span><a class="addthis_button_reddit"></a> </li>
 				

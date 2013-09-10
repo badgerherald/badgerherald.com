@@ -75,9 +75,14 @@ get_header();
 
 
 ?>
-	
+
 <div id="ad-leaderboard">
-	<a href="#"><img src="<?php bloginfo('template_url'); ?>/img/temp/charter.728x90.jpg"></a>
+	<!-- front-leaderboard -->
+	<div id='div-gpt-ad-1378705451226-0' style='width:728px; height:90px;'>
+	<script type='text/javascript'>
+	googletag.cmd.push(function() { googletag.display('div-gpt-ad-1378705451226-0'); });
+	</script>
+	</div>
 </div>
 
 

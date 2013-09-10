@@ -698,7 +698,7 @@ function alter_queries( $query ) {
 
     if ( is_front_page() ) {
  		$query->set( 'post_type', array( 'news', 'oped', 'artsetc', 'sports' )  );
-
+		$query->set('posts_per_page', 25);
         $query->set( 'tax_query',
             array(
                 array(
@@ -711,7 +711,9 @@ function alter_queries( $query ) {
         );
 
         return;
-   } 
+    } else {
+		$query->set('posts_per_page', 25);
+    } 
 
     if( $query->is_author ) {
     	$query->set( 'post_type', array( 'news', 'oped', 'artsetc', 'sports' )  );

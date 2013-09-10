@@ -36,6 +36,23 @@ if ( $sidebarquery->have_posts() ) :
 	if($adcount==3) :
 		exa_include_sidebar_square_ad();
 	endif;
+
+	if($adcount==9) : ?>
+
+		<script type="text/javascript"><!--
+		google_ad_client = "ca-pub-2162610591110839";
+		/* verticle.banner.300x600 */
+		google_ad_slot = "8444431319";
+		google_ad_width = 300;
+		google_ad_height = 600;
+		//-->
+		</script>
+		<script type="text/javascript"
+		src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+		</script>
+		
+	<?php
+	endif;
 	?>
 	
 		<li class="post-in-sidebar">

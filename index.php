@@ -9,7 +9,10 @@
  * @since Twenty Thirteen 1.0
  */
 
-get_header(); ?>
+get_header(); 
+exa_include_top_leaderboard_ad();
+
+?>
 	
 	<div id="stream">
 

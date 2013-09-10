@@ -37,7 +37,7 @@ exa_include_top_leaderboard_ad();
 			elseif ( is_year() ) :
 				printf( __( 'Yearly Archives: %s', 'twentythirteen' ), get_the_date( _x( 'Y', 'yearly archives date format', 'twentythirteen' ) ) );
 			elseif ( is_post_type_archive() ) :
-				printf( '%s', post_type_archive_title() );
+				printf( '%s', "Opinion" );
 				else :
 					_e( 'Archives', 'twentythirteen' );
 				endif;
