@@ -880,7 +880,13 @@ function save_exa_user_custom_fields( $user_id ){
 add_action('personal_options_update', 'save_exa_user_custom_fields');
 add_action('edit_user_profile_update', 'save_exa_user_custom_fields');
 
-
+/**
+ * Returns whether the site is a production site or not.
+ * as defined (currently) in the WP_CONFIG file.
+ *
+ * @since Sept 11, 2013
+ * @author Will Haynes
+ */
 function hrld_is_production() {
-	return HRLD_PRODUCTION;
+	return !HRLD_PRODUCTION;
 }

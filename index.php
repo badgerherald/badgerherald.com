@@ -14,6 +14,11 @@ exa_include_top_leaderboard_ad();
 
 ?>
 	
+
+	<div id="announcement">
+Looking f
+	</div>
+
 	<div id="stream">
 
 	<?php if ( have_posts() ) : ?>
