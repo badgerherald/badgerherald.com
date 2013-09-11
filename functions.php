@@ -879,3 +879,8 @@ function save_exa_user_custom_fields( $user_id ){
 
 add_action('personal_options_update', 'save_exa_user_custom_fields');
 add_action('edit_user_profile_update', 'save_exa_user_custom_fields');
+
+
+function hrld_is_production() {
+	return HRLD_PRODUCTION;
+}

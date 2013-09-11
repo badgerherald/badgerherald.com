@@ -80,7 +80,7 @@ googletag.enableServices();
 			<li><a href="<?php bloginfo('url'); ?>/artsetc/">ArtsEtc.</a></li>
 			<li><a href="<?php bloginfo('url'); ?>/sports/">Sports</a></li>
 			<li><a href="<?php bloginfo('url'); ?>/shoutouts/">Shoutouts</a></li>
-			<li><a href="<?php bloginfo('url'); ?>/about/">About</a></li>
+			<li class="about"><a href="<?php bloginfo('url'); ?>/about/">About</a></li>
 			<li class="search-button">
 				<a href="<?php bloginfo('url'); ?>/search/">Search</a>
 				<?php /*<input type="text" placeholder="Search for..." value="SEARCH" /> */ ?>
@@ -92,6 +92,7 @@ googletag.enableServices();
 	</div>
 
 	<div id="page">
+	<div id="page-inner">
 		<div id="primary">
 		<?php /*
 		<header id="masthead" class="site-header" role="banner">

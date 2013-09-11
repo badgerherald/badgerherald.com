@@ -62,4 +62,29 @@ $(document).ready(function() {
 
 	});
 
+	$(".about").hover(function() {
+
+		$('#page').css({
+			"position":"relative"
+
+		});
+
+		$('#page-inner').css({
+			"position":"absolute",
+			"width":"100%",
+			"left":0
+			});
+
+		$('#page-inner').animate({
+			"left":"400px"
+			}),400;
+ 
+	}, function() {
+
+		$('#page-inner').animate({
+			"left":"0px"
+			},200);
+
+	});
+
 });
