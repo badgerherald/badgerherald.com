@@ -10,7 +10,7 @@
 get_header(); 
 ?>
 
-<?php exa_include_top_leaderboard_ad(); ?>
+<?php hrld_top_leaderboard_ad(); ?>
 
 <?php /* The loop */ ?>
 <?php while ( have_posts() ) : the_post(); ?>

@@ -34,24 +34,12 @@ if ( $sidebarquery->have_posts() ) :
 		$sidebarquery->the_post();
 
 	if($adcount==3&&hrld_is_production()) :
-		exa_include_sidebar_square_ad();
-	endif;
+		hrld_sidebar_ad();
 
-	if($adcount==9&&hrld_is_production()) : ?>
+	elseif($adcount==6&&hrld_is_production()) : 
 
-		<script type="text/javascript"><!--
-		google_ad_client = "ca-pub-2162610591110839";
-		/* verticle.banner.300x600 */
-		google_ad_slot = "8444431319";
-		google_ad_width = 300;
-		google_ad_height = 600;
-		//-->
-		</script>
-		<script type="text/javascript"
-		src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
-		</script>
+		hrld_sidebar_lower_ad();
 		
-	<?php
 	endif;
 	?>
 	

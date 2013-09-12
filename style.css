@@ -607,7 +607,7 @@ body.admin-bar #wrapper {
 .search-button a {
   display: none !important; }
 .search-button input {
-  width: 100%;
+  width: 75%;
   padding: 6px 12.5%;
   display: block;
   border: none;
@@ -615,6 +615,8 @@ body.admin-bar #wrapper {
   border-bottom: 1px solid #2c2c2c;
   text-align: right;
   color: #b6b6b6; }
+.search-button form {
+  position: relative; }
 .search-button input:hover {
   color: #ffffff !important;
   cursor: pointer; }

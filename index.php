@@ -10,7 +10,7 @@
  */
 
 get_header(); 
-exa_include_top_leaderboard_ad();
+hrld_top_leaderboard_ad();
 
 ?>
 	

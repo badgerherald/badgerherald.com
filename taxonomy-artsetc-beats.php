@@ -18,7 +18,7 @@
  */
 
 get_header(); 
-exa_include_top_leaderboard_ad();
+hrld_top_leaderboard_ad();
 
 ?>
 	<header id="section-header" class="section-header-artsetc clearfix">

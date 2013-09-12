@@ -72,7 +72,7 @@ $thumb_id = get_post_thumbnail_id($post->id);
 
 			</div><!-- class="social" -->
 
-			<?php exa_include_article_square_ad() ?>
+			<?php hrld_sidebar_ad(); ?>
 
 			<div class="post-sidebar-headlines">
 			<h3> Top Headlines </h3>

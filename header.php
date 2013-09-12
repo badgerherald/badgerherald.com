@@ -32,30 +32,7 @@ include('macros.php');
 	<!-- Google fonts -->
 	<link href='http://fonts.googleapis.com/css?family=Noto+Serif:400,700,400italic,700italic|Yanone+Kaffeesatz:400,300,700|Open+Sans' rel='stylesheet' type='text/css'>
 
-	<script type='text/javascript'>
-var googletag = googletag || {};
-googletag.cmd = googletag.cmd || [];
-(function() {
-var gads = document.createElement('script');
-gads.async = true;
-gads.type = 'text/javascript';
-var useSSL = 'https:' == document.location.protocol;
-gads.src = (useSSL ? 'https:' : 'http:') + 
-'//www.googletagservices.com/tag/js/gpt.js';
-var node = document.getElementsByTagName('script')[0];
-node.parentNode.insertBefore(gads, node);
-})();
-</script>
-
-<script type='text/javascript'>
-googletag.cmd.push(function() {
-googletag.defineSlot('/8653162/front-leaderboard', [728, 90], 'div-gpt-ad-1378705451226-0').addService(googletag.pubads());
-googletag.defineSlot('/8653162/sitewide.leaderboard.top.728x90', [728, 90], 'div-gpt-ad-1378705451226-1').addService(googletag.pubads());
-googletag.defineSlot('/8653162/Sitewide.Rectangle.Sidebar.336x280', [[300, 250], [336, 280]], 'div-gpt-ad-1378705451226-2').addService(googletag.pubads());
-googletag.pubads().enableSingleRequest();
-googletag.enableServices();
-});
-</script>
+	<?php hrld_dfp_header() ?>
 
 <link rel="icon" 
       type="image/png" 

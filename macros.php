@@ -66,19 +66,12 @@ function exa_the_author_link() {
 
 }
 
-<<<<<<< HEAD
 function exa_get_beats_dropdown($beats_slug_list, $category, $term_slug = 'Beats'){
 	$key = array_search($term_slug, $beats_slug_list);
 	if(false !== $key){
 		unset($beats_slug_list[$key]);
 		$curr_term = get_term_by('slug', $term_slug, $category.'-beats');
 	}
-=======
-function exa_get_beats_dropdown($beats_slug_list, $category){
-
-	if(hrld_is_production()) :
-
->>>>>>> Really dirty advertising page
 	?>
 	<ul class="beats-menu">
         <li><a href="#" class="transparent"><?php if($curr_term){ echo $curr_term->name;} else{ echo $term_slug;} ?> <span class="arrow">&#9662;</span></a>
@@ -93,36 +86,5 @@ function exa_get_beats_dropdown($beats_slug_list, $category){
             </ul>
         </li>
     </ul>
-<?php 
-
-endif;
-}
-
-function exa_include_top_leaderboard_ad() { 
-
-	if(hrld_is_production()) :
-
-	if( is_front_page() ) :
-	?>
-	<div id="ad-leaderboard">
-<!-- front-leaderboard -->
-<div id='div-gpt-ad-1378705451226-0' style='width:728px; height:90px;'>
-<script type='text/javascript'>
-googletag.cmd.push(function() { googletag.display('div-gpt-ad-1378705451226-0'); });
-</script>
-</div>
-	</div>
-
-	<? else : ?>
-	<div id="ad-leaderboard">
-<!-- sitewide.leaderboard.top.728x90 -->
-<div id='div-gpt-ad-1378705451226-1' style='width:728px; height:90px;'>
-<script type='text/javascript'>
-googletag.cmd.push(function() { googletag.display('div-gpt-ad-1378705451226-1'); });
-</script>
-</div>
-	</div>
-
-	<?php endif; endif;?>
-<?php } ?>
+	<?php 
 }
