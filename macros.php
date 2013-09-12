@@ -43,7 +43,7 @@ googletag.cmd.push(function() { googletag.display('div-gpt-ad-1378705451226-2');
 function exa_include_article_square_ad() {
 
 
-	if(!hrld_is_production()) :
+	if(hrld_is_production()) :
 
  ?>
 
@@ -76,7 +76,7 @@ function exa_get_beats_dropdown($beats_slug_list, $category, $term_slug = 'Beats
 =======
 function exa_get_beats_dropdown($beats_slug_list, $category){
 
-	if(!hrld_is_production()) :
+	if(hrld_is_production()) :
 
 >>>>>>> Really dirty advertising page
 	?>
@@ -100,7 +100,7 @@ endif;
 
 function exa_include_top_leaderboard_ad() { 
 
-	if(!hrld_is_production()) :
+	if(hrld_is_production()) :
 
 	if( is_front_page() ) :
 	?>

@@ -33,11 +33,11 @@ if ( $sidebarquery->have_posts() ) :
 	while ( $sidebarquery->have_posts() ) : 
 		$sidebarquery->the_post();
 
-	if($adcount==3&&!hrld_is_production()) :
+	if($adcount==3&&hrld_is_production()) :
 		exa_include_sidebar_square_ad();
 	endif;
 
-	if($adcount==9&&!hrld_is_production()) : ?>
+	if($adcount==9&&hrld_is_production()) : ?>
 
 		<script type="text/javascript"><!--
 		google_ad_client = "ca-pub-2162610591110839";

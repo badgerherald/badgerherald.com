@@ -888,5 +888,24 @@ add_action('edit_user_profile_update', 'save_exa_user_custom_fields');
  * @author Will Haynes
  */
 function hrld_is_production() {
-	return !HRLD_PRODUCTION;
+	return HRLD_PRODUCTION;
+}
+
+/**
+ * Outputs the Google dfp script tag for the header of a website.
+ * 
+ * @since Sept 11, 2013
+ * @author Will Haynes
+ *
+ * @return null
+ */
+
+function hrld_the_dfp_header() {
+
+	echo <<< EOD
+
+
+EOD;
+
+
 }
