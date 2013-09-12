@@ -13,11 +13,6 @@ get_header();
 hrld_top_leaderboard_ad();
 
 ?>
-	
-
-	<div id="announcement">
-Looking f
-	</div>
 
 	<div id="stream">
 
