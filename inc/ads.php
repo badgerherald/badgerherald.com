@@ -29,12 +29,12 @@ function hrld_dfp_header() {
 
 		<script type='text/javascript'>
 		googletag.cmd.push(function() {
-		googletag.defineSlot('/8653162/v6.homepage.leaderboard.top', [728, 90], 'div-gpt-ad-1379008661099-0').addService(googletag.pubads());
-		googletag.defineSlot('/8653162/v6.shoutout.leaderboard.top', [728, 90], 'div-gpt-ad-1379008661099-1').addService(googletag.pubads());
-		googletag.defineSlot('/8653162/v6.sitewide.leaderboard.bottom', [728, 90], 'div-gpt-ad-1379008661099-2').addService(googletag.pubads());
-		googletag.defineSlot('/8653162/v6.sitewide.leaderboard.top', [728, 90], 'div-gpt-ad-1379008661099-3').addService(googletag.pubads());
-		googletag.defineSlot('/8653162/v6.sitewide.sidebar.lower', [[300, 100], [300, 250]], 'div-gpt-ad-1379008661099-4').addService(googletag.pubads());
-		googletag.defineSlot('/8653162/v6.sitewide.sidebar.upper', [[300, 250], [300, 600]], 'div-gpt-ad-1379008661099-5').addService(googletag.pubads());
+		googletag.defineSlot('/8653162/v6.homepage.leaderboard.top', [728, 90], 'div-gpt-ad-1379013535352-0').addService(googletag.pubads());
+		googletag.defineSlot('/8653162/v6.shoutout.leaderboard.top', [728, 90], 'div-gpt-ad-1379013535352-1').addService(googletag.pubads());
+		googletag.defineSlot('/8653162/v6.sitewide.leaderboard.bottom', [728, 90], 'div-gpt-ad-1379013535352-2').addService(googletag.pubads());
+		googletag.defineSlot('/8653162/v6.sitewide.leaderboard.top', [728, 90], 'div-gpt-ad-1379013535352-3').addService(googletag.pubads());
+		googletag.defineSlot('/8653162/v6.sitewide.sidebar.lower', [[300, 100], [300, 250]], 'div-gpt-ad-1379013535352-4').addService(googletag.pubads());
+		googletag.defineSlot('/8653162/v6.sitewide.sidebar.upper', [[300, 250], [300, 600]], 'div-gpt-ad-1379013535352-5').addService(googletag.pubads());
 		googletag.pubads().enableSingleRequest();
 		googletag.enableServices();
 		});
@@ -44,6 +44,7 @@ function hrld_dfp_header() {
 
 }
 
+
 function hrld_top_leaderboard_ad() { 
 
 	// Homepage
@@ -52,9 +53,9 @@ function hrld_top_leaderboard_ad() {
 
 		echo "
 			<!-- v6.homepage.leaderboard.top -->
-			<div id='div-gpt-ad-1379008661099-0' style='width:728px; height:90px;'>
+			<div id='div-gpt-ad-1379013535352-0' style='width:728px; height:90px;'>
 			<script type='text/javascript'>
-			googletag.cmd.push(function() { googletag.display('div-gpt-ad-1379008661099-0'); });
+			googletag.cmd.push(function() { googletag.display('div-gpt-ad-1379013535352-0'); });
 			</script>
 			</div>
 		";
@@ -65,9 +66,9 @@ function hrld_top_leaderboard_ad() {
 	else if(is_page("shoutouts")) {
 		echo "
 			<!-- v6.shoutout.leaderboard.top -->
-			<div id='div-gpt-ad-1379008661099-1' style='width:728px; height:90px;'>
+			<div id='div-gpt-ad-1379013535352-1' style='width:728px; height:90px;'>
 			<script type='text/javascript'>
-			googletag.cmd.push(function() { googletag.display('div-gpt-ad-1379008661099-1'); });
+			googletag.cmd.push(function() { googletag.display('div-gpt-ad-1379013535352-1'); });
 			</script>
 			</div>
 		";
@@ -78,11 +79,11 @@ function hrld_top_leaderboard_ad() {
 
 		echo "
 			<!-- v6.sitewide.leaderboard.top -->
-			<div id='div-gpt-ad-1379008661099-3' style='width:728px; height:90px;'>
+			<div id='div-gpt-ad-1379013535352-3' style='width:728px; height:90px;'>
 			<script type='text/javascript'>
-			googletag.cmd.push(function() { googletag.display('div-gpt-ad-1379008661099-3'); });
+			googletag.cmd.push(function() { googletag.display('div-gpt-ad-1379013535352-3'); });
 			</script>
-			</div>		
+			</div>	
 		";
 
 	}
@@ -93,13 +94,12 @@ function hrld_top_leaderboard_ad() {
 
 function hrld_bottom_leaderboard_ad() { 
 
-	// Homepage
 
 	echo "
 		<!-- v6.sitewide.leaderboard.bottom -->
-		<div id='div-gpt-ad-1379008661099-2' style='width:728px; height:90px;'>
+		<div id='div-gpt-ad-1379013535352-2' style='width:728px; height:90px;'>
 		<script type='text/javascript'>
-		googletag.cmd.push(function() { googletag.display('div-gpt-ad-1379008661099-2'); });
+		googletag.cmd.push(function() { googletag.display('div-gpt-ad-1379013535352-2'); });
 		</script>
 		</div>
 	";
@@ -110,9 +110,9 @@ function hrld_sidebar_ad() {
 
 	echo "
 		<!-- v6.sitewide.sidebar.upper -->
-		<div id='div-gpt-ad-1379008661099-5'>
+		<div id='div-gpt-ad-1379013535352-5'>
 		<script type='text/javascript'>
-		googletag.cmd.push(function() { googletag.display('div-gpt-ad-1379008661099-5'); });
+		googletag.cmd.push(function() { googletag.display('div-gpt-ad-1379013535352-5'); });
 		</script>
 		</div>
 	";
@@ -123,9 +123,9 @@ function hrld_sidebar_lower_ad() {
 
 	echo "
 		<!-- v6.sitewide.sidebar.lower -->
-		<div id='div-gpt-ad-1379008661099-4'>
+		<div id='div-gpt-ad-1379013535352-4'>
 		<script type='text/javascript'>
-		googletag.cmd.push(function() { googletag.display('div-gpt-ad-1379008661099-4'); });
+		googletag.cmd.push(function() { googletag.display('div-gpt-ad-1379013535352-4'); });
 		</script>
 		</div>
 	";
