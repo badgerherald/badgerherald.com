@@ -39,7 +39,7 @@ $thumb_id = get_post_thumbnail_id($post->id);
 
 		<div id="post-sidebar">
 
-			<span class="meta-time"><?php the_time("F m, Y \a\\t g:i:sa") ?></span>
+			<span class="meta-time"><?php the_time("F j, Y \a\\t g:i:sa") ?></span>
 		
 			<div class="meta-author">
 
