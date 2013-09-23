@@ -835,7 +835,7 @@ if ( function_exists ('register_sidebar') ) {
  */
  
 function remove_badgerherald_com($content) {
-	$content = preg_replace("#http://badgerherald.com/#","http://218.70.82.28/" . "/",$content );
+	// $content = preg_replace("#http://badgerherald.com/#","http://218.70.82.28/" . "/",$content );
 	// $content = preg_replace("\[/media-credit\]","",$content );
 	return $content;
 
