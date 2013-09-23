@@ -56,10 +56,10 @@
         function getExternalInfo() {
         
         	if(@copy($this->apiURI,$this->filePath)) {
-        		echo "copied";
+        		// echo "copied";
 	        	return true;
         	} else {
-        		echo "oops";
+        		// echo "oops";
 	        	return false;
         	}
         
