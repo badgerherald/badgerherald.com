@@ -56,10 +56,10 @@
         function getExternalInfo() {
         
         	if(@copy($this->apiURI,$this->filePath)) {
-        		echo "copied";
+        		// echo "copied";
 	        	return true;
         	} else {
-        		echo "oops";
+        		// echo "oops";
 	        	return false;
         	}
         
@@ -80,7 +80,7 @@
     $d = array();
     ?>
     <ul class="top-headlines">
-    <?php for ($i = 0; $i<15; $i+=1) :
+    <?php for ($i = 0; $i<10; $i+=1) :
     
     	$d = $dq[$i];
 
