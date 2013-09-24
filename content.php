@@ -45,7 +45,8 @@ $thumb_id = get_post_thumbnail_id($post->id);
 
 				<div class="meta-author-left">
 					<a class="meta-author-link" title="<?php echo exa_properize(get_the_author()); ?> Profile" href="<?php exa_the_author_link() ?>"><?php the_author() ?></a><br/>
-					<span class="meta-author-role">The Badger Herald</span>
+					<span class="meta-author-role">The Badger Herald</span> 
+					<?php hrld_author_twitter(); ?>
 				</div><!-- class="meta-author-left" -->
 
 				<div class="meta-author-right">

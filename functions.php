@@ -535,6 +535,7 @@ if (is_admin()) :
 		foreach ($sections as $section) {
 
 			if( !current_user_can('manage_options') ) {
+
 				remove_meta_box('linktargetdiv', $section, 'normal');
 				remove_meta_box('linkxfndiv', $section, 'normal');
 				remove_meta_box('linkadvanceddiv', $section, 'normal');
@@ -543,6 +544,7 @@ if (is_admin()) :
 				remove_meta_box('commentstatusdiv', $section, 'normal');
 				remove_meta_box('commentsdiv', $section, 'normal');
 				remove_meta_box('sqpt-meta-tags', $section, 'normal');
+
 			}
 		}
 	
@@ -843,42 +845,6 @@ function remove_badgerherald_com($content) {
  
 add_filter( 'the_content', 'remove_badgerherald_com' );
 
-/*
- * Add extra custom fields to user profiles
- *
- */
-function exa_user_custom_fields( $user ){
-	?>
-	<h3>Extra Information</h3>
-    <table class="form-table">
-    	<tr>
-        	<th><label for="twiter">Twitter</label></th>
-            <td>@<input type="text" name="twitter" id="user-meta-twitter" value="<?php echo esc_attr( get_the_author_meta( 'twitter', $user->ID ) ); ?>" class="regular-text" /><br /><span class="description">Please enter your Twitter username.</span></td>
-        </tr>
-        <tr>
-        	<th><label for="position">Position</label></th>
-            <td><input type="text" name="position" id="user-meta-position" value="<?php echo esc_attr( get_the_author_meta( 'position', $user->ID ) ); ?>" class="regular-text" /><br /><span class="description">Please enter your staff Position.</span></td>
-        </tr>
-    </table>
-<?php }
-
-add_action('show_user_profile', 'exa_user_custom_fields');
-add_action('edit_user_profile', 'exa_user_custom_fields');
-
-/*
- * Save the extra user custom fields
- *
- */
-function save_exa_user_custom_fields( $user_id ){
-	if (!current_user_can('edit_user', $user_id))
-		return false;
-	
-	update_user_meta($user_id, 'twitter', $_POST['twitter']);
-	update_user_meta($user_id, 'position', $_POST['position']);
-}
-
-add_action('personal_options_update', 'save_exa_user_custom_fields');
-add_action('edit_user_profile_update', 'save_exa_user_custom_fields');
 
 /**
  * Returns whether the site is a production site or not.
@@ -888,8 +854,79 @@ add_action('edit_user_profile_update', 'save_exa_user_custom_fields');
  * @author Will Haynes
  */
 function hrld_is_production() {
-	return true;
 	return HRLD_PRODUCTION;
 }
 
 require_once('inc/ads.php');
+
+/*
+ * Add extra custom fields to user profiles
+ *
+ */
+function hrld_user_custom_fields( $user ){
+	?>
+	<h3>Extra Information</h3>
+    <table class="form-table">
+    	<tr>
+        	<th><label for="twiter">Twitter</label></th>
+            <td>@<input type="text" name="twitter_handle" id="user-meta-twitter" value="<?php echo esc_attr( get_the_author_meta( 'twitter', $user->ID ) ); ?>" class="regular-text" /><br /><span class="description">Please enter your Twitter username.</span></td>
+        </tr>
+    </table>
+<?php }
+
+add_action('show_user_profile', 'hrld_user_custom_fields');
+add_action('edit_user_profile', 'hrld_user_custom_fields');
+
+
+
+/*
+ * Save the extra user custom fields
+ *
+ */
+function hrld_save_user_custom_fields( $user_id ){
+
+	if (!current_user_can('edit_user', $user_id))
+		return false;
+
+	/* Insert the twitter value */
+
+	$new_twitter_value = $_POST['twitter_handle'];
+
+	$twitter_key = "_hrld_twitter";
+
+	/* Get the meta value of the custom field key. */
+	$twitter_value = get_the_author_meta($twitter_key, $user_id);
+
+	/* If a new meta value was added and there was no previous value, add it. */
+	if ( $new_twitter_value && '' ==  $twitter_value )
+		add_user_meta( $user_id, $twitter_key, $new_twitter_value, true );
+
+	/* If the new meta value does not match the old value, update it. */
+	elseif ( $new_twitter_value && $new_twitter_value != $twitter_value )
+		update_user_meta( $user_id, $twitter_key, $new_tiwtter_value );
+
+	/* If there is no new meta value but an old value exists, delete it. */
+	elseif ( '' == $new_twitter_value && $twitter_value )
+		delete_user_meta( $user_id, $twitter_key, $twitter_value );
+
+}
+
+add_action('personal_options_update', 'hrld_save_user_custom_fields');
+add_action('edit_user_profile_update', 'hrld_save_user_custom_fields');
+
+/**
+ * 
+ * 
+ * 
+ * 
+ */
+function hrld_author_twitter($author_id = null) {
+	
+	if($author_id==null) {
+		$author_id = $post->post_author;
+	}
+
+	echo get_the_author_meta("_hrld_twitter",$author_id);
+	echo "HI";
+
+}
