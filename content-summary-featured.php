@@ -69,7 +69,7 @@
 		<div class="clearfix"></div>
 
 	</div>
-<?php endif; // has related posts ?>
+	<?php endif; // has related posts ?>
 
 
 </article><!-- #post -->
