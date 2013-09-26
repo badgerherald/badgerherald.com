@@ -682,7 +682,7 @@ function register_sections() {
  * @return Anchor tag exerpt link 
  */
 function new_excerpt_more( $more ) {
-	return ' <a class="excerpt-more" href="'. get_permalink( get_the_ID() ) . '">...</a>';
+	return ' <span class="excerpt-more">...</span>';
 }
 add_filter('excerpt_more', 'new_excerpt_more');
 

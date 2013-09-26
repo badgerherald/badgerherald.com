@@ -10,13 +10,16 @@
 
 /* exerpt-more */
 .excerpt-more {
-	background: url('img/icons/arrow-right-blue.png') no-repeat center right;
-	padding-right:14px;
+	color: $heraldblue;
+	background: url('img/icons/arrow-right-blue.png') no-repeat 14px center;
+	padding-right:16px;
+	font-family: $body;
 }
 
 .stream-post {
-	margin-bottom: 0px;
-	margin-top: 18px;
+	color : $heraldblack;
+	margin-bottom: 12px;
+	margin-top: 24px;
 	.tiny-avatar {
 		border-radius: 2px;
 		overflow: hidden;
@@ -35,9 +38,17 @@
 	h1,h2 {
 		color: $heralddarkgrey;
 		font-weight: normal;
+		padding-bottom: -2px;
+		margin-bottom: 2px;
+		display: inline;
 		a:hover {
 			color: $heraldblue;
 		}
+	}
+	.summary-time-stamp {
+		font-family: $headline;
+		margin-right: 2px;
+		color: #808080;
 	}
 }
 
@@ -62,6 +73,92 @@
 
 }
 
+
+/* Related */
+
+.related-posts {
+	font-family: $headline;
+	padding-top: 6px;
+	margin-bottom : 18px;
+	overflow: hidden;
+	header.related-header {
+		border-top: 2px solid $heraldlightgrey;
+		position: relative;
+		margin-bottom: 18px;
+	}
+	h3 {
+		color: #818181;
+		text-transform: uppercase;
+		position: absolute;
+		top:-11px;
+		font-weight: normal;
+		font-size: em(18,18);
+		margin: 0;
+		padding: 0 6px 0 0px;
+		background: #fff;
+	}
+	.related-post {
+		color : $heraldblack;
+		padding: 0 flex(18,540);
+		border-right : 2px solid $heraldlightgrey;
+		padding-bottom: 200px;
+		margin-bottom: -200px;
+		.related-post-type {
+			color : $heraldblue;
+			text-transform: uppercase;
+			font-size: em(13,16);
+			position: relative;
+			bottom: 1px;
+			margin-right: 3px;
+		}
+		&:first-child {
+			padding-left : 0;
+		}
+		&:last-child {
+			padding-right: 0;
+			border: 0;
+		}
+		&:hover {
+			.related-post-type {
+				border-bottom: 1px solid $heraldblue;
+			}
+			.excerpt-more {
+				background: url('img/icons/arrow-right-blue.png') no-repeat 16px center;
+			}
+		}
+	}
+
+}
+
+.related-posts-3-count {
+	.related-post {
+		width: flex(153,540);
+		float: left;
+	}
+}
+
+.related-posts-2-count, .related-posts-1-count {
+	.related-post {
+		width: flex(250,540);
+		float: left;
+	}
+}
+
+.summary-post-link {
+	color: $heraldblack;
+	display: block;
+}
+
+.summary-post-link:hover {
+	color: #000;
+	h2 {
+	//	color : $heraldblue;
+		border-bottom: 1px solid $heraldblack;
+	}
+	.excerpt-more {
+		background: url('img/icons/arrow-right-blue.png') no-repeat 16px center;
+	}
+}
 
 /* META DATA
 
