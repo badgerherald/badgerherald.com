@@ -15,7 +15,7 @@ function exa_list_categories($showedit = false, $showtime = false) {
 
 		<?php endforeach; 
 		if($showedit) {
-			 edit_post_link( __( 'Edit Post' ), '<li class="edit-link-right">', '</li>' ); 
+			 edit_post_link( __( 'Edit Post' . $post->ID ),  '<li class="edit-link-right">', '</li>' ); 
 		} elseif($showtime) {
 			echo '<li class="edit-link-right">' . exa_human_time_diff(get_the_time('U')) . '</li>';
 		}
