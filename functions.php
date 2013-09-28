@@ -768,7 +768,7 @@ add_filter( 'excerpt_length', 'custom_excerpt_length', 999 );
 
 function exa_human_time_diff( $from, $to = '' ) {
 	if ( empty( $to ) )
-		$to = time();
+		$to = current_time( "timestamp" );
 	$diff = (int) abs( $to - $from );
 	if ( $diff <= HOUR_IN_SECONDS ) {
 		$mins = round( $diff / MINUTE_IN_SECONDS );
