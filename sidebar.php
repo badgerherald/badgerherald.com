@@ -46,16 +46,6 @@ if ( $sidebarquery->have_posts() ) :
 		<li class="post-in-sidebar">
 		<?php exa_list_categories(false,true) ?>
 
-		<?php if ( has_post_thumbnail() && ! post_password_required() ) : $full_width = true; ?>
-			<a class="post-permalink" href="<?php the_permalink() ?>">
-			<div class="entry-thumbnail">
-				<?php the_post_thumbnail(); ?>
-			</div>
-			</a>
-
-		<?php endif; ?>
-
-
 		<a class="post-permalink" href="<?php the_permalink() ?>"><?php the_title() ?></a>
 
 		</li>
