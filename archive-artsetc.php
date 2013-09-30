@@ -44,7 +44,7 @@ hrld_top_leaderboard_ad();
 				?>
 		</h1>
         <?php if ( is_post_type_archive() ){ ?>
-        <?php exa_get_beats_dropdown(array('art','corner','books','chew-on-this','arts-column','film','food','herald-arcade','hump-day','low-fat-tue','arts-media','music','arts-point-counterpoint','tv'), 'artsetc'); ?>
+	<?php exa_get_beats_dropdown('artsetc'); ?>
         <?php }//end if ( is_post_type_archive() ) for category-menu ?>
 	</header>
 	<div id="stream">

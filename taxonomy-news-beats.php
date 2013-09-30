@@ -23,7 +23,7 @@ hrld_top_leaderboard_ad();
 ?>	
 	<header id="section-header" class="section-header-news clearfix">
 		<h1 class="archive-title">News</h1>
-        <?php exa_get_beats_dropdown(array('madison','higher-edu','wisconsin','student-gov','us','campus','uw-research','uw-system'), 'news', get_query_var('term')); ?>
+	<?php exa_get_beats_dropdown('news', get_query_var('term')); ?>
 	</header>
 	<div id="stream">
 

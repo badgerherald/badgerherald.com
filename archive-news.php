@@ -44,7 +44,7 @@ hrld_top_leaderboard_ad();
 				?>
 		</h1>
         <?php if ( is_post_type_archive() ){ ?>
-        <?php exa_get_beats_dropdown(array('madison','higher-edu','wisconsin','student-gov','us','campus','uw-research','uw-system'), 'news'); ?>
+	<?php exa_get_beats_dropdown('news'); ?>
         <?php }//end if ( is_post_type_archive() ) for category-menu ?>
 	</header>
 	<div id="stream">

@@ -24,7 +24,7 @@ hrld_top_leaderboard_ad();
 	
 	<header id="section-header" class="section-header-oped clearfix">
 		<h1 class="archive-title">Opinion</h1>
-        <?php exa_get_beats_dropdown(array('column','editorial','opinion-desk','letter','public-editor','oped-top-story'), 'oped', get_query_var('term')); ?>
+	<?php exa_get_beats_dropdown('oped', get_query_var('term')); ?>
 	</header>
 	<div id="stream">
 
