@@ -198,3 +198,26 @@ img.size-medium {
 	padding: 12px 20px;
 	font-size: em(14,16);
 }
+
+.related-posts-list-style {
+	header {
+		margin-bottom: 12px !important;
+	}
+	.related-posts {
+		overflow: auto;
+
+	}
+	.related-post {
+		float: none;
+		display: block;
+		width:100%;
+		border-right : none;
+		padding:0px;
+		padding-bottom: 6px;
+		padding-top : 6px;
+
+		margin-bottom: 0px;
+		border-bottom: 2px solid $heraldlightgrey !important;
+
+	}
+}

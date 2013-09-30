@@ -13,23 +13,22 @@
 		<?php if ( has_post_thumbnail() && ! post_password_required() ) : ?>
 		<div class="entry-thumbnail">
 			<?php the_post_thumbnail('image-post-size'); ?>
-
 		<div class="entry-post-thumbnail-caption">
-	<?php
-$thumb_id = get_post_thumbnail_id($post->id);
-		$args = array(
-	'post_type' => 'attachment',
-	'post_status' => null,
-	'post_parent' => $post->ID,
-	'include'  => $thumb_id
-	); 
+			<?php
+			$thumb_id = get_post_thumbnail_id($post->id);
+			$args = array(
+				'post_type' => 'attachment',
+				'post_status' => null,
+				'post_parent' => $post->ID,
+				'include'  => $thumb_id
+			); 
 
-   $thumb_images = get_posts($args);
-   foreach ($thumb_images as $thumb_image) {
-   echo $thumb_image->post_excerpt;
-   }
+   			$thumb_images = get_posts($args);
+   			foreach ($thumb_images as $thumb_image) {
+   				echo $thumb_image->post_excerpt;
+   			}
 
-?>   </div>
+		?>   </div>
 		</div>
 
 	
@@ -73,11 +72,8 @@ $thumb_id = get_post_thumbnail_id($post->id);
 
 			</div><!-- class="social" -->
 
-			<?php hrld_sidebar_ad(); ?>
-
-
 			<?php if(hrld_related_has_posts()) : ?>
-			<div class="related-posts related-posts-<?php hrld_related_post_count() ?>-count">
+			<div class="related-posts related-posts-<?php hrld_related_post_count() ?>-count related-posts-list-style">
 				
 				<header class="related-header">
 					<h3><?php hrld_related_topic($post); ?></h3>
@@ -88,11 +84,11 @@ $thumb_id = get_post_thumbnail_id($post->id);
 					foreach($related_posts as $related_post) : ?>
 					
 						<a class="related-post" href="<?php echo get_permalink($related_post); ?>">
-							<div>
+			
 								<span class="related-post-type"><?php echo get_post_type($related_post); ?></span>
 								<?php echo get_the_title($related_post); ?>
 								<span class="excerpt-more">...</span>
-							</div>
+	
 						</a>
 
 					<?php endforeach; ?>
@@ -101,6 +97,11 @@ $thumb_id = get_post_thumbnail_id($post->id);
 
 			</div>
 			<?php endif; // has related posts ?>
+
+			<?php hrld_sidebar_ad(); ?>
+
+
+			
 
 
 			<div class="post-sidebar-headlines">
