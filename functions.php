@@ -29,7 +29,7 @@
  * @see twentythirteen_content_width() for template-specific adjustments.
  */
 if ( ! isset( $content_width ) )
-	$content_width = 604;
+	$content_width = 540;
 
 /**
  * Adds support for a custom header image.
