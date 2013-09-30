@@ -57,10 +57,20 @@
 			foreach($related_posts as $related_post) : ?>
 			
 				<a class="related-post" href="<?php echo get_permalink($related_post); ?>">
-					<div>
-						<span class="related-post-type"><?php echo get_post_type($related_post); ?></span>
-						<?php echo get_the_title($related_post); ?>
-						<span class="excerpt-more">...</span>
+					<?php
+							$thumb = wp_get_attachment_image_src( get_post_thumbnail_id($related_post), 'small-thumbnail' );
+							$url = $thumb['0'];
+						?>
+
+					<div class="related-post-body">
+					<?php if($url) : $hasImgClass = "has-image"; ?>
+						<img class="thumbnail" src="<?php echo $url ?>" />
+					<?php else : $hasImgClass = "no-image"; endif; ?>
+						<div class="related-post-body-right <?php echo $hasImgClass; ?>">
+							<span class="related-post-type"><?php echo get_post_type($related_post); ?></span>
+							<?php echo get_the_title($related_post); ?>
+							<span class="excerpt-more">...</span>
+						</div>
 					</div>
 				</a>
 

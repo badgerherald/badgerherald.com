@@ -736,10 +736,35 @@ body.admin-bar #wrapper {
 .related-posts-3-count .related-post {
   width: 28.333%;
   float: left; }
+.related-posts-3-count .related-post-type {
+  clear: left; }
+.related-posts-3-count img.thumbnail {
+  max-width: 70%;
+  height: auto;
+  display: block;
+  padding-bottom: 6px; }
 
 .related-posts-2-count .related-post, .related-posts-1-count .related-post {
   width: 46.296%;
   float: left; }
+.related-posts-2-count img.thumbnail, .related-posts-1-count img.thumbnail {
+  max-width: 32%;
+  height: auto;
+  float: left;
+  display: block;
+  padding-right: 8%;
+  position: relative;
+  top: 6px; }
+.related-posts-2-count .related-post-body .related-post-body-right.has-image, .related-posts-1-count .related-post-body .related-post-body-right.has-image {
+  width: 60%;
+  float: left; }
+
+.related-posts-1-count .related-post {
+  width: 74.074%;
+  float: left; }
+.related-posts-1-count img.thumbnail {
+  max-width: 30%;
+  padding-right: 5%; }
 
 .summary-post-link {
   color: #191919;

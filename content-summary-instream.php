@@ -54,6 +54,11 @@
 			
 				<a class="related-post" href="<?php echo get_permalink($related_post); ?>">
 					<div>
+						<?php
+							$thumb = wp_get_attachment_image_src( get_post_thumbnail_id($related_post), 'small-thumbnail' );
+							$url = $thumb['0'];
+						?>
+						<img class="thumbnail" src="<?php echo $url ?>" />
 						<span class="related-post-type"><?php echo get_post_type($related_post); ?></span>
 						<?php echo get_the_title($related_post); ?>
 						<span class="excerpt-more">...</span>

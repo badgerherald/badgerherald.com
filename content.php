@@ -75,6 +75,34 @@ $thumb_id = get_post_thumbnail_id($post->id);
 
 			<?php hrld_sidebar_ad(); ?>
 
+
+			<?php if(hrld_related_has_posts()) : ?>
+			<div class="related-posts related-posts-<?php hrld_related_post_count() ?>-count">
+				
+				<header class="related-header">
+					<h3><?php hrld_related_topic($post); ?></h3>
+				</header>
+				<div class="related-post-articles">
+				<?php 
+					$related_posts = hrld_related_post_ids($post);
+					foreach($related_posts as $related_post) : ?>
+					
+						<a class="related-post" href="<?php echo get_permalink($related_post); ?>">
+							<div>
+								<span class="related-post-type"><?php echo get_post_type($related_post); ?></span>
+								<?php echo get_the_title($related_post); ?>
+								<span class="excerpt-more">...</span>
+							</div>
+						</a>
+
+					<?php endforeach; ?>
+				</div>
+				<div class="clearfix"></div>
+
+			</div>
+			<?php endif; // has related posts ?>
+
+
 			<div class="post-sidebar-headlines">
 			<h3> Top Headlines </h3>
 			<?php include("most-commented.php"); ?>

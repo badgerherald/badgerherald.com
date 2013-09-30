@@ -135,6 +135,15 @@
 		width: flex(153,540);
 		float: left;
 	}
+	.related-post-type {
+		clear:left;
+	}
+	img.thumbnail {
+		max-width: 70%;
+		height: auto;
+		display: block;
+		padding-bottom: 6px;
+	}
 }
 
 .related-posts-2-count, .related-posts-1-count {
@@ -142,8 +151,31 @@
 		width: flex(250,540);
 		float: left;
 	}
+	img.thumbnail {
+		max-width: flex(80,250);
+		height: auto;
+		float: left;
+		display: block;
+		padding-right : flex(20,250);
+		position: relative;
+		top : 6px;
+	}
+	.related-post-body .related-post-body-right.has-image {
+		width: flex(150,250);
+		float: left;
+	}
 }
 
+.related-posts-1-count {
+	.related-post {
+		width: flex(400,540);
+		float: left;
+	}
+	img.thumbnail {
+		max-width: flex(120,400);
+		padding-right : flex(20,400);
+	}
+}
 .summary-post-link {
 	color: $heraldblack;
 	display: block;
