@@ -22,7 +22,7 @@ hrld_top_leaderboard_ad();
 
 ?>
 	<header id="section-header" class="section-header-artsetc clearfix">
-		<h1 class="archive-title">Artsect</h1>
+		<h1 class="archive-title">Artsetc</h1>
         <?php exa_get_beats_dropdown(array('art','corner','books','chew-on-this','arts-column','film','food','herald-arcade','hump-day','low-fat-tue','arts-media','music','arts-point-counterpoint','tv'), 'artsetc', get_query_var('term')); ?>
 	</header>
 	<div id="stream">
