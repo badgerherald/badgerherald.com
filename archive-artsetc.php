@@ -29,23 +29,22 @@ hrld_top_leaderboard_ad();
 		?>
 	<header id="section-header" class="<?php echo $classes ?> clearfix">
 		<h1 class="archive-title">
-		<?php
-			if ( is_day() ) :
-				printf( __( 'Daily Archives: %s', 'twentythirteen' ), get_the_date() );
-			elseif ( is_month() ) :
-				printf( __( 'Monthly Archives: %s', 'twentythirteen' ), get_the_date( _x( 'F Y', 'monthly archives date format', 'twentythirteen' ) ) );
-			elseif ( is_year() ) :
-				printf( __( 'Yearly Archives: %s', 'twentythirteen' ), get_the_date( _x( 'Y', 'yearly archives date format', 'twentythirteen' ) ) );
-			elseif ( is_post_type_archive() ) :
-				printf( '%s', post_type_archive_title() );
+			<a href="<?php bloginfo('url'); ?>/artsetc/">
+			<?php
+				if ( is_day() ) :
+					printf( __( 'Daily Archives: %s', 'twentythirteen' ), get_the_date() );
+				elseif ( is_month() ) :
+					printf( __( 'Monthly Archives: %s', 'twentythirteen' ), get_the_date( _x( 'F Y', 'monthly archives date format', 'twentythirteen' ) ) );
+				elseif ( is_year() ) :
+					printf( __( 'Yearly Archives: %s', 'twentythirteen' ), get_the_date( _x( 'Y', 'yearly archives date format', 'twentythirteen' ) ) );
+				elseif ( is_post_type_archive() ) :
+					printf( '%s', post_type_archive_title() );
 				else :
 					_e( 'Archives', 'twentythirteen' );
 				endif;
 				?>
+			</a>
 		</h1>
-        <?php if ( is_post_type_archive() ){ ?>
-	<?php exa_get_beats_dropdown('artsetc'); ?>
-        <?php }//end if ( is_post_type_archive() ) for category-menu ?>
 	</header>
 	<div id="stream">
 
@@ -75,7 +74,7 @@ hrld_top_leaderboard_ad();
 
 	</div><!-- id="stream" -->
 
-	<?php get_sidebar(get_post_type() ); ?>
+	<?php get_sidebar('archives'); ?>
 
 	<div id="clearfix"></div>
 

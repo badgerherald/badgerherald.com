@@ -23,8 +23,7 @@ hrld_top_leaderboard_ad();
 ?>
 	
 	<header id="section-header" class="section-header-oped clearfix">
-		<h1 class="archive-title">Opinion</h1>
-	<?php exa_get_beats_dropdown('oped', get_query_var('term')); ?>
+		<h1 class="archive-title"><a href="<?php bloginfo('url'); ?>/oped/">Opinion</a></h1>
 	</header>
 	<div id="stream">
 
@@ -52,7 +51,7 @@ hrld_top_leaderboard_ad();
 
 	</div><!-- id="stream" -->
 
-	<?php get_sidebar(get_post_type() ); ?>
+	<?php get_sidebar('archives'); ?>
 
 	<div id="clearfix"></div>
 

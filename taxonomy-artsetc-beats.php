@@ -22,8 +22,7 @@ hrld_top_leaderboard_ad();
 
 ?>
 	<header id="section-header" class="section-header-artsetc clearfix">
-		<h1 class="archive-title">Artsetc</h1>
-	<?php exa_get_beats_dropdown('artsetc', get_query_var('term')); ?>
+		<h1 class="archive-title"><a href="<?php bloginfo('url'); ?>/artsetc/">Artsetc</a></h1>
 	</header>
 	<div id="stream">
 
@@ -51,7 +50,7 @@ hrld_top_leaderboard_ad();
 
 	</div><!-- id="stream" -->
 
-	<?php get_sidebar(get_post_type() ); ?>
+	<?php get_sidebar('archives'); ?>
 
 	<div id="clearfix"></div>
 

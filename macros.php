@@ -66,42 +66,4 @@ function exa_the_author_link() {
 
 }
 
-// Massively ugly, but beats should be kept out of the templates
-function exa_get_beats_slug_list($category) {
-	if ($category == 'news') {
-		$beats_slug_list = array('madison','higher-edu','wisconsin','student-gov','us','campus','uw-research','uw-system');
-	} elseif ($category == 'oped') {
-		$beats_slug_list = array('column','editorial','opinion-desk','letter','public-editor','oped-top-story');
-	} elseif ($category == 'sports') {
-		$beats_slug_list = array('baseball','sports-column','football','mens-basketball','mens-hockey','mens-swimming','softball','volleyball','womens-basketball','womens-hockey','womens-swimming');
-	} elseif ($category == 'artsetc') {
-		$beats_slug_list = array('art','corner','books','chew-on-this','arts-column','film','food','herald-arcade','hump-day','low-fat-tue','arts-media','music','arts-point-counterpoint','tv');
-	} else {
-		$beats_slug_list = array();
-	}
-	return $beats_slug_list;
-}
-
-function exa_get_beats_dropdown($category, $term_slug = 'Beats'){
-	$beats_slug_list = exa_get_beats_slug_list($category);
-	$key = array_search($term_slug, $beats_slug_list);
-	if(false !== $key){
-		unset($beats_slug_list[$key]);
-		$curr_term = get_term_by('slug', $term_slug, $category.'-beats');
-	}
-	?>
-	<ul class="beats-menu">
-        <li><a href="#" class="transparent"><?php if($curr_term){ echo $curr_term->name;} else{ echo $term_slug;} ?> <span class="arrow">&#9662;</span></a>
-            <ul>
-            <?php foreach($beats_slug_list as $beat_slug): 
-				$beat = get_term_by('slug', $beat_slug, $category.'-beats');
-				$beat_link = get_term_link($beat);
-				if(is_wp_error($beat_link)) continue;
-				?>
-                <li><a href="<?php echo $beat_link; ?>"><?php echo $beat->name; ?></a></li>
-            <?php endforeach; ?>
-            </ul>
-        </li>
-    </ul>
-	<?php 
-}
+?>
