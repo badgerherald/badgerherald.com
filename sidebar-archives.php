@@ -11,7 +11,7 @@
 <div id="sidebar">
 <div class="sidebar-inner">
 
-<h1 class="most-recent-headline">Trending stories</h1>
+<h1 class="most-recent-headline">Most read this week</h1>
 
 <div class="sidebar-scroll">
 
