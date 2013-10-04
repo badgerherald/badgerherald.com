@@ -18,6 +18,10 @@
 			&:hover {
 				color: $heraldblue;
 			}
+			&.trending-story {
+				font-size: 14px;
+				font-weight: bold;
+			}
 		}
 	}
 }

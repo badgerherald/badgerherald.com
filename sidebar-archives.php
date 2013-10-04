@@ -15,7 +15,7 @@
 
 <div class="sidebar-scroll">
 
-<?php wpp_get_mostpopular("range=weekly&post_type=sports,oped,artsetc,news&stats_comments=0&limit=10&wpp_start='<ul class=sidebar-posts>'&post_html='<li class=post-in-sidebar><a class=post-permalink href={url}>{text_title}</li>'"); ?>
+<?php wpp_get_mostpopular("range=weekly&post_type=sports,oped,artsetc,news&stats_comments=0&limit=10&wpp_start='<ul class=\"sidebar-posts\">'&post_html='<li class=\"post-in-sidebar\"><a class=\"post-permalink trending-story\" href=\"{url}\">{text_title}</li>'"); ?>
 
 </div><!-- class="sidebar-scroll" -->
 </div><!-- class="inner-sidebar" -->
