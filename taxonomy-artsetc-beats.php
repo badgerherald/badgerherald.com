@@ -50,7 +50,7 @@ hrld_top_leaderboard_ad();
 
 	</div><!-- id="stream" -->
 
-	<?php get_sidebar('archives'); ?>
+	<?php get_sidebar(); ?>
 
 	<div id="clearfix"></div>
 
