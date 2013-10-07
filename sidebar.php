@@ -33,10 +33,10 @@ if ( $sidebarquery->have_posts() ) :
 	while ( $sidebarquery->have_posts() ) : 
 		$sidebarquery->the_post();
 
-	if($adcount==3&&hrld_is_production()) :
+	if($adcount==3) :
 		hrld_sidebar_ad();
 
-	elseif($adcount==6&&hrld_is_production()) : 
+	elseif($adcount==6) : 
 
 		hrld_sidebar_lower_ad();
 		
