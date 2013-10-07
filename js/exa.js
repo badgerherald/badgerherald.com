@@ -23,7 +23,7 @@ $(document).ready(function() {
 */
 
 	
-	window.setTimeout(function() {	
+	window.setTimeout(function() {
 		$(".add-so-button").css({'top':'-30px','display':'block'}).animate({'top':'43px','display':'block'},200);
 	}, 400 /* but after 2000 ms */);
 	$('#shoutoutText').focus();
@@ -77,7 +77,7 @@ $(document).ready(function() {
 
 		$('#page-inner').animate({
 			"left":"400px"
-			}),400;
+			},400);
  
 	}, function() {
 
