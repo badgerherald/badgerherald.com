@@ -1,6 +1,8 @@
 <?php
 /**
- * The general sidebar for an archive or taxonomy page
+ * The sidebar for the front page, archive pages and taxonomy pages.
+ * Listing of the top stories of the week, via the Wordpress
+ * Popular Posts plugin.
  *
  * @package WordPress
  * @subpackage exa
