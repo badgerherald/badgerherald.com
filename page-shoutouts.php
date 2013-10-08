@@ -85,7 +85,7 @@ get_header();
 	</div>
 </div>
 
-
+<div id="stream">
 	<?php /* The loop */ ?>
 	<?php while ( have_posts() ) : the_post(); ?>
 
@@ -219,5 +219,8 @@ get_header();
 
 	<?php endwhile; // Wordpress while ?>
 
+</div>
+
+<?php get_sidebar(); ?>
 
 <?php get_footer(); ?>
