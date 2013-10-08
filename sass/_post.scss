@@ -33,7 +33,6 @@
     	overflow: hidden;
     	visibility: hidden;
 	}
-
 }
 
 #post-sidebar {
@@ -146,10 +145,12 @@
 	float:left;
 	width: flex(540,860);
 	position: relative;
+
 	.article-content {
 		p:first-child {
 			font-size: em(17);
 		}
+	padding-top: 18px !important;
 
 	}
 	blockquote {
@@ -175,6 +176,10 @@
 		}
 }
 
+.article-content {
+
+}
+
 .wp-caption-text {
 	font-family: $caption;
 	font-size: em(14,16);
@@ -196,12 +201,47 @@ img.size-medium {
 	height: auto;
 }
 
-.entry-post-thumbnail-caption {
+.entry-img-featured {
+	position: relative;
+	img {
+		width: 100%;
+		height: auto;
+		display: block;
+	}
+}
+
+.entry-post-featured {
+	margin-bottom: 24px;
+}
+
+.entry-post-featured-credit {
+	
+	position: absolute;
+	bottom:0px;
+
+	span {
+		position: relative;
+		top: 4px;
+		padding: 6px 20px 0px;
+		font-family: $caption;
+		color: #fff;
+		font-size: flex(10,16);
+		background: $heraldblack;
+		text-transform: uppercase;		
+	}
+	&.entry-post-featured-credit-no-caption span {
+		padding: 6px 20px 6px;
+		top: -2px;
+	}
+
+}
+.entry-post-featured-caption {
 	font-family: $caption;
 	color : #b6b6b6;
 	background: $heraldblack;
-	padding: 12px 20px;
-	font-size: em(14,16);
+	padding: 9px 20px 12px;
+	margin: 0;
+	font-size: em(13,16);
 }
 
 .related-posts-list-style {
@@ -220,9 +260,19 @@ img.size-medium {
 		padding:0px;
 		padding-bottom: 6px;
 		padding-top : 6px;
-
 		margin-bottom: 0px;
 		border-bottom: 2px solid $heraldlightgrey !important;
 
+	}
+}
+
+.related-posts-in-article {
+	width: flex(200,540);
+	float: right;
+	margin-left: flex(20,540);
+	img.thumbnail {
+		max-width: flex(120,200);
+		float:none;
+		margin-bottom: 12px;
 	}
 }

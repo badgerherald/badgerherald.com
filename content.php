@@ -11,11 +11,13 @@
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 	<header class="entry-header">
 		<?php if ( has_post_thumbnail() && ! post_password_required() ) : ?>
-		<div class="entry-thumbnail">
+		
+		<div class="entry-post-featured">
+		<div class="entry-img-featured">
 			<?php the_post_thumbnail('image-post-size'); ?>
-		<div class="entry-post-thumbnail-caption">
+		
 			<?php
-			$thumb_id = get_post_thumbnail_id($post->id);
+			$thumb_id = get_post_thumbnail_id($post->ID);
 			$args = array(
 				'post_type' => 'attachment',
 				'post_status' => null,
@@ -23,13 +25,30 @@
 				'include'  => $thumb_id
 			); 
 
-   			$thumb_images = get_posts($args);
-   			foreach ($thumb_images as $thumb_image) {
-   				echo $thumb_image->post_excerpt;
-   			}
+   			$thumb_image = get_post($thumb_id);
 
-		?>   </div>
-		</div>
+   			$credit = get_media_credit($thumb_id);
+   			$exerpt = $thumb_image->post_excerpt;
+   			if($credit != "") : ?>
+   			
+   			<div class="entry-post-featured-credit <?php if($exerpt=="") echo "entry-post-featured-credit-no-caption"; ?>">
+   				<span>
+   					<?php echo $credit; ?>
+   				</span>
+   			</div>
+   				
+   			<?php endif; ?>
+
+   		</div><!-- class="entry-img-featured" -->
+
+   				<?php if($exerpt != "") : ?>
+   					<div class="entry-post-featured-caption">
+						<?php echo $exerpt; ?>
+		  			</div><!-- class="entry-post-thumbnail-caption" -->
+   				<?php endif; ?> 
+   			
+   		</div><!-- class="entry-post-featured" -->
+
 
 	
 
@@ -72,31 +91,6 @@
 
 			</div><!-- class="social" -->
 
-			<?php if(hrld_related_has_posts()) : ?>
-			<div class="related-posts related-posts-<?php hrld_related_post_count() ?>-count related-posts-list-style">
-				
-				<header class="related-header">
-					<h3><?php hrld_related_topic($post); ?></h3>
-				</header>
-				<div class="related-post-articles">
-				<?php 
-					$related_posts = hrld_related_post_ids($post);
-					foreach($related_posts as $related_post) : ?>
-					
-						<a class="related-post" href="<?php echo get_permalink($related_post); ?>">
-			
-								<span class="related-post-type"><?php echo get_post_type($related_post); ?></span>
-								<?php echo get_the_title($related_post); ?>
-								<span class="excerpt-more">...</span>
-	
-						</a>
-
-					<?php endforeach; ?>
-				</div>
-				<div class="clearfix"></div>
-
-			</div>
-			<?php endif; // has related posts ?>
 
 			<?php hrld_sidebar_ad(); ?>
 
@@ -116,6 +110,39 @@
 			<h1 class="entry-title"><?php the_title(); ?></h1>
 
 			<div class="article-content">
+
+
+			<?php if(hrld_related_has_posts()) : ?>
+			<div class="related-posts related-posts-<?php hrld_related_post_count() ?>-count related-posts-list-style related-posts-in-article">
+				
+				<header class="related-header">
+					<h3><?php hrld_related_topic($post); ?></h3>
+				</header>
+				<div class="related-post-articles">
+				<?php 
+					$related_posts = hrld_related_post_ids($post);
+					foreach($related_posts as $related_post) : ?>
+					
+						<a class="related-post" href="<?php echo get_permalink($related_post); ?>">
+						<?php
+							$thumb = wp_get_attachment_image_src( get_post_thumbnail_id($related_post), 'small-thumbnail' );
+							$url = $thumb['0'];
+						?>
+						<img class="thumbnail" src="<?php echo $url ?>" />
+								<span class="related-post-type"><?php echo get_post_type($related_post); ?></span>
+								<?php echo get_the_title($related_post); ?>
+								<span class="excerpt-more">...</span>
+	
+						</a>
+
+					<?php endforeach; ?>
+				</div>
+				<div class="clearfix"></div>
+
+			</div>
+			<?php endif; // has related posts ?>
+
+
 			<?php the_content() ?>
 			</div>
 
