@@ -15,14 +15,14 @@
 
 <?php hrld_sidebar_ad(); ?>
 
-<h1 class="most-recent-headline">Most read this week</h1>
+<h1 class="most-recent-headline">Top Posts</h1>
 
 <div class="sidebar-scroll">
 
 <?php 
 
     $wpp_query = array(
-        'range=weekly'
+        'range=daily'
     ,   'post_type=sports,oped,artsetc,news'
     ,   'stats_comments=0'
     ,   'limit=10'
