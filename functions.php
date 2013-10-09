@@ -693,13 +693,14 @@ add_filter('excerpt_more', 'new_excerpt_more');
  */
 function alter_queries( $query ) {
 
+	$all_sections = array( 'news', 'oped', 'artsetc', 'sports' );
 	/* Return if this is not the main query, or if it is a back end query */
     if ( is_admin() || ! $query->is_main_query() ) {
         return;
     }
 
     if ( is_front_page() ) {
- 		$query->set( 'post_type', array( 'news', 'oped', 'artsetc', 'sports' )  );
+ 		$query->set( 'post_type',  $all_sections );
 		$query->set('posts_per_page', 25);
         $query->set( 'tax_query',
             array(
@@ -718,16 +719,29 @@ function alter_queries( $query ) {
     } 
 
     if( $query->is_author ) {
-    	$query->set( 'post_type', array( 'news', 'oped', 'artsetc', 'sports' )  );
+    	$query->set( 'post_type', $all_sections  );
     }
 
-    if ( is_search() ) {
-        $refine = $_GET['search_refined'];
-        if ($refine) {
-            if ($query->is_search) {
-                $query->set('s', $refine . ' ' . $query->get('s') );
-            }
-        }
+    if( is_search() ) {
+    	if (isset($_GET['section'])) {
+	    	$section = array(strtolower($_GET['section']));
+	    	if ($section == array('all') || !in_array($section[0], $all_sections)) {
+	    		$section = $all_sections;
+	    	}
+	    } else {
+	    	$section = $all_sections;
+	    }
+    	$query->set('post_type', $section);
+
+    	if (isset($_GET['date_range'])) {
+    		$date_range = $_GET['date_range'];
+    		if ($date_range == 'This month') {
+    			$query->set('year', date('Y'));
+    			$query->set('monthnum', date('m'));
+    		} elseif ($date_range == 'This year') {
+    			$query->set('year', date('Y'));
+    		}
+    	}
     }
 
     return;
