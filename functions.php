@@ -945,6 +945,20 @@ function hrld_author_twitter($author_id = null) {
 
 }
 
+/**
+ * Turn comments on by default
+ *
+ * @author Will Haynes
+ * @url http://wordpress.stackexchange.com/questions/38405/why-are-the-comments-disabled-by-default-on-my-custom-post-types
+ */
+function hrld_default_comments_on( $data ) {
+
+    $data['comment_status'] = 1;
+    return $data;
+    
+}
+add_filter( 'wp_insert_post_data', 'hrld_default_comments_on' );
+
 // Massively ugly, but beats should be kept out of the templates
 function exa_get_beats_slug_list($category) {
 	if ($category == 'news') {
