@@ -167,7 +167,7 @@ class ShoutoutList {
 			if($this->pagenum < $numPages - 2)
 				$toReturn .= '<li class="so-ellipses">...</li>';
 
-			$toReturn .= '<li><a href="' . SITE_ROOT . SHOUTOUT_ROOT . $pageLocation . $numPages . '">' . $numPages . '</li>';
+			$toReturn .= '<li><a href="' . SITE_ROOT . SHOUTOUT_ROOT . $pageLocation . $numPages . '">' . $numPages . '</a></li>';
 			
 			$toReturn .= "</ul>";
 

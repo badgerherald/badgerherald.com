@@ -73,18 +73,9 @@ location.reload();
 get_header(); 
 
 
+hrld_top_leaderboard_ad();
 
 ?>
-
-<div id="ad-leaderboard">
-	<!-- front-leaderboard -->
-	<div id='div-gpt-ad-1378705451226-0' style='width:728px; height:90px;'>
-	<script type='text/javascript'>
-	googletag.cmd.push(function() { googletag.display('div-gpt-ad-1378705451226-0'); });
-	</script>
-	</div>
-</div>
-
 
 	<?php /* The loop */ ?>
 	<?php while ( have_posts() ) : the_post(); ?>
@@ -93,7 +84,7 @@ get_header();
 			
 		<div class="so-header-wrap">
 			<header <?php if(!$error['success']) { ?> style="display:none" <?php } ?> class="entry-header shoutout-header">
-				<h1 class="entry-title"> <?php the_title(); ?></h1>
+				<h1 class="entry-title"><a href="<?php bloginfo('url'); ?>/shoutouts/"> <?php the_title(); ?></a></h1>
 				<h2 class="shoutout-tagline"></h2>
 				<a style="display:none" class="so-button add-so-button" href="http://badgerherald.com/shoutouts/add">Add a Shoutout</a>
 			</header><!-- .entry-header -->
@@ -120,7 +111,7 @@ get_header();
 
 		</div>
 
-
+<div id="stream">
 
 	<?php if(!$singleSO) : ?>
 
@@ -219,5 +210,8 @@ get_header();
 
 	<?php endwhile; // Wordpress while ?>
 
+</div>
+
+<?php get_sidebar(); ?>
 
 <?php get_footer(); ?>

@@ -1,5 +1,30 @@
 #sidebar {
 	position: relative;
+
+	.sidebar-inner {
+		margin-top:24px;
+	}
+
+	fieldset {
+		margin: -24px 0 25px 0;
+
+		legend, label {
+			text-transform: uppercase;
+			font-family: $headline;
+		}
+
+		label {
+			margin-top: 25px;
+		}
+
+		ul, ol {
+			list-style-type: none;
+		}
+
+		input {
+			margin-bottom: 5px;
+		}
+	}
 }
 
 .sidebar-posts {
@@ -17,6 +42,10 @@
 			color: $heraldblack;
 			&:hover {
 				color: $heraldblue;
+			}
+			&.trending-story {
+				font-size: 14px;
+				font-weight: bold;
 			}
 		}
 	}

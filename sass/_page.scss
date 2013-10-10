@@ -1,5 +1,6 @@
 body {
 	//min-width: 1060px;
+	padding-bottom: 25px;
 }
 
 #page {
@@ -37,9 +38,13 @@ body {
 	h1 {
 		font-size: em(60,15);
 		line-height: 60px;
-		text-shadow: -1px 1px $heraldblack;
 		display: inline-block;
 		float: left;
+
+		a {
+			color: white;
+			text-shadow: -1px 1px $heraldblack;
+		}
 	}
 
 	&.section-header-oped {
@@ -67,92 +72,23 @@ ul.beats-menu {
 	z-index: 100;
 	position: relative;
 	
+	.active {
+		background-color: lightgrey;
+	}
+
 	a{
 		display: block;
 		padding: 0 15px;
 		white-space: nowrap;
 		font-family: $headline;
+		text-transform: uppercase;
 		font-size: 1.25em;
-		color: #ffffff;
-		text-shadow: -1px 1px $heraldblack;
+		color: $heraldblue;
 		span.arrow{
 			padding-left: 4px;
 			position: relative;
 			top: -2px;
 		}
-	}
-	li{
-		position: relative;
-		padding: 0;
-		margin: 0;
-		ul{ 
-			opacity: 0;
-			transition: opacity .5s ease-in-out .5s ,left 0s ease-in-out 1s;
-			-moz-transition: opacity .5s ease-in-out .5s ,left 0s ease-in-out 1s;
-			-webkit-transition: opacity .5s ease-in-out .5s ,left 0s ease-in-out 1s;
-			-o-transition: opacity .5s ease-in-out .5s ,left 0s ease-in-out 1s;
-		}
-		&:hover ul{
-			left: 0;
-			opacity: 1;
-			transition: opacity .5s ease-in-out 0s ,left 0s ease-in-out 0s;
-			-moz-transition: opacity .5s ease-in-out 0s ,left 0s ease-in-out 0s;
-			-webkit-transition: opacity .5s ease-in-out 0s ,left 0s ease-in-out 0s;
-			-o-transition: opacity .5s ease-in-out 0s ,left 0s ease-in-out 0s;
-		}
-	}
-	ul{
-		position: absolute;
-		left: -9999px;
-		padding: 0;
-		margin: 0;
-		list-style-type: none;
-		-webkit-box-shadow: 0  4x 4px -2px  $heraldlightgrey;
-	    -moz-box-shadow: 0  4px 4px -2px $heraldlightgrey;
-	    box-shadow: 0 4px 4px -2px $heraldlightgrey;
-		border: 1px solid $heralddarkgrey;
-		
-		li{
-			a{	
-				background: $heraldblack;
-				border: none;
-				border-bottom: 1px solid $heralddarkgrey;
-				padding-right: 30px;
-				line-height: 30px;
-				text-shadow: none;
-				color: #b6b6b6;;
-				font-size: .75em;
-				font-family: $caption;
-				&:hover{
-					color: #ffffff;
-				}
-			}
-			&:last-child{
-				a{
-					border-bottom: none;
-				}
-			}
-		}
-		&:before, &:after{
-			content: ' ';
-			height: 0;
-			position: absolute;
-			width: 0;
-			border: 10px solid transparent;
-		}
-		&:before{
-			border-bottom-color: $heraldblack;
-			top: -19px;
-			z-index: 200;
-			left: 25px;
-		} 
-		&:after{
-			border-bottom-color: $heralddarkgrey;
-			top: -21px;
-			left: 25px;
-			z-index: 199;
-		}
-		
 	}
 }
 	

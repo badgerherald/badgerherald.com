@@ -66,25 +66,4 @@ function exa_the_author_link() {
 
 }
 
-function exa_get_beats_dropdown($beats_slug_list, $category, $term_slug = 'Beats'){
-	$key = array_search($term_slug, $beats_slug_list);
-	if(false !== $key){
-		unset($beats_slug_list[$key]);
-		$curr_term = get_term_by('slug', $term_slug, $category.'-beats');
-	}
-	?>
-	<ul class="beats-menu">
-        <li><a href="#" class="transparent"><?php if($curr_term){ echo $curr_term->name;} else{ echo $term_slug;} ?> <span class="arrow">&#9662;</span></a>
-            <ul>
-            <?php foreach($beats_slug_list as $beat_slug): 
-				$beat = get_term_by('slug', $beat_slug, $category.'-beats');
-				$beat_link = get_term_link($beat);
-				if(is_wp_error($beat_link)) continue;
-				?>
-                <li><a href="<?php echo $beat_link; ?>"><?php echo $beat->name; ?></a></li>
-            <?php endforeach; ?>
-            </ul>
-        </li>
-    </ul>
-	<?php 
-}
+?>

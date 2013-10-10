@@ -693,13 +693,14 @@ add_filter('excerpt_more', 'new_excerpt_more');
  */
 function alter_queries( $query ) {
 
+	$all_sections = array( 'news', 'oped', 'artsetc', 'sports' );
 	/* Return if this is not the main query, or if it is a back end query */
     if ( is_admin() || ! $query->is_main_query() ) {
         return;
     }
 
     if ( is_front_page() ) {
- 		$query->set( 'post_type', array( 'news', 'oped', 'artsetc', 'sports' )  );
+ 		$query->set( 'post_type',  $all_sections );
 		$query->set('posts_per_page', 25);
         $query->set( 'tax_query',
             array(
@@ -718,16 +719,29 @@ function alter_queries( $query ) {
     } 
 
     if( $query->is_author ) {
-    	$query->set( 'post_type', array( 'news', 'oped', 'artsetc', 'sports' )  );
+    	$query->set( 'post_type', $all_sections  );
     }
 
-    if ( is_search() ) {
-        $refine = $_GET['search_refined'];
-        if ($refine) {
-            if ($query->is_search) {
-                $query->set('s', $refine . ' ' . $query->get('s') );
-            }
-        }
+    if( is_search() ) {
+    	if (isset($_GET['section'])) {
+	    	$section = array(strtolower($_GET['section']));
+	    	if ($section == array('all') || !in_array($section[0], $all_sections)) {
+	    		$section = $all_sections;
+	    	}
+	    } else {
+	    	$section = $all_sections;
+	    }
+    	$query->set('post_type', $section);
+
+    	if (isset($_GET['date_range'])) {
+    		$date_range = $_GET['date_range'];
+    		if ($date_range == 'This month') {
+    			$query->set('year', date('Y'));
+    			$query->set('monthnum', date('m'));
+    		} elseif ($date_range == 'This year') {
+    			$query->set('year', date('Y'));
+    		}
+    	}
     }
 
     return;
@@ -929,4 +943,34 @@ function hrld_author_twitter($author_id = null) {
 	echo get_the_author_meta("_hrld_twitter",$author_id);
 	echo "HI";
 
+}
+
+/**
+ * Turn comments on by default
+ *
+ * @author Will Haynes
+ * @url http://wordpress.stackexchange.com/questions/38405/why-are-the-comments-disabled-by-default-on-my-custom-post-types
+ */
+function hrld_default_comments_on( $data ) {
+
+    $data['comment_status'] = 'open';
+    return $data;
+    
+}
+add_filter( 'wp_insert_post_data', 'hrld_default_comments_on' );
+
+// Massively ugly, but beats should be kept out of the templates
+function exa_get_beats_slug_list($category) {
+	if ($category == 'news') {
+		$beats_slug_list = array('madison','higher-edu','wisconsin','student-gov','us','campus','uw-research','uw-system');
+	} elseif ($category == 'oped') {
+		$beats_slug_list = array('column','editorial','opinion-desk','letter','public-editor','oped-top-story');
+	} elseif ($category == 'sports') {
+		$beats_slug_list = array('baseball','sports-column','football','mens-basketball','mens-hockey','mens-swimming','softball','volleyball','womens-basketball','womens-hockey','womens-swimming');
+	} elseif ($category == 'artsetc') {
+		$beats_slug_list = array('art','corner','books','chew-on-this','arts-column','film','food','herald-arcade','hump-day','low-fat-tue','arts-media','music','arts-point-counterpoint','tv');
+	} else {
+		$beats_slug_list = array();
+	}
+	return $beats_slug_list;
 }

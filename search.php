@@ -7,16 +7,38 @@
  * @since Twenty Thirteen 1.0
  */
 
-get_header(); ?>
+get_header(); 
+
+hrld_top_leaderboard_ad();
+
+?>
 
 	<div id="primary" class="content-area">
-		<div id="content" class="site-content" role="main">
 
+		<header class="page-header">
+			<h1 class="page-title"><?php printf( __( 'Search Results for: %s', 'twentythirteen' ), get_search_query() ); ?></h1>
+			<form role="search" method="get" class="search-form" action="<?php echo home_url( '/' ); ?>">
+                <input type="hidden" name="section"
+                <?php if (isset($section_query_var)) {
+                    echo 'value="'.$section_query_var.'"';
+                } else {
+                    echo 'value="All"';
+                }
+                ?> />
+                <input type="hidden" name="date_range" 
+                <?php if (isset($dates_query_var)) { 
+                    echo 'value="'.$dates_query_var.'"';
+                } else {
+                    echo 'value="All time"';
+                }
+                ?> />
+                <input type="search" class="search-field" placeholder="<?php the_search_query(); ?>" value="<?php the_search_query(); ?>" name="s" title="Search for:" />
+                <input type="submit" class="search-submit" value="Search" />
+            </form>
+		</header>
+
+		<div id="stream">
 		<?php if ( have_posts() ) : ?>
-
-			<header class="page-header">
-				<h1 class="page-title"><?php printf( __( 'Search Results for: %s', 'twentythirteen' ), get_search_query() ); ?></h1>
-			</header>
 
 			<?php /* The loop */ ?>
 			<?php while ( have_posts() ) : the_post(); ?>
@@ -26,11 +48,14 @@ get_header(); ?>
 			<?php twentythirteen_paging_nav(); ?>
 
 		<?php else : ?>
-			<?php get_template_part( 'content', 'none' ); ?>
+		<hr />
+		<h2>We couldn't find anything with your search terms!</h2>
 		<?php endif; ?>
 
-		</div><!-- #content -->
+		</div><!-- #stream -->
+		
+		<?php get_sidebar('search'); ?>
+
 	</div><!-- #primary -->
 
-<?php get_sidebar('search'); ?>
 <?php get_footer(); ?>

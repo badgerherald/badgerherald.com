@@ -579,25 +579,25 @@ body.admin-bar #wrapper {
 /* META DATA
 
 .meta-author a {
-	font-family: $headline;
-	color: $heraldblack;
-	text-transform: uppercase;
-	font-size: em(14,16);
-	line-height: em(14,21);
+  font-family: $headline;
+  color: $heraldblack;
+  text-transform: uppercase;
+  font-size: em(14,16);
+  line-height: em(14,21);
 }  */
 /* Author thumbnail 
 
 .tiny-avatar {
-	border-radius: 2px;
-	overflow: hidden;
-	float:left;
-	width: 18px;
-	height: 18px;
-	margin-right: 10px;
-	img {
-		width: 18px;
-		height: 18px;
-	}
+  border-radius: 2px;
+  overflow: hidden;
+  float:left;
+  width: 18px;
+  height: 18px;
+  margin-right: 10px;
+  img {
+    width: 18px;
+    height: 18px;
+  }
 }*/
 /** 
  * Sidebar & Widget stylings
