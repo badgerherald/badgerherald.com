@@ -5,20 +5,47 @@
 
 #masthead {
 	background: $heraldblack;
-	height: 100%;
-	width: flex(160,1220);
-	position: fixed;
+	height: 52px;
+	width: 100%;
+	margin-bottom: 36px;
+	position: relative;
 	top:0;
+}
+
+.wrapper{
+	width: 90%;
+	margin: 0 auto;
+	position: relative;
+	//max-width: 860px;
 }
 
 #masthead {
 	#logo {
 		display: block;
-		height:auto;
-		width:flex(120,160);
-		padding: 0 flex(20,160);
+		height: 76px;
+		width: auto;
+		padding: 0;
+		position: absolute;
+		//left: -90px;
 		color: #fff;
 	}
+}
+.nav-control{
+	text-align: center;
+	float: right;
+	display: inline-block;
+	height: 36px;
+	padding: 16px 16px 0px;
+	opacity: .75;
+	&:hover{
+		opacity: 1;
+	}
+}
+.nav-icon{
+	background-image: url(img/icons/nav-icon.svg);
+	display: inline-block;
+	width: 21px;
+	height: 20px;
 }
 
 #masthead {
@@ -37,17 +64,28 @@
 }
 
 /* If logged in, we have to manually push anything fixed down */
-body.admin-bar #masthead { top: 32px !important; } 
+/* body.admin-bar #masthead { top: 32px !important; } */
 body.admin-bar #wrapper { margin-top: 145px; }
 
 /**
  * Navigation bar styling
  */
+#masthead nav{
+	position: relative;
+}
 
 #nav {
+	position: absolute;;
 	list-style-type: none;
+	width: 80%;
+	left: 80px;
 	margin: 0;
 	padding: 0;
+	top: 52px;
+	height: 0;
+	overflow: hidden;
+	background: $heraldblack;
+	z-index: 200;
 }
 
 #nav li {
@@ -57,12 +95,10 @@ body.admin-bar #wrapper { margin-top: 145px; }
 
 #nav li a {
 	display: block;
-	width: 100%;
 	/* line height is 16px */
 	border-bottom: 1px solid $heralddarkgrey;
-	width: flex(120,160);
-	text-align: right;
-	padding: 6px flex(20,160) 6px flex(20,160);
+	text-align: left;
+	padding: 6px 80px 6px 10px;
 	color: #b6b6b6;
 	&:hover {
 		color: #fff;
@@ -78,13 +114,12 @@ body.admin-bar #wrapper { margin-top: 145px; }
 		display: none !important;
 	}
 	input {
-		width: flex(120,160);
-		padding: 6px flex(20,160);
-		display: block;
+		padding: 6px 10px;
+		//display: block;
+		display: none;
 		border: none;
 		background: $heraldblack;
 		border-bottom: 1px solid $heralddarkgrey;
-		text-align: right;
 		color : #b6b6b6;
 	}
 	form {
@@ -101,7 +136,19 @@ body.admin-bar #wrapper { margin-top: 145px; }
 		color: #fff;
 	}
 	label {
-		display: none;
+		display: block;
+		width: 32px;
+		height: 52px;
+		text-indent: -999em;
+		margin: 0;
+		padding: 0 10px;
+		background: no-repeat 50% 22px url(img/icons/iconmonstr-magnifier-5-icon.svg);
+		background-size: 20px 20px;
+		opacity: .7;
+	}
+	label:hover{
+		opacity: 1;
+		cursor: pointer;
 	}
 	input[type=submit] {
 		display: none;

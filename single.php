@@ -18,7 +18,7 @@ get_header();
 	<?php get_template_part( 'content', get_post_format() ); ?>
 	<div class="clearfix"></div>
 	<?php comments_template(); ?>
-    <?php exa_get_tweets_API(); ?>
+    <?php if(exa_has_tweets_cache())exa_get_tweets_API(); ?>
 
 <?php endwhile; ?>
 

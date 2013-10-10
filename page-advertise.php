@@ -13,7 +13,7 @@
 
 get_header(); ?>
 
-	<div id="primary" class="content-area" style:"width:100%;position:relative;">
+	<div class="content-area" style:"width:100%;position:relative;">
 		
 
 			<?php /* The loop */ ?>
@@ -69,5 +69,5 @@ get_header(); ?>
 			<?php endwhile; ?>
 
 
-	</div><!-- #primary -->
+	</div>
 <?php get_footer(); ?>

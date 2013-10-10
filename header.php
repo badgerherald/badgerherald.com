@@ -43,14 +43,18 @@ include('macros.php');
 <body <?php body_class(); ?>>
 
 	<div id="masthead">
-		<div id="tagline">
+    	<div class="wrapper">
+		<!-- <div id="tagline">
 			UW-Madison's Premier Independent Student Newspaper <strong> &mdash; since 1969</strong>.
-		</div>
+		</div> -->
 		<a href="<?php bloginfo('url'); ?>">
-			<img id="logo" src="<?php bloginfo('template_url') ?>/img/logo/header-2.png" />
+			<img id="logo" src="<?php bloginfo('template_url') ?>/img/logo/header-4.png" />
 		</a>
 
 		<nav role="main">
+        <a href="#nav" class="nav-control" alt="Menu">
+	         <div class="nav-icon" ></div>
+        </a>
 		<ul id="nav">
 			<li><a href="<?php bloginfo('url'); ?>/news/">News</a></li>
 			<li><a href="<?php bloginfo('url'); ?>/oped/">Opinion</a></li>
@@ -67,11 +71,11 @@ include('macros.php');
 			</li>
 		</ul>
 		</nav>
-
+		</div>
 	</div>
 
 	<div id="page">
-	<div id="page-inner">
+	<div id="page-inner" class="wrapper">
 		<div id="primary">
 		<?php /*
 		<header id="masthead" class="site-header" role="banner">

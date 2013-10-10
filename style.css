@@ -1,3 +1,4 @@
+@charset "IBM437";
 /*
 Theme Name: Exa
 Theme URI: http://badgerherald.com/exa
@@ -387,7 +388,7 @@ h1 {
 
 h2 {
   font-family: yanone kaffeesatz, helvetica, arial, sans-serif;
-  font-size: 1.467em;
+  font-size: 1.46667em;
   line-height: 27px;
   margin: 0 0 -6px 0;
   padding: 0; }
@@ -404,30 +405,21 @@ hr {
  * Base Page Syles (much of which is altered in responsive)
  * 
  */
-body {
-  min-width: 1060px; }
-
-#page {
-  width: 86.885%;
-  margin-left: 13.115%; }
-
 #primary {
-  width: 81.132%;
-  margin: 0 auto;
-  max-width: 860px; }
+  width: 100%;
+  margin: 0 auto; }
 
 #stream {
-  width: 62.791%;
+  width: 100%;
   float: left; }
 
 #sidebar {
-  width: 34.884%;
-  padding-left: 2.326%;
+  display: none;
   float: left; }
 
 #section-header {
-  width: 95.349%;
-  padding: 36px 2.326% 30px;
+  width: 95.34884%;
+  padding: 36px 2.32558% 30px;
   background: #191919;
   position: relative;
   text-transform: uppercase;
@@ -535,7 +527,7 @@ ul.beats-menu {
  */
 #ad-leaderboard {
   width: 100%;
-  margin: 18px 0; }
+  margin-bottom: 18px; }
 
 /** 
  * Masthead Styles
@@ -546,17 +538,40 @@ ul.beats-menu {
  */
 #masthead {
   background: #191919;
-  height: 100%;
-  width: 13.115%;
-  position: fixed;
+  height: 52px;
+  width: 100%;
+  margin-bottom: 36px;
+  position: relative;
   top: 0; }
+
+.wrapper {
+  width: 90%;
+  margin: 0 auto;
+  position: relative; }
 
 #masthead #logo {
   display: block;
-  height: auto;
-  width: 75%;
-  padding: 0 12.5%;
+  height: 76px;
+  width: auto;
+  padding: 0;
+  position: absolute;
   color: #fff; }
+
+.nav-control {
+  text-align: center;
+  float: right;
+  display: inline-block;
+  height: 36px;
+  padding: 16px 16px 0px;
+  opacity: .75; }
+  .nav-control:hover {
+    opacity: 1; }
+
+.nav-icon {
+  background-image: url(img/icons/nav-icon.svg);
+  display: inline-block;
+  width: 21px;
+  height: 20px; }
 
 #masthead #tagline {
   font-family: open sans, helvetica, arial, sans-serif;
@@ -571,19 +586,28 @@ ul.beats-menu {
   background: #2781dd; }
 
 /* If logged in, we have to manually push anything fixed down */
-body.admin-bar #masthead {
-  top: 32px !important; }
-
+/* body.admin-bar #masthead { top: 32px !important; } */
 body.admin-bar #wrapper {
   margin-top: 145px; }
 
 /**
  * Navigation bar styling
  */
+#masthead nav {
+  position: relative; }
+
 #nav {
+  position: absolute;
   list-style-type: none;
+  width: 80%;
+  left: 80px;
   margin: 0;
-  padding: 0; }
+  padding: 0;
+  top: 52px;
+  height: 0;
+  overflow: hidden;
+  background: #191919;
+  z-index: 200; }
 
 #nav li {
   font-family: open sans, helvetica, arial, sans-serif;
@@ -591,12 +615,10 @@ body.admin-bar #wrapper {
 
 #nav li a {
   display: block;
-  width: 100%;
   /* line height is 16px */
   border-bottom: 1px solid #2c2c2c;
-  width: 75%;
-  text-align: right;
-  padding: 6px 12.5% 6px 12.5%;
+  text-align: left;
+  padding: 6px 80px 6px 10px;
   color: #b6b6b6; }
   #nav li a:hover {
     color: #fff; }
@@ -607,13 +629,11 @@ body.admin-bar #wrapper {
 .search-button a {
   display: none !important; }
 .search-button input {
-  width: 75%;
-  padding: 6px 12.5%;
-  display: block;
+  padding: 6px 10px;
+  display: none;
   border: none;
   background: #191919;
   border-bottom: 1px solid #2c2c2c;
-  text-align: right;
   color: #b6b6b6; }
 .search-button form {
   position: relative; }
@@ -625,7 +645,18 @@ body.admin-bar #wrapper {
   text-align: left;
   color: #fff; }
 .search-button label {
-  display: none; }
+  display: block;
+  width: 32px;
+  height: 52px;
+  text-indent: -999em;
+  margin: 0;
+  padding: 0 10px;
+  background: no-repeat 50% 22px url(img/icons/iconmonstr-magnifier-5-icon.svg);
+  background-size: 20px 20px;
+  opacity: .7; }
+.search-button label:hover {
+  opacity: 1;
+  cursor: pointer; }
 .search-button input[type=submit] {
   display: none; }
 
@@ -678,7 +709,7 @@ body.admin-bar #wrapper {
     color: #808080; }
 
 .stream-post.instream-stream-post .entry-thumbnail {
-  width: 25.926%;
+  width: 25.92593%;
   float: left;
   padding-top: 18px;
   margin-top: 3px;
@@ -686,7 +717,7 @@ body.admin-bar #wrapper {
   padding-right: 20px; }
 .stream-post.instream-stream-post .entry-summary {
   float: left;
-  width: 70.37%; }
+  width: 70.37037%; }
   .stream-post.instream-stream-post .entry-summary.entry-summary-full {
     width: 100%; }
 
@@ -712,14 +743,14 @@ body.admin-bar #wrapper {
     background: #fff; }
   .related-posts .related-post {
     color: #191919;
-    padding: 0 3.333%;
+    padding: 0 3.33333%;
     border-right: 2px solid #f5f2f2;
     padding-bottom: 200px;
     margin-bottom: -200px; }
     .related-posts .related-post .related-post-type {
       color: #2781dd;
       text-transform: uppercase;
-      font-size: 0.813em;
+      font-size: 0.8125em;
       position: relative;
       bottom: 1px;
       margin-right: 3px; }
@@ -734,7 +765,7 @@ body.admin-bar #wrapper {
       background: url("img/icons/arrow-right-blue.png") no-repeat 16px center; }
 
 .related-posts-3-count .related-post {
-  width: 28.333%;
+  width: 28.33333%;
   float: left; }
 .related-posts-3-count .related-post-type {
   clear: left; }
@@ -745,7 +776,7 @@ body.admin-bar #wrapper {
   padding-bottom: 6px; }
 
 .related-posts-2-count .related-post, .related-posts-1-count .related-post {
-  width: 46.296%;
+  width: 46.2963%;
   float: left; }
 .related-posts-2-count img.thumbnail, .related-posts-1-count img.thumbnail {
   max-width: 32%;
@@ -760,7 +791,7 @@ body.admin-bar #wrapper {
   float: left; }
 
 .related-posts-1-count .related-post {
-  width: 74.074%;
+  width: 74.07407%;
   float: left; }
 .related-posts-1-count img.thumbnail {
   max-width: 30%;
@@ -816,7 +847,7 @@ body.admin-bar #wrapper {
     border-top: 1px solid #ededed;
     margin-top: -1px;
     width: 70%;
-    padding: 12px 1.667%; }
+    padding: 12px 1.66667%; }
     .sidebar-posts li.post-in-sidebar a.post-permalink {
       color: #191919; }
       .sidebar-posts li.post-in-sidebar a.post-permalink:hover {
@@ -887,8 +918,8 @@ body.admin-bar #wrapper {
     visibility: hidden; }
 
 #post-sidebar {
-  width: 34.884%;
-  padding-right: 2.326%;
+  width: 34.88372%;
+  padding-right: 2.32558%;
   float: left; }
   #post-sidebar .meta-time {
     text-align: right;
@@ -897,8 +928,8 @@ body.admin-bar #wrapper {
   #post-sidebar .meta-author {
     margin: 0 0 24px 0; }
     #post-sidebar .meta-author .meta-author-left {
-      width: 73.333%;
-      margin-right: 6.667%;
+      width: 73.33333%;
+      margin-right: 6.66667%;
       float: left;
       text-align: right; }
       #post-sidebar .meta-author .meta-author-left .meta-author-link {
@@ -907,7 +938,7 @@ body.admin-bar #wrapper {
         text-transform: uppercase;
         font-size: 1.2em; }
       #post-sidebar .meta-author .meta-author-left .meta-author-role {
-        font-size: 0.867em; }
+        font-size: 0.86667em; }
     #post-sidebar .meta-author .meta-author-right {
       width: 20%;
       float: left; }
@@ -921,8 +952,8 @@ body.admin-bar #wrapper {
           height: auto; }
 
 .social {
-  width: 73.333%;
-  margin-left: 26.667%; }
+  width: 73.33333%;
+  margin-left: 26.66667%; }
   .social ul {
     list-style: none;
     padding: 0;
@@ -932,13 +963,13 @@ body.admin-bar #wrapper {
     .social ul li {
       font-family: open sans, helvetica, arial, sans-serif;
       text-transform: uppercase;
-      font-size: 0.813em;
+      font-size: 0.8125em;
       padding-bottom: 6px;
       padding-top: 6px;
       border-bottom: 2px solid #f5f2f2; }
       .social ul li a {
         position: absolute;
-        left: 54.545%; }
+        left: 54.54545%; }
       .social ul li a {
         color: #191919; }
       .social ul li a:hover {
@@ -947,8 +978,8 @@ body.admin-bar #wrapper {
         border-top: 2px solid #f5f2f2; }
 
 .post-sidebar-headlines {
-  width: 73.333%;
-  margin-left: 26.667%; }
+  width: 73.33333%;
+  margin-left: 26.66667%; }
   .post-sidebar-headlines h3 {
     border-bottom: 2px solid #f5f2f2;
     padding-bottom: 12px;
@@ -970,10 +1001,10 @@ body.admin-bar #wrapper {
 
 #content {
   float: left;
-  width: 62.791%;
+  width: 62.7907%;
   position: relative; }
   #content .article-content p:first-child {
-    font-size: 1.133em; }
+    font-size: 1.13333em; }
   #content blockquote {
     margin: 0;
     padding: 20px;
@@ -1014,7 +1045,7 @@ img.size-full, img.size-large {
   height: auto; }
 
 img.size-medium {
-  max-width: 40.741% !important;
+  max-width: 40.74074% !important;
   height: auto; }
 
 .entry-post-thumbnail-caption {
@@ -1082,8 +1113,8 @@ img.size-medium {
     padding-right: 20px; }
 
 #shoutoutform {
-  width: 76.744%;
-  margin-left: 20.93%; }
+  width: 76.74419%;
+  margin-left: 20.93023%; }
 
 #shoutoutText {
   width: 100%;
@@ -1235,33 +1266,61 @@ img.size-medium {
  * Responsive changes
  * 
  */
-@media (max-width: 1219px) {
-  #masthead {
-    width: 16.327%; }
-
-  #page {
-    width: 83.673%;
-    margin-left: 16.667%; }
-
-  #primary {
-    width: 95.122%; }
-
+@media (min-width: 768px) {
   #stream {
-    width: 58.974%; }
+    width: 58.97436%; }
 
   #sidebar {
-    width: 38.462%; }
+    width: 35.89744%;
+    padding-left: 5.12821%;
+    display: block; } }
+@media (min-width: 1026px) {
+  #masthead {
+    margin-bottom: 18px; }
 
+  .wrapper {
+    width: 980px; }
+
+  #primary {
+    width: 890px;
+    margin-left: 90px; }
+
+  .nav-control {
+    display: none; }
+
+  #nav {
+    width: auto;
+    left: auto;
+    top: auto;
+    right: 0;
+    height: 52px; }
+
+  #nav li {
+    display: inline-block;
+    float: left; }
+    #nav li:first-child a {
+      border-left: 1px solid #2c2c2c; }
+
+  #nav li a {
+    display: inline-block;
+    border-bottom: none;
+    border-right: 1px solid #2c2c2c;
+    padding: 0px 10px;
+    width: auto;
+    height: 52px;
+    line-height: 64px;
+    font-size: .85em; }
+
+  .search-button label {
+    border-right: 1px solid #2c2c2c; } }
+@media (max-width: 1219px) {
   .stream-post.instream-stream-post .entry-thumbnail {
-    width: 47.826%;
+    width: 47.82609%;
     float: left;
     padding-top: 12px;
     padding-right: 20px; }
   .stream-post.instream-stream-post .entry-summary {
     float: left;
-    width: 40.741%; }
+    width: 40.74074%; }
     .stream-post.instream-stream-post .entry-summary.entry-summary-full {
       width: 100%; } }
-@media (max-width: 1060px) {
-  #masthead {
-    position: absolute; } }

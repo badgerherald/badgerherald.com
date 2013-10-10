@@ -1,22 +1,76 @@
+@media (min-width: 768px) {
+	#stream{
+		width: flex(460,780);
+	}
+	#sidebar{
+		width: flex(280,780);
+		padding-left: flex(40,780);
+		display: block;
+	}
+}
+
+@media (min-width: 1026px) {
+	#masthead{
+		margin-bottom: 18px;
+	}
+	.wrapper{
+		width: 980px;
+	}
+	#primary{
+		width: 890px;
+		margin-left: 90px;
+	}
+	.nav-control{
+		display: none;
+	}
+	#nav{
+		width: auto;
+		left: auto;
+		top: auto;
+		right: 0;
+		height: 52px;
+	}
+	#nav li{
+		display: inline-block;
+		float: left;
+		&:first-child a{
+			border-left: 1px solid $heralddarkgrey;
+		}
+	}
+	#nav li a{
+		display: inline-block;
+		border-bottom: none;
+		border-right: 1px solid $heralddarkgrey;
+		padding: 0px 10px;
+		width: auto;
+		height: 52px;
+		line-height: 64px;
+		font-size: .85em;
+	}
+	.search-button label{
+		border-right: 1px solid $heralddarkgrey;
+	}
+	
+}
 @media (max-width: 1219px) {
 
 	#masthead {
-		width: flex(160,980);
+		//width: flex(160,980);
 	}
 
 	#page {
-		width: flex(820,980);
-		margin-left: flex(160,960);
+		//width: flex(820,980);
+		//margin-left: flex(160,960);
 	}
 
 	#primary {
-		width: flex(780,820);
+		//width: flex(780,820);
 	}
 	#stream {
-		width: flex(460,780);
+		//width: flex(460,780);
 	}
 	#sidebar {
-		width: flex(300,780);
+		//width: flex(300,780);
 	}
 	
 
@@ -43,6 +97,6 @@
 
 @media (max-width:1060px) {
 	#masthead {
-		position: absolute;
+		//position: absolute;
 	}
 }

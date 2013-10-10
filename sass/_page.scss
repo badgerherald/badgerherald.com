@@ -1,27 +1,28 @@
 body {
-	min-width: 1060px;
+	//min-width: 1060px;
 }
 
 #page {
-	width: flex(1060,1220);
-	margin-left: flex(160,1220);
+	//width: flex(1060,1220);
+	//margin-left: flex(160,1220);
 }
 
 #primary {
-	width: flex(860,1060);
+	//width: flex(860,1060);
+	width: 100%;
 	margin: 0 auto;
-	max-width:860px;
+//	max-width:860px;
 //	min-width: 
 }
 
 #stream {
-	width: flex(540,860);
+	width: 100%;
+	//width: flex(540,860);
 	float:left;
 }
 
 #sidebar {
-	width: flex(300,860);
-	padding-left: flex(20,860);
+	display: none;
 	float: left;
 }
 
@@ -162,7 +163,7 @@ ul.beats-menu {
 
 #ad-leaderboard {
 	width: 100%;
-	margin: 18px 0;
+	margin-bottom: 18px;
 }
 
 
