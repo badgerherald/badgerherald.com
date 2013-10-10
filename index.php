@@ -38,7 +38,7 @@ hrld_top_leaderboard_ad();
 
 	</div><!-- id="stream" -->
 
-	<?php //get_sidebar(); ?>
+	<?php get_sidebar(); ?>
 
 	<div id="clearfix"></div>
 
