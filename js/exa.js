@@ -32,7 +32,14 @@ $(document).ready(function() {
 		e.preventDefault();
 		$(this).find('input').first().attr("value","");
 	});
-
+	
+	$(".search-button label").click(function(e){
+		$(".search-button").find("input").first().toggleClass("search-open");
+	});
+	
+	$(".nav-control").click(function(e){
+		$("#nav").toggleClass("nav-open");
+	});
 
 	$(".add-so-button").click(function(e) {
 

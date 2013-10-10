@@ -47,14 +47,15 @@ include('macros.php');
 		<!-- <div id="tagline">
 			UW-Madison's Premier Independent Student Newspaper <strong> &mdash; since 1969</strong>.
 		</div> -->
-		<a href="<?php bloginfo('url'); ?>">
-			<img id="logo" src="<?php bloginfo('template_url') ?>/img/logo/header-4.png" />
+		<a id="logo"href="<?php bloginfo('url'); ?>">
+			<img src="<?php bloginfo('template_url') ?>/img/logo/header-5.png" />
+			<span class="name">The Badger<br /><span class="herald">HERALD</span></span>
 		</a>
 
 		<nav role="main">
-        <a href="#nav" class="nav-control" alt="Menu">
+        <div class="nav-control" alt="Menu">
 	         <div class="nav-icon" ></div>
-        </a>
+        </div>
 		<ul id="nav">
 			<li><a href="<?php bloginfo('url'); ?>/news/">News</a></li>
 			<li><a href="<?php bloginfo('url'); ?>/oped/">Opinion</a></li>

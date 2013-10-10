@@ -28,6 +28,25 @@
 		position: absolute;
 		//left: -90px;
 		color: #fff;
+		img{
+			position: absolute;
+		}
+		.name{
+			display: block;
+			position: absolute;
+			left: 90px;
+			width: 100px;
+			z-index: 300;
+			height: 44px;
+			padding-top: 8px;
+			line-height: 1.4em;
+			font-size: .9em;
+		}
+		.herald{
+			font-family: open sans, helvetica, arial, sans-serif;
+			font-weight: bold;
+			font-size: 1.8em;
+		}
 	}
 }
 .nav-control{
@@ -39,6 +58,7 @@
 	opacity: .75;
 	&:hover{
 		opacity: 1;
+		cursor: pointer;
 	}
 }
 .nav-icon{
@@ -87,7 +107,9 @@ body.admin-bar #wrapper { margin-top: 145px; }
 	background: $heraldblack;
 	z-index: 200;
 }
-
+#nav.nav-open{
+	height: auto;
+}
 #nav li {
 	font-family: $caption;
 	text-transform: uppercase;
@@ -115,8 +137,7 @@ body.admin-bar #wrapper { margin-top: 145px; }
 	}
 	input {
 		padding: 6px 10px;
-		//display: block;
-		display: none;
+		display: block;
 		border: none;
 		background: $heraldblack;
 		border-bottom: 1px solid $heralddarkgrey;
@@ -125,7 +146,9 @@ body.admin-bar #wrapper { margin-top: 145px; }
 	form {
 		position: relative;
 	}
-
+	label{
+		display: none;
+	}
 	input:hover {
 		color: #ffffff !important;
 		cursor: pointer;
@@ -134,21 +157,6 @@ body.admin-bar #wrapper { margin-top: 145px; }
 		outline-style: none;
 		text-align: left;
 		color: #fff;
-	}
-	label {
-		display: block;
-		width: 32px;
-		height: 52px;
-		text-indent: -999em;
-		margin: 0;
-		padding: 0 10px;
-		background: no-repeat 50% 22px url(img/icons/iconmonstr-magnifier-5-icon.svg);
-		background-size: 20px 20px;
-		opacity: .7;
-	}
-	label:hover{
-		opacity: 1;
-		cursor: pointer;
 	}
 	input[type=submit] {
 		display: none;

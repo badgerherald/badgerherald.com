@@ -556,6 +556,22 @@ ul.beats-menu {
   padding: 0;
   position: absolute;
   color: #fff; }
+  #masthead #logo img {
+    position: absolute; }
+  #masthead #logo .name {
+    display: block;
+    position: absolute;
+    left: 90px;
+    width: 100px;
+    z-index: 300;
+    height: 44px;
+    padding-top: 8px;
+    line-height: 1.4em;
+    font-size: .9em; }
+  #masthead #logo .herald {
+    font-family: open sans, helvetica, arial, sans-serif;
+    font-weight: bold;
+    font-size: 1.8em; }
 
 .nav-control {
   text-align: center;
@@ -565,7 +581,8 @@ ul.beats-menu {
   padding: 16px 16px 0px;
   opacity: .75; }
   .nav-control:hover {
-    opacity: 1; }
+    opacity: 1;
+    cursor: pointer; }
 
 .nav-icon {
   background-image: url(img/icons/nav-icon.svg);
@@ -609,6 +626,9 @@ body.admin-bar #wrapper {
   background: #191919;
   z-index: 200; }
 
+#nav.nav-open {
+  height: auto; }
+
 #nav li {
   font-family: open sans, helvetica, arial, sans-serif;
   text-transform: uppercase; }
@@ -630,13 +650,15 @@ body.admin-bar #wrapper {
   display: none !important; }
 .search-button input {
   padding: 6px 10px;
-  display: none;
+  display: block;
   border: none;
   background: #191919;
   border-bottom: 1px solid #2c2c2c;
   color: #b6b6b6; }
 .search-button form {
   position: relative; }
+.search-button label {
+  display: none; }
 .search-button input:hover {
   color: #ffffff !important;
   cursor: pointer; }
@@ -644,19 +666,6 @@ body.admin-bar #wrapper {
   outline-style: none;
   text-align: left;
   color: #fff; }
-.search-button label {
-  display: block;
-  width: 32px;
-  height: 52px;
-  text-indent: -999em;
-  margin: 0;
-  padding: 0 10px;
-  background: no-repeat 50% 22px url(img/icons/iconmonstr-magnifier-5-icon.svg);
-  background-size: 20px 20px;
-  opacity: .7; }
-.search-button label:hover {
-  opacity: 1;
-  cursor: pointer; }
 .search-button input[type=submit] {
   display: none; }
 
@@ -1293,13 +1302,15 @@ img.size-medium {
     left: auto;
     top: auto;
     right: 0;
-    height: 52px; }
+    height: 52px;
+    overflow: visible; }
 
   #nav li {
     display: inline-block;
     float: left; }
     #nav li:first-child a {
-      border-left: 1px solid #2c2c2c; }
+      border-left: 1px solid #2c2c2c;
+      border-top: none; }
 
   #nav li a {
     display: inline-block;
@@ -1312,7 +1323,33 @@ img.size-medium {
     font-size: .85em; }
 
   .search-button label {
-    border-right: 1px solid #2c2c2c; } }
+    display: block;
+    width: 32px;
+    height: 52px;
+    text-indent: -999em;
+    border-right: 1px solid #2c2c2c;
+    margin: 0;
+    padding: 0 10px;
+    background: no-repeat 50% 22px url(img/icons/iconmonstr-magnifier-5-icon.svg);
+    background-size: 20px 20px;
+    opacity: .7; }
+    .search-button label:hover {
+      opacity: 1;
+      cursor: pointer; }
+
+  .search-button input {
+    display: none; }
+
+  .search-button input.search-open {
+    display: block;
+    position: absolute;
+    bottom: -37px;
+    right: 0;
+    width: 182px;
+    height: 24px;
+    border: 1px solid #2c2c2c;
+    background: #f5f2f2;
+    color: #2c2c2c; } }
 @media (max-width: 1219px) {
   .stream-post.instream-stream-post .entry-thumbnail {
     width: 47.82609%;

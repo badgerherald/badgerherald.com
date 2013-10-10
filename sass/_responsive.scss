@@ -29,12 +29,14 @@
 		top: auto;
 		right: 0;
 		height: 52px;
+		overflow: visible;
 	}
 	#nav li{
 		display: inline-block;
 		float: left;
 		&:first-child a{
 			border-left: 1px solid $heralddarkgrey;
+			border-top: none;
 		}
 	}
 	#nav li a{
@@ -47,10 +49,37 @@
 		line-height: 64px;
 		font-size: .85em;
 	}
-	.search-button label{
-		border-right: 1px solid $heralddarkgrey;
-	}
 	
+	.search-button label {
+		display: block;
+		width: 32px;
+		height: 52px;
+		text-indent: -999em;
+		border-right: 1px solid $heralddarkgrey;
+		margin: 0;
+		padding: 0 10px;
+		background: no-repeat 50% 22px url(img/icons/iconmonstr-magnifier-5-icon.svg);
+		background-size: 20px 20px;
+		opacity: .7;
+		&:hover{
+			opacity: 1;
+			cursor: pointer;
+		}
+	}
+	.search-button input{
+		display: none;
+	}
+	.search-button input.search-open{
+		display: block;
+		position: absolute;
+		bottom: -37px;
+		right: 0;
+		width: 182px;
+		height: 24px;
+		border: 1px solid $heralddarkgrey;
+		background: $heraldlightgrey;
+		color: $heralddarkgrey;
+	}
 }
 @media (max-width: 1219px) {
 
