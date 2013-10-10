@@ -953,7 +953,7 @@ function hrld_author_twitter($author_id = null) {
  */
 function hrld_default_comments_on( $data ) {
 
-    $data['comment_status'] = 1;
+    $data['comment_status'] = 'open';
     return $data;
     
 }
