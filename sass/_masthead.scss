@@ -98,7 +98,8 @@ body.admin-bar #wrapper { margin-top: 145px; }
 	position: absolute;;
 	list-style-type: none;
 	width: 80%;
-	left: 80px;
+	max-wiwdth: 300px;
+	right: 0;
 	margin: 0;
 	padding: 0;
 	top: 52px;
@@ -109,6 +110,9 @@ body.admin-bar #wrapper { margin-top: 145px; }
 }
 #nav.nav-open{
 	height: auto;
+	overflow: visible;
+	top: 64px;
+	border: 1px solid $heralddarkgrey;
 }
 #nav li {
 	font-family: $caption;
@@ -127,10 +131,6 @@ body.admin-bar #wrapper { margin-top: 145px; }
 	}
 }
 
-#nav li:first-child a {
-	border-top: 1px solid $heralddarkgrey;
-}
-
 .search-button {
 	a {
 		display: none !important;
@@ -140,7 +140,6 @@ body.admin-bar #wrapper { margin-top: 145px; }
 		display: block;
 		border: none;
 		background: $heraldblack;
-		border-bottom: 1px solid $heralddarkgrey;
 		color : #b6b6b6;
 	}
 	form {

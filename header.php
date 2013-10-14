@@ -56,7 +56,7 @@ include('macros.php');
         <div class="nav-control" alt="Menu">
 	         <div class="nav-icon" ></div>
         </div>
-		<ul id="nav">
+		<ul id="nav" class="dropdown-border">
 			<li><a href="<?php bloginfo('url'); ?>/news/">News</a></li>
 			<li><a href="<?php bloginfo('url'); ?>/oped/">Opinion</a></li>
 			<li><a href="<?php bloginfo('url'); ?>/artsetc/">ArtsEtc.</a></li>

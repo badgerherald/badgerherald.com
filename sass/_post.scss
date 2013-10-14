@@ -36,21 +36,18 @@
 }
 
 #post-sidebar {
-	width: flex(300,860);
-	padding-right: flex(20,860);
+	width: 100%;
 	float:left;
 	.meta-time {
-		text-align: right;
 		display: block;
 		margin:0 0 12px 0;
 	}
 	.meta-author {
-		margin: 0 0 24px 0;
+		float: left;
+		width: 60%;
 		.meta-author-left {
-			width: flex(220,300);
 			margin-right: flex(20,300);
 			float : left;
-			text-align: right;
 			.meta-author-link {
 				font-family: $headline;
 				color: $heraldblack;
@@ -76,44 +73,46 @@
 			}
 		}
 	}
+	#div-gpt-ad-1379013535352-5{
+		display: none;
+	}
 
 }
 
 .social { 
-	width: flex(220,300);
-	margin-left: flex(80,300);
+	width: 100%;
+	margin-left: 5%;
+	float: left;
 	ul {
 	list-style: none;
 	padding: 0;
 	font-family: $headline;
 	position: relative;
-	margin-top: 0;
+	margin: 0;
 		li {
 			font-family: $caption;
 			text-transform: uppercase;
 			font-size: em(13,16);
-			a {
-				position: absolute;
-
-				left: flex(120,220);
-			}
 			padding-bottom: 6px;
 			padding-top: 6px;
-			border-bottom: 2px solid $heraldlightgrey;
+			display: inline-block;
+			float: left;
+			width: 33%;
 			a {
 				color: $heraldblack;
+				&:hover {
+					color: $heraldblue;
+				}
 			}
-			a:hover {
-				color: $heraldblue;
-			}
-			&:first-child {
-				border-top: 2px solid $heraldlightgrey;
+			> span{
+				font-size: em(12,16);
 			}
 		}
 	}
 }
 
 .post-sidebar-headlines {
+	display: none;
 	width: flex(220,300);
 	margin-left: flex(80,300);
 	h3 {
@@ -143,7 +142,7 @@
 
 #content {
 	float:left;
-	width: flex(540,860);
+	width: 100%;
 	position: relative;
 
 	.article-content {
@@ -267,6 +266,7 @@ img.size-medium {
 }
 
 .related-posts-in-article {
+	display: none;
 	width: flex(200,540);
 	float: right;
 	margin-left: flex(20,540);
