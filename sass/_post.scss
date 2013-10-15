@@ -141,65 +141,99 @@
 	}
 }
 
+
+/* Various styling within the content */
+
 #content {
 	float:left;
 	width: flex(540,860);
 	position: relative;
+}
 
-	.article-content {
-		p:first-child {
-			font-size: em(17);
-		}
+.article-content {
 	padding-top: 6px !important;
-
-	}
+	p:first-child {
+		font-size: em(17);
+	}	
 	blockquote {
 		margin: 0;
 		padding: 20px;
 		background:$heraldlightgrey;
 	}
-		.alignright {
-			float:right; 
-			margin:0 0 1em 1em
-		}
-		.alignleft {
-			float:left; 
-			margin:0 1em 1em 0
-		}
-		.aligncenter {display: block; margin-left: auto; margin-right: auto}
-		a .alignright {float:right; margin:0 0 1em 1em}
-		a .alignleft {float:left; margin:0 1em 1em 0}
-		a .aligncenter {display: block; margin-left: auto; margin-right: auto}
-
-		.wp-caption {
-			padding-top: 12px;
-		}
 }
+
+
+/* Images within posts and captions */
 
 .article-content {
 
+
+	/* Nothing around the image */
+
+	img {
+		max-width: flex(120,540) !important;
+		height: auto !important;
+		background: red;
+		&.alignleft {
+			float:left;
+			padding: 0 0 flex(20,540) flex(10,540);
+		}	
+		&.alignright {
+			float:right;
+		}
+		&.aligncenter, &.alignnone {
+			float:none;
+		}
+	}
+	/*
+	.alignright {
+		float:right; 
+		margin:0 0 1em 1em
+	}
+	.wp-caption.alignleft {
+		float:left; 
+		margin:0 1em 1em 0
+	}
+	.aligncenter {display: block; margin-left: auto; margin-right: auto}
+	
+	.wp-caption.alignright {
+		position: relative !important;
+		// float:right; 
+		width: flex(220,540) !important;
+		margin:0 0 1em 1em;
+		img {
+			width: 100%;
+		}
+	}
+	
+	.wp-caption.alignleft {float:left; margin:0 1em 1em 0}
+	
+	.aligncenter {display: block; margin-left: auto; margin-right: auto}
+
+	.wp-caption {
+		padding-top: 12px;
+	}
+	.wp-caption-text {
+		font-family: $caption;
+		font-size: em(14,16);
+		font-color: $heralddarkgrey;
+	} */
 }
-
-.wp-caption-text {
-	font-family: $caption;
-	font-size: em(14,16);
-	font-color: $heralddarkgrey;
-
-}
-
+/*
 .wp-caption {
 	max-width: 100% !important;
 }
 
-img.size-full, img.size-large {
+.wp-content > img.size-full, .wp-content > img.size-large {
 	max-width: 100% !important;
 	height: auto;
 }
 
-img.size-medium {
+.wp-content > img.size-medium {
 	max-width: flex(220,540) !important;
 	height: auto;
 }
+*/
 
 .entry-img-featured {
 	position: relative;
