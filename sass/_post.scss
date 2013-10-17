@@ -167,73 +167,158 @@
 
 .article-content {
 
-
+	position: relative;
 	/* Nothing around the image */
 
 	img {
-		max-width: flex(120,540) !important;
 		height: auto !important;
 		background: red;
 		&.alignleft {
 			float:left;
 			padding: 0 0 flex(20,540) flex(10,540);
 		}	
+		/* Align */
 		&.alignright {
 			float:right;
+			padding: 0px 0 18px 0;
+			padding-left: 20px;
+		}
+		&.alignleft {
+			float:left;
+			padding: 0 0 18px 0;
+			padding-right:20px;
 		}
 		&.aligncenter, &.alignnone {
 			float:none;
 		}
-	}
-	/*
-	.alignright {
-		float:right; 
-		margin:0 0 1em 1em
-	}
-	.wp-caption.alignleft {
-		float:left; 
-		margin:0 1em 1em 0
-	}
-	.aligncenter {display: block; margin-left: auto; margin-right: auto}
-	
-	.wp-caption.alignright {
-		position: relative !important;
-		// float:right; 
-		width: flex(220,540) !important;
-		margin:0 0 1em 1em;
-		img {
+		/* Size */
+		&.size-medium {
+			width: flex(220,540) !important;
+		}
+		&.size-full {
 			width: 100%;
+			float: none;
+			padding: 0 0 18px 0;
 		}
 	}
-	
-	.wp-caption.alignleft {float:left; margin:0 1em 1em 0}
-	
-	.aligncenter {display: block; margin-left: auto; margin-right: auto}
+
+	.media-credit-container {
+		height: auto !important;
+		font-family: $caption;
+		.media-credit {
+			color: $heraldblack;
+			font-size: em(12,16);
+			text-transform: uppercase;
+			text-align: left;
+			margin: 0;
+			line-height: 21px;
+		}
+		p {
+			font-family: $caption;
+			color: #999;
+			font-size: em(13,16);
+			line-height: 18px;
+			margin:0;
+		}
+		.media-credit-container {
+			max-width: 100% !important;
+			width: 100% !important;
+		}
+		img {
+			max-width: 100% !important;
+			width: 100% !important;
+		}
+		&.alignleft {
+			float:left;
+			padding: 0 0 flex(20,540) flex(10,540);
+		}	
+		/* Align */
+		&.alignright {
+			float:right;
+			width: flex(220,540) !important;
+			padding: 0px 0 6px 0;
+			padding-left: 20px;
+		}
+		&.alignleft {
+			float:left;
+			width: flex(220,540) !important;
+			padding: 0 0 6px 0;
+			padding-right:20px;
+		}
+		&.aligncenter, &.alignnone {
+			float:none;
+		}
+		/* Size */
+		&.size-medium {
+			width: flex(220,540) !important;
+		}
+		&.size-full {
+			width: 100%;
+			float: none;
+			padding: 0 0 18px 0;
+		}
+	}
 
 	.wp-caption {
-		padding-top: 12px;
-	}
-	.wp-caption-text {
+		height: auto !important;
 		font-family: $caption;
-		font-size: em(14,16);
-		font-color: $heralddarkgrey;
-	} */
-}
-/*
-.wp-caption {
-	max-width: 100% !important;
-}
+		.media-credit {
+			color: $heraldblack;
+			font-size: em(12,16);
+			text-transform: uppercase;
+			text-align: left;
+			margin: 0;
+			line-height: 21px;
+		}
+		p {
+			font-family: $caption;
+			color: #999;
+			font-size: em(13,16);
+			line-height: 18px;
+			margin:0;
+		}
+		.media-credit-container {
+			max-width: 100% !important;
+			width: 100% !important;
+			padding:0 !important;
+			margin:0 !important;
+		}
+		img {
+			max-width: 100% !important;
+			width: 100% !important;
+		}
+		&.alignleft {
+			float:left;
+			padding: 0 0 flex(20,540) flex(10,540);
+		}	
+		/* Align */
+		&.alignright {
+			float:right;
+			width: flex(220,540) !important;
+			padding: 0px 0 6px 0;
+			padding-left: 20px;
+		}
+		&.alignleft {
+			float:left;
+			width: flex(220,540) !important;
+			padding: 0 0 6px 0;
+			padding-right:20px;
+		}
+		&.aligncenter, &.alignnone {
+			float:none;
+		}
+		/* Size */
+		&.size-medium {
+			width: flex(220,540) !important;
+		}
+		&.size-full {
+			width: 100%;
+			float: none;
+			padding: 0 0 18px 0;
+		}
+	}
 
-.wp-content > img.size-full, .wp-content > img.size-large {
-	max-width: 100% !important;
-	height: auto;
 }
-
-.wp-content > img.size-medium {
-	max-width: flex(220,540) !important;
-	height: auto;
-}
-*/
 
 .entry-img-featured {
 	position: relative;
