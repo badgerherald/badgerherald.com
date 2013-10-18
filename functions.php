@@ -634,7 +634,7 @@ function register_sections() {
 		$capabilities = array(
 			'edit_post'           => 'edit_posts',
 			'read_post'           => 'read_post',
-			'delete_post'         => 'delete_post',
+			'delete_posts'        => 'delete_posts',
 			'edit_posts'          => 'edit_posts',
 			'edit_others_posts'   => 'edit_others_posts',
 			'publish_posts'       => 'publish_posts',
