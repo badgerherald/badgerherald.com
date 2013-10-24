@@ -172,7 +172,6 @@
 
 	img {
 		height: auto !important;
-		background: red;
 		&.alignleft {
 			float:left;
 			padding: 0 0 flex(20,540) flex(10,540);
@@ -394,4 +393,11 @@
 		float:none;
 		margin-bottom: 12px;
 	}
+}
+
+.letter-to-editor-disclaimer {
+	background: #fff7c9;
+	padding: 18px 20px;
+	font-family: $caption;
+	font-size: em(13);
 }

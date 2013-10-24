@@ -94,14 +94,6 @@
 
 			<?php hrld_sidebar_ad(); ?>
 
-
-			
-
-
-			<div class="post-sidebar-headlines">
-			<h3> Top Headlines </h3>
-			<?php include("most-commented.php"); ?>
-			</div>
 		</div><!-- id="post-sidebar" -->
 
 
@@ -144,6 +136,10 @@
 
 
 			<?php the_content() ?>
+
+			<?php if( get_the_author() == "Letter to the Editor" ) : ?>
+				<p class="letter-to-editor-disclaimer"><em><strong>Letters to the editor</strong> are published on the descretion of the opinion desk and editor.  They may not reflect the views of the Herald.  Email your own letters to the editor to oped@badgerherald.com</em></p>
+			<?php endif; ?>
 			</div>
 
 			<div class="entry-meta">
