@@ -62,7 +62,8 @@
 	}
 }
 .nav-icon{
-	background-image: url(img/icons/nav-icon.svg);
+	background: url(img/icons/nav_icon.png);
+	background-image: url(img/icons/nav-icon.svg), none;
 	display: inline-block;
 	width: 21px;
 	height: 20px;

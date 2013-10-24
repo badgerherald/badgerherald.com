@@ -974,3 +974,13 @@ function exa_get_beats_slug_list($category) {
 	}
 	return $beats_slug_list;
 }
+
+/**
+ * Add container to video embeds
+ *
+ * By Matthew Neil
+ */
+add_filter('embed_oembed_html', 'hrld_responsive_embed_oembed_html', 99, 4);
+function hrld_responsive_embed_oembed_html($html, $url, $attr, $post_id) {
+  return '<div class="video-embed-container">' . $html . '</div>';
+}

@@ -91,8 +91,9 @@
 
 			</div><!-- class="social" -->
 
-
+			<div id="hrld-post-sidebar-ad">
 			<?php hrld_sidebar_ad(); ?>
+			</div>
 
 
 			

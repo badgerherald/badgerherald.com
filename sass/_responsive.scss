@@ -45,7 +45,7 @@
 				text-align: right;
 			}
 		}
-		#div-gpt-ad-1379013535352-5{
+		#hrld-post-sidebar-ad{
 			display: block;
 		}
 	}
@@ -128,7 +128,8 @@
 		border-right: 1px solid $heralddarkgrey;
 		margin: 0;
 		padding: 0 10px;
-		background: no-repeat 50% 22px url(img/icons/iconmonstr-magnifier-5-icon.svg);
+		background: no-repeat 50% 22px url(img/icons/iconmonstr_magnifier_5_icon.png);
+		background-image: url(img/icons/iconmonstr-magnifier-5-icon.svg), none;
 		background-size: 20px 20px;
 		opacity: .7;
 		&:hover{
