@@ -8,6 +8,7 @@
 		margin: 2%;
 		padding: 1%;
 		background: #fff;
+
 	}
 	.avatar {
 		float: left;
@@ -17,6 +18,11 @@
 	.tweet-right {
 		.username {
 			color: #999;
+
+		}
+		& > p:first-child {
+			font-family: $caption;
+			font-size: 12px;
 		}
 		
 	}
@@ -34,6 +40,16 @@
 .heraldhalloween {
 	font-size: 100px;
 	padding-top: 100px;
-	padding-bottom: 80px;
+	padding-bottom: 50px;
 	font-family: 'Amatic SC', sans serif;
+}
+
+.tagger {
+	font-size: 18px;
+	line-height: 30px;
+	padding-bottom: 0px;
+}
+
+.tagger-button {
+	margin-bottom: 30px;
 }

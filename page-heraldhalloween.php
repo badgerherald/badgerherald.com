@@ -29,7 +29,13 @@ get_header();
 
 <h1 class="heraldhalloween"><a href="http://badgerherald.com/heraldhalloween" >#HERALDHALLOWEEN</a></h1>
 
-<p></p>
+<p class="tagger">Tweet your Halloween costume pics on October 25th or 26th @BadgerHerald on Twitter using #HeraldHalloween for your chance to WIN ONE OF THE FOLLOWING PRIZES:  <strong>A month of UNLIMITED yoga from Inner Fire Yoga</strong>, <strong>A $50 Toppers Pizza giftcard</strong>, <strong>A free ride and hat from CYC</strong>, <strong>7 free ice cream coupons from Chocolate Shoppe Ice Cream</strong>,  <strong>5 free drinks from Steepery Tea Bar</strong>
+
+<p>
+
+<p class="tagger-button"><a href="https://twitter.com/intent/tweet?button_hashtag=HeraldHalloween" class="twitter-hashtag-button" data-size="large" data-related="willhaynes">Tweet #HeraldHalloween</a>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script></p>
+
 
 <div class="post">
     
