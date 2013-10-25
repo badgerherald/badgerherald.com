@@ -78,7 +78,8 @@
       tweet.append(avi);
       tweet.append(tweet_right);
       post.append(tweet);
-      $('#stream').prepend(post);
+      console.log(post);
+      $('#main > p').after(post);
     });
   }
   
@@ -87,4 +88,5 @@
     make_post(data);
   });
   console.log(socket);
+  socket.emit('need_pics');
 })(jQuery);
