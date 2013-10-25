@@ -33,6 +33,16 @@
 
     var body = '<p>' + data.text + '</p>';
 
+    var intents = $('<p>');
+    var rt_intent = $('<a>').attr('href', 'http://twitter.com/intent/retweet?tweet_id='+data.id);
+    rt_intent.html('Retweet');
+    var fav_intent = $('<a>').attr('href', 'http://twitter.com/intent/favorite?tweet_id='+data.id);
+    fav_intent.html('Favorite');
+    intents.html('Share on Twitter: ');
+    intents.append(rt_intent);
+    intents.html(intents.html() + ' | ');
+    intents.append(fav_intent);
+
     var avi;
     var img;
     
@@ -64,6 +74,7 @@
       }
       tweet_right.append(meta);
       tweet_right.append(body);
+      tweet_right.append(intents);
       tweet.append(avi);
       tweet.append(tweet_right);
       post.append(tweet);
