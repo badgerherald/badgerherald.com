@@ -82,7 +82,7 @@
     });
   }
   
-  var socket = io.connect('http://localhost:3000');
+  var socket = io.connect('http://badgerherald.com:3000');
   socket.on('halloween', function(data) {
     make_post(data);
   });
