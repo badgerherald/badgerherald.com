@@ -21,7 +21,7 @@ get_header();
         <img src="http://distilleryimage1.ak.instagram.com/9d0d49d83ccb11e3be2122000a9e08ba_7.jpg" />
     </div>
     <div class="tweet">
-        <img class="avatar" src="" width="40px" height="40px"/>
+        <img class="avatar" src="https://pbs.twimg.com/profile_images/378800000601425068/f0a2de8c7346eef1042d895e1c89d0b5_normal.png" width="40px" height="40px"/>
         <div class="tweet-right">
             <p><a href="http://twitter.com/BadgerHerald">The Badger Herald <span class="username">@BadgerHerald</span></a></p>
             <p>OUR #HeraldHalloween COSTUME CONTEST BEGINS TODAY. Tweet us your pics and you can win big! http://t.co/TPzi1CQ9TA</p>
