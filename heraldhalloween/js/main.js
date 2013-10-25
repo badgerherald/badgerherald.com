@@ -31,7 +31,7 @@
     var meta = '<p><a href="http://twitter.com/'
       + data.user.screen_name + '">' + data.user.name + '</a>';
 
-    var body = '<p>' + data.text + '</p>';
+    var body = '<p>' + format_tweet(data.text) + '</p>';
 
     var intents = $('<p>');
     var rt_intent = $('<a>').attr('href', 'http://twitter.com/intent/retweet?tweet_id='+data.id);
