@@ -1,6 +1,7 @@
 .post{
 	background: #000;
 	width: 100%;
+	margin-bottom: 40px;
 	.tweet {
 		float: left;
 		width: 34%;
@@ -28,4 +29,11 @@
 			float: left;
 		}
 	}
+}
+
+.heraldhalloween {
+	font-size: 100px;
+	padding-top: 100px;
+	padding-bottom: 80px;
+	font-family: 'Amatic SC', sans serif;
 }
