@@ -1,0 +1,31 @@
+.post{
+	background: #000;
+	width: 100%;
+	.tweet {
+		float: left;
+		width: 34%;
+		margin: 2%;
+		padding: 1%;
+		background: #fff;
+	}
+	.avatar {
+		float: left;
+		margin-right: 10px;
+
+	}
+	.tweet-right {
+		.username {
+			color: #999;
+		}
+		
+	}
+	.costume-img {
+		width:60%;
+		float: left;
+		img {
+			max-width: 100%;
+			height: auto;
+			float: left;
+		}
+	}
+}
