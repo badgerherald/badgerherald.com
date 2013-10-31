@@ -4,10 +4,10 @@ Theme URI: http://badgerherald.com/exa
 Author: The Badger Herald Web Department
 Author URI: http://badgerherald.com/
 Description: The sixth iteration of The Badger Herald's website.  The first theme on wordpress.
-Version: 1.0.4
+Version: 1.0.7
 License: NONE YET
 License URI: NONE
-Tags: Badger, Herald, University of Wisconsin, Newspaper, Custom post types
+Tags: Badger, Herald, University of Wisconsin, Newspaper, Custom Post Types
 Text Domain: badgerherald-exa
 */
 
@@ -35,6 +35,8 @@ Text Domain: badgerherald-exa
  * 
  */
 @import "masthead.scss";
+
+
 
 /** 
  * Navigation Styles
@@ -64,7 +66,7 @@ Text Domain: badgerherald-exa
  *
  */
 @import "shoutouts.scss";
-
+@import "halloween.scss";
 /** 
  * HTML5 Boilerplate helper classes.
  * 
@@ -75,4 +77,3 @@ Text Domain: badgerherald-exa
  * Responsive changes
  * 
  */
-@import "responsive.scss";

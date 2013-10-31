@@ -92,7 +92,7 @@ function exa_setup() {
 	 * specifically font, colors, and column width.
 	 */
 	// TODO: Style for Herald.
-	//add_editor_style( 'css/editor-style.css' );
+	add_editor_style( 'css/editor-style.css' );
 
 	// Adds RSS feed links to <head> for posts and comments.
 	add_theme_support( 'automatic-feed-links' );
@@ -545,6 +545,9 @@ if (is_admin()) :
 				remove_meta_box('commentsdiv', $section, 'normal');
 				remove_meta_box('sqpt-meta-tags', $section, 'normal');
 
+				remove_menu_page('link-manager.php'); 
+				remove_menu_page('tools.php'); 
+				remove_menu_page('edit-comments.php');
 			}
 		}
 	
@@ -595,6 +598,9 @@ function register_sections() {
 
 	foreach ($sections as $section) {
 
+		$navmenu = true;
+		if($section=="Blogs"||$section=="Multimedia")
+			$navmenu = false;
 		$slug = strtolower($section);
 
 		register_taxonomy("$slug-beats",$slug,array( 
@@ -617,24 +623,24 @@ function register_sections() {
 
 		$labels = array(
 			'name'                => _x( $section, 'Post Type General Name', 'text_domain' ),
-			'singular_name'       => _x( 'Posts', 'Post Type Singular Name', 'text_domain' ),
+			'singular_name'       => _x( $section . ' Post', 'Post Type Singular Name', 'text_domain' ),
 			'menu_name'           => __( $section, 'text_domain' ),
-			'parent_item_colon'   => __( 'Parent Post', 'text_domain' ),
-			'all_items'           => __( 'All Posts', 'text_domain' ),
+			'parent_item_colon'   => __( 'Parent ' . $section . ' Post', 'text_domain' ),
+			'all_items'           => __( 'All ' . $section . ' Posts', 'text_domain' ),
 			'view_item'           => __( 'View Post', 'text_domain' ),
 			'add_new_item'        => __( 'Add New Post', 'text_domain' ),
-			'add_new'             => __( 'New Post', 'text_domain' ),
+			'add_new'             => __( 'New ' . $section . ' Post', 'text_domain' ),
 			'edit_item'           => __( 'Edit Post', 'text_domain' ),
 			'update_item'         => __( 'Update Post', 'text_domain' ),
-			'search_items'        => __( 'Search posts', 'text_domain' ),
-			'not_found'           => __( 'No posts found', 'text_domain' ),
-			'not_found_in_trash'  => __( 'No posts in trash', 'text_domain' ),
+			'search_items'        => __( 'Search ' . $section . ' posts', 'text_domain' ),
+			'not_found'           => __( 'No ' . $section . ' posts found', 'text_domain' ),
+			'not_found_in_trash'  => __( 'No ' . $section . ' posts in trash', 'text_domain' ),
 		);
 		$rewrite = true;
 		$capabilities = array(
 			'edit_post'           => 'edit_posts',
 			'read_post'           => 'read_post',
-			'delete_post'         => 'delete_post',
+			'delete_posts'        => 'delete_posts',
 			'edit_posts'          => 'edit_posts',
 			'edit_others_posts'   => 'edit_others_posts',
 			'publish_posts'       => 'publish_posts',
@@ -649,7 +655,7 @@ function register_sections() {
 			'hierarchical'        => false,
 			'public'              => true,
 			'show_ui'             => true,
-			'show_in_menu'        => true,
+			'show_in_menu'        => $navmenu,
 			'show_in_nav_menus'   => true,
 			'show_in_admin_bar'   => true,
 			'menu_position'       => 5,

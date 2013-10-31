@@ -1,0 +1,55 @@
+.post{
+	background: #000;
+	width: 100%;
+	margin-bottom: 40px;
+	.tweet {
+		float: right;
+		width: 34%;
+		margin: 2%;
+		padding: 1%;
+		background: #fff;
+
+	}
+	.avatar {
+		float: left;
+		margin-right: 10px;
+
+	}
+	.tweet-right {
+		.username {
+			color: #999;
+
+		}
+		& > p:first-child {
+			font-family: $caption;
+			font-size: 12px;
+		}
+		
+	}
+	.costume-img {
+		width:60%;
+		float: left;
+		img {
+			max-width: 100%;
+			height: auto;
+			float: left;
+		}
+	}
+}
+
+.heraldhalloween {
+	font-size: 100px;
+	padding-top: 100px;
+	padding-bottom: 50px;
+	font-family: 'Amatic SC', sans serif;
+}
+
+.tagger {
+	font-size: 18px;
+	line-height: 30px;
+	padding-bottom: 0px;
+}
+
+.tagger-button {
+	margin-bottom: 30px;
+}
