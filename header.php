@@ -43,12 +43,11 @@ include('macros.php');
 <body <?php body_class(); ?>>
 
 	<div id="masthead">
-    	<div class="wrapper">
 		<!-- <div id="tagline">
 			UW-Madison's Premier Independent Student Newspaper <strong> &mdash; since 1969</strong>.
 		</div> -->
 		<a id="logo"href="<?php bloginfo('url'); ?>">
-			<div class="logo-image"><img src="<?php bloginfo('template_url') ?>/img/logo/header-5.png" /></div>
+			<div class="logo-image"><img src="<?php bloginfo('template_url') ?>/img/logo/header-6.png" /></div>
 			<span class="name">The Badger<br /><span class="herald">HERALD</span></span>
 		</a>
 
@@ -72,7 +71,6 @@ include('macros.php');
 			</li>
 		</ul>
 		</nav>
-		</div>
 	</div>
 
 	<div id="page">

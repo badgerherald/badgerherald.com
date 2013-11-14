@@ -76,10 +76,32 @@
 	}
 }
 
-@media (min-width: 1026px) {
+@media (min-width: 1180px) {
 	#masthead{
-		margin-bottom: 18px;
+		width: $fifteenColumns;
+		margin: 0 auto;
+		background: none;
 	}
+	#masthead #logo{
+		width: $twoColumns;
+		height: auto;
+		color: $heraldblack;
+		position: relative;
+		float: left;
+		.name{
+			text-align: center;
+			width: $twoColumns;
+			margin: 0;
+			padding: 0;
+			position: relative;
+			left: auto;
+			font-size: 1.25em;
+		}
+		img{
+			position: relative;
+		}
+	}
+		
 	.wrapper{
 		width: 980px;
 	}
@@ -90,13 +112,20 @@
 	.nav-control{
 		display: none;
 	}
+	#masthead nav{
+		position: relative;
+		float: left;
+		margin-top: 24px;
+		margin-left: $gutter;
+	}
 	#nav{
-		width: auto;
+		width: $thirteenColumns;
 		left: auto;
 		top: auto;
 		right: 0;
-		height: 52px;
+		height: 42px;
 		overflow: visible;
+		position: relative;
 		&.nav-open{
 			top: auto;
 			border: none;
@@ -115,8 +144,8 @@
 		border-right: 1px solid $heralddarkgrey;
 		padding: 0px 10px;
 		width: auto;
-		height: 52px;
-		line-height: 64px;
+		height: 42px;
+		line-height: 42px;
 		font-size: .85em;
 	}
 	
