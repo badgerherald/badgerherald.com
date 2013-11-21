@@ -30,7 +30,7 @@ include('macros.php');
 	<![endif]-->
 	<?php wp_head(); ?>
 	<!-- Google fonts -->
-	<link href='http://fonts.googleapis.com/css?family=Noto+Serif:400,700,400italic,700italic|Yanone+Kaffeesatz:400,300,700|Open+Sans' rel='stylesheet' type='text/css'>
+	<link href='http://fonts.googleapis.com/css?family=Noto+Serif:400,700,400italic,700italic|Yanone+Kaffeesatz:400,300,700|Open+Sans|PT+Sans+Narrow:400,700' rel='stylesheet' type='text/css'>
 
 	<?php hrld_dfp_header() ?>
 
@@ -47,8 +47,7 @@ include('macros.php');
 			UW-Madison's Premier Independent Student Newspaper <strong> &mdash; since 1969</strong>.
 		</div> -->
 		<a id="logo"href="<?php bloginfo('url'); ?>">
-			<div class="logo-image"><img src="<?php bloginfo('template_url') ?>/img/logo/header-6.png" /></div>
-			<span class="name">The Badger<br /><span class="herald">HERALD</span></span>
+			<div class="logo-image"><img src="<?php bloginfo('template_url') ?>/img/logo/header-7.png" /></div>
 		</a>
 
 		<nav role="main">
@@ -60,13 +59,14 @@ include('macros.php');
 			<li><a href="<?php bloginfo('url'); ?>/oped/">Opinion</a></li>
 			<li><a href="<?php bloginfo('url'); ?>/artsetc/">ArtsEtc.</a></li>
 			<li><a href="<?php bloginfo('url'); ?>/sports/">Sports</a></li>
+            <li><a href="<?php bloginfo('url'); ?>">Comics</a></li>
 			<li><a href="<?php bloginfo('url'); ?>/shoutouts/">Shoutouts</a></li>
+			<li class="about-off"><a href="<?php bloginfo('url'); ?>/about/">About</a></li>
 			<li><a href="http://themadisonmisnomer.wordpress.com/from-the-herald/">Misnomer</a></li>
 			<li><a href="<?php bloginfo('url'); ?>/advertise/">Advertise</a></li>
-			<li class="about-off"><a href="<?php bloginfo('url'); ?>/about/">About</a></li>
 			<li class="search-button">
 				<a href="<?php bloginfo('url'); ?>/search/">Search</a>
-				<?php /*<input type="text" placeholder="Search for..." value="SEARCH" /> */ ?>
+				<?php /*<input type="text" placeholder="Search..." value="SEARCH" /> */ ?>
 				<?php get_search_form( true ); ?>
 			</li>
 		</ul>

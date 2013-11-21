@@ -31,22 +31,6 @@
 		img{
 			position: absolute;
 		}
-		.name{
-			display: block;
-			position: absolute;
-			left: 90px;
-			width: 100px;
-			z-index: 300;
-			height: 44px;
-			padding-top: 8px;
-			line-height: 1.4em;
-			font-size: .9em;
-		}
-		.herald{
-			font-family: open sans, helvetica, arial, sans-serif;
-			font-weight: bold;
-			font-size: 1.8em;
-		}
 	}
 }
 .nav-control{
@@ -126,7 +110,7 @@ body.admin-bar #wrapper { margin-top: 145px; }
 	border-bottom: 1px solid $heralddarkgrey;
 	text-align: left;
 	padding: 6px 80px 6px 10px;
-	color: #b6b6b6;
+	color: #ffffff;
 	&:hover {
 		color: #fff;
 	}
@@ -151,7 +135,6 @@ body.admin-bar #wrapper { margin-top: 145px; }
 	}
 	input:hover {
 		color: #ffffff !important;
-		cursor: pointer;
 	}	
 	input:focus {
 		outline-style: none;

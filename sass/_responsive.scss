@@ -88,15 +88,6 @@
 		color: $heraldblack;
 		position: relative;
 		float: left;
-		.name{
-			text-align: center;
-			width: $twoColumns;
-			margin: 0;
-			padding: 0;
-			position: relative;
-			left: auto;
-			font-size: 1.25em;
-		}
 		img{
 			position: relative;
 		}
@@ -142,22 +133,25 @@
 		display: inline-block;
 		border-bottom: none;
 		border-right: 1px solid $heralddarkgrey;
-		padding: 0px 10px;
+		padding: 0px 20px;
 		width: auto;
 		height: 42px;
 		line-height: 42px;
-		font-size: .85em;
+		font-size: 1em;
+		font-family: 'PT Sans Narrow', sans-serif;
+		font-weight: 700;
 	}
 	
 	.search-button label {
 		display: block;
-		width: 32px;
-		height: 52px;
+		width: 20px;
+		height: 42px;
+		float: right;
 		text-indent: -999em;
 		border-right: 1px solid $heralddarkgrey;
 		margin: 0;
-		padding: 0 10px;
-		background: no-repeat 50% 22px url(img/icons/iconmonstr_magnifier_5_icon.png);
+		padding: 0 20px;
+		background: no-repeat 20px 12px url(img/icons/iconmonstr_magnifier_5_icon.png);
 		background-image: url(img/icons/iconmonstr-magnifier-5-icon.svg), none;
 		background-size: 20px 20px;
 		opacity: .7;
@@ -167,19 +161,12 @@
 		}
 	}
 	.search-button input{
-		display: none;
-	}
-	.search-button input.search-open{
-		display: block;
-		position: absolute;
-		bottom: -37px;
-		right: 0;
-		width: 182px;
-		height: 24px;
-		border: 1px solid $heralddarkgrey;
-		background: $heraldlightgrey;
-		color: $heralddarkgrey;
-		cursor: auto;
+		height: 42px;
+		line-height: 42px;
+		padding: 0 0 0 20px;
+		width: 139px;
+		font-family: 'PT Sans Narrow', sans-serif;
+		font-weight: 700;
 	}
 }
 @media (max-width: 1219px) {
