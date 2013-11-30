@@ -54,12 +54,12 @@ function exa_setup() {
 	/* This theme uses a custom image size for featured images, displayed on
 	 * "standard" posts and pages. */
 	add_theme_support( 'post-thumbnails' );
-	set_post_thumbnail_size( 540, 270, true );
+	set_post_thumbnail_size( 690, 450, true );
 
 	/* Register custom image size for image post formats. */
 	add_image_size( 'image-post-size', 860, 470, false );
-	add_image_size( 'small-thumbnail', 280, 140, true );
-	add_image_size( 'large-thumbnail', 540, 270, true );
+	add_image_size( 'small-thumbnail', 345, 225, true );
+	add_image_size( 'large-thumbnail', 690, 450, true );
 
 	/* For Mugs */
 	add_image_size( 'square', 160, 160, true );

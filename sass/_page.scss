@@ -30,7 +30,8 @@ body {
 	top : 0;
 	height: 66px; /* top margin, navbar, bottom margin */
 	max-width: 640px;
-	background: $hrld-light-grey; /* CHANGE THIS TO RED TO GET A SENSE OF WHAT IS GOING ON */
+	background: rgba(239,244,246,.9);
+	border-bottom: 1px solid #e0eaee;
 	z-index: 9999;
 }
 

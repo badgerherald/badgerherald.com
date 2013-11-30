@@ -22,6 +22,42 @@ $(document).ready(function() {
 	});
 */
 
+	/** 
+	 * Scrolling for banners
+	 * 
+	 * Issues: bugs on iOS, safari devices.
+	 * 
+	 * @author Will Hanyes
+	 * @since Nov 2013 
+	 */
+	$(window).scroll(bannerScroll);
+	function bannerScroll() {
+
+
+		var backgroundImgHeight = 234,
+			bannerHeight = 90;
+		var scrollTop     = $(window).scrollTop(),
+			windowHeight  = $(window).height();
+			
+
+		$('.section-banner').each( function() {
+			
+			var	elementOffset = $(this).offset().top,
+			    distance      = (elementOffset - scrollTop);
+
+			console.log(windowHeight + ',' + distance);
+
+			 if(distance > 0 && windowHeight > distance) {
+		    	
+		    	var	frac		  = (windowHeight - distance) / windowHeight,
+		    		pos 		  = (backgroundImgHeight - bannerHeight) - (frac * (backgroundImgHeight-bannerHeight));
+
+		    	$(this).css({'backgroundPosition':'0 -' + pos + 'px'});
+	    	}
+
+   		});
+
+	};
 	
 	window.setTimeout(function() {
 		$(".add-so-button").css({'top':'-30px','display':'block'}).animate({'top':'43px','display':'block'},200);

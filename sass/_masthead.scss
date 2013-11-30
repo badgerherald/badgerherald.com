@@ -136,7 +136,7 @@ ul#main-nav {
 		display: block;
 		width: 140px;
 		position: absolute;
-		left:20px;
+		padding-left:20px;
 		top:0px !important;
 		z-index: 9999;
 		background: $hrld-light-grey;
@@ -168,8 +168,7 @@ ul#main-nav {
 			line-height: 18px;
 			text-transform: uppercase;
 			.since {
-				display: block;
-				line-height: 30px;
+				padding-left:6px;
 				text-transform: none;
 				color: $hrld-dark-grey-hover;
 			}
@@ -205,7 +204,6 @@ ul#main-nav {
 		}
 	}
 
-
 	ul#main-nav,ul#mini-nav {
 		padding: 0 0 0 0;
 		margin: 0px;
@@ -226,10 +224,17 @@ ul#main-nav {
 @media (min-width: 1220px) {
 
 	/** _masthead.scss overrides */
-	
+
 	#inner-masthead {
 		.inner-mast-tagline {
 			width: 200px;
+			.since {
+				display: block;
+				line-height: 30px;
+				text-transform: none;
+				color: $hrld-dark-grey-hover;
+				padding-left: 0;
+			}
 		}
 	}
 	.nav-bar {

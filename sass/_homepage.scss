@@ -1,0 +1,28 @@
+.section-banner {
+	width: 100%;
+	&.section-banner-news {
+		background: url('img/headers/news.png');
+	} &.section-banner-banter {
+		background: url('img/headers/banter.png');
+	} &.section-banner-artsetc {
+		background: url('img/headers/artsetc.png');
+	} &.section-banner-sports {
+		background: url('img/headers/sports.png');
+	}
+	background-size: cover;
+	background-position: 0 0px;
+	height: 90px;
+	position: relative;
+	h2 {
+		position: absolute;
+		bottom:0;
+		background: $hrld-black;
+		color: #fff;
+		font-size: 24px;
+		text-transform: uppercase;
+		padding: 12px 20px;
+		line-height: 24px;
+		margin:0px;
+		display: inline;
+	}
+}

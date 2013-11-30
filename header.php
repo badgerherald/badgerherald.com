@@ -117,7 +117,9 @@ include('macros.php');
 		<div class="logo-image"><img src="<?php bloginfo('template_url') ?>/img/logo/header-7.png" /></div>
 	</a>
 
+	<?php /* inner-masthead contains elements 'framed' by the logo and the navbar */ ?>
 	<div id="inner-masthead">
+
 		<div class="inner-mast-tagline">UW-Madison's Premier Independent Student Newspaper.  <span class="since"><strong>Since 1969</strong></span></div>
 		<?php hrld_top_leaderboard_ad(); ?>
 		<a class="advertise-plug" href="http://badgerherald.com/advertise/">Student Org? Local Business? Advertise with the Herald.</a>
@@ -133,6 +135,7 @@ include('macros.php');
 		</div>
 
 		</div>
+
 	</div>
 
 
