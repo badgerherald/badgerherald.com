@@ -17,6 +17,8 @@
 if ( ! isset( $content_width ) )
 	$content_width = 540;
 
+require_once('inc/ads.php');
+
 /**
  * Exa should run on WordPress 3.6 or later.
  */
