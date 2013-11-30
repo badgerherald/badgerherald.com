@@ -104,6 +104,12 @@ ul#main-nav {
 
 	}
 
+	#inner-masthead {
+		.advertise-plug,.inner-mast-tagline,.social-buttons {
+			display: none;
+		}
+	}
+
 	.nav-container {
 		max-width: 500px;
 		position: absolute;
@@ -150,12 +156,33 @@ ul#main-nav {
 		top:0;
 	}
 
-	/**
- 	 * Ads
- 	 *
- 	 */
-
 	#inner-masthead {
+		.inner-mast-tagline {
+			display: block;
+			width: 160px;
+			font-family: $headline;
+			position: absolute;
+			color: $hrld-dark-grey;
+			top : 0;
+			font-size: 13px;
+			line-height: 18px;
+			text-transform: uppercase;
+			.since {
+				display: block;
+				line-height: 30px;
+				text-transform: none;
+				color: $hrld-dark-grey-hover;
+			}
+		}
+		.social-buttons {
+			display: block;
+			position: absolute;
+			top:105px;
+			.twitter,.facebook {
+				float: left;
+				margin-right:10px;
+			}
+		}
 		#ad-leaderboard {
 			margin-bottom: 12px;
 			position: absolute;
@@ -165,6 +192,7 @@ ul#main-nav {
 			text-align: center;
 		}
 		.advertise-plug {
+			display: block;
 			position: absolute;
 			top:111px;
 			right:0;
@@ -197,6 +225,13 @@ ul#main-nav {
 
 @media (min-width: 1220px) {
 
+	/** _masthead.scss overrides */
+	
+	#inner-masthead {
+		.inner-mast-tagline {
+			width: 200px;
+		}
+	}
 	.nav-bar {
 		width: 1180px;
 		margin-left: 20px;
@@ -205,6 +240,5 @@ ul#main-nav {
 	.nav-container {
 		width: 1020px;
 	}
-
 
 }

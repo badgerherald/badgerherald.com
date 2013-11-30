@@ -46,6 +46,17 @@ include('macros.php');
 <body <?php body_class(); ?>>
 
 
+	<?php /* Facebook like button javascript tag */ ?>
+	<div id="fb-root"></div>
+	<script>(function(d, s, id) {
+	  var js, fjs = d.getElementsByTagName(s)[0];
+	  if (d.getElementById(id)) return;
+	  js = d.createElement(s); js.id = id;
+	  js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=293002107472228";
+	  fjs.parentNode.insertBefore(js, fjs);
+	}(document, 'script', 'facebook-jssdk'));</script>
+
+
 	<div id="wrapper">
 
 	<div id="page">
@@ -107,8 +118,21 @@ include('macros.php');
 	</a>
 
 	<div id="inner-masthead">
+		<div class="inner-mast-tagline">UW-Madison's Premier Independent Student Newspaper.  <span class="since"><strong>Since 1969</strong></span></div>
 		<?php hrld_top_leaderboard_ad(); ?>
 		<a class="advertise-plug" href="http://badgerherald.com/advertise/">Student Org? Local Business? Advertise with the Herald.</a>
+		<div class="social-buttons">
+
+		<div class="twitter">
+			<a href="https://twitter.com/badgerherald" class="twitter-follow-button" data-show-count="false">Follow @badgerherald</a>
+			<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+		</div>
+
+		<div class="facebook">
+			<div class="fb-like" data-href="http://facebook.com/badgerherald" data-layout="button_count" data-action="like" data-show-faces="false" data-share="false"></div>
+		</div>
+
+		</div>
 	</div>
 
 

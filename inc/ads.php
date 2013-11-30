@@ -96,8 +96,9 @@ function hrld_top_leaderboard_ad() {
 		}
 
 	else :
-		// $url = 
-		echo "<img src='" . get_bloginfo('template_directory') . "/img/ads/728x90.jpg' />";
+		
+		$ran = rand(0,1)+1;
+		echo "<img src='" . get_bloginfo('template_directory') . "/img/ads/728x90-$ran.jpg' />";
 
 	endif;
 
