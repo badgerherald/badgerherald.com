@@ -1,96 +1,41 @@
+
+
+/* Page styles refer to general positioning and sizing. */
+
 body {
-	//min-width: 1060px;
 	padding-bottom: 25px;
+	background: $hrld-light-grey;
 }
+
+/* Page surrounds everything inside of body */
 
 #page {
-	//width: flex(1060,1220);
-	//margin-left: flex(160,1220);
+	width: 100%; /* This width is based on 320px width of an iPhone screen */
+	max-width: 640px;
+	margin: 0 auto;
+	position: relative;	/* #page must be relative so that elements in it are positioned relative to it */
 }
+
+/* Masthead is positioned absolutely, on top of page */
+
+#masthead {
+	position: fixed;
+	width: 100%;
+	top : 0;
+	height: 66px; /* top margin, navbar, bottom margin */
+	max-width: 640px;
+	background: $hrld-light-grey; /* CHANGE THIS TO RED TO GET A SENSE OF WHAT IS GOING ON */
+	z-index: 9999;
+}
+
+/* Primary contains all content, with a buffer on both sides of it */
 
 #primary {
-	//width: flex(860,1060);
-	width: 100%;
-	margin: 0 auto;
-//	max-width:860px;
-//	min-width: 
+	width: flex(300,320);
+	margin-left: flex(10,320);
 }
 
-#stream {
-	width: 100%;
-	//width: flex(540,860);
-	float:left;
-}
-
-#sidebar {
-	display: none;
-	float: left;
-}
-
-#section-header {
-	width: flex(820,860);
-	padding: 36px flex(20,860) 30px;
-	background: $heraldblack;
-	position: relative;
-	text-transform: uppercase;
-	color: #fff;
-	margin-bottom:24px;
-	h1 {
-		font-size: em(60,15);
-		line-height: 60px;
-		display: inline-block;
-		float: left;
-
-		a {
-			color: white;
-			text-shadow: -1px 1px $heraldblack;
-		}
-	}
-
-	&.section-header-oped {
-		background: url('img/headers/oped.png') bottom left;
-	}
-	&.section-header-news {
-		background: url('img/headers/news.png');
-	}
-	&.section-header-artsetc {
-		background: url('img/headers/artsetc.png');
-	}
-	&.section-header-sports {
-		background: url('img/headers/sports.png')  center right;
-	}
-}
-ul.beats-menu {
-	float: left;
-	width: auto;
-	height: 36px;
-	margin: 0;
-	padding: 0;
-	list-style-type: none;
-	line-height: 60px;
-	text-align: left;
-	z-index: 100;
-	position: relative;
-	
-	.active {
-		background-color: lightgrey;
-	}
-
-	a{
-		display: block;
-		padding: 0 15px;
-		white-space: nowrap;
-		font-family: $headline;
-		text-transform: uppercase;
-		font-size: 1.25em;
-		color: $heraldblue;
-		span.arrow{
-			padding-left: 4px;
-			position: relative;
-			top: -2px;
-		}
-	}
-}
+/* Will: Not sure what this is. But i'll leave it for now */
 .video-embed-container{
 	position: relative;
 	padding-bottom: 56.25%;
@@ -106,6 +51,7 @@ ul.beats-menu {
 		height: 100%;
 	}
 }
+
 /**
  * Ads
  *
@@ -116,5 +62,65 @@ ul.beats-menu {
 	margin-bottom: 18px;
 	text-align: center;
 }
+
+
+@media (min-width: 760px) {
+
+	/** _page.scss overrides */
+
+	#page {
+		max-width: 800px;
+	}
+
+	#masthead {
+		max-width: 800px;
+	}
+
+	#primary {
+		width: flex(740,760);
+		margin-left: flex(10,760);
+	}
+
+}
+
+@media (min-width: 1060px) {
+
+	/** _page.scss overrides */
+
+	#page {
+		max-width: 1060px;
+		width: 1060px;
+	}
+
+	#masthead {
+		max-width: 1060px;
+		width: 1060px;
+		height: 78px;
+	}
+
+
+	#primary {
+		width: 1020px;
+		margin-left: 20px;
+	}
+
+}
+
+@media (min-width:1220px) {
+	#page {
+		max-width: 1220px;
+		width: 1220px;
+	}
+
+	#masthead {
+		max-width: 1220px;
+		width: 1220px;
+	}
+	#primary {
+		width: 1180px;
+		margin-left: 20px;
+	}
+} 
+
 
 

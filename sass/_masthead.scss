@@ -1,148 +1,183 @@
-/**
- * Base masthead styles
- */
+.nav-bar {
+	position: absolute;
+	width: flex(300,320);
+	margin-left: flex(10,320);
+	top:12px;
+	background: $hrld-blue;
+	
+	.bar-logo {
+		height: 42px;
+		width: 160px;
+		background: url('img/logo/nav-bar-logo.png') no-repeat 10px 14px;
+	}
 
-
-#masthead {
-	background: $heraldblack;
-	height: 52px;
-	width: 100%;
-	margin-bottom: 36px;
-	position: relative;
-	top:0;
-}
-
-.wrapper{
-	width: 90%;
-	margin: 0 auto;
-	position: relative;
-	//max-width: 860px;
-}
-
-#masthead {
-	#logo {
-		display: block;
-		height: 76px;
-		width: auto;
-		padding: 0;
+	.nav-control {
+		width: 30px;
+		height: 30px;
 		position: absolute;
-		//left: -90px;
-		color: #fff;
-		img{
+		right: 0;
+		top: 0;
+		background: $hrld-black;
+		text-align: center;
+		display: inline-block;
+		padding: 12px 6px 0px;
+		opacity: 1;
+		&:hover{
+			opacity: 1;
+			cursor: pointer;
+		} 
+	}
+	.nav-icon{
+		background: url(img/icons/nav_icon.png);
+		background-image: url(img/icons/nav-icon.svg), none;
+		display: inline-block;
+		width: 21px;
+		height: 20px;
+	}
+}
+
+a#logo {
+	display: none;
+}
+
+.nav-container {
+	width: 100%;
+	background: $hrld-black;
+	color: #fff;
+	font-family: $headline;
+	.nav-drop-tagline {
+		width: flex(140,300);
+		padding: flex(10,300);
+		float: left;
+		text-align: right;
+	}
+	border-bottom: 12px solid $hrld-light-grey;
+}
+
+ul#main-nav {
+	display: block;
+	background: $hrld-black;
+	list-style: none;
+	padding: 0 0 0 flex(10,300);
+	margin:10px 0;
+	width: flex(120,300);
+	float: left;
+	border-left: 1px solid $hrld-black-dark-grey;
+	li a {
+		color: $hrld-light-grey;
+		//text-align: right;
+		text-transform: uppercase;
+		padding: 6px 0px;
+		display: block;
+		font-size: 16px;
+		font-weight: bold;
+		border-bottom: 1px solid $hrld-black-dark-grey;
+	} li:last-child a {
+		border-bottom: none;
+	}
+}
+
+
+@media (min-width: 760px) {
+
+	/** _masthead.scss overrides */
+
+	.nav-bar {
+		width: flex(740,760);
+		margin-left: flex(10,760);
+		.nav-control {
+			width: 30px;
+			height: 30px;
 			position: absolute;
+			right: 0;
+			top: 0;
+			background: $hrld-black;
+			text-align: center;
+			display: inline-block;
+			padding: 12px 6px 0px;
+			opacity: 1;
+			&:hover{
+				opacity: 1;
+				cursor: pointer;
+			} 
+		}
+
+	}
+
+	a#logo {
+		display: none;
+	}
+	.nav-container {
+		max-width: 500px;
+		position: absolute;
+		right:0;
+	}
+
+}
+
+@media (min-width: 1060px) {
+
+	/** _masthead.scss overrides */
+
+	.nav-bar {
+		width: 1020px;
+		margin-left: 20px;
+		top:24px;
+		.nav-control {
+			display: none;
+		}
+	}
+
+	a#logo {
+		display: block;
+		width: 140px;
+		position: absolute;
+		left:20px;
+		z-index: 9999;
+		background: $hrld-light-grey;
+		padding-right: 20px;
+		padding-bottom: 6px;
+	}
+
+	.nav-container {
+		.nav-drop-tagline {
+			display:none;
+		}
+		border-bottom: none;
+		width: 860px;
+		max-width:none;
+		position: absolute;
+		top:0;
+	}
+
+	ul#main-nav,ul#mini-nav {
+		padding: 0 0 0 0;
+		margin: 0px;
+		width: 100%;
+		float: left;
+		border-left: none;
+		li a {
+			float: left;
+			padding: 11px 18px 10px;
+			border-left: 1px solid $hrld-black-dark-grey;
+			border-bottom: none;
+		} li:last-child a {
+			border-bottom: none;
 		}
 	}
 }
-.nav-control{
-	text-align: center;
-	float: right;
-	display: inline-block;
-	height: 36px;
-	padding: 16px 16px 0px;
-	opacity: .75;
-	&:hover{
-		opacity: 1;
-		cursor: pointer;
-	}
-}
-.nav-icon{
-	background: url(img/icons/nav_icon.png);
-	background-image: url(img/icons/nav-icon.svg), none;
-	display: inline-block;
-	width: 21px;
-	height: 20px;
-}
 
-#masthead {
-	#tagline {
-		font-family: $caption;
-		color : #fff;
-		text-transform: uppercase;
-		font-size: em(10,16);
-		width:flex(120,160);
-		padding: 12px flex(20,160) 12px;
-		line-height: 15px;
-		text-align: right;
-		border-bottom: 1px solid $heralddarkgrey;
-		background: $heraldblue;
-	}
-}
+@media (min-width: 1220px) {
 
-/* If logged in, we have to manually push anything fixed down */
-/* body.admin-bar #masthead { top: 32px !important; } */
-body.admin-bar #wrapper { margin-top: 145px; }
 
-/**
- * Navigation bar styling
- */
-#masthead nav{
-	position: relative;
-}
+	.nav-bar {
+		width: 1180px;
+		margin-left: 20px;
+	}
 
-#nav {
-	position: absolute;;
-	list-style-type: none;
-	width: 80%;
-	max-wiwdth: 300px;
-	right: 0;
-	margin: 0;
-	padding: 0;
-	top: 52px;
-	height: 0;
-	overflow: hidden;
-	background: $heraldblack;
-	z-index: 200;
-}
-#nav.nav-open{
-	height: auto;
-	overflow: visible;
-	top: 64px;
-	border: 1px solid $heralddarkgrey;
-}
-#nav li {
-	font-family: $caption;
-	text-transform: uppercase;
-}
+	.nav-container {
+		width: 1020px;
+	}
 
-#nav li a {
-	display: block;
-	/* line height is 16px */
-	border-bottom: 1px solid $heralddarkgrey;
-	text-align: left;
-	padding: 6px 80px 6px 10px;
-	color: #ffffff;
-	&:hover {
-		color: #fff;
-	}
-}
-
-.search-button {
-	a {
-		display: none !important;
-	}
-	input {
-		padding: 6px 10px;
-		display: block;
-		border: none;
-		background: $heraldblack;
-		color : #b6b6b6;
-	}
-	form {
-		position: relative;
-	}
-	label{
-		display: none;
-	}
-	input:hover {
-		color: #ffffff !important;
-	}	
-	input:focus {
-		outline-style: none;
-		text-align: left;
-		color: #fff;
-	}
-	input[type=submit] {
-		display: none;
-	}
 
 }

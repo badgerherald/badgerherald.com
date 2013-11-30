@@ -29,69 +29,86 @@ include('macros.php');
 	<script src="<?php echo get_template_directory_uri(); ?>/js/html5.js" type="text/javascript"></script>
 	<![endif]-->
 	<?php wp_head(); ?>
-	<!-- Google fonts -->
+	<!-- 
+		Google fonts 
+		TODO: move to wordpress enque
+	-->
 	<link href='http://fonts.googleapis.com/css?family=Noto+Serif:400,700,400italic,700italic|Yanone+Kaffeesatz:400,300,700|Open+Sans|PT+Sans+Narrow:400,700' rel='stylesheet' type='text/css'>
 
 	<?php hrld_dfp_header() ?>
 
-<link rel="icon" 
-      type="image/png" 
-      href="favicon.png?v=exa6">
+	<link rel="icon" 
+     	type="image/png" 
+     	href="favicon.png?v=exa6">
 
 </head>
 
 <body <?php body_class(); ?>>
 
-	<div id="masthead">
-		<!-- <div id="tagline">
-			UW-Madison's Premier Independent Student Newspaper <strong> &mdash; since 1969</strong>.
-		</div> -->
-		<a id="logo"href="<?php bloginfo('url'); ?>">
-			<div class="logo-image"><img src="<?php bloginfo('template_url') ?>/img/logo/header-7.png" /></div>
-		</a>
-
-		<nav role="main">
-        <div class="nav-control" alt="Menu">
-	         <div class="nav-icon" ></div>
-        </div>
-		<ul id="nav" class="dropdown-border">
-			<li><a href="<?php bloginfo('url'); ?>/news/">News</a></li>
-			<li><a href="<?php bloginfo('url'); ?>/oped/">Opinion</a></li>
-			<li><a href="<?php bloginfo('url'); ?>/artsetc/">ArtsEtc.</a></li>
-			<li><a href="<?php bloginfo('url'); ?>/sports/">Sports</a></li>
-            <li><a href="<?php bloginfo('url'); ?>">Comics</a></li>
-			<li><a href="<?php bloginfo('url'); ?>/shoutouts/">Shoutouts</a></li>
-			<li class="about-off"><a href="<?php bloginfo('url'); ?>/about/">About</a></li>
-			<li><a href="http://themadisonmisnomer.wordpress.com/from-the-herald/">Misnomer</a></li>
-			<li><a href="<?php bloginfo('url'); ?>/advertise/">Advertise</a></li>
-			<li class="search-button">
-				<a href="<?php bloginfo('url'); ?>/search/">Search</a>
-				<?php /*<input type="text" placeholder="Search..." value="SEARCH" /> */ ?>
-				<?php get_search_form( true ); ?>
-			</li>
-		</ul>
-		</nav>
-	</div>
 
 	<div id="page">
-	<div id="page-inner" class="wrapper">
-		<div id="primary">
-		<?php /*
-		<header id="masthead" class="site-header" role="banner">
-			<a class="home-link" href="<?php echo esc_url( home_url( '/' ) ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home">
-				<h1 class="site-title"><?php bloginfo( 'name' ); ?></h1>
-				<h2 class="site-description"><?php bloginfo( 'description' ); ?></h2>
-			</a>
 
-			<div id="navbar" class="navbar">
-				<nav id="site-navigation" class="navigation main-navigation" role="navigation">
-					<h3 class="menu-toggle"><?php _e( 'Menu', 'twentythirteen' ); ?></h3>
-					<a class="screen-reader-text skip-link" href="#content" title="<?php esc_attr_e( 'Skip to content', 'twentythirteen' ); ?>"><?php _e( 'Skip to content', 'twentythirteen' ); ?></a>
-					<?php wp_nav_menu( array( 'theme_location' => 'primary', 'menu_class' => 'nav-menu' ) ); ?>
-					<?php get_search_form(); ?>
-				</nav><!-- #site-navigation -->
-			</div><!-- #navbar -->
-		</header><!-- #masthead --> */ ?>
+	<header id="main-header">
 
-		<div id="main" class="site-main">
+	<div id="masthead">
+
+		<nav role="main">
+		
+		<div class="nav-bar">
+
+			<div class="bar-logo">
+
+			</div>
+			
+			<?php /* container for the mobile hamburger icon */ ?>
+	        <div class="nav-control" alt="Menu">
+		         <div class="nav-icon" ></div>
+	        </div>
+			
+
+			<div class="nav-container">
+
+				<div class="nav-drop-tagline">The University of Wisconsin's Premier Independent Student Newspaper &mdash; <strong>Since 1969</strong></div>
+
+				<ul id="main-nav" class="dropdown-border">
+					<li><a href="<?php bloginfo('url'); ?>/news/">News</a></li>
+					<li><a href="<?php bloginfo('url'); ?>/oped/">Opinion</a></li>
+					<li><a href="<?php bloginfo('url'); ?>/artsetc/">ArtsEtc.</a></li>
+					<li><a href="<?php bloginfo('url'); ?>/sports/">Sports</a></li>
+		            <li><a href="<?php bloginfo('url'); ?>">Comics</a></li>
+					<li><a href="<?php bloginfo('url'); ?>/shoutouts/">Shoutouts</a></li>
+					<li class="about-off"><a href="<?php bloginfo('url'); ?>/about/">About</a></li>
+					<li><a href="http://themadisonmisnomer.wordpress.com/from-the-herald/">Misnomer</a></li>
+					<li><a href="<?php bloginfo('url'); ?>/advertise/">Advertise</a></li>
+					<?php /*
+					<li class="search-button">
+						<a href="<?php bloginfo('url'); ?>/search/">Search</a>
+						<?php /*<input type="text" placeholder="Search..." value="SEARCH" /> */ ?>
+						<?php /*get_search_form( true ); */ ?>
+					<?php /* </li> */ ?>
+				</ul>
+
+
+				<div class="clearfix"></div>
+
+			</div>
+
+		</div><!-- class="nav-bar" -->
+		
+		</nav>
+
+	</div>
+
+
+	<a id="logo" href="<?php bloginfo('url'); ?>">
+			<div class="logo-image"><img src="<?php bloginfo('template_url') ?>/img/logo/header-7.png" /></div>
+	</a>
+
+
+	</header>
+
+
+	<div id="primary">
+
+	<div id="main" class="site-main">
 

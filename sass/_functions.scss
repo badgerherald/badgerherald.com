@@ -10,17 +10,33 @@ $base-line-height: 21px;
 }
 
 /*  Fonts */
-$headline: 	yanone kaffeesatz, helvetica, arial, sans-serif;
-$body:		noto serif, oalatino, georgia, serif;
+$headline: 	'PT Sans Narrow', Helvetica, Arial, Sans-Serif;
+$body:		'Noto Serif', Oalatino, Georgia, Serif;
 $caption: 	open sans, helvetica, arial, sans-serif;
 
 /*  Colors */
-$heraldblue:				#2781dd;
+$heraldblue:				#3c74b9;
 $heraldbluehover:			#3a97f7;
 $heraldlightgrey:			#f5f2f2;
 $heraldlightgreyonwhite:	#ededed;
 $heralddarkgrey: 			#2c2c2c;
 $heraldblack:				#191919;
+
+
+
+
+/* logo blue */
+$hrld-blue:					#3c74b9;
+
+/* this is the grey of the background */
+$hrld-light-grey:			#eff4f6;
+
+
+$hrld-black:				#191919;
+
+/* this is dark grey on a black background */
+$hrld-black-dark-grey:		#414141;
+
 
 $gutter: 20px;
 

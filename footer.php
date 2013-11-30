@@ -13,7 +13,6 @@
 
 		<div class="clearfix"></div>
 		</div><!-- #primary -->
-	</div><!-- #page-inner -->
 	</div><!-- #page -->
 		<?php /* <footer id="colophon" class="site-footer" role="contentinfo">
 			<?php get_sidebar( 'main' ); ?>

@@ -1,82 +1,6 @@
-@media (min-width: 480px) {
-	#nav{
-		width: 300px;
-	}
-	#post-sidebar{
-		.meta-author{
-			width: 40%;
-		}
-	}
-	.social{
-		width: 58%;
-		margin-left: 2%;
-	}
-}
-@media (min-width: 768px) {
-	#stream{
-		width: flex(460,780);
-	}
-	#sidebar{
-		width: flex(280,780);
-		padding-left: flex(40,780);
-		display: block;
-	}
-	.post-sidebar-headlines{
-		display: block;
-	}
-	#content{
-		width: flex(500,780);
-	}
-	.related-posts-in-article{
-		display: block;
-	}
-	#post-sidebar{
-		width: flex(260,780);
-		padding-right: flex(20,780);
-		.meta-time {
-			text-align: right;
-		}
-		.meta-author{
-			float: none;
-			margin: 0 0 24px 0;
-			width: auto;
-			.meta-author-left {
-				width: flex(220,300);
-				text-align: right;
-			}
-		}
-		#hrld-post-sidebar-ad{
-			display: block;
-		}
-	}
-	.social{
-		float: none;
-		width: flex(240,300);
-		margin-left: flex(60,300);
-		margin-bottom: 1em;
-		ul{
-			li{
-				border-bottom: 2px solid $heraldlightgrey;
-				display: block;
-				float: none;
-				width: auto;
-				&:first-child {
-					border-top: 2px solid $heraldlightgrey;
-				}
-				a{
-					position: absolute;
-					left: flex(130,220);
-				}
-				> span{
-					display: inline;
-					font-size: inherit;
-				}
-			}
-		}
-	}
-}
 
-@media (min-width: 1180px) {
+
+@media (min-width: 1060px) {
 	#masthead{
 		width: $fifteenColumns;
 		margin: 0 auto;
@@ -109,7 +33,7 @@
 		margin-top: 24px;
 		margin-left: $gutter;
 	}
-	#nav{
+	#main-nav{
 		width: $thirteenColumns;
 		left: auto;
 		top: auto;
@@ -122,14 +46,14 @@
 			border: none;
 		}
 	}
-	#nav li{
+	#main-nav li{
 		display: inline-block;
 		float: left;
 		&:first-child a{
 			border-left: 1px solid $heralddarkgrey;
 		}
 	}
-	#nav li a{
+	#main-nav li a{
 		display: inline-block;
 		border-bottom: none;
 		border-right: 1px solid $heralddarkgrey;
@@ -216,4 +140,4 @@
 	#masthead {
 		//position: absolute;
 	}
-}
+} 
