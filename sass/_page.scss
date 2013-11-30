@@ -7,12 +7,18 @@ body {
 	background: $hrld-light-grey;
 }
 
+/* Wrapper */
+#wrapper {
+	margin: 0 auto;
+	max-width: 640px;
+	width: 100%;
+	position: relative;
+}
+
 /* Page surrounds everything inside of body */
 
 #page {
 	width: 100%; /* This width is based on 320px width of an iPhone screen */
-	max-width: 640px;
-	margin: 0 auto;
 	position: relative;	/* #page must be relative so that elements in it are positioned relative to it */
 }
 
@@ -28,11 +34,22 @@ body {
 	z-index: 9999;
 }
 
+#inner-masthead {
+	display: none;
+}
+
 /* Primary contains all content, with a buffer on both sides of it */
 
 #primary {
 	width: flex(300,320);
-	margin-left: flex(10,320);
+	padding: 12px flex(10,320) 0;
+	position: absolute;
+	margin-top: 78px;
+}
+
+#main-header {
+	width: 100%;
+	position: relative;
 }
 
 /* Will: Not sure what this is. But i'll leave it for now */
@@ -52,23 +69,12 @@ body {
 	}
 }
 
-/**
- * Ads
- *
- */
-
-#ad-leaderboard {
-	width: 100%;
-	margin-bottom: 18px;
-	text-align: center;
-}
-
-
 @media (min-width: 760px) {
 
 	/** _page.scss overrides */
 
-	#page {
+	/* Wrapper */
+	#wrapper {
 		max-width: 800px;
 	}
 
@@ -76,9 +82,24 @@ body {
 		max-width: 800px;
 	}
 
-	#primary {
+	#inner-masthead {
+		display: block;
+		position: relative;
 		width: flex(740,760);
-		margin-left: flex(10,760);
+		max-width: 800px;
+		padding: 0 flex(10,760);
+		top:72px;
+		.advertise-plug {
+			display: none;
+		}
+	}
+
+
+
+	#primary {
+		/* TODO: determined correct value */
+		width: flex(740,760);
+		padding:12px flex(10,760) 0;
 	}
 
 }
@@ -87,7 +108,7 @@ body {
 
 	/** _page.scss overrides */
 
-	#page {
+	#wrapper {
 		max-width: 1060px;
 		width: 1060px;
 	}
@@ -98,27 +119,49 @@ body {
 		height: 78px;
 	}
 
+	#inner-masthead {
+		display: block;
+		position: absolute;
+		width: 860px;
+		max-width: none;
+		padding: 0;
+		top:auto;
+		margin-left: 180px;
+		margin-top: 90px;
+		background: green;
+		.advertise-plug {
+			display: block;
+		}
+	}
 
 	#primary {
 		width: 1020px;
-		margin-left: 20px;
+		padding:12px 20px 0;
+		/* TODO: determined correct value */
+		margin-top: 240px;
+		z-index: 5000;
+
 	}
 
 }
 
 @media (min-width:1220px) {
-	#page {
+
+	#wrapper {
 		max-width: 1220px;
 		width: 1220px;
 	}
 
+	#inner-masthead {
+		width:1020px;
+	}
 	#masthead {
 		max-width: 1220px;
 		width: 1220px;
 	}
+
 	#primary {
 		width: 1180px;
-		margin-left: 20px;
 	}
 } 
 

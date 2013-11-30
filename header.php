@@ -46,9 +46,11 @@ include('macros.php');
 <body <?php body_class(); ?>>
 
 
+	<div id="wrapper">
+
 	<div id="page">
 
-	<header id="main-header">
+	<div id="main-header">
 
 	<div id="masthead">
 
@@ -101,11 +103,16 @@ include('macros.php');
 
 
 	<a id="logo" href="<?php bloginfo('url'); ?>">
-			<div class="logo-image"><img src="<?php bloginfo('template_url') ?>/img/logo/header-7.png" /></div>
+		<div class="logo-image"><img src="<?php bloginfo('template_url') ?>/img/logo/header-7.png" /></div>
 	</a>
 
+	<div id="inner-masthead">
+		<?php hrld_top_leaderboard_ad(); ?>
+		<a class="advertise-plug" href="http://badgerherald.com/advertise/">Student Org? Local Business? Advertise with the Herald.</a>
+	</div>
 
-	</header>
+
+	</div>
 
 
 	<div id="primary">

@@ -10,7 +10,7 @@
  */
 
 get_header(); 
-hrld_top_leaderboard_ad();
+
 
 ?>
 	<div id="stream">
