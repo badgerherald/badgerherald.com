@@ -474,3 +474,29 @@ add_filter('embed_oembed_html', 'hrld_responsive_embed_oembed_html', 99, 4);
 function hrld_responsive_embed_oembed_html($html, $url, $attr, $post_id) {
   return '<div class="video-embed-container">' . $html . '</div>';
 }
+
+
+
+
+/**
+ * returns the "topic" (currently just a category) of the post.
+ *
+ *
+ */
+function exa_topic($pid = null) {
+
+	if( !$pid ) {
+		global $post;
+		$pid = $post->ID;
+	}
+
+	$beats = wp_get_post_terms($pid,get_post_type($pid)."-beats");
+	$category_base = get_bloginfo('url')."/".get_post_type()."/";
+
+	foreach ($beats as $beat) : 
+		return $beat->name ; 
+	endforeach;
+
+	return "Herald";
+}
+

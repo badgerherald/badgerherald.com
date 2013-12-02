@@ -26,3 +26,31 @@
 		display: inline;
 	}
 }
+
+.nav-container {
+	display: none;
+}
+
+ul.list-stories {
+	margin: 0;
+	padding: 0;
+	width:100%;
+	font-family: $headline;
+	list-style: none;
+	font-size: 17px;
+	.topic {
+		text-transform: uppercase;
+		color: $hrld-dark-grey;
+		font-size: 14px;
+	}
+	h4 {
+		margin:3px 0 9px 0;
+		padding:0;
+		a {
+			color: $hrld-black;
+			&:hover {
+				color: $hrld-blue;
+			}
+		}
+	}
+}

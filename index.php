@@ -14,8 +14,6 @@ get_header();
 
 ?>
 
-
-
 	<div id="news">
 
 		<div class="section-banner section-banner-news">
@@ -68,10 +66,18 @@ get_header();
 		?>
 		
 		<h3>Recent</h3>
-		<?php while( $news_featured->have_posts() ) {
-			$news_featured->next_post();
-			echo '<li>' . get_the_title( $news_featured->post->ID ) . '</li>';
-		} ?>
+		<ul class="list-stories homepage-news-recent">
+		<?php while( $news_featured->have_posts() ) : $news_featured->next_post(); ?>
+
+			<li>
+
+				<span class="topic"><?php echo exa_topic( $news_featured->post->ID ); ?></span>
+				<h4><a href="<?php echo get_permalink( $news_featured->post->ID ); ?>"><?php echo get_the_title( $news_featured->post->ID ); ?></a></h4>
+
+			</li>
+
+		<?php endwhile; ?>
+		</ul>
 
 		<?php
 			// Restore original Post Data
