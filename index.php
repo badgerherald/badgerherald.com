@@ -41,11 +41,17 @@ get_header();
 			$news_featured = new WP_Query( $args );
 			$excludenews = array();
 		?>
-		<h3>Featured Stories</h3>
 		<?php while( $news_featured->have_posts() ) {
-			$news_featured->next_post();
-			echo '<li>' . get_the_title( $news_featured->post->ID ) . '</li>';
-			$excludenews[] = $news_featured->post->ID;
+			$news_featured->the_post();
+			if($news_featured->current_post == 0 && !is_paged()){
+				get_template_part( 'content', 'summary-featured' );
+			}
+			else{
+				echo '<li>';
+				get_template_part( 'content', 'summary-instream' );
+				echo '</li>';
+			}
+			$excludenews[] = $post->ID;
 		} ?>
 
 		<?php
@@ -67,12 +73,12 @@ get_header();
 		
 		<h3>Recent</h3>
 		<ul class="list-stories homepage-news-recent">
-		<?php while( $news_featured->have_posts() ) : $news_featured->next_post(); ?>
+		<?php while( $news_featured->have_posts() ) : $news_featured->the_post(); ?>
 
 			<li>
 
-				<span class="topic"><?php echo exa_topic( $news_featured->post->ID ); ?></span>
-				<h4><a href="<?php echo get_permalink( $news_featured->post->ID ); ?>"><?php echo get_the_title( $news_featured->post->ID ); ?></a></h4>
+				<span class="topic"><?php echo exa_topic( $post->ID ); ?></span>
+				<h4><a href="<?php echo get_permalink( $post->ID ); ?>"><?php echo get_the_title( $post->ID ); ?></a></h4>
 
 			</li>
 
