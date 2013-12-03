@@ -70,7 +70,7 @@ $(document).ready(function() {
 	});
 	
 	$(".nav-control").click(function(e){
-		$("#nav").toggleClass("nav-open");
+		$(".nav-container").toggleClass("nav-open");
 	});
 
 	$(".add-so-button").click(function(e) {

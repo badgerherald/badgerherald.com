@@ -45,6 +45,7 @@ a#logo {
 	background: $hrld-black;
 	color: #fff;
 	font-family: $headline;
+	display: none;
 	.nav-drop-tagline {
 		width: flex(140,300);
 		padding: flex(10,300);
@@ -52,6 +53,9 @@ a#logo {
 		text-align: right;
 	}
 	border-bottom: 12px solid $hrld-light-grey;
+}
+.nav-container.nav-open{
+	display: block;
 }
 
 ul#main-nav {
@@ -148,6 +152,7 @@ ul#main-nav {
 		.nav-drop-tagline {
 			display:none;
 		}
+		display: block;
 		border-bottom: none;
 		border-left: none;
 		width: 860px;
