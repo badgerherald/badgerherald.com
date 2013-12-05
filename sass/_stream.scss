@@ -27,6 +27,12 @@
 	color : $heraldblack;
 	margin-bottom: 12px;
 	margin-top: 24px;
+	font-family: $headline;
+	.topic {
+		text-transform: uppercase;
+		color: $hrld-dark-grey;
+		font-size: 14px;
+	}
 	.tiny-avatar {
 		border-radius: 2px;
 		overflow: hidden;
@@ -43,10 +49,8 @@
 	}
 
 	h1,h2 {
-		color: $heralddarkgrey;
-		//font-weight: normal;
-		padding-bottom: -2px;
-		margin-bottom: 2px;
+		color: $hrld-black;
+		font-size: 20px;
 		display: inline;
 		a:hover {
 			color: $heraldblue;
@@ -55,19 +59,19 @@
 	.summary-time-stamp {
 		font-family: $headline;
 		margin-right: 2px;
-		color: #808080;
+		color: $hrld-dark-grey;
 	}
 }
 
 .stream-post.instream-stream-post {
 
 	.entry-thumbnail {
-		width: flex(140,540);
 		float: left;
-		padding-top: 18px;
 		margin-top:3px;
 		margin-bottom: 12px;
-		padding-right:	20px;
+		img{
+			border: 1px solid rgba(0, 0, 0, 0.1);
+		}
 	}
 
 	.entry-summary {
@@ -94,7 +98,7 @@
 		margin-bottom: 18px;
 	}
 	h3 {
-		color: #818181;
+		color: $hrld-dark-grey;
 		text-transform: uppercase;
 		position: absolute;
 		top:-11px;
@@ -102,18 +106,15 @@
 		font-size: em(18,18);
 		margin: 0;
 		padding: 0 6px 0 0px;
-		background: #fff;
 	}
 	.related-post {
-		color : $heraldblack;
-		padding: 0 flex(18,540);
-		border-right : 2px solid $heraldlightgrey;
-		padding-bottom: 200px;
-		margin-bottom: -200px;
+		color : $hrld-black;
+		font-weight: bold;
+		font-size: 17px;
 		.related-post-type {
 			color : $heraldblue;
 			text-transform: uppercase;
-			font-size: em(13,16);
+			font-size: em(17,16);
 			position: relative;
 			bottom: 1px;
 			margin-right: 3px;
@@ -126,6 +127,7 @@
 			border: 0;
 		}
 		&:hover {
+			color: $hrld-blue;
 			.related-post-type {
 				border-bottom: 1px solid $heraldblue;
 			}
@@ -136,53 +138,6 @@
 	}
 
 }
-
-.related-posts-3-count {
-	.related-post {
-		width: flex(153,540);
-		float: left;
-	}
-	.related-post-type {
-		clear:left;
-	}
-	img.thumbnail {
-		max-width: 70%;
-		height: auto;
-		display: block;
-		padding-bottom: 6px;
-	}
-}
-
-.related-posts-2-count, .related-posts-1-count {
-	.related-post {
-		width: flex(250,540);
-		float: left;
-	}
-	img.thumbnail {
-		max-width: flex(80,250);
-		height: auto;
-		float: left;
-		display: block;
-		padding-right : flex(20,250);
-		position: relative;
-		top : 6px;
-	}
-	.related-post-body .related-post-body-right.has-image {
-		width: flex(150,250);
-		float: left;
-	}
-}
-
-.related-posts-1-count {
-	.related-post {
-		width: flex(400,540);
-		float: left;
-	}
-	img.thumbnail {
-		max-width: flex(120,400);
-		padding-right : flex(20,400);
-	}
-}
 .summary-post-link {
 	color: $heraldblack;
 	display: block;
@@ -191,10 +146,14 @@
 .summary-post-link:hover {
 	color: #000;
 	h2 {
-	//	color : $heraldblue;
-		border-bottom: 1px solid $heraldblack;
+		//border-bottom: 1px solid $heraldblack;
+		text-decoration: underline;
 	}
 	.excerpt-more {
 		background: url('img/icons/arrow-right-blue.png') no-repeat 16px center;
 	}
+	.entry-thumbnail img{
+		border-color: $hrld-blue;
+	}
+	
 }

@@ -66,8 +66,9 @@ get_header();
 		<?php
 		
 			/* Build query for featured stories in news */
+			$args = array();
 			$args['post_type'] = 'news';
-			$args['posts_per_page'] = 40;
+			$args['posts_per_page'] = 10;
 			$args['post__not_in'] = $excludenews;
 
 			$news_featured = new WP_Query( $args );

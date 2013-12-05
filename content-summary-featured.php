@@ -64,12 +64,12 @@
 
 					<div class="related-post-body">
 					<?php if($url) : $hasImgClass = "has-image"; ?>
-						<img class="thumbnail" src="<?php echo $url ?>" />
+				<!--		<img class="thumbnail" src="<?php echo $url ?>" /> -->
 					<?php else : $hasImgClass = "no-image"; endif; ?>
 						<div class="related-post-body-right <?php echo $hasImgClass; ?>">
-							<span class="related-post-type"><?php echo get_post_type($related_post); ?></span>
+							<!-- <span class="related-post-type"><?php echo get_post_type($related_post); ?></span> -->
 							<?php echo get_the_title($related_post); ?>
-							<span class="excerpt-more">...</span>
+							<!-- <span class="excerpt-more">...</span> -->
 						</div>
 					</div>
 				</a>
@@ -79,6 +79,7 @@
 		<div class="clearfix"></div>
 
 	</div>
+    <div class="clearfix"></div>
 	<?php endif; // has related posts ?>
 
 

@@ -500,3 +500,17 @@ function exa_topic($pid = null) {
 	return "Herald";
 }
 
+/**
+ * Prints the post thumbnail of the post.
+ * If no thumbnail is available, will pick a suitable placer image.
+ *
+ */
+function exa_post_thumbnail_html( $html, $post_id, $post_thumbnail_id, $size, $attr ){
+	if($html){
+		return $html;
+	} else{
+		return '<img src="'.get_template_directory_uri().'/thumb-fill.png'.'" height="'.get_option( 'thumbnail_size_w' ).'" width="'.get_option( 'thumbnail_size_h' ).'" />';
+	}
+	
+}
+add_filter( 'post_thumbnail_html', 'exa_post_thumbnail_html', 20, 5 );
