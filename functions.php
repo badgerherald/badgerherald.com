@@ -17,6 +17,9 @@
 if ( ! isset( $content_width ) )
 	$content_width = 540;
 
+/**
+ * Require the ads function.
+ */
 require_once('inc/ads.php');
 
 /**
@@ -103,165 +106,6 @@ add_filter( 'search_form_format', 'exa_search_form_format' );
 
 
 /**
- * Removes meta boxes that editors don't need from posts
- * Should be considered 'beta', until we fully figure out permissions.
- *
- * @author Will Haynes
- * @since 29 Nov 2013
- * @return void
- */
-if (is_admin()) :
-
-	function hrld_remove_meta_boxes() {
-
-		// Post Types
-		$sections = array("news","oped","sports","artsetc","blog","multimedia");
-
-		foreach ($sections as $section) {
-
-			if( !current_user_can('manage_options') ) {
-
-				remove_meta_box('linktargetdiv', $section, 'normal');
-				remove_meta_box('linkxfndiv', $section, 'normal');
-				remove_meta_box('linkadvanceddiv', $section, 'normal');
-				remove_meta_box('trackbacksdiv', $section, 'normal');
-				remove_meta_box('postcustom', $section, 'normal');
-				remove_meta_box('commentstatusdiv', $section, 'normal');
-				remove_meta_box('commentsdiv', $section, 'normal');
-				remove_meta_box('sqpt-meta-tags', $section, 'normal');
-
-				remove_menu_page('link-manager.php'); 
-				remove_menu_page('tools.php'); 
-				remove_menu_page('edit-comments.php');
-			}
-		}
-	
-	}
-
-	add_action( 'admin_menu', 'hrld_remove_meta_boxes' );
-
-endif;
-
-
-
-/**
- * Registeres a taxanomy used to select the "importance" of a post.
- *
- * @since July 2013
- * @author Will Haynes
- * @return void
- */
-function exa_register_importance_taxanomy() {
-
-	register_taxonomy("importance",$taxanomies,array( 
-							'hierarchical' => true,
-							'label' => 'Importance',
-							'public' => 'true',
-							'show_in_nav_menus' => false,
-							'show_admin_column' => false,
-							'query_var' => true,
-							'show_in_menu' => 'false',
-							'singular_label' => 'Importance') 
-	);
-
-}
-
-/**
- * Registers each section as a custom post type.
- *
- * Added: July 2013
- * 
- * @param Array $sections array of section names 
- * @return void
- */
-function register_sections() {
-
-	$sections = array("News","Oped","Sports","ArtsEtc","Blogs","Multimedia");
-	$taxanomies = array();
-
-	exa_register_importance_taxanomy();
-
-	foreach ($sections as $section) {
-
-		$navmenu = true;
-		if($section=="Blogs"||$section=="Multimedia")
-			$navmenu = false;
-		$slug = strtolower($section);
-
-		register_taxonomy("$slug-beats",$slug,array( 
-							'hierarchical' => true,
-							'label' => 'Beats',
-							'show_ui' => true,
-							'show_admin_column' => true,
-							'query_var' => true,
-							'rewrite' => array(
-									"slug" => "$slug/beats",
-									"with_front" => false,
-									"hierarchical" => true,
-									"ep_mask" => EP_NONE,
-								),
-							'singular_label' => 'Beat') 
-		);
-
-		$taxanomies[] = $slug;
-
-
-		$labels = array(
-			'name'                => _x( $section, 'Post Type General Name', 'text_domain' ),
-			'singular_name'       => _x( $section . ' Post', 'Post Type Singular Name', 'text_domain' ),
-			'menu_name'           => __( $section, 'text_domain' ),
-			'parent_item_colon'   => __( 'Parent ' . $section . ' Post', 'text_domain' ),
-			'all_items'           => __( 'All ' . $section . ' Posts', 'text_domain' ),
-			'view_item'           => __( 'View Post', 'text_domain' ),
-			'add_new_item'        => __( 'Add New Post', 'text_domain' ),
-			'add_new'             => __( 'New ' . $section . ' Post', 'text_domain' ),
-			'edit_item'           => __( 'Edit Post', 'text_domain' ),
-			'update_item'         => __( 'Update Post', 'text_domain' ),
-			'search_items'        => __( 'Search ' . $section . ' posts', 'text_domain' ),
-			'not_found'           => __( 'No ' . $section . ' posts found', 'text_domain' ),
-			'not_found_in_trash'  => __( 'No ' . $section . ' posts in trash', 'text_domain' ),
-		);
-		$rewrite = true;
-		$capabilities = array(
-			'edit_post'           => 'edit_posts',
-			'read_post'           => 'read_post',
-			'delete_posts'        => 'delete_posts',
-			'edit_posts'          => 'edit_posts',
-			'edit_others_posts'   => 'edit_others_posts',
-			'publish_posts'       => 'publish_posts',
-			'read_private_posts'  => 'read_private_posts',
-		);
-		$args = array(
-			'label'               => __( $section, 'text_domain' ),
-			'description'         => __( $section, 'text_domain' ),
-			'labels'              => $labels,
-			'supports'            => array( 'title', 'editor', 'excerpt', 'author', 'thumbnail', 'comments', 'trackbacks', 'revisions', 'custom-fields', 'post-formats', ),
-			'taxonomies'          => array( 'post_tag', 'importance' ),
-			'hierarchical'        => false,
-			'public'              => true,
-			'show_ui'             => true,
-			'show_in_menu'        => $navmenu,
-			'show_in_nav_menus'   => true,
-			'show_in_admin_bar'   => true,
-			'menu_position'       => 5,
-			'menu_icon'           => '',
-			'can_export'          => true,
-			'has_archive'         => true,
-			'exclude_from_search' => false,
-			'publicly_queryable'  => true,
-			'rewrite'             => $rewrite,
-			'capabilities'        => $capabilities,
-			'query_var'			  => $slug
-		);
-
-		register_post_type( $section, $args );
-
-		
-	}
-
-}
-
-/**
  * Changes the default exerpt tag to include a permalink, and class of class="exerpt-more"
  *
  * Added: July 2013
@@ -338,6 +182,7 @@ function alter_queries( $query ) {
     return;
 }
 add_action( 'pre_get_posts', 'alter_queries', 1 );
+
 
 function exa_get_beats() {
 
@@ -474,7 +319,6 @@ add_filter('embed_oembed_html', 'hrld_responsive_embed_oembed_html', 99, 4);
 function hrld_responsive_embed_oembed_html($html, $url, $attr, $post_id) {
   return '<div class="video-embed-container">' . $html . '</div>';
 }
-
 
 
 
