@@ -29,6 +29,7 @@
 
 ul.list-stories {
 	margin: 0;
+	margin-top: 30px;
 	padding: 0;
 	width:100%;
 	font-family: $headline;
@@ -39,6 +40,9 @@ ul.list-stories {
 		color: $hrld-dark-grey;
 		font-size: 14px;
 	}
+	.summary-time-stamp{
+		font-size: 12px;
+	}
 	h4 {
 		margin:3px 0 9px 0;
 		padding:0;
@@ -48,5 +52,34 @@ ul.list-stories {
 				color: $hrld-blue;
 			}
 		}
+	}
+}
+.featured-container{
+	margin-top: 6px;
+}
+ul.featured-stream-list{
+	margin: 0;
+	padding: 0;
+	border-top: 1px solid #e0eaee;
+}
+
+@media (min-width: 1220px) {
+	.featured-container{
+		width: 780px;
+		float: left;
+	}
+	.featured-stream-post{
+		padding-right: 20px;
+		.entry-thumbnail{
+			width: 460px;
+			margin-right: 20px;
+			float: left;
+		}
+	}
+	ul.list-stories{
+		width: 360px;
+		float:left;
+		border-left: 1px solid #e0eaee;
+		padding-left: 19px;
 	}
 }

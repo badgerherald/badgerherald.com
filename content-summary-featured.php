@@ -26,7 +26,7 @@
 				<?php echo get_wp_user_avatar(get_the_author_meta('ID'), 'square'); ?>
 		</div></a>
 		*/ ?>
-		<?php exa_list_categories(true); ?>
+		<?php //exa_list_categories(true); ?>
 
 
 	</header><!-- .entry-header -->

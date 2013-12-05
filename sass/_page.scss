@@ -53,7 +53,14 @@ body {
 	position: relative;
 }
 
-/* Will: Not sure what this is. But i'll leave it for now */
+/* Will: Not sure what this is. But i'll leave it for now 
+ * Matt: If you happen to see this, its supposed to make youtube embeded
+ *       videos resize responsive similar to images having max-width: 100%
+ *       For some reason though the function i wrote in functions that is supposed
+ *  	 to check when wordpress tries to embed youtube videos and wrap the video
+ *	 	 in a div container with this class isnt working for some reason. Havent had
+ *		 a chance to bug test that.
+ */
 .video-embed-container{
 	position: relative;
 	padding-bottom: 56.25%;

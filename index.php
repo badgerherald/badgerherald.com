@@ -14,14 +14,14 @@ get_header();
 
 ?>
 
-	<div id="news">
+	<div id="news" class="clearfix">
 
 		<div class="section-banner section-banner-news">
 
 			<h2>News</h2>
 
 		</div>
-
+		<div class="featured-container">
 		<?php
 		
 			/* Build query for featured stories in news */
@@ -47,18 +47,21 @@ get_header();
 				get_template_part( 'content', 'summary-featured' );
 			}
 			else{
+				if($news_featured->current_post == 1 && !is_paged()){
+					echo '<ul class="featured-stream-list">';
+				}
 				echo '<li>';
 				get_template_part( 'content', 'summary-instream' );
 				echo '</li>';
 			}
 			$excludenews[] = $post->ID;
 		} ?>
-
+				</ul>
 		<?php
 			// Restore original Post Data
 			wp_reset_postdata();
 		?>
-
+		</div> <!-- class="featured-container" -->
 
 		<?php
 		
@@ -71,13 +74,13 @@ get_header();
 		
 		?>
 		
-		<h3>Recent</h3>
+		<!-- <h3>Recent</h3> -->
 		<ul class="list-stories homepage-news-recent">
 		<?php while( $news_featured->have_posts() ) : $news_featured->the_post(); ?>
 
 			<li>
 
-				<span class="topic"><?php echo exa_topic( $post->ID ); ?></span>
+				<span class="topic"><?php echo exa_topic( $post->ID ); ?><span class="summary-time-stamp"> &middot; <?php echo exa_human_time_diff(get_the_time('U')) ?> ago</span></span>
 				<h4><a href="<?php echo get_permalink( $post->ID ); ?>"><?php echo get_the_title( $post->ID ); ?></a></h4>
 
 			</li>
