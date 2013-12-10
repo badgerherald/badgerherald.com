@@ -68,4 +68,3 @@
 
 </article><!-- #post -->
 
-<div class="clearfix"></div>

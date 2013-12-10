@@ -25,7 +25,6 @@
 
 .stream-post {
 	color : $heraldblack;
-	margin-bottom: 12px;
 	margin-top: 24px;
 	font-family: $headline;
 	.topic {
@@ -66,7 +65,7 @@
 .stream-post.instream-stream-post {
 
 	.entry-thumbnail {
-		float: left;
+		//float: left;
 		margin-top:3px;
 		margin-bottom: 12px;
 		img{
@@ -75,8 +74,8 @@
 	}
 
 	.entry-summary {
-		float:			left;
-		width: 			flex(380,540);
+		float: left;
+		width: flex(380,540);
 		&.entry-summary-full {
 			width: 100%;
 		}
@@ -102,4 +101,18 @@
 		border-color: $hrld-blue;
 	}
 	
+}
+
+@media (min-width: 1060px) {
+	.stream-post{
+		margin-bottom: 12px;
+	}
+}
+
+@media (min-width: 1220px) {
+	.stream-post.instream-stream-post {
+		.entry-thumbnail {
+			float: left;
+		}
+	}
 }
