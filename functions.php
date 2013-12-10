@@ -88,6 +88,9 @@ function exa_scripts_styles() {
 	/* Load main stylesheet. */
 	wp_enqueue_style( 'exa-style', get_stylesheet_uri() );
 
+	/* Load swipe library */
+	wp_enqueue_script( 'swipe', get_template_directory_uri() . '/js/Swipe/swipe.js', array(), '2.0', true );
+
 }
 add_action( 'wp_enqueue_scripts', 'exa_scripts_styles' );
 
@@ -343,6 +346,7 @@ function exa_topic($pid = null) {
 
 	return "Herald";
 }
+
 
 /**
  * Prints the post thumbnail of the post.

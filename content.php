@@ -143,22 +143,6 @@
 			<?php endif; ?>
 			</div>
 
-			<div class="entry-meta">
-				<?php twentythirteen_entry_meta(); ?>
-				<?php edit_post_link( __( 'Edit', 'twentythirteen' ), '<span class="edit-link">', '</span>' ); ?>
-			</div><!-- .entry-meta -->
 		</div><!-- id="content" -->
-	<?php /*
-	<footer class="entry-meta">
-		<?php if ( comments_open() && ! is_single() ) : ?>
-			<div class="comments-link">
-				<?php comments_popup_link( '<span class="leave-reply">' . __( 'Leave a comment', 'twentythirteen' ) . '</span>', __( 'One comment so far', 'twentythirteen' ), __( 'View all % comments', 'twentythirteen' ) ); ?>
-			</div><!-- .comments-link -->
-		<?php endif; // comments_open() ?>
-
-		<?php if ( is_single() && get_the_author_meta( 'description' ) && is_multi_author() ) : ?>
-			<?php get_template_part( 'author-bio' ); ?>
-		<?php endif; ?>
-	</footer><!-- .entry-meta -->
-	*/ ?>
+	
 </article><!-- #post -->

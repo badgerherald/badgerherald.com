@@ -395,3 +395,24 @@ table {
     border-collapse: collapse;
     border-spacing: 0;
 }
+
+
+/* ==========================================================================
+   Herald Additions
+   ========================================================================== */
+
+
+
+/**
+ * Set the highlight color to a nice Badger inspired red.
+ */
+::selection {
+  background: #ff5f5f; /* Safari */
+  color: #000;
+  text-shadow: 0.1em 0.1em rgba(255,255,255,.4);
+  }
+::-moz-selection {
+  background: #ff5f5f; /* Firefox */
+  color: #000;
+  text-shadow: 0.1em 0.1em rgba(0,0,0,.4);
+}

@@ -24,26 +24,51 @@
 		</footer><!-- #colophon -->
 	</div><!-- #page -->
 	*/ ?>
-	<?php wp_footer(); ?> 
+
 
 
 	</div><!-- id="wrapper" -->
-
+	
 	<?php /* TODO:  Do this in a WP way */ ?>
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 	<script src="<?php echo get_template_directory_uri(); ?>/js/exa.js" type="text/javascript"></script>
+	
+	<?php wp_footer(); ?> 
+
+
 	<script type="text/javascript">
 
-  var _gaq = _gaq || [];
-  _gaq.push(['_setAccount', 'UA-2337436-1']);
-  _gaq.push(['_trackPageview']);
+		window.mySwipe = Swipe(document.getElementById('swipe'), {
+			startSlide: 0,
+			speed: 400,
+			auto: 3000,
+			continuous: true,
+			disableScroll: false,
+			stopPropagation: false,
+			callback: swiped,
+			transitionEnd: function(index, elem) {}
+		});
+		swiped(0,document.getElementById('swipe'));
+		function swiped(index,elem) {
+			$(".slider-nav").find('li').removeClass("active").eq(index).addClass("active");
+		}
+		
 
-  (function() {
-    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-  })();
+	</script>
 
-</script>
+
+	<script type="text/javascript">
+
+		var _gaq = _gaq || [];
+		_gaq.push(['_setAccount', 'UA-2337436-1']);
+		_gaq.push(['_trackPageview']);
+
+		(function() {
+		var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+		ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+		var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+		})();
+
+	</script>
 </body>
 </html>

@@ -14,6 +14,98 @@ get_header();
 
 ?>
 
+	<div id="above-fold" class="clearfix">
+
+	<div  id="slider">
+		<?php $homepageslider = true; ?>
+		<div id="swipe" class="swipe">
+
+			<div class='swipe-wrap'>
+
+			<div class="slide">
+
+				<img src="<?php bloginfo('template_url') ?>/img/temp/cade.png" />
+				<h2>Badger game’s streaker says he regrets his decision</h2>
+				<p>Peregoy, a Wisconsin native studying landscape architecture, told The Badger Herald his side of the story about that game day.</p>
+				<h4 class="slider-related-title">PENN STATE STREAKER</h4>
+				<ul class="slider-related">
+					<li><a href="#">Drunk student streaks, record number sent to detox at Penn State game</a></li>
+					<li><a href="#">Penn State freshman ruins Wisconsin’s Senior Day</a></li>
+				</ul>
+			</div>
+
+			<div class="slide">
+
+				<img src="<?php bloginfo('template_url') ?>/img/temp/cade.png" />
+				<h2>Badger game’s streaker says he regrets his decision</h2>
+				<p>Peregoy, a Wisconsin native studying landscape architecture, told The Badger Herald his side of the story about that game day.</p>
+				<h4 class="slider-related-title">PENN STATE STREAKER</h4>
+				<ul class="slider-related">
+					<li><a href="#">Drunk student streaks, record number sent to detox at Penn State game</a></li>
+					<li><a href="#">Penn State freshman ruins Wisconsin’s Senior Day</a></li>
+				</ul>
+			</div>
+
+
+
+		</div>
+
+		<ul class="slider-nav">
+			<li><span>Slide 1</span></li>
+			<li class="active"><span>Slide 2</span></li>
+			<li><span>Slide 3</span></li>
+			<li><span>Slide 4</span></li>
+		</ul>
+
+	</div>
+
+	</div>
+
+		<div id="middle-column">
+			<div class="hp-square-ad">
+				<?php hrld_sidebar_lower_ad(); ?>
+			</div>
+		
+
+			<div class="todays-shoutout">
+
+				<div class="bubble-box">
+					<h3>SO of the Day</h3>
+					<p>SO to girls. You have to suck dick and birth babies. That must blow.</p>
+				</div>
+
+				<img src="<?php bloginfo('template_url') ?>/img/icons/shoutout.png" />
+				
+				<div class="link-box">
+					<a href="<?php bloginfo('url') ?>/shoutouts">More Shoutouts</a>
+					<a href="<?php bloginfo('url') ?>/shoutouts/add">Add a Shoutout</a>
+				</div>
+
+			</div>
+		
+		</div> <!-- #middle-column -->
+
+
+		<div id="top-posts">
+		<h3>Top Posts</h3>
+		<ul>
+			<li><a href="#">Democrat to run for Schultz’ senate seat</a></li>
+			<li><a href="#">AirBnB, ‘tourist rooming houses’ renters given stricter regulations</a></li>
+			<li><a href="#">Soglin says Madison Public Market to split, open in 2017</a></li>
+			<li><a href="#">Walker leads 2016 presidential election polls</a></li>
+			<li><a href="#">Man robs elderly couple after offering a helping hand</a></li>
+			<li><a href="#">Nurses outraged over MTV’s new show</a></li>
+		</ul>
+		</div>
+
+
+
+	</div>
+
+
+	
+
+
 	<div id="news" class="clearfix">
 
 		<div class="section-banner section-banner-news">
@@ -22,6 +114,7 @@ get_header();
 
 		</div>
 		<div class="featured-container">
+		
 		<?php
 		
 			/* Build query for featured stories in news */
@@ -41,6 +134,7 @@ get_header();
 			$news_featured = new WP_Query( $args );
 			$excludenews = array();
 		?>
+
 		<?php while( $news_featured->have_posts() ) {
 			$news_featured->the_post();
 			if($news_featured->current_post == 0 && !is_paged()){
@@ -75,7 +169,6 @@ get_header();
 		
 		?>
 		
-		<!-- <h3>Recent</h3> -->
 		<ul class="list-stories homepage-news-recent">
 		<?php while( $news_featured->have_posts() ) : $news_featured->the_post(); ?>
 
@@ -95,13 +188,6 @@ get_header();
 		?>
 
 		
-
-
-
-
-
-
-
 	</div><!-- id="news" -->
 
 

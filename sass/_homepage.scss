@@ -1,3 +1,164 @@
+
+/**
+ * Slider, ad, and top posts
+ * 
+ */
+#above-fold {
+
+	/** ---------------------------------------- * 
+	 *
+	 * Swipe styling.
+	 *
+	 * @see https://github.com/bradbirdsall/Swipe
+	 *
+	 */
+	.swipe {
+  		overflow: hidden;
+  		visibility: hidden;
+  		position: relative;
+	}
+	.swipe-wrap {
+  		overflow: hidden;
+  		position: relative;
+	}
+	.swipe-wrap > div {
+  		float:left;
+		width:100%;
+		position: relative;
+	}
+
+	/* ----------------------------------------- */
+
+	#slider {
+		width: 100%;
+		background: $hrld-black;
+		color: $hrld-light-grey;
+		margin-bottom: 12px;
+		h2,p,h4,ul {
+			padding: 0px 20px;
+		}
+		h2 {
+			margin-top: 12px;
+		}
+		.slider-related-title {
+			font-weight: 700;
+			font-family: $headline;
+			margin-top: 18px;
+			margin-bottom:6px;
+
+			/* not until iPad */
+			display: none;
+		}
+		ul.slider-related {
+			font-family: $headline;
+			list-style: none;
+			margin:0;
+			padding-top:0;
+
+			/* not until iPad */
+			display: none;
+
+			li {
+				line-height: 18px;
+				margin-bottom: 6px;
+				a {
+					color: $hrld-dark-grey;
+					font-weight: bold;
+					&:hover {
+						color: #fff;
+					}
+				}
+			}
+		}
+		ul.slider-nav {
+			list-style: none;
+			margin: 0;
+			padding:0;
+			li {
+				display: block;
+				width: flex(74,300);
+				margin-left: flex(1,300);
+				background: #2b2b2b;
+				height: 12px;
+				float: left;
+				&.active {
+					background: $hrld-blue;
+				}
+				&:first-child {
+					width: flex(75,300);
+					margin-left: 0;
+				}
+				span {
+					display: none;
+				}
+			}
+		}
+	}
+
+	#middle-column {
+		.hp-square-ad {
+			width: 300px;
+			margin: 0 auto;
+		}
+
+		.todays-shoutout {
+			.bubble-box {
+				background: $hrld-black;
+				margin-bottom: 18px;
+				color: $hrld-light-grey;
+				font-family: 'PT Sans';
+				&:after {
+					content: "";
+					display: block;
+					width: 0; 
+					height: 0; 
+					border-right: 30px solid transparent;
+					border-bottom: 30px solid transparent;
+					border-top: 30px solid $hrld-black;
+					border-left: 30px solid $hrld-black;
+					position: relative;
+					top:60px;
+					left: 80px;
+				}
+			}
+		}
+	}
+
+
+	#top-posts {
+		background: #fff;
+		padding: 12px 20px;
+		margin-bottom: 24px;
+		h3,ul {
+			margin: 0; padding:0;
+		}
+		h3 {
+			margin-top: 6px;
+			text-transform: uppercase;
+			font-family: $headline;
+		}
+		ul {
+			list-style: none;
+			font-family: $headline;
+			margin-top: 12px;
+			li {
+				margin-bottom: 12px;
+				line-height: 18px;
+				a {
+					color: $hrld-black;
+					font-weight: bold;
+					&:hover {
+						color: $hrld-blue;
+					}
+				}
+			}
+		}
+	}
+
+}
+
+
+/* Banners on the homepage */
 .section-banner {
 	width: 100%;
 	&.section-banner-news {
@@ -27,6 +188,34 @@
 	}
 }
 
+/* Related Posts on Homepage
+ * --------------------------------- */
+
+.related-header {
+	font-size: 14px;
+	text-transform: uppercase;
+	color: $hrld-dark-grey;
+	h3 {
+		margin: 0;
+		padding: 0;
+		margin: 6px 0 6px 0;
+	}
+}
+
+ul.related-post-articles {
+	margin: 0; padding: 0;
+	list-style: none;
+	li {
+		margin-bottom: 6px;
+		line-height: 18px;
+		font-size: 17px;
+		a {
+			font-weight: bold;
+			color: $hrld-black;
+		}
+	}
+}
+
 ul.list-stories {
 	margin: 0;
 	margin-top: 30px;
@@ -41,7 +230,7 @@ ul.list-stories {
 		font-size: 14px;
 	}
 	.summary-time-stamp{
-		font-size: 12px;
+		text-transform: none;
 	}
 	h4 {
 		margin:3px 0 9px 0;
@@ -54,28 +243,20 @@ ul.list-stories {
 		}
 	}
 }
+
 .featured-container{
 	margin-top: 6px;
-	.entry-thumbnail{
-		//float: left;
-		//width: flex(140,300);
-		//padding-right: flex(20, 300);
-	}
-	.entry-title{
-		//float: left;
-		//width: flex(140,300);
-	}
-	.entry-summary{
-		//clear: both;
-	}
 }
+
 ul.featured-stream-list{
 	margin: 0;
 	padding: 0;
 	list-style-type: none;
 }
+
 @media (min-width: 760px) {
 }
+
 @media (min-width: 1060px) {
 	ul.list-stories{
 		width: 360px;
