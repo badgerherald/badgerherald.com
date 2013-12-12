@@ -245,7 +245,10 @@ ul.list-stories {
 }
 
 .featured-container{
-	margin-top: 6px;
+	margin-top: 30px;
+}
+.stream-post.featured-stream-post{
+	margin-top:0;
 }
 
 ul.featured-stream-list{
@@ -254,10 +257,45 @@ ul.featured-stream-list{
 	list-style-type: none;
 }
 
+.opinion-desk{
+	ul{
+		list-style-type: none;
+		padding: 0;
+		margin: 0;
+	}
+}
+
+.all-link{
+	width: 100%;
+	clear: both;
+	padding-top: 18px;
+	border-top: 1px solid #e0eaee;
+	text-align: center;
+	margin-bottom: 48px;
+	font-family: $headline;
+	font-weight: bold;
+	text-transform: uppercase;
+	font-size: 20px;
+	a{
+		color: $hrld-dark-grey;
+		background: url("img/icons/arrow-right-blue.png") no-repeat right center;
+		padding-right: 16px;
+		&:hover{
+			color: $hrld-dark-grey-hover;
+		}
+	}
+}
+
+.col-container{
+	overflow: hidden;
+}
+
 @media (min-width: 760px) {
 	.featured-container{
 		float: left;
 		width: flex(420,740);
+		padding-bottom: 9999px;
+		margin-bottom: -9999px;
 		.instream-stream-post{
 			.entry-summary{
 				display: none;
@@ -269,6 +307,8 @@ ul.featured-stream-list{
 		width: flex(300,740);
 		float: left;
 		padding-left: flex(20,740);
+		padding-bottom: 9999px;
+		margin-bottom: -9999px;
 	}
 	ul.featured-stream-list{
 		li{
@@ -279,16 +319,25 @@ ul.featured-stream-list{
 			}
 		}
 	}
+	#banter{
+		.featured-container{
+			.instream-stream-post{
+				.entry-summary{
+					display:block;
+				}
+			}
+		}
+	}
 }
 
 @media (min-width: 1060px) {
 	ul.list-stories{
 		width: 360px;
-		padding-left: 19px;
-		border-left: 1px solid #e0eaee;
+		padding-left: 19px;		
 	}
 	.featured-container{
 		width: 640px;
+		border-right: 1px solid #e0eaee;
 	}
 	.featured-stream-post{
 		width: 460px;
@@ -338,6 +387,61 @@ ul.featured-stream-list{
 			float: left;
 			&:first-child{
 				margin-left: 0;
+			}
+		}
+	}
+	#banter{
+		.featured-container{
+			width: 360px;
+			padding-right: 20px;
+		}
+		ul.featured-stream-list{
+			border-top: none;
+			li{
+				margin-left: 0;
+				width: 100%;
+				.instream-stream-post:first-child{
+					margin-top: 0;
+				}
+			}
+		}
+		.instream-stream-post{
+			width: auto;
+			.entry-thumbnail{
+				width: 140px;
+				margin-right: 20px;
+				margin-bottom: 0;
+			}
+			.entry-header{
+				float: none;
+			}
+			.entry-title{
+				float: none;
+				font-size: 17px;
+				line-height: 18px;
+			}
+			.entry-summary{
+				display: block;
+				float: none;
+			}
+		}
+		ul.list-stories{
+			width: 320px;
+		}
+		.opinion-desk{
+			width: 459px;
+			float: right;
+			padding-bottom: 9999px;
+			margin-bottom: -9999px;
+			border-left: 1px solid #e0eaee;
+			.instream-stream-post{
+				.entry-thumbnail{
+					width: 120px;
+					margin-left: 20px;
+				}
+				.entry-summary{
+					display:none;
+				}
 			}
 		}
 	}

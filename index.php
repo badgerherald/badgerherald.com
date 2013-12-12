@@ -113,7 +113,8 @@ get_header();
 			<h2>News</h2>
 
 		</div>
-		<div class="featured-container">
+        <div class="col-container clearfix">
+		<div class="featured-container featured-container-news">
 		
 		<?php
 		
@@ -156,6 +157,7 @@ get_header();
 			wp_reset_postdata();
 		?>
 		</div> <!-- class="featured-container" -->
+        
 
 		<?php
 		
@@ -186,8 +188,8 @@ get_header();
 			// Restore original Post Data
 			wp_reset_postdata();
 		?>
-
-		
+		</div>
+		<div class="all-link all-link-news"><a href="<?php bloginfo('url'); ?>/news/">All News</a></div>
 	</div><!-- id="news" -->
 
 
@@ -198,16 +200,125 @@ get_header();
 			<h2>Banter</h2>
 
 		</div>
+        <div class="col-container clearfix">
+		<div class="featured-container featured-container-banter">
+		
+		<?php
+		
+			/* Build query for featured stories in banter */
 
-		<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. Sed nisi. Nulla quis sem at nibh elementum imperdiet. Duis sagittis ipsum. Praesent mauris. Fusce nec tellus sed augue semper porta. Mauris massa. Vestibulum lacinia arcu eget nulla. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Curabitur sodales ligula in libero. </p>
+			$args = array();
+			$args['tax_query'] = array(
+	                array(
+	                    'taxonomy' => 'importance',
+	                    'field' => 'slug',
+	                    'terms' => array('featured'),
+	                    'operator' => 'IN'
+	                )
+	            );
+			$args['post_type'] = 'oped';
+			$args['posts_per_page'] = 4;
 
-		<p>Sed dignissim lacinia nunc. Curabitur tortor. Pellentesque nibh. Aenean quam. In scelerisque sem at dolor. Maecenas mattis. Sed convallis tristique sem. Proin ut ligula vel nunc egestas porttitor. Morbi lectus risus, iaculis vel, suscipit quis, luctus non, massa. Fusce ac turpis quis ligula lacinia aliquet. Mauris ipsum. Nulla metus metus, ullamcorper vel, tincidunt sed, euismod in, nibh. Quisque volutpat condimentum velit. </p>
+			$banter_featured = new WP_Query( $args );
+			$excludebanter = array();
+		?>
 
-		<p>Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Nam nec ante. Sed lacinia, urna non tincidunt mattis, tortor neque adipiscing diam, a cursus ipsum ante quis turpis. Nulla facilisi. Ut fringilla. Suspendisse potenti. Nunc feugiat mi a tellus consequat imperdiet. Vestibulum sapien. Proin quam. Etiam ultrices. Suspendisse in justo eu magna luctus suscipit. </p>
+		<?php while( $banter_featured->have_posts() ) {
+			$banter_featured->the_post();
+			if($banter_featured->current_post == 0 && !is_paged()){
+				echo '<ul class="featured-stream-list">';
+				echo '<li>';
+				get_template_part( 'content', 'summary-instream' );
+				echo '</li>';
+			}
+			else{
+				echo '<li>';
+				get_template_part( 'content', 'summary-instream' );
+				echo '</li>';
+			}
+			$excludebanter[] = $post->ID;
+		} ?>
+				</ul>
+		<?php
+			// Restore original Post Data
+			wp_reset_postdata();
+		?>
+		</div> <!-- class="featured-container featured-container-banter" -->
+        
+        <div class="opinion-desk">
+        <?php
+			/* Build query for from opinion desk */
+			$args = array();
+			$args['tax_query'] = array(
+	                array(
+	                    'taxonomy' => 'oped-beats',
+	                    'field' => 'slug',
+	                    'terms' => array('opinion-desk'),
+	                    'operator' => 'IN'
+	                )
+	            );
+			$args['post_type'] = 'oped';
+			$args['posts_per_page'] = 6;
+			$args['post__not_in'] = $excludebanter;
+			
+			$banter_featured = new WP_Query( $args );
+		?>
+        <?php while( $banter_featured->have_posts() ) {
+			$banter_featured->the_post();
+			if($banter_featured->current_post == 0 && !is_paged()){
+				echo '<ul class="opinion-desk-stream-list">';
+				echo '<li>';
+				get_template_part( 'content', 'summary-instream' );
+				echo '</li>';
+			}
+			else{
+				if($banter_featured->current_post == 1 && !is_paged()){
+					
+				}
+				echo '<li>';
+				get_template_part( 'content', 'summary-instream' );
+				echo '</li>';
+			}
+			$excludebanter[] = $post->ID;
+		} ?>
+				</ul>
+		<?php
+			// Restore original Post Data
+			wp_reset_postdata();
+		?>
+        </div>
 
-		<p>Sed lectus. Integer euismod lacus luctus magna. Quisque cursus, metus vitae pharetra auctor, sem massa mattis sem, at interdum magna augue eget diam. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Morbi lacinia molestie dui. Praesent blandit dolor. Sed non quam. In vel mi sit amet augue congue elementum. Morbi in ipsum sit amet pede facilisis laoreet. Donec lacus nunc, viverra nec, blandit vel, egestas et, augue. Vestibulum tincidunt malesuada tellus. Ut ultrices ultrices enim. </p>
+		<?php
+		
+			/* Build query for featured stories in banter */
+			$args = array();
+			$args['post_type'] = 'oped';
+			$args['posts_per_page'] = 10;
+			$args['post__not_in'] = $excludebanter;
 
-		<p>Curabitur sit amet mauris. Morbi in dui quis est pulvinar ullamcorper. Nulla facilisi. Integer lacinia sollicitudin massa. Cras metus. Sed aliquet risus a tortor. Integer id quam. Morbi mi. Quisque nisl felis, venenatis tristique, dignissim in, ultrices sit amet, augue. Proin sodales libero eget ante. Nulla quam. Aenean laoreet. Vestibulum nisi lectus, commodo ac, facilisis ac, ultricies eu, pede. </p>
+			$banter_featured = new WP_Query( $args );
+		
+		?>
+		
+		<ul class="list-stories homepage-banter-recent">
+		<?php while( $banter_featured->have_posts() ) : $banter_featured->the_post(); ?>
+
+			<li>
+
+				<span class="topic"><?php echo exa_topic( $post->ID ); ?><span class="summary-time-stamp"> &middot; <?php echo exa_human_time_diff(get_the_time('U')) ?> ago</span></span>
+				<h4><a href="<?php echo get_permalink( $post->ID ); ?>"><?php echo get_the_title( $post->ID ); ?></a></h4>
+
+			</li>
+
+		<?php endwhile; ?>
+		</ul>
+
+		<?php
+			// Restore original Post Data
+			wp_reset_postdata();
+		?>
+		</div>
+		<div class="all-link all-link-banter"><a href="<?php bloginfo('url'); ?>/oped/">All Banter</a></div>
 
 
 
@@ -220,16 +331,82 @@ get_header();
 			<h2>ArtsEtc.</h2>
 
 		</div>
+		<div class="col-container clearfix">
+		<div class="featured-container featured-container-arts">
+		
+		<?php
+		
+			/* Build query for featured stories in arts */
 
-		<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. Sed nisi. Nulla quis sem at nibh elementum imperdiet. Duis sagittis ipsum. Praesent mauris. Fusce nec tellus sed augue semper porta. Mauris massa. Vestibulum lacinia arcu eget nulla. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Curabitur sodales ligula in libero. </p>
+			$args = array();
+			$args['tax_query'] = array(
+	                array(
+	                    'taxonomy' => 'importance',
+	                    'field' => 'slug',
+	                    'terms' => array('featured'),
+	                    'operator' => 'IN'
+	                )
+	            );
+			$args['post_type'] = 'artsetc';
+			$args['posts_per_page'] = 4;
 
-		<p>Sed dignissim lacinia nunc. Curabitur tortor. Pellentesque nibh. Aenean quam. In scelerisque sem at dolor. Maecenas mattis. Sed convallis tristique sem. Proin ut ligula vel nunc egestas porttitor. Morbi lectus risus, iaculis vel, suscipit quis, luctus non, massa. Fusce ac turpis quis ligula lacinia aliquet. Mauris ipsum. Nulla metus metus, ullamcorper vel, tincidunt sed, euismod in, nibh. Quisque volutpat condimentum velit. </p>
+			$arts_featured = new WP_Query( $args );
+			$excludearts = array();
+		?>
 
-		<p>Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Nam nec ante. Sed lacinia, urna non tincidunt mattis, tortor neque adipiscing diam, a cursus ipsum ante quis turpis. Nulla facilisi. Ut fringilla. Suspendisse potenti. Nunc feugiat mi a tellus consequat imperdiet. Vestibulum sapien. Proin quam. Etiam ultrices. Suspendisse in justo eu magna luctus suscipit. </p>
+		<?php while( $arts_featured->have_posts() ) {
+			$arts_featured->the_post();
+			if($arts_featured->current_post == 0 && !is_paged()){
+				get_template_part( 'content', 'summary-featured' );
+			}
+			else{
+				if($arts_featured->current_post == 1 && !is_paged()){
+					echo '<ul class="featured-stream-list">';
+				}
+				echo '<li>';
+				get_template_part( 'content', 'summary-instream' );
+				echo '</li>';
+			}
+			$excludearts[] = $post->ID;
+		} ?>
+				</ul>
+		<?php
+			// Restore original Post Data
+			wp_reset_postdata();
+		?>
+		</div> <!-- class="featured-container featured-container-arts" -->
 
-		<p>Sed lectus. Integer euismod lacus luctus magna. Quisque cursus, metus vitae pharetra auctor, sem massa mattis sem, at interdum magna augue eget diam. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Morbi lacinia molestie dui. Praesent blandit dolor. Sed non quam. In vel mi sit amet augue congue elementum. Morbi in ipsum sit amet pede facilisis laoreet. Donec lacus nunc, viverra nec, blandit vel, egestas et, augue. Vestibulum tincidunt malesuada tellus. Ut ultrices ultrices enim. </p>
+		<?php
+		
+			/* Build query for featured stories in news */
+			$args = array();
+			$args['post_type'] = 'artsetc';
+			$args['posts_per_page'] = 10;
+			$args['post__not_in'] = $excludearts;
 
-		<p>Curabitur sit amet mauris. Morbi in dui quis est pulvinar ullamcorper. Nulla facilisi. Integer lacinia sollicitudin massa. Cras metus. Sed aliquet risus a tortor. Integer id quam. Morbi mi. Quisque nisl felis, venenatis tristique, dignissim in, ultrices sit amet, augue. Proin sodales libero eget ante. Nulla quam. Aenean laoreet. Vestibulum nisi lectus, commodo ac, facilisis ac, ultricies eu, pede. </p>
+			$arts_featured = new WP_Query( $args );
+		
+		?>
+		
+		<ul class="list-stories homepage-arts-recent">
+		<?php while( $arts_featured->have_posts() ) : $arts_featured->the_post(); ?>
+
+			<li>
+
+				<span class="topic"><?php echo exa_topic( $post->ID ); ?><span class="summary-time-stamp"> &middot; <?php echo exa_human_time_diff(get_the_time('U')) ?> ago</span></span>
+				<h4><a href="<?php echo get_permalink( $post->ID ); ?>"><?php echo get_the_title( $post->ID ); ?></a></h4>
+
+			</li>
+
+		<?php endwhile; ?>
+		</ul>
+
+		<?php
+			// Restore original Post Data
+			wp_reset_postdata();
+		?>
+		</div>
+		<div class="all-link all-link-arts"><a href="<?php bloginfo('url'); ?>/artsetc/">All Artsetc.</a></div>
 
 
 
@@ -242,17 +419,83 @@ get_header();
 			<h2>Sports</h2>
 
 		</div>
+		<div class="col-container clearfix">
+		<div class="featured-container featured-container-sports">
+		
+		<?php
+		
+			/* Build query for featured stories in sports */
 
-		<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. Sed nisi. Nulla quis sem at nibh elementum imperdiet. Duis sagittis ipsum. Praesent mauris. Fusce nec tellus sed augue semper porta. Mauris massa. Vestibulum lacinia arcu eget nulla. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Curabitur sodales ligula in libero. </p>
+			$args = array();
+			$args['tax_query'] = array(
+	                array(
+	                    'taxonomy' => 'importance',
+	                    'field' => 'slug',
+	                    'terms' => array('featured'),
+	                    'operator' => 'IN'
+	                )
+	            );
+			$args['post_type'] = 'sports';
+			$args['posts_per_page'] = 4;
 
-		<p>Sed dignissim lacinia nunc. Curabitur tortor. Pellentesque nibh. Aenean quam. In scelerisque sem at dolor. Maecenas mattis. Sed convallis tristique sem. Proin ut ligula vel nunc egestas porttitor. Morbi lectus risus, iaculis vel, suscipit quis, luctus non, massa. Fusce ac turpis quis ligula lacinia aliquet. Mauris ipsum. Nulla metus metus, ullamcorper vel, tincidunt sed, euismod in, nibh. Quisque volutpat condimentum velit. </p>
+			$sports_featured = new WP_Query( $args );
+			$excludesports = array();
+		?>
 
-		<p>Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Nam nec ante. Sed lacinia, urna non tincidunt mattis, tortor neque adipiscing diam, a cursus ipsum ante quis turpis. Nulla facilisi. Ut fringilla. Suspendisse potenti. Nunc feugiat mi a tellus consequat imperdiet. Vestibulum sapien. Proin quam. Etiam ultrices. Suspendisse in justo eu magna luctus suscipit. </p>
+		<?php while( $sports_featured->have_posts() ) {
+			$sports_featured->the_post();
+			if($sports_featured->current_post == 0 && !is_paged()){
+				get_template_part( 'content', 'summary-featured' );
+			}
+			else{
+				if($sports_featured->current_post == 1 && !is_paged()){
+					echo '<ul class="featured-stream-list">';
+				}
+				echo '<li>';
+				get_template_part( 'content', 'summary-instream' );
+				echo '</li>';
+			}
+			$excludesports[] = $post->ID;
+		} ?>
+				</ul>
+		<?php
+			// Restore original Post Data
+			wp_reset_postdata();
+		?>
+		</div> <!-- class="featured-container" -->
+        
 
-		<p>Sed lectus. Integer euismod lacus luctus magna. Quisque cursus, metus vitae pharetra auctor, sem massa mattis sem, at interdum magna augue eget diam. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Morbi lacinia molestie dui. Praesent blandit dolor. Sed non quam. In vel mi sit amet augue congue elementum. Morbi in ipsum sit amet pede facilisis laoreet. Donec lacus nunc, viverra nec, blandit vel, egestas et, augue. Vestibulum tincidunt malesuada tellus. Ut ultrices ultrices enim. </p>
+		<?php
+		
+			/* Build query for featured stories in sports */
+			$args = array();
+			$args['post_type'] = 'sports';
+			$args['posts_per_page'] = 10;
+			$args['post__not_in'] = $excludesports;
 
-		<p>Curabitur sit amet mauris. Morbi in dui quis est pulvinar ullamcorper. Nulla facilisi. Integer lacinia sollicitudin massa. Cras metus. Sed aliquet risus a tortor. Integer id quam. Morbi mi. Quisque nisl felis, venenatis tristique, dignissim in, ultrices sit amet, augue. Proin sodales libero eget ante. Nulla quam. Aenean laoreet. Vestibulum nisi lectus, commodo ac, facilisis ac, ultricies eu, pede. </p>
+			$sports_featured = new WP_Query( $args );
+		
+		?>
+		
+		<ul class="list-stories homepage-sports-recent">
+		<?php while( $sports_featured->have_posts() ) : $sports_featured->the_post(); ?>
 
+			<li>
+
+				<span class="topic"><?php echo exa_topic( $post->ID ); ?><span class="summary-time-stamp"> &middot; <?php echo exa_human_time_diff(get_the_time('U')) ?> ago</span></span>
+				<h4><a href="<?php echo get_permalink( $post->ID ); ?>"><?php echo get_the_title( $post->ID ); ?></a></h4>
+
+			</li>
+
+		<?php endwhile; ?>
+		</ul>
+
+		<?php
+			// Restore original Post Data
+			wp_reset_postdata();
+		?>
+		</div>
+		<div class="all-link all-link-sports"><a href="<?php bloginfo('url'); ?>/sports/">All Sports</a></div>
 
 
 	</div><!-- id="sports" -->

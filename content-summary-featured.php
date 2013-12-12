@@ -65,6 +65,7 @@
 	</div><!-- .hp-feature-related-posts -->
 
 	<?php endif; // has related posts ?>
+	<div class="clearfix"></div>
 
 </article><!-- #post -->
 
