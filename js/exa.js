@@ -7,20 +7,14 @@
 
 
 $(document).ready(function() {
-	//alert('hi');
-	/*
-	$(window).scroll(function() {
 
-
-		console.log($("body").scrollTop()-$("#sidebar").offset().top);
-
-
-		if(($("body").scrollTop()-$("#sidebar").offset().top)>0) {
-			$("#sidebar").addClass("sidebar-fixed");
-		}
-
+	/**
+	 * Fastclick library, to removed 300ms delay for
+	 * taps on mobile.
+	 */
+	$(function() {
+	    FastClick.attach(document.body);
 	});
-*/
 
 	/** 
 	 * Scrolling for banners
@@ -98,31 +92,6 @@ $(document).ready(function() {
 
 		}, 3000 /* but after 2000 ms */);
 
-
-	});
-
-	$(".about").hover(function() {
-
-		$('#page').css({
-			"position":"relative"
-
-		});
-
-		$('#page-inner').css({
-			"position":"absolute",
-			"width":"100%",
-			"left":0
-			});
-
-		$('#page-inner').animate({
-			"left":"400px"
-			},400);
- 
-	}, function() {
-
-		$('#page-inner').animate({
-			"left":"0px"
-			},200);
 
 	});
 

@@ -89,8 +89,12 @@ function exa_scripts_styles() {
 	wp_enqueue_style( 'exa-style', get_stylesheet_uri() );
 
 	/* Load swipe library */
+	/* TODO: only homepage */
 	wp_enqueue_script( 'swipe', get_template_directory_uri() . '/js/Swipe/swipe.js', array(), '2.0', true );
 
+	/* Load fastclick library */
+	wp_enqueue_script( 'fastclick', get_template_directory_uri() . '/js/fastclick/lib/fastclick.js', array(), '0.6.11', true );	
+	
 }
 add_action( 'wp_enqueue_scripts', 'exa_scripts_styles' );
 
