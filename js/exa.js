@@ -39,7 +39,7 @@ $(document).ready(function() {
 			var	elementOffset = $(this).offset().top,
 			    distance      = (elementOffset - scrollTop);
 
-			console.log(windowHeight + ',' + distance);
+			// log distance: console.log(windowHeight + ',' + distance);
 
 			 if(distance > 0 && windowHeight > distance) {
 		    	

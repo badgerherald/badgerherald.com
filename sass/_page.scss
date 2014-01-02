@@ -83,11 +83,11 @@ body {
 
 	/* Wrapper */
 	#wrapper {
-		max-width: 800px;
+		max-width: 900px;
 	}
 
 	#masthead {
-		max-width: 800px;
+		max-width: 900px;
 	}
 
 	#inner-masthead {
@@ -96,10 +96,8 @@ body {
 		width: flex(740,760);
 		max-width: 800px;
 		padding: 0 flex(10,760);
-		top:72px;
+		top:78px;
 	}
-
-
 
 	#primary {
 		/* TODO: determined correct value */

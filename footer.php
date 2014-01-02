@@ -35,23 +35,62 @@
 	
 	<?php wp_footer(); ?> 
 
-
+	<?php /* TODO:  Only load this on the homepage */ ?>
 	<script type="text/javascript">
 
-		window.mySwipe = Swipe(document.getElementById('swipe'), {
+		<?php 
+		global $homepageSlider;
+		if($homepageSlider == true) :
+		/**
+		 * Setup
+		 * 
+		 * Setup for swipe library.
+		 */ ?>
+		var speed = 600;
+		var auto = 5000;
+		window.mySwipe = new Swipe(document.getElementById('swipe'), {
 			startSlide: 0,
-			speed: 400,
-			auto: 3000,
+			speed: speed,
+			auto: auto,
 			continuous: true,
 			disableScroll: false,
 			stopPropagation: false,
 			callback: swiped,
 			transitionEnd: function(index, elem) {}
 		});
+
 		swiped(0,document.getElementById('swipe'));
+
+		<?php 
+		/**
+		 * Function: swiped
+		 * 
+		 * Callback function that highlights the new slider 
+		 * position on the slider navigation.
+		 *
+		 * @param index the index of the now active slider 
+		 * @param elem DOM element of the slider
+		 */ ?>
 		function swiped(index,elem) {
 			$(".slider-nav").find('li').removeClass("active").eq(index).addClass("active");
 		}
+
+		<?php 
+		/**
+		 * Listener
+		 * 
+		 * Listens for clicks on the slider nav to change
+		 * slider position.
+		 */ ?>
+		$(".slider-nav li").click(function() {
+
+			var index = $(".slider-nav").find("li").index($(this));
+
+			window.mySwipe.slide(index,speed);
+
+		});
+
+		<?php endif; /* homepageSlider */ ?>
 		
 
 	</script>

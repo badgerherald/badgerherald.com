@@ -27,14 +27,21 @@
 		position: relative;
 	}
 
-	/* ----------------------------------------- */
+	/* ----------------- /end swipe styling/ --- */
 
 	#slider {
 		width: 100%;
 		background: $hrld-black;
 		color: $hrld-light-grey;
 		margin-bottom: 12px;
-		h2,p,h4,ul {
+		.slider-content {
+			float: left;
+		}
+		img {
+			float: left;
+			height: auto;
+		}
+		h2,p,ul {
 			padding: 0px 20px;
 		}
 		h2 {
@@ -53,7 +60,6 @@
 			font-family: $headline;
 			list-style: none;
 			margin:0;
-			padding-top:0;
 
 			/* not until iPad */
 			display: none;
@@ -98,67 +104,84 @@
 	#middle-column {
 		.hp-square-ad {
 			width: 300px;
-			margin: 0 auto;
+			height: 250px;
+			margin-bottom: 12px;
 		}
-
 		.todays-shoutout {
+			margin: 0;
+			padding: 0;
+			padding-bottom: 24px;
+			position: relative;
 			.bubble-box {
 				background: $hrld-black;
-				margin-bottom: 18px;
+				margin-bottom: 78px;
 				color: $hrld-light-grey;
 				font-family: 'PT Sans';
-				&:after {
+				position: relative;
+				h3 {
+					margin: 0;
+					padding:24px 20px 0px;
+					font-size: 17px;
+					text-transform: uppercase;
+				} p {
+					padding:6px 20px 24px;
+					margin: 0;
+					color: $hrld-dark-grey;
+					font-family: $headline;
+					font-style: italic;
+					font-size: 17px;
+					line-height: 24px;
+				} &:after {
 					content: "";
 					display: block;
-					width: 0; 
-					height: 0; 
+					width: 0; height: 0; 
 					border-right: 30px solid transparent;
 					border-bottom: 30px solid transparent;
 					border-top: 30px solid $hrld-black;
 					border-left: 30px solid $hrld-black;
-					position: relative;
-					top:60px;
-					left: 80px;
+					position: absolute;
+					bottom:-60px;
+					margin-left: 80px;
 				}
-			}
-		}
-	}
-
-
-	#top-posts {
-		background: #fff;
-		padding: 12px 20px;
-		margin-bottom: 24px;
-		h3,ul {
-			margin: 0; padding:0;
-		}
-		h3 {
-			margin-top: 6px;
-			text-transform: uppercase;
-			font-family: $headline;
-		}
-		ul {
-			list-style: none;
-			font-family: $headline;
-			margin-top: 12px;
-			li {
-				margin-bottom: 12px;
-				line-height: 18px;
+			} .hp-so-avatar {
+				position: absolute;
+				margin-top:-60px;
+			} .link-box { /* The box with "More Shoutouts", and "Add a Shoutout" links */
+				position: absolute;
+				width: 100%;
+				height: 60px;
+				text-align: right;
+				bottom: 24px;
 				a {
-					color: $hrld-black;
-					font-weight: bold;
-					&:hover {
-						color: $hrld-blue;
+					font-family: $headline;
+					font-size: 14px;
+					text-transform: uppercase;
+					line-height: 18px;
+					font-weight: 700;
+					&.more {
+						/* TODO: Add Icon */
+						color: $hrld-black;
+						&:hover {
+							color: $hrld-blue;
+						}
+					} &.submit {
+						/* TODO: Add Icon */
+						color: $hrld-dark-grey;
+						&:hover {
+							color: $hrld-dark-grey-hover;
+						}
 					}
 				}
 			}
-		}
+		} /* .todays-shoutout */
+	} #top-posts {
+		display:none;
 	}
 
 }
 
-
 /* Banners on the homepage */
+
 .section-banner {
 	width: 100%;
 	&.section-banner-news {
@@ -276,7 +299,7 @@ ul.featured-stream-list{
 	font-weight: bold;
 	text-transform: uppercase;
 	font-size: 20px;
-	a{
+	a {
 		color: $hrld-dark-grey;
 		background: url("img/icons/arrow-right-blue.png") no-repeat right center;
 		padding-right: 16px;
@@ -291,6 +314,44 @@ ul.featured-stream-list{
 }
 
 @media (min-width: 760px) {
+
+	#above-fold {
+		#slider {
+			margin-bottom: 18px;
+			position: relative;
+			img {
+				width: flex(460,760);
+			} .slider-content {
+				width: flex(300,760);
+			} .slider-related-title {
+				display: block;
+			} ul.slider-related {
+				display: block;
+			} ul.slider-nav {
+				width: flex(300,760);
+				height:12px;
+				position: absolute;
+				bottom:0;
+				right: 0;
+			}
+		} #middle-column {
+			.hp-square-ad {
+				width: 300px;
+				height: 250px;
+				margin-bottom: 12px;
+				position: absolute;
+				left: flex(434,760);
+			} .todays-shoutout {
+				width: flex(414,760);
+				.bubble-box {
+					height: 172px;
+				}
+			}	
+		} #top-posts {
+			display:none;
+		}
+	} 
+
 	.featured-container{
 		float: left;
 		width: flex(420,740);
@@ -396,7 +457,74 @@ ul.featured-stream-list{
 	}
 }
 
+
+
+
 @media (min-width: 1060px) {
+	
+	#above-fold {
+		margin-bottom: 30px;
+		#slider {
+			margin-bottom: 18px;
+			width: 460px;
+			float: left;
+			img {
+				width: 100%;
+			} .slider-content {
+				width: 100%;
+				height: 303px;
+			} ul.slider-nav {
+				width: 100%;
+			}
+		} #middle-column {
+			width: 300px;
+			margin-left: 20px;
+			float: left;
+			.hp-square-ad {
+				margin-bottom: 18px;
+				position: static;
+			} .todays-shoutout {
+				width: 100%;
+				.bubble-box {
+					height: 217px;
+				}
+			}	
+		} #top-posts {
+			display:block;
+			float: left;
+			width: 180px;
+			margin-left: 20px;
+			height: 576px;
+            background: #fff;
+            padding: 12px 20px;
+            h3,ul {
+                    margin: 0; padding:0;
+            }
+            h3 {
+                    margin-top: 6px;
+                    text-transform: uppercase;
+                    font-family: $headline;
+            }
+            ul {
+                    list-style: none;
+                    font-family: $headline;
+                    margin-top: 12px;
+                    li {
+                            margin-bottom: 12px;
+                            line-height: 18px;
+                            a {
+                                    color: $hrld-black;
+                                    font-weight: bold;
+                                    &:hover {
+                                            color: $hrld-blue;
+                                    }
+                            }
+                    }
+            }
+        }
+	} 
+
+	
 	ul.list-stories{
 		width: 340px;
 		padding-left: 19px;
@@ -474,6 +602,34 @@ ul.featured-stream-list{
 }
 
 @media (min-width: 1220px) {
+
+	#above-fold {
+		margin-bottom: 30px;
+		#slider {
+			width: 620px;
+			float: left;
+			.slider-related-title {
+
+			}
+			ul.slider-related {
+				li,h4 {
+					display: inline;
+				}
+				li:before {
+					content: "|";
+					padding: 0 4px;
+				} li:first-child:before {
+					content: "";
+					padding:0;
+				}
+			}
+		} .slider-content {
+			width: 100%;
+			height: 200px !important;
+		}
+	} 
+
+
 	.featured-container{
 		width: 800px;
 	}

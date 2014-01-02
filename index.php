@@ -17,36 +17,57 @@ get_header();
 	<div id="above-fold" class="clearfix">
 
 	<div  id="slider">
-		<?php $homepageslider = true; ?>
+
 		<div id="swipe" class="swipe">
 
 			<div class='swipe-wrap'>
 
+			<?php $homepageSlider = true; /* Boolean to tell footer.php to load 
+													   * the slider script. 
+													   */ ?>
+			<?php
+	
+			/* Build query for featured stories in news */
+
+			$args = array();
+			$args['tax_query'] = array(
+	                array(
+	                    'taxonomy' => 'importance',
+	                    'field' => 'slug',
+	                    'terms' => array('featured'),
+	                    'operator' => 'IN'
+	                )
+	            );
+			$args['posts_per_page'] = 4;
+
+			$slider_query = new WP_Query( $args );
+
+			?>
+
+			<?php while( $slider_query->have_posts() ) : $slider_query->the_post();?>
+				
 			<div class="slide">
-
-				<img src="<?php bloginfo('template_url') ?>/img/temp/cade.png" />
-				<h2>Badger game’s streaker says he regrets his decision</h2>
-				<p>Peregoy, a Wisconsin native studying landscape architecture, told The Badger Herald his side of the story about that game day.</p>
-				<h4 class="slider-related-title">PENN STATE STREAKER</h4>
-				<ul class="slider-related">
-					<li><a href="#">Drunk student streaks, record number sent to detox at Penn State game</a></li>
-					<li><a href="#">Penn State freshman ruins Wisconsin’s Senior Day</a></li>
-				</ul>
+			
+				<?php the_post_thumbnail(); ?>
+				<div class="slider-content">
+					<h2><?php the_title(); ?></h2>
+					<p><?php the_excerpt(); ?></p>
+					<?php if(hrld_related_has_posts()) : ?>
+					<ul class="slider-related">
+						<li><h4 class="slider-related-title"><?php hrld_related_topic() ?></h4></li>
+						<?php $related = hrld_related_post_ids(); foreach($related as $relatedID) : ?>
+							<li><a href="<?php echo get_permalink($relatedID) ?>"><?php echo get_the_title($relatedID) ?></a></li>
+						<?php endforeach; ?>
+					</ul>
+					<?php endif; ?>
+				</div>
 			</div>
+			<?php endwhile; ?>
 
-			<div class="slide">
-
-				<img src="<?php bloginfo('template_url') ?>/img/temp/cade.png" />
-				<h2>Badger game’s streaker says he regrets his decision</h2>
-				<p>Peregoy, a Wisconsin native studying landscape architecture, told The Badger Herald his side of the story about that game day.</p>
-				<h4 class="slider-related-title">PENN STATE STREAKER</h4>
-				<ul class="slider-related">
-					<li><a href="#">Drunk student streaks, record number sent to detox at Penn State game</a></li>
-					<li><a href="#">Penn State freshman ruins Wisconsin’s Senior Day</a></li>
-				</ul>
-			</div>
-
-
+			<?php
+				// Restore original Post Data
+				wp_reset_postdata();
+			?>
 
 		</div>
 
@@ -74,11 +95,11 @@ get_header();
 					<p>SO to girls. You have to suck dick and birth babies. That must blow.</p>
 				</div>
 
-				<img src="<?php bloginfo('template_url') ?>/img/icons/shoutout.png" />
+				<img class="hp-so-avatar" src="<?php bloginfo('template_url') ?>/img/icons/shoutout.png" />
 				
 				<div class="link-box">
-					<a href="<?php bloginfo('url') ?>/shoutouts">More Shoutouts</a>
-					<a href="<?php bloginfo('url') ?>/shoutouts/add">Add a Shoutout</a>
+					<a class="more" href="<?php bloginfo('url') ?>/shoutouts">More Shoutouts</a><br/>
+					<a class="submit" href="<?php bloginfo('url') ?>/shoutouts/add">Add a Shoutout</a>
 				</div>
 
 			</div>

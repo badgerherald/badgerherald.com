@@ -27,7 +27,7 @@ a {
 
 h1 {
 	font-family: 	$headline;
-	font-size:		em(30);
+	font-size:		30px;
 	line-height: 	30px;
 	margin: 0 0 6px 0;
 	padding: 0;
@@ -38,7 +38,7 @@ h1 {
 
 h2 {
 	font-family: 	$headline;
-	font-size:		em(22);
+	font-size:		22px;
 	line-height: 	27px;
 	margin: 0 0 -6px 0;
 	padding:0;
@@ -48,6 +48,10 @@ h2 {
 	&.author-title{
 		padding-top: 6px;
 	}
+}
+
+h3 {
+	// margin: 0 0 0 0;
 }
 
 hr {

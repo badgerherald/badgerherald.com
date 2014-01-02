@@ -4,13 +4,11 @@
 	margin-left: flex(10,320);
 	top:12px;
 	background: $hrld-blue;
-	
 	.bar-logo {
 		height: 42px;
 		width: 160px;
 		background: url('img/logo/nav-bar-logo.png') no-repeat 10px 14px;
-	}
-
+	} 
 	.nav-control {
 		width: 30px;
 		height: 30px;
@@ -105,22 +103,20 @@ ul#main-nav {
 				cursor: pointer;
 			} 
 		}
-
-	}
-
-	#inner-masthead {
+	} #inner-masthead {
 		.advertise-plug,.inner-mast-tagline,.social-buttons {
 			display: none;
 		}
-	}
-
-	.nav-container {
+	} #ad-leaderboard {
+		margin-bottom: 18px;
+		width: 728px;
+		height:90px;
+	} .nav-container {
 		max-width: 500px;
 		position: absolute;
 		right:0;
 		border-left: 12px solid $hrld-light-grey;
 	}
-
 }
 
 @media (min-width: 1060px) {
@@ -188,11 +184,8 @@ ul#main-nav {
 			}
 		}
 		#ad-leaderboard {
-			margin-bottom: 12px;
 			position: absolute;
 			right:0px;
-			width: 728px;
-			height:90px;
 			text-align: center;
 		}
 		.advertise-plug {
