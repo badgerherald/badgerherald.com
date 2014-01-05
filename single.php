@@ -10,8 +10,6 @@
 get_header(); 
 ?>
 
-<?php hrld_top_leaderboard_ad(); ?>
-
 <?php /* The loop */ ?>
 <?php while ( have_posts() ) : the_post(); ?>
 

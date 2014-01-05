@@ -15,7 +15,7 @@
  * @see twentythirteen_content_width() for template-specific adjustments.
  */
 if ( ! isset( $content_width ) )
-	$content_width = 540;
+	$content_width = 690;
 
 /**
  * Require the ads function.
@@ -322,10 +322,16 @@ function exa_get_beats_slug_list($category) {
  *
  * By Matthew Neil
  */
-add_filter('embed_oembed_html', 'hrld_responsive_embed_oembed_html', 99, 4);
 function hrld_responsive_embed_oembed_html($html, $url, $attr, $post_id) {
-  return '<div class="video-embed-container">' . $html . '</div>';
+ 
+ if (strpos($url,'youtu')) {
+ 	return '<div class="video-container">' . $html . '</div>';
+ } else {
+ 	return $html;
+ }
+
 }
+add_filter('embed_oembed_html', 'hrld_responsive_embed_oembed_html', 10, 4);
 
 
 
@@ -350,7 +356,16 @@ function exa_topic($pid = null) {
 
 	return "Herald";
 }
+/*
+function exa_the_date() {
 
+	the_time("M j, Y")
+
+}
+
+function exa_get_the_date() {
+
+} */
 
 /**
  * Prints the post thumbnail of the post.
@@ -366,3 +381,54 @@ function exa_post_thumbnail_html( $html, $post_id, $post_thumbnail_id, $size, $a
 	
 }
 add_filter( 'post_thumbnail_html', 'exa_post_thumbnail_html', 20, 5 );
+
+
+/**
+ * Remove options from the editor screen, because
+ * editors have enough options already.
+ *
+ */
+
+function hrld_customformatTinyMCE($init) {
+	// Add block format elements you want to show in dropdown
+	$init['theme_advanced_blockformats'] = 'p,h3,h4';
+
+	// Add elements not included in standard tinyMCE doropdown p,h1,h2,h3,h4,h5,h6
+	//$init['extended_valid_elements'] = 'code[*]';
+
+	return $init;
+}
+
+// Modify Tiny_MCE init
+add_filter('tiny_mce_before_init', 'hrld_customformatTinyMCE' );
+
+/**
+ * Plugin Name: Remove Attachment Link-To and set to value 'none' 
+ */
+
+add_action( 'admin_footer-post-new.php', 'wpse_76214_script' );
+add_action( 'admin_footer-post.php', 'wpse_76214_script' );
+function wpse_76214_script() {
+    ?>
+    <script type="text/javascript">
+    jQuery(document).ready( function($) {
+        $( 'li.attachment' ).live( 'click', function( event ) {
+            $( ".link-to > [value='none']").attr( "selected", true ); // selected none in select field
+            $( ".link-to-custom" ).val( '' ); // clear input field for target of link
+            $( '.media-sidebar div.setting' ).remove(); // remove link field
+        });
+    } );
+    </script>
+    <?php
+}
+
+// filter a-Tag in data, there was send to edit; fallback
+add_filter( 'media_send_to_editor', 'wpse_76214_send_to_editor', 10, 3 );
+function wpse_76214_send_to_editor( $html, $id, $attachment ) {
+
+    $html = preg_replace( '@\<a([^>]*)>(.*?)\<\/a>@i', '$2', $html );
+
+    return $html;
+}
+
+

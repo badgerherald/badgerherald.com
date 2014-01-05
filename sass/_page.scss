@@ -10,7 +10,7 @@ body {
 /* Wrapper */
 #wrapper {
 	margin: 0 auto;
-	max-width: 640px;
+	max-width: 540px;
 	width: 100%;
 	position: relative;
 }
@@ -29,10 +29,16 @@ body {
 	width: 100%;
 	top : 0;
 	height: 66px; /* top margin, navbar, bottom margin */
-	max-width: 640px;
+	max-width: 540px;
 	background: rgba(239,244,246,.9);
 	border-bottom: 1px solid #e0eaee;
 	z-index: 9999;
+}
+
+body.admin-bar {
+	#masthead {
+		top: 32px !important;
+	}
 }
 
 #inner-masthead {
@@ -53,41 +59,17 @@ body {
 	position: relative;
 }
 
-/* Will: Not sure what this is. But i'll leave it for now 
- * Matt: If you happen to see this, its supposed to make youtube embeded
- *       videos resize responsive similar to images having max-width: 100%
- *       For some reason though the function i wrote in functions that is supposed
- *  	 to check when wordpress tries to embed youtube videos and wrap the video
- *	 	 in a div container with this class isnt working for some reason. Havent had
- *		 a chance to bug test that.
- */
-.video-embed-container{
-	position: relative;
-	padding-bottom: 56.25%;
-	padding-top: 30px;
-	height: 0;
-	overflow: hidden;
-	clear: both;
-	iframe, object, embed{
-		position: absolute;
-		top: 0;
-		left: 0;
-		width: 100%;
-		height: 100%;
-	}
-}
-
 @media (min-width: 760px) {
 
 	/** _page.scss overrides */
 
 	/* Wrapper */
 	#wrapper {
-		max-width: 900px;
+		max-width: 780px;
 	}
 
 	#masthead {
-		max-width: 900px;
+		max-width: 780px;
 	}
 
 	#inner-masthead {

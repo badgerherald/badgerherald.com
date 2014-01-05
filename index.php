@@ -62,6 +62,7 @@ get_header();
 					<?php endif; ?>
 				</div>
 			</div>
+
 			<?php endwhile; ?>
 
 			<?php
@@ -69,18 +70,18 @@ get_header();
 				wp_reset_postdata();
 			?>
 
-		</div>
+			</div><!-- .swipe-wrap -->
 
-		<ul class="slider-nav">
-			<li><span>Slide 1</span></li>
-			<li class="active"><span>Slide 2</span></li>
-			<li><span>Slide 3</span></li>
-			<li><span>Slide 4</span></li>
-		</ul>
+			<ul class="slider-nav">
+				<li><span>Slide 1</span></li>
+				<li class="active"><span>Slide 2</span></li>
+				<li><span>Slide 3</span></li>
+				<li><span>Slide 4</span></li>
+			</ul>
 
-	</div>
+		</div> <!-- #swipe.swipe -->
 
-	</div>
+	</div><!-- #slider -->
 
 		<div id="middle-column">
 			<div class="hp-square-ad">

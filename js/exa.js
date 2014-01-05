@@ -21,18 +21,16 @@ $(document).ready(function() {
 	 * 
 	 * Issues: bugs on iOS, safari devices.
 	 * 
-	 * @author Will Hanyes
+	 * @author Will Haynes
 	 * @since Nov 2013 
 	 */
 	$(window).scroll(bannerScroll);
 	function bannerScroll() {
 
-
 		var backgroundImgHeight = 234,
 			bannerHeight = 90;
 		var scrollTop     = $(window).scrollTop(),
 			windowHeight  = $(window).height();
-			
 
 		$('.section-banner').each( function() {
 			
