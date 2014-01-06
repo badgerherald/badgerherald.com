@@ -522,32 +522,6 @@ get_header();
 
 	</div><!-- id="sports" -->
 
-
-	<?php /* ?>
-	<?php if ( have_posts() ) : ?>
-
-		<?php /* The loop  ?>
-		<?php while ( have_posts() ) : the_post(); ?>
-
-			<?php if(exa_is_featured()) : ?>
-				<?php get_template_part( 'content', 'summary-featured' ); ?>
-			<?php elseif(exa_is_instream()) : ?>
-				<?php get_template_part( 'content', 'summary-instream' ); ?>
-			<?php endif; ?>
-			<hr />
-			
-		<?php endwhile; ?>
-
-	<?php else : ?>
-		<?php get_template_part( 'content', 'none' ); ?>
-	<?php endif; ?>
-
-	<?php */ ?>
-
-	
-
-	<?php get_sidebar(); ?>
-
 	<div id="clearfix"></div>
 
 
