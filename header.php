@@ -75,16 +75,15 @@ include('macros.php');
 		
 		<div class="nav-bar">
 
-			<div class="bar-logo">
+			<a href="<?php echo bloginfo("url"); ?>"><div class="bar-logo">
 
-			</div>
+			</div></a>
 			
 			<?php /* container for the mobile hamburger icon */ ?>
 	        <div class="nav-control" alt="Menu">
 		         <div class="nav-icon" ></div>
 	        </div>
 			
-
 			<div class="nav-container">
 
 				<div class="nav-drop-tagline">The University of Wisconsin's Premier Independent Student Newspaper &mdash; <strong>Since 1969</strong></div>

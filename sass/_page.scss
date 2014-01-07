@@ -50,8 +50,8 @@ body.admin-bar {
 #primary {
 	width: flex(300,320);
 	padding: 12px flex(10,320) 0;
-	position: absolute;
-	margin-top: 66px;
+	position: relative;
+	//margin-top: 66px;
 }
 
 #main-header {
