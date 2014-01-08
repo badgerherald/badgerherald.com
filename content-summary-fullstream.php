@@ -10,21 +10,21 @@
 
 <?php ?>
 <article id="post-<?php the_ID(); ?>" <?php post_class("stream-post instream-stream-post fullstream-post"); ?>>
-	<a class="summary-post-link clearfix" href="<?php the_permalink(); ?>" rel="bookmark">
+	<a class="summary-post-link" href="<?php the_permalink(); ?>" rel="bookmark">
 		
+        <header class="entry-header">
+        
+		<h2 class="entry-title">
+			<?php the_title(); ?>
+		</h2>
+
+	</header><!-- .entry-header -->
 		
 		<div class="entry-thumbnail">
 			<?php the_post_thumbnail(); ?>
 		</div>
 
-        <header class="entry-header">
-		
-		<span class="topic"><?php echo exa_topic( $post->ID ); ?></span>
-
-	</header><!-- .entry-header -->
-		<h2 class="entry-title">
-			<?php the_title(); ?>
-		</h2>
+        
 		<!-- <div class="clearfix"></div> -->
 
 		<div class="entry-summary <?php if(!$full_width) { echo "entry-summary-full"; } ?>">

@@ -114,14 +114,27 @@
 	
 }
 @media (min-width: 760px) {
-	#stream{
-		float: left;
-		width: flex(420,740); 
+	.stream-post.featured-fullstream-post{
+		.entry-thumbnail{
+			width: flex(380,760);
+			float: left;
+			margin-right: flex(20,760);
+		}
 	}
-	.stream-sidebar{
-		width: flex(300,740);
-		float: left;
-		padding-left: flex(20,740);
+	.stream-post.fullstream-post{
+		.entry-thumbnail{
+			width: flex(220,760);
+			float: left;
+			margin-right: flex(20,760);
+			height: 100%;
+		}
+		.entry-header{
+			margin-bottom: 6px;
+		}
+		.entry-summary.entry-summary-full, .hp-feature-related-posts{
+			float: left;
+			width: flex(520,760);
+		}
 	}
 }
 
