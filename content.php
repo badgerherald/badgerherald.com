@@ -17,7 +17,7 @@
 				<a class="meta-author-avatar" title="<?php echo exa_properize(get_the_author()); ?> Profile" href="<?php exa_the_author_link() ?>">
 					<?php echo get_wp_user_avatar(get_the_author_meta('ID'), 'small-thumbnail'); ?>
 				</a>
-				<span class="author">by <a href="<?php echo exa_properize(get_the_author()); ?> Profile"><?php the_author() ?></a></span>
+				<span class="author">by <a href="<?php exa_the_author_link() ?>" title="<?php echo exa_properize(get_the_author()); ?> Profile"><?php the_author() ?></a></span>
 				<span class="author-position">The Badger Herald</span>
 				<span class="author-twitter">@willhaynes</span>
 			</div>
@@ -30,7 +30,12 @@
 
 		<article class="article-post">
 
+		<div class="post-meta content-meta-data">
+			<span class="meta-time">Posted <strong><?php the_time("M j, Y") ?></strong> at <strong><?php the_time("g:i a"); ?></strong></span>
+		</div>
+		
 		<h1 class="entry-title"><?php the_title(); ?></h1>
+		<h2 class="entry-excerpt">Vestibulum id ligula porta felis euismod semper.</h2>
 
 		<div class="mobile-post-meta post-meta">
 				<a class="meta-author-avatar" title="<?php echo exa_properize(get_the_author()); ?> Profile" href="<?php exa_the_author_link() ?>">

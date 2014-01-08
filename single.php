@@ -15,6 +15,12 @@ get_header();
 
 	<?php get_template_part( 'content', get_post_format() ); ?>
 	<div class="clearfix"></div>
+
+
+	</div><!--wrapper -->
+	</div><!-- wrapper -->
+	</div>
+	</div>
 	<?php comments_template(); ?>
     <?php if(exa_has_tweets_cache())exa_get_tweets_API(); ?>
 

@@ -18,16 +18,10 @@
  */
 
 get_header(); 
-hrld_top_leaderboard_ad();
 
 ?>
-	
-	<?php 
-		$classes = "";
-		if( is_post_type_archive() ) {
-			$classes.="section-header-".strtolower(post_type_archive_title("",false));
-		}
-		?>
+
+
 	<header id="section-header" class="<?php echo $classes ?> clearfix">
 		<h1 class="archive-title">
 			<a href="<?php bloginfo('url'); ?>/sports/">
