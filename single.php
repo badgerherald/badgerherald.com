@@ -17,12 +17,12 @@ get_header();
 	<div class="clearfix"></div>
 
 
-	</div><!--wrapper -->
+	<?php comments_template(); ?>
+    <?php if(exa_has_tweets_cache())exa_get_tweets_API(); ?>
+    	</div><!--wrapper -->
 	</div><!-- wrapper -->
 	</div>
 	</div>
-	<?php comments_template(); ?>
-    <?php if(exa_has_tweets_cache())exa_get_tweets_API(); ?>
 
 <?php endwhile; ?>
 

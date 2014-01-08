@@ -18,7 +18,6 @@
  */
 
 get_header(); 
-hrld_top_leaderboard_ad();
 
 ?>	
 	<?php 
@@ -54,10 +53,10 @@ hrld_top_leaderboard_ad();
 		<?php while ( have_posts() ) : the_post(); ?>
 
 			<?php if(exa_is_featured()) : ?>
-				<?php get_template_part( 'content', 'summary-featured' ); ?>
+				<?php get_template_part( 'content', 'summary-fullstream-featured' ); ?>
 				<hr />
 			<?php else : ?>
-				<?php get_template_part( 'content', 'summary-instream' ); ?>
+				<?php get_template_part( 'content', 'summary-fullstream' ); ?>
 				<hr />
 			<?php endif; ?>
 			
@@ -65,16 +64,15 @@ hrld_top_leaderboard_ad();
 
 		<?php endwhile; ?>
 
-		<?php twentythirteen_paging_nav(); ?>
+		<?php // twentythirteen_paging_nav(); ?>
 
 	<?php elseif ($query->is_archive) : ?>
-		Aadfasdfasd
 		<?php //get_template_part( 'content', 'none' ); ?>
 	<?php endif; ?>
 
 	</div><!-- id="stream" -->
 
-	<?php get_sidebar(); ?>
+	<?php get_sidebar('archive'); ?>
 
 	<div id="clearfix"></div>
 

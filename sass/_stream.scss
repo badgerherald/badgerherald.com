@@ -80,7 +80,18 @@
 			width: 100%;
 		}
 	}
-
+}
+.stream-post.fullstream-post{
+	.related-header, .related-header h3, .related-post-articles{
+		display: inline;
+	}
+	.related-post-articles li{
+		display: inline;
+		&:before{
+			content: "|";
+			padding: 0 4px;
+		}
+	}
 }
 
 .summary-post-link {
@@ -101,6 +112,17 @@
 		border-color: $hrld-blue;
 	}
 	
+}
+@media (min-width: 760px) {
+	#stream{
+		float: left;
+		width: flex(420,740); 
+	}
+	.stream-sidebar{
+		width: flex(300,740);
+		float: left;
+		padding-left: flex(20,740);
+	}
 }
 
 @media (min-width: 1060px) {

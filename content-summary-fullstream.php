@@ -9,7 +9,7 @@
 ?>
 
 <?php ?>
-<article id="post-<?php the_ID(); ?>" <?php post_class("stream-post instream-stream-post"); ?>>
+<article id="post-<?php the_ID(); ?>" <?php post_class("stream-post instream-stream-post fullstream-post"); ?>>
 	<a class="summary-post-link clearfix" href="<?php the_permalink(); ?>" rel="bookmark">
 		
 		

@@ -9,30 +9,35 @@
 ?>
 
 <?php ?>
-<article id="post-<?php the_ID(); ?>" <?php post_class("stream-post instream-stream-post"); ?>>
-	<a class="summary-post-link clearfix" href="<?php the_permalink(); ?>" rel="bookmark">
-		
-		
-		<div class="entry-thumbnail">
-			<?php the_post_thumbnail(); ?>
-		</div>
 
-        <header class="entry-header">
-		
-		<span class="topic"><?php echo exa_topic( $post->ID ); ?></span>
+
+<article id="post-<?php the_ID(); ?>" <?php post_class("stream-post featured-stream-post featured-fullstream-post"); ?>>
+
+	<a class="summary-post-link" href="<?php the_permalink(); ?>" rel="bookmark">
+
+	<header class="entry-header">
+
+			<div class="entry-thumbnail">
+				<?php the_post_thumbnail(); ?>
+			</div>
 
 	</header><!-- .entry-header -->
+
+		
+		
 		<h2 class="entry-title">
 			<?php the_title(); ?>
 		</h2>
-		<!-- <div class="clearfix"></div> -->
 
-		<div class="entry-summary <?php if(!$full_width) { echo "entry-summary-full"; } ?>">
-					<p> <span class="summary-time-stamp"><?php echo exa_human_time_diff(get_the_time('U')) ?> ago &middot; </span><?php echo get_the_excerpt(); ?></p>
-		</div><!-- .entry-summary -->
+
+
+	<div class="entry-summary">
+		<p> <span class="summary-time-stamp"><?php echo exa_human_time_diff(get_the_time('U')) ?> ago &middot; </span><?php echo get_the_excerpt(); ?></p>
+	</div><!-- .entry-summary -->
 
 	</a>
-    <?php if(hrld_related_has_posts() && !is_home()) : ?>
+
+	<?php if(hrld_related_has_posts()) : ?>
 
 	<div class="hp-feature-related-posts">
 		
@@ -60,8 +65,7 @@
 	</div><!-- .hp-feature-related-posts -->
 
 	<?php endif; // has related posts ?>
-
 	<div class="clearfix"></div>
 
-
 </article><!-- #post -->
+
