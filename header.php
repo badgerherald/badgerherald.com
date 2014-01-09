@@ -41,7 +41,7 @@ include('macros.php');
 	-->
 	<link href='http://fonts.googleapis.com/css?family=Noto+Serif:400,700,400italic,700italic|Yanone+Kaffeesatz:400,300,700|Open+Sans|PT+Sans+Narrow:400,700' rel='stylesheet' type='text/css'>
 
-	<?php hrld_dfp_header() ?>
+	<?php dfp::hrld_dfp_header() ?>
 
 	<link rel="icon" 
      	type="image/png" 
@@ -126,7 +126,7 @@ include('macros.php');
 	<div id="inner-masthead">
 
 		<div class="inner-mast-tagline">UW-Madison's Premier Independent Student Newspaper.  <span class="since"><strong>Since 1969</strong></span></div>
-		<?php hrld_top_leaderboard_ad(); ?>
+		<?php dfp::hrld_top_leaderboard_ad(); ?>
 		<a class="advertise-plug" href="http://badgerherald.com/advertise/">Student Org? Local Business? Advertise with the Herald.</a>
 		<div class="social-buttons">
 

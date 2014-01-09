@@ -65,9 +65,9 @@
             </form>
             <?php
 
-            hrld_sidebar_ad();
+            dfp::hrld_sidebar_ad();
 
-            hrld_sidebar_lower_ad();
+            dfp::hrld_sidebar_lower_ad();
 
             ?>
         </div><!-- class="sidebar-scroll" -->

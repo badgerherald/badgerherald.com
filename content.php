@@ -23,7 +23,7 @@
 			</div>
 
 			<div class="post-sidebar-ad">
-				<?php hrld_sidebar_lower_ad(); ?>
+				<?php dfp::hrld_sidebar_lower_ad(); ?>
 			</div>
 
 		</div>

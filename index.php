@@ -85,7 +85,7 @@ get_header();
 
 		<div id="middle-column">
 			<div class="hp-square-ad">
-				<?php hrld_sidebar_lower_ad(); ?>
+				<?php dfp::hrld_sidebar_lower_ad(); ?>
 			</div>
 		
 
