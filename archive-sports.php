@@ -23,23 +23,11 @@ get_header();
 
 
 	<header id="section-header" class="<?php echo $classes ?> clearfix">
-		<h1 class="archive-title">
-			<a href="<?php bloginfo('url'); ?>/sports/">
-			<?php
-				if ( is_day() ) :
-					printf( __( 'Daily Archives: %s', 'twentythirteen' ), get_the_date() );
-				elseif ( is_month() ) :
-					printf( __( 'Monthly Archives: %s', 'twentythirteen' ), get_the_date( _x( 'F Y', 'monthly archives date format', 'twentythirteen' ) ) );
-				elseif ( is_year() ) :
-					printf( __( 'Yearly Archives: %s', 'twentythirteen' ), get_the_date( _x( 'Y', 'yearly archives date format', 'twentythirteen' ) ) );
-				elseif ( is_post_type_archive() ) :
-					printf( '%s', post_type_archive_title() );
-				else :
-					_e( 'Archives', 'twentythirteen' );
-				endif;
-			?>
-			</a>
-		</h1>
+		<div class="section-banner section-banner-sports">
+
+			<h2>Sports</h2>
+
+		</div>
 	</header>
 	<div id="stream">
 
@@ -49,10 +37,10 @@ get_header();
 		<?php while ( have_posts() ) : the_post(); ?>
 
 			<?php if(exa_is_featured()) : ?>
-				<?php get_template_part( 'content', 'summary-featured' ); ?>
+				<?php get_template_part( 'content', 'summary-fullstream-featured' ); ?>
 				<hr />
 			<?php else : ?>
-				<?php get_template_part( 'content', 'summary-instream' ); ?>
+				<?php get_template_part( 'content', 'summary-fullstream' ); ?>
 				<hr />
 			<?php endif; ?>
 			
@@ -60,16 +48,15 @@ get_header();
 
 		<?php endwhile; ?>
 
-		<?php twentythirteen_paging_nav(); ?>
+		<?php // twentythirteen_paging_nav(); ?>
 
 	<?php elseif ($query->is_archive) : ?>
-		Aadfasdfasd
 		<?php //get_template_part( 'content', 'none' ); ?>
 	<?php endif; ?>
 
 	</div><!-- id="stream" -->
 
-	<?php get_sidebar(); ?>
+	<?php get_sidebar('archive'); ?>
 
 	<div id="clearfix"></div>
 

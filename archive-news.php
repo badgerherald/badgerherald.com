@@ -27,23 +27,11 @@ get_header();
 		}
 		?>
 	<header id="section-header" class="<?php echo $classes ?> clearfix">
-		<h1 class="archive-title">
-			<a href="<?php bloginfo('url'); ?>/news/">
-			<?php
-				if ( is_day() ) :
-					printf( __( 'Daily Archives: %s', 'twentythirteen' ), get_the_date() );
-				elseif ( is_month() ) :
-					printf( __( 'Monthly Archives: %s', 'twentythirteen' ), get_the_date( _x( 'F Y', 'monthly archives date format', 'twentythirteen' ) ) );
-				elseif ( is_year() ) :
-					printf( __( 'Yearly Archives: %s', 'twentythirteen' ), get_the_date( _x( 'Y', 'yearly archives date format', 'twentythirteen' ) ) );
-				elseif ( is_post_type_archive() ) :
-					printf( '%s', post_type_archive_title() );
-				else :
-					_e( 'Archives', 'twentythirteen' );
-				endif;
-			?>
-			</a>
-		</h1>
+		<div class="section-banner section-banner-news">
+
+			<h2>News</h2>
+
+		</div>
 	</header>
 	<div id="stream">
 
