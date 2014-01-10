@@ -18,12 +18,23 @@
  */
 
 get_header(); 
-hrld_top_leaderboard_ad();
 
-?>
-	<header id="section-header" class="section-header-artsetc clearfix">
-		<h1 class="archive-title"><a href="<?php bloginfo('url'); ?>/artsetc/">Artsetc</a></h1>
+?>	
+	<?php 
+		$classes = "";
+		if( is_post_type_archive() ) {
+			$classes.="section-header-".strtolower(post_type_archive_title("",false));
+		}
+		$term = get_term_by( 'slug', get_query_var( 'term' ), get_query_var( 'taxonomy' ) );
+		?>
+	<header id="section-header" class="<?php echo $classes ?> clearfix">
+		<div class="section-banner section-banner-news">
+
+			<h2><?php echo $term->name; ?></h2>
+
+		</div>
 	</header>
+    <a class="to-categories" href="#categories-headline">Categories</a>
 	<div id="stream">
 
 	<?php if ( have_posts() ) : ?>
@@ -32,25 +43,27 @@ hrld_top_leaderboard_ad();
 		<?php while ( have_posts() ) : the_post(); ?>
 
 			<?php if(exa_is_featured()) : ?>
-				<?php get_template_part( 'content', 'summary-featured' ); ?>
+				<?php get_template_part( 'content', 'summary-fullstream-featured' ); ?>
 				<hr />
 			<?php else : ?>
-				<?php get_template_part( 'content', 'summary-instream' ); ?>
+				<?php get_template_part( 'content', 'summary-fullstream' ); ?>
 				<hr />
 			<?php endif; ?>
 			
+
+
 		<?php endwhile; ?>
 
-		<?php twentythirteen_paging_nav(); ?>
+		<?php // twentythirteen_paging_nav(); ?>
 
 	<?php elseif ($query->is_archive) : ?>
-		Aadfasdfasd
 		<?php //get_template_part( 'content', 'none' ); ?>
 	<?php endif; ?>
 
 	</div><!-- id="stream" -->
 
-	<?php get_sidebar(); ?>
+
+	<?php get_sidebar('archive'); ?>
 
 	<div id="clearfix"></div>
 
