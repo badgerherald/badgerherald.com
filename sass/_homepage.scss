@@ -554,6 +554,9 @@ ul.featured-stream-list{
 				float: none;
 				margin-right: 0;
 			}
+			&:first-child .stream-post{
+				margin-top: 0;
+			}
 		}
 	}
 	#banter{
@@ -653,6 +656,9 @@ ul.featured-stream-list{
 			float: left;
 			&:first-child{
 				margin-left: 0;
+				.stream-post{
+					margin-top: 24px;
+				}
 			}
 		}
 	}

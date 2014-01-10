@@ -19,15 +19,16 @@
 		</h2>
 
 	</header><!-- .entry-header -->
-		
+		<?php if(has_post_thumbnail()){ ?>
 		<div class="entry-thumbnail">
 			<?php the_post_thumbnail(); ?>
 		</div>
+        <?php } ?>
 
         
 		<!-- <div class="clearfix"></div> -->
 
-		<div class="entry-summary <?php if(!$full_width) { echo "entry-summary-full"; } ?>">
+		<div class="entry-summary <?php if(!$full_width) { echo "entry-summary-full"; } ?> <?php if(!has_post_thumbnail()){ echo 'stream-no-thumbnail'; } ?>">
 					<p> <span class="summary-time-stamp"><?php echo exa_human_time_diff(get_the_time('U')) ?> ago &middot; </span><?php echo get_the_excerpt(); ?></p>
 		</div><!-- .entry-summary -->
 
@@ -36,7 +37,7 @@
 
 	<div class="hp-feature-related-posts">
 		
-		<header class="related-header">
+		<header class="related-header <?php if(!has_post_thumbnail()){ echo 'stream-no-thumbnail'; } ?>">
 			<h3><?php hrld_related_topic($post); ?></h3>
 		</header>
 

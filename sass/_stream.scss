@@ -70,7 +70,7 @@
 
 	.entry-thumbnail {
 		//float: left;
-		margin-top:3px;
+		//margin-top:3px;
 		margin-bottom: 12px;
 		img{
 			border: 1px solid rgba(0, 0, 0, 0.1);
@@ -140,6 +140,9 @@
 		.entry-summary.entry-summary-full, .hp-feature-related-posts{
 			float: left;
 			width: flex(520,760);
+		}
+		.entry-summary.entry-summary-full.stream-no-thumbnail, .hp-feature-related-posts.stream-no-thumbnail{
+			width: 100%;
 		}
 	}
 }
