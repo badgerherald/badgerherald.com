@@ -89,10 +89,10 @@ include('macros.php');
 				<div class="nav-drop-tagline">The University of Wisconsin's Premier Independent Student Newspaper &mdash; <strong>Since 1969</strong></div>
 
 				<ul id="main-nav" class="dropdown-border">
-					<li><a href="<?php bloginfo('url'); ?>/news/">News</a></li>
-					<li><a href="<?php bloginfo('url'); ?>/oped/">Opinion</a></li>
-					<li><a href="<?php bloginfo('url'); ?>/artsetc/">ArtsEtc.</a></li>
-					<li><a href="<?php bloginfo('url'); ?>/sports/">Sports</a></li>
+					<li><a href="<?php echo (is_home() ? '#news' : get_bloginfo('url').'/news/'); ?>">News</a></li>
+					<li><a href="<?php echo (is_home() ? '#banter' : get_bloginfo('url').'/oped/'); ?>">Opinion</a></li>
+					<li><a href="<?php echo (is_home() ? '#artsetc' : get_bloginfo('url').'/artsetc/'); ?>">ArtsEtc.</a></li>
+					<li><a href="<?php echo (is_home() ? '#sports' : get_bloginfo('url').'/sports/'); ?>">Sports</a></li>
 		            <li><a href="<?php bloginfo('url'); ?>">Comics</a></li>
 					<li><a href="<?php bloginfo('url'); ?>/shoutouts/">Shoutouts</a></li>
 					<li class="about-off"><a href="<?php bloginfo('url'); ?>/about/">About</a></li>

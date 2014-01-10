@@ -29,6 +29,7 @@ get_header();
 
 		</div>
 	</header>
+    <a class="to-categories" href="#categories-headline">Categories</a>
 	<div id="stream">
 
 	<?php if ( have_posts() ) : ?>

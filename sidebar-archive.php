@@ -19,11 +19,16 @@
 
 <div class="sidebar-scroll">
 <ul class="categories-list">
-<li><a href="<?php bloginfo('url'); ?>/news/beats/student-gov/">Student Government</a></li>
-<li><a href="<?php bloginfo('url'); ?>/news/beats/student-gov/">Student Government</a></li>
-<li><a href="<?php bloginfo('url'); ?>/news/beats/student-gov/">Student Government</a></li>
-<li><a href="<?php bloginfo('url'); ?>/news/beats/student-gov/">Student Government</a></li>
-<li><a href="<?php bloginfo('url'); ?>/news/beats/student-gov/">Student Government</a></li>
+<?php
+$category = get_post_type();
+$beats_list = exa_get_beats_slug_list($category);
+foreach($beats_list as $beat):
+$beat_obj = get_term_by('slug',$beat,$category.'-beats');
+?>
+<li><a href="<?php bloginfo('url'); ?>/<?php echo $category; ?>/beats/<?php echo $beat; ?>/"><?php echo $beat_obj->name; ?></a></li>
+<?php
+endforeach;
+?>
 </ul>
 
 </div><!-- class="sidebar-scroll" -->
