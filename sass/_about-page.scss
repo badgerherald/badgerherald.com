@@ -1,0 +1,371 @@
+.about-page {
+
+	.page-container-inner-masthead {
+		background: url('img/about/protest.jpg')  no-repeat center bottom; 
+  		-webkit-background-size: cover;
+  		-moz-background-size: cover;
+  		-o-background-size: cover;
+  		background-size: cover;
+		height: 400px;
+		position: fixed !important;
+		top:0;
+
+	}
+
+	#primary {
+		margin-top: 400px;
+	}
+
+	/** ------ NEEDS BETTER STYLING ------- **/
+	.header-box {
+		position: absolute;
+		top: 240px;
+		text-align: center;
+		display: block;
+		width: 100%;
+		text-shadow: 3px 3px rgba(0,0,0,.4);
+		color: #fff;
+	}
+	.about-home-header h1 {
+		font-size: 50px;
+		line-height: 42px;
+		text-transform: uppercase;
+		color: #fff;
+	}
+	.about-home-header h2 {
+		font-family: $body;
+		font-style: italic;
+	}
+
+	.article-content {
+		h2 {
+			text-transform: uppercase;
+			margin-bottom: 18px;
+			padding-top: 12px;
+		}
+	}
+
+	.about-nav {
+		clear: both;
+		ul {
+			list-style: none;
+			width: 100%;
+			padding: 0px 0 12px 0; margin:0;
+			border-bottom: 1px solid $hrld-dark-grey;
+			li {
+				display: inline;
+				margin: 0; padding:0;
+				font-size: 16px;
+				a {
+					color: $hrld-black;
+					text-transform: uppercase;
+					font-family: $headline;
+					font-weight: 700;
+					&:hover {
+						color: $hrld-blue-hover;
+					}
+				}
+				&:before {
+					content: "·";
+					padding: 0px 6px 0px 6px;
+				}
+				&.active {
+					a {
+						color: $hrld-blue;
+					}
+				}
+				&:first-child:before {
+					content: "";
+					padding: 0px;
+				}
+			}
+		}
+	}
+
+	.contact-container, {
+		margin-bottom: 18px;
+		h3 {
+			margin-bottom: 0px;
+			text-transform: uppercase;
+			font-size: 15px;
+			color: $hrld-dark-grey;
+		} p {
+			margin-top: 6px;
+		} .extra-br {
+			line-height: 27px;
+		}
+	}
+
+	.staff-box {
+		width: flex(150,320);
+		float: left;
+		margin-left: flex(10,320);
+		margin-bottom: 12px;
+		position: relative;
+		font-size: 12px;
+		img {
+			margin-bottom: 12px;
+		}
+		.staff-box-name {
+			display: block;
+			font-family: $headline;
+			text-transform: uppercase;
+			font-weight: bold;
+			font-size: 15px;
+			line-height: 18px;
+		}
+		.staff-box-current-position {
+			display: block;
+			font-size: 12px;
+			line-height: 18px;
+			color: $hrld-dark-grey;
+		}
+	}
+	.staff-container {
+		margin-left: - flex(10,320);
+		h3 {
+			margin-left: flex(10,320);
+			margin-bottom: 12px;
+			margin-top: 0px;
+			text-transform: uppercase;
+			font-size: 15px;
+			color: $hrld-dark-grey;
+		} 
+	} .staff-box-twitter-more {
+		height:30px;
+		margin-top: 0px;
+		position: relative;
+		display: block;
+		width: 100%;
+		iframe {
+			margin-right: 10px;
+			position: relative;
+			top:5px;
+			z-index: 100;
+		}
+	} .staff-box-more {
+		display: inline;
+		padding:0px 0px 0px 0;
+
+
+		.staff-box-more-button {
+			text-transform: uppercase;
+			font-family: $headline;
+			position: relative;
+			color:$hrld-dark-grey;
+			z-index: 100;
+			font-weight: bold;
+			font-size: 14px;
+			&:hover {
+				cursor: pointer;
+							}
+		}
+		.staff-box-more-hover {
+			display: none;
+			width: 300px;
+			top: 6px;
+			left: 0;
+			position: absolute;
+			z-index: 99;
+			color: #fff;
+			&.odd {
+				left:inherit;
+				right:0;
+			}
+			.staff-box-more-hover-card {
+				background: $hrld-black;
+				margin-top: 36px;
+				padding: 18px 20px;
+				p {
+					margin: 0px 0 6px 0;
+					line-height: 21px;
+				}
+				.staff-box-more-description {
+					font-family: $hrld-dark-grey;
+					font-style: italic;
+					
+					display: block;
+				}
+			}
+		}
+		&:hover {
+			.staff-box-more-arrow:after {
+				display: block;
+				width:0px;
+				height: 0px;
+				position: absolute;
+				border: solid transparent;
+				content: " ";
+				pointer-events: none;
+				border-color: rgba(136, 183, 213, 0);
+				border-bottom-color: $hrld-black;
+				border-width: 15px;
+
+
+				bottom: -140%;
+				left: 50%;
+				margin-left: -15px;
+
+
+
+			}
+			.staff-box-more-hover {
+				display: block;
+			}
+		}
+	}
+
+}
+
+@media (min-width: 760px) {
+	.about-page {
+
+		.article-content {
+			h1 {
+				text-transform: uppercase;
+			}
+		}
+
+		.about-nav {
+			ul {
+				list-style: none;
+				width: 100%;
+				padding: 6px 0 18px 0; margin:0 0 12px 0;
+			}
+		}
+
+		.contact-container {
+			width: 33%;
+			float: left;
+			font-size: 15px;
+			line-height: 21px;
+			h3 {
+				margin: 0;
+				padding:0;
+			} p {
+				display: block;
+				float: left;
+			} .extra-br {
+				line-height: 24px;
+			}
+		}
+
+
+	.staff-box {
+		width: flex(165,740);
+		margin-left: flex(20,740);
+		margin-bottom: 18px;
+		font-size: 14px;
+	}
+	.staff-container {
+		margin-left: - flex(20,740);
+		h3 {
+			margin-left: flex(20,740);
+		} 
+	} .staff-box-more {
+		.staff-box-more-hover {
+			width: 300px;
+			&.odd {
+				left:inherit;
+				right:0;
+			}
+		}
+	}
+
+
+
+	}
+}
+@media (min-width: 1060px) {
+
+.about-page {
+	.page-container-inner-masthead {
+		height: 600px;
+	} #primary {
+		margin-top: 600px;
+	} 
+
+	/** ------ NEEDS BETTER STYLING ------- **/
+
+	.header-box {
+		top:400px;
+	} .about-home-header h1 {
+		font-size: 90px;
+		line-height: 80px;
+	} .about-home-header h2 {
+		font-size: 40px;
+	}
+
+	/* end needs better styling -- */
+
+
+	.about-nav {
+		ul {
+			list-style: none;
+			width: 140px;
+			float: left;
+			padding: 18px 0 0px 0; margin:0px;
+			border-bottom: 1px solid $hrld-dark-grey;
+			li {
+				display: block;
+				a {
+					padding: 6px 0;
+					display: block;
+				}
+				border-top: 1px solid $hrld-dark-grey;
+				&:before {
+					content: "";
+					padding: 0px
+				}
+			}
+		}
+	}
+
+	.article-content {
+		width: 860px;
+		float: left;
+		margin-left: 20px;
+	}
+
+	.contact-container {
+		font-size: inherit;
+		line-height: inherit;
+		.extra-br {
+			line-height: 33px;
+		}
+	}
+
+
+}
+
+}
+
+@media (min-width: 1220px) {
+.about-page {
+	.article-content {
+		width: 1020px;
+	}
+	.staff-box {
+		width: 153px;
+		margin-left: 20px;
+		margin-bottom: 18px;
+		font-size: 14px;
+	}
+	.staff-container {
+		margin-left:  -20px;
+		h3 {
+			margin-left: 20px;
+		} 
+	} .staff-box-more {
+		.staff-box-more-hover {
+			width: 300px;
+			&.odd {
+				left:inherit;
+				right:0;
+			}
+		}
+	}
+
+}
+
+}

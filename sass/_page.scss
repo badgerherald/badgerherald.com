@@ -5,6 +5,8 @@
 body {
 	padding-bottom: 25px;
 	background: $hrld-light-grey;
+    height:100%;
+    min-height:100%;
 }
 
 /* Wrapper */
@@ -30,9 +32,26 @@ body {
 	top : 0;
 	height: 66px; /* top margin, navbar, bottom margin */
 	max-width: 540px;
-	background: rgba(239,244,246,.9);
 	border-bottom: 1px solid #e0eaee;
 	z-index: 9999;
+}
+
+.page-container-masthead {
+	position: fixed !important;
+	z-index: 9999;
+	background: rgba(239,244,246,.9);
+	height: 66px; /* top margin, navbar, bottom margin */
+	width:100%;
+	top: 0;
+}
+
+.page-container-inner-masthead {
+	top:0;
+	position: absolute !important;
+}
+
+.page-container-content {
+	background: $hrld-light-grey;
 }
 
 body.admin-bar {
@@ -43,6 +62,12 @@ body.admin-bar {
 
 #inner-masthead {
 	display: none;
+	position: fixed;
+	width: flex(740,760);
+	max-width: 800px;
+	padding: 0 flex(10,760);
+	top:78px;
+	z-index: 900;
 }
 
 /* Primary contains all content, with a buffer on both sides of it */
@@ -50,8 +75,10 @@ body.admin-bar {
 #primary {
 	width: flex(300,320);
 	padding: 12px flex(10,320) 0;
-	position: absolute;
 	margin-top: 66px;
+	z-index: 1000;
+	position: relative;
+	background: $hrld-light-grey;
 }
 
 #main-header {
@@ -74,17 +101,21 @@ body.admin-bar {
 
 	#inner-masthead {
 		display: block;
-		position: relative;
-		width: flex(740,760);
-		max-width: 800px;
-		padding: 0 flex(10,760);
-		top:78px;
 	}
+
+
+
 
 	#primary {
 		/* TODO: determined correct value */
 		width: flex(740,760);
 		padding:12px flex(10,760) 0;
+
+		/* IMPORTANT: the padding on 
+		primary is how you push page content
+		up and down. It should match the height
+		of #inner-masthead */
+		margin-top: 180px;
 	}
 
 }
@@ -104,13 +135,15 @@ body.admin-bar {
 		height: 78px;
 	}
 
+	.page-container-masthead {
+		height: 78px;
+	}
+
 	#inner-masthead {
-		display: block;
-		position: absolute;
 		width: 860px;
 		max-width: none;
 		padding: 0;
-		top:auto;
+		top:0px;
 		margin-left: 180px;
 		margin-top: 90px;
 		.advertise-plug {
@@ -120,9 +153,9 @@ body.admin-bar {
 
 	#primary {
 		width: 1020px;
-		padding:12px 20px 0;
+		padding:24px 20px 0;
 		/* TODO: determined correct value */
-		margin-top: 240px;
+		margin-top: 230px;
 		z-index: 5000;
 
 	}

@@ -49,7 +49,7 @@ include('macros.php');
 
 </head>
 
-<body <?php body_class(); ?>>
+<body <?php body_class("about-page"); ?>>
 
 
 	<?php /* Facebook like button javascript tag */ ?>
@@ -121,41 +121,23 @@ include('macros.php');
 	</div> <!-- #page -->
 
 	<div id="page" class="page-container-inner-masthead">
-	<div id="wrapper">
+
+
+	<div id="wrapper" class="about-home-header">
 	
-
-	<a id="logo" href="<?php bloginfo('url'); ?>">
-		<div class="logo-image"><img src="<?php bloginfo('template_url') ?>/img/logo/header-7.png" /></div>
-	</a>
-
-	<?php /* inner-masthead contains elements 'framed' by the logo and the navbar */ ?>
-	<div id="inner-masthead">
-
-		<div class="inner-mast-tagline">
-			UW-Madison's Premier Independent Student Newspaper.  <span class="since"><strong>Since 1969</strong></span>
+		<div class="header-box">
+			<h1>The Badger Herald</h1>
+			<h2>A thorn in their side since 1969</h2>
 		</div>
-		<?php dfp::hrld_top_leaderboard_ad(); ?>
-		<a class="advertise-plug" href="http://badgerherald.com/advertise/">Student Org? Local Business? Advertise with the Herald.</a>
-		
-		<div class="social-buttons">
 
-			<div class="twitter">
-				<a href="https://twitter.com/badgerherald" class="twitter-follow-button" data-show-count="false">Follow @badgerherald</a>
-				<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
-			</div><!-- .twitter -->
-
-			<div class="facebook">
-				<div class="fb-like" data-href="http://facebook.com/badgerherald" data-layout="button_count" data-action="like" data-show-faces="false" data-share="false"></div>
-			</div><!-- .facebook -->
-
-		</div><!-- .social-buttons -->
-
-	</div> <!-- #inner-masthead -->
-
-
-	
 	</div> <!-- #wrapper -->
+
 	</div> <!-- #page -->
+
+
+
+
+
 
 	<div id="page" class="page-container-content">
 	<div id="wrapper">
