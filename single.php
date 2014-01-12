@@ -18,7 +18,8 @@ get_header();
 
 
 	<?php comments_template(); ?>
-    <?php if(exa_has_tweets_cache())exa_get_tweets_API(); ?>
+    <?php exa_get_tweets_API(); ?>
+    <div class="clearfix"></div>
     	</div><!--wrapper -->
 	</div><!-- wrapper -->
 	</div>
