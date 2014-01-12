@@ -10,7 +10,6 @@
  */
 ?>
 <?php $author = get_user_by('id', get_query_var('author')); ?>
-<?php echo '<pre>'.$author->twitter_handle.'</pre>'; ?>
 <div id="sidebar" class="stream-sidebar author-sidebar post-sidebar">
     <div class="sidebar-inner meta-author">
         <a class="meta-author-avatar" title="<?php echo exa_properize($author->display_name); ?> Profile" href="<?php echo get_bloginfo('url'); ?>/author/<?php echo $author->user_login; ?>">
