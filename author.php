@@ -18,27 +18,36 @@
  */
 
 get_header(); ?>
-
 	
 
+	<?php get_sidebar('author'); ?>
+	
+
+<div id="stream">
+
 	<?php if ( have_posts() ) : ?>
-	<div id="stream">
+
 		<?php /* The loop */ ?>
 		<?php while ( have_posts() ) : the_post(); ?>
-			<?php get_template_part( 'content', 'summary-instream' ); ?>
+
+			<?php if(exa_is_featured()) : ?>
+				<?php get_template_part( 'content', 'summary-fullstream-featured' ); ?>
+				<hr />
+			<?php else : ?>
+				<?php get_template_part( 'content', 'summary-fullstream' ); ?>
+				<hr />
+			<?php endif; ?>
+			
+
+
 		<?php endwhile; ?>
 
-		<?php twentythirteen_paging_nav(); ?>
+		<?php // twentythirteen_paging_nav(); ?>
 
 	<?php elseif ($query->is_archive) : ?>
 		<?php //get_template_part( 'content', 'none' ); ?>
-	
-
-	
 	<?php endif; ?>
-    </div><!-- id="stream" -->
-	<?php get_sidebar('author'); ?>
 
-	<div id="clearfix"></div>
+	</div><!-- id="stream" -->
 
 <?php get_footer(); ?>

@@ -12,6 +12,7 @@
 ?>
 
 		<div class="clearfix"></div>
+        </div> <!-- #main -->
 		</div><!-- #primary -->
 	</div><!-- #page -->
 		<?php /* <footer id="colophon" class="site-footer" role="contentinfo">

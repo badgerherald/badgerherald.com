@@ -10,20 +10,21 @@
  */
 ?>
 <?php $author = get_user_by('id', get_query_var('author')); ?>
-<div id="sidebar">
-<div class="sidebar-inner">
-<div class="author-avatar">
-		<?php echo get_avatar( $author->user_email, apply_filters( 'twentythirteen_author_bio_avatar_size', 148 ) ); ?>
-</div><!-- .author-avatar -->
-<h2 class="author-title"><?php printf( __( '%s', 'twentythirteen' ), $author->display_name ); ?></h2>
-<div class="sidebar-scroll">
-<div class="author-description">
-		<p class="author-bio">
-			<?php echo $author->description; ?>
-		</p>
-	</div><!-- .author-description -->
-</div><!-- .author-info -->
-
-</div><!-- class="sidebar-scroll" -->
-</div><!-- class="inner-sidebar" -->
+<?php echo '<pre>'.$author->twitter_handle.'</pre>'; ?>
+<div id="sidebar" class="stream-sidebar author-sidebar post-sidebar">
+    <div class="sidebar-inner meta-author">
+        <a class="meta-author-avatar" title="<?php echo exa_properize($author->display_name); ?> Profile" href="<?php echo get_bloginfo('url'); ?>/author/<?php echo $author->user_login; ?>">
+			<?php echo get_wp_user_avatar(get_the_author_meta('ID'), 'small-thumbnail'); ?>
+		</a>
+        <h1 class="author-title"><?php printf( __( '%s', 'twentythirteen' ), $author->display_name ); ?></h2>
+        <span class="author-position">The Badger Herald</span>
+		<span class="author-twitter">@willhaynes</span>
+        <div class="sidebar-scroll">
+        	<div class="author-description">
+                <p class="author-bio">
+                    <?php echo $author->description; ?>
+                </p>
+            </div><!-- .author-description -->
+        </div><!-- .author-info -->
+    </div><!-- class="inner-sidebar" -->
 </div><!-- id="sidebar" -->

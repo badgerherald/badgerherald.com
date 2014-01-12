@@ -186,6 +186,11 @@ a.to-categories{
 	a.to-categories{
 		display: none;
 	}
+	.meta-author h1{
+		margin-bottom: 12px;
+		color: $hrld-black;
+		font-size: 24px;
+	}
 }
 
 @media (min-width: 1220px) {

@@ -522,7 +522,6 @@ get_header();
 
 	</div><!-- id="sports" -->
 
-	<div id="clearfix"></div>
 
 
 

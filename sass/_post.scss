@@ -187,6 +187,9 @@ h1.entry-title {
 			a {
 				color: $hrld-dark-grey;
 				font-weight: 700;
+				&:hover{
+					color: $hrld-dark-grey-hover;
+				}
 			} a.meta-author-avatar img {
 				width:140px;
 				float: left;
