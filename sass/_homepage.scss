@@ -235,6 +235,9 @@ ul.related-post-articles {
 		a {
 			font-weight: bold;
 			color: $hrld-black;
+			&:hover{
+				color: $hrld-blue;
+			}
 		}
 	}
 }
@@ -373,10 +376,20 @@ ul.featured-stream-list{
 	}
 	ul.featured-stream-list{
 		li{
+			.entry-title{
+				font-size: 17px;
+				line-height: normal;
+			}
 			.entry-thumbnail{
 				width: flex(140,420);
 				float: left;
 				margin-right: flex(20,420);
+			}
+			.stream-post{
+				margin-top: 12px;
+				&.instream-stream-post .entry-thumbnail{
+					margin-bottom: 0;
+				}
 			}
 		}
 	}

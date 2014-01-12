@@ -206,6 +206,9 @@ ul#main-nav {
 			padding: 11px 18px 10px;
 			border-left: 1px solid $hrld-black-dark-grey;
 			border-bottom: none;
+			&:hover{
+				background: $hrld-blue;
+			}
 		} li:last-child a {
 			border-bottom: none;
 		} li:first-child a {
