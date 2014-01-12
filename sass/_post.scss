@@ -1,6 +1,45 @@
-
 .post-sidebar {
-	display: none;
+		display: none;
+		float: left;
+		width: 300px;
+		.meta-author {
+			font-family: $headline;
+			color: $hrld-dark-grey;
+			a {
+				color: $hrld-dark-grey;
+				font-weight: 700;
+				&:hover{
+					color: $hrld-dark-grey-hover;
+				}
+			} a.meta-author-avatar img {
+				width:140px;
+				float: left;
+				margin-right: 20px;
+				margin-bottom: 18px;
+			} span {
+				display: block;
+				line-height: 18px;
+			} span.author-position, span.author {
+				margin-bottom: 12px;
+			}
+		}
+	}
+.post-sidebar.author-sidebar{
+	display: block;
+	width: 100%;
+	.meta-author{
+		h1{
+			margin-bottom: 12px;
+			color: $hrld-black;
+			font-size: 24px;
+		}
+		span.author-position{
+			margin-bottom: 6px;
+		}
+		span{
+			margin-bottom: 6px;
+		}
+	}
 }
 
 .post-meta {
@@ -179,29 +218,6 @@ h1.entry-title {
 
 	.post-sidebar {
 		display: block;
-		float: left;
-		width: 300px;
-		.meta-author {
-			font-family: $headline;
-			color: $hrld-dark-grey;
-			a {
-				color: $hrld-dark-grey;
-				font-weight: 700;
-				&:hover{
-					color: $hrld-dark-grey-hover;
-				}
-			} a.meta-author-avatar img {
-				width:140px;
-				float: left;
-				margin-right: 20px;
-				margin-bottom: 18px;
-			} span {
-				display: block;
-				line-height: 18px;
-			} span.author-position, span.author {
-				margin-bottom: 12px;
-			}
-		}
 	}
 
 	.article-post {

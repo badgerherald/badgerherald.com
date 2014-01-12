@@ -17,14 +17,12 @@
 			<?php echo get_wp_user_avatar(get_the_author_meta('ID'), 'small-thumbnail'); ?>
 		</a>
         <h1 class="author-title"><?php printf( __( '%s', 'twentythirteen' ), $author->display_name ); ?></h2>
-        <span class="author-position">The Badger Herald</span>
-		<span class="author-twitter">@willhaynes</span>
-        <div class="sidebar-scroll">
-        	<div class="author-description">
-                <p class="author-bio">
-                    <?php echo $author->description; ?>
-                </p>
-            </div><!-- .author-description -->
-        </div><!-- .author-info -->
+        <span class="author-position"><?php echo (hrld_author_has('hrld_current_position', $author->ID) ? get_hrld_author('hrld_current_position', $author->ID):'The Badger Herald'); ?></span>
+        <?php if(hrld_author_has('hrld_twitter_handle', $author->ID)){ ?><a href="https://twitter.com/<?php hrld_author('hrld_twitter_handle', $author->ID); ?>"><span class="author-twitter">@<?php hrld_author('hrld_twitter_handle', $author->ID); ?></span></a><?php } ?>
+        <div class="sidebar-scroll clearfix">
+			<?php if(hrld_author_has('hrld_staff_description', $author->ID)){ ?><span class="author-description"><?php hrld_author('hrld_staff_description', $author->ID); ?></span><?php } ?>
+            <?php if(hrld_author_has('hrld_staff_extension', $author->ID)){ ?><span class="author-extension">Extension <?php hrld_author('hrld_staff_extension', $author->ID); ?></span><?php } ?>
+            <?php if(hrld_author_has('hrld_staff_semesters', $author->ID)){ ?><span class="author-semesters"><?php hrld_author('hrld_staff_semesters', $author->ID); ?> semesters at The Badger Herald.</span><?php } ?>
+        </div>
     </div><!-- class="inner-sidebar" -->
 </div><!-- id="sidebar" -->
