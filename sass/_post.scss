@@ -215,7 +215,9 @@ h1.entry-title {
 } 
 
 @media (min-width: 1060px) {
-
+	.post-sidebar.author-sidebar{
+		width: 300px;
+	}
 	.post-sidebar {
 		display: block;
 	}
