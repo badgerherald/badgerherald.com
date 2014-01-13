@@ -88,33 +88,7 @@ $(document).ready(function() {
 		$(".nav-container").toggleClass("nav-open");
 	});
 
-	$(".add-so-button").click(function(e) {
 
-		e.preventDefault();
-
-
-		$('.shoutout-header').hide(300);
-
-		$('.shoutout-add-header').show(300);
-
-		$('#shoutoutText').focus();
-
-
-	});
-
-	$('#shoutoutText').blur(function(e) {
-
-		window.setTimeout(function() {
-
-			$('.shoutout-header').show(300);
-
-			$('.shoutout-add-header').hide(300);
-			$('.so-error').hide(300);
-
-		}, 3000 /* but after 2000 ms */);
-
-
-	});
 	
 	//Smooth scrolling to anchors from anchor links on same page.
 	$(function() {
@@ -130,6 +104,12 @@ $(document).ready(function() {
 		  }
 		}
 	  });
-});
+	});
+
+	$(window).scroll(function() {
+
+		$(window).resize();
+
+	});
 
 });

@@ -28,7 +28,15 @@ include('macros.php');
     <?php /* Remove 300ms tap delay for mobile zoom */ ?>
     <meta name="viewport" content="width=device-width, user-scalable=no">
 
-	<title><?php bloginfo('name'); ?> · <?php is_home() ? bloginfo('description') : wp_title(''); ?></title>
+	<title><?php 
+
+	if(is_404()) {
+		echo "4-doge-4 · The Badger Herald";
+	} else {
+		bloginfo('name'); ?> · <?php is_home() ? bloginfo('description') : wp_title(''); 
+	}
+
+	?></title>
 	<link rel="profile" href="http://gmpg.org/xfn/11" />
 	<link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>" />
 	<!--[if lt IE 9]>
@@ -88,20 +96,20 @@ include('macros.php');
 
 				<ul id="main-nav" class="dropdown-border">
 					<li><a href="<?php echo (is_home() ? '#news' : get_bloginfo('url').'/news/'); ?>">News</a></li>
-					<li><a href="<?php echo (is_home() ? '#banter' : get_bloginfo('url').'/oped/'); ?>">Opinion</a></li>
+					<li><a href="<?php echo (is_home() ? '#opinion' : get_bloginfo('url').'/oped/'); ?>">Opinion</a></li>
 					<li><a href="<?php echo (is_home() ? '#artsetc' : get_bloginfo('url').'/artsetc/'); ?>">ArtsEtc.</a></li>
 					<li><a href="<?php echo (is_home() ? '#sports' : get_bloginfo('url').'/sports/'); ?>">Sports</a></li>
-		            <li><a href="<?php bloginfo('url'); ?>">Comics</a></li>
+		            <?php /* <li><a href="<?php bloginfo('url'); ?>">Comics</a></li> */ ?>
 					<li><a href="<?php bloginfo('url'); ?>/shoutouts/">Shoutouts</a></li>
 					<li class="about-off"><a href="<?php bloginfo('url'); ?>/about/">About</a></li>
 					<li><a href="http://themadisonmisnomer.wordpress.com/from-the-herald/">Misnomer</a></li>
 					<li><a href="<?php bloginfo('url'); ?>/advertise/">Advertise</a></li>
-					<?php /*
-					<li class="search-button">
+				
+					<li>
 						<a href="<?php bloginfo('url'); ?>/search/">Search</a>
 						<?php /*<input type="text" placeholder="Search..." value="SEARCH" /> */ ?>
 						<?php /*get_search_form( true ); */ ?>
-					<?php /* </li> */ ?>
+					</li> 
 				</ul>
 
 

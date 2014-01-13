@@ -1,0 +1,20 @@
+.error-404 {
+	width: 860px;
+	margin: 40px auto;
+		img {
+		max-width: 300px;
+		float: left;
+	}
+	.error-404-message {
+		float: left;
+		width: 500px;
+		padding: 50px 20px 0;
+	}
+
+	p {
+		font-size: 20px;
+		line-height: 30px;
+		font-style: italic;
+		color: $hrld-dark-grey;
+	}
+}

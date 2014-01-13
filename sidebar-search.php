@@ -11,9 +11,9 @@
 
 ?>
 
-<div id="sidebar">
-    <div class="sidebar-inner">
-        <div class="sidebar-scroll">
+<div class="sidebar">
+
+
             <input type="hidden" name="cantseeme" value="wat"/>
             <fieldset>
                 <?php
@@ -63,13 +63,6 @@
                 </ol>
             </fieldset>
             </form>
-            <?php
 
-            dfp::hrld_sidebar_ad();
 
-            dfp::hrld_sidebar_lower_ad();
-
-            ?>
-        </div><!-- class="sidebar-scroll" -->
-    </div><!-- class="sidebar-inner" -->
 </div><!-- id="sidebar" -->
