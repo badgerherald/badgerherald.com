@@ -17,9 +17,11 @@
 
 	<header class="entry-header">
 
-			<div class="entry-thumbnail">
-				<?php the_post_thumbnail(); ?>
-			</div>
+			<?php if(has_post_thumbnail()){ ?>
+		<div class="entry-thumbnail">
+			<?php the_post_thumbnail(); ?>
+		</div>
+        <?php } ?>
 
 	</header><!-- .entry-header -->
 
@@ -31,7 +33,7 @@
 
 
 
-	<div class="entry-summary">
+	<div class="entry-summary <?php if(!has_post_thumbnail()){ echo 'stream-no-thumbnail'; } ?>">
 		<p> <span class="summary-time-stamp"><?php echo exa_human_time_diff(get_the_time('U')) ?> ago &middot; </span><?php echo get_the_excerpt(); ?></p>
 	</div><!-- .entry-summary -->
 

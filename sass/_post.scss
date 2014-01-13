@@ -2,6 +2,13 @@
 		display: none;
 		float: left;
 		width: 300px;
+		position: absolute;
+		.post-sidebar-scroll{
+			width: 300px;
+		}
+		.post-sidebar-scroll.fixed-sidebar{
+			margin-top: 12px;
+		}
 		.meta-author {
 			font-family: $headline;
 			color: $hrld-dark-grey;
@@ -225,7 +232,7 @@ h1.entry-title {
 	.article-post {
 		float: left;
 		width: 700px;
-		margin-left: 20px;
+		margin-left: 320px;
 		h1.entry-title {
 			margin: 12px 0px 18px 0;
 			font-size: 44px;
@@ -243,9 +250,7 @@ h1.entry-title {
 @media (min-width: 1220px) {
 
 	.article-post {
-		float: left;
 		width: 860px;
-		margin-left: 20px;
 	}
 }
 

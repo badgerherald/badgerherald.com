@@ -12,7 +12,7 @@
 
 		
  		<div class="post-sidebar">
-		
+			<div class="post-sidebar-scroll">
 			<div class="meta-author">
 				<a class="meta-author-avatar" title="<?php echo exa_properize(get_the_author()); ?> Profile" href="<?php exa_the_author_link() ?>">
 					<?php echo get_wp_user_avatar(get_the_author_meta('ID'), 'small-thumbnail'); ?>
@@ -25,6 +25,7 @@
 			<div class="post-sidebar-ad">
 				<?php dfp::hrld_sidebar_lower_ad(); ?>
 			</div>
+            </div>
 
 		</div>
 

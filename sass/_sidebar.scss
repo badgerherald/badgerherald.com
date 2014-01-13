@@ -186,6 +186,10 @@ a.to-categories{
 	a.to-categories{
 		display: none;
 	}
+	.fixed-sidebar{
+		position: fixed !important;
+		top: 78px;
+	}
 }
 
 @media (min-width: 1220px) {

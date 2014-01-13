@@ -51,6 +51,29 @@ $(document).ready(function() {
 
 	};
 	
+	if($("#sidebar").length != 0 || $(".post-sidebar").length != 0){
+		if($("#sidebar").length > 0){ 
+			var sidebar = $(".sidebar-inner");
+		} else if($(".post-sidebar").length > 0){ 
+			var sidebar = $(".post-sidebar-scroll");
+		}
+		var sidebar_pos = sidebar.offset().top;
+		if($("#disqus_thread").length > 0){ 
+			var comments = $("#disqus_thread").offset().top;
+		} else{ 
+			var comments = 999999;
+		}
+		$(window).scroll(function(){
+			var scrollTop = $(window).scrollTop();
+			console.log(scrollTop + 78 + sidebar.height() + ', ' + sidebar_pos + ', ' + comments);
+			if(((scrollTop + 78) > sidebar_pos) && ((scrollTop + 78 + sidebar.height()) < comments)){
+				sidebar.addClass('fixed-sidebar')
+			} else{
+				sidebar.removeClass('fixed-sidebar');
+			}
+		});
+	}
+	
 	window.setTimeout(function() {
 		$(".add-so-button").css({'top':'-30px','display':'block'}).animate({'top':'43px','display':'block'},200);
 	}, 400 /* but after 2000 ms */);
