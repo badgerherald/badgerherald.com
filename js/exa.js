@@ -63,6 +63,26 @@ $(document).ready(function() {
 		} else{ 
 			var comments = 999999;
 		}
+		$(window).resize(function(){
+			if(sidebar.hasClass('fixed-sidebar')){
+				sidebar.removeClass('fixed-sidebar');
+				sidebar_pos = sidebar.offset().top;
+				if($("#disqus_thread").length > 0){ 
+					var comments = $("#disqus_thread").offset().top;
+				} else{ 
+					var comments = 999999;
+				}
+				sidebar.addClass('fixed-sidebar');
+			}
+			else{
+				sidebar_pos = sidebar.offset().top;
+				if($("#disqus_thread").length > 0){ 
+					var comments = $("#disqus_thread").offset().top;
+				} else{ 
+					var comments = 999999;
+				}
+			}
+		});
 		$(window).scroll(function(){
 			var scrollTop = $(window).scrollTop();
 			console.log(scrollTop + 78 + sidebar.height() + ', ' + sidebar_pos + ', ' + comments);
