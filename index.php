@@ -116,14 +116,17 @@ get_header();
 
 
 			<div id="top-posts">
-			<h3>Top Posts</h3>
+			<h3>Top Picks</h3>
 			<ul>
-				<li><a href="#">Democrat to run for Schultz’ senate seat</a></li>
-				<li><a href="#">AirBnB, ‘tourist rooming houses’ renters given stricter regulations</a></li>
-				<li><a href="#">Soglin says Madison Public Market to split, open in 2017</a></li>
-				<li><a href="#">Walker leads 2016 presidential election polls</a></li>
-				<li><a href="#">Man robs elderly couple after offering a helping hand</a></li>
-				<li><a href="#">Nurses outraged over MTV’s new show</a></li>
+				<li><a href="http://badgerherald.com/news/2014/01/10/marijuana-legalization-appear-county-ballot/">Marijuana legalization to appear on Dane County spring ballot</a></li>
+				<li><a href="http://badgerherald.com/news/2013/12/12/uw-alums-site-abodo-aims-simplify-housing-search/">UW alum’s site Abodo aims to simplify housing search</a></li>
+				<li><a href="http://badgerherald.com/sports/2014/01/10/merschs-magic-propels-wisconsin-victory-michigan/">Mersch’s magic propels Wisconsin to victory over Michigan</a></li>
+				<li><a href="http://badgerherald.com/sports/2013/12/21/penn-state-ends-wisconsins-cinderella-run/">Penn State ends Wisconsin’s post-season cinderella run</a></li>
+				<li><a href="http://badgerherald.com/sports/2014/01/09/4-wisconsin-dominates-23-illinois-start-finish/">No. 4 Wisconsin dominates No. 23 Illinois from start to finish</a></li>
+				<li><a href="http://badgerherald.com/artsetc/2013/12/12/top-five-shows-binge-watch-winter-break-es/">The top five shows to binge-watch over winter break</a></li>
+				<li><a href="http://badgerherald.com/artsetc/2013/12/11/childish-gambino-needs-figure-internet-es/">Childish Gambino needs to figure out who he is on ‘Because the Internet’</a></li>			
+				<li><a href="http://badgerherald.com/sports/2013/12/21/penn-state-ends-wisconsins-cinderella-run/">Penn State ends Wisconsin’s post-season cinderella run</a></li>
+				<li><a href="http://badgerherald.com/artsetc/2013/12/18/inside-lleywn-davis-lies-beautiful-cyclical-folk-tale/">Inside ‘Lleywn Davis’ lies beautiful, cyclical folk tale</a></li>
 			</ul>
 			</div>
 

@@ -376,7 +376,7 @@ function exa_post_thumbnail_html( $html, $post_id, $post_thumbnail_id, $size, $a
 	if($html){
 		return $html;
 	} elseif(is_home()){
-		return '<img src="'.get_template_directory_uri().'/thumb-fill.png'.'" height="'.get_option( 'thumbnail_size_w' ).'" width="'.get_option( 'thumbnail_size_h' ).'" />';
+		return '<img src="'.get_template_directory_uri().'/img/temp/thumb.jpg'.'" height="'.get_option( 'thumbnail_size_w' ).'" width="'.get_option( 'thumbnail_size_h' ).'" />';
 	} else{
 		return $html;
 	}
