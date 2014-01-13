@@ -9,120 +9,124 @@
  * @since Twenty Thirteen 1.0
  */
 
-get_header(); 
-
+get_header();
 
 ?>
+
+	<?php $homepageSlider = true; /* Boolean to tell footer.php to load 
+													   * the slider script. 
+													   */ ?>
 
 	<div id="above-fold" class="clearfix">
 
 	<div  id="slider">
 
-		<div id="swipe" class="swipe">
+			<div id="swipe" class="swipe">
 
-			<div class='swipe-wrap'>
+				<div class='swipe-wrap'>
 
-			<?php $homepageSlider = true; /* Boolean to tell footer.php to load 
-													   * the slider script. 
-													   */ ?>
-			<?php
-	
-			/* Build query for featured stories in news */
+				<?php $homepageSlider = true; /* Boolean to tell footer.php to load 
+														   * the slider script. 
+														   */ ?>
+				<?php
+		
+				/* Build query for featured stories in news */
 
-			$args = array();
-			$args['tax_query'] = array(
-	                array(
-	                    'taxonomy' => 'importance',
-	                    'field' => 'slug',
-	                    'terms' => array('featured'),
-	                    'operator' => 'IN'
-	                )
-	            );
-			$args['posts_per_page'] = 4;
+				$args = array();
+				$args['tax_query'] = array(
+		                array(
+		                    'taxonomy' => 'importance',
+		                    'field' => 'slug',
+		                    'terms' => array('featured'),
+		                    'operator' => 'IN'
+		                )
+		            );
+				$args['posts_per_page'] = 4;
 
-			$slider_query = new WP_Query( $args );
+				$slider_query = new WP_Query( $args );
 
-			?>
+				?>
 
-			<?php while( $slider_query->have_posts() ) : $slider_query->the_post();?>
+				<?php while( $slider_query->have_posts() ) : $slider_query->the_post();?>
+					
+				<div class="slide">
 				
-			<div class="slide">
+					<?php the_post_thumbnail(); ?>
+					<div class="slider-content">
+						<h2><?php the_title(); ?></h2>
+						<p><?php the_excerpt(); ?></p>
+						<?php if(hrld_related_has_posts()) : ?>
+							<ul class="slider-related">
+								<li><h4 class="slider-related-title"><?php hrld_related_topic() ?></h4></li>
+								<?php $related = hrld_related_post_ids(); foreach($related as $relatedID) : ?>
+									<li><a href="<?php echo get_permalink($relatedID) ?>"><?php echo get_the_title($relatedID) ?></a></li>
+								<?php endforeach; ?>
+							</ul>
+						<?php endif; ?>
+					</div>
+				</div>
+
+				<?php endwhile; ?>
+
+				<?php
+					// Restore original Post Data
+					wp_reset_postdata();
+				?>
+
+				</div><!-- .swipe-wrap -->
+
+				<ul class="slider-nav">
+					<li><span>Slide 1</span></li>
+					<li class="active"><span>Slide 2</span></li>
+					<li><span>Slide 3</span></li>
+					<li><span>Slide 4</span></li>
+				</ul>
+
+			</div> <!-- #swipe.swipe -->
+
+		</div><!-- #slider -->
+
+
+			<div id="middle-column">
+				<div class="hp-square-ad">
+					<?php dfp::hrld_sidebar_lower_ad(); ?>
+				</div>
 			
-				<?php the_post_thumbnail(); ?>
-				<div class="slider-content">
-					<h2><?php the_title(); ?></h2>
-					<p><?php the_excerpt(); ?></p>
-					<?php if(hrld_related_has_posts()) : ?>
-					<ul class="slider-related">
-						<li><h4 class="slider-related-title"><?php hrld_related_topic() ?></h4></li>
-						<?php $related = hrld_related_post_ids(); foreach($related as $relatedID) : ?>
-							<li><a href="<?php echo get_permalink($relatedID) ?>"><?php echo get_the_title($relatedID) ?></a></li>
-						<?php endforeach; ?>
-					</ul>
-					<?php endif; ?>
+
+				<div class="todays-shoutout">
+
+					<div class="bubble-box">
+						<h3>SO of the Day</h3>
+						<p>SO to girls. You have to suck dick and birth babies. That must blow.</p>
+					</div>
+
+					<img class="hp-so-avatar" src="<?php bloginfo('template_url') ?>/img/icons/shoutout.png" />
+					
+					<div class="link-box">
+						<a class="more" href="<?php bloginfo('url') ?>/shoutouts">More Shoutouts</a><br/>
+						<a class="submit" href="<?php bloginfo('url') ?>/shoutouts/add">Add a Shoutout</a>
+					</div>
+
 				</div>
-			</div>
+			
+			</div> <!-- #middle-column -->
 
-			<?php endwhile; ?>
 
-			<?php
-				// Restore original Post Data
-				wp_reset_postdata();
-			?>
-
-			</div><!-- .swipe-wrap -->
-
-			<ul class="slider-nav">
-				<li><span>Slide 1</span></li>
-				<li class="active"><span>Slide 2</span></li>
-				<li><span>Slide 3</span></li>
-				<li><span>Slide 4</span></li>
+			<div id="top-posts">
+			<h3>Top Posts</h3>
+			<ul>
+				<li><a href="#">Democrat to run for Schultz’ senate seat</a></li>
+				<li><a href="#">AirBnB, ‘tourist rooming houses’ renters given stricter regulations</a></li>
+				<li><a href="#">Soglin says Madison Public Market to split, open in 2017</a></li>
+				<li><a href="#">Walker leads 2016 presidential election polls</a></li>
+				<li><a href="#">Man robs elderly couple after offering a helping hand</a></li>
+				<li><a href="#">Nurses outraged over MTV’s new show</a></li>
 			</ul>
-
-		</div> <!-- #swipe.swipe -->
-
-	</div><!-- #slider -->
-
-		<div id="middle-column">
-			<div class="hp-square-ad">
-				<?php dfp::hrld_sidebar_lower_ad(); ?>
 			</div>
-		
-
-			<div class="todays-shoutout">
-
-				<div class="bubble-box">
-					<h3>SO of the Day</h3>
-					<p>SO to girls. You have to suck dick and birth babies. That must blow.</p>
-				</div>
-
-				<img class="hp-so-avatar" src="<?php bloginfo('template_url') ?>/img/icons/shoutout.png" />
-				
-				<div class="link-box">
-					<a class="more" href="<?php bloginfo('url') ?>/shoutouts">More Shoutouts</a><br/>
-					<a class="submit" href="<?php bloginfo('url') ?>/shoutouts/add">Add a Shoutout</a>
-				</div>
-
-			</div>
-		
-		</div> <!-- #middle-column -->
 
 
-		<div id="top-posts">
-		<h3>Top Posts</h3>
-		<ul>
-			<li><a href="#">Democrat to run for Schultz’ senate seat</a></li>
-			<li><a href="#">AirBnB, ‘tourist rooming houses’ renters given stricter regulations</a></li>
-			<li><a href="#">Soglin says Madison Public Market to split, open in 2017</a></li>
-			<li><a href="#">Walker leads 2016 presidential election polls</a></li>
-			<li><a href="#">Man robs elderly couple after offering a helping hand</a></li>
-			<li><a href="#">Nurses outraged over MTV’s new show</a></li>
-		</ul>
+
 		</div>
-
-
-
-	</div>
 
 
 	

@@ -60,7 +60,7 @@
 			transitionEnd: function(index, elem) {}
 		});
 
-		swiped(0,document.getElementById('swipe'));
+		swiped(0,document.getElementById('slider'));
 
 		<?php 
 		/**
