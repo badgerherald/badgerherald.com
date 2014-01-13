@@ -35,7 +35,7 @@
 		</div>
 		
 		<h1 class="entry-title"><?php the_title(); ?></h1>
-		<h2 class="entry-excerpt">Vestibulum id ligula porta felis euismod semper.</h2>
+		<?php /* <h2 class="entry-excerpt">Vestibulum id ligula porta felis euismod semper.</h2> */ ?>
 
 		<div class="mobile-post-meta post-meta">
 				<a class="meta-author-avatar" title="<?php echo exa_properize(get_the_author()); ?> Profile" href="<?php exa_the_author_link() ?>">

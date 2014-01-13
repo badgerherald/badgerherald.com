@@ -20,9 +20,8 @@
 get_header(); ?>
 	
 
-	<?php get_sidebar('author'); ?>
+<?php get_sidebar('author'); ?>
 	
-
 <div id="stream">
 
 	<?php if ( have_posts() ) : ?>

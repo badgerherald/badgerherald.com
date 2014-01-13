@@ -13,8 +13,6 @@
 
 include("shoutouts/functions.php");
 
-
-
 if(isset($wp_query->query_vars['so_page'])) {
 
 	$so_page = $wp_query->query_vars['so_page'];
@@ -72,9 +70,6 @@ location.reload();
 
 get_header(); 
 
-
-hrld_top_leaderboard_ad();
-
 ?>
 
 	<?php /* The loop */ ?>
@@ -94,20 +89,6 @@ hrld_top_leaderboard_ad();
 				<b>ERROR:</b> <?php echo $error['message']; ?>
 			</div>
 			<?php } ?>
-
-			<header <?php if($error['success']) { ?> style="display:none" <?php } ?> class="entry-header shoutout-add-header">
-				
-	 			<form id="shoutoutform" method="POST">
-					
-					<textarea id="shoutoutText" name="shoutout_text" wrap="virtual" placeholder="SO/ASO to..."><?php echo strip_tags($sotext); ?></textarea>
-
-					<input class="so-button submit-so-button" name="" type="submit" value="Shout it out"/>
-
-					<p>All approved shout-outs will appear online. Your shout-out will not appear immediately, but we approve shout-outs as quickly as we can. Please <a href="mailto&#58;soc&#64;badgerherald.com">contact the shout-out controller</a> if you feel a shout-out appearing online should not have been approved.</p>
-					
-				</form>
-
-			</header><!-- .entry-header -->
 
 		</div>
 
@@ -212,6 +193,24 @@ hrld_top_leaderboard_ad();
 
 </div>
 
-<?php get_sidebar(); ?>
+
+
+<div class="so-sidebar">
+		<h2>Submit a Shoutout:</h2>	
+	<form id="shoutout-form" method="POST">
+
+		<textarea class="so-text" name="shoutout_text" wrap="virtual" placeholder="SO/ASO to..."><?php echo strip_tags($sotext); ?></textarea>
+
+		<input class="so-button submit-so-button" name="" type="submit" value="Shout it out"/>
+
+
+	</form>
+	<img class="so-avatar" src="<?php bloginfo('template_url') ?>/img/icons/shoutout.png" />
+	<br/><br/>
+	<?php dfp::hrld_sidebar_ad(); ?>
+
+</div><!-- id="sidebar" -->
+
+
 
 <?php get_footer(); ?>

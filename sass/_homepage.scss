@@ -34,6 +34,9 @@
 		background: $hrld-black;
 		color: $hrld-light-grey;
 		margin-bottom: 12px;
+		a {
+			color: #fff;
+		}
 		.slider-content {
 			float: left;
 		}
@@ -393,7 +396,7 @@ ul.featured-stream-list{
 			}
 		}
 	}
-	#banter{
+	#opinion{
 		.featured-container{
 			width: flex(400,740);
 			padding-right: 20px;
@@ -572,7 +575,7 @@ ul.featured-stream-list{
 			}
 		}
 	}
-	#banter{
+	#opinion{
 		.featured-container{
 			width: 360px;
 			padding-bottom: 9999px;
@@ -675,7 +678,7 @@ ul.featured-stream-list{
 			}
 		}
 	}
-	#banter{
+	#opinion{
 		ul.list-stories{
 			width: 300px;
 		}

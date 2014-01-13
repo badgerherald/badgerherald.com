@@ -10,14 +10,12 @@
 
 /* check if they weren't looking for an old school url */
 
-
 function pageURL() {
 
  $pageURL .= $_SERVER["REQUEST_URI"];
 
  return preg_replace("#/bhrld#", "", $pageURL);
 }
-
 
 $args = array(
     'order' => 'ASC',
@@ -30,9 +28,6 @@ $args = array(
     ),
     'post_type' => 'any'
 );
-
-
-// query_posts($args);
 
 // The Query
 $the_query = new WP_Query( $args );
@@ -60,23 +55,22 @@ wp_reset_postdata();
 
 get_header(); ?>
 
-	<div id="primary" class="content-area">
-		<div id="content" class="site-content" role="main">
 
-			<header class="page-header">
-				<h1 class="page-title"><?php _e( 'Not found', 'twentythirteen' ); ?></h1>
-			</header>
 
-			<div class="page-wrapper">
-				<div class="page-content">
-					<h2><?php _e( 'This is somewhat embarrassing, isn&rsquo;t it?', 'twentythirteen' ); ?></h2>
-					<p><?php _e( 'It looks like nothing was found at this location. Maybe try a search?', 'twentythirteen' ); ?></p>
 
-					<?php get_search_form(); ?>
-				</div><!-- .page-content -->
-			</div><!-- .page-wrapper -->
+<?php /* The loop */ ?>
 
-		</div><!-- #content -->
-	</div><!-- #primary -->
+<div class="error-404">
+
+<img src="<?php bloginfo('template_url') ?>/img/4-doge-4.png"/>
+<div class="error-404-message">
+	<h1>Such Error. Much Embarrasing.</h1>
+	<p><strong>4-doge-4</strong> – Sorry, We can't find what you're looking for. Doge really fucked the pooch on this one.</p>
+	<p><a href="http://badgerherald.com/">Visit our homepage</a>.</p>
+</div>
+
+
+</div>
 
 <?php get_footer(); ?>
+

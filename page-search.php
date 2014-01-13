@@ -22,7 +22,7 @@ get_header();
 ?>	
 
 	<header id="section-header" class="<?php echo $classes ?> clearfix">
-		<h1 class="page-title"><?php printf( __( 'Search Results for: %s', 'twentythirteen' ), get_search_query() ); ?></h1>
+		<h1 class="page-title">Search for:</h1>
 		<form role="search" method="get" class="search-form" action="<?php echo home_url( '/' ); ?>">
             <input type="hidden" name="section"
             <?php if (isset($section_query_var)) {
@@ -43,35 +43,8 @@ get_header();
         </form>
 	</header>
 
-	<hr />
-
-	<div id="stream">
-
-	<?php if ( have_posts() ) : ?>
-
-		<?php /* The loop */ ?>
-		<?php while ( have_posts() ) : the_post(); ?>
-
-			<?php if(exa_is_featured()) : ?>
-				<?php get_template_part( 'content', 'summary-fullstream-featured' ); ?>
-				<hr />
-			<?php else : ?>
-				<?php get_template_part( 'content', 'summary-fullstream' ); ?>
-				<hr />
-			<?php endif; ?>
-			
 
 
-		<?php endwhile; ?>
-
-	<?php elseif ($query->is_archive) : ?>
-		<?php //get_template_part( 'content', 'none' ); ?>
-	<?php endif; ?>
-
-	</div><!-- id="stream" -->
-
-
-	<?php get_sidebar('search'); ?>
 
 	<div id="clearfix"></div>
 

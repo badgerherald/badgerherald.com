@@ -161,7 +161,6 @@ h1.entry-title {
 	}
 	.article-content {
 		width: 100%;
-
 		img {
 			min-width: inherit;
 			&.size-large {
@@ -186,9 +185,7 @@ h1.entry-title {
 				margin-right: 20px;
 				float: left;
 				clear: right;
-				//margin-bottom: 12px;
 				margin-top: 0px;
-
 			}
 			* {
 				font-family: $headline !important;
@@ -229,6 +226,7 @@ h1.entry-title {
 		h1.entry-title {
 			margin: 12px 0px 18px 0;
 			font-size: 44px;
+			line-height: 42px;
 		} h2 {
 			margin-top: 18px;
 		}

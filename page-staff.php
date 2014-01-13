@@ -114,15 +114,43 @@ get_header('about'); ?>
 
 					<?php
 						// Katherine Krueger, Katie Caron, Will Haynes.
-						$mgmt   = array(2274,2420,2608);
+						$mgmt = array(2274,2420,2608);
 						displayStaff($mgmt);
 					?>
 					<div class="clearfix"></div>
 					<h3>News</h3>
 
 					<?php
-						// Katherine Krueger, Katie Caron, Will Haynes.
-						$mgmt   = array(2274,2420,2608,2274,2420,2608);
+						// Cogan, Aliya
+						$mgmt   = array(2513,2722,2773,2828,2783,2756,2889,458);
+						displayStaff($mgmt);
+					?>
+					<div class="clearfix"></div>
+
+					<h3>Opinion</h3>
+
+					<?php
+						// Cogan, Aliya
+						$mgmt   = array(2785,2732);
+						displayStaff($mgmt);
+					?>
+					<div class="clearfix"></div>
+
+					<h3>Sports</h3>
+
+					<?php
+						// Spencer, Dan
+						$mgmt   = array(2538,2609);
+						displayStaff($mgmt);
+					?>
+					<div class="clearfix"></div>
+
+
+					<h3>ArtsEtc</h3>
+
+					<?php
+						// Erik
+						$mgmt   = array(2602);
 						displayStaff($mgmt);
 					?>
 					<div class="clearfix"></div>

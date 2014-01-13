@@ -50,11 +50,14 @@ get_header();
 				<?php while( $slider_query->have_posts() ) : $slider_query->the_post();?>
 					
 				<div class="slide">
-				
+					<a href="<?php the_permalink() ?>">
 					<?php the_post_thumbnail(); ?>
+					</a>
 					<div class="slider-content">
+					<a href="<?php the_permalink() ?>">
 						<h2><?php the_title(); ?></h2>
 						<p><?php the_excerpt(); ?></p>
+						</a>
 						<?php if(hrld_related_has_posts()) : ?>
 							<ul class="slider-related">
 								<li><h4 class="slider-related-title"><?php hrld_related_topic() ?></h4></li>
@@ -219,11 +222,11 @@ get_header();
 	</div><!-- id="news" -->
 
 
-	<div id="banter">
+	<div id="opinion">
 
 		<div class="section-banner section-banner-banter">
 
-			<h2>Banter</h2>
+			<h2>Opinion</h2>
 
 		</div>
         <div class="col-container clearfix">
@@ -344,7 +347,7 @@ get_header();
 			wp_reset_postdata();
 		?>
 		</div>
-		<div class="all-link all-link-banter"><a href="<?php bloginfo('url'); ?>/oped/">All Banter</a></div>
+		<div class="all-link all-link-banter"><a href="<?php bloginfo('url'); ?>/oped/">All Opinion</a></div>
 
 
 

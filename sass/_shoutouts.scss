@@ -7,7 +7,7 @@
 		font-size: 60px;
 		text-transform: uppercase;
 		line-height: 60px;
-		padding: 20px 20px 0px 20px;
+		padding: 30px 20px 0px 20px;
 		position: absolute;
 
 		a {
@@ -46,12 +46,37 @@
 	}
 }
 
-#shoutoutform {
-	width: flex(660,860);
-	margin-left: flex(180,860);
+.so-sidebar {
+	float: right;
+	width: 300px;
+	h2 {
+		text-transform: uppercase;
+		font-size: 14px;
+		color: $hrld-dark-grey;
+		margin: 12px 0 6px;
+	}
 }
-#shoutoutText {
+
+#shoutout-form {
 	width: 100%;
+	background: $hrld-black;
+	position: relative;
+	&:after {
+		content: "";
+		display: block;
+		width: 0; height: 0; 
+		border-right: 30px solid transparent;
+		border-bottom: 30px solid transparent;
+		border-top: 30px solid $hrld-black;
+		border-left: 30px solid $hrld-black;
+		position: absolute;
+		bottom:-60px;
+		margin-left: 80px;
+	}
+}
+
+.so-text {
+	padding:20px 18px;
 	height: 70px;
 	background: transparent;
 	border: none;
@@ -59,21 +84,15 @@
 	margin-top: 6px;
 	outline: none;
 	font-size: em(18,16);
-
 	resize: none;
-}
-
-#shoutoutform p {
-	font-family: $caption;
-	font-size: em(10,16);
-	color: $heraldlightgrey;
-	line-height: 12px;
-	margin-top: 9px;
 }
 
 .so-button {
 	background: $heraldblue;
 	border: none;
+	position: absolute;
+	right: 0px;
+	bottom: -42px;
 	color: #fff;
 	font-family: $headline;
 	text-transform: uppercase;
@@ -82,18 +101,10 @@
 
 }
 
-.submit-so-button {
-	float: left;
-
-	margin-top: 6px;
-	margin-right: 20px;	
+.so-avatar {
+	margin-top: 12px;
 }
 
-.add-so-button {
-	position: absolute;
-	right: 180px;
-	top : 45px;
-}
 
 .so-header-wrap {
 	overflow: hidden;
@@ -104,4 +115,12 @@
 	padding: 6px 20px;
 	color: #fff;
 	font-family: $caption;
+}
+
+@media (min-width: 1220px) {
+
+.so-sidebar {
+	width:380px;
+}
+
 }
