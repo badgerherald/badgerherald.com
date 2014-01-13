@@ -22,7 +22,7 @@ get_header(); ?>
 
 <?php get_sidebar('author'); ?>
 	
-<div id="stream">
+<div id="stream" class="author-stream">
 
 	<?php if ( have_posts() ) : ?>
 

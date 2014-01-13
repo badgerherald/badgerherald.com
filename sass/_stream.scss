@@ -156,6 +156,10 @@
 		float: left;
 		margin-right: 20px;
 	}
+	#stream.author-stream{
+		margin-left: 320px;
+		margin-right: 0;
+	}
 	.stream-sidebar{
 		width: 300px;
 		float: left;
@@ -184,6 +188,9 @@
 @media (min-width: 1220px) {
 	#stream{
 		width: 780px;
+	}
+	#stream.author-stream{
+		margin-left: 380px;
 	}
 	.stream-sidebar, .stream-sidebar .sidebar-inner{
 		width: 380px;

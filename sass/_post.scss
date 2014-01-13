@@ -221,6 +221,10 @@ h1.entry-title {
 @media (min-width: 1060px) {
 	.post-sidebar.author-sidebar{
 		width: 300px;
+		position: absolute !important;
+	}
+	.post-sidebar.author-sidebar .sidebar-inner{
+		width: 300px;
 	}
 	.post-sidebar {
 		display: block;
@@ -246,7 +250,9 @@ h1.entry-title {
 }
 
 @media (min-width: 1220px) {
-
+	.post-sidebar.author-sidebar, .post-sidebar.author-sidebar .sidebar-inner{
+		width: 380px;
+	}
 	.article-post {
 		width: 860px;
 	}
