@@ -100,7 +100,7 @@ get_header();
 
 					<div class="bubble-box">
 						<h3>SO of the Day</h3>
-						<p>SO to girls. You have to suck dick and birth babies. That must blow.</p>
+						<p>ASO to being so damn confused about a boy. Why can't life just tell you what you're supposed to do?</p>
 					</div>
 
 					<img class="hp-so-avatar" src="<?php bloginfo('template_url') ?>/img/icons/shoutout.png" />
