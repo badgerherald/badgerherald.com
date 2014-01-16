@@ -49,6 +49,7 @@
 				</a>
 				<span class="meta-author">by <a href="<?php exa_the_author_link() ?>" title="<?php echo exa_properize(get_the_author()); ?> Profile"><?php the_author() ?></a></span><br/>
 				<span class="meta-time">Posted <strong><?php the_time("M j, Y") ?></strong> at <strong><?php the_time("g:i a"); ?></strong></span>
+				<div class="clearfix"></div>
 		</div>
 
 
