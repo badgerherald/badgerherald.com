@@ -51,6 +51,16 @@
 				<span class="meta-time">Posted <strong><?php the_time("M j, Y") ?></strong> at <strong><?php the_time("g:i a"); ?></strong></span>
 		</div>
 
+
+		<!-- AddThis Button BEGIN -->
+		<div class="addthis_toolbox addthis_default_style ">
+		<a class="addthis_button_facebook_like" fb:like:layout="button_count"></a>
+		<a class="addthis_button_tweet"></a>
+		</div>
+		<script type="text/javascript">var addthis_config = {"data_track_addressbar":true};</script>
+		<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=badgerherald"></script>
+		<!-- AddThis Button END -->
+		
 		<?php if ( has_post_thumbnail() && ! post_password_required() ) : ?>
 		
 		<div class="entry-post-featured">
@@ -94,7 +104,6 @@
    		</div><!-- class="entry-post-featured" -->
 
 		<?php endif; /* has post thumbnail */ ?>
-
 
 		<div id="content">
 
