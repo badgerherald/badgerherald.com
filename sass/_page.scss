@@ -52,6 +52,7 @@ body {
 
 .page-container-content {
 	background: $hrld-light-grey;
+	z-index: 1000;
 }
 
 body.admin-bar {
@@ -76,7 +77,6 @@ body.admin-bar {
 	width: flex(300,320);
 	padding: 12px flex(10,320) 0;
 	margin-top: 66px;
-	z-index: 1000;
 	position: relative;
 	background: $hrld-light-grey;
 }
