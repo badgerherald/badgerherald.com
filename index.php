@@ -13,7 +13,7 @@ get_header();
 
 ?>
 
-
+	
 	<?php 
 
 	if(file_exists($_SERVER["DOCUMENT_ROOT"] . "/fold/fold.php")) {
@@ -108,7 +108,7 @@ get_header();
 
 					<div class="bubble-box">
 						<h3>SO of the Day</h3>
-						<p>ASO to being so damn confused about a boy. Why can't life just tell you what you're supposed to do?</p>
+						<p>SO to the SO of the Day. It's been up for a while. My confusion has been going on for a while. Maybe when it goes away... so will my confusion.</p>
 					</div>
 
 					<img class="hp-so-avatar" src="<?php bloginfo('template_url') ?>/img/icons/shoutout.png" />
