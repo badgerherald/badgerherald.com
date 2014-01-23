@@ -108,7 +108,15 @@ get_header();
 
 					<div class="bubble-box">
 						<h3>SO of the Day</h3>
-						<p>SO to the SO of the Day. It's been up for a while. My confusion has been going on for a while. Maybe when it goes away... so will my confusion.</p>
+
+							<?php 
+
+							if(file_exists($_SERVER["DOCUMENT_ROOT"] . "/assets/so.php")) {
+								include($_SERVER["DOCUMENT_ROOT"] . "/assets/so.php");
+							}
+
+							?>
+
 					</div>
 
 					<img class="hp-so-avatar" src="<?php bloginfo('template_url') ?>/img/icons/shoutout.png" />
