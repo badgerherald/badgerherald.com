@@ -110,10 +110,10 @@ $(document).ready(function() {
 	$(window).resize(function(){
 		if(window.innerWidth >= 1060 && window.innerWidth < 1220){
 			$("#main-nav li a").css("padding","11px 18px 10px");
-			$("#main-nav #searchform #s").blur().css("width","49px");
+			$("#main-nav #searchform #s").blur().css({"width":"49px","text-align":"left"});
 		} else if(window.innerWidth > 1220){
 			$("#main-nav li a").css("padding","11px 18px 10px");
-			$("#main-nav #searchform #s").blur().css("width","209px");
+			$("#main-nav #searchform #s").blur().css({"width":"209px","text-align":"right"});
 		}
 	});
 
