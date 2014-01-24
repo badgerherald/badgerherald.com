@@ -76,7 +76,9 @@ ul#main-nav {
 		border-bottom: none;
 	}
 }
-
+ul#main-nav #searchform{
+	display: none;
+}
 
 @media (min-width: 760px) {
 
@@ -215,6 +217,69 @@ ul#main-nav {
 			border-left: none;
 		}
 	}
+	ul#main-nav li a.search-link{
+		display: none;
+	}
+	ul#main-nav{
+		position: relative;
+	}
+	ul#main-nav #searchform{
+		display: block;
+		label{
+			display: none;
+		}
+		input{
+			height: 42px;
+			// line-height: 42px;
+			padding: 0 56px 0 20px;
+			border: none;
+			width: 49px;
+			color: #fff;
+			border-left: 1px solid #414141;
+			background: $hrld-black;
+			font-family: $headline;
+			text-transform: uppercase;
+			font-weight: 700;
+			&:focus{
+				background: $hrld-blue;
+				outline: none;
+			}
+		}
+		::-webkit-input-placeholder {
+		   color: #fff;
+		}
+
+		:-moz-placeholder { /* Firefox 18- */
+		   color: #fff;  
+		}
+
+		::-moz-placeholder {  /* Firefox 19+ */
+		   color: #fff;  
+		}
+
+		:-ms-input-placeholder {  
+		   color: #fff;  
+		}
+		input#searchsubmit {
+			display: block;
+			width: 38px;
+			height: 42px;
+			position: absolute;
+			right: 0;
+			top: 0;
+			text-indent: -999em;
+			text-align: left;
+			margin: 0;
+			padding: 0 18px 0 0;
+			border: none;
+			background: no-repeat 0px 12px url(img/icons/iconmonstr_magnifier_5_icon.png);
+			background-image: url(img/icons/iconmonstr-magnifier-5-icon.svg), none;
+			background-size: 20px 20px;
+			&:hover{
+				cursor: pointer;
+			}
+		}
+	}
 }
 
 @media (min-width: 1220px) {
@@ -240,6 +305,10 @@ ul#main-nav {
 
 	.nav-container {
 		width: 1020px;
+	}
+	ul#main-nav #searchform input{
+		width: 209px;
+		text-align: right;
 	}
 
 }

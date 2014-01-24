@@ -107,7 +107,34 @@ $(document).ready(function() {
 	$(".nav-control").click(function(e){
 		$(".nav-container").toggleClass("nav-open");
 	});
+	$(window).resize(function(){
+		if(window.innerWidth >= 1060 && window.innerWidth < 1220){
+			$("#main-nav li a").css("padding","11px 18px 10px");
+			$("#main-nav #searchform #s").blur().css("width","49px");
+		} else if(window.innerWidth > 1220){
+			$("#main-nav li a").css("padding","11px 18px 10px");
+			$("#main-nav #searchform #s").blur().css("width","209px");
+		}
+	});
 
+	$("#main-nav #searchform #s").focus(function(){
+		if(window.innerWidth >= 1060 && window.innerWidth < 1220){
+			$("#main-nav li a").css("padding","11px 9px 10px");
+			$(this).css("width","+=144");
+		}
+		if(window.innerWidth > 1220){
+			$(this).css("text-align","left");
+		}
+	});
+	$("#main-nav #searchform").on("blur", "#s", function(){
+		if(window.innerWidth >= 1060 && window.innerWidth < 1220){
+			$("#main-nav li a").css("padding","11px 18px 10px");
+			$(this).css("width","-=144");
+		}
+		if(window.innerWidth > 1220){
+			$(this).css("text-align","right");
+		}
+	});
 
 	
 	//Smooth scrolling to anchors from anchor links on same page.
