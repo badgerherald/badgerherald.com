@@ -208,8 +208,15 @@ ul#main-nav #searchform{
 			padding: 11px 18px 10px;
 			border-left: 1px solid $hrld-black-dark-grey;
 			border-bottom: none;
+			-webkit-transition: padding 500ms;
+			-moz-transition: padding 500ms;
+			-o-transition: padding 500ms;
+			transition: padding 500ms;
 			&:hover{
 				background: $hrld-blue;
+			}
+			&.nav-search-focus{
+				padding: 11px 9px 10px;
 			}
 		} li:last-child a {
 			border-bottom: none;
@@ -231,18 +238,26 @@ ul#main-nav #searchform{
 		input{
 			height: 42px;
 			// line-height: 42px;
-			padding: 0 56px 0 20px;
+			padding: 0 47px 0 18px;
+			width: 56px;
+			float: right;
 			border: none;
-			width: 49px;
 			color: #fff;
 			border-left: 1px solid #414141;
 			background: $hrld-black;
 			font-family: $headline;
 			text-transform: uppercase;
 			font-weight: 700;
+			-webkit-transition: all 500ms;
+			-moz-transition: all 500ms;
+			-o-transition: all 500ms;
+			transition: all 500ms;
 			&:focus{
 				background: $hrld-blue;
 				outline: none;
+			}
+			&.nav-search-focus{
+				width: 200px;
 			}
 		}
 		::-webkit-input-placeholder {
@@ -306,9 +321,15 @@ ul#main-nav #searchform{
 	.nav-container {
 		width: 1020px;
 	}
+	ul#main-nav li a.nav-search-focus{
+		padding: 11px 18px 10px;
+	}
 	ul#main-nav #searchform input{
-		width: 209px;
-		text-align: right;
+		&.nav-search-focus{
+			text-align: left;
+			width: 218px;
+		}
+			
 	}
 
 }

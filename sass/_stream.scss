@@ -22,7 +22,9 @@
 	padding-right:16px;
 	font-family: $body;
 }
-
+.all-link.pagination-link{
+	border-top: none;
+}
 .stream-post {
 	color : $heraldblack;
 	margin-top: 24px;

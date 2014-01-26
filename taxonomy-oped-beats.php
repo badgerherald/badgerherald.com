@@ -54,7 +54,7 @@ get_header();
 
 		<?php endwhile; ?>
 
-		<?php // twentythirteen_paging_nav(); ?>
+		<div class="all-link pagination-link"><?php next_posts_link( 'Older' ); ?></div>
 
 	<?php elseif ($query->is_archive) : ?>
 		<?php //get_template_part( 'content', 'none' ); ?>
