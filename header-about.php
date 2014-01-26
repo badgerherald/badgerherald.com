@@ -96,9 +96,9 @@ include('macros.php');
 					<li><a href="http://themadisonmisnomer.wordpress.com/from-the-herald/">Misnomer</a></li>
 					<li><a href="<?php bloginfo('url'); ?>/advertise/">Advertise</a></li>
 				<li>
-						<a href="<?php bloginfo('url'); ?>/search/">Search</a>
+						<a class="search-link" href="<?php bloginfo('url'); ?>/search/">Search</a>
 						<?php /*<input type="text" placeholder="Search..." value="SEARCH" /> */ ?>
-						<?php /*get_search_form( true ); */ ?>
+						<?php get_search_form( true );  ?>
 					</li> 
 				</ul>
 

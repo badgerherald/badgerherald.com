@@ -21,7 +21,7 @@ function about_class($classes) {
 get_header('about'); ?>
 
 
-	<div class="about-nav">
+	<div class="about-nav fixed-sidebar-container">
 		<ul>
 			<li><a href="<?php bloginfo("url") ?>/about/">About</a></li>
 			<li><a href="<?php bloginfo("url") ?>/about/staff/">Staff</a></li>

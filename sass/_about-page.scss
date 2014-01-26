@@ -300,6 +300,7 @@
 
 
 	.about-nav {
+		position: absolute;
 		ul {
 			list-style: none;
 			width: 140px;
@@ -324,7 +325,7 @@
 	.article-content {
 		width: 860px;
 		float: left;
-		margin-left: 20px;
+		margin-left: 160px;
 	}
 
 	.contact-container {
