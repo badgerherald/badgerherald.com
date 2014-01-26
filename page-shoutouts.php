@@ -196,6 +196,7 @@ get_header();
 
 
 <div class="so-sidebar">
+<div class="so-sidebar fixed-sidebar-container">
 		<h2>Submit a Shoutout:</h2>	
 	<form id="shoutout-form" method="POST">
 
@@ -208,7 +209,7 @@ get_header();
 	<img class="so-avatar" src="<?php bloginfo('template_url') ?>/img/icons/shoutout.png" />
 	<br/><br/>
 	<?php dfp::hrld_sidebar_ad(); ?>
-
+</div>
 </div><!-- id="sidebar" -->
 
 

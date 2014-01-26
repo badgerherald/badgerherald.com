@@ -51,12 +51,13 @@ $(document).ready(function() {
 
 	};
 	
-	if($("#sidebar").length != 0 || $(".post-sidebar").length != 0){
-		if($("#sidebar").length > 0){ 
+	if($(".fixed-sidebar-container").length != 0){
+		/* if($("#sidebar").length > 0){ 
 			var sidebar = $(".sidebar-inner");
 		} else if($(".post-sidebar").length > 0){ 
 			var sidebar = $(".post-sidebar-scroll");
-		}
+		} */
+		var sidebar = $(".fixed-sidebar-container");
 		var sidebar_pos = sidebar.offset().top;
 		if($("#disqus_thread").length > 0){ 
 			var comments = $("#disqus_thread").offset().top;
