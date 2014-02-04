@@ -130,7 +130,7 @@ get_header('about'); ?>
 					<h3>Opinion</h3>
 
 					<?php
-						// Cogan, Aliya
+						// Garth, Brianna
 						$mgmt   = array(2785,2732);
 						displayStaff($mgmt);
 					?>
@@ -155,7 +155,6 @@ get_header('about'); ?>
 					?>
 					<div class="clearfix"></div>
 
-
 				</div>
 
 				<h2>Business Staff</h2>
@@ -164,27 +163,28 @@ get_header('about'); ?>
 					<h3>Business Department</h3>
 
 					<?php
-						// Katherine Krueger, Katie Caron, Will Haynes.
-						$mgmt   = array(2274,2420,2608);
+						// Luke
+						$mgmt = array(2875);
 						displayStaff($mgmt);
 					?>
 					<div class="clearfix"></div>
 					<h3>Advertising</h3>
 
 					<?php
-						// Katherine Krueger, Katie Caron, Will Haynes.
-						$mgmt   = array(2274,2420,2608,2274,2420,2608);
+						// Mackenzie, Stacy, Sophie, Shia, Jacob
+						$mgmt = array(2887,2917,2913,2914,2915,2916);
 						displayStaff($mgmt);
 					?>
+					<?php /*
 					<div class="clearfix"></div>
 					<h3>Marketing</h3>
 
 					<?php
 						// Katherine Krueger, Katie Caron, Will Haynes.
-						$mgmt   = array(2274,2420,2608,2274,2420,2608);
+						$mgmt = array(2274,2420,2608,2274,2420,2608);
 						displayStaff($mgmt);
-					?>
-
+					*/ ?>
+		
 
 				</div>
 
