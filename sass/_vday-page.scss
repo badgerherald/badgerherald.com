@@ -1,5 +1,13 @@
 .vday-page {
-
+	.nav-bar{
+		background: #D3649F;
+	}
+	ul#main-nav li a:hover{
+		background: #D3649F;
+	}
+	ul#main-nav #searchform input:focus{
+		background: #D3649F;
+	}
 	.header-box{
 		width: 100%;
 		text-align:  center;
