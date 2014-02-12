@@ -25,7 +25,6 @@ get_header(); ?>
 <div id="stream" class="author-stream">
 
 	<?php if ( have_posts() ) : ?>
-
 		<?php /* The loop */ ?>
 		<?php while ( have_posts() ) : the_post(); ?>
 
