@@ -61,15 +61,16 @@ get_header('vday');
 if($formDisplay){
 	?>
 <form id="shoutout-form" method="POST" action="">
-		<input class="so-name" name="so_name" placeholder="Your Name" value="<?php echo htmlspecialchars($name); ?>" />
-		<input class="so-name-to" name="so_name_to" placeholder="Their Name" value="<?php echo htmlspecialchars($soTo); ?>" />
-		<textarea class="so-text" name="shoutout_text" wrap="virtual" placeholder="SO to..."><?php echo strip_tags($message); ?></textarea>
+		<input class="so-name" name="so_name" placeholder="From:" value="<?php echo htmlspecialchars($name); ?>" />
+		<input class="so-name-to" name="so_name_to" placeholder="To:" value="<?php echo htmlspecialchars($soTo); ?>" />
+		<textarea class="so-text" name="shoutout_text" wrap="virtual" placeholder="Message:"><?php echo strip_tags($message); ?></textarea>
 
 		<input class="so-button submit-so-button" name="" type="submit" value="Shout it out"/>
 
 
 	</form>
 	<img class="so-avatar" src="<?php bloginfo('template_url') ?>/img/icons/shoutout.png" />
+	<p style="opacity:0.2;text-align:center"><em>Shoutouts will be printed at the discretion of The Badger Herald.</em></p>
 <?php }//end if form display ?>
 </div>
 
