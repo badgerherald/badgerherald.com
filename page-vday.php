@@ -70,6 +70,7 @@ if($formDisplay){
 
 	</form>
 	<img class="so-avatar" src="<?php bloginfo('template_url') ?>/img/icons/shoutout.png" />
+	<p style="opacity:0.2;text-align:center"><em>Shoutouts will be printed at the discretion of The Badger Herald.</em></p>
 <?php }//end if form display ?>
 </div>
 
