@@ -32,9 +32,10 @@ get_header('vday');
 	$name = '';
 	$soTo = '';
 	$message = '';
+	$formDisplay = true;
 	if($_POST){
 		$name = stripslashes($_POST['so_name']);
-		$soTo = stripslashes($_POST['soTo']);
+		$soTo = stripslashes($_POST['so_name_to']);
 		$message = stripslashes($_POST['shoutout_text']);
 		if($name && $soTo && $message){
 			$name = str_replace(array("\r","\n"),array(" "," "),$name);
@@ -43,14 +44,22 @@ get_header('vday');
 			$message = wordwrap($message, 70, "\r\n");
 			$formContent = "Name: $name \n SO is to: $soTo \n SO Message: $message \n";
 			if(mail($to, $messageSubject, $formContent, "From: VDAY SO\r\n")){
-				echo '<p>SO sent successfully.</p>';
+				$formDisplay = false;
+				?>
+				<p class="success-text">SO sent successfully.</p>
+				<?php
 			}
 			else{
-				echo '<p>We\'re sorry. Your SO could not be sent. Please try again.</p>';
+				?>
+				<p>We're sorry. Your SO could not be sent. Please try again.</p>
+				<?php
 			}
 		}
 	}
 ?>
+<?php
+if($formDisplay){
+	?>
 <form id="shoutout-form" method="POST" action="">
 		<input class="so-name" name="so_name" placeholder="Your Name" value="<?php echo htmlspecialchars($name); ?>" />
 		<input class="so-name-to" name="so_name_to" placeholder="Their Name" value="<?php echo htmlspecialchars($soTo); ?>" />
@@ -61,7 +70,7 @@ get_header('vday');
 
 	</form>
 	<img class="so-avatar" src="<?php bloginfo('template_url') ?>/img/icons/shoutout.png" />
-
+<?php }//end if form display ?>
 </div>
 
 
