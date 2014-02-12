@@ -22,7 +22,7 @@ get_header('vday');
 		<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 		<div class="header-box">
 			<h1>Herald Valentine</h1>
-			<h2>Send a SO to your SO</h2>
+			<h2>Send a SO to your SO in our Thursday paper.</h2>
 		</div>
 
 <div id="stream">
