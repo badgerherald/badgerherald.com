@@ -1,0 +1,111 @@
+.vday-page {
+
+	.header-box{
+		width: 100%;
+		text-align:  center;
+		color: #D3649F;
+		h1{
+			font-size: 50px;
+			line-height: 42px;
+			text-transform: uppercase;
+		}
+		h2 {
+			font-family: $body;
+			font-style: italic;
+		}
+	}
+	#stream{
+		margin-bottom: 24px;
+	}
+	#shoutout-form{
+		margin: 24px 0;
+		background: #D3649F;
+		font-family: $headline;
+		font-weight: 700;
+		border: 2px solid $hrld-black;
+		.so-name, .so-name-to{
+			display: block;
+			width: calc(100% - 36px);
+			padding: 20px 18px;
+			border: none;
+			background: transparent;
+			border-bottom: solid 1px $hrld-black;
+			text-transform: uppercase;
+			font-weight: 700;
+			&:focus{
+				outline: 0px;
+			}
+		}
+		.so-text{
+			height: 96px;
+			font-weight: 700;
+			color: $hrld-black;
+			width: calc(100% - 36px);
+		}
+		.so-button{
+			background: $hrld-black;
+			bottom: -57px;
+		}
+		&:after{
+			border-top-color: #D3649F;
+			border-left-color: #D3649F;
+		}
+		&:before{
+			border-right: 33px solid transparent;
+			border-bottom: 33px solid transparent;
+			border-left: 33px solid;
+			border-left-color: inherit;
+			border-top: 33px solid;
+			border-top-color: inherit;
+			bottom: -66px;
+			margin-left: 77px;
+			position: absolute;
+			content: "";
+			width: 0;
+			height: 0;
+		}
+		::-webkit-input-placeholder {
+		   color: $hrld-black;
+		}
+
+		:-moz-placeholder { /* Firefox 18- */
+		   color: $hrld-black;  
+		}
+
+		::-moz-placeholder {  /* Firefox 19+ */
+		   color: $hrld-black;  
+		}
+
+		:-ms-input-placeholder {  
+		   color: $hrld-black;  
+		}
+	}
+
+}
+
+@media (min-width: 760px) {
+	.vday-page{
+	#primary{
+		margin-top: 114px;
+	}
+}
+
+}
+@media (min-width: 1060px) {
+.vday-page{
+	#main{
+		text-align: center;
+	}
+	#stream{
+		float: none;
+		margin: 0 auto;
+		margin-bottom: 24px;
+		text-align: left;
+	}
+}
+
+}
+
+@media (min-width: 1220px) {
+
+}
