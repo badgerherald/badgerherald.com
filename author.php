@@ -31,6 +31,9 @@ get_header(); ?>
 			<?php if(exa_is_featured()) : ?>
 				<?php get_template_part( 'content', 'summary-fullstream-featured' ); ?>
 				<hr />
+			<?php elseif(get_post_type() == 'attachment') : ?>
+				<?php get_template_part( 'content', 'attachment'); ?>
+				<hr />
 			<?php else : ?>
 				<?php get_template_part( 'content', 'summary-fullstream' ); ?>
 				<hr />
