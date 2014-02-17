@@ -57,7 +57,7 @@ include('macros.php');
 			<li><a href="<?php bloginfo('url'); ?>/artsetc/">ArtsEtc.</a></li>
 			<li><a href="<?php bloginfo('url'); ?>/sports/">Sports</a></li>
 			<li><a href="<?php bloginfo('url'); ?>/shoutouts/">Shoutouts</a></li>
-			<li><a href="http://themadisonmisnomer.wordpress.com/from-the-herald/">Misnomer</a></li>
+			<li><a href="http://themadisonmisnomer.com/">Misnomer</a></li>
 			<li><a href="<?php bloginfo('url'); ?>/advertise/">Advertise</a></li>
 			<li class="about-off"><a href="<?php bloginfo('url'); ?>/about/">About</a></li>
 			<li>

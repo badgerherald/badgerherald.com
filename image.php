@@ -46,76 +46,81 @@ endif;
 
 get_header(); ?>
 
-	<div id="primary" class="content-area">
-		<div id="content" class="site-content" role="main">
-			<article id="post-<?php the_ID(); ?>" <?php post_class( 'image-attachment' ); ?>>
-				<header class="entry-header">
-					<h1 class="entry-title"><?php the_title(); ?></h1>
+<article id="post-<?php the_ID(); ?>" <?php post_class( 'image-attachment' ); ?>>
+<?php $hrld_credit_user = get_hrld_media_credit_user($post->ID); ?>
+<div class="post-sidebar">
+			<div class="post-sidebar-scroll fixed-sidebar-container">
+			<div class="meta-author">
+				<a class="meta-author-avatar" title="<?php echo exa_properize($hrld_credit_user->display_name); ?> Profile" href="<?php echo get_bloginfo('url').'/author/'.$hrld_credit_user->display_name ?>">
+					<?php echo get_wp_user_avatar($hrld_credit_user->ID, 'small-thumbnail'); ?>
+				</a>
+				<span class="author">by <a href="<?php echo get_bloginfo('url').'/author/'.$hrld_credit_user->display_name ?>" title="<?php echo exa_properize($hrld_credit_user->display_name); ?> Profile"><?php echo $hrld_credit_user->display_name; ?></a></span>
+				<span class="author-position">The Badger Herald</span>
+				<?php // If twitter
+				if(hrld_author_has("hrld_twitter_handle",$hrld_credit_user->ID)) {
+					$twitter_handle = get_hrld_author("hrld_twitter_handle",$hrld_credit_user->ID);
+					echo "<a href='https://twitter.com/$twitter_handle' class='twitter-follow-button' data-show-count='false'>Follow @$twitter_handle</a>";
+					echo "<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>";
+				} ?>
+			</div>
 
-					<div class="entry-meta">
-						<?php
-							$published_text  = __( '<span class="attachment-meta">Published on <time class="entry-date" datetime="%1$s">%2$s</time> in <a href="%3$s" title="Return to %4$s" rel="gallery">%5$s</a></span>', 'twentythirteen' );
-							$post_title = get_the_title( $post->post_parent );
-							if ( empty( $post_title ) || 0 == $post->post_parent )
-								$published_text  = '<span class="attachment-meta"><time class="entry-date" datetime="%1$s">%2$s</time></span>';
+			<div class="post-sidebar-ad">
+				<?php dfp::hrld_sidebar_lower_ad(); ?>
+			</div>
+			</div>
 
-							printf( $published_text,
-								esc_attr( get_the_date( 'c' ) ),
-								esc_html( get_the_date() ),
-								esc_url( get_permalink( $post->post_parent ) ),
-								esc_attr( strip_tags( $post_title ) ),
-								$post_title
-							);
+		</div>
+		<article class="article-post">
+	<header class="entry-header">
+		<h1 class="entry-title"><?php the_title(); ?></h1>
 
-							$metadata = wp_get_attachment_metadata();
-							printf( '<span class="attachment-meta full-size-link"><a href="%1$s" title="%2$s">%3$s (%4$s &times; %5$s)</a></span>',
-								esc_url( wp_get_attachment_url() ),
-								esc_attr__( 'Link to full-size image', 'twentythirteen' ),
-								__( 'Full resolution', 'twentythirteen' ),
-								$metadata['width'],
-								$metadata['height']
-							);
+		<div class="entry-meta">
+			<?php
+				$published_text  = __( '<span class="attachment-meta">Published on <time class="entry-date" datetime="%1$s">%2$s</time> in <a href="%3$s" title="Return to %4$s" rel="gallery">%5$s</a></span>', 'twentythirteen' );
+				$post_title = get_the_title( $post->post_parent );
+				if ( empty( $post_title ) || 0 == $post->post_parent )
+					$published_text  = '<span class="attachment-meta"><time class="entry-date" datetime="%1$s">%2$s</time></span>';
 
-							edit_post_link( __( 'Edit', 'twentythirteen' ), '<span class="edit-link">', '</span>' ); ?>
-					</div><!-- .entry-meta -->
-				</header><!-- .entry-header -->
+				printf( $published_text,
+					esc_attr( get_the_date( 'c' ) ),
+					esc_html( get_the_date() ),
+					esc_url( get_permalink( $post->post_parent ) ),
+					esc_attr( strip_tags( $post_title ) ),
+					$post_title
+				);
+				?>
+		</div><!-- .entry-meta -->
+	</header><!-- .entry-header -->
 
-				<div class="entry-content">
-					<nav id="image-navigation" class="navigation image-navigation" role="navigation">
-						<span class="nav-previous"><?php previous_image_link( false, __( '<span class="meta-nav">&larr;</span> Previous', 'twentythirteen' ) ); ?></span>
-						<span class="nav-next"><?php next_image_link( false, __( 'Next <span class="meta-nav">&rarr;</span>', 'twentythirteen' ) ); ?></span>
-					</nav><!-- #image-navigation -->
+	<div class="entry-content">
 
-					<div class="entry-attachment">
-						<div class="attachment">
-							<a href="<?php echo esc_url( $next_attachment_url ); ?>" title="<?php the_title_attribute(); ?>" rel="attachment"><?php
-							$attachment_size = apply_filters( 'twentythirteen_attachment_size', array( 724, 724 ) );
-							echo wp_get_attachment_image( $post->ID, $attachment_size );
-							?></a>
+		<div class="entry-attachment">
+			<div class="attachment">
+				<a href="<?php echo esc_url( $next_attachment_url ); ?>" title="<?php the_title_attribute(); ?>" rel="attachment"><?php
+				$attachment_size = apply_filters( 'twentythirteen_attachment_size', array( 724, 724 ) );
+				echo wp_get_attachment_image( $post->ID, $attachment_size );
+				?></a>
 
-							<?php if ( ! empty( $post->post_excerpt ) ) : ?>
-							<div class="entry-caption">
-								<?php the_excerpt(); ?>
-							</div>
-							<?php endif; ?>
-						</div><!-- .attachment -->
+				<?php if ( ! empty( $post->post_excerpt ) ) : ?>
+				<div class="entry-caption">
+					<?php the_excerpt(); ?>
+				</div>
+				<?php endif; ?>
+			</div><!-- .attachment -->
 
-					</div><!-- .entry-attachment -->
+		</div><!-- .entry-attachment -->
 
-					<?php if ( ! empty( $post->post_content ) ) : ?>
-					<div class="entry-description">
-						<?php the_content(); ?>
-						<?php wp_link_pages( array( 'before' => '<div class="page-links">' . __( 'Pages:', 'twentythirteen' ), 'after' => '</div>' ) ); ?>
-					</div><!-- .entry-description -->
-					<?php endif; ?>
+		<?php if ( ! empty( $post->post_content ) ) : ?>
+		<div class="entry-description">
+			<?php the_content(); ?>
+			<?php wp_link_pages( array( 'before' => '<div class="page-links">' . __( 'Pages:', 'twentythirteen' ), 'after' => '</div>' ) ); ?>
+		</div><!-- .entry-description -->
+		<?php endif; ?>
 
-				</div><!-- .entry-content -->
-
-			</article><!-- #post -->
-
+	</div><!-- .entry-content -->
+</article>
+</article><!-- #post -->
+<div class="clearfix"></div>
 			<?php comments_template(); ?>
-
-		</div><!-- #content -->
-	</div><!-- #primary -->
 
 <?php get_footer(); ?>
