@@ -428,7 +428,7 @@ function wpse_76214_script() {
 add_filter( 'media_send_to_editor', 'wpse_76214_send_to_editor', 10, 3 );
 function wpse_76214_send_to_editor( $html, $id, $attachment ) {
 
-    //$html = preg_replace( '@\<a([^>]*)>(.*?)\<\/a>@i', '$2', $html );
+    $html = preg_replace( '@\<a([^>]*)>(.*?)\<\/a>@i', '$2', $html );
 
     return $html;
 }

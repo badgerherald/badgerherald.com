@@ -122,6 +122,10 @@ h1.entry-title {
 		line-height: 18px;
 		color: $hrld-dark-grey;
 		margin: 12px 0 6px;
+		
+		span.hrld-media-credit{
+			color: $hrld-black;
+		}
 		dd {
 			margin-left:0;
 		} img {
@@ -182,7 +186,6 @@ h1.entry-title {
 		} .wp-caption {
 			position: relative; 
 			width: 100% !important;
-			color: $hrld-dark-grey;
 			float: left;
 			font-size: 16px;
 			line-height: 24px;
