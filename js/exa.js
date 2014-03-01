@@ -141,4 +141,10 @@ $(document).ready(function() {
 
 	});
 
+	//script for quiz function
+	$(".answer-box label").click(function(e){
+		var answerParents = $(this).parents("ul");
+		answerParents.children("li").removeClass("inactive");
+	});
+
 });
