@@ -1,0 +1,33 @@
+.quiz-container{
+	max-width: 600px;
+	text-align: center;
+	margin: 0 auto;
+	ul.answer-list{
+		list-style-type: none;
+		margin: 0 auto;
+		padding: 0;
+		li{
+			padding: 0;
+			margin: 12px 10px;
+			display: inline-block;
+		}
+	}
+	span.answer-description{
+		display: block;
+	}
+	input[type=radio]{
+		display: none;
+		margin: 10px;
+	}
+	input[type=radio] + label{
+		display: inline-block;
+		margin: -2px;
+		background: $hrld-black;
+		border-color: $hrld-blue;
+		opacity: 0.8;
+	}
+	input[type=radio]:checked + label{
+		opacity: 1;
+	}
+
+}
