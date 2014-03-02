@@ -145,6 +145,8 @@ $(document).ready(function() {
 	$(".answer-box label").click(function(e){
 		var answerParents = $(this).parents("div.quiz-question");
 		answerParents.find("li.answer-box").removeClass("inactive");
+		answerParents.find("span.answer-checkmark").removeClass("checkmark-selected");
+		$(this).find("span.answer-checkmark").addClass("checkmark-selected");
 	});
 
 });
