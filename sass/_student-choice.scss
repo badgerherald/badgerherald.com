@@ -1,16 +1,19 @@
 .quiz-container{
-	max-width: 660px;
+	max-width: 640px;
 	text-align: center;
 	margin: 0 auto;
 	ul.answer-list{
 		list-style-type: none;
 		margin: 0 auto;
+		margin-bottom: 12px;
 		padding: 0;
 		display: table;
+		border-collapse: separate;
+		border-spacing: 10px 0;
 		li{
-			padding: 0;
 			margin: 6px 10px;
 			display: table-cell;
+			vertical-align: top; 
 		}
 	}
 	.answer-box{
@@ -28,7 +31,6 @@
 	}
 	input[type=radio] + label{
 		display: inline-block;
-		margin: -2px;
 		opacity: 0.6
 	}
 	li.inactive input[type=radio] + label{

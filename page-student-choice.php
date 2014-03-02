@@ -35,6 +35,7 @@ get_header(); ?>
 								echo '<ul class="answer-list">';
 								for($j = 0; $j < 6; $j++){
 									echo '<li class="inactive answer-box quiz_shadow"><input name="hrld_student_choice_'.$i.'" id="hrld_student_choice_'.$i.'_'.$j.'" type="radio" value="question: '.$i.'; answer: '.$j.'"><label for="hrld_student_choice_'.$i.'_'.$j.'"><img src="http://placekitten.com/180/180" /><span class="answer-description">The Badger Herald</span></label></li>';
+									if($j == 2) echo '</ul><ul class="answer-list">';
 								}
 								echo '</ul>';
 								echo '</div>';
