@@ -37,7 +37,7 @@
 		display: inline-block;
 	}
 	span.checkmark-wrap{
-		border: 1px solid $hrld-black;
+		border: 1px solid $hrld-dark-grey;
 		padding: 0;
 		margin-right: 10px;
 		margin-top: 6px;
@@ -67,6 +67,38 @@
 	}
 	input[type=radio]:checked + label{
 		opacity: 1;
+	}
+	input.email-input{
+		border: 2px solid $hrld-dark-grey;;
+		height: 50px;
+		border-radius: 5px;
+		padding: 0 10px;
+		margin: 12px auto;
+		max-width: 600px;
+		width: 90%;
+	}
+	.quiz-submit{
+		background: $hrld-black;
+		display: block;
+		text-align: center;
+		height: 50px;
+		padding: 0 10px;
+		line-height: 50px;
+		color: $hrld-light-grey;
+		font-family: $headline;
+		text-transform: uppercase;
+		font-weight: 700;
+		border: none;
+		margin: 0 auto;
+		margin-bottom: 24px;
+		width: 200px;
+		letter-spacing: 2px;
+		&:focus{
+			outline: 0;
+		}
+		&:hover{
+			background-color: $hrld-blue;
+		}
 	}
 	
 }

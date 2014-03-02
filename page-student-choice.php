@@ -42,8 +42,8 @@ get_header(); ?>
 							}
 						?>
 						<label for="hrld_student_choice_email">Insert your email. Only valid @wisc.edu emails will be eligible for prizes.</label>
-						<input name="hrld_student_choice_email" id="hrld_student_choice_email" type="text" placeholder="Email">
-						<input type="submit" value="Submit">
+						<input name="hrld_student_choice_email" id="hrld_student_choice_email" class="email-input" type="text" placeholder="Email">
+						<input type="submit" class="quiz-submit" value="Submit">
 						</form>
 					</div><!-- .entry-content -->
 				</article><!-- #post -->
