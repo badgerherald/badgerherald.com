@@ -29,7 +29,7 @@
 		bottom: 0px;
 		left: 0;
 		&.checkmark-selected{
-			display: inline;
+			display: inline-block;
 		}
 	}
 	span.description-wrap{
@@ -42,7 +42,6 @@
 		margin-right: 10px;
 		margin-top: 6px;
 		position: relative;
-		top:4px;
 		width: 18px;
 		height: 18px;
 		display: inline-block;
@@ -51,6 +50,7 @@
 		display: inline;
 		font-family: $headline;
 		font-weight: 700;
+		font-size: 16px;
 	}
 	input[type=radio]{
 		display: none;
