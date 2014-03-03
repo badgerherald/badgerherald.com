@@ -17,16 +17,14 @@ get_header(); ?>
 
 				<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 					<header class="entry-header">
-						<?php if ( has_post_thumbnail() && ! post_password_required() ) : ?>
-						<div class="entry-thumbnail">
-							<?php the_post_thumbnail(); ?>
-						</div>
-						<?php endif; ?>
-
-						<h1 class="entry-title"><?php the_title(); ?></h1>
+						
 					</header><!-- .entry-header -->
 
 					<div class="entry-content">
+					<?php
+						$display_form = false;
+						if($display_form):
+					?>
 						<form action="" method="post" class="quiz-container">
 						<?php
 							for($i = 0; $i < 6; $i++){
@@ -45,6 +43,28 @@ get_header(); ?>
 						<input name="hrld_student_choice_email" id="hrld_student_choice_email" class="email-input" type="text" placeholder="Email">
 						<input type="submit" class="quiz-submit" value="Submit">
 						</form>
+					<?php
+						else:
+					?>
+						<div class="quiz-success-wrap clearfix quiz_shadow">
+							<p class="quiz-success">Thank you for voting.</p>
+							<div class="social-plug">
+								<p>Follow us on Twitter and Facebook to be updated on the winners.</p>
+								<div class="social-buttons">
+									<div class="twitter">
+										<a href="https://twitter.com/badgerherald" class="twitter-follow-button" data-show-count="false">Follow @badgerherald</a>
+										<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+									</div><!-- .twitter -->
+
+									<div class="facebook">
+										<div class="fb-like" data-href="http://facebook.com/badgerherald" data-layout="button_count" data-action="like" data-show-faces="false" data-share="false"></div>
+									</div><!-- .facebook -->
+								</div>
+							</div>
+						</div>
+					<?php
+						endif;
+					?>
 					</div><!-- .entry-content -->
 				</article><!-- #post -->
 

@@ -102,6 +102,46 @@
 	}
 	
 }
+.quiz-success-wrap{
+	text-align: center;
+	max-width: 620px;
+	margin: 0 auto;
+	color: $hrld-blue;
+	padding: 72px 10px;
+	background: $hrld-black;
+	border: 1px solid $hrld-dark-grey;
+	margin-bottom: 24px;
+}
+.quiz-success{
+	font-size: 40px;
+	font-weight: 700;
+	font-family: $headline;
+	padding: 24px 0;
+	padding-top: 0;
+	text-transform: uppercase;
+	margin: 0;	
+}
+.social-plug{
+	p{
+		padding: 24px 0;
+		font-style: italic;
+		font-weight: 400;
+		font-size: 16px;
+		font-family: $body;
+		color: $hrld-dark-grey;
+		margin: 0;
+	}
+	.social-buttons{
+		width: 250px;
+		margin: 0 auto;
+	}
+	.twitter, .facebook{
+		float: left;
+	}
+	.twitter{
+		margin-right: 10px;
+	}
+}
 .quiz_shadow {
 	-moz-box-shadow: 1px 1px 0 $hrld-dark-grey;
 	-webkit-box-shadow: 1px 1px 0 $hrld-dark-grey;
