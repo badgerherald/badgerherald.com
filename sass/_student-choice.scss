@@ -20,6 +20,12 @@
 		padding: 9px;
 		border: 1px solid $hrld-dark-grey;
 	}
+	.question-title{
+		padding: 12px 10px;
+	}
+	.quiz-question{
+		margin-bottom: 24px;
+	}
 	span.answer-checkmark{
 		display: none;
 		font-weight: 700;
@@ -61,6 +67,9 @@
 		opacity: 0.6;
 		text-align: left;
 		max-width: 180px;
+		&:hover{
+			cursor: pointer;
+		}
 	}
 	li.inactive input[type=radio] + label{
 		opacity: 1; 
