@@ -39,7 +39,7 @@ get_header(); ?>
 								echo '</div>';
 							}
 						?>
-						<label for="hrld_student_choice_email">Insert your email. Only valid @wisc.edu emails will be eligible for prizes.</label>
+						<label for="hrld_student_choice_email" class="email-input-label">Insert your email. Only valid @wisc.edu emails will be eligible for prizes.</label>
 						<input name="hrld_student_choice_email" id="hrld_student_choice_email" class="email-input" type="text" placeholder="Email">
 						<input type="submit" class="quiz-submit" value="Submit">
 						</form>
