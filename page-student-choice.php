@@ -11,7 +11,23 @@
  * @since Twenty Thirteen 1.0
  */
 
-get_header(); ?>
+get_header("just-head"); ?>
+
+
+		<div id="page" class="page-container-fixed-inside">
+
+		<div class="header-sca-2014">
+
+
+		</div>
+
+		</div> <!-- #page -->
+
+		<div id="page" class="student-choice-content">
+		<div id="wrapper">
+		<div id="primary">
+		<div id="main" class="site-main">
+
 
 		<div id="content" class="site-content" role="main">
 
@@ -22,7 +38,7 @@ get_header(); ?>
 
 					<div class="entry-content">
 					<?php
-						$display_form = false;
+						$display_form = true;
 						if($display_form):
 					?>
 						<form action="" method="post" class="quiz-container">

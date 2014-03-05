@@ -1,4 +1,16 @@
-.quiz-container{
+.page-container-fixed-inside {
+	position: relative;
+}
+
+.header-sca-2014 {
+	width: 100%;
+	height: 100%;
+	position: fixed;
+	top: 0;
+	background: url('./img/student-choice/2014/background.png') center top;
+}
+
+.quiz-container {
 	max-width: 640px;
 	text-align: center;
 	margin: 0 auto;
@@ -121,6 +133,10 @@
 	text-transform: uppercase;
 	margin: 0;	
 }
+
+Tiffany
+3124617815
+
 .social-plug{
 	p{
 		padding: 24px 0;
@@ -160,4 +176,12 @@
 			}
 		}
 	}
+
+	.student-choice-content {
+		#primary {
+			width: 600px;
+			margin: 0 auto;
+			margin-top: 300px;
+		}
+ 	}
 }
