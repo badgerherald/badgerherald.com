@@ -1,3 +1,4 @@
+
 .page-container-fixed-inside {
 	position: relative;
 }
@@ -11,26 +12,35 @@
 }
 
 .quiz-container {
-	max-width: 640px;
+	max-width: 600px;
 	text-align: center;
 	margin: 0 auto;
 	ul.answer-list{
 		list-style-type: none;
 		margin: 0 auto;
-		margin-bottom: 12px;
 		padding: 0;
 		display: table;
-		border-collapse: separate;
-		border-spacing: 10px 0;
+		border-collapse: collapse;
+		border-spacing: 0;
+		&:first-of-type .answer-box{
+			border-bottom: none;
+		}
 		li{
-			margin: 6px 10px;
+			margin: 0;
 			display: table-cell;
 			vertical-align: top; 
 		}
 	}
 	.answer-box{
-		padding: 9px;
 		border: 1px solid $hrld-dark-grey;
+	}
+	.question-title{
+		padding: 0;
+		margin: 0;
+		line-height: 0;
+	}
+	.quiz-question{
+		margin-bottom: 24px;
 	}
 	span.answer-checkmark{
 		display: none;
@@ -44,25 +54,12 @@
 			display: inline-block;
 		}
 	}
-	span.description-wrap{
-		max-width: 180px;
-		display: inline-block;
-	}
-	span.checkmark-wrap{
-		border: 1px solid $hrld-dark-grey;
-		padding: 0;
-		margin-right: 10px;
-		margin-top: 6px;
-		position: relative;
-		width: 18px;
-		height: 18px;
-		display: inline-block;
-	}
 	span.answer-description{
 		display: inline;
 		font-family: $headline;
 		font-weight: 700;
 		font-size: 16px;
+		max-width: 180px;
 	}
 	input[type=radio]{
 		display: none;
@@ -73,12 +70,19 @@
 		opacity: 0.6;
 		text-align: left;
 		max-width: 180px;
+		padding: 10px;
+		&:hover{
+			cursor: pointer;
+			background: $hrld-blue;
+		}
 	}
 	li.inactive input[type=radio] + label{
 		opacity: 1; 
 	}
 	input[type=radio]:checked + label{
 		opacity: 1;
+		background: #ae1023;
+		color: $hrld-light-grey;
 	}
 	input.email-input{
 		border: 2px solid $hrld-dark-grey;;
@@ -88,6 +92,11 @@
 		margin: 12px auto;
 		max-width: 600px;
 		width: 90%;
+	}
+	.email-input-label{
+		font-family: $headline;
+		font-weight: 700;
+		font-size: 20px;
 	}
 	.quiz-submit{
 		background: $hrld-black;
@@ -134,8 +143,6 @@
 	margin: 0;	
 }
 
-Tiffany
-3124617815
 
 .social-plug{
 	p{
@@ -157,13 +164,6 @@ Tiffany
 	.twitter{
 		margin-right: 10px;
 	}
-}
-.quiz_shadow {
-	-moz-box-shadow: 1px 1px 0 $hrld-dark-grey;
-	-webkit-box-shadow: 1px 1px 0 $hrld-dark-grey;
-	box-shadow: 1px 1px 0 $hrld-dark-grey;
-	-ms-filter: "progid:DXImageTransform.Microsoft.Shadow(Strength=1, Direction=135, Color='#a6b5bd')";
-	filter: progid:DXImageTransform.Microsoft.Shadow(Strength=1, Direction=135, Color='#a6b5bd');
 }
 @media (min-width: 760px) {
 	.quiz-container{

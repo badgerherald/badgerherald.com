@@ -45,24 +45,24 @@ get_header("just-head"); ?>
 						<?php
 							for($i = 0; $i < 6; $i++){
 								echo '<div class="quiz-question clearfix">';
-								echo '<div class="question-title"><h3>Question '.$i.'</h3><br /></div>';
+								echo '<div class="question-title"><img src="http://www.placecage.com/c/600/180"></div>';
 								echo '<ul class="answer-list">';
 								for($j = 0; $j < 6; $j++){
-									echo '<li class="inactive answer-box quiz_shadow"><input name="hrld_student_choice_'.$i.'" id="hrld_student_choice_'.$i.'_'.$j.'" type="radio" value="question: '.$i.'; answer: '.$j.'"><label for="hrld_student_choice_'.$i.'_'.$j.'"><img src="http://placecage.com/180/180" /><span class="description-wrap"><span class="checkmark-wrap quiz_shadow"><span class="answer-checkmark">&#10003;</span></span><span class="answer-description">The Badger Herald</span></span></label></li>';
+									echo '<li class="inactive answer-box"><input name="hrld_student_choice_'.$i.'" id="hrld_student_choice_'.$i.'_'.$j.'" type="radio" value="question: '.$i.'; answer: '.$j.'"><label for="hrld_student_choice_'.$i.'_'.$j.'"><img src="http://placecage.com/180/180" /><span class="answer-description">The Badger Herald</span></label></li>';
 									if($j == 2) echo '</ul><ul class="answer-list">';
 								}
 								echo '</ul>';
 								echo '</div>';
 							}
 						?>
-						<label for="hrld_student_choice_email">Insert your email. Only valid @wisc.edu emails will be eligible for prizes.</label>
+						<label for="hrld_student_choice_email" class="email-input-label">Insert your email. Only valid @wisc.edu emails will be eligible for prizes.</label>
 						<input name="hrld_student_choice_email" id="hrld_student_choice_email" class="email-input" type="text" placeholder="Email">
 						<input type="submit" class="quiz-submit" value="Submit">
 						</form>
 					<?php
 						else:
 					?>
-						<div class="quiz-success-wrap clearfix quiz_shadow">
+						<div class="quiz-success-wrap clearfix">
 							<p class="quiz-success">Thank you for voting.</p>
 							<div class="social-plug">
 								<p>Follow us on Twitter and Facebook to be updated on the winners.</p>
