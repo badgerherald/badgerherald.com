@@ -22,9 +22,6 @@
 		display: table;
 		border-collapse: collapse;
 		border-spacing: 0;
-		&:first-of-type .answer-box{
-			border-bottom: none;
-		}
 		li{
 			margin: 0;
 			display: table-cell;
@@ -33,6 +30,7 @@
 	}
 	.answer-box{
 		border: 1px solid $hrld-dark-grey;
+		border-top: none;
 	}
 	.question-title{
 		padding: 0;
@@ -73,7 +71,7 @@
 		padding: 10px;
 		&:hover{
 			cursor: pointer;
-			background: $hrld-blue;
+			background: $hrld-dark-grey;
 		}
 	}
 	li.inactive input[type=radio] + label{
