@@ -1,6 +1,6 @@
 <?php
 try {
-    $dbh = new PDO("mysql:host=localhost;dbname=student_choice_2014");
+    $dbh = new PDO("mysql:host=localhost;dbname=student_choice_2014", "root", "root");
     $dbh->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );
     
     $dbh->exec('DROP TABLE IF EXISTS Quiz');
