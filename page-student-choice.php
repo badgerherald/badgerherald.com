@@ -108,9 +108,9 @@ function valid_wisc($email) {
                     $display_form = true;
                     $valid = true;
                     $quiz_name = "student-choice-2014";
-                    $dbstr = "sqlite:/vagrant/wordpress/wp-content/themes/exa/votes.db";
-                    $username = null;
-                    $password = null;
+                    $dbstr = "mysql:host=localhost;dbname=student_choice_2014";
+                    $username = 'root';
+                    $password = 'root';
                     $options = array();
                     $dbh = open_db($dbstr, $username, $password, $options);
                     $questions = get_questions($dbh, $quiz_name);
