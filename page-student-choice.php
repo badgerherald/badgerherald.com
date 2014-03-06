@@ -118,8 +118,7 @@ function valid_wisc($email) {
                     $username = "root";
                     $password = "root";
                     $options = array();
-                    $dbh = new PDO($dbstr, $username, $password);
-                    $dbh->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );
+                    $dbh = open_db($dbstr, $username, $password, $options);
                     $questions = get_questions($dbh, $quiz_name);
                     if ('POST' == $_SERVER['REQUEST_METHOD']) {
                         if (! array_key_exists("hrld_student_choice_email", $_POST)) {
