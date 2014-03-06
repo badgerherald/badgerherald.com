@@ -306,11 +306,14 @@ try {
 
     // Best Way To Get Around Campus
     $options[25] = array(
-        array("Madison B-Cycle", ""),
-        array("Community Car", ""),
-        array("Green Cab", ""),
-        array("Badger Cab", ""),
-        array("Madison Metro Bus", "")
+        array("Madison B-Cycle", "http://localhost/bhrld/wordpress/wp-content/themes/studentchoice/madison-b-cycle.jpg"),
+        array("Community Car", "http://localhost/bhrld/wordpress/wp-content/themes/studentchoice/community-car.png"),
+        array("Green Cab", "http://localhost/bhrld/wordpress/wp-content/themes/studentchoice/green-cab-logo.png"),
+        array("Badger Cab", "http://localhost/bhrld/wordpress/wp-content/themes/studentchoice/badger-cab.jpg"),
+        array("Madison Metro Bus", "http://localhost/bhrld/wordpress/wp-content/themes/studentchoice/madison-metro.png"),
+        array("Lyft", "http://localhost/bhrld/wordpress/wp-content/themes/studentchoice/lyft.png")
+        ,
+        array("Union Cab", "http://localhost/bhrld/wordpress/wp-content/themes/studentchoice/union-cab.png")
     );
 
     $index_stmt = $dbh->prepare("SELECT MAX(id) FROM Options");
@@ -325,7 +328,6 @@ try {
             if (count($current_option) < 2) {
                 $current_option[1] = "http://www.placecage.com/c/180/180";
             }
-            $current_option[1] = "http://www.placecage.com/c/180/180";
             $stmt->execute(array($option_index, $i, $current_option[0], $current_option[1]));
             $option_index++;
         }
