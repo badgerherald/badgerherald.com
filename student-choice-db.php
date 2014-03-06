@@ -2,61 +2,64 @@
 try {
     $dbh = new PDO("mysql:host=localhost;dbname=student_choice_2014", "root", "root");
     $dbh->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );
-    
+
     $dbh->exec('DROP TABLE IF EXISTS Votes');
     $dbh->exec('DROP TABLE IF EXISTS Participants');
     $dbh->exec('DROP TABLE IF EXISTS Options');
     $dbh->exec('DROP TABLE IF EXISTS Questions');
     $dbh->exec('DROP TABLE IF EXISTS Quiz');
-    
+
     $dbh->exec(
         'CREATE TABLE Quiz (
           idname VARCHAR(250) PRIMARY KEY,
           name TEXT
-        )'  
+        )'
     );
     $dbh->exec('INSERT INTO Quiz(idname, name) VALUES ("student-choice-2014", "Student Choice 2014 Nominations")');
-    
+
     $dbh->exec(
         'CREATE TABLE Questions (
           id INTEGER PRIMARY KEY,
           quiz VARCHAR(250) NOT NULL,
           text TEXT,
+          photo_url TEXT,
           FOREIGN KEY(quiz) REFERENCES Quiz(idname)
-        )'  
+        )'
     );
 
     $questions = array(NULL,
-                       "Best Landlord/Property",
-                       "Best Off Campus Bar",
-                       "Best Off Camps Restaurant",
-                       "Best Workout Facility",
-                       "Best Late Night Grubbery",
-                       "Best Hangover Food",
-                       "Best Sports Bar",
-                       "Best Bar on State",
-                       "Best Place to Cure Your Sweet Tooth",
-                       "Favorite Pizza Joint",
-                       "Best Drink Specials",
-                       "Best Sandwich",
-                       "Best Newcomer",
-                       "Best Coffeehouse",
-                       "Best Date Restaurant",
-                       "Best Last Minute Booze Run",
-                       "Best Clothing Store",
-                       "Best Burger",
-                       "Best Entertainment",
-                       "Best Hair Salon",
-                       "Best 21st Bar",
-                       "Best Student Services",
-                       "Best Smoke Shop",
-                       "Best Trivia Night",
-                       "Best Way To Get Around Campus",
+                       array("Best Landlord/Property", ""),
+                       array("Best Off Campus Bar", ""),
+                       array("Best Off Camps Restaurant", ""),
+                       array("Best Workout Facility", ""),
+                       array("Best Late Night Grubbery", ""),
+                       array("Best Hangover Food", ""),
+                       array("Best Sports Bar", ""),
+                       array("Best Bar on State", ""),
+                       array("Best Place to Cure Your Sweet Tooth", ""),
+                       array("Favorite Pizza Joint", ""),
+                       array("Best Drink Specials", ""),
+                       array("Best Sandwich", ""),
+                       array("Best Newcomer", ""),
+                       array("Best Coffeehouse", ""),
+                       array("Best Date Restaurant", ""),
+                       array("Best Last Minute Booze Run", ""),
+                       array("Best Clothing Store", ""),
+                       array("Best Burger", ""),
+                       array("Best Entertainment", ""),
+                       array("Best Hair Salon", ""),
+                       array("Best 21st Bar", ""),
+                       array("Best Student Services", ""),
+                       array("Best Smoke Shop", ""),
+                       array("Best Trivia Night", ""),
+                       array("Best Way To Get Around Campus", "")
                        );
 
     for ($i = 1; $i < count($questions); $i++) {
-        $stmt = $dbh->prepare("INSERT INTO Questions(id, quiz, text) VALUES (?, ?, ?)");
-        $stmt->execute(array($i, "student-choice-2014", $questions[$i]));
+        $current_question = $questions[$i];
+        $current_question[1] = "http://placecage.com/c/600/180";
+        $stmt = $dbh->prepare("INSERT INTO Questions(id, quiz, text, photo_url) VALUES (?, ?, ?, ?)");
+        $stmt->execute(array($i, "student-choice-2014", $current_question[0], $current_question[1]));
     }
 
     $dbh->exec(
@@ -66,7 +69,7 @@ try {
           text TEXT,
           photo_link TEXT,
           FOREIGN KEY(question_id) REFERENCES Questions(id)
-        )'  
+        )'
     );
 
     // Best Landlord/Property
@@ -326,7 +329,7 @@ try {
             $stmt = $dbh->prepare("INSERT INTO Options(id, question_id, text, photo_link) VALUES (?, ?, ?, ?)");
             // If no url in structure, just use an empty one to prevent crashing
             if (count($current_option) < 2) {
-                $current_option[1] = "http://www.placecage.com/c/180/180";
+                $current_option[1] = "";
             }
             $stmt->execute(array($option_index, $i, $current_option[0], $current_option[1]));
             $option_index++;

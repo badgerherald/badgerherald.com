@@ -118,8 +118,7 @@ function valid_wisc($email) {
                     $username = "root";
                     $password = "root";
                     $options = array();
-                    $dbh = new PDO($dbstr, $username, $password);
-                    $dbh->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );
+                    $dbh = open_db($dbstr, $username, $password, $options);
                     $questions = get_questions($dbh, $quiz_name);
                     if ('POST' == $_SERVER['REQUEST_METHOD']) {
                         if (! array_key_exists("hrld_student_choice_email", $_POST)) {
@@ -169,15 +168,14 @@ function valid_wisc($email) {
 						<form action="" method="post" class="quiz-container">
 						    <?php       
 						    for($i = 0; $i < count($questions); $i++){
-								echo '<div class="quiz-question clearfix">';
-								echo '<div class="question-title"><img src="http://www.placecage.com/c/600/180"></div>';
-								echo '<ul class="answer-list">';
-      
                                 $current_question = $questions[$i];
                                 $question_id = $current_question["id"];
                                 $options = get_options($dbh, $question_id);
+								echo '<div class="quiz-question clearfix">';
+								echo '<div class="question-title"><img src="' . $current_question["photo_url"]  . '"></div>';
+								echo '<ul class="answer-list">';                                
                                 if(!$valid){
-                                    $question_vote = $_POST['hrld_student_choice_'.$i];
+                                    $question_vote = $_POST["hrld_student_choice_$i"];
                                 }                                
 								for($j = 0; $j < count($options); $j++){
                                     $current_option = $options[$j];
