@@ -22,54 +22,57 @@ try {
           id INTEGER PRIMARY KEY,
           quiz VARCHAR(250) NOT NULL,
           text TEXT,
+          photo_url TEXT,
           FOREIGN KEY(quiz) REFERENCES Quiz(idname)
         )'  
     );
 
     $questions = array(NULL,
-                       "Best Landlord/Property",
-                       "Best Off Campus Bar",
-                       "Best Off Camps Restaurant",
-                       "Best Workout Facility",
-                       "Best Late Night Grubbery",
-                       "Best Hangover Food",
-                       "Best Hookup Spot On Campus",
-                       "Best Ethnic Eatery",
-                       "Best Use of Social Media",
-                       "Best Sports Bar",
-                       "Best Bar on State",
-                       "Best Place to Cure Your Sweet Tooth",
-                       "Favorite Pizza Joint",
-                       "Favorite Upscale Restaurant",
-                       "Best Special Gifts",
-                       "Best Drink Specials",
-                       "Cushiest Campus Jobs",
-                       "Best Sandwich",
-                       "Best Newcomer",
-                       "Best Coffeehouse",
-                       "Best Alone-Time Study Spot",
-                       "Best Take Out",
-                       "Best Date Restaurant",
-                       "Best Last Minute Booze Run",
-                       "Best Clothing Store",
-                       "Best Burger",
-                       "Best Dive Bar",
-                       "Best Sushi",
-                       "Best Entertainment",
-                       "Best Hair Salon",
-                       "Best 21st Bar",
-                       "Best Student Services",
-                       "Best Smoke Shop",
-                       "Best Delivery",
-                       "Best Breakfast",
-                       "Best Trivia Night",
-                       "Best Way To Get Around Campus",
-                       "Best Student Discounts"
+                       array("Best Landlord/Property", ""),
+                       array("Best Off Campus Bar", ""),
+                       array("Best Off Camps Restaurant", ""),
+                       array("Best Workout Facility", ""),
+                       array("Best Late Night Grubbery", ""),
+                       array("Best Hangover Food", ""),
+                       array("Best Hookup Spot On Campus", ""),
+                       array("Best Ethnic Eatery", ""),
+                       array("Best Use of Social Media", ""),
+                       array("Best Sports Bar", ""),
+                       array("Best Bar on State", ""),
+                       array("Best Place to Cure Your Sweet Tooth", ""),
+                       array("Favorite Pizza Joint", ""),
+                       array("Favorite Upscale Restaurant", ""),
+                       array("Best Special Gifts", ""),
+                       array("Best Drink Specials", ""),
+                       array("Cushiest Campus Jobs", ""),
+                       array("Best Sandwich", ""),
+                       array("Best Newcomer", ""),
+                       array("Best Coffeehouse", ""),
+                       array("Best Alone-Time Study Spot", ""),
+                       array("Best Take Out", ""),
+                       array("Best Date Restaurant", ""),
+                       array("Best Last Minute Booze Run", ""),
+                       array("Best Clothing Store", ""),
+                       array("Best Burger", ""),
+                       array("Best Dive Bar", ""),
+                       array("Best Sushi", ""),
+                       array("Best Entertainment", ""),
+                       array("Best Hair Salon", ""),
+                       array("Best 21st Bar", ""),
+                       array("Best Student Services", ""),
+                       array("Best Smoke Shop", ""),
+                       array("Best Delivery", ""),
+                       array("Best Breakfast", ""),
+                       array("Best Trivia Night", ""),
+                       array("Best Way To Get Around Campus", ""),
+                       array("Best Student Discounts", "")
                        );
 
     for ($i = 1; $i < count($questions); $i++) {
-        $stmt = $dbh->prepare("INSERT INTO Questions(id, quiz, text) VALUES (?, ?, ?)");
-        $stmt->execute(array($i, "student-choice-2014", $questions[$i]));
+        $current_question = $questions[$i];
+        $stmt = $dbh->prepare("INSERT INTO Questions(id, quiz, text, photo_url) VALUES (?, ?, ?, ?)");
+        //$stmt->execute(array($i, "student-choice-2014", $current_question[0], $current_question[1]));
+        $stmt->execute(array($i, "student-choice-2014", $current_question[0], "http://placecage.com/c/600/180"));
     }
 
     $dbh->exec(
@@ -450,7 +453,8 @@ try {
             if (count($current_option) < 2) {
                 $current_option[1] = "";
             }
-            $stmt->execute(array($option_index, $i, $current_option[0], $current_option[1]));
+            //$stmt->execute(array($option_index, $i, $current_option[0], $current_option[1]));
+            $stmt->execute(array($option_index, $i, $current_option[0], "http://placecage.com/c/180/180"));
             $option_index++;
         }
     }

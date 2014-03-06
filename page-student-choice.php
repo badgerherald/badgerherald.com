@@ -164,13 +164,12 @@ function valid_wisc($email) {
 						<form action="" method="post" class="quiz-container">
 						    <?php       
 						    for($i = 0; $i < count($questions); $i++){
-								echo '<div class="quiz-question clearfix">';
-								echo '<div class="question-title"><img src="http://www.placecage.com/c/600/180"></div>';
-								echo '<ul class="answer-list">';
-      
                                 $current_question = $questions[$i];
                                 $question_id = $current_question["id"];
-                                $options = get_options($dbh, $question_id);                                
+                                $options = get_options($dbh, $question_id);
+								echo '<div class="quiz-question clearfix">';
+								echo '<div class="question-title"><img src="' . $current_question["photo_url"]  . '"></div>';
+								echo '<ul class="answer-list">';                                
 								for($j = 0; $j < count($options); $j++){
                                     $current_option = $options[$j];
 									echo '<li class="inactive answer-box"><input name="hrld_student_choice_'.$i.'" id="hrld_student_choice_'.$i.'_'.$j.'" type="radio" value="' . $current_option['id'] . '"><label for="hrld_student_choice_'.$i.'_'.$j.'"><img src="' . $current_option["photo_link"] . '" /><span class="answer-description">' . $current_option["text"] . '</span></label></li>';
