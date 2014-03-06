@@ -321,8 +321,9 @@ try {
             $stmt = $dbh->prepare("INSERT INTO Options(id, question_id, text, photo_link) VALUES (?, ?, ?, ?)");
             // If no url in structure, just use an empty one to prevent crashing
             if (count($current_option) < 2) {
-                $current_option[1] = "http://www.placecage.com/c/600/180";
+                $current_option[1] = "http://www.placecage.com/c/180/180";
             }
+            $current_option[1] = "http://www.placecage.com/c/180/180";
             $stmt->execute(array($option_index, $i, $current_option[0], $current_option[1]));
             $option_index++;
         }
