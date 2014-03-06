@@ -140,7 +140,12 @@
 	text-transform: uppercase;
 	margin: 0;	
 }
-
+p.email-err{
+	font-family: $headline;
+	font-weight: bold;
+	color: red;
+	font-size: 20px;
+}
 
 .social-plug{
 	p{
@@ -153,7 +158,7 @@
 		margin: 0;
 	}
 	.social-buttons{
-		width: 250px;
+		width: 320px;
 		margin: 0 auto;
 	}
 	.twitter, .facebook{
@@ -161,6 +166,18 @@
 	}
 	.twitter{
 		margin-right: 10px;
+	}
+	.facebook iframe{
+		transform: scale(1.4);
+		-ms-transform: scale(1.4); 
+		-webkit-transform: scale(1.4); 
+		-o-transform: scale(1.4); 
+		-moz-transform: scale(1.4); 
+		transform-origin: top left;
+		-ms-transform-origin: top left;
+		-webkit-transform-origin: top left;
+		-moz-transform-origin: top left;
+		-webkit-transform-origin: top left;
 	}
 }
 @media (min-width: 760px) {

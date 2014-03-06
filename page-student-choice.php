@@ -15,7 +15,7 @@
 get_header("just-head");
 
 function open_db($dbstr, $username, $password, $options) {
-    $dbh = new PDO($dbstr, $username, $password, $options);
+    $dbh = new PDO($dbstr, $username, $password);
     $dbh->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );
     return $dbh;
 }
@@ -114,11 +114,12 @@ function valid_wisc($email) {
                     $display_form = true;
                     $valid = true;
                     $quiz_name = "student-choice-2014";
-                    $dbstr = "mysql:host=localhost;dbname=hrld_wp";
-                    $username = "hrld_wp";
-                    $password = "EzMt5mhjVWyFv7Kd";
+                    $dbstr = "mysql:host=localhost;dbname=student_choice_2014";
+                    $username = "root";
+                    $password = "root";
                     $options = array();
-                    $dbh = open_db($dbstr, $username, $password, $options);
+                    $dbh = new PDO($dbstr, $username, $password);
+                    $dbh->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );
                     $questions = get_questions($dbh, $quiz_name);
                     if ('POST' == $_SERVER['REQUEST_METHOD']) {
                         if (! array_key_exists("hrld_student_choice_email", $_POST)) {
@@ -158,7 +159,11 @@ function valid_wisc($email) {
                             }
                         }
                     }
-                    
+                    if(!$valid){
+                            ?>
+                            <p class="email-err">Please enter a valid @wisc.edu email.</p>
+                         <?php  
+                        }
 					if($display_form):
 					?>
 						<form action="" method="post" class="quiz-container">
@@ -170,16 +175,38 @@ function valid_wisc($email) {
 								echo '<div class="quiz-question clearfix">';
 								echo '<div class="question-title"><img src="' . $current_question["photo_url"]  . '"></div>';
 								echo '<ul class="answer-list">';                                
+                                if(!$valid){
+                                    $question_vote = $_POST["hrld_student_choice_$i"];
+                                }                                
 								for($j = 0; $j < count($options); $j++){
                                     $current_option = $options[$j];
-									echo '<li class="inactive answer-box"><input name="hrld_student_choice_'.$i.'" id="hrld_student_choice_'.$i.'_'.$j.'" type="radio" value="' . $current_option['id'] . '"><label for="hrld_student_choice_'.$i.'_'.$j.'"><img src="' . $current_option["photo_link"] . '" /><span class="answer-description">' . $current_option["text"] . '</span></label></li>';
-									if($j == 2) echo '</ul><ul class="answer-list">';
+                                    if(isset($question_vote) && $question_vote == $current_option['id']){
+                                        $checked  = 'checked="checked"';
+                                    }
+                                    else{
+                                        $checked = '';
+                                    }
+                                    if(isset($question_vote)){
+                                        $inactive = '';
+                                    }
+                                    else{
+                                        $inactive = 'inactive';
+                                    }
+									echo '<li class="'.$inactive.' answer-box"><input name="hrld_student_choice_'.$i.'" id="hrld_student_choice_'.$i.'_'.$j.'" type="radio" value="' . $current_option['id'] . '" '.$checked.'><label for="hrld_student_choice_'.$i.'_'.$j.'"><img src="' . $current_option["photo_link"] . '" /><span class="answer-description">' . $current_option["text"] . '</span></label></li>';
+									if(($j + 1)%3 == 0) echo '</ul><ul class="answer-list">';
 								}
 								echo '</ul>';
 								echo '</div>';
 							}
 						?>
 						<label for="hrld_student_choice_email" class="email-input-label">Insert your email. Only valid @wisc.edu emails will be eligible for prizes.</label>
+                        <?php
+                        if(!$valid){
+                            ?>
+                            <p class="email-err">Please enter a valid @wisc.edu email.</p>
+                            <?php
+                        }
+                        ?>
 						<input name="hrld_student_choice_email" id="hrld_student_choice_email" class="email-input" type="text" placeholder="Email">
 						<input type="submit" class="quiz-submit" value="Submit">
 						</form>
@@ -192,12 +219,12 @@ function valid_wisc($email) {
 								<p>Follow us on Twitter and Facebook to be updated on the winners.</p>
 								<div class="social-buttons">
 									<div class="twitter">
-										<a href="https://twitter.com/badgerherald" class="twitter-follow-button" data-show-count="false">Follow @badgerherald</a>
+										<a href="https://twitter.com/badgerherald" class="twitter-follow-button" data-show-count="false" data-size="large">Follow @badgerherald</a>
 										<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
 									</div><!-- .twitter -->
 
 									<div class="facebook">
-										<div class="fb-like" data-href="http://facebook.com/badgerherald" data-layout="button_count" data-action="like" data-show-faces="false" data-share="false"></div>
+										<div class="fb-like" data-href="http://facebook.com/badgerherald" data-layout="button_count" data-action="like" data-show-faces="false" data-share="false" data-height="28" data-width="120"></div>
 									</div><!-- .facebook -->
 								</div>
 							</div>

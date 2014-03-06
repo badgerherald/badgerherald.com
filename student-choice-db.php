@@ -1,22 +1,22 @@
 <?php
 try {
-    $dbh = new PDO("mysql:host=localhost;dbname=hrld_wp", "hrld_wp", "EzMt5mhjVWyFv7Kd");
+    $dbh = new PDO("mysql:host=localhost;dbname=student_choice_2014", "root", "root");
     $dbh->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );
-    
+
     $dbh->exec('DROP TABLE IF EXISTS Votes');
     $dbh->exec('DROP TABLE IF EXISTS Participants');
     $dbh->exec('DROP TABLE IF EXISTS Options');
     $dbh->exec('DROP TABLE IF EXISTS Questions');
     $dbh->exec('DROP TABLE IF EXISTS Quiz');
-    
+
     $dbh->exec(
         'CREATE TABLE Quiz (
           idname VARCHAR(250) PRIMARY KEY,
           name TEXT
-        )'  
+        )'
     );
     $dbh->exec('INSERT INTO Quiz(idname, name) VALUES ("student-choice-2014", "Student Choice 2014 Nominations")');
-    
+
     $dbh->exec(
         'CREATE TABLE Questions (
           id INTEGER PRIMARY KEY,
@@ -24,7 +24,7 @@ try {
           text TEXT,
           photo_url TEXT,
           FOREIGN KEY(quiz) REFERENCES Quiz(idname)
-        )'  
+        )'
     );
 
     $questions = array(NULL,
@@ -34,45 +34,32 @@ try {
                        array("Best Workout Facility", ""),
                        array("Best Late Night Grubbery", ""),
                        array("Best Hangover Food", ""),
-                       array("Best Hookup Spot On Campus", ""),
-                       array("Best Ethnic Eatery", ""),
-                       array("Best Use of Social Media", ""),
                        array("Best Sports Bar", ""),
                        array("Best Bar on State", ""),
                        array("Best Place to Cure Your Sweet Tooth", ""),
                        array("Favorite Pizza Joint", ""),
-                       array("Favorite Upscale Restaurant", ""),
-                       array("Best Special Gifts", ""),
                        array("Best Drink Specials", ""),
-                       array("Cushiest Campus Jobs", ""),
                        array("Best Sandwich", ""),
                        array("Best Newcomer", ""),
                        array("Best Coffeehouse", ""),
-                       array("Best Alone-Time Study Spot", ""),
-                       array("Best Take Out", ""),
                        array("Best Date Restaurant", ""),
                        array("Best Last Minute Booze Run", ""),
                        array("Best Clothing Store", ""),
                        array("Best Burger", ""),
-                       array("Best Dive Bar", ""),
-                       array("Best Sushi", ""),
                        array("Best Entertainment", ""),
                        array("Best Hair Salon", ""),
                        array("Best 21st Bar", ""),
                        array("Best Student Services", ""),
                        array("Best Smoke Shop", ""),
-                       array("Best Delivery", ""),
-                       array("Best Breakfast", ""),
                        array("Best Trivia Night", ""),
-                       array("Best Way To Get Around Campus", ""),
-                       array("Best Student Discounts", "")
+                       array("Best Way To Get Around Campus", "")
                        );
 
     for ($i = 1; $i < count($questions); $i++) {
         $current_question = $questions[$i];
+        $current_question[1] = "http://placecage.com/c/600/180";
         $stmt = $dbh->prepare("INSERT INTO Questions(id, quiz, text, photo_url) VALUES (?, ?, ?, ?)");
-        //$stmt->execute(array($i, "student-choice-2014", $current_question[0], $current_question[1]));
-        $stmt->execute(array($i, "student-choice-2014", $current_question[0], "http://placecage.com/c/600/180"));
+        $stmt->execute(array($i, "student-choice-2014", $current_question[0], $current_question[1]));
     }
 
     $dbh->exec(
@@ -82,7 +69,7 @@ try {
           text TEXT,
           photo_link TEXT,
           FOREIGN KEY(question_id) REFERENCES Questions(id)
-        )'  
+        )'
     );
 
     // Best Landlord/Property
@@ -150,33 +137,8 @@ try {
         array("Mickey's Dairybar", "")
     );
 
-    // Best Hangover Spot on Campus
-    $options[7] = array(
-        array("Sotto", ""),
-        array("Observatory Hill", ""),
-        array("Memorial Library", "")
-    );
-
-    // Best Ethnic Eatery
-    $options[8] = array(
-        array("Parthenon's", ""),
-        array("Rising Sons Deli", ""),
-        array("Casa De Lara", ""),
-        array("Los Gemelos", "")
-    );
-
-    // Best Use of Social Media
-    $options[9] = array(
-        array("U Tan", ""),
-        array("Wandos", ""),
-        array("Sun Tan City", ""),
-        array("UHS", ""),
-        array("True Endeavors", ""),
-        array("Majestic", "")
-    );
-
     // Best Sports Bar
-    $options[10] = array(
+    $options[7] = array(
         array("Lucky's Bar and Grille", ""),
         array("Buckinghams", ""),
         array("Johnny O's", ""),
@@ -185,7 +147,7 @@ try {
     );
 
     // Best Bar on State
-    $options[11] = array(
+    $options[8] = array(
         array("Whiskey Jacks", ""),
         array("City Bar", ""),
         array("State Street Brats", ""),
@@ -195,7 +157,7 @@ try {
     );
 
     // Best Place to Cure Your Sweet Tooth
-    $options[12] = array(
+    $options[9] = array(
         array("Gigi's Cupcakes", ""),
         array("Cold Stone Creamery", ""),
         array("Forever Yogurt", ""),
@@ -204,7 +166,7 @@ try {
     );
 
     // Favorite Pizza Joint
-    $options[13] = array(
+    $options[10] = array(
         array("Papa John's", ""),
         array("Falbos", ""),
         array("Pizza Di Roma", ""),
@@ -214,25 +176,8 @@ try {
         array("Pizza Pit", "")
     );
 
-    // Favorite Upscale Restaurant
-    $options[14] = array(
-        array("Tornado Steakhouse", ""),
-        array("Graze", ""),
-        array("Fresco Roftop", ""),
-        array("Samba", "")
-    );
-
-    // Best Special Gifts
-    $options[15] = array(
-        array("Art Gecko", ""),
-        array("Goodman's Jewelers", ""),
-        array("Red Letter News", ""),
-        array("Urban Outfitters", ""),
-        array("EarthBound Trading Co.", "")
-    );
-
     // Best Drink Specials
-    $options[16] = array(
+    $options[11] = array(
         array("Whiskey Jacks", ""),
         array("Vintage", ""),
         array("Madhatters", ""),
@@ -243,16 +188,8 @@ try {
         array("Sotto", "")
     );
 
-    // Cushiest Campus Job
-    $options[17] = array(
-        array("SERF ID Checker", ""),
-        array("Library Attendant", ""),
-        array("Donor - Interstate Blood & Plasma", ""),
-        array("Union South Hotel Desk", "")
-    );
-
     // Best Sandwich
-    $options[18] = array(
+    $options[12] = array(
         array("Cheba Hut", ""),
         array("Erberts and Gerberts", ""),
         array("Jimmy John's", ""),
@@ -262,7 +199,7 @@ try {
     );
 
     // Best Newcomer
-    $options[19] = array(
+    $options[13] = array(
         array("Steepery", ""),
         array("Wendy's on State", ""),
         array("Redrock Saloon", ""),
@@ -271,33 +208,15 @@ try {
     );
 
     // Best Coffeehouse
-    $options[20] = array(
+    $options[14] = array(
         array("Expresso Royale", ""),
         array("Redamte", ""),
         array("Coffee Bytes", ""),
         array("Michaelangelo's", "")
     );
 
-    // Best Alone-Time Study Spot
-    $options[21] = array(
-        array("Educational Sciences Building", ""),
-        array("Wisconsin Lutheran Chapel", ""),
-        array("Chazen Art Museum", ""),
-        array("Steepery", ""),
-        array("Memorial Union", ""),
-        array("Steenbock", "")
-    );
-
-    // Best Take Out
-    $options[22] = array(
-        array("Babcock Hall Dairy Store", ""),
-        array("Asian Kitchen", ""),
-        array("Parthenon", ""),
-        array("Chipotle", "")
-    );
-
     // Best Date Restaurant
-    $options[23] = array(
+    $options[15] = array(
         array("Tutto Pasta", ""),
         array("Francesca's Al Lago", ""),
         array("Portabella", ""),
@@ -306,7 +225,7 @@ try {
     );
 
     // Best Last Minute Booze Run
-    $options[24] = array(
+    $options[16] = array(
         array("Regent Liquor", ""),
         array("Riley's", ""),
         array("Woodmans", ""),
@@ -314,7 +233,7 @@ try {
     );
 
     // Best Clothing Store
-    $options[25] = array(
+    $options[17] = array(
         array("Urban Outfitters", ""),
         array("Pitaya", ""),
         array("Rethreads", ""),
@@ -324,7 +243,7 @@ try {
     );
 
     // Best Burger
-    $options[26] = array(
+    $options[18] = array(
         array("Nitty Gritty", ""),
         array("Dotty's Dumplings Dowry", ""),
         array("AJ Bombers", ""),
@@ -332,23 +251,8 @@ try {
         array("Redrock $1 Wednesdays", "")
     );
 
-    // Best Dive Bar
-    $options[27] = array(
-        array("Plaza", ""),
-        array("Echo Tap", ""),
-        array("Red Shed", ""),
-        array("Mondays", "")
-    );
-
-    // Best Sushi
-    $options[28] = array(
-        array("Wasabi", ""),
-        array("Osaka", ""),
-        array("Takara", "")
-    );
-
     // Best Entertainment
-    $options[29] = array(
+    $options[19] = array(
         array("Comedy Club", ""),
         array("The Ivory Room", ""),
         array("The Orpheum", ""),
@@ -357,7 +261,7 @@ try {
     );
 
     // Best Hair Salon
-    $options[30] = array(
+    $options[20] = array(
         array("Aveda/VICI Institute", ""),
         array("Envy", ""),
         array("Negginz", ""),
@@ -366,7 +270,7 @@ try {
     );
 
     // Best 21st Bar
-    $options[31] = array(
+    $options[21] = array(
         array("Buck N Badger", ""),
         array("Nitty", ""),
         array("Wandos", ""),
@@ -375,7 +279,7 @@ try {
     );
 
     // Best Student Services
-    $options[32] = array(
+    $options[22] = array(
         array("Badger Coaches", ""),
         array("Badger Short Bus", ""),
         array("Student Leadership Program/ALPs", ""),
@@ -386,7 +290,7 @@ try {
     );
 
     // Best Smoke Shop
-    $options[33] = array(
+    $options[23] = array(
         array("Knuckleheads", ""),
         array("pipefitters", ""),
         array("Smokes on state", ""),
@@ -394,27 +298,8 @@ try {
         array("Azara", "")
     );
 
-    // Best Delivery
-    $options[34] = array(
-        array("Wings Over Madison", ""),
-        array("Los Gemelos", ""),
-        array("Jimmy John's", ""),
-        array("Culver's", "") // They deliver again?
-    );
-
-    // Best Breakfast
-    $options[35] = array(
-        array("Einstein's", ""),
-        array("Bagel's Forever", ""),
-        array("Greenbush Bakery", ""),
-        array("Mickey's", ""),
-        array("Sunroom Cafe", ""),
-        array("Basset Street Brunch Club", ""),
-        array("Marigolds Cafe", "")
-    );
-
     // Best Trivia Night
-    $options[36] = array(
+    $options[24] = array(
         array("Capital Tap House", ""),
         array("Chaser's", ""),
         array("Buckingham's", ""),
@@ -423,22 +308,12 @@ try {
     );
 
     // Best Way To Get Around Campus
-    $options[37] = array(
+    $options[25] = array(
         array("Madison B-Cycle", ""),
         array("Community Car", ""),
         array("Green Cab", ""),
         array("Badger Cab", ""),
         array("Madison Metro Bus", "")
-    );
-
-    // Best Student Discounts
-    $options[38] = array(
-        array("Artist & Craftsman Supply", ""),
-        array("Capitol Centre Market", ""),
-        array("Fresh Madison Market", ""),
-        array("Envy", ""),
-        array("Tyrol Ski Slopes", ""),
-        array("Forever Yogurt", "")
     );
 
     $index_stmt = $dbh->prepare("SELECT MAX(id) FROM Options");
@@ -453,8 +328,8 @@ try {
             if (count($current_option) < 2) {
                 $current_option[1] = "";
             }
-            //$stmt->execute(array($option_index, $i, $current_option[0], $current_option[1]));
-            $stmt->execute(array($option_index, $i, $current_option[0], "http://placecage.com/c/180/180"));
+            $current_option[1] = "http://www.placecage.com/c/180/180";
+            $stmt->execute(array($option_index, $i, $current_option[0], $current_option[1]));
             $option_index++;
         }
     }
