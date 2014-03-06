@@ -15,7 +15,7 @@
 get_header("just-head");
 
 function open_db($dbstr, $username, $password, $options) {
-    $dbh = new PDO($dbstr, $username, $password, $options);
+    $dbh = new PDO($dbstr, $username, $password);
     $dbh->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );
     return $dbh;
 }
@@ -108,11 +108,13 @@ function valid_wisc($email) {
                     $display_form = true;
                     $valid = true;
                     $quiz_name = "student-choice-2014";
-                    $dbstr = "mysql:host=localhost;dbname=student_choice_2014";
-                    $username = 'root';
-                    $password = 'root';
+                    $dbstr = "mysql:host=localhost;dbname=wsum";
+                    echo $dbstr;
+                    $username = "root";
+                    $password = "root";
                     $options = array();
-                    $dbh = open_db($dbstr, $username, $password, $options);
+                    $dbh = new PDO($dbstr, $username, $password);
+                    $dbh->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );
                     $questions = get_questions($dbh, $quiz_name);
                     if ('POST' == $_SERVER['REQUEST_METHOD']) {
                         if (! array_key_exists("hrld_student_choice_email", $_POST)) {
