@@ -1,13 +1,13 @@
 <?php
 try {
-    $dbh = new PDO("sqlite:votes.db");
+    $dbh = new PDO("mysql:host=localhost;dbname=hrld_wp", "hrld_wp", "EzMt5mhjVWyFv7Kd");
     $dbh->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );
     
-    $dbh->exec('DROP TABLE IF EXISTS Quiz');
-    $dbh->exec('DROP TABLE IF EXISTS Questions');
-    $dbh->exec('DROP TABLE IF EXISTS Options');
-    $dbh->exec('DROP TABLE IF EXISTS Participants');
     $dbh->exec('DROP TABLE IF EXISTS Votes');
+    $dbh->exec('DROP TABLE IF EXISTS Participants');
+    $dbh->exec('DROP TABLE IF EXISTS Options');
+    $dbh->exec('DROP TABLE IF EXISTS Questions');
+    $dbh->exec('DROP TABLE IF EXISTS Quiz');
     
     $dbh->exec(
         'CREATE TABLE Quiz (
@@ -438,7 +438,7 @@ try {
         array("Forever Yogurt", "")
     );
 
-    $first_index = $dbh->exec("SELECT MAX(id) FROM Options")->fetchAll()[0] + 1;
+    $option_index = count($dbh->query("SELECT id FROM Options")) + 1;
     for ($i = 0; $i < count($options); $i++) {
         $option = $options[$i];
         for ($j = 0; $j < count($option); $j++) {
@@ -448,15 +448,15 @@ try {
             if (count($current_option) < 2) {
                 $current_option[1] = "";
             }
-            $stmt->execute(array($first_index, $i, $current_option[0], $current_option[1]));
-            $first_index++;
+            $stmt->execute(array($option_index, $i, $current_option[0], $current_option[1]));
+            $option_index++;
         }
     }
     $dbh->exec(
         'CREATE TABLE Participants (
           id INTEGER PRIMARY KEY,
           email TEXT NOT NULL,
-          quiz TEXT NOT NULL,
+          quiz VARCHAR(250) NOT NULL,
           FOREIGN KEY(quiz) REFERENCES Quiz(idname)
         )'
     );
@@ -465,7 +465,7 @@ try {
           id INTEGER PRIMARY KEY,
           participant_id INTEGER NOT NULL,
           option_id INTEGER NOT NULL,
-          FOREIGN KEY(participant_id) REFERENCES Participants(id)
+          FOREIGN KEY(participant_id) REFERENCES Participants(id),
           FOREIGN KEY(option_id) REFERENCES Options(id)
         )'
     );
@@ -474,5 +474,5 @@ try {
 } catch(Exception $e) {
     $status = $e->getMessage();
 }
-echo $status;
+echo ($status . "\n");
 ?>
