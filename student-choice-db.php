@@ -11,7 +11,7 @@ try {
     
     $dbh->exec(
         'CREATE TABLE Quiz (
-          idname TEXT PRIMARY KEY,
+          idname VARCHAR(250) PRIMARY KEY,
           name TEXT
         )'  
     );
