@@ -14,8 +14,8 @@
 
 get_header("just-head");
 
-function open_db($dbstr) {
-    $dbh = new PDO($dbstr);
+function open_db($dbstr, $username, $password, $options) {
+    $dbh = new PDO($dbstr, $username, $password, $options);
     $dbh->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );
     return $dbh;
 }
@@ -108,7 +108,11 @@ function valid_wisc($email) {
                     $display_form = true;
                     $valid = true;
                     $quiz_name = "student-choice-2014";
-                    $dbh = open_db("sqlite:/vagrant/wordpress/wp-content/themes/exa/votes.db");
+                    $dbstr = "sqlite:/vagrant/wordpress/wp-content/themes/exa/votes.db";
+                    $username = null;
+                    $password = null;
+                    $options = array();
+                    $dbh = open_db($dbstr, $username, $password, $options);
                     $questions = get_questions($dbh, $quiz_name);
                     if ('POST' == $_SERVER['REQUEST_METHOD']) {
                         if (! array_key_exists("hrld_student_choice_email", $_POST)) {
