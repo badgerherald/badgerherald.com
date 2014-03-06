@@ -437,17 +437,19 @@ try {
         array("Tyrol Ski Slopes", ""),
         array("Forever Yogurt", "")
     );
-    
+
+    $first_index = $dbh->exec("SELECT MAX(id) FROM Options")->fetchAll()[0] + 1;
     for ($i = 0; $i < count($options); $i++) {
         $option = $options[$i];
         for ($j = 0; $j < count($option); $j++) {
             $current_option = $option[$j];
-            $stmt = $dbh->prepare("INSERT INTO Options(question_id, text, photo_link) VALUES (?, ?, ?)");
+            $stmt = $dbh->prepare("INSERT INTO Options(id, question_id, text, photo_link) VALUES (?, ?, ?, ?)");
             // If no url in structure, just use an empty one to prevent crashing
             if (count($current_option) < 2) {
                 $current_option[1] = "";
             }
-            $stmt->execute(array($i, $current_option[0], $current_option[1]));
+            $stmt->execute(array($first_index, $i, $current_option[0], $current_option[1]));
+            $first_index++;
         }
     }
     $dbh->exec(
