@@ -438,7 +438,9 @@ try {
         array("Forever Yogurt", "")
     );
 
-    $option_index = count($dbh->query("SELECT id FROM Options")) + 1;
+    $index_stmt = $dbh->prepare("SELECT MAX(id) FROM Options");
+    $index_stmt->execute(array());
+    $option_index = $index_stmt->fetchAll()[0][0] + 1;
     for ($i = 0; $i < count($options); $i++) {
         $option = $options[$i];
         for ($j = 0; $j < count($option); $j++) {
