@@ -20,7 +20,7 @@ try {
     $dbh->exec(
         'CREATE TABLE Questions (
           id INTEGER PRIMARY KEY,
-          quiz TEXT NOT NULL,
+          quiz VARCHAR(250) NOT NULL,
           text TEXT,
           FOREIGN KEY(quiz) REFERENCES Quiz(idname)
         )'  
