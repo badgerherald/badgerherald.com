@@ -43,8 +43,11 @@ function find_participant($dbh, $email, $quiz_name) {
 }
 
 function create_participant($dbh, $email, $quiz_name) {
-    $add_stmt = $dbh->prepare("INSERT INTO Participants (email, quiz) VALUES (?, ?)");
-    $add_stmt->execute(array($email, $quiz_name));
+    $index_stmt = $dbh->prepare("SELECT MAX(id) FROM Participants");
+    $index_stmt->execute(array());
+    $new_id = $index_stmt->fetchAll()[0][0] + 1;
+    $add_stmt = $dbh->prepare("INSERT INTO Participants (id, email, quiz) VALUES (?, ?, ?)");
+    $add_stmt->execute(array($new_id, $email, $quiz_name));
     // Ugly hack
     return find_participant($dbh, $email, $quiz_name);
 }
@@ -63,8 +66,11 @@ function add_vote($dbh, $participant_id, $option_id) {
     if ($option_id === null) {
         return;
     }
-    $add_stmt = $dbh->prepare("INSERT INTO VOTES (participant_id, option_id) VALUES (?, ?)");
-    $add_stmt->execute(array($participant_id, $option_id));
+    $index_stmt = $dbh->prepare("SELECT MAX(id) FROM Votes");
+    $index_stmt->execute(array());
+    $new_id = $index_stmt->fetchAll()[0][0] + 1;
+    $add_stmt = $dbh->prepare("INSERT INTO Votes (id, participant_id, option_id) VALUES (?, ?, ?)");
+    $add_stmt->execute(array($new_id, $participant_id, $option_id));
 }
 
 function valid_wisc($email) {
