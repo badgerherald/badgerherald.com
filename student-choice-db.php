@@ -27,6 +27,8 @@ try {
         )'
     );
 
+    $img_dir = "http://localhost/bhrld/wordpress/wp-content/themes/exa/img/student-choice/2014/";
+
     $questions = array(NULL,
                        array("Best Landlord/Property", ""),
                        array("Best Off Campus Bar", ""),
@@ -34,30 +36,29 @@ try {
                        array("Best Workout Facility", ""),
                        array("Best Late Night Grubbery", ""),
                        array("Best Hangover Food", ""),
-                       array("Best Sports Bar", ""),
-                       array("Best Bar on State", ""),
-                       array("Best Place to Cure Your Sweet Tooth", ""),
-                       array("Favorite Pizza Joint", ""),
-                       array("Best Drink Specials", ""),
-                       array("Best Sandwich", ""),
-                       array("Best Newcomer", ""),
-                       array("Best Coffeehouse", ""),
-                       array("Best Date Restaurant", ""),
+                       array("Best Sports Bar", $img_dir."best-sports-bar.jpg"),
+                       array("Best Bar on State", $img_dir."best-bar-on-state.jpg"),
+                       array("Best Place to Cure Your Sweet Tooth", $img_dir."best-place-to-cure-sweet-tooth.jpg"),
+                       array("Favorite Pizza Joint", $img_dir."favorite-pizza-joint.jpg"),
+                       array("Best Drink Specials", $img_dir."best-drink-specials.jpg"),
+                       array("Best Sandwich", $img_dir."best-sandwich.jpg"),
+                       array("Best Newcomer", $img_dir."best-newcomer.jpg"),
+                       array("Best Coffeehouse", $img_dir."best-coffeehouse.jpg"),
+                       array("Best Date Restaurant", $img_dir."best-date-restuarant.jpg"),
                        array("Best Last Minute Booze Run", ""),
-                       array("Best Clothing Store", ""),
-                       array("Best Burger", ""),
-                       array("Best Entertainment", ""),
-                       array("Best Hair Salon", ""),
-                       array("Best 21st Bar", ""),
-                       array("Best Student Services", ""),
-                       array("Best Smoke Shop", ""),
-                       array("Best Trivia Night", ""),
-                       array("Best Way To Get Around Campus", "")
+                       array("Best Clothing Store", $img_dir."best-clothing-store.jpg"),
+                       array("Best Burger", $img_dir."best-burger.jpg"),
+                       array("Best Entertainment", $img_dir."best-entertainment.jpg"),
+                       array("Best Hair Salon", $img_dir."best-hair-salon.jpg"),
+                       array("Best 21st Bar", $img_dir."best-21st-bar.jpg"),
+                       array("Best Student Services", $img_dir."best-student-services.jpg"),
+                       array("Best Smoke Shop", $img_dir."best-smoke-shop.jpg"),
+                       array("Best Trivia Night", $img_dir."best-trivia-night.jpg"),
+                       array("Best Way To Get Around Campus", $img_dir."best-transportation.jpg")
                        );
 
     for ($i = 1; $i < count($questions); $i++) {
         $current_question = $questions[$i];
-        $current_question[1] = "http://placecage.com/c/600/180";
         $stmt = $dbh->prepare("INSERT INTO Questions(id, quiz, text, photo_url) VALUES (?, ?, ?, ?)");
         $stmt->execute(array($i, "student-choice-2014", $current_question[0], $current_question[1]));
     }
@@ -139,89 +140,101 @@ try {
 
     // Best Sports Bar
     $options[7] = array(
-        array("Lucky's Bar and Grille", ""),
-        array("Buckinghams", ""),
-        array("Johnny O's", ""),
-        array("Buffalo Wild Wings", ""),
-        array("Wandos", "")
+        array("Lucky's Bar and Grille", $img_dir."luckys-bar-grill.jpg"),
+        array("Buckinghams", $img_dir."buckinghams.jpg"),
+        array("Johnny O's", $img_dir."johnny-o.jpg"),
+        array("Buffalo Wild Wings", $img_dir."buffalo-wild-wings.jpg"),
+        array("Wandos", $img_dir."wandos.jpg")
     );
 
     // Best Bar on State
     $options[8] = array(
-        array("Whiskey Jacks", ""),
-        array("City Bar", ""),
-        array("State Street Brats", ""),
-        array("608", ""),
-        array("Ivory Room Piano Bar", ""),
-        array("Pauls Club", "")
+        array("Whiskey Jacks", $img_dir."whiskey-jacks.jpg"),
+        array("City Bar", $img_dir."city-bar.jpg"),
+        array("State Street Brats", $img_dir."state-street-brats.jpg"),
+        array("608", $img_dir."608.jpg"),
+        array("Ivory Room Piano Bar", $img_dir."ivory-room.jpg"),
+        array("Pauls Club", $img_dir."pauls-club.jpg")
     );
 
     // Best Place to Cure Your Sweet Tooth
     $options[9] = array(
-        array("Gigi's Cupcakes", ""),
-        array("Cold Stone Creamery", ""),
-        array("Forever Yogurt", ""),
-        array("Kilwins", ""),
-        array("Madison Sweets", "")
+        array("Gigi's Cupcakes", $img_dir."gigis-cupcakes.jpg"),
+        array("Forever Yogurt", $img_dir."forever-yogurt.jpg"),
+        array("Kilwins", $img_dir."kilwins.jpg"),
+        array("Madison Sweets", $img_dir."madison-sweets.jpg"),
+        array("Greenbush", $img_dir."greenbush.jpg"),
+        array("The Chocolate Shoppe", $img_dir."chocolate-shop.jpg")
     );
 
     // Favorite Pizza Joint
     $options[10] = array(
-        array("Papa John's", ""),
-        array("Falbos", ""),
-        array("Pizza Di Roma", ""),
-        array("Ian's", ""),
-        array("Glass Nickel", ""),
-        array("Rocky Roccoco's", ""),
-        array("Pizza Pit", "")
+        array("Papa John's", $img_dir."papa-johns.jpg"),
+        array("Falbos", $img_dir."falbo.jpg"),
+        array("Pizza Di Roma", $img_dir."pizza-di-roma.jpg"),
+        array("Ian's", $img_dir."ians.jpg"),
+        array("Glass Nickel", $img_dir."glass-nickel.jpg"),
+        array("Rocky Roccoco's", $img_dir."rocky-rococo.jpg"),
+        array("Pizza Pit", $img_dir."pizza-pit.jpg"),
+        array("Toppers", $img_dir."toppers.jpg"),
+        array("Dominos", $img_dir."dominos.jpg")
     );
 
     // Best Drink Specials
     $options[11] = array(
-        array("Whiskey Jacks", ""),
-        array("Vintage", ""),
-        array("Madhatters", ""),
-        array("The Kollege Klub", ""),
-        array("Lucky's Bar and Grille", ""),
-        array("The Side Door", ""),
-        array("Redrock Saloon", ""),
-        array("Sotto", "")
+        array("Whiskey Jacks", $img_dir."whiskey-jacks.jpg"),
+        array("Vintage", $img_dir."vintage.jpg"),
+        array("Madhatters", $img_dir."madhatter.jpg"),
+        array("The Kollege Klub", $img_dir."the-kk.jpg"),
+        array("Lucky's Bar and Grille", $img_dir."luckys-bar-grill.jpg"),
+        array("The Side Door", $img_dir."the-side-door.jpg"),
+        array("Redrock Saloon", $img_dir."redrock.jpg"),
+        array("Sotto", $img_dir."sotto.jpg"),
+        array("The Plaza", $img_dir."plaza.jpg")
     );
 
     // Best Sandwich
     $options[12] = array(
-        array("Cheba Hut", ""),
-        array("Erberts and Gerberts", ""),
-        array("Jimmy John's", ""),
-        array("Potbellys", ""),
-        array("Millo's", ""),
-        array("Silvermine Subs", "")
+        array("Cheba Hut", $img_dir."cheba-hut.jpg"),
+        array("Erberts and Gerberts", $img_dir."erberts-gerberts.jpg"),
+        array("Jimmy John's", $img_dir."jimmy-johns.jpg"),
+        array("Potbellys", $img_dir."potbelly.jpg"),
+        array("Millo's", $img_dir."milios.jpg"),
+        array("Silvermine Subs", $img_dir."silver-mine-subs.jpg")
     );
 
     // Best Newcomer
     $options[13] = array(
-        array("Steepery", ""),
-        array("Wendy's on State", ""),
-        array("Redrock Saloon", ""),
-        array("608", ""),
-        array("Basset Street Brunch Club", ""),
+        array("Steepery", $img_dir."steepery.jpg"),
+        array("Wendy's on State", $img_dir."wendys.jpg"),
+        array("Redrock Saloon", $img_dir."redrock.jpg"),
+        array("608", $img_dir."608.jpg"),
+        array("Basset Street Brunch Club", $img_dir."basset-street-brunch-club.jpg"),
+        array("Lyft", $img_dir."lyft.png")
     );
 
     // Best Coffeehouse
     $options[14] = array(
-        array("Expresso Royale", ""),
-        array("Redamte", ""),
-        array("Coffee Bytes", ""),
-        array("Michaelangelo's", "")
+        array("Espresso Royale", $img_dir."espresso-royale.jpg"),
+        array("Redamte", $img_dir."redamte-coffee.jpg"),
+        array("Coffee Bytes", $img_dir."coffee-bytes.jpg"),
+        array("Michaelangelo's", $img_dir."michelangelos.jpg"),
+        array("Barrique's", $img_dir."bariques.jpg"),
+        array("Steep and Brew", $img_dir."steep-brew.jpg"),
+        array("Indie Coffee", $img_dir."indie-coffee.jpg"),
+        array("Fair Trade", $img_dir."fair-trade-coffee.jpg"),
+        array("Peets", $img_dir."peets-coffee.jpg")
     );
 
     // Best Date Restaurant
     $options[15] = array(
-        array("Tutto Pasta", ""),
-        array("Francesca's Al Lago", ""),
-        array("Portabella", ""),
-        array("Fresco Rooftop", ""),
-        array("Crandalls", "")
+        array("Tutto Pasta", $img_dir."tutto-pasta.jpg"),
+        array("Francesca's Al Lago", $img_dir."francescas-al-lago.jpg"),
+        array("Portabella", $img_dir."porta-bella.jpg"),
+        array("Fresco Rooftop", $img_dir."fresco-rooftop.jpg"),
+        array("Crandalls", $img_dir."crandalls.jpg"),
+        array("Samba", $img_dir."samba.jpg"),
+        array("Graze", $img_dir."graze.jpg")
     );
 
     // Best Last Minute Booze Run
@@ -234,89 +247,98 @@ try {
 
     // Best Clothing Store
     $options[17] = array(
-        array("Urban Outfitters", ""),
-        array("Pitaya", ""),
-        array("Rethreads", ""),
-        array("Fontana Sports", ""),
-        array("Citrine", ""),
-        array("Jazzman", "")
+        array("Urban Outfitters", $img_dir."urban-outfitters.jpg"),
+        array("Pitaya", $img_dir."pitaya.jpg"),
+        array("Rethreads", $img_dir."rethreads.jpg"),
+        array("Fontana Sports", $img_dir."fontana-sports.jpg"),
+        array("Citrine", $img_dir."citrine.jpg"),
+        array("Jazzman", $img_dir."jazzman.jpg"),
+        array("Gap", $img_dir."gap.jpg"),
+        array("American Apparel", $img_dir."american-apparel.jpg"),
+        array("Bop", $img_dir."bop.jpg")
     );
 
     // Best Burger
     $options[18] = array(
-        array("Nitty Gritty", ""),
-        array("Dotty's Dumplings Dowry", ""),
-        array("AJ Bombers", ""),
-        array("Plaza", ""),
-        array("Redrock $1 Wednesdays", "")
+        array("Nitty Gritty", $img_dir."nitty-gritty.jpg"),
+        array("Dotty's Dumplings Dowry", $img_dir."dotty-dumpling-dowry.jpg"),
+        array("AJ Bombers", $img_dir."aj-bombers.jpg"),
+        array("Plaza", $img_dir."plaza.jpg"),
+        array("Redrock $1 Wednesdays", $img_dir."redrock.jpg"),
+        array("Five Guys", $img_dir."five-guys.jpg"),
+        array("The Sett", $img_dir."union-south.jpg"),
+        array("Jordan's Big Ten Pub", $img_dir."jordans-big-10.jpg"),
+        array("Wendy's", $img_dir."wendys.jpg")
     );
 
     // Best Entertainment
     $options[19] = array(
-        array("Comedy Club", ""),
-        array("The Ivory Room", ""),
-        array("The Orpheum", ""),
-        array("The Majestic", "" ),
-        array("The Overture Center", "")
+        array("Comedy Club", $img_dir."comedy-club.jpg"),
+        array("The Ivory Room", $img_dir."ivory-room.jpg"),
+        array("The Orpheum", $img_dir."orpheum.jpg"),
+        array("The Majestic", $img_dir."majestic.jpg" ),
+        array("The Overture Center", $img_dir."overture-center.jpg")
     );
 
     // Best Hair Salon
     $options[20] = array(
-        array("Aveda/VICI Institute", ""),
-        array("Envy", ""),
-        array("Negginz", ""),
-        array("Alan Koa Salon", ""),
-        array("Blow Dry Style Lounge", ""),
+        array("Aveda/VICI Institute", $img_dir."vc.jpg"),
+        array("Hachi", $img_dir."hachi.jpg"),
+        array("Nogginz", $img_dir."nogginz.jpg"),
+        array("Alan Koa Salon", $img_dir."alan-koa.jpg"),
+        array("Hair Forum", $img_dir."hair-forum.jpg"),
     );
 
     // Best 21st Bar
     $options[21] = array(
-        array("Buck N Badger", ""),
-        array("Nitty", ""),
-        array("Wandos", ""),
-        array("State Street Brats", ""),
-        array("Redrock", "")
+        array("The KK", $img_dir."the-kk.jpg"),
+        array("Nitty Gritty", $img_dir."nitty-gritty.jpg"),
+        array("Wandos", $img_dir."wandos.jpg"),
+        array("State Street Brats", $img_dir."state-street-brats.jpg"),
+        array("Redrock", $img_dir."redrock.jpg"),
+        array("Madhatters", $img_dir."madhatter.jpg")
     );
 
     // Best Student Services
     $options[22] = array(
-        array("Badger Coaches", ""),
-        array("Badger Short Bus", ""),
-        array("Student Leadership Program/ALPs", ""),
-        array("ASM Student Print", ""),
-        array("UHS", ""),
-        array("Hillel", ""),
-        array("Madison B-Cycle", "")
+        array("Badger Coaches", $img_dir."badger-coaches.jpg"),
+        array("Badger Short Bus", $img_dir."badger-short-bus.jpg"),
+        array("Student Leadership Program/ALPs", $img_dir."student-leadership.jpg"),
+        array("ASM Student Print", $img_dir."student-print.jpg"),
+        array("UHS", $img_dir."uhs.jpg"),
+        array("Hillel", $img_dir."hillel.jpg"),
+        array("Madison B-Cycle", $img_dir."madison-b-cycle.jpg")
     );
 
     // Best Smoke Shop
     $options[23] = array(
-        array("Knuckleheads", ""),
-        array("pipefitters", ""),
-        array("Smokes on state", ""),
-        array("Sunshine Daydream", ""),
-        array("Azara", "")
+        array("Knuckleheads", $img_dir."knuckleheads.jpg"),
+        array("Pipefitters", $img_dir."pipefitter.jpg"),
+        array("Smokes on State", $img_dir."smokes-on-state.jpg"),
+        array("Sunshine Daydream", $img_dir."sunshine-daydream.jpg"),
+        array("Azara", $img_dir."azara.jpg")
     );
 
     // Best Trivia Night
     $options[24] = array(
-        array("Capital Tap House", ""),
-        array("Chaser's", ""),
-        array("Buckingham's", ""),
-        array("Lucky's Bar and Grille", ""),
-        array("Union South", "")
+        array("Capital Tap Haus Tavern", $img_dir."capital-tap-haus.jpg"),
+        array("Chaser's", $img_dir."chasers.jpg"),
+        array("Buckingham's", $img_dir."buckinghams.jpg"),
+        array("Lucky's Bar and Grille", $img_dir."luckys-bar-grill.jpg"),
+        array("Union South", $img_dir."union-south.jpg"),
+        array("City Bar", $img_dir."city-bar.jpg")
     );
 
     // Best Way To Get Around Campus
     $options[25] = array(
-        array("Madison B-Cycle", "http://localhost/bhrld/wordpress/wp-content/themes/studentchoice/madison-b-cycle.jpg"),
-        array("Community Car", "http://localhost/bhrld/wordpress/wp-content/themes/studentchoice/community-car.png"),
-        array("Green Cab", "http://localhost/bhrld/wordpress/wp-content/themes/studentchoice/green-cab-logo.png"),
-        array("Badger Cab", "http://localhost/bhrld/wordpress/wp-content/themes/studentchoice/badger-cab.jpg"),
-        array("Madison Metro Bus", "http://localhost/bhrld/wordpress/wp-content/themes/studentchoice/madison-metro.png"),
-        array("Lyft", "http://localhost/bhrld/wordpress/wp-content/themes/studentchoice/lyft.png")
+        array("Madison B-Cycle", $img_dir."madison-b-cycle.jpg"),
+        array("Community Car", $img_dir."community-car.png"),
+        array("Green Cab", $img_dir."green-cab-logo.png"),
+        array("Badger Cab", $img_dir."badger-cab.jpg"),
+        array("Madison Metro Bus", $img_dir."madison-metro.png"),
+        array("Lyft", $img_dir."lyft.png")
         ,
-        array("Union Cab", "http://localhost/bhrld/wordpress/wp-content/themes/studentchoice/union-cab.png")
+        array("Union Cab", $img_dir."union-cab.png")
     );
 
     $index_stmt = $dbh->prepare("SELECT MAX(id) FROM Options");
