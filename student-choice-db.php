@@ -1,6 +1,6 @@
 <?php
 try {
-    $dbh = new PDO("mysql:host=localhost;dbname=student_choice_2014", "root", "root");
+    $dbh = new PDO("mysql:host=localhost;dbname=student_choice_2014", "will", "will");
     $dbh->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );
 
     $dbh->exec('DROP TABLE IF EXISTS Votes');
@@ -27,15 +27,17 @@ try {
         )'
     );
 
+
+
     $img_dir = "http://localhost/bhrld/wordpress/wp-content/themes/exa/img/student-choice/2014/";
 
     $questions = array(NULL,
                        array("Best Landlord/Property", ""),
                        array("Best Off Campus Bar", ""),
-                       array("Best Off Camps Restaurant", ""),
-                       array("Best Workout Facility", ""),
-                       array("Best Late Night Grubbery", ""),
-                       array("Best Hangover Food", ""),
+                       array("Best Off Campus Restaurant", ""),
+                       array("Best Workout Facility", $img_dir."best-workout-facility.jpg"),
+                       array("Best Late Night Night Food",$img_dir."best-late-night-food.jpg"),
+                       array("Best Hangover Food", $img_dir."best-hangover-food.jpg"),
                        array("Best Sports Bar", $img_dir."best-sports-bar.jpg"),
                        array("Best Bar on State", $img_dir."best-bar-on-state.jpg"),
                        array("Best Place to Cure Your Sweet Tooth", $img_dir."best-place-to-cure-sweet-tooth.jpg"),
@@ -45,7 +47,7 @@ try {
                        array("Best Newcomer", $img_dir."best-newcomer.jpg"),
                        array("Best Coffeehouse", $img_dir."best-coffeehouse.jpg"),
                        array("Best Date Restaurant", $img_dir."best-date-restuarant.jpg"),
-                       array("Best Last Minute Booze Run", ""),
+                       array("Best Last Minute Booze Run", $img_dir."best-liquor-store.jpg"),
                        array("Best Clothing Store", $img_dir."best-clothing-store.jpg"),
                        array("Best Burger", $img_dir."best-burger.jpg"),
                        array("Best Entertainment", $img_dir."best-entertainment.jpg"),
@@ -79,7 +81,7 @@ try {
         array("JSM", ""),
         array("MPM", ""),
         array("Steve Brown", ""),
-        array("J Michael", ""),
+        array("Tallard", ""),
         array("Goldleaf Development", "")
     );
 
@@ -97,7 +99,6 @@ try {
     $options[3] = array(
         array("Cooper's Tavern", ""),
         array("The Old Fashioned", ""),
-        array("Barrique's", ""),
         array("The Melting Pot", ""),
         array("Flatop Grill", ""),
         array("PF Changs", ""),
@@ -115,27 +116,27 @@ try {
 
     // Best Late Night Grubbery
     $options[5] = array(
-        array("Jimmy John's", ""),
-        array("Asian Kitchen", ""),
-        array("Fried n Fabulous", ""),
-        array("Ian's", ""),
-        array("Wings Over Madison", ""),
-        array("Los Gemelos", ""),
-        array("Taco Shop", ""),
-        array("Qdoba", ""),
-        array("Pita Pit", "")
+        array("Jimmy John's", $img_dir."jimmy-johns.jpg"),
+        array("Asian Kitchen", $img_dir."asian-kitchen.jpg"),
+        array("Fried n Fabulous", $img_dir."fried-fab.jpg"),
+        array("Ian's", $img_dir."ians.jpg"),
+        array("Wings Over Madison", $img_dir."wings-over.jpg"),
+        array("Los Gemelos", $img_dir."los-gemelos.jpg"),
+        array("Taco Shop", $img_dir."taco-shop.jpg"),
+        array("Qdoba", $img_dir."qdoba.jpg"),
+        array("Pita Pit", $img_dir."pita-pit.jpg")
     );
 
     // Best Hangover Food
     $options[6] = array(
-        array("Qdoba", ""),
-        array("Asian Kitchen", ""),
-        array("Panera", ""),
-        array("Jamba Juice", ""),
-        array("JD's", ""),
-        array("Taco Shop", ""),
-        array("The Curve Restaurant", ""),
-        array("Mickey's Dairybar", "")
+        array("Einstein's Bagels", $img_dir."einsteins.jpg"),
+        array("Gordon's Commons", $img_dir."gordons.jpg"),
+        array("Greenbush Bakery", $img_dir."greenbush.jpg"),
+        array("Jamba Juice", $img_dir."jamba.jpg"),
+        array("Bassett Street Brunch Club", $img_dir."bassett-brunch.jpg"),
+        array("The Sunroom", $img_dir."sunroom.jpg"),
+        array("Bagel's Forever", $img_dir."bagels.jpg"),
+        array("Mickies Dairy Bar", $img_dir."mickies.jpg")
     );
 
     // Best Sports Bar
@@ -144,7 +145,8 @@ try {
         array("Buckinghams", $img_dir."buckinghams.jpg"),
         array("Johnny O's", $img_dir."johnny-o.jpg"),
         array("Buffalo Wild Wings", $img_dir."buffalo-wild-wings.jpg"),
-        array("Wandos", $img_dir."wandos.jpg")
+        array("Wandos", $img_dir."wandos.jpg"),
+        array("Jordan's Big Ten Bar", $img_dir."jordans.jpg")
     );
 
     // Best Bar on State
@@ -154,7 +156,10 @@ try {
         array("State Street Brats", $img_dir."state-street-brats.jpg"),
         array("608", $img_dir."608.jpg"),
         array("Ivory Room Piano Bar", $img_dir."ivory-room.jpg"),
-        array("Pauls Club", $img_dir."pauls-club.jpg")
+        array("Pauls Club", $img_dir."pauls-club.jpg"),
+        array("Mondays", $img_dir."mondays.jpg"),
+        array("The Tiki Shack", $img_dir."tiki-shack.jpg"),
+        array("Diegos", $img_dir."diegos.jpg")
     );
 
     // Best Place to Cure Your Sweet Tooth
@@ -239,10 +244,11 @@ try {
 
     // Best Last Minute Booze Run
     $options[16] = array(
-        array("Regent Liquor", ""),
-        array("Riley's", ""),
-        array("Woodmans", ""),
-        array("University Liquor", "")
+        array("Regent Liquor", $img_dir."regent-liquor.jpg"),
+        array("Riley's", $img_dir."rileys.jpg"),
+        array("Woodmans", $img_dir."woodmans.jpg"),
+        array("University Liquor", $img_dir."university-liquor.jpg"),
+        array("Badger Liquor", $img_dir."badger-liquor.jpg")
     );
 
     // Best Clothing Store

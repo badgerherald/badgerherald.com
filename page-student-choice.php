@@ -115,8 +115,8 @@ function valid_wisc($email) {
                     $valid = true;
                     $quiz_name = "student-choice-2014";
                     $dbstr = "mysql:host=localhost;dbname=student_choice_2014";
-                    $username = "root";
-                    $password = "root";
+                    $username = "will";
+                    $password = "will";
                     $options = array();
                     $dbh = open_db($dbstr, $username, $password, $options);
                     $questions = get_questions($dbh, $quiz_name);
