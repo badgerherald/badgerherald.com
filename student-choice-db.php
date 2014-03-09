@@ -1,6 +1,7 @@
 <?php
+require('/var/www/wordpress/wp-config.php');
 try {
-    $dbh = new PDO("mysql:host=localhost;dbname=student_choice_2014", "will", "will");
+    $dbh = new PDO("mysql:host=localhost;dbname=quiz", DB_USER, DB_PASSWORD);
     $dbh->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );
 
     $dbh->exec('DROP TABLE IF EXISTS Votes');
@@ -29,7 +30,7 @@ try {
 
 
 
-    $img_dir = "http://localhost/bhrld/wordpress/wp-content/themes/exa/img/student-choice/2014/";
+    $img_dir = "http://badgerherald.com/wordpress/wp-content/themes/exa/img/student-choice/2014/";
 
     $questions = array(NULL,
                        array("Best Landlord/Property", $img_dir."landlord.jpg"),
