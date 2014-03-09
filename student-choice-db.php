@@ -32,10 +32,10 @@ try {
     $img_dir = "http://localhost/bhrld/wordpress/wp-content/themes/exa/img/student-choice/2014/";
 
     $questions = array(NULL,
-                       array("Best Landlord/Property", ""),
-                       array("Best Off Campus Bar", ""),
-                       array("Best Off Campus Restaurant", ""),
-                       array("Best Workout Facility", $img_dir."best-workout-facility.jpg"),
+                       array("Best Landlord/Property", $img_dir."landlord.jpg"),
+                       array("Best Off Campus Bar", $img_dir."best-off-campus-bar.jpg"),
+                       array("Best Off Campus Restaurant", $img_dir."best-off-campus-restaurant.jpg"),
+                       array("Best Fitness", $img_dir."best-fitness.jpg"),
                        array("Best Late Night Night Food",$img_dir."best-late-night-food.jpg"),
                        array("Best Hangover Food", $img_dir."best-hangover-food.jpg"),
                        array("Best Sports Bar", $img_dir."best-sports-bar.jpg"),
@@ -78,40 +78,39 @@ try {
     // Best Landlord/Property
     $options = array(NULL);
     $options[1] = array(
-        array("JSM", ""),
-        array("MPM", ""),
-        array("Steve Brown", ""),
-        array("Tallard", ""),
-        array("Goldleaf Development", "")
+        array("JSM", $img_dir."jsm.jpg"),
+        array("MPM", $img_dir."mpm.jpg"),
+        array("Steve Brown", $img_dir."steve-brown.jpg"),
+        array("Tallard", $img_dir."tallard.jpg"),
+        array("Goldleaf Development", $img_dir."goldleaf.jpg")
     );
 
     // Best Off Campus Bar
     $options[2] = array(
-        array("Essen House", ""),
-        array("Great Dane", ""),
-        array("Coliseum", ""),
-        array("Brocach", ""),
-        array("Echo Tap", ""),
-        array("High Noon Saloon", "")
+        array("Essen Haus", $img_dir."essen-haus.jpg"),
+        array("Great Dane", $img_dir."the-great-dane.jpg"),
+        array("Coliseum", $img_dir."coliseum.jpg"),
+        array("Brocach", $img_dir."brocach.jpg"),
+        array("Echo Tap", $img_dir."echo-tap.jpg"),
+        array("High Noon Saloon", $img_dir."high-noon-saloon.jpg")
     );
 
     // Best Off Campus Restaurant
     $options[3] = array(
-        array("Cooper's Tavern", ""),
-        array("The Old Fashioned", ""),
-        array("The Melting Pot", ""),
-        array("Flatop Grill", ""),
-        array("PF Changs", ""),
-        array("The Great Dane", "")
+        array("Cooper's Tavern", $img_dir."coopers-tavern.jpg"),
+        array("The Old Fashioned", $img_dir."old-fashioned.jpg"),
+        array("The Melting Pot", $img_dir."melting-pot.jpg"),
+        array("FlatTop Grill", $img_dir."flat-top.jpg"),
+        array("PF Changs", $img_dir."pf-changs.jpg"),
+        array("The Great Dane", $img_dir."the-great-dane.jpg")
     );
 
     // Best Workout Facility
     $options[4] = array(
-        array("Kaivalya Yoga", ""),
-        array("CYC Fitness", ""),
-        array("Anytime Fitness", ""),
-        array("CYK Fitness", ""),
-        array("Inner Fire Yoga", "")
+        array("Kaivalya Yoga", $img_dir."kaivalya-yoga.jpg"),
+        array("CYC Fitness", $img_dir."cyc-fitness.jpg"),
+        array("Anytime Fitness", $img_dir."anytime-fitness.jpg"),
+        array("Inner Fire Yoga", $img_dir."inner-fire-yoga.jpg")
     );
 
     // Best Late Night Grubbery
@@ -146,7 +145,7 @@ try {
         array("Johnny O's", $img_dir."johnny-o.jpg"),
         array("Buffalo Wild Wings", $img_dir."buffalo-wild-wings.jpg"),
         array("Wandos", $img_dir."wandos.jpg"),
-        array("Jordan's Big Ten Bar", $img_dir."jordans.jpg")
+        array("Jordan's Big Ten Pub", $img_dir."jordans-pub.jpg")
     );
 
     // Best Bar on State

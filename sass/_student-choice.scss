@@ -1,3 +1,50 @@
+.student-choice-content .entry-content {
+	margin-top: 100px;
+	p.tagline {
+		font-size: 20px;
+		width: 500px;
+		font-family: $headline;
+		text-align: center;
+		left: 50%;
+		right: 50%;
+		margin-left: -250px;
+		margin-bottom: 30px;
+		position: relative;
+	}
+	.student-choice-email {
+		background: $hrld-black;
+		padding: 20px 0px;
+		margin-bottom: 48px;
+	}
+}
+
+.student-choice-content {
+	margin-bottom: 0;
+}
+
+.header-sca-2014 .student-herald-logo{
+	background: url('./img/student-choice/2014/student-choice-logo.png');
+	width: 140px;
+	height:196px;
+	display: block;
+	margin:0 auto;
+	margin-top:30px;
+}
+
+.student-choice-content.black #primary {
+	background: $hrld-black;
+	margin-top: 0;
+}
+
+.student-logo {
+	position: absolute;
+	margin: 0 auto;
+	width: 343px;
+	left: 50%;
+	right: 50%;
+	margin-left: -171px;
+	top:-40px;
+}
 
 .page-container-fixed-inside {
 	position: relative;
@@ -38,7 +85,7 @@
 		line-height: 0;
 	}
 	.quiz-question{
-		margin-bottom: 24px;
+		margin-bottom: 54px;
 	}
 	span.answer-checkmark{
 		display: none;
@@ -93,11 +140,14 @@
 	}
 	.email-input-label{
 		font-family: $headline;
-		font-weight: 700;
+		color: #fff;
+		padding-bottom: 6px;
+		display: block;
 		font-size: 20px;
 	}
 	.quiz-submit{
-		background: $hrld-black;
+		background: $hrld-blue;
+		margin-top: 24px;
 		display: block;
 		text-align: center;
 		height: 50px;
@@ -109,18 +159,20 @@
 		font-weight: 700;
 		border: none;
 		margin: 0 auto;
-		margin-bottom: 24px;
+		margin-bottom: 6px;
+		margin-top: 6px;
 		width: 200px;
 		letter-spacing: 2px;
 		&:focus{
 			outline: 0;
 		}
 		&:hover{
-			background-color: $hrld-blue;
+			background-color: $hrld-blue-hover;
 		}
 	}
 	
 }
+
 .quiz-success-wrap{
 	text-align: center;
 	max-width: 620px;
@@ -131,6 +183,7 @@
 	border: 1px solid $hrld-dark-grey;
 	margin-bottom: 24px;
 }
+
 .quiz-success{
 	font-size: 40px;
 	font-weight: 700;

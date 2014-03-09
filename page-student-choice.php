@@ -91,8 +91,9 @@ function valid_wisc($email) {
 		<div id="page" class="page-container-fixed-inside">
 
 		<div class="header-sca-2014">
-
-
+            <a href="http://badgerherald.com"><div class="student-herald-logo">
+               
+            </div></a>
 		</div>
 
 		</div> <!-- #page -->
@@ -104,12 +105,17 @@ function valid_wisc($email) {
 
 		<div id="content" class="site-content" role="main">
 
+       
+
 				<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 					<header class="entry-header">
-						
+						 <img src="<?php echo bloginfo("template_url"); ?>/img/student-choice/2014/student-choice.png" class="student-logo"/>
 					</header><!-- .entry-header -->
 
 					<div class="entry-content">
+
+                        <p class="tagline">Think you know Madison? Tell us what you think is the <strong>best of Madison</strong> and get entered to <strong>win one of 8 $20 Amazon giftcards!</strong></p>
+
 					<?php
                     $display_form = true;
                     $valid = true;
@@ -198,6 +204,7 @@ function valid_wisc($email) {
 								echo '</div>';
 							}
 						?>
+                        <div class="student-choice-email">
 						<label for="hrld_student_choice_email" class="email-input-label">Insert your email. Only valid @wisc.edu emails will be eligible for prizes.</label>
                         <?php
                         if(!$valid){
@@ -208,6 +215,9 @@ function valid_wisc($email) {
                         ?>
 						<input name="hrld_student_choice_email" id="hrld_student_choice_email" class="email-input" type="text" placeholder="Email">
 						<input type="submit" class="quiz-submit" value="Submit">
+                        </div>
+                        <p style="opacity:.3;font-size:10px;line-height:9px">No purchase necessary. Only users with valid @wisc.edu will be eligable for prize drawing.</p> 
+                        <p style="opacity:.3;font-size:10px;line-height:9px">Photos via flickr users Johm M Quick, Sigamsb, BemLoira BenDevassa, Michael Schoenewies, Brian Miller, Jennifer, danieleloreto, Guillaume Paumier, Jerry Downs, Richard Hurd, Debbie Long, Andypiper, Sam Howzit, Phil Roeder, Dylan_Payne and Pan Pacifi.</p>
 						</form>
 					<?php
 						else:
@@ -215,7 +225,7 @@ function valid_wisc($email) {
 						<div class="quiz-success-wrap clearfix">
 							<p class="quiz-success">Thank you for voting.</p>
 							<div class="social-plug">
-								<p>Follow us on Twitter and Facebook to be updated on the winners.</p>
+								<p>Follow us on Twitter and Facebook for contest updates</p>
 								<div class="social-buttons">
 									<div class="twitter">
 										<a href="https://twitter.com/badgerherald" class="twitter-follow-button" data-show-count="false" data-size="large">Follow @badgerherald</a>
@@ -226,6 +236,8 @@ function valid_wisc($email) {
 										<div class="fb-like" data-href="http://facebook.com/badgerherald" data-layout="button_count" data-action="like" data-show-faces="false" data-share="false" data-height="28" data-width="120"></div>
 									</div><!-- .facebook -->
 								</div>
+                                <div class="clearfix"></div>
+                                <p><a href="http://badgerherald.com">Back to badgerherald.com</a></p>
 							</div>
 						</div>
 					<?php
