@@ -72,6 +72,15 @@ get_header();
 
 ?>
 
+	
+	<?php 
+
+	if(file_exists($_SERVER["DOCUMENT_ROOT"] . "/fold/fold.php")) {
+		include($_SERVER["DOCUMENT_ROOT"] . "/fold/fold.php");
+	}
+
+	?>
+	
 	<?php /* The loop */ ?>
 	<?php while ( have_posts() ) : the_post(); ?>
 
