@@ -227,9 +227,9 @@ function valid_wisc($email) {
 
                             <div class="tweet-this" style="background:#fff;width:80%;margin:0 auto;padding:10px;">
                                 <h2>Tell your friends!</h2>
-                                <p style="color:#000;">I voted in the 2014 Student Choice Awards <a href="http://badgerherald.com/student-choice">http://badgerherald.com/student-choice/</a> <a href="https://twitter.com/search?q=%23studentchoice&src=typd&f=realtime">#StudentChoice</a></p>
-                                <a href="https://twitter.com/intent/tweet?button_hashtag=StudentChoice&text=I%20voted%20in%20the%202014%20Student%20Choice%20Awards" class="twitter-hashtag-button" data-size="large" data-related="badgerherald" data-url="http://badgerherald.com/student-choice/">Tweet #StudentChoice</a>
-<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+                                <p style="color:#000;">I voted in the 2014 @BadgerHerald Student Choice Awards <a href="http://badgerherald.com/student-choice">http://badgerherald.com/student-choice/</a> <a href="https://twitter.com/search?q=%23studentchoice&src=typd&f=realtime">#StudentChoice</a></p>
+                                <a href="https://twitter.com/intent/tweet?button_hashtag=StudentChoice&text=I%20voted%20in%20the%202014%20%40BadgerHerald%20Student%20Choice%20Awards!%20" class="twitter-hashtag-button" data-size="large" data-related="badgerherald" data-url="http://badgerherald.com/student-choice/">Tweet #StudentChoice</a>
+                                <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
                             </div>
 
 							<div class="social-plug">
