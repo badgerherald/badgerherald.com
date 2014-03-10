@@ -101,8 +101,8 @@ try {
         array("Cooper's Tavern", $img_dir."coopers-tavern.jpg"),
         array("The Old Fashioned", $img_dir."old-fashioned.jpg"),
         array("The Melting Pot", $img_dir."melting-pot.jpg"),
-        array("FlatTop Grill", $img_dir."flat-top.jpg"),
-        array("PF Changs", $img_dir."pf-changs.jpg"),
+        array("Flat Top Grill", $img_dir."flat-top.jpg"),
+        array("P.F. Chang's", $img_dir."pf-changs.jpg"),
         array("The Great Dane", $img_dir."the-great-dane.jpg")
     );
 
@@ -130,12 +130,12 @@ try {
     // Best Hangover Food
     $options[6] = array(
         array("Einstein's Bagels", $img_dir."einsteins.jpg"),
-        array("Gordon's Commons", $img_dir."gordons.jpg"),
+        array("Gordon Commons", $img_dir."gordons.jpg"),
         array("Greenbush Bakery", $img_dir."greenbush.jpg"),
         array("Jamba Juice", $img_dir."jamba.jpg"),
         array("Bassett Street Brunch Club", $img_dir."bassett-brunch.jpg"),
         array("The Sunroom", $img_dir."sunroom.jpg"),
-        array("Bagel's Forever", $img_dir."bagels.jpg"),
+        array("Bagels Forever", $img_dir."bagels.jpg"),
         array("Mickies Dairy Bar", $img_dir."mickies.jpg")
     );
 
@@ -145,7 +145,7 @@ try {
         array("Buckinghams", $img_dir."buckinghams.jpg"),
         array("Johnny O's", $img_dir."johnny-o.jpg"),
         array("Buffalo Wild Wings", $img_dir."buffalo-wild-wings.jpg"),
-        array("Wandos", $img_dir."wandos.jpg"),
+        array("Wando's", $img_dir."wandos.jpg"),
         array("Jordan's Big Ten Pub", $img_dir."jordans-pub.jpg")
     );
 
@@ -156,10 +156,10 @@ try {
         array("State Street Brats", $img_dir."state-street-brats.jpg"),
         array("608", $img_dir."608.jpg"),
         array("Ivory Room Piano Bar", $img_dir."ivory-room.jpg"),
-        array("Pauls Club", $img_dir."pauls-club.jpg"),
+        array("Paul's Club", $img_dir."pauls-club.jpg"),
         array("Mondays", $img_dir."mondays.jpg"),
         array("The Tiki Shack", $img_dir."tiki-shack.jpg"),
-        array("Diegos", $img_dir."diegos.jpg")
+        array("Diego's", $img_dir."diegos.jpg")
     );
 
     // Best Place to Cure Your Sweet Tooth
@@ -175,11 +175,11 @@ try {
     // Favorite Pizza Joint
     $options[10] = array(
         array("Papa John's", $img_dir."papa-johns.jpg"),
-        array("Falbos", $img_dir."falbo.jpg"),
+        array("Falbo", $img_dir."falbo.jpg"),
         array("Pizza Di Roma", $img_dir."pizza-di-roma.jpg"),
         array("Ian's", $img_dir."ians.jpg"),
         array("Glass Nickel", $img_dir."glass-nickel.jpg"),
-        array("Rocky Roccoco's", $img_dir."rocky-rococo.jpg"),
+        array("Rocky Rococo's", $img_dir."rocky-rococo.jpg"),
         array("Pizza Pit", $img_dir."pizza-pit.jpg"),
         array("Toppers", $img_dir."toppers.jpg"),
         array("Dominos", $img_dir."dominos.jpg")
@@ -201,10 +201,10 @@ try {
     // Best Sandwich
     $options[12] = array(
         array("Cheba Hut", $img_dir."cheba-hut.jpg"),
-        array("Erberts and Gerberts", $img_dir."erberts-gerberts.jpg"),
+        array("Erbert and Gerbert's", $img_dir."erberts-gerberts.jpg"),
         array("Jimmy John's", $img_dir."jimmy-johns.jpg"),
         array("Potbellys", $img_dir."potbelly.jpg"),
-        array("Millo's", $img_dir."milios.jpg"),
+        array("Milio's", $img_dir."milios.jpg"),
         array("Silvermine Subs", $img_dir."silver-mine-subs.jpg")
     );
 
@@ -223,21 +223,21 @@ try {
         array("Espresso Royale", $img_dir."espresso-royale.jpg"),
         array("Redamte", $img_dir."redamte-coffee.jpg"),
         array("Coffee Bytes", $img_dir."coffee-bytes.jpg"),
-        array("Michaelangelo's", $img_dir."michelangelos.jpg"),
-        array("Barrique's", $img_dir."bariques.jpg"),
+        array("Michaelangelo's Coffee House", $img_dir."michelangelos.jpg"),
+        array("Barriques", $img_dir."bariques.jpg"),
         array("Steep and Brew", $img_dir."steep-brew.jpg"),
         array("Indie Coffee", $img_dir."indie-coffee.jpg"),
-        array("Fair Trade", $img_dir."fair-trade-coffee.jpg"),
-        array("Peets", $img_dir."peets-coffee.jpg")
+        array("Fair Trade Coffeehouse", $img_dir."fair-trade-coffee.jpg"),
+        array("Peet's Coffee & Tea", $img_dir."peets-coffee.jpg")
     );
 
     // Best Date Restaurant
     $options[15] = array(
         array("Tutto Pasta", $img_dir."tutto-pasta.jpg"),
-        array("Francesca's Al Lago", $img_dir."francescas-al-lago.jpg"),
+        array("Francesca's al Lago", $img_dir."francescas-al-lago.jpg"),
         array("Portabella", $img_dir."porta-bella.jpg"),
         array("Fresco Rooftop", $img_dir."fresco-rooftop.jpg"),
-        array("Crandalls", $img_dir."crandalls.jpg"),
+        array("Crandall's", $img_dir."crandalls.jpg"),
         array("Samba", $img_dir."samba.jpg"),
         array("Graze", $img_dir."graze.jpg")
     );
@@ -246,7 +246,7 @@ try {
     $options[16] = array(
         array("Regent Liquor", $img_dir."regent-liquor.jpg"),
         array("Riley's", $img_dir."rileys.jpg"),
-        array("Woodmans", $img_dir."woodmans.jpg"),
+        array("Woodman's", $img_dir."woodmans.jpg"),
         array("University Liquor", $img_dir."university-liquor.jpg"),
         array("Badger Liquor", $img_dir."badger-liquor.jpg")
     );
@@ -288,7 +288,7 @@ try {
 
     // Best Hair Salon
     $options[20] = array(
-        array("Aveda/VICI Institute", $img_dir."vc.jpg"),
+        array("Aveda Institute VICI", $img_dir."vc.jpg"),
         array("Hachi", $img_dir."hachi.jpg"),
         array("Nogginz", $img_dir."nogginz.jpg"),
         array("Alan Koa Salon", $img_dir."alan-koa.jpg"),
@@ -299,7 +299,7 @@ try {
     $options[21] = array(
         array("The KK", $img_dir."the-kk.jpg"),
         array("Nitty Gritty", $img_dir."nitty-gritty.jpg"),
-        array("Wandos", $img_dir."wandos.jpg"),
+        array("Wando's", $img_dir."wandos.jpg"),
         array("State Street Brats", $img_dir."state-street-brats.jpg"),
         array("Redrock", $img_dir."redrock.jpg"),
         array("Madhatters", $img_dir."madhatter.jpg")
@@ -319,7 +319,7 @@ try {
     // Best Smoke Shop
     $options[23] = array(
         array("Knuckleheads", $img_dir."knuckleheads.jpg"),
-        array("Pipefitters", $img_dir."pipefitter.jpg"),
+        array("The Pipefitter", $img_dir."pipefitter.jpg"),
         array("Smokes on State", $img_dir."smokes-on-state.jpg"),
         array("Sunshine Daydream", $img_dir."sunshine-daydream.jpg"),
         array("Azara", $img_dir."azara.jpg")
@@ -328,8 +328,8 @@ try {
     // Best Trivia Night
     $options[24] = array(
         array("Capital Tap Haus Tavern", $img_dir."capital-tap-haus.jpg"),
-        array("Chaser's", $img_dir."chasers.jpg"),
-        array("Buckingham's", $img_dir."buckinghams.jpg"),
+        array("Chasers Bar & Grille", $img_dir."chasers.jpg"),
+        array("Buckingham's Bar & Grill", $img_dir."buckinghams.jpg"),
         array("Lucky's Bar and Grille", $img_dir."luckys-bar-grill.jpg"),
         array("Union South", $img_dir."union-south.jpg"),
         array("City Bar", $img_dir."city-bar.jpg")
