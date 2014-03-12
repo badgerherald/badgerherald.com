@@ -1,0 +1,20 @@
+<div class="user-choices clearfix">
+<h1>Your Picks</h1>
+<ul class="team-choice-list">
+<li ng-repeat="team in userChoices" class="team-choice">
+	<span>{{ team.name }}</span><button class="close clearfix" ng-click="removeChoice($index)">&times;</button>
+</li>
+</ul>
+<button ng-disabled="!choiceListFull" ng-click="nextPage($event)">Next</button>
+</div>
+<div class="team-filter">
+	<label for="team-filter-input">Filter by team name: </label><input id="team-filter-input" type="text" ng-model="filterTeam" placeholder="Filter">
+</div>
+<div class="regions-container clearfix">
+<div class="team-region" ng-repeat="region in allTeams.regions">
+<h2>{{ region.location }}</h2>
+<ul class="team-list">
+<li ng-repeat="team in region.teams" ng-show="!filterTeam || ([team.name]|filter:filterTeam).length"><button class="team-option" ng-click="addChoice(team.name, $parent.$index, $index)" ng-disabled="team.disableFlag">{{ team.name }}</button></li>
+</ul>
+</div>
+</div>

@@ -1,0 +1,17 @@
+<form name="march_madness_2014" action="" method="post">
+<div class="user-choices clearfix">
+<h1>Your Picks</h1>
+<ul class="team-choice-list">
+<li ng-repeat="team in userChoices" class="team-choice">
+	<label for="march_madness_choice_{{ $index }}"><span>{{ team.name }}</span></label>
+	<input type="hidden" name="march_madness_choice_{{ $index }}" id="march_madness_choice_{{ $index }}" value="{{ team.name }}">
+</li>
+</ul>
+<button ng-click="toTeams($event)">Change your picks</button>
+</div>
+<div class="email-container">
+<input type="email" name="march_madness_2014_email" ng-model="email" placeholder="Email" required>
+{{ email }}
+<input type="submit" ng-disabled="march_madness_2014.$invalid" value="Submit">
+</div>
+</form>

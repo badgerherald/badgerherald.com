@@ -1,0 +1,148 @@
+.march-madness-content #primary{
+	max-width: 660px;
+	margin: 0 auto;
+}
+.march-madness-content{
+	.team-filter{
+		width: 100%;
+		border-top: solid 1px $hrld-dark-grey;
+		padding: 24px 0 6px 0;
+		text-align: right;
+		label{
+			font-weight: 700;
+			font-family: $headline;
+			color: $hrld-dark-grey;
+			font-size: 18px;
+		}
+		input{
+			padding: 3px 10px;
+			border: 2px solid $hrld-dark-grey;
+			border-radius: 5px;
+			color: $hrld-dark-grey;
+			&:focus{
+				outline: 0;
+			}
+		}
+	}
+	.regions-container{
+		text-align: center;
+		padding-bottom: 24px;
+	}
+	.team-region{
+		width: 100%;
+		h2{
+			margin: 12px 0;
+			text-transform: uppercase;
+			font-family: $headline;
+			font-weight: 300;
+		}
+	}
+	.team-list, .team-choice-list{
+		list-style-type: none;
+		padding: 0;
+		margin: 0;
+		li{
+			padding: 0;
+			margin: 0;
+			margin-bottom: 6px;
+		}
+	}
+	.team-option{
+		width: 100%;
+		background: $hrld-black-dark-grey;
+		color: $hrld-light-grey;
+		border: none;
+		padding: 9px 6px;
+		border-radius: 5px;
+		&:hover{
+			background: $hrld-blue;
+		}
+		&:disabled{
+			background: $hrld-dark-grey;
+		}
+	}
+	li.team-choice{
+		padding: 3px 0;
+		border: 2px solid $hrld-dark-grey;
+		border-radius: 5px;
+		span{
+			margin: 0;
+			padding: 0 0 0 10px;
+			font-family: $headline;
+			font-weight: 400;
+			font-size: 20px;
+		}
+	}
+	.user-choices{
+		padding-bottom: 24px;
+		h1{
+			margin: 12px 0 24px 0;
+			padding: 0;
+			font-family: $headline;
+			text-transform: uppercase;
+			text-align: center;
+			font-size: 36px;
+			font-weight: 700;
+		}
+	}
+	.close{
+		border: none;
+		color: $hrld-dark-grey;
+		background: transparent;
+		font-weight: 700;
+		font-size: 24px;
+		font-family: $headline;
+		padding: 0 10px;
+		margin: 0;
+		line-height: 1;
+		display: inline;
+		float: right;
+		&:hover{
+			color: $hrld-dark-grey-hover;
+		}
+		&:focus{
+			outline: 0;
+		}
+	}
+}
+@media(min-width: 540px){
+	.march-madness-content{
+		.team-region{
+			float: left;
+			width: 240px;
+			margin-left: 20px;
+			&:nth-child(odd){
+				margin-left: 0;
+			}
+		}
+		li.team-choice{
+			float: left;
+			width: 236px;
+			margin-left: 20px;
+			&:nth-child(odd){
+				margin-left: 0;
+			}
+		}
+	}
+}
+@media(min-width: 760px){
+	.march-madness-content{
+		.team-region, li.team-choice{
+			width: 150px;
+			margin-left: 20px;
+			&:nth-child(odd){
+				margin-left: 20px;
+			} 
+			&:first-child{
+				margin-left: 0;
+			}
+		}
+		li.team-choice{
+			width: 146px;
+			&:nth-child(4n + 1){
+				margin-left: 0;
+			}
+		}
+
+	}
+}
