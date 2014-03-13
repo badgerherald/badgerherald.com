@@ -1,6 +1,8 @@
 .march-madness-content #primary{
 	max-width: 660px;
 	margin: 0 auto;
+	background: $hrld-black;
+	color: $hrld-light-grey;
 }
 .march-madness-content{
 	.team-filter{
@@ -44,33 +46,49 @@
 		li{
 			padding: 0;
 			margin: 0;
-			margin-bottom: 6px;
 		}
 	}
 	.team-option{
-		width: 100%;
-		background: $hrld-black-dark-grey;
-		color: $hrld-light-grey;
+		padding: 6px 0;
 		border: none;
-		padding: 9px 6px;
-		border-radius: 5px;
-		&:hover{
-			background: $hrld-blue;
+		border-bottom: 1px solid $hrld-black-dark-grey;
+		margin-bottom: 0;
+		background: transparent;
+		color: $hrld-light-grey;
+		width: 100%;		
+		text-align: left;
+		&:hover, &:hover .close{
+			color: $hrld-blue-hover;
 		}
-		&:disabled{
-			background: $hrld-dark-grey;
-		}
-	}
-	li.team-choice{
-		padding: 3px 0;
-		border: 2px solid $hrld-dark-grey;
-		border-radius: 5px;
 		span{
 			margin: 0;
 			padding: 0 0 0 10px;
 			font-family: $headline;
 			font-weight: 400;
-			font-size: 20px;
+			font-size: 16px;
+		}
+		&:disabled, &:disabled .close{
+			color: $hrld-black-dark-grey;
+		}
+	}
+	.team-list li:first-child .team-option{
+		border-top: 1px solid $hrld-black-dark-grey;
+	}
+	.team-option span.seed, li.team-choice span.seed{
+			font-size: 14px;
+			padding-left: 0;
+	}
+	li.team-choice{
+		padding: 3px 0;
+		border: 2px solid $hrld-dark-grey;
+		border-radius: 5px;
+		margin-bottom: 6px;
+		span{
+			margin: 0;
+			padding: 0 0 0 10px;
+			font-family: $headline;
+			font-weight: 400;
+			font-size: 16px;
 		}
 	}
 	.user-choices{
@@ -104,6 +122,12 @@
 			outline: 0;
 		}
 	}
+	.ng-hide{
+		display: block !important;
+		.team-option, .close{
+			color: $hrld-black-dark-grey;
+		}
+	}
 }
 @media(min-width: 540px){
 	.march-madness-content{
@@ -127,18 +151,32 @@
 }
 @media(min-width: 760px){
 	.march-madness-content{
-		.team-region, li.team-choice{
-			width: 150px;
+		.team-region{
+			width: 320px;
 			margin-left: 20px;
-			&:nth-child(odd){
+			margin-bottom: 24px;
+			li{
+				width: 150px;
+				float: left;
 				margin-left: 20px;
-			} 
-			&:first-child{
-				margin-left: 0;
+				&:nth-child(odd){
+					margin-left: 0;
+				}
+				&:last-child, &:nth-last-child(2){
+					border-bottom: 1px solid $hrld-black-dark-grey;
+				}
 			}
+		}
+		.team-option{
+			border-bottom: none;
+			border-top: 1px solid $hrld-black-dark-grey;
 		}
 		li.team-choice{
 			width: 146px;
+			margin-left: 20px;
+			&:nth-child(odd){
+				margin-left: 20px;
+			}
 			&:nth-child(4n + 1){
 				margin-left: 0;
 			}

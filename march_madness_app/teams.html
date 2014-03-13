@@ -2,7 +2,7 @@
 <h1>Your Picks</h1>
 <ul class="team-choice-list">
 <li ng-repeat="team in userChoices" class="team-choice">
-	<span>{{ team.name }}</span><button class="close clearfix" ng-click="removeChoice($index)">&times;</button>
+	<span>{{ team.name }}</span> <span class="seed">{{ team.seed }}</span><button class="close clearfix" ng-click="removeChoice($index)">&times;</button>
 </li>
 </ul>
 <button ng-disabled="!choiceListFull" ng-click="nextPage($event)">Next</button>
@@ -14,7 +14,7 @@
 <div class="team-region" ng-repeat="region in allTeams.regions">
 <h2>{{ region.location }}</h2>
 <ul class="team-list">
-<li ng-repeat="team in region.teams" ng-show="!filterTeam || ([team.name]|filter:filterTeam).length"><button class="team-option" ng-click="addChoice(team.name, $parent.$index, $index)" ng-disabled="team.disableFlag">{{ team.name }}</button></li>
+<li ng-repeat="team in region.teams" ng-show="!filterTeam || ([team.name]|filter:filterTeam).length"><button class="team-option" ng-click="addChoice(team.name, $parent.$index, $index, team.seed)" ng-disabled="team.disableFlag"><span>{{ team.name }}</span> <span class="seed">({{ team.seed }})</span><p class="close">+</p></button></li>
 </ul>
 </div>
 </div>

@@ -8,10 +8,82 @@ angular.module('marchMadness', ['ngRoute'])
 				teams: [
 					{
 						name: 'Kansas',
+						seed: 1,
 						disableFlag: false
 					},
 					{
 						name: 'WKU',
+						seed: 15,
+						disableFlag: false
+					},
+					{
+						name: 'Kansas',
+						seed: 1,
+						disableFlag: false
+					},
+					{
+						name: 'WKU',
+						seed: 15,
+						disableFlag: false
+					},
+					{
+						name: 'Kansas',
+						seed: 1,
+						disableFlag: false
+					},
+					{
+						name: 'WKU',
+						seed: 15,
+						disableFlag: false
+					},
+					{
+						name: 'Kansas',
+						seed: 1,
+						disableFlag: false
+					},
+					{
+						name: 'WKU',
+						seed: 15,
+						disableFlag: false
+					},
+					{
+						name: 'Kansas',
+						seed: 1,
+						disableFlag: false
+					},
+					{
+						name: 'WKU',
+						seed: 15,
+						disableFlag: false
+					},
+					{
+						name: 'Kansas',
+						seed: 1,
+						disableFlag: false
+					},
+					{
+						name: 'WKU',
+						seed: 15,
+						disableFlag: false
+					},
+					{
+						name: 'Kansas',
+						seed: 1,
+						disableFlag: false
+					},
+					{
+						name: 'WKU',
+						seed: 15,
+						disableFlag: false
+					},
+					{
+						name: 'Kansas',
+						seed: 1,
+						disableFlag: false
+					},
+					{
+						name: 'WKU',
+						seed: 15,
 						disableFlag: false
 					}
 				]
@@ -21,10 +93,82 @@ angular.module('marchMadness', ['ngRoute'])
 				teams: [
 					{
 						name: 'Indiana',
+						seed: 4,
 						disableFlag: false
 					},
 					{
 						name: 'James Madison',
+						seed: 12,
+						disableFlag: false
+					},
+					{
+						name: 'Indiana',
+						seed: 4,
+						disableFlag: false
+					},
+					{
+						name: 'James Madison',
+						seed: 12,
+						disableFlag: false
+					},
+					{
+						name: 'Indiana',
+						seed: 4,
+						disableFlag: false
+					},
+					{
+						name: 'James Madison',
+						seed: 12,
+						disableFlag: false
+					},
+					{
+						name: 'Indiana',
+						seed: 4,
+						disableFlag: false
+					},
+					{
+						name: 'James Madison',
+						seed: 12,
+						disableFlag: false
+					},
+					{
+						name: 'Indiana',
+						seed: 4,
+						disableFlag: false
+					},
+					{
+						name: 'James Madison',
+						seed: 12,
+						disableFlag: false
+					},
+					{
+						name: 'Indiana',
+						seed: 4,
+						disableFlag: false
+					},
+					{
+						name: 'James Madison',
+						seed: 12,
+						disableFlag: false
+					},
+					{
+						name: 'Indiana',
+						seed: 4,
+						disableFlag: false
+					},
+					{
+						name: 'James Madison',
+						seed: 12,
+						disableFlag: false
+					},
+					{
+						name: 'Indiana',
+						seed: 4,
+						disableFlag: false
+					},
+					{
+						name: 'James Madison',
+						seed: 12,
 						disableFlag: false
 					}
 				]
@@ -34,10 +178,82 @@ angular.module('marchMadness', ['ngRoute'])
 				teams: [
 					{
 						name: 'Duke',
+						seed: 6,
 						disableFlag: false
 					},
 					{
 						name: 'Louisville',
+						seed: 3,
+						disableFlag: false
+					},
+					{
+						name: 'Duke',
+						seed: 6,
+						disableFlag: false
+					},
+					{
+						name: 'Louisville',
+						seed: 3,
+						disableFlag: false
+					},
+					{
+						name: 'Duke',
+						seed: 6,
+						disableFlag: false
+					},
+					{
+						name: 'Louisville',
+						seed: 3,
+						disableFlag: false
+					},
+					{
+						name: 'Duke',
+						seed: 6,
+						disableFlag: false
+					},
+					{
+						name: 'Louisville',
+						seed: 3,
+						disableFlag: false
+					},
+					{
+						name: 'Duke',
+						seed: 6,
+						disableFlag: false
+					},
+					{
+						name: 'Louisville',
+						seed: 3,
+						disableFlag: false
+					},
+					{
+						name: 'Duke',
+						seed: 6,
+						disableFlag: false
+					},
+					{
+						name: 'Louisville',
+						seed: 3,
+						disableFlag: false
+					},
+					{
+						name: 'Duke',
+						seed: 6,
+						disableFlag: false
+					},
+					{
+						name: 'Louisville',
+						seed: 3,
+						disableFlag: false
+					},
+					{
+						name: 'Duke',
+						seed: 6,
+						disableFlag: false
+					},
+					{
+						name: 'Louisville',
+						seed: 3,
 						disableFlag: false
 					}
 				]
@@ -47,10 +263,82 @@ angular.module('marchMadness', ['ngRoute'])
 				teams: [
 					{
 						name: 'Gonzaga',
+						seed: 14,
 						disableFlag: false
 					},
 					{
 						name: 'Arizona',
+						seed: 2,
+						disableFlag: false
+					},
+					{
+						name: 'Gonzaga',
+						seed: 14,
+						disableFlag: false
+					},
+					{
+						name: 'Arizona',
+						seed: 2,
+						disableFlag: false
+					},
+					{
+						name: 'Gonzaga',
+						seed: 14,
+						disableFlag: false
+					},
+					{
+						name: 'Arizona',
+						seed: 2,
+						disableFlag: false
+					},
+					{
+						name: 'Gonzaga',
+						seed: 14,
+						disableFlag: false
+					},
+					{
+						name: 'Arizona',
+						seed: 2,
+						disableFlag: false
+					},
+					{
+						name: 'Gonzaga',
+						seed: 14,
+						disableFlag: false
+					},
+					{
+						name: 'Arizona',
+						seed: 2,
+						disableFlag: false
+					},
+					{
+						name: 'Gonzaga',
+						seed: 14,
+						disableFlag: false
+					},
+					{
+						name: 'Arizona',
+						seed: 2,
+						disableFlag: false
+					},
+					{
+						name: 'Gonzaga',
+						seed: 14,
+						disableFlag: false
+					},
+					{
+						name: 'Arizona',
+						seed: 2,
+						disableFlag: false
+					},
+					{
+						name: 'Gonzaga',
+						seed: 14,
+						disableFlag: false
+					},
+					{
+						name: 'Arizona',
+						seed: 2,
 						disableFlag: false
 					}
 				]
@@ -75,6 +363,10 @@ angular.module('marchMadness', ['ngRoute'])
 			controller: 'EmailCtrl',
 			templateUrl: '/bhrld/wordpress/wp-content/themes/exa/march_madness_app/email.html'
 		})
+		.when('/social', {
+			controller: 'SocialCtrl',
+			templateUrl: '/bhrld/wordpress/wp-content/themes/exa/march_madness_app/social.html'
+		})
 		.otherwise({
 			redirectTo: '/'
 		});
@@ -89,7 +381,7 @@ angular.module('marchMadness', ['ngRoute'])
 	$scope.message = 'This is the Team view';
 	$scope.allTeams = allTeams;
 	$scope.userChoices = userChoices;
-	$scope.choiceMax = 4;
+	$scope.choiceMax = 16;
 	$scope.choiceListFull = false;
 	if(userChoices.length == 0){
 		for(var i = 0; i < $scope.choiceMax; i++){
@@ -101,8 +393,8 @@ angular.module('marchMadness', ['ngRoute'])
 		$scope.choiceIdx = 4;
 	}
 
-	$scope.addChoice = function(teamName, regionIdxVal, teamIdxVal){
-		userChoices[$scope.choiceIdx] = {name: teamName, regionIdx: regionIdxVal, teamIdx: teamIdxVal};
+	$scope.addChoice = function(teamName, regionIdxVal, teamIdxVal, teamSeed){
+		userChoices[$scope.choiceIdx] = {name: teamName, regionIdx: regionIdxVal, teamIdx: teamIdxVal, seed: '('+teamSeed+')'};
 		$scope.allTeams.regions[regionIdxVal].teams[teamIdxVal].disableFlag = true;
 		$scope.choiceIdx++;
 	};
@@ -161,4 +453,10 @@ angular.module('marchMadness', ['ngRoute'])
 		}
 		$location.path('/teams');
 	};
+	$scope.toSocial = function(event){
+		if(event){
+			event.preventDefault();
+		}
+		$location.path('/social');
+	}
 });
