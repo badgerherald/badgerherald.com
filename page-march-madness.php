@@ -155,7 +155,7 @@ include('macros.php');
 		<div id="main" class="site-main">
 
 		<div id="content" class="site-content" role="main">
-			<article id="post-<?php the_ID(); ?>" <?php post_class(); ?> ng-view>
+			<article id="post-<?php the_ID(); ?>" <?php post_class('view-animate'); ?> ng-view>
 			</article><!-- #post -->
 		</div><!-- #content -->
 
