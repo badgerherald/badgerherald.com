@@ -1,14 +1,214 @@
 .march-madness-content #primary{
-	max-width: 660px;
-	margin: 0 auto;
-	background: $hrld-black;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 216px;
 	color: $hrld-light-grey;
+	position: relative;
+	text-align: center;
+	//padding: 0;
+	#content{
+		padding: 12px flex(10,320);
+		margin: 0 auto;
+		background: #000;
+		max-width: 700px;
+	}
 }
 .march-madness-content{
+	h3{
+		color: $hrld-dark-grey;
+		margin: 6px auto;
+		margin-bottom: 24px;
+		margin-top: 0;
+		font-family: $body;
+		font-weight: 700;
+		font-size: 20px;
+	}
+	p{
+		font-family: $headline;
+		font-size: 24px;
+		line-height: 1.25em;
+		width: 75%;
+		margin: 12px auto;
+		&.example{
+			color: $hrld-dark-grey;
+			font-size: 16px;
+			line-height: 1em;
+		}
+	}
+	.no-btn{
+		border: none;
+		background: none;
+	}
+	.blue-btn{
+		border: none;
+		background: $hrld-blue;
+		color: $hrld-light-grey !important;
+		&:hover{
+			background: $hrld-blue-hover;
+			color: $hrld-light-grey !important;
+		}
+		&:disabled{
+			background: $hrld-black-dark-grey;
+			color: $hrld-dark-grey !important;
+		}
+	}
+	.view-link{
+		color: $hrld-blue;
+		font-family: $headline;
+		text-transform: uppercase;
+		font-size: 24px;
+		font-weight: 700;
+		display: block;
+		&:hover{
+			color: $hrld-blue-hover;
+			cursor: pointer;
+		}
+	}
+	.view-link-right{
+		float: right;
+	}
+	.view-link-center{
+		margin: 0 auto;
+	}
+	.view-link-large{
+		font-size: 32px;
+		padding: 6px 10px;
+	}
+	button.view-link:disabled{
+		color: $hrld-dark-grey;
+		&:hover{
+			cursor: not-allowed;
+		}
+	}
+	.arrow{
+		font-size: 36px;
+		outline: 2px;
+	}
+	.mm-title{
+		text-transform: uppercase;
+		padding: 6px 10px;
+		margin: 0 auto;
+		color: $hrld-light-grey;
+		background: $hrld-blue;
+		width: auto;
+		display: inline-block;
+		font-size: 20px;
+	}
+	.header-mm-2014{
+		background: $hrld-black no-repeat top center url(img/march-madness/mm-header-back.png);
+		background-size: 100% 100%;
+		position: relative;
+		text-align: center;
+		max-width: 740px;
+		margin: 0 auto;
+		.herald-logo{
+			margin: 0 auto;
+			width: 20%;
+			position: relative;
+			top: -12px;
+		}
+		.triangle-up-container{
+			height: 50px;
+			width: 100%;
+			position: absolute;
+			top: -50px;
+			.triangle-up{
+				width: 50%;
+				height: 0;
+				padding-left: 50%;
+				padding-bottom: 6.7567%;
+				overflow: hidden;
+				position: absolute;
+				bottom: 0;
+				&:after{
+					display: block;
+					content: "";
+					width: 0;
+					height: 0;
+					margin-left: -370px;
+					border-left: 370px solid transparent;
+					border-right: 370px solid transparent;
+					border-bottom: 50px solid #1f2020;
+				}
+			}
+		}
+	}
+	.rules{
+		margin-bottom: 24px;
+	}
+	.main-prize-row{
+		list-style-type: none;
+		margin: 0 auto;
+		padding: 0;
+		width: 90%;
+		li{
+			width: 30%;
+			margin: 0;
+			padding: 0;
+			float: left;
+			position: relative;
+			&:nth-child(2){
+				margin: 0 5%;
+			}
+			&:nth-child(odd){
+				top: 60px;
+			}
+			p{
+				width: auto;
+				margin: 0;
+			}
+		}
+		.placement{
+			display: block;
+			background: $hrld-blue;
+			width: 32px;
+			height: 32px;
+			line-height: 36px;
+			border-radius: 32px;
+			font-weight: 700;
+			font-family: $headline;
+			margin: 0 auto;
+			margin-bottom: 12px;
+		}
+		.main-prize{
+			font-weight: 700;
+			text-transform: uppercase;
+		}
+		.secondary-prize{
+			text-transform: uppercase;
+			font-weight: 700;
+			color: $hrld-dark-grey;
+			font-size: 14px;
+		}
+	}
+	.low-prize{
+		margin-top: 24px;
+		.placement{
+			display: block;
+			background: $hrld-dark-grey;
+			width: 64px;
+			height: 32px;
+			line-height: 36px;
+			margin: 0 auto;
+			font-weight: 700;
+			font-family: $headline;
+			border-radius: 32px;
+		}
+		p{
+			color: $hrld-dark-grey;
+			font-family: $body;
+			font-size: 14px;
+			font-weight: 700;
+			&.prizes{
+				color: $hrld-light-grey;
+				font-family: $headline;
+				text-transform: uppercase;
+			}
+		}
+	}
 	.team-filter{
 		width: 100%;
-		border-top: solid 1px $hrld-dark-grey;
-		padding: 24px 0 6px 0;
+		padding-bottom: 6px;;
 		text-align: right;
 		label{
 			font-weight: 700;
@@ -16,14 +216,14 @@
 			color: $hrld-dark-grey;
 			font-size: 18px;
 		}
-		input{
-			padding: 3px 10px;
-			border: 2px solid $hrld-dark-grey;
-			border-radius: 5px;
-			color: $hrld-dark-grey;
-			&:focus{
-				outline: 0;
-			}
+	}
+	input.mm-text-input{
+		padding: 3px 10px;
+		border: 2px solid $hrld-dark-grey;
+		border-radius: 5px;
+		color: $hrld-dark-grey;
+		&:focus{
+			outline: 0;
 		}
 	}
 	.regions-container{
@@ -78,11 +278,47 @@
 			font-size: 14px;
 			padding-left: 0;
 	}
+	.team-choice-list{
+		margin-top: 12px;
+	}
 	li.team-choice{
 		padding: 3px 0;
 		border: 2px solid $hrld-dark-grey;
 		border-radius: 5px;
 		margin-bottom: 6px;
+		text-align: left;
+		.choice-button{
+			width: 100%;
+			color: $hrld-light-grey;
+			text-align: left;
+			label:hover{
+				cursor: pointer;
+			}
+			a.close{
+				z-index: 10;
+			}
+			&:hover{
+				color: $hrld-blue;
+				.close{
+					color: $hrld-blue;
+				}
+			}
+			.close:hover, a.close:hover{
+				color: $hrld-blue;
+				cursor: pointer;
+			}
+			&:disabled{
+				color: $hrld-dark-grey;
+				label:hover, .close:hover, .close, &:hover .close{
+					cursor: auto;
+					color: $hrld-dark-grey;
+				}
+			}
+		}
+		a.close:hover{
+			cursor: pointer;
+			color: $hrld-blue;
+		}
 		span{
 			margin: 0;
 			padding: 0 0 0 10px;
@@ -93,15 +329,6 @@
 	}
 	.user-choices{
 		padding-bottom: 24px;
-		h1{
-			margin: 12px 0 24px 0;
-			padding: 0;
-			font-family: $headline;
-			text-transform: uppercase;
-			text-align: center;
-			font-size: 36px;
-			font-weight: 700;
-		}
 	}
 	.close{
 		border: none;
@@ -115,6 +342,7 @@
 		line-height: 1;
 		display: inline;
 		float: right;
+		width: auto;
 		&:hover{
 			color: $hrld-dark-grey-hover;
 		}
@@ -122,18 +350,95 @@
 			outline: 0;
 		}
 	}
-	.ng-hide{
-		display: block !important;
-		.team-option, .close{
-			color: $hrld-black-dark-grey;
+	.divider{
+		border-top: 1px solid $hrld-black-dark-grey;
+		padding-top: 24px;
+	}
+	.text-input-container{
+		margin-bottom: 12px;
+		label{
+			font-family: $headline;
+			font-size: 18px;
+			padding-right: 10px;
+		}
+		input{
+			color: $hrld-black;
 		}
 	}
+	.finals-teams, .winning-team{
+		margin-bottom: 24px;
+	}
+	.finals-teams .team-choice{
+		.choice-button{
+			width: 90%;
+			width: calc(100% - 35px);
+		}
+	}
+	.winning-team .team-choice{
+		text-align: center;
+		span{
+			padding-left: 1px;
+		}
+	}
+	.social-buttons{
+		margin-bottom: 12px;
+	}
+	.opt-out{
+		color: $hrld-black-dark-grey;
+		font-size: 14px;
+		font-family: $headline;
+		margin: 12px auto;
+		display: inline-block;
+		&:hover{
+			cursor: pointer;
+		}
+	}
+	.colophon{
+		background: #000;
+		position: relative;
+		max-width: 740px;
+		margin: 0 auto;
+		.triangle-down-container{
+			height: 50px;
+			width: 100%;
+			position: absolute;
+			bottom: -50px;
+			.triangle-down{
+				width: 50%;
+				height: 0;
+				padding-left: 50%;
+				padding-top: 6.7567%;
+				overflow: hidden;
+				position: absolute;
+				top: 0;
+				&:after{
+					display: block;
+					content: "";
+					width: 0;
+					height: 0;
+					margin-left: -370px;
+					margin-top: -50px;
+					border-left: 370px solid transparent;
+					border-right: 370px solid transparent;
+					border-top: 50px solid #000;
+				}
+			}
+		}
+	}
+	.sponsor-logos{
+		background: red;
+		padding-top: 50px;
+		max-width: 740px;
+		margin: 0 auto;
+		height: 400px;
+	}
 }
-@media(min-width: 540px){
+
+@media(min-width: 560px){
 	.march-madness-content{
 		.team-region{
 			float: left;
-			width: 240px;
+			width: 227px;
 			margin-left: 20px;
 			&:nth-child(odd){
 				margin-left: 0;
@@ -141,22 +446,55 @@
 		}
 		li.team-choice{
 			float: left;
-			width: 236px;
+			width: 223px;
 			margin-left: 20px;
 			&:nth-child(odd){
 				margin-left: 0;
+			}
+		}
+		.winning-team{
+			.team-choice-list{
+				width: 227px;
+				margin: 0 auto;
+			}
+		}
+		.team-list .ng-hide{
+			display: block !important;
+			.team-option, .close{
+				color: $hrld-black-dark-grey;
 			}
 		}
 	}
 }
 @media(min-width: 760px){
 	.march-madness-content{
+		#primary #content{
+			padding: 12px 20px;
+		}
+		.mm-title{
+			font-size: 36px;
+			position: relative;
+			top: -12px;
+		}
+		.header-mm-2014{
+			.herald-logo{
+				top: -24px;
+			}
+		}
+		.main-prize-row{
+			.main-prize{
+				font-size: 32px;
+			}
+			.secondary-prize{
+				font-size: 18px;
+			}
+		}
 		.team-region{
-			width: 320px;
+			width: 340px;
 			margin-left: 20px;
 			margin-bottom: 24px;
 			li{
-				width: 150px;
+				width: 160px;
 				float: left;
 				margin-left: 20px;
 				&:nth-child(odd){
@@ -172,7 +510,7 @@
 			border-top: 1px solid $hrld-black-dark-grey;
 		}
 		li.team-choice{
-			width: 146px;
+			width: 156px;
 			margin-left: 20px;
 			&:nth-child(odd){
 				margin-left: 20px;
@@ -181,6 +519,20 @@
 				margin-left: 0;
 			}
 		}
-
+		.finals-teams{
+			.team-choice-list{
+				width: 475px;
+				margin: 0 auto;
+				.team-choice{
+					width: 223px;
+				}
+			}
+		}
+		.winning-team .team-choice-list{
+			width: 227px;
+			.team-choice{
+				width: 223px;
+			}
+		}
 	}
 }

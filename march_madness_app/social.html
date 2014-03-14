@@ -1,16 +1,19 @@
-<div class="social-plug">
-	<p>Follow us on Twitter and Facebook for contest updates</p>
-	<div class="social-buttons">
+<button ng-click="toEmail($event)" class="view-link no-btn" ng-hide="validSocial"><span class="arrow">&larr;</span> Back</button>
+<div class="social-plug divider">
+	<h3>Follow us on Twitter and Facebook for contest updates</h3>
+	<div class="social-buttons clearfix">
 		<div class="twitter">
-			<iframe allowtransparency="true" frameborder="0" scrolling="no"
-              src="//platform.twitter.com/widgets/follow_button.html?screen_name=badgerherald&show_count=false"
-              style="width:150px; height:20px;"></iframe>
+			<a href="https://twitter.com/badgerherald" class="twitter-follow-button" data-show-count="false" data-size="large">Follow @badgerherald</a>
+			<script type="text/javascript-lazy">!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
 		</div><!-- .twitter -->
 
 		<div class="facebook">
-			<div class="fb-like" data-href="http://facebook.com/badgerherald" data-layout="button_count" data-action="like" data-show-faces="false" data-share="false" data-height="28" data-width="120"></div>
+			<iframe src="//www.facebook.com/plugins/like.php?href=https%3A%2F%2Fwww.facebook.com%2Fbadgerherald&amp;width&amp;layout=button_count&amp;action=like&amp;show_faces=true&amp;share=false&amp;height=21" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width: 83px; height:21px;" allowTransparency="true"></iframe>
 		</div><!-- .facebook -->
 	</div>
     <div class="clearfix"></div>
-    <p><a href="http://badgerherald.com">Back to badgerherald.com</a></p>
+    <!--
+    <a class="opt-out" ng-click="socialClick('opt-out')">No Thanks.</a> -->
 </div>
+<button class="blue-btn view-link view-link-center view-link-large" ng-click="submit($event)" ng-hide="validSocial">Submit</button>
+<h3 ng-hide="!validSocial">Thank you for entering!</h3>

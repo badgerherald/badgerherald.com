@@ -4,176 +4,6 @@ angular.module('marchMadness', ['ngRoute'])
 	{
 		regions: [
 			{
-				location: 'South',
-				teams: [
-					{
-						name: 'Kansas',
-						seed: 1,
-						disableFlag: false
-					},
-					{
-						name: 'WKU',
-						seed: 15,
-						disableFlag: false
-					},
-					{
-						name: 'Kansas',
-						seed: 1,
-						disableFlag: false
-					},
-					{
-						name: 'WKU',
-						seed: 15,
-						disableFlag: false
-					},
-					{
-						name: 'Kansas',
-						seed: 1,
-						disableFlag: false
-					},
-					{
-						name: 'WKU',
-						seed: 15,
-						disableFlag: false
-					},
-					{
-						name: 'Kansas',
-						seed: 1,
-						disableFlag: false
-					},
-					{
-						name: 'WKU',
-						seed: 15,
-						disableFlag: false
-					},
-					{
-						name: 'Kansas',
-						seed: 1,
-						disableFlag: false
-					},
-					{
-						name: 'WKU',
-						seed: 15,
-						disableFlag: false
-					},
-					{
-						name: 'Kansas',
-						seed: 1,
-						disableFlag: false
-					},
-					{
-						name: 'WKU',
-						seed: 15,
-						disableFlag: false
-					},
-					{
-						name: 'Kansas',
-						seed: 1,
-						disableFlag: false
-					},
-					{
-						name: 'WKU',
-						seed: 15,
-						disableFlag: false
-					},
-					{
-						name: 'Kansas',
-						seed: 1,
-						disableFlag: false
-					},
-					{
-						name: 'WKU',
-						seed: 15,
-						disableFlag: false
-					}
-				]
-			},
-			{
-				location: 'East',
-				teams: [
-					{
-						name: 'Indiana',
-						seed: 4,
-						disableFlag: false
-					},
-					{
-						name: 'James Madison',
-						seed: 12,
-						disableFlag: false
-					},
-					{
-						name: 'Indiana',
-						seed: 4,
-						disableFlag: false
-					},
-					{
-						name: 'James Madison',
-						seed: 12,
-						disableFlag: false
-					},
-					{
-						name: 'Indiana',
-						seed: 4,
-						disableFlag: false
-					},
-					{
-						name: 'James Madison',
-						seed: 12,
-						disableFlag: false
-					},
-					{
-						name: 'Indiana',
-						seed: 4,
-						disableFlag: false
-					},
-					{
-						name: 'James Madison',
-						seed: 12,
-						disableFlag: false
-					},
-					{
-						name: 'Indiana',
-						seed: 4,
-						disableFlag: false
-					},
-					{
-						name: 'James Madison',
-						seed: 12,
-						disableFlag: false
-					},
-					{
-						name: 'Indiana',
-						seed: 4,
-						disableFlag: false
-					},
-					{
-						name: 'James Madison',
-						seed: 12,
-						disableFlag: false
-					},
-					{
-						name: 'Indiana',
-						seed: 4,
-						disableFlag: false
-					},
-					{
-						name: 'James Madison',
-						seed: 12,
-						disableFlag: false
-					},
-					{
-						name: 'Indiana',
-						seed: 4,
-						disableFlag: false
-					},
-					{
-						name: 'James Madison',
-						seed: 12,
-						disableFlag: false
-					}
-				]
-			},
-			{
 				location: 'Midwest',
 				teams: [
 					{
@@ -254,6 +84,91 @@ angular.module('marchMadness', ['ngRoute'])
 					{
 						name: 'Louisville',
 						seed: 3,
+						disableFlag: false
+					}
+				]
+			},
+			{
+				location: 'South',
+				teams: [
+					{
+						name: 'Kansas',
+						seed: 1,
+						disableFlag: false
+					},
+					{
+						name: 'WKU',
+						seed: 15,
+						disableFlag: false
+					},
+					{
+						name: 'Kansas',
+						seed: 1,
+						disableFlag: false
+					},
+					{
+						name: 'WKU',
+						seed: 15,
+						disableFlag: false
+					},
+					{
+						name: 'Kansas',
+						seed: 1,
+						disableFlag: false
+					},
+					{
+						name: 'WKU',
+						seed: 15,
+						disableFlag: false
+					},
+					{
+						name: 'Kansas',
+						seed: 1,
+						disableFlag: false
+					},
+					{
+						name: 'WKU',
+						seed: 15,
+						disableFlag: false
+					},
+					{
+						name: 'Kansas',
+						seed: 1,
+						disableFlag: false
+					},
+					{
+						name: 'WKU',
+						seed: 15,
+						disableFlag: false
+					},
+					{
+						name: 'Kansas',
+						seed: 1,
+						disableFlag: false
+					},
+					{
+						name: 'WKU',
+						seed: 15,
+						disableFlag: false
+					},
+					{
+						name: 'Kansas',
+						seed: 1,
+						disableFlag: false
+					},
+					{
+						name: 'WKU',
+						seed: 15,
+						disableFlag: false
+					},
+					{
+						name: 'Kansas',
+						seed: 1,
+						disableFlag: false
+					},
+					{
+						name: 'WKU',
+						seed: 15,
 						disableFlag: false
 					}
 				]
@@ -342,12 +257,106 @@ angular.module('marchMadness', ['ngRoute'])
 						disableFlag: false
 					}
 				]
+			},
+			{
+				location: 'East',
+				teams: [
+					{
+						name: 'Indiana',
+						seed: 4,
+						disableFlag: false
+					},
+					{
+						name: 'James Madison',
+						seed: 12,
+						disableFlag: false
+					},
+					{
+						name: 'Indiana',
+						seed: 4,
+						disableFlag: false
+					},
+					{
+						name: 'James Madison',
+						seed: 12,
+						disableFlag: false
+					},
+					{
+						name: 'Indiana',
+						seed: 4,
+						disableFlag: false
+					},
+					{
+						name: 'James Madison',
+						seed: 12,
+						disableFlag: false
+					},
+					{
+						name: 'Indiana',
+						seed: 4,
+						disableFlag: false
+					},
+					{
+						name: 'James Madison',
+						seed: 12,
+						disableFlag: false
+					},
+					{
+						name: 'Indiana',
+						seed: 4,
+						disableFlag: false
+					},
+					{
+						name: 'James Madison',
+						seed: 12,
+						disableFlag: false
+					},
+					{
+						name: 'Indiana',
+						seed: 4,
+						disableFlag: false
+					},
+					{
+						name: 'James Madison',
+						seed: 12,
+						disableFlag: false
+					},
+					{
+						name: 'Indiana',
+						seed: 4,
+						disableFlag: false
+					},
+					{
+						name: 'James Madison',
+						seed: 12,
+						disableFlag: false
+					},
+					{
+						name: 'Indiana',
+						seed: 4,
+						disableFlag: false
+					},
+					{
+						name: 'James Madison',
+						seed: 12,
+						disableFlag: false
+					}
+				]
 			}
 		]
 	}
 )
 
-.value('userChoices',[])
+.value('userChoices',{
+	name: '',
+	email: '',
+	mainTeams: [],
+	finalTeams: [{},{}],
+	winningTeam: [{}],
+	socialClick: []
+})
+
+.value('lastView', ['start'])
 
 .config(function($routeProvider){
 	$routeProvider
@@ -372,45 +381,44 @@ angular.module('marchMadness', ['ngRoute'])
 		});
 })
 
-.controller('StartCtrl', function($scope, userChoices){
-	$scope.message = 'This is the start view';
-	$scope.userChoices = userChoices;
+.controller('StartCtrl', function($scope){
 })
 
-.controller('TeamsCtrl', function($scope, allTeams, userChoices, $location){
+.controller('TeamsCtrl', function($scope, allTeams, userChoices, lastView, $location){
 	$scope.message = 'This is the Team view';
 	$scope.allTeams = allTeams;
 	$scope.userChoices = userChoices;
 	$scope.choiceMax = 16;
 	$scope.choiceListFull = false;
-	if(userChoices.length == 0){
+	$scope.lastView = lastView;
+	if(userChoices.mainTeams.length == 0){
 		for(var i = 0; i < $scope.choiceMax; i++){
-			userChoices.push({});
+			userChoices.mainTeams.push({});
 		}
 		$scope.choiceIdx = 0;
 	}
 	else{
-		$scope.choiceIdx = 4;
+		$scope.choiceIdx = 16;
 	}
 
 	$scope.addChoice = function(teamName, regionIdxVal, teamIdxVal, teamSeed){
-		userChoices[$scope.choiceIdx] = {name: teamName, regionIdx: regionIdxVal, teamIdx: teamIdxVal, seed: '('+teamSeed+')'};
+		userChoices.mainTeams[$scope.choiceIdx] = {name: teamName, regionIdx: regionIdxVal, teamIdx: teamIdxVal, seed: '('+teamSeed+')'};
 		$scope.allTeams.regions[regionIdxVal].teams[teamIdxVal].disableFlag = true;
 		$scope.choiceIdx++;
 	};
 
 	$scope.removeChoice = function(idx){
-		var removed = userChoices.splice(idx, 1);
-		userChoices.push({});
+		var removed = userChoices.mainTeams.splice(idx, 1);
+		userChoices.mainTeams.push({});
 		$scope.allTeams.regions[removed[0].regionIdx].teams[removed[0].teamIdx].disableFlag = false;
 		$scope.choiceIdx--;
-		console.log($scope.choiceIdx);
 	};
 
 	$scope.nextPage = function(event){
 		if(event){
 			event.preventDefault();
 		}
+		lastView[0] = 'teams';
 		$location.path('/email');
 	};
 
@@ -420,7 +428,7 @@ angular.module('marchMadness', ['ngRoute'])
 			$scope.choiceListFull = true;
 		} else if(oldvalue === $scope.choiceMax){
 			enableAll($scope.allTeams.regions);
-			angular.forEach(userChoices, function(val, key){
+			angular.forEach(userChoices.mainTeams, function(val, key){
 				if(val.hasOwnProperty('name')){
 					$scope.allTeams.regions[val.regionIdx].teams[val.teamIdx].disableFlag = true;
 				}
@@ -445,18 +453,132 @@ angular.module('marchMadness', ['ngRoute'])
 	};
 })
 
-.controller('EmailCtrl', function($scope, userChoices, $location){
+.controller('EmailCtrl', function($scope, userChoices, lastView, $location){
 	$scope.userChoices = userChoices;
+	$scope.mainTeamsDisabled = [];
+	$scope.lastView = lastView;
+	if(lastView == 'teams'){
+		userChoices.finalTeams = [{},{}];
+		userChoices.winningTeam = [{}];
+		$scope.finalsListFull = false;
+		$scope.choiceMainIdx = 0;
+		for(var i = 0; i < 16; i++){
+			$scope.mainTeamsDisabled[i] = false;
+		}
+	}
+	else if(lastView == 'social'){
+		$scope.choiceMainIdx = 2;
+		$scope.finalsListFull = true;
+		for(var i = 0; i < 16; i++){
+			$scope.mainTeamsDisabled[i] = true;
+		}
+	}
+	$scope.addFinals = function(teamIdx){
+		userChoices.finalTeams[$scope.choiceMainIdx] = userChoices.mainTeams[teamIdx];
+		userChoices.finalTeams[$scope.choiceMainIdx].mainListIdx = teamIdx;
+		$scope.mainTeamsDisabled[teamIdx] = true;
+		$scope.choiceMainIdx++;
+	}
+	$scope.removeFinals = function(teamIdx){
+		var removed = userChoices.finalTeams.splice(teamIdx, 1);
+		userChoices.finalTeams.push({});
+		userChoices.winningTeam[0] = {};
+		$scope.mainTeamsDisabled[removed[0].mainListIdx] = false;
+		$scope.choiceMainIdx--;
+	}
+	$scope.addWinner = function(teamIdx){
+		userChoices.winningTeam[0] = userChoices.finalTeams[teamIdx];
+	}
+	$scope.$watch('choiceMainIdx', function(newvalue, oldvalue){
+		if(newvalue === 2){
+			for(var i = 0; i < 16; i++){
+				$scope.mainTeamsDisabled[i] = true;
+			}
+			$scope.finalsListFull = true;
+		} else if(oldvalue === 2){
+			for(var i = 0; i < 16; i++){
+				$scope.mainTeamsDisabled[i] = false;
+			}
+			$scope.mainTeamsDisabled[userChoices.finalTeams[0].mainListIdx] = true;
+			$scope.finalsListFull = false;
+		}
+	});
 	$scope.toTeams = function(event){
 		if(event){
 			event.preventDefault();
 		}
+		lastView[0] = 'email';
 		$location.path('/teams');
 	};
 	$scope.toSocial = function(event){
 		if(event){
 			event.preventDefault();
 		}
+		lastView[0] = 'email';
 		$location.path('/social');
 	}
+})
+
+.controller('SocialCtrl', function($scope, userChoices, lastView, $http, $location){
+	$scope.validSocial = false;
+	$scope.userChoices = userChoices;
+	$scope.socialClick = function(click){
+		userChoices.socialClick.push(click);
+		$scope.validSocial = true;
+	}
+	$scope.toEmail = function(event){
+		if(event){
+			event.preventDefault();
+		}
+		lastView[0] = 'social';
+		$location.path('/email');
+	}
+	$scope.submit = function(event){
+		if(event){
+			event.preventDefault();
+		}
+		$scope.validSocial = true;
+	}
+})
+
+.directive('hrldWiscValidate', function(){
+	return {
+		require: 'ngModel',
+		link: function(scope, elem, attr, ctrl){
+			var regex = new RegExp('.*?(wisc\\.edu)', '');
+
+			ctrl.$parsers.unshift(function(value){
+				var valid = regex.test(value);
+				ctrl.$setValidity('hrldWiscValidate', valid);
+				return valid ? value : undefined;
+			});
+
+			ctrl.$formatters.unshift(function(value){
+				ctrl.$setValidity('hrldWiscValidate', regex.test(value));
+				return value;
+			});
+		}
+	}
 });
+
+/*global angular */
+(function (ng) {
+  'use strict';
+
+  var app = ng.module('ngLoadScript', []);
+
+  app.directive('script', function() {
+    return {
+      restrict: 'E',
+      scope: false,
+      link: function(scope, elem, attr) {
+        if (attr.type === 'text/javascript-lazy') {
+          var code = elem.text();
+          var f = new Function(code);
+          f();
+        }
+      }
+    };
+  });
+
+}(angular));

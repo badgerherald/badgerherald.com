@@ -1,14 +1,14 @@
 <div class="user-choices clearfix">
-<h1>Your Picks</h1>
-<ul class="team-choice-list">
-<li ng-repeat="team in userChoices" class="team-choice">
+<h1 class="mm-title">Your Picks</h1>
+<ul class="team-choice-list clearfix">
+<li ng-repeat="team in userChoices.mainTeams" class="team-choice">
 	<span>{{ team.name }}</span> <span class="seed">{{ team.seed }}</span><button class="close clearfix" ng-click="removeChoice($index)">&times;</button>
 </li>
 </ul>
-<button ng-disabled="!choiceListFull" ng-click="nextPage($event)">Next</button>
+<button ng-disabled="!choiceListFull" ng-click="nextPage($event)" class="view-link view-link-right no-btn">Next <span class="arrow">&rarr;</span></button>
 </div>
-<div class="team-filter">
-	<label for="team-filter-input">Filter by team name: </label><input id="team-filter-input" type="text" ng-model="filterTeam" placeholder="Filter">
+<div class="team-filter divider">
+	<label for="team-filter-input">Filter by team name: </label><input class="mm-text-input" id="team-filter-input" type="text" ng-model="filterTeam" placeholder="Filter">
 </div>
 <div class="regions-container clearfix">
 <div class="team-region" ng-repeat="region in allTeams.regions">
