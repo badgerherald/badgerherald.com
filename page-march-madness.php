@@ -39,7 +39,7 @@ function add_vote($dbh, $participant_id, $option_id) {
 
 function process_team($dbh, $participant_id, $team) {
 	$option_id = ($team->regionIdx * 16) + $team->teamIdx;
-	//add_vote($dbh, $participant_id, $option_id);
+	add_vote($dbh, $participant_id, $option_id);
 }
 
 if ('POST' == $_SERVER['REQUEST_METHOD']) {
@@ -52,17 +52,17 @@ if ('POST' == $_SERVER['REQUEST_METHOD']) {
 	$username = DB_USER;
 	$password = DB_PASSWORD;
 	$options = array();
-	//$dbh = open_db($dbstr, $username, $password, $options);
+	$dbh = open_db($dbstr, $username, $password, $options);
 
 	echo "here\n";
 	$name = $data->name;
 	echo "Name: $name\n";
 	$email = $data->email;
 	echo "Email: $email\n";
-	//$participant = find_participant($dbh, $email, $quiz_name);
+	$participant = find_participant($dbh, $email, $quiz_name);
 	$participant = NULL;
 	if ($participant === NULL) {
-		//$participant = create_participant($dbh, $email, $quiz_name);
+		$participant = create_participant($dbh, $email, $quiz_name);
 		$participant = 1;
 		foreach($data->mainTeams as $team) {
 			process_team($dbh, $participant, $team);
@@ -253,7 +253,12 @@ include('macros.php');
             <li class="madness-sponsor-sett"><a href="#"><span>The Sett</span></a></li>
             <li class="madness-sponsor-toppers"><a href="#"><span>Toppers Pizza</span></a></li>
         </ul>
-        All Content &copy; The Badger Herald, 2014
+         <p style="font-size:12px;"><strong>All Content &copy; 2014 The Badger Herald.</strong></p>
+
+        <p style="font-size:12px;">Participation in The Badger Herald's Top Picks March Madness contest is restricted to current University of Wisconsin-Madison students with valid @wisc.edu email address. Points will be tallied after the championship game and the winners will be contacted by email</p>
+        <p style="font-size:12px;">4th-6th place winners will split the last three prizes with the 4th place winner recieving first choice, the 5th place winner recieving second choice and the 6th place winner recieving third choice.</p>
+        <p style="font-size:12px;">In the event of a tie, participants who choose the two teams that advanced the furthest in the tournament for their Championship Game pick will win. Pick for winner of the Championship Game will break further ties. If ties remain, the winner will be decided by random draw.</p>
+
     </div>
     </div><!-- #primary -->
 
