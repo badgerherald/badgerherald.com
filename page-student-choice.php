@@ -115,6 +115,7 @@ function valid_wisc($email) {
 					<div class="entry-content">
 
                         <p class="tagline">Think you know Madison? Tell us what you think is the <strong>best of Madison</strong> and get entered to <strong>win one of 8 $20 Amazon giftcards!</strong></p>
+                        <p style="text-align:center;margin-bottom:12px;"><em>Voting ends Tuesday March 18 at midnight.</em></p>
 
 					<?php
                     $display_form = true;
