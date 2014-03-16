@@ -362,22 +362,22 @@ angular.module('marchMadness', ['ngRoute'])
 	$routeProvider
 		.when('/', {
 			controller: 'StartCtrl',
-			templateUrl: '/bhrld/wordpress/wp-content/themes/exa/march_madness_app/index.html'
+			templateUrl: '/wordpress/wp-content/themes/exa/march_madness_app/index.html'
 		})
 		.when('/teams', {
 			controller: 'TeamsCtrl',
-			templateUrl: '/bhrld/wordpress/wp-content/themes/exa/march_madness_app/teams.html'
+			templateUrl: '/wordpress/wp-content/themes/exa/march_madness_app/teams.html'
 		})
 		.when('/email', {
 			controller: 'EmailCtrl',
-			templateUrl: '/bhrld/wordpress/wp-content/themes/exa/march_madness_app/email.html'
+			templateUrl: '/wordpress/wp-content/themes/exa/march_madness_app/email.html'
 		})
 		.when('/social', {
 			controller: 'SocialCtrl',
 			templateUrl: '/bhrld/wordpress/wp-content/themes/exa/march_madness_app/social.html'
 		})
 		.otherwise({
-			redirectTo: '/bhrld/wordpress/'
+			redirectTo: '/wordpress/'
 		});
 })
 
