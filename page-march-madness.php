@@ -48,7 +48,7 @@ if ('POST' == $_SERVER['REQUEST_METHOD']) {
 	$data = $request->userChoices;
 
 	$quiz_name = "march-madness-2014";
-	$dbstr = "mysql:host=localhost;dbname=hrld_wp";
+	$dbstr = "mysql:host=localhost;dbname=MarchMadness";
 	$username = DB_USER;
 	$password = DB_PASSWORD;
 	$options = array();
