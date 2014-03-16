@@ -539,7 +539,7 @@ angular.module('marchMadness', ['ngRoute'])
 		}
 
 		$http({
-			url: "http://localhost/march-madness/",
+			url: "http://badgerherald.com/march-madness/",
 			method: "POST",
 			data: {"userChoices": userChoices}
 		}).success(function(data, status, headers, config) {
