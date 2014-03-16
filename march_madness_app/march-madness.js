@@ -374,7 +374,7 @@ angular.module('marchMadness', ['ngRoute'])
 		})
 		.when('/social', {
 			controller: 'SocialCtrl',
-			templateUrl: '/bhrld/wordpress/wp-content/themes/exa/march_madness_app/social.html'
+			templateUrl: '/wordpress/wp-content/themes/exa/march_madness_app/social.html'
 		})
 		.otherwise({
 			redirectTo: '/wordpress/'
