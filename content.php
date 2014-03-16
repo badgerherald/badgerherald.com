@@ -110,13 +110,12 @@
 
 			<div class="article-content">
 
-			<?php the_content() ?>
+			<?php the_content(); ?>
 
-			<?php if( get_the_author() ==  "Badger Herald Editorial Board" ) : ?>
+			<?php if( get_the_author() == "Badger Herald Editorial Board" ) : ?>
 				
-				<?php 
-					$list = hrld_edboard::authorList();
-				?>
+				<h4 class="article-signature edboard-signature"> &mdash; The Badger Herald Editorial Board </h4>
+				<?php hrld_edboard::printEdboardList(); ?>
 
 			<?php endif; ?>
 
