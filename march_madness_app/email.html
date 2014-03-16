@@ -1,41 +1,51 @@
 <form name="march_madness_2014" action="" method="post">
-<button ng-click="toTeams($event)" class="view-link no-btn"><span class="arrow">&larr;</span> Back</button>
+<button ng-click="toTeams($event)" class="mm-button mm-button-right view-link no-btn">Back</button>
 <div class="user-choices clearfix">
-<h1>Your Picks</h1>
+<h3>Your Picks</h3>
 <ul class="team-choice-list">
 <li ng-repeat="team in userChoices.mainTeams" class="team-choice">
-	<button class="no-btn choice-button" ng-click="addFinals($index)" ng-disabled="mainTeamsDisabled[$index]"><label><span>{{ team.name }}</span> <span class="seed">{{ team.seed }}</span><p class="close clearfix">+</p></label></button>
+	<button class="no-btn choice-button" ng-click="addFinals($index)" ng-disabled="mainTeamsDisabled[$index]">
+	<span class="seed">{{ team.seed }}</span>
+	<label><span class="team-span-container">{{ team.name }}</span>
+	<p class="close clearfix">+</p>
+	</label></button>
 	<input type="hidden" name="march_madness_choice_{{ $index }}" id="march_madness_choice_{{ $index }}" value="{{ team.name }}">
 </li>
 </ul>
 </div>
 <div class="finals-teams divider clearfix">
-<h3>Pick two teams above that you think will be in the finals.</h3>
+<hr/>
+<h3><span style="color:#fff;border-bottom:1px solid #fff">Tie Breaker:</span> Pick the Championship game from above</h3>
 <ul class="team-choice-list">
 <li ng-repeat="team in userChoices.finalTeams" class="team-choice">
-	<button type="button" class="choice-button no-btn" ng-click="addWinner($index)" ng-disabled="!finalsListFull"><label for="march_madness_choice_{{ $index }}"><span>{{ team.name }}</span> <span class="seed">{{ team.seed }}</span><p ng-hide="!finalsListFull" class="close clearfix">+</p></label></button><a class="no-btn close clearfix" ng-click="removeFinals($index)" ng-hide="!team.name">&times;</a>
+	<button type="button" class="choice-button no-btn" ng-click="addWinner($index)" ng-disabled="!finalsListFull">
+	<label for="march_madness_choice_{{ $index }}">
+		<span class="seed">{{ team.seed }}</span><span class="team-span-container">{{ team.name }}</span> 
+		<p ng-hide="!finalsListFull" class="close clearfix">+</p></label></button><a class="no-btn close clearfix" ng-click="removeFinals($index)" ng-hide="!team.name">&times;</a>
 	<input type="hidden" name="march_madness_choice_{{ $index }}" id="march_madness_choice_{{ $index }}" value="{{ team.name }}">
 </li>
 </ul>
 </div>
 <div class="winning-team divider clearfix">
+<hr/>
 <h3>Pick the team above that you think will win the finals.</h3>
 <ul class="team-choice-list">
 <li ng-repeat="team in userChoices.winningTeam" class="team-choice">
-	<label for="march_madness_choice_{{ $index }}"><span>{{ team.name }}</span> <span class="seed">{{ team.seed }}</span></label>
+	<label for="march_madness_choice_{{ $index }}"><span class="seed">{{ team.seed }}</span><span class="team-span-container">{{ team.name }}</span> </label>
 	<input type="hidden" name="march_madness_choice_{{ $index }}" id="march_madness_choice_{{ $index }}" value="{{ team.name }}">
 </li>
 </ul>
 </div>
 <div class="email-container divider clearfix">
+<hr/>
 <h3>Please enter your name and email address.</h3>
 <p class="example">Only valid @wisc.edu emails will be eligible for prizes.</p>
 <div class="text-input-container">
 <label for="march_madness_2014_name">Name: </label><input class="mm-text-input" name="march_madness_2014_name" id="march_madness_2014_name" ng-model="userChoices.name" placeholder="Name" required>
 </div>
 <div class="text-input-container">
-<label for="march_madness_2014_email">Email: </label><input class="mm-text-input" type="email" name="march_madness_2014_email" id="march_madness_2014_email" ng-model="userChoices.email" placeholder="Email" hrld-wisc-validate required>
+<label for="march_madness_2014_email">Wisc.edu: </label><input class="mm-text-input" type="email" name="march_madness_2014_email" id="march_madness_2014_email" ng-model="userChoices.email" placeholder="herald@wisc.edu" hrld-wisc-validate required>
 </div>
-<button class="view-link no-btn view-link-right" ng-disabled="march_madness_2014.$invalid" ng-click="toSocial($event)">Next <span class="arrow">&rarr;</span></button>
+<button class="mm-button view-link no-btn view-link-right" ng-disabled="march_madness_2014.$invalid" ng-click="toSocial($event)">Next</button>
 </div>
 </form>
