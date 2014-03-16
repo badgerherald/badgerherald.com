@@ -1,149 +1,93 @@
 <?php
-/**
- * The template for displaying all pages.
- *
- * This is the template that displays all pages by default.
- * Please note that this is the WordPress construct of pages and that other
- * 'pages' on your WordPress site will use a different template.
- *
- * @package WordPress
- * @subpackage Twenty_Thirteen
- * @since Twenty Thirteen 1.0
- */
+
+function open_db($dbstr, $username, $password, $options) {
+	$dbh = new PDO($dbstr, $username, $password);
+	$dbh->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );
+	return $dbh;
+}
+
+function find_participant($dbh, $email, $quiz_name) {
+	$participant_stmt = $dbh->prepare("SELECT * FROM Participants WHERE email = ? AND quiz = ?");
+	$participant_stmt->execute(array($email, $quiz_name));
+	$results = $participant_stmt->fetchAll();
+	if (count($results) < 1) {
+		return NULL;
+	}
+	return $results[0]["id"];
+}
+
+function create_participant($dbh, $email, $quiz_name) {
+	$index_stmt = $dbh->prepare("SELECT MAX(id) FROM Participants");
+	$index_stmt->execute(array());
+	$new_id = $index_stmt->fetchAll()[0][0] + 1;
+	$add_stmt = $dbh->prepare("INSERT INTO Participants (id, email, quiz) VALUES (?, ?, ?)");
+	$add_stmt->execute(array($new_id, $email, $quiz_name));
+	// Ugly hack
+	return find_participant($dbh, $email, $quiz_name);
+}
+
+function add_vote($dbh, $participant_id, $option_id) {
+	if ($option_id === null) {
+		return;
+	}
+	$index_stmt = $dbh->prepare("SELECT MAX(id) FROM Votes");
+	$index_stmt->execute(array());
+	$new_id = $index_stmt->fetchAll()[0][0] + 1;
+	$add_stmt = $dbh->prepare("INSERT INTO Votes (id, participant_id, option_id) VALUES (?, ?, ?)");
+	$add_stmt->execute(array($new_id, $participant_id, $option_id));
+}
+
+function process_team($dbh, $participant_id, $team) {
+	$option_id = ($team->regionIdx * 16) + $team->teamIdx;
+	//add_vote($dbh, $participant_id, $option_id);
+}
+
+if ('POST' == $_SERVER['REQUEST_METHOD']) {
+	$postdata = file_get_contents("php://input");
+	$request = json_decode($postdata);
+	$data = $request->userChoices;
+
+	$quiz_name = "march-madness-2014";
+	$dbstr = "mysql:host=localhost;dbname=hrld_wp";
+	$username = DB_USER;
+	$password = DB_PASSWORD;
+	$options = array();
+	//$dbh = open_db($dbstr, $username, $password, $options);
+
+	echo "here\n";
+	$name = $data->name;
+	echo "Name: $name\n";
+	$email = $data->email;
+	echo "Email: $email\n";
+	//$participant = find_participant($dbh, $email, $quiz_name);
+	$participant = NULL;
+	if ($participant === NULL) {
+		//$participant = create_participant($dbh, $email, $quiz_name);
+		$participant = 1;
+		foreach($data->mainTeams as $team) {
+			process_team($dbh, $participant, $team);
+			$name = $team->name;
+			echo "Team: $name\n";
+		}
+
+		foreach($data->finalTeams as $team) {
+			process_team($dbh, $participant, $team);
+			$name = $team->name;
+			echo "Final team: $name\n";
+		}
+
+		foreach($data->winningTeam as $team) {
+			process_team($dbh, $participant, $team);
+			$name = $team->name;
+			echo "Winning team: $name\n";
+		}
+	} else {
+		echo "Not valid!";
+	}
+
+} else {
+	get_header("just-head");
 ?>
-<?php
-/**
- * The Header for our theme.
- *
- * Displays all of the <head> section and everything up till <div id="main">
- *
- * @package WordPress
- * @subpackage Twenty_Thirteen
- * @since Twenty Thirteen 1.0
- */
-include('macros.php');
-?><!DOCTYPE html>
-<!--[if IE 7]>
-<html class="ie ie7" <?php language_attributes(); ?>>
-<![endif]-->
-<!--[if IE 8]>
-<html class="ie ie8" <?php language_attributes(); ?>>
-<![endif]-->
-<!--[if !(IE 7) | !(IE 8)  ]><!-->
-<html <?php language_attributes(); ?>>
-<!--<![endif]-->
-<head>
-    <meta charset="<?php bloginfo( 'charset' ); ?>" />
-    
-    <meta name="viewport" content="width=device-width, 
-    minimum-scale=1.0, maximum-scale=1.0">
-
-    <?php /* Remove 300ms tap delay for mobile zoom */ ?>
-    <meta name="viewport" content="width=device-width, user-scalable=no">
-
-    <title><?php 
-
-    if(is_404()) {
-        echo "4-doge-4 · The Badger Herald";
-    } else {
-        bloginfo('name'); ?> · <?php is_home() ? bloginfo('description') : wp_title(''); 
-    }
-
-    ?></title>
-    <link rel="profile" href="http://gmpg.org/xfn/11" />
-    <link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>" />
-    <!--[if lt IE 9]>
-    <script src="<?php echo get_template_directory_uri(); ?>/js/html5.js" type="text/javascript"></script>
-    <![endif]-->
-
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-    <?php wp_head(); ?>
-    <!-- 
-        Google fonts 
-        TODO: move to wordpress enque
-    -->
-    <link href='http://fonts.googleapis.com/css?family=Noto+Serif:400,700,400italic,700italic|Yanone+Kaffeesatz:400,300,700|Open+Sans|PT+Sans+Narrow:400,700' rel='stylesheet' type='text/css'>
-
-    <?php dfp::hrld_dfp_header() ?>
-
-    <link rel="icon" 
-        type="image/png" 
-        href="favicon.png?v=exa6">
-
-</head>
-
-<body <?php body_class(); ?>>
-
-
-
-
-<div id="page" class="page-container-masthead">
-    <div id="wrapper">
-    
-
-    <div id="main-header">
-    <div id="masthead">
-
-        <nav role="main">
-        
-        <div class="nav-bar">
-
-            <a href="<?php echo bloginfo("url"); ?>"><div class="bar-logo">
-
-            </div></a>
-            
-            <?php /* container for the mobile hamburger icon */ ?>
-            <div class="nav-control" alt="Menu">
-                 <div class="nav-icon" ></div>
-            </div>
-            
-            <div class="nav-container">
-
-                <div class="nav-drop-tagline">The University of Wisconsin's Premier Independent Student Newspaper &mdash; <strong>Since 1969</strong></div>
-
-                <ul id="main-nav" class="dropdown-border">
-                    <li><a href="<?php echo (is_home() ? '#news' : get_bloginfo('url').'/news/'); ?>">News</a></li>
-                    <li><a href="<?php echo (is_home() ? '#opinion' : get_bloginfo('url').'/oped/'); ?>">Opinion</a></li>
-                    <li><a href="<?php echo (is_home() ? '#artsetc' : get_bloginfo('url').'/artsetc/'); ?>">ArtsEtc.</a></li>
-                    <li><a href="<?php echo (is_home() ? '#sports' : get_bloginfo('url').'/sports/'); ?>">Sports</a></li>
-                    <li><a href="<?php bloginfo('url'); ?>/shoutouts/">Shoutouts</a></li>
-                    <li class="about-off"><a href="<?php bloginfo('url'); ?>/about/">About</a></li>
-                    <li><a href="http://themadisonmisnomer.com/">Misnomer</a></li>
-                    <li><a href="<?php bloginfo('url'); ?>/advertise/">Advertise</a></li>
-                <li>
-                        <a class="search-link" href="<?php bloginfo('url'); ?>/search/">Search</a>
-                        <?php /*<input type="text" placeholder="Search..." value="SEARCH" /> */ ?>
-                        <?php get_search_form( true );  ?>
-                    </li> 
-                </ul>
-
-
-                <div class="clearfix"></div>
-
-            </div>
-
-        </div><!-- class="nav-bar" -->
-        
-        </nav>
-
-    </div> <!-- #masthead -->
-    </div><!-- #main-header -->
-
-    
-    </div> <!-- #wrapper -->
-    </div> <!-- #page -->
-       
-        <!--
-		<div id="page" class="page-container-fixed-inside">
-
-		<div class="header-sca-2014">
-            <a href="http://badgerherald.com"><div class="student-herald-logo">
-               
-            </div></a>
-		</div>
-
-		</div> <!-- #page -->
-
 		<div id="page" class="march-madness-content" ng-app="marchMadness">
 		<div id="wrapper">
 		<div id="primary">
@@ -159,7 +103,7 @@ include('macros.php');
 			</article><!-- #post -->
 		</div><!-- #content -->
 
-         
+
 
 <div class="clearfix"></div>
         </div> <!-- #main -->
@@ -260,18 +204,8 @@ include('macros.php');
     </script>
 
 
-    <script type="text/javascript">
+<?php get_footer("just-foot");
 
-        var _gaq = _gaq || [];
-        _gaq.push(['_setAccount', 'UA-2337436-1']);
-        _gaq.push(['_trackPageview']);
+} // endif
 
-        (function() {
-        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-        })();
-
-    </script>
-</body>
-</html>
+?>

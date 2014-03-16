@@ -362,19 +362,19 @@ angular.module('marchMadness', ['ngRoute'])
 	$routeProvider
 		.when('/', {
 			controller: 'StartCtrl',
-			templateUrl: '/bhrld/wordpress/wp-content/themes/exa/march_madness_app/index.html'
+			templateUrl: '/wp-content/themes/exa/march_madness_app/index.html'
 		})
 		.when('/teams', {
 			controller: 'TeamsCtrl',
-			templateUrl: '/bhrld/wordpress/wp-content/themes/exa/march_madness_app/teams.html'
+			templateUrl: '/wp-content/themes/exa/march_madness_app/teams.html'
 		})
 		.when('/email', {
 			controller: 'EmailCtrl',
-			templateUrl: '/bhrld/wordpress/wp-content/themes/exa/march_madness_app/email.html'
+			templateUrl: '/wp-content/themes/exa/march_madness_app/email.html'
 		})
 		.when('/social', {
 			controller: 'SocialCtrl',
-			templateUrl: '/bhrld/wordpress/wp-content/themes/exa/march_madness_app/social.html'
+			templateUrl: '/wp-content/themes/exa/march_madness_app/social.html'
 		})
 		.otherwise({
 			redirectTo: '/'
@@ -537,6 +537,20 @@ angular.module('marchMadness', ['ngRoute'])
 		if(event){
 			event.preventDefault();
 		}
+
+		$http({
+			url: "http://localhost/march-madness/",
+			method: "POST",
+			data: {"userChoices": userChoices}
+		}).success(function(data, status, headers, config) {
+			console.log("Success!");
+			console.log(data);
+			console.log(status);
+		}).error(function(data, status, headers, config) {
+			console.error("WAT!");
+			console.log(data);
+			console.log(status);
+		});
 		$scope.validSocial = true;
 	}
 })
@@ -563,22 +577,21 @@ angular.module('marchMadness', ['ngRoute'])
 
 /*global angular */
 (function (ng) {
-  'use strict';
+	'use strict';
 
-  var app = ng.module('ngLoadScript', []);
+	var app = ng.module('ngLoadScript', []);
 
-  app.directive('script', function() {
-    return {
-      restrict: 'E',
-      scope: false,
-      link: function(scope, elem, attr) {
-        if (attr.type === 'text/javascript-lazy') {
-          var code = elem.text();
-          var f = new Function(code);
-          f();
-        }
-      }
-    };
-  });
+	app.directive('script', function() {
+		return {
+			restrict: 'E',
+			scope: false,
+			link: function(scope, elem, attr) {
+				if (attr.type === 'text/javascript-lazy') {
+					var f = new Function(code);
+					f();
+				}
+			}
+		};
+	});
 
 }(angular));
