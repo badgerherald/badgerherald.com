@@ -12,7 +12,7 @@ angular.module('marchMadness', ['ngRoute'])
 						disableFlag: false
 					},
 					{
-						name: 'Louisville',
+						name: 'Louisville very long name that is wayyy too long',
 						seed: 3,
 						disableFlag: false
 					},

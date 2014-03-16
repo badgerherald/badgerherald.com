@@ -170,8 +170,18 @@ include('macros.php');
 
      <div class="triangle-down-container"><div class="triangle-down"></div></div>
     </div>
-    <div class="sponsor-logos"></div>>
-        </div><!-- #primary -->
+    <div class="sponsor-logos">
+        <h3>Sponsors</h3>
+        <ul class="sponsor-logos">
+            <li class="madness-sponsor-ians"><a href="#"><span>Ian's Pizza</span></a></li>
+            <li class="madness-sponsor-anytime"><a href="#"><span>Anytime Fitness</span></a></li>
+            <li class="madness-sponsor-fontana"><a href="#"><span>Fontana Sports</span></a></li>
+            <li class="madness-sponsor-cyc"><a href="#"><span>CYC Fitness</span></a></li>
+            <li class="madness-sponsor-sett"><a href="#"><span>The Sett</span></a></li>
+            <li class="madness-sponsor-toppers"><a href="#"><span>Toppers Pizza</span></a></li>
+        </ul>
+    </div>
+    </div><!-- #primary -->
 
 
 

@@ -1,7 +1,7 @@
 <form name="march_madness_2014" action="" method="post">
 <button ng-click="toTeams($event)" class="view-link no-btn"><span class="arrow">&larr;</span> Back</button>
 <div class="user-choices clearfix">
-<h1 class="mm-title">Your Picks</h1>
+<h1>Your Picks</h1>
 <ul class="team-choice-list">
 <li ng-repeat="team in userChoices.mainTeams" class="team-choice">
 	<button class="no-btn choice-button" ng-click="addFinals($index)" ng-disabled="mainTeamsDisabled[$index]"><label><span>{{ team.name }}</span> <span class="seed">{{ team.seed }}</span><p class="close clearfix">+</p></label></button>

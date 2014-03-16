@@ -53,6 +53,7 @@
 		}
 	}
 	.view-link{
+		padding-top: 12px;
 		color: $hrld-blue;
 		font-family: $headline;
 		text-transform: uppercase;
@@ -86,7 +87,7 @@
 	}
 	.mm-title{
 		text-transform: uppercase;
-		padding: 6px 10px;
+		padding: 18px 20px 12px 20px;
 		margin: 0 auto;
 		color: $hrld-light-grey;
 		background: $hrld-blue;
@@ -134,7 +135,7 @@
 		}
 	}
 	.rules{
-		margin-bottom: 24px;
+		margin-bottom: 48px;
 	}
 	.main-prize-row{
 		list-style-type: none;
@@ -194,7 +195,7 @@
 			font-family: $headline;
 			border-radius: 32px;
 		}
-		p{
+		p {
 			color: $hrld-dark-grey;
 			font-family: $body;
 			font-size: 14px;
@@ -283,14 +284,19 @@
 	}
 	li.team-choice{
 		padding: 3px 0;
-		border: 2px solid $hrld-dark-grey;
-		border-radius: 5px;
+		border: 1px solid $hrld-dark-grey;
+		border-radius: 0px;
 		margin-bottom: 6px;
 		text-align: left;
+			white-space: nowrap;
+			overflow: hidden;
 		.choice-button{
 			width: 100%;
+			height: 50px;
+			overflow: hidden;
 			color: $hrld-light-grey;
 			text-align: left;
+
 			label:hover{
 				cursor: pointer;
 			}
@@ -425,16 +431,74 @@
 			}
 		}
 	}
-	.sponsor-logos{
-		background: red;
-		padding-top: 50px;
+	.sponsor-logos {
+		margin-top: 20px;
+		background: #fff;
+		padding-top: 70px;
 		max-width: 740px;
 		margin: 0 auto;
-		height: 400px;
+		color: #000;
+		ul {
+			list-style: none;
+			text-align: center;
+			margin: 0;
+			margin-left: 20px;
+			padding: 0;
+			width: 320px;
+			height: 35px;
+			li {
+				text-align: center;
+				a span {
+					display: none;
+				}
+				height: 84px;
+				width: 50px;
+				display: block;
+				float: left;
+				a {
+					background-size: 100% auto;
+					background-position: center top;
+					display: block;
+					width: 100%;
+					height: 35px;
+					&:hover {
+						background-position: center bottom;
+					}
+				}
+				&.madness-sponsor-ians {
+					width: flex(84,720);
+					a { background-image: url('img/march-madness/sponsors/ians.png'); }
+				} &.madness-sponsor-anytime {
+					width: flex(169,720);
+					a { background-image: url('img/march-madness/sponsors/anytime.png'); }
+				} &.madness-sponsor-fontana {
+					width: flex(137,720);
+					a { background-image: url('img/march-madness/sponsors/fontana.png'); }
+				} &.madness-sponsor-cyc {
+					width: flex(98,720);
+					a { background-image: url('img/march-madness/sponsors/cyc.png'); }
+				} &.madness-sponsor-sett {
+					width: flex(116,720);
+					a { background-image: url('img/march-madness/sponsors/sett.png'); }					
+				} &.madness-sponsor-toppers {
+					width: flex(116,720);
+					a { background-image: url('img/march-madness/sponsors/toppers.png'); }						
+				}
+			}
+		}
 	}
 }
 
 @media(min-width: 560px){
+
+	.team-span-container {
+		display: block;
+		width: 155px;
+		overflow: hidden;
+		float: left;
+		margin-right:5px !important;
+		white-space: nowrap;
+	}
 	.march-madness-content{
 		.team-region{
 			float: left;
@@ -448,6 +512,9 @@
 			float: left;
 			width: 223px;
 			margin-left: 20px;
+			display: block;
+			overflow: hidden;
+			white-space: nowrap !important;
 			&:nth-child(odd){
 				margin-left: 0;
 			}
@@ -464,9 +531,19 @@
 				color: $hrld-black-dark-grey;
 			}
 		}
-	}
+	} 
 }
 @media(min-width: 760px){
+
+	.team-span-container {
+		display: block;
+		width: 90px;
+		overflow: hidden;
+		float: left;
+		margin-right:5px !important;
+	}
+
+
 	.march-madness-content{
 		#primary #content{
 			padding: 12px 20px;
@@ -532,6 +609,18 @@
 			width: 227px;
 			.team-choice{
 				width: 223px;
+			}
+		}
+	}
+	.sponsor-logos {
+		ul {
+			width: 700px !important;
+			height: 84px !important;
+			li {
+				height: 84px;
+				a {
+					height: 84px !important;
+				}
 			}
 		}
 	}
