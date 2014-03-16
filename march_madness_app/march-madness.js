@@ -4,170 +4,85 @@ angular.module('marchMadness', ['ngRoute'])
 	{
 		regions: [
 			{
-				location: 'Midwest',
+				location: 'South',
 				teams: [
 					{
-						name: 'Indiana',
+						name: 'Flordia',
 						seed: 1,
 						disableFlag: false
 					},
 					{
-						name: 'TBD',
+						name: 'Albany/MSM',
 						seed: 16,
 						disableFlag: false
 					},
 					{
-						name: 'Belmont',
+						name: 'Colorodo',
 						seed: 8,
 						disableFlag: false
 					},
 					{
-						name: 'Wichita St.',
+						name: 'Pittsburgh',
 						seed: 9,
 						disableFlag: false
 					},
 					{
-						name: 'Marquette',
+						name: 'VCU',
 						seed: 5,
 						disableFlag: false
 					},
 					{
-						name: 'Louisiana Tech',
+						name: 'Steph. F. Austin',
 						seed: 12,
 						disableFlag: false
 					},
 					{
-						name: 'Kansas St.',
+						name: 'UCLA',
 						seed: 4,
 						disableFlag: false
 					},
 					{
-						name: 'Bucknell',
+						name: 'Tulsa',
 						seed: 13,
 						disableFlag: false
 					},
 					{
-						name: 'Ohio St.',
+						name: 'Ohio State',
 						seed: 6,
 						disableFlag: false
 					},
 					{
-						name: 'Memphis',
+						name: 'Dayton',
 						seed: 11,
 						disableFlag: false
 					},
 					{
-						name: 'Louisville',
+						name: 'Syracuse',
 						seed: 3,
 						disableFlag: false
 					},
 					{
-						name: 'Detriot',
+						name: 'Western Mich.',
 						seed: 14,
 						disableFlag: false
 					},
 					{
-						name: 'North Carolina St.',
+						name: 'New Mexico',
 						seed: 7,
 						disableFlag: false
 					},
 					{
-						name: 'UCLA',
+						name: 'Stanford',
 						seed: 10,
 						disableFlag: false
 					},
 					{
-						name: 'Flordia',
+						name: 'Kansas',
 						seed: 2,
 						disableFlag: false
 					},
 					{
-						name: 'Northwestern St.',
-						seed: 15,
-						disableFlag: false
-					}
-				]
-			},
-			{
-				location: 'South',
-				teams: [
-					{
-						name: 'Kansas',
-						seed: 1,
-						disableFlag: false
-					},
-					{
-						name: 'WKU',
-						seed: 15,
-						disableFlag: false
-					},
-					{
-						name: 'Kansas',
-						seed: 1,
-						disableFlag: false
-					},
-					{
-						name: 'WKU',
-						seed: 15,
-						disableFlag: false
-					},
-					{
-						name: 'Kansas',
-						seed: 1,
-						disableFlag: false
-					},
-					{
-						name: 'WKU',
-						seed: 15,
-						disableFlag: false
-					},
-					{
-						name: 'Kansas',
-						seed: 1,
-						disableFlag: false
-					},
-					{
-						name: 'WKU',
-						seed: 15,
-						disableFlag: false
-					},
-					{
-						name: 'Kansas',
-						seed: 1,
-						disableFlag: false
-					},
-					{
-						name: 'WKU',
-						seed: 15,
-						disableFlag: false
-					},
-					{
-						name: 'Kansas',
-						seed: 1,
-						disableFlag: false
-					},
-					{
-						name: 'WKU',
-						seed: 15,
-						disableFlag: false
-					},
-					{
-						name: 'Kansas',
-						seed: 1,
-						disableFlag: false
-					},
-					{
-						name: 'WKU',
-						seed: 15,
-						disableFlag: false
-					},
-					{
-						name: 'Kansas',
-						seed: 1,
-						disableFlag: false
-					},
-					{
-						name: 'WKU',
+						name: 'Eastern Kentucky',
 						seed: 15,
 						disableFlag: false
 					}
@@ -177,83 +92,83 @@ angular.module('marchMadness', ['ngRoute'])
 				location: 'West',
 				teams: [
 					{
-						name: 'Gonzaga',
-						seed: 14,
-						disableFlag: false
-					},
-					{
 						name: 'Arizona',
-						seed: 2,
+						seed: 1,
 						disableFlag: false
 					},
 					{
-						name: 'Gonzaga',
-						seed: 14,
-						disableFlag: false
-					},
-					{
-						name: 'Arizona',
-						seed: 2,
+						name: 'Weber State',
+						seed: 16,
 						disableFlag: false
 					},
 					{
 						name: 'Gonzaga',
+						seed: 8,
+						disableFlag: false
+					},
+					{
+						name: 'Oklahoma State',
+						seed: 9,
+						disableFlag: false
+					},
+					{
+						name: 'Oklahoma',
+						seed: 5,
+						disableFlag: false
+					},
+					{
+						name: 'North Dakota St.',
+						seed: 12,
+						disableFlag: false
+					},
+					{
+						name: 'San Diego State',
+						seed: 4,
+						disableFlag: false
+					},
+					{
+						name: 'New Mexico St.',
+						seed: 13,
+						disableFlag: false
+					},
+					{
+						name: 'Baylor',
+						seed: 6,
+						disableFlag: false
+					},
+					{
+						name: 'Nebraska',
+						seed: 11,
+						disableFlag: false
+					},
+					{
+						name: 'Creighton',
+						seed: 3,
+						disableFlag: false
+					},
+					{
+						name: 'La.-Lafayette',
 						seed: 14,
 						disableFlag: false
 					},
 					{
-						name: 'Arizona',
+						name: 'Oregon',
+						seed: 7,
+						disableFlag: false
+					},
+					{
+						name: 'BYU',
+						seed: 10,
+						disableFlag: false
+					},
+					{
+						name: 'Wisconsin',
 						seed: 2,
 						disableFlag: false
 					},
 					{
-						name: 'Gonzaga',
-						seed: 14,
-						disableFlag: false
-					},
-					{
-						name: 'Arizona',
-						seed: 2,
-						disableFlag: false
-					},
-					{
-						name: 'Gonzaga',
-						seed: 14,
-						disableFlag: false
-					},
-					{
-						name: 'Arizona',
-						seed: 2,
-						disableFlag: false
-					},
-					{
-						name: 'Gonzaga',
-						seed: 14,
-						disableFlag: false
-					},
-					{
-						name: 'Arizona',
-						seed: 2,
-						disableFlag: false
-					},
-					{
-						name: 'Gonzaga',
-						seed: 14,
-						disableFlag: false
-					},
-					{
-						name: 'Arizona',
-						seed: 2,
-						disableFlag: false
-					},
-					{
-						name: 'Gonzaga',
-						seed: 14,
-						disableFlag: false
-					},
-					{
-						name: 'Arizona',
-						seed: 2,
+						name: 'American',
+						seed: 15,
 						disableFlag: false
 					}
 				]
@@ -262,83 +177,168 @@ angular.module('marchMadness', ['ngRoute'])
 				location: 'East',
 				teams: [
 					{
-						name: 'Indiana',
-						seed: 4,
+						name: 'Virginia',
+						seed: 1,
 						disableFlag: false
 					},
 					{
-						name: 'James Madison',
+						name: 'Coastal Caro.',
+						seed: 16,
+						disableFlag: false
+					},
+					{
+						name: 'Memphis',
+						seed: 8,
+						disableFlag: false
+					},
+					{
+						name: 'Geo. Washington',
+						seed: 9,
+						disableFlag: false
+					},
+					{
+						name: 'Cincinnati',
+						seed: 5,
+						disableFlag: false
+					},
+					{
+						name: 'Harvard',
 						seed: 12,
 						disableFlag: false
 					},
 					{
-						name: 'Indiana',
+						name: 'Michigan State',
 						seed: 4,
 						disableFlag: false
 					},
 					{
-						name: 'James Madison',
+						name: 'Delaware',
+						seed: 13,
+						disableFlag: false
+					},
+					{
+						name: 'North Carolina',
+						seed: 6,
+						disableFlag: false
+					},
+					{
+						name: 'Providence',
+						seed: 11,
+						disableFlag: false
+					},
+					{
+						name: 'Iowa State',
+						seed: 3,
+						disableFlag: false
+					},
+					{
+						name: 'N.C. Central',
+						seed: 14,
+						disableFlag: false
+					},
+					{
+						name: 'Connecticut',
+						seed: 7,
+						disableFlag: false
+					},
+					{
+						name: 'Saint Joseph\'s',
+						seed: 10,
+						disableFlag: false
+					},
+					{
+						name: 'Villanova',
+						seed: 2,
+						disableFlag: false
+					},
+					{
+						name: 'Milwaukee',
+						seed: 15,
+						disableFlag: false
+					}
+				]
+			},
+			{
+				location: 'Midwest',
+				teams: [
+					{
+						name: 'Wichita State',
+						seed: 1,
+						disableFlag: false
+					},
+					{
+						name: 'CP/TSU',
+						seed: 16,
+						disableFlag: false
+					},
+					{
+						name: 'Kentucky',
+						seed: 8,
+						disableFlag: false
+					},
+					{
+						name: 'Kansas State',
+						seed: 9,
+						disableFlag: false
+					},
+					{
+						name: 'Saint Louis',
+						seed: 5,
+						disableFlag: false
+					},
+					{
+						name: 'NCST/XA',
 						seed: 12,
 						disableFlag: false
 					},
 					{
-						name: 'Indiana',
+						name: 'Louisville',
 						seed: 4,
 						disableFlag: false
 					},
 					{
-						name: 'James Madison',
-						seed: 12,
+						name: 'Manhattan',
+						seed: 13,
 						disableFlag: false
 					},
 					{
-						name: 'Indiana',
-						seed: 4,
+						name: 'Massachusetts',
+						seed: 6,
 						disableFlag: false
 					},
 					{
-						name: 'James Madison',
-						seed: 12,
+						name: 'IOW/TEN',
+						seed: 11,
 						disableFlag: false
 					},
 					{
-						name: 'Indiana',
-						seed: 4,
+						name: 'Duke',
+						seed: 3,
 						disableFlag: false
 					},
 					{
-						name: 'James Madison',
-						seed: 12,
+						name: 'Mercer',
+						seed: 14,
 						disableFlag: false
 					},
 					{
-						name: 'Indiana',
-						seed: 4,
+						name: 'Texas',
+						seed: 7,
 						disableFlag: false
 					},
 					{
-						name: 'James Madison',
-						seed: 12,
+						name: 'Arizona State',
+						seed: 10,
 						disableFlag: false
 					},
 					{
-						name: 'Indiana',
-						seed: 4,
+						name: 'Michigan',
+						seed: 2,
 						disableFlag: false
 					},
 					{
-						name: 'James Madison',
-						seed: 12,
-						disableFlag: false
-					},
-					{
-						name: 'Indiana',
-						seed: 4,
-						disableFlag: false
-					},
-					{
-						name: 'James Madison',
-						seed: 12,
+						name: 'Wofford',
+						seed: 15,
 						disableFlag: false
 					}
 				]
@@ -374,10 +374,10 @@ angular.module('marchMadness', ['ngRoute'])
 		})
 		.when('/social', {
 			controller: 'SocialCtrl',
-			templateUrl: '/wordpress/wp-content/themes/exa/march_madness_app/social.html'
+			templateUrl: '/bhrld/wordpress/wp-content/themes/exa/march_madness_app/social.html'
 		})
 		.otherwise({
-			redirectTo: '/wordpress/'
+			redirectTo: '/bhrld/wordpress/'
 		});
 })
 
