@@ -7,7 +7,7 @@ angular.module('marchMadness', ['ngRoute'])
 				location: 'South',
 				teams: [
 					{
-						name: 'Flordia',
+						name: 'Florida',
 						seed: 1,
 						disableFlag: false
 					},
