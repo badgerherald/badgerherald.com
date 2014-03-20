@@ -1,8 +1,9 @@
 <?php
 
 function open_db($dbstr, $username, $password, $options) {
-	$dbh = new PDO($dbstr, $username, $password);
-	$dbh->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );
+	/* closing 
+    $dbh = new PDO($dbstr, $username, $password);
+	$dbh->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION ); */
 	return $dbh;
 }
 
