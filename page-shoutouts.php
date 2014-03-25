@@ -116,7 +116,7 @@ get_header();
 		}
 		else {
 			$count=1;
-			$pos = rand(1,2)*8;
+			$pos = rand(1,2)*6;
 			foreach($shoutouts->getArray() as $shoutout) {
 	 ?>
 				
@@ -130,6 +130,24 @@ get_header();
 					<p><?php echo $shoutout->getText(); ?></p>
 					<!--<fb:like href="http://"<?php echo (SITE_ROOT . SHOUTOUT_ROOT); ?>/so/<?php echo $soid; ?>" send="false" layout="button_count" width="100" show_faces="true"></fb:like> -->
 				</div><!-- shoutout container -->
+
+
+			<?php if($count == $pos) : ?>
+		<hr/>
+
+				<!-- THIS IS WHERE EACH SHOUTOUT LIVES -->
+
+				<div class="shoutout-container" id="<?php echo $shoutout->getNum() ?>">
+					<p class="shout-out-title" >
+						<?php echo "<a class='shoutout-number-link' href='#'>"; ?>Sponsored</a>
+					</p>
+					<p>SO to linking management and leadership at the All Campus Organization Assembly on Tuesday, April 1st from 6-7:45pm! Make sure to tell your friends and RSVP to the event on WIN: <a href="http://bit.ly/1inWw6r">http://bit.ly/1inWw6r</a></p>
+				</div><!-- shoutout container -->
+
+
+			<?php endif; ?>
+
+
 	<hr/>
 
 				<?php
