@@ -1,0 +1,40 @@
+
+
+<div class="team-filter divider">
+	<h3 class="float-left">Pick 16 Teams</h3>
+	<label for="team-filter-input">Filter by team name: </label>
+	<input id="team-filter-input" type="text" ng-model="filterTeam" placeholder="Search...">
+	<p class="example" style="color:#fff">Pick the (sweet) 16 teams you think will win their first round and make it the furthest in the tournament. Review your picks at the bottom of the page.</p>
+</div>
+
+<div class="regions-container clearfix">
+
+	<div class="team-region" ng-repeat="region in allTeams.regions">
+		<h2>{{ region.location }}</h2>
+		<ul class="team-list">
+			<li ng-repeat="team in region.teams" ng-show="!filterTeam || ([team.name]|filter:filterTeam).length">
+				<button class="team-option" ng-click="addChoice(team.name, $parent.$index, $index, team.seed)" ng-disabled="team.disableFlag">
+					<span class="seed">{{ team.seed }}</span>
+					<span class="team-span-container">{{ team.name }}</span>
+					<p class="close">+</p>
+				</button>
+			</li>
+</ul>
+</div>
+</div>
+
+<div class="user-choices clearfix">
+
+<h3>Your Picks</h3>
+
+	<ul class="team-choice-list clearfix">
+		<li ng-repeat="team in userChoices.mainTeams" class="team-choice">
+			<span class="seed">{{ team.seed }}</span>
+			<span class="team-span-container">{{ team.name }}</span>
+			<button class="close clearfix" ng-click="removeChoice($index)">&times;</button>
+		</li>
+	</ul>
+
+	<button ng-disabled="!choiceListFull" ng-click="nextPage($event)" class="mm-button view-link view-link-right no-btn">Next</button>
+
+</div>
