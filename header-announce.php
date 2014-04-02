@@ -22,6 +22,11 @@ include('macros.php');
 <head>
 	<meta charset="<?php bloginfo( 'charset' ); ?>" />
 	<meta name="viewport" content="width=device-width" />
+
+    <?php /* Chartbeat Part 1 */ ?>
+	<script type="text/javascript">var _sf_startpt=(new Date()).getTime()</script>
+
+
 	<title><?php bloginfo('name'); ?> · <?php is_home() ? bloginfo('description') : wp_title(''); ?></title>
 	<link rel="profile" href="http://gmpg.org/xfn/11" />
 	<link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>" />
