@@ -113,6 +113,7 @@
 
 	<script type="text/javascript">
 		var _sf_async_config={uid:45170,domain:"badgerherald.com",useCanonical:true};
+		var _sf_async_config.title = "<?php echo is_home() ? 'Homepage' : wp_title(''); ?>";
 		(function(){
 		  function loadChartbeat() {
 		    window._sf_endpt=(new Date()).getTime();
