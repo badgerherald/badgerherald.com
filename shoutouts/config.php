@@ -32,10 +32,6 @@ $config = array(
 $dbh = mysql_connect(SO_DB_SERVER.':'.SO_DB_PORT,SO_DB_USERNAME,SO_DB_PASSWORD); 
 
 if(!$dbh) {
-	echo SO_DB_USERNAME;
-	echo SO_DB_PASSWORD;
-	echo SO_DB_SERVER;
-	echo SO_DB_PORT;
 	echo "<h3>Unable to connect to database. Please check details in configuration file.</h3>"; 
 	exit(); 
 }
