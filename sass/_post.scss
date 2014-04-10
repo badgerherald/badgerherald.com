@@ -234,7 +234,18 @@ ul.edboard-members {
 	list-style: none;
 	li {
 		padding-bottom: 12px;
-		float:left;
+		font-family: $headline;
+		a {
+			color: $hrld-black;
+			&:hover {
+				color: $hrld-blue;
+			}
+		}
+		img {
+			max-width: 40px;
+			padding-right: 10px;
+			height: auto;
+		}
 	}
 }
 

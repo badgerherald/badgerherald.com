@@ -112,6 +112,8 @@
 
 			<?php the_content(); ?>
 
+
+			<?php /* Simple widget to show Editorial Board members */ ?>
 			<?php if( get_the_author() == "Badger Herald Editorial Board" ) : ?>
 				
 				<h4 class="article-signature edboard-signature"> &mdash; The Badger Herald Editorial Board </h4>
@@ -119,6 +121,8 @@
 
 			<?php endif; ?>
 
+
+			<?php /* Simple LTE disclaimer */ ?>
 			<?php if( get_the_author() == "Letter to the Editor" ) : ?>
 				<p class="letter-to-editor-disclaimer"><em><strong>Letters to the editor</strong> are published on the discretion of the opinion desk and editor. They may not reflect the views of the Herald. Email your own letters to the editor to oped@badgerherald.com</em></p>
 			<?php endif; ?>
