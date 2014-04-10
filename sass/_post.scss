@@ -224,6 +224,31 @@ h1.entry-title {
 
 } 
 
+h4.article-signature {
+	/* no styling */
+}
+
+ul.edboard-members {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+	li {
+		padding-bottom: 12px;
+		font-family: $headline;
+		a {
+			color: $hrld-black;
+			&:hover {
+				color: $hrld-blue;
+			}
+		}
+		img {
+			max-width: 40px;
+			padding-right: 10px;
+			height: auto;
+		}
+	}
+}
+
 @media (min-width: 1060px) {
 	.post-sidebar.author-sidebar{
 		width: 300px;
