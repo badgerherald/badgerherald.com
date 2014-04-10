@@ -141,7 +141,7 @@ get_header();
 					<p class="shout-out-title" >
 						<?php echo "<a class='shoutout-number-link' href='#'>"; ?>Sponsored</a>
 					</p>
-					<p>SO to linking management and leadership at the All Campus Organization Assembly on Tuesday, April 1st from 6-7:45pm! Make sure to tell your friends and RSVP to the event on WIN: <a href="http://bit.ly/1inWw6r">http://bit.ly/1inWw6r</a></p>
+					<p>Interested in Sports Media? Join @prssauwmadison to hear from #PR professionals #TouchBaseTouchdown! Register here <a href="http://bit.ly/1hon9ln">http://bit.ly/1hon9ln</a></p>
 				</div><!-- shoutout container -->
 
 
