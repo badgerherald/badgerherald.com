@@ -93,9 +93,11 @@
 
 	</script>
 
-	<?php /* Google Analytics */ ?>
+	<?php /* Tracking code */ ?>
 
 	<script type="text/javascript">
+
+		<?php /* Google Analytics */ ?>
 
 		var _gaq = _gaq || [];
 		_gaq.push(['_setAccount', 'UA-2337436-1']);
@@ -107,13 +109,10 @@
 		var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
 		})();
 
-	</script>
+		<?php /* Chartbeat Part 2 (first part in header) */ ?>
 
-	<?php /* Chartbeat Part 2 */ ?>
-
-	<script type="text/javascript">
-		var _sf_async_config={uid:45170,domain:"badgerherald.com",useCanonical:true};
-		var _sf_async_config.title = "<?php echo is_home() ? 'Homepage' : wp_title(''); ?>";
+		var _sf_async_config={uid:45170,domain:"badgerherald.com",useCanonical:true,title:};
+		    _sf_async_config.title = "<?php echo is_home() ? 'Homepage' : wp_title(''); ?>";
 		(function(){
 		  function loadChartbeat() {
 		    window._sf_endpt=(new Date()).getTime();
@@ -127,6 +126,7 @@
 		  window.onload = (typeof window.onload != 'function') ?
 		     loadChartbeat : function() { oldonload(); loadChartbeat(); };
 		})();
+
 	</script>
 
 
