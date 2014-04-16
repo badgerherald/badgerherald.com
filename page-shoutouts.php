@@ -54,9 +54,9 @@ if ($_POST) {
 		$error['success'] = false;
 		$error['message'] = "<b>There was an error.</b>";		
 	}
-	else if( ((($date->getTimestamp())*3) + 3000) - $_SERVER['nonce'] > 60 ) {
+	else if( ((($date->getTimestamp())*3) + 3000) - $_SERVER['so_nonce'] > 60 ) {
 		$error['success'] = false;
-		$error['message'] = "<b>There was an error: </b>" . (((($date->getTimestamp())*3) + 3000) - $_SERVER['nonce']) ;
+		$error['message'] = "<b>There was an error: </b>" . (((($date->getTimestamp())*3) + 3000) - $_SERVER['so_nonce']) ;
 	}
 	else {
 		if(mysql_query("INSERT INTO shoutouts_new (setid,text,date,ip,approved,sonum) VALUES ('$setid','$sotext',NOW(),'".$_SERVER['REMOTE_ADDR']."',0,'NULL')"))
@@ -236,7 +236,7 @@ get_header();
 	<form id="shoutout-form" method="POST">
 
 		<textarea class="so-text" name="shoutout_text" wrap="virtual" placeholder="SO/ASO to..."><?php echo strip_tags($sotext); ?></textarea>
-		<input type="hidden" style="display:none" value="<?php $date = new DateTime(); echo ((($date->getTimestamp())*3) + 3000); ?>" name="nonce" />
+		<input type="hidden" style="display:none" value="<?php $date = new DateTime(); echo ((($date->getTimestamp())*3) + 3000); ?>" name="so_nonce" />
 		<input class="so-button submit-so-button" name="" type="submit" value="Shout it out"/>
 
 
