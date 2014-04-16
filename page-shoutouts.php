@@ -53,11 +53,11 @@ if ($_POST) {
 	else if(strpos($sotext, 'SO') === false) {
 		$error['success'] = false;
 		$error['message'] = "<b>There was an error.</b>";		
-	}
-	else if( ((($date->getTimestamp())*3) + 3000) - $_SERVER['so_nonce'] > 60 ) {
+	} 
+	else if( (((($date->getTimestamp())*3) + 3000) - (int)$_POST['so_nonce']) > 60 ) {
 		$error['success'] = false;
-		$error['message'] = "<b>There was an error: </b>" . (((($date->getTimestamp())*3) + 3000) - $_SERVER['so_nonce']) ;
-	}
+		$error['message'] = "<b>There was an error: </b>" . (((($date->getTimestamp())*3) + 3000) - (int)$_SERVER['so_nonce']) ;
+	} 
 	else {
 		if(mysql_query("INSERT INTO shoutouts_new (setid,text,date,ip,approved,sonum) VALUES ('$setid','$sotext',NOW(),'".$_SERVER['REMOTE_ADDR']."',0,'NULL')"))
 			$error['success'] = true;
