@@ -56,9 +56,13 @@ if ($_POST) {
 		$error['success'] = false;
 		$error['message'] = "<b>HTML tags are not allowed</b>";
 	}
+	else if(strpos($text, 'SO') === false) {
+		$error['success'] = false;
+		$error['message'] = "<b>There was an error.</b>";		
+	}
 	else if( ((($date->getTimestamp())*3) + 3000) - $_SERVER['nonce'] > 60 ) {
 		$error['success'] = false;
-		$error['message'] = "<b>There was an error</b>";
+		$error['message'] = "<b>There was an error.</b>";
 	}
 	else {
 		if(mysql_query("INSERT INTO shoutouts_new (setid,text,date,ip,approved,sonum) VALUES ('$setid','$text',NOW(),'".$_SERVER['REMOTE_ADDR']."',0,'NULL')"))
