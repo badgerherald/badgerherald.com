@@ -132,7 +132,7 @@ get_header();
 				</div><!-- shoutout container -->
 
 
-			<?php if($count == $pos) : ?>
+			<?php if(false && $count == $pos) : ?>
 		<hr/>
 
 				<!-- THIS IS WHERE EACH SHOUTOUT LIVES -->
