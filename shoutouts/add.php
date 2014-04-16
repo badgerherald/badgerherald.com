@@ -47,7 +47,7 @@ if ($_POST) {
 
 	/* Next, grab the text from the post */
 	$text = mysql_real_escape_string($_POST['shoutout_text']);
-	
+	$date = new DateTime(); 
 	if(in_array($_SERVER['REMOTE_ADDR'],$blacklist)) {
 		$error['success'] = false;
 		$error['message'] = "<b>There was an error</b>";
@@ -56,7 +56,7 @@ if ($_POST) {
 		$error['success'] = false;
 		$error['message'] = "<b>HTML tags are not allowed</b>";
 	}
-	else if( ((DateTime::getTimestamp(void)*3) + 3000) - $_SERVER['nonce'] > 60 ) {
+	else if( ((($date->getTimestamp())*3) + 3000) - $_SERVER['nonce'] > 60 ) {
 		$error['success'] = false;
 		$error['message'] = "<b>There was an error</b>";
 	}
