@@ -56,7 +56,7 @@ if ($_POST) {
 	}
 	else if( ((($date->getTimestamp())*3) + 3000) - $_SERVER['nonce'] > 60 ) {
 		$error['success'] = false;
-		$error['message'] = "<b>There was an error.</b>";
+		$error['message'] = "<b>There was an error: </b>" . (((($date->getTimestamp())*3) + 3000) - $_SERVER['nonce']) ;
 	}
 	else {
 		if(mysql_query("INSERT INTO shoutouts_new (setid,text,date,ip,approved,sonum) VALUES ('$setid','$sotext',NOW(),'".$_SERVER['REMOTE_ADDR']."',0,'NULL')"))
