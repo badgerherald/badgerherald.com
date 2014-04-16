@@ -41,7 +41,7 @@ if ($_POST) {
 
 	/* Next, grab the text from the post */
 	$sotext = mysql_real_escape_string($_POST['shoutout_text']);
-	
+	$date = new DateTime(); 	
 	if($_SERVER['REMOTE_ADDR']=="89.248.165.134"||$_SERVER['REMOTE_ADDR']=="89.248.165.143"||$_SERVER['REMOTE_ADDR']=="218.86.50.114") {
 		$error['success'] = false;
 		$error['message'] = "There was an error";
@@ -49,6 +49,14 @@ if ($_POST) {
 	else if(strlen($sotext) != strlen(strip_tags($sotext))) {
 		$error['success'] = false;
 		$error['message'] = "HTML tags are not allowed";
+	}
+	else if(strpos($sotext, 'SO') === false) {
+		$error['success'] = false;
+		$error['message'] = "<b>There was an error.</b>";		
+	}
+	else if( ((($date->getTimestamp())*3) + 3000) - $_SERVER['nonce'] > 60 ) {
+		$error['success'] = false;
+		$error['message'] = "<b>There was an error.</b>";
 	}
 	else {
 		if(mysql_query("INSERT INTO shoutouts_new (setid,text,date,ip,approved,sonum) VALUES ('$setid','$sotext',NOW(),'".$_SERVER['REMOTE_ADDR']."',0,'NULL')"))
