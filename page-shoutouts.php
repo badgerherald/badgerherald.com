@@ -228,7 +228,7 @@ get_header();
 	<form id="shoutout-form" method="POST">
 
 		<textarea class="so-text" name="shoutout_text" wrap="virtual" placeholder="SO/ASO to..."><?php echo strip_tags($sotext); ?></textarea>
-		<input type="hidden" style="display:none" value="<?php echo ((DateTime::getTimestamp(void)*3) + 3000); ?>" name="nonce" />
+		<input type="hidden" style="display:none" value="<?php echo (((DateTime::getTimestamp(void))*3) + 3000); ?>" name="nonce" />
 		<input class="so-button submit-so-button" name="" type="submit" value="Shout it out"/>
 
 
