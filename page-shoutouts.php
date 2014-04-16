@@ -50,6 +50,10 @@ if ($_POST) {
 		$error['success'] = false;
 		$error['message'] = "HTML tags are not allowed";
 	}
+	else if(strlen($sotext) > 300 ) {
+		$error['success'] = false;
+		$error['message'] = "Your shoutout is too long";
+	}
 	else if(strpos($sotext, 'SO') === false) {
 		$error['success'] = false;
 		$error['message'] = "<b>There was an error.</b>";		
