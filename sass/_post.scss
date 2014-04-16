@@ -123,8 +123,11 @@ h1.entry-title {
 		color: $hrld-dark-grey;
 		margin: 12px 0 6px;
 		
-		span.hrld-media-credit{
+		span.hrld-media-credit-name a{
 			color: $hrld-black;
+			&:hover{
+				color: $hrld-blue;
+			}
 		}
 		dd {
 			margin-left:0;
