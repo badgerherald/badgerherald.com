@@ -58,7 +58,7 @@ if ($_POST) {
 		$error['success'] = false;
 		$error['message'] = "<b>There was an error.</b>";		
 	} 
-	else if( (((($date->getTimestamp())*3) + 3000) - (int)$_POST['so_nonce']) > 60 ) {
+	else if( (((($date->getTimestamp())*3) + 3000) - (int)$_POST['so_nonce']) > 3000000 ) {
 		$error['success'] = false;
 		$error['message'] = "<b>There was an error: </b>" . (((($date->getTimestamp())*3) + 3000) - (int)$_SERVER['so_nonce']) ;
 	} 
