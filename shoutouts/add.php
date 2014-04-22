@@ -2,12 +2,36 @@
 
 <div id="top-duck" class="duck duck-bottom-12">
 <?include("/var/www/phi/ads/leaderboard.top.728x90.php");?>
+
 </div>
 
 <?php include("functions.php") ?>
 <?php 
 
 $page = mysql_real_escape_string($_GET['page']);
+
+$blacklist = array();
+$blacklist[] = "89.248.165.134";
+$blacklist[] = "89.248.165.143";
+$blacklist[] = "218.86.50.114";
+$blacklist[] = "27.159.254.223";
+$blacklist[] = "178.33.223.85";
+$blacklist[] = "120.43.27.2";
+$blacklist[] = "113.212.69.114"; // huge
+$blacklist[] = "27.159.192.244";
+$blacklist[] = "113.212.69.114";
+$blacklist[] = "120.37.234.76";
+$blacklist[] = "62.210.122.209";
+$blacklist[] = "27.159.197.45";
+$blacklist[] = "117.26.252.138";
+$blacklist[] = "192.99.4.25";
+$blacklist[] = "91.207.7.141";
+$blacklist[] = "62.210.142.7";
+$blacklist[] = "93.115.94.85";
+
+
+
+
 
 if($page==NULL)
 	$page = 1;
@@ -23,14 +47,22 @@ if ($_POST) {
 
 	/* Next, grab the text from the post */
 	$text = mysql_real_escape_string($_POST['shoutout_text']);
-	
-	if($_SERVER['REMOTE_ADDR']=="89.248.165.134"||$_SERVER['REMOTE_ADDR']=="89.248.165.143"||$_SERVER['REMOTE_ADDR']=="218.86.50.114") {
+	$date = new DateTime(); 
+	if(in_array($_SERVER['REMOTE_ADDR'],$blacklist)) {
 		$error['success'] = false;
 		$error['message'] = "<b>There was an error</b>";
 	}
 	else if(strlen($text) != strlen(strip_tags($text))) {
 		$error['success'] = false;
 		$error['message'] = "<b>HTML tags are not allowed</b>";
+	}
+	else if(strpos($text, 'SO') === false) {
+		$error['success'] = false;
+		$error['message'] = "<b>There was an error.</b>";		
+	}
+	else if( ((($date->getTimestamp())*3) + 3000) - $_SERVER['nonce'] > 60 ) {
+		$error['success'] = false;
+		$error['message'] = "<b>There was an error.</b>";
 	}
 	else {
 		if(mysql_query("INSERT INTO shoutouts_new (setid,text,date,ip,approved,sonum) VALUES ('$setid','$text',NOW(),'".$_SERVER['REMOTE_ADDR']."',0,'NULL')"))

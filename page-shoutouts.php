@@ -41,7 +41,7 @@ if ($_POST) {
 
 	/* Next, grab the text from the post */
 	$sotext = mysql_real_escape_string($_POST['shoutout_text']);
-	
+	$date = new DateTime(); 	
 	if($_SERVER['REMOTE_ADDR']=="89.248.165.134"||$_SERVER['REMOTE_ADDR']=="89.248.165.143"||$_SERVER['REMOTE_ADDR']=="218.86.50.114") {
 		$error['success'] = false;
 		$error['message'] = "There was an error";
@@ -50,8 +50,21 @@ if ($_POST) {
 		$error['success'] = false;
 		$error['message'] = "HTML tags are not allowed";
 	}
+	else if(strlen($sotext) > 300 ) {
+		$error['success'] = false;
+		$error['message'] = "Your shoutout is too long";
+	}
+	else if(strpos($sotext, 'SO') === false) {
+		$error['success'] = false;
+		$error['message'] = "<b>There was an error.</b>";		
+	} 
+	else if( (((($date->getTimestamp())*3) + 3000) - (int)$_POST['so_nonce']) > 3000000 ) {
+		$error['success'] = false;
+		$error['message'] = "<b>There was an error: </b>" . (((($date->getTimestamp())*3) + 3000) - (int)$_SERVER['so_nonce']) ;
+	} 
 	else {
 		if(mysql_query("INSERT INTO shoutouts_new (setid,text,date,ip,approved,sonum) VALUES ('$setid','$sotext',NOW(),'".$_SERVER['REMOTE_ADDR']."',0,'NULL')"))
+			mail ( "haynes24@gmail.com" , "New SO" , "New SO", "From: haynes24+soc@gmail.com\n" );
 			$error['success'] = true;
 			$error['message'] = "Shoutout successfully submitted";
 	}
@@ -132,7 +145,7 @@ get_header();
 				</div><!-- shoutout container -->
 
 
-			<?php if($count == $pos) : ?>
+			<?php if(false && $count == $pos) : ?>
 		<hr/>
 
 				<!-- THIS IS WHERE EACH SHOUTOUT LIVES -->
@@ -228,7 +241,7 @@ get_header();
 	<form id="shoutout-form" method="POST">
 
 		<textarea class="so-text" name="shoutout_text" wrap="virtual" placeholder="SO/ASO to..."><?php echo strip_tags($sotext); ?></textarea>
-
+		<input type="hidden" style="display:none" value="<?php $date = new DateTime(); echo ((($date->getTimestamp())*3) + 3000); ?>" name="so_nonce" />
 		<input class="so-button submit-so-button" name="" type="submit" value="Shout it out"/>
 
 
