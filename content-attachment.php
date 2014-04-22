@@ -12,7 +12,7 @@
 <article id="post-<?php the_ID(); ?>" <?php post_class("stream-post instream-stream-post attahment-fullstream-post"); ?>>
 	<a class="summary-post-link" href="<?php the_permalink(); ?>" rel="bookmark">
 		<div class="entry-thumbnail">
-			<?php echo wp_get_attachment_image($post->ID, array(get_option( 'thumbnail_size_h' ),get_option( 'thumbnail_size_w' ))); ?>
+			<?php echo wp_get_attachment_image($post->ID, 'large-thumbnail'); ?>
 		</div>
 
         
