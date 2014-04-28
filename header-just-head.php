@@ -36,7 +36,7 @@ include('macros.php');
 	if(is_404()) {
 		echo "4-doge-4 · The Badger Herald";
 	} else {
-		bloginfo('name'); ?> · <?php is_home() ? bloginfo('description') : wp_title(''); 
+		?>  <?php is_home() ? bloginfo('description') : wp_title(''); 
 	}
 
 	?></title>
@@ -46,6 +46,7 @@ include('macros.php');
 	<script src="<?php echo get_template_directory_uri(); ?>/js/html5.js" type="text/javascript"></script>
 	<![endif]-->
 	<?php wp_head(); ?>
+
 	<!-- 
 		Google fonts 
 		TODO: move to wordpress enque
@@ -61,7 +62,6 @@ include('macros.php');
 </head>
 
 <body <?php body_class(); ?>>
-
 
 	<?php /* Facebook like button javascript tag */ ?>
 	<div id="fb-root"></div>
