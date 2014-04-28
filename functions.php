@@ -99,7 +99,7 @@ function exa_scripts_styles() {
 	
 	} else {
 
-		wp_enqueue_style( '', 'http://localhost/interactive/' . get_post_meta(get_the_ID(), '_hrld_interactive_include', true) . '/css/style.css' );
+		wp_enqueue_style( '', 'http://badgerherald.com/interactive/' . get_post_meta(get_the_ID(), '_hrld_interactive_include', true) . '/css/style.css' );
 
 
 	}
