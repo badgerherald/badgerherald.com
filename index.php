@@ -131,6 +131,7 @@ get_header();
 			</div> <!-- #middle-column -->
 
 
+			<!--
 			<div id="top-posts">
 			<h3>Top Picks</h3>
 			<ul>
@@ -145,7 +146,26 @@ get_header();
 				<li><a href="http://badgerherald.com/artsetc/2013/12/18/inside-lleywn-davis-lies-beautiful-cyclical-folk-tale/">Inside ‘Lleywn Davis’ lies beautiful, cyclical folk tale</a></li>
 			</ul>
 			</div>
+			-->
 
+			<div id="interactive">
+				<h3>Interactive</h3>
+
+				<a href="http://badgerherald.com/interactive/2014/the-puzzle-of-the-student-athlete/">
+				<img src="http://badgerherald.com/wordpress/media/2014/04/cover-718x470.jpg" />
+				<h4>The puzzle of the student-athlete</h4>
+				</a>
+				<p class="athr">
+					<a class="meta-author-avatar" title="Nick Daniels' Profile" href="http://badgerherald.com/author/ndaniels">
+						<img src="http://badgerherald.com/wordpress/media/2013/11/img_9294-60x60.jpg" width="30px" height:"30px"/>
+					</a>
+					
+					<span class="meta-author">By <a href="http://badgerherald.com/author/ndaniels" title="Nick Daniels' Profile">Nick Daniels</a></span>
+				</p>
+				<a href="http://badgerherald.com/interactive/2014/the-puzzle-of-the-student-athlete/">
+					<p>Student-athletes across all sports must balance a full class schedule with an equally arduous practice schedule.</p>
+				</a>
+			</div>
 
 
 		</div>
