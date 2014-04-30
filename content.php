@@ -81,15 +81,25 @@
 
 	   			$thumb_image = get_post($thumb_id);
 
-	   			//$credit = get_media_credit($thumb_id);
+	   			$credit = get_hrld_media_credit($thumb_id);
 	   			$exerpt = $thumb_image->post_excerpt;
 
-	   			if($credit != "") : ?>
-	   			
-	   			<div class="entry-post-featured-credit <?php if($exerpt=="") echo "entry-post-featured-credit-no-caption"; ?>">
-	   				<span>
-	   					<?php echo $credit; ?>
-	   				</span>
+	   			if($credit != "") :
+		   			if(get_user_by('login', $credit)){
+						$hrld_user = get_user_by('login', $credit);
+						$html_text = '<span class="hrld-media-credit"><span class="hrld-media-credit-name"><a href="'.get_bloginfo('url').'/author/'.$credit.'">'.$hrld_user->display_name.'</a></span><span class="hrld-media-credit-org">/The Badger Herald</span></span>'; 
+					} else{
+						$hrld_credit_name_org = explode("/", $credit);
+						if($hrld_credit_name_org[1]){
+							$html_text = '<span class="hrld-media-credit"><span class="hrld-media-credit-name">'.$hrld_credit_name_org[0].'</span><span class="hrld-media-credit-org">/'.$hrld_credit_name_org[1].'</span></span>';
+						}
+						else{
+							$html_text = '<span class="hrld-media-credit"><span class="hrld-media-credit-org">'.$hrld_credit_name_org[0].'</span></span>';
+						}
+					}
+			?>
+	   			<div class="entry-post-featured-credit">
+	   					<?php echo $html_text; ?>
 	   			</div>
 	   				
 	   			<?php endif; ?>

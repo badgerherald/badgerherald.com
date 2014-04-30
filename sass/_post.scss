@@ -97,6 +97,18 @@ h1.entry-title {
 .entry-attachment{
 	margin-top: 24px;
 }
+span.hrld-media-credit-name a{
+	color: $hrld-black;
+	&:hover{
+		color: $hrld-blue;
+	}
+}
+span.hrld-media-credit-org{
+	color: $hrld-dark-grey;
+}
+.entry-post-featured-credit{
+	font-size: 14px;
+}
 .article-content {
 	width: 100%;
 	p {
@@ -123,12 +135,6 @@ h1.entry-title {
 		color: $hrld-dark-grey;
 		margin: 12px 0 6px;
 		
-		span.hrld-media-credit-name a{
-			color: $hrld-black;
-			&:hover{
-				color: $hrld-blue;
-			}
-		}
 		dd {
 			margin-left:0;
 		} img {
