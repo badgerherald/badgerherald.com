@@ -179,6 +179,8 @@
 		} /* .todays-shoutout */
 	} #top-posts {
 		display:none;
+	} #interactive {
+		display:none;
 	}
 
 }
@@ -355,7 +357,7 @@ ul.featured-stream-list{
 			}	
 		} #top-posts {
 			display:none;
-		}
+		} 
 	} 
 
 	.featured-container{
@@ -537,7 +539,46 @@ ul.featured-stream-list{
                             }
                     }
             }
-        }
+        } #interactive {
+			width:220px;
+			float:left;
+			display: block;
+			margin-left: 20px;
+			background: #fff;
+			h3 {
+				margin-top: 0;
+				margin-bottom: 0px;
+				padding:12px 20px;
+				font-family: $headline;
+				text-transform: uppercase;
+			} h4 {
+				font-family: $body;
+				font-size: 20px;
+				margin-top: 6px;
+				line-height: 30px;
+				color: #000;
+				margin: 12px 20px;
+			} a p {
+				color: #000;
+				padding: 0px 20px 24px;
+			} p.athr {
+				margin: 12px 20px 18px;
+				font-family: $headline;
+				font-style: italic;
+				a {
+					font-style: normal;
+					text-transform: uppercase;
+					color:#000;
+					font-weight: bold;
+					padding-left: 3px;
+				}	
+				img {
+					position: relative;
+					top: 8px;
+					margin-right: 5px;
+				}
+			} 
+		}
 	} 
 
 	
