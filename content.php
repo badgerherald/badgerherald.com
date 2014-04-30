@@ -6,6 +6,8 @@
  * @subpackage Twenty_Thirteen
  * @since Twenty Thirteen 1.0
  */
+
+/* This is a change */
 ?>
 
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
