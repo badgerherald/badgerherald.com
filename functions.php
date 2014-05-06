@@ -107,6 +107,11 @@ function exa_scripts_styles() {
 }
 add_action( 'wp_enqueue_scripts', 'exa_scripts_styles' );
 
+function exa_admin_style() {
+    wp_enqueue_style('exa-admin-style', get_template_directory_uri() . '/css/admin-style.css');
+}
+add_action('admin_enqueue_scripts', 'exa_admin_style');
+
 
 
 /**

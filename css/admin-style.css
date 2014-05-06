@@ -1,0 +1,20 @@
+#hrld-subhead-meta-box{
+	background: transparent;
+	border: none;
+	-webkit-box-shadow: none;
+	box-shadow: none;
+}
+#hrld-subhead-meta-box .hndle{
+	font-size: 18px;
+	padding-left: 0;
+	padding-bottom: 0;
+}
+#hrld-subhead-meta-box .inside{
+	padding-left: 0;
+}
+#hrld-subhead-meta-box .inside #_hrld_subhead{
+	width: 100%;
+	height: 30px;
+	line-height: 30px;
+	font-size: 18px;
+}
