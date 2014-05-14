@@ -215,6 +215,56 @@
 		}
 	}
 
+
+
+	/** Get involved page **/
+		blockquote {
+			position: relative;
+			overflow: hidden;
+		}
+	.get-involved {
+
+		background: $hrld-black;
+		color: #fff;
+		margin-bottom: 24px;
+		padding:20px;
+
+		text-align: center;
+		.application {
+			border: 1px solid rgba(255,255,255,.2);
+			padding: 6px 12px;
+			display: inline-block;
+			margin-top: 12px;
+			font-family: $headline;
+			color: #fff;
+			&:hover {
+				border-color: #fff;
+			}
+		} h3 {
+			border-bottom: 1px solid rgba(255,255,255,.2);
+			padding-bottom: 12px;
+		}
+		.involved-tag {
+			font-size: 18px;
+			color: #c7d0d5;
+			font-style: italic;
+		} .involved-deadline {
+			background: $hrld-blue;
+			padding: 6px 20px;
+			display: inline-block;
+			margin-top: 12px;
+			//margin-left: -20px;
+		} .app-box {
+			text-align: left;
+			font-size: 14px;
+			line-height: 21px;
+			h4 {
+				font-size: 18px;
+				//margin-top: 0px;
+			}
+		}
+	}
+
 }
 
 @media (min-width: 760px) {
@@ -272,102 +322,123 @@
 		}
 	}
 
-
-
-	}
-}
-@media (min-width: 1060px) {
-
-.about-page {
-	.page-container-inner-masthead {
-		height: 600px;
-	} #primary {
-		margin-top: 600px;
-	} 
-
-	/** ------ NEEDS BETTER STYLING ------- **/
-
-	.header-box {
-		top:400px;
-	} .about-home-header h1 {
-		font-size: 90px;
-		line-height: 80px;
-	} .about-home-header h2 {
-		font-size: 40px;
-	}
-
-	/* end needs better styling -- */
-
-
-	.about-nav {
-		position: absolute;
-		ul {
-			list-style: none;
-			width: 140px;
-			float: left;
-			padding: 18px 0 0px 0; margin:0px;
-			border-bottom: 1px solid $hrld-dark-grey;
-			li {
-				display: block;
-				a {
-					padding: 6px 0;
-					display: block;
-				}
-				border-top: 1px solid $hrld-dark-grey;
-				&:before {
-					content: "";
-					padding: 0px
-				}
+	.get-involved {
+		//width: 300px;
+		//float: left;
+		margin-right:20px;
+		margin-bottom: 20px;
+		.app-box {
+			//float: left;
+			//max-width: 400px;
+			margin-right: 20px;
+			//height:400px;
+			&:nth-child(even) {
+				margin-right:0;
 			}
 		}
 	}
 
-	.article-content {
-		width: 860px;
-		float: left;
-		margin-left: 160px;
+
 	}
 
-	.contact-container {
-		font-size: inherit;
-		line-height: inherit;
-		.extra-br {
-			line-height: 33px;
-		}
-	}
+
+
 
 
 }
+@media (min-width: 1060px) {
+
+	.about-page {
+		.page-container-inner-masthead {
+			height: 600px;
+		} #primary {
+			margin-top: 600px;
+		} 
+
+		/** ------ NEEDS BETTER STYLING ------- **/
+
+		.header-box {
+			top:400px;
+		} .about-home-header h1 {
+			font-size: 90px;
+			line-height: 80px;
+		} .about-home-header h2 {
+			font-size: 40px;
+		}
+
+		/* end needs better styling -- */
+
+
+		.about-nav {
+			position: absolute;
+			ul {
+				list-style: none;
+				width: 140px;
+				float: left;
+				padding: 18px 0 0px 0; margin:0px;
+				border-bottom: 1px solid $hrld-dark-grey;
+				li {
+					display: block;
+					a {
+						padding: 6px 0;
+						display: block;
+					}
+					border-top: 1px solid $hrld-dark-grey;
+					&:before {
+						content: "";
+						padding: 0px
+					}
+				}
+			}
+		}
+
+		.article-content {
+			width: 860px;
+			float: left;
+			margin-left: 160px;
+		}
+
+		.contact-container {
+			font-size: inherit;
+			line-height: inherit;
+			.extra-br {
+				line-height: 33px;
+			}
+		}
+
+
+	}
 
 }
 
 @media (min-width: 1220px) {
-.about-page {
-	.article-content {
-		width: 1020px;
-	}
-	.staff-box {
-		width: 153px;
-		margin-left: 20px;
-		margin-bottom: 24px;
-		height:185px;
-		font-size: 14px;
-	}
-	.staff-container {
-		margin-left:  -20px;
-		h3 {
+
+	.about-page {
+		.article-content {
+			width: 1020px;
+		}
+		.staff-box {
+			width: 153px;
 			margin-left: 20px;
-		} 
-	} .staff-box-more {
-		.staff-box-more-hover {
-			width: 300px;
-			&.odd {
-				left:inherit;
-				right:0;
+			margin-bottom: 24px;
+			height:185px;
+			font-size: 14px;
+		}
+		.staff-container {
+			margin-left:  -20px;
+			h3 {
+				margin-left: 20px;
+			} 
+		} .staff-box-more {
+			.staff-box-more-hover {
+				width: 300px;
+				&.odd {
+					left:inherit;
+					right:0;
+				}
 			}
 		}
-	}
 
-}
+	}
 
 }
