@@ -1,0 +1,60 @@
+body {
+  background: #eff4f6;
+  font-family: "Noto Serif", serif; }
+  body a {
+    color: #3c74b9;
+    text-decoration: none; }
+
+#wrapper {
+  width: 450px;
+  margin: 0 auto; }
+
+.home-button {
+  padding: 6px 12px;
+  background: #c7d0d5;
+  position: absolute;
+  top: 24px;
+  left: 30px;
+  font-family: "PT Sans Narrow", sans-serif;
+  text-transform: uppercase;
+  color: #000;
+  text-decoration: none;
+  border-radius: 5px;
+  display: none; }
+
+ul {
+  background: #fff;
+  width: 350px;
+  margin-top: 20px;
+  margin-left: 50px;
+  padding: 0;
+  list-style: none;
+  border: 1px solid #c7d0d5;
+  border-radius: 4px;
+  overflow: hidden; }
+  ul li {
+    border-bottom: 1px solid #c7d0d5; }
+    ul li:last-child {
+      border-bottom: none; }
+    ul li a {
+      font-family: "Noto Serif", serif;
+      color: #000;
+      font-family: "PT Sans Narrow", sans-serif;
+      font-weight: bold;
+      background: url("../img/open-positions/arrow-right-black.png") no-repeat 324px center;
+      text-decoration: none;
+      padding: 9px 15px;
+      display: block; }
+      ul li a:hover {
+        background-color: #eff4f6; }
+
+header {
+  width: 450px;
+  margin-top: 70px;
+  text-align: center;
+  font-size: .9em; }
+  header h1 {
+    font-family: "PT Sans Narrow", sans-serif;
+    text-transform: uppercase; }
+  header img {
+    margin: 0 auto; }
