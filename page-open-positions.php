@@ -72,8 +72,31 @@
 
 <h4>Advertising Manager</h4>
 <p>As Advertising Manager you will oversee the account executive's sales and also direct their time in the office. In addition, you will work closely with the Advertising Director with client relationships, placing advertisements, and other administrative tasks. Managers are expected to uphold a strong professional demeanor and to set high standards for the account executives. This position comes with a base salary with commission.</p>
+<p>
+&middot; At least one year of advertising, journalism, or business experience<br/>
+&middot; Excellent communication skills, a great work ethic, and an interest to work in a fast-paced environment<br/>
+&middot; Able to commit time in the summer of 2014<br/>
+&middot; High level of organizational skills<br/>
+&middot; Desire to take on a leadership position<br/>
+</p>
+
 <ul>
 	<li><a href="http://badgerherald.com/wordpress/media/2014/01/Advertising-Manager-Application.pdf">Advertising Manager Application</a></li>
+</ul>
+
+<hr/>
+
+<h4>Account Representatives</h4>
+<p>As an advertising executives you will work closely with 40-50 local and national clients. Executives develop a relationship with their clients to meet their advertising needs and to  reach biweekly sales goals. Executives are trained to learn our media kit and develop an in depth understanding of our print and online advertising. This is a paid position.</p>
+<p>
+&middot; Must be available to work at least 12 hours Monday-Friday 9:00AM-5:00PM when not in class<br/>
+&middot; An interest in marketing, business, and/or advertising<br/>
+&middot; Clear and effective communication skills<br/>
+&middot; Strong planning, organizational, and time management skills<br/>
+&middot; An outgoing personality <br/>
+</p>
+<ul>
+	<li><a href="http://badgerherald.com/wordpress/media/2014/05/Advertising-Executive-Application.pdf">Advertising Manager Application</a></li>
 </ul>
 
 <hr/>
