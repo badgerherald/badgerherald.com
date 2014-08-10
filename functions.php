@@ -42,7 +42,7 @@ if ( !array_key_exists( 'media-credit', $shortcode_tags ) )
 function exa_setup() {
 
 	/* Register News, Sports, Opinion & ArtsEtc. sections. */
-	add_action( 'init', 'register_sections' );
+	// add_action( 'init', 'register_sections' );
 
 	/* Register different size thumbnail images */
 	add_theme_support('post-thumbnails');
