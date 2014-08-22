@@ -155,6 +155,8 @@ function alter_queries( $query ) {
         return;
     }
 
+    /* We no longer need this. This whole function may be deleted. - wjh.
+
     if ( is_front_page() ) {
  		$query->set( 'post_type',  $all_sections );
 		$query->set('posts_per_page', 25);
@@ -199,7 +201,7 @@ function alter_queries( $query ) {
     		}
     	}
     }
-
+	*/
     return;
 }
 add_action( 'pre_get_posts', 'alter_queries', 1 );
@@ -208,7 +210,7 @@ add_action( 'pre_get_posts', 'alter_queries', 1 );
 function exa_get_beats() {
 
 	global $post;
-	return wp_get_post_terms(get_the_ID(),get_post_type()."-beats");
+	return wp_get_post_terms(get_the_ID(),"topic");
 
 }
 
@@ -361,7 +363,7 @@ function exa_topic($pid = null) {
 		$pid = $post->ID;
 	}
 
-	$beats = wp_get_post_terms($pid,get_post_type($pid)."-beats");
+	$beats = wp_get_post_terms($pid,"topic");
 	$category_base = get_bloginfo('url')."/".get_post_type()."/";
 
 	foreach ($beats as $beat) : 
