@@ -93,8 +93,8 @@ get_header('about'); ?>
 			<li class="active"><a href="<?php bloginfo("url") ?>/about/staff/">Staff</a></li>
 			<li><a href="<?php bloginfo("url") ?>/about/get-involved/">Get Involved</a></li>
 			<li><a href="<?php bloginfo("url") ?>/about/history/">History</a></li>
-			<li><a href="">Colophon</a></li>
-			<li><a href="">Copyright</a></li>
+			<li style="display: none;"><a href="<?php bloginfo("url") ?>/about/colophon/">Colophon</a></li>
+			<li><a href="<?php bloginfo("url") ?>/about/copyright/">Copyright</a></li>
 		</ul>
 	</div>
 
@@ -113,16 +113,16 @@ get_header('about'); ?>
 					<h3>Editorial Management</h3>
 
 					<?php
-						// Katherine Krueger, Katie Caron, Will Haynes.
-						$mgmt = array(2274,2420,2608);
+						// Tara Golshan, Katie Caron, Polo Rocha.
+						$mgmt = array(2517,2420,2414);
 						displayStaff($mgmt);
 					?>
 					<div class="clearfix"></div>
 					<h3>News</h3>
 
 					<?php
-						// Cogan, Aliya
-						$mgmt   = array(2513,2722,2773,2828,2783,2756,2889,458);
+						// Alex, Rachael, Folarin, Danny, Brenda, Charlie, Sunni (not included currently), Alexandra (not included currenty)
+						$mgmt   = array(2756, 2930, 2967, 2912, 2899, 2829, );
 						displayStaff($mgmt);
 					?>
 					<div class="clearfix"></div>
@@ -130,8 +130,8 @@ get_header('about'); ?>
 					<h3>Opinion</h3>
 
 					<?php
-						// Garth, Brianna
-						$mgmt   = array(2785,2732);
+						// Brianna, Maddie
+						$mgmt   = array(2785, 2807);
 						displayStaff($mgmt);
 					?>
 					<div class="clearfix"></div>
@@ -139,8 +139,8 @@ get_header('about'); ?>
 					<h3>Sports</h3>
 
 					<?php
-						// Spencer, Dan
-						$mgmt   = array(2538,2609);
+						// Dan, Eric, Chris
+						$mgmt   = array(2609, 2682, 2801);
 						displayStaff($mgmt);
 					?>
 					<div class="clearfix"></div>
@@ -149,8 +149,48 @@ get_header('about'); ?>
 					<h3>ArtsEtc</h3>
 
 					<?php
-						// Erik
-						$mgmt   = array(2602);
+						// Erik, Selena 
+						$mgmt   = array(2602, 2794);
+						displayStaff($mgmt);
+					?>
+					<div class="clearfix"></div>
+
+
+					<h3>Photo</h3>
+
+					<?php
+						// Joey, Hayley
+						$mgmt   = array(2948, 2966);
+						displayStaff($mgmt);
+					?>
+					<div class="clearfix"></div>
+
+
+					<h3>Design</h3>
+
+					<?php
+						// Emily, Kenna 
+						$mgmt   = array(2963, 2964);
+						displayStaff($mgmt);
+					?>
+					<div class="clearfix"></div>
+
+
+					<h3>Copy</h3>
+
+					<?php
+						// Maddy, Audrey 
+						$mgmt   = array(2780, 2806);
+						displayStaff($mgmt);
+					?>
+					<div class="clearfix"></div>
+
+
+					<h3>Web</h3>
+
+					<?php
+						// Matt 
+						$mgmt   = array(2779);
 						displayStaff($mgmt);
 					?>
 					<div class="clearfix"></div>
@@ -163,16 +203,16 @@ get_header('about'); ?>
 					<h3>Business Department</h3>
 
 					<?php
-						// Luke
-						$mgmt = array(2875);
+						// John, Tyler
+						$mgmt = array(2945, 2971);
 						displayStaff($mgmt);
 					?>
 					<div class="clearfix"></div>
 					<h3>Advertising</h3>
 
 					<?php
-						// Mackenzie, Stacy, Sophie, Shia, Jacob
-						$mgmt = array(2887,2917,2913,2914,2915,2916);
+						// Nick, David, Jordan, Zach, Nisha, Emily
+						$mgmt = array(2965, 2972, 2973, 2974, 2975, 2976);
 						displayStaff($mgmt);
 					?>
 					<?php /*
