@@ -93,7 +93,7 @@ get_header('about'); ?>
 			<li class="active"><a href="<?php bloginfo("url") ?>/about/staff/">Staff</a></li>
 			<li><a href="<?php bloginfo("url") ?>/about/get-involved/">Get Involved</a></li>
 			<li><a href="<?php bloginfo("url") ?>/about/history/">History</a></li>
-			<li><a href="<?php bloginfo("url") ?>/about/colophon/">Colophon</a></li>
+			<li style="display: none;"><a href="<?php bloginfo("url") ?>/about/colophon/">Colophon</a></li>
 			<li><a href="<?php bloginfo("url") ?>/about/copyright/">Copyright</a></li>
 		</ul>
 	</div>
