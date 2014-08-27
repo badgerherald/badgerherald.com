@@ -27,8 +27,8 @@ get_header('about'); ?>
 			<li><a href="<?php bloginfo("url") ?>/about/staff/">Staff</a></li>
 			<li><a href="<?php bloginfo("url") ?>/about/get-involved/">Get Involved</a></li>
 			<li><a href="<?php bloginfo("url") ?>/about/history/">History</a></li>
-			<li><a href="">Colophon</a></li>
-			<li><a href="">Copyright</a></li>
+			<li><a href="<?php bloginfo("url") ?>/about/colophon/">Colophon</a></li>
+			<li><a href="<?php bloginfo("url") ?>/about/copyright/">Copyright</a></li>
 		</ul>
 	</div>
 	
@@ -74,7 +74,7 @@ get_header('about'); ?>
 					<div class="contact-container">
 					<h3>Editorial</h3>
 					<p>
-					Katherine Krueger<br/>
+					Tara Golshan<br/>
 					<i>Editor-in-Chief</i><br class="extra-br"/>
 					<a href="mailto:editor@badgerherald.com">editor@badgerherald.com</a><br/>
 					608-257-4712 x101
@@ -84,7 +84,7 @@ get_header('about'); ?>
 					<div class="contact-container">
 					<h3>Business</h3>
 					<p>
-					Luke Nevermann<br/>
+					John Batterman<br/>
 					<i>Publisher</i><br class="extra-br"/>
 					<a href="mailto:publisher@badgerherald.com">publisher@badgerherald.com</a><br/>
 					608-257-4712 x201
@@ -94,7 +94,7 @@ get_header('about'); ?>
 					<div class="contact-container">
 					<h3>Advertising</h3>
 					<p>
-					Mackenzie Chaffee<br/>
+					Nick Rush<br/>
 					<i>Advertising Director</i><br class="extra-br"/>
 					<a href="mailto:addirector@badgerherald.com">addirector@badgerherald.com</a><br/>
 					608-257-4712 x301
