@@ -21,7 +21,7 @@ get_header(); ?>
 
 <div style="width:100%;position:absolute;top:20;font-family:Yanone Kaffeesatz;color:#000;font-size:120%;padding:20px;">
 <h3>For advertising inquiries, please contact:</h3>
-<strong>Mackenzie Chaffee</strong><br />
+<strong>Nick Rush</strong><br />
 <span style="font-weight:300;font-size:80%">ADVERTISING DIRECTOR
 608.257.6899<br />
 <a href="mailto:addirector@badgerherald.com" style="font-size:90%">addirector@badgerherald.com</a>
