@@ -130,24 +130,6 @@ get_header();
 			
 			</div> <!-- #middle-column -->
 
-
-			<!--
-			<div id="top-posts">
-			<h3>Top Picks</h3>
-			<ul>
-				<li><a href="http://badgerherald.com/news/2014/01/10/marijuana-legalization-appear-county-ballot/">Marijuana legalization to appear on Dane County spring ballot</a></li>
-				<li><a href="http://badgerherald.com/news/2013/12/12/uw-alums-site-abodo-aims-simplify-housing-search/">UW alum’s site Abodo aims to simplify housing search</a></li>
-				<li><a href="http://badgerherald.com/sports/2014/01/10/merschs-magic-propels-wisconsin-victory-michigan/">Mersch’s magic propels Wisconsin to victory over Michigan</a></li>
-				<li><a href="http://badgerherald.com/sports/2013/12/21/penn-state-ends-wisconsins-cinderella-run/">Penn State ends Wisconsin’s post-season cinderella run</a></li>
-				<li><a href="http://badgerherald.com/sports/2014/01/09/4-wisconsin-dominates-23-illinois-start-finish/">No. 4 Wisconsin dominates No. 23 Illinois from start to finish</a></li>
-				<li><a href="http://badgerherald.com/artsetc/2013/12/12/top-five-shows-binge-watch-winter-break-es/">The top five shows to binge-watch over winter break</a></li>
-				<li><a href="http://badgerherald.com/artsetc/2013/12/11/childish-gambino-needs-figure-internet-es/">Childish Gambino needs to figure out who he is on ‘Because the Internet’</a></li>			
-				<li><a href="http://badgerherald.com/sports/2013/12/21/penn-state-ends-wisconsins-cinderella-run/">Penn State ends Wisconsin’s post-season cinderella run</a></li>
-				<li><a href="http://badgerherald.com/artsetc/2013/12/18/inside-lleywn-davis-lies-beautiful-cyclical-folk-tale/">Inside ‘Lleywn Davis’ lies beautiful, cyclical folk tale</a></li>
-			</ul>
-			</div>
-			-->
-
 			<div id="interactive">
 				<h3>Interactive</h3>
 
@@ -188,16 +170,25 @@ get_header();
 		
 			/* Build query for featured stories in news */
 
+			/** Featured news is a combination of
+			 *   a. In the taxonomy 'category' with the term 'news'
+			 *   b. In the taxonomy 'importance' with the term 'featured'
+			 */
+
 			$args = array();
 			$args['tax_query'] = array(
 	                array(
+	                    'taxonomy' => 'category',
+	                    'field' => 'slug',
+	                    'terms' => array('news'),
+	                    'operator' => 'IN'
+	                ), array(
 	                    'taxonomy' => 'importance',
 	                    'field' => 'slug',
 	                    'terms' => array('featured'),
 	                    'operator' => 'IN'
 	                )
 	            );
-			$args['post_type'] = 'news';
 			$args['posts_per_page'] = 4;
 
 			$news_featured = new WP_Query( $args );
@@ -231,10 +222,16 @@ get_header();
 		
 			/* Build query for featured stories in news */
 			$args = array();
-			$args['post_type'] = 'news';
 			$args['posts_per_page'] = 10;
 			$args['post__not_in'] = $excludenews;
-
+			$args['tax_query'] = array(
+		        array(
+		            'taxonomy' => 'category',
+		            'field' => 'slug',
+		            'terms' => array('news'),
+		            'operator' => 'IN'
+		        )
+		    );
 			$news_featured = new WP_Query( $args );
 		
 		?>
@@ -282,9 +279,13 @@ get_header();
 	                    'field' => 'slug',
 	                    'terms' => array('featured'),
 	                    'operator' => 'IN'
-	                )
+	                ), array(
+	                    'taxonomy' => 'category',
+	                    'field' => 'slug',
+	                    'terms' => array('oped'),
+	                    'operator' => 'IN'
+	                ), 
 	            );
-			$args['post_type'] = 'oped';
 			$args['posts_per_page'] = 4;
 
 			$banter_featured = new WP_Query( $args );
@@ -319,13 +320,12 @@ get_header();
 			$args = array();
 			$args['tax_query'] = array(
 	                array(
-	                    'taxonomy' => 'oped-beats',
+	                    'taxonomy' => 'topic',
 	                    'field' => 'slug',
 	                    'terms' => array('opinion-desk'),
 	                    'operator' => 'IN'
 	                )
 	            );
-			$args['post_type'] = 'oped';
 			$args['posts_per_page'] = 6;
 			$args['post__not_in'] = $excludebanter;
 			
@@ -360,10 +360,17 @@ get_header();
 		
 			/* Build query for featured stories in banter */
 			$args = array();
-			$args['post_type'] = 'oped';
+
 			$args['posts_per_page'] = 10;
 			$args['post__not_in'] = $excludebanter;
-
+			$args['tax_query'] = array(
+	                array(
+	                    'taxonomy' => 'category',
+	                    'field' => 'slug',
+	                    'terms' => array('oped'),
+	                    'operator' => 'IN'
+	                )
+	            );
 			$banter_featured = new WP_Query( $args );
 		
 		?>
@@ -413,9 +420,13 @@ get_header();
 	                    'field' => 'slug',
 	                    'terms' => array('featured'),
 	                    'operator' => 'IN'
+	                ), array(
+	                    'taxonomy' => 'category',
+	                    'field' => 'slug',
+	                    'terms' => array('artsetc'),
+	                    'operator' => 'IN'
 	                )
 	            );
-			$args['post_type'] = 'artsetc';
 			$args['posts_per_page'] = 4;
 
 			$arts_featured = new WP_Query( $args );
@@ -448,10 +459,17 @@ get_header();
 		
 			/* Build query for featured stories in news */
 			$args = array();
-			$args['post_type'] = 'artsetc';
+
 			$args['posts_per_page'] = 10;
 			$args['post__not_in'] = $excludearts;
-
+			$args['tax_query'] = array(
+	                array(
+	                    'taxonomy' => 'category',
+	                    'field' => 'slug',
+	                    'terms' => array('artsetc'),
+	                    'operator' => 'IN'
+	                )
+	            );
 			$arts_featured = new WP_Query( $args );
 		
 		?>
@@ -497,13 +515,17 @@ get_header();
 			$args = array();
 			$args['tax_query'] = array(
 	                array(
+	                    'taxonomy' => 'category',
+	                    'field' => 'slug',
+	                    'terms' => array('sports'),
+	                    'operator' => 'IN'
+	                ), array(
 	                    'taxonomy' => 'importance',
 	                    'field' => 'slug',
 	                    'terms' => array('featured'),
 	                    'operator' => 'IN'
 	                )
 	            );
-			$args['post_type'] = 'sports';
 			$args['posts_per_page'] = 4;
 
 			$sports_featured = new WP_Query( $args );
@@ -537,7 +559,14 @@ get_header();
 		
 			/* Build query for featured stories in sports */
 			$args = array();
-			$args['post_type'] = 'sports';
+			$args['tax_query'] = array(
+	                array(
+	                    'taxonomy' => 'category',
+	                    'field' => 'slug',
+	                    'terms' => array('sports'),
+	                    'operator' => 'IN'
+	                )
+	            );
 			$args['posts_per_page'] = 10;
 			$args['post__not_in'] = $excludesports;
 
