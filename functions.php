@@ -635,3 +635,28 @@ function exa_the_author_link() {
 
 }
 
+
+/**
+ * Retrieve the short url for the post
+ *
+ * Checks if the bit.ly service is enabled and returns the short url from bit.ly 
+ * If bit.ly is not enabled, this function returns wordpresses default shorter
+ * url.
+ *
+ * @author Will Haynes
+ */
+function exa_short_url() {
+
+	global $post;
+	global $bitly;
+
+	if( isset($bitly) ) { 
+		$url = $bitly->get_bitly_link("",$post->ID);
+	} else {
+		$url = wp_get_shortlink();
+	}
+	return $url;
+
+}
+
+
