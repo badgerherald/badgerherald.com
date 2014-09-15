@@ -864,10 +864,36 @@ function exa_twitter_card_tags() {
 }
 add_action('wp_head','exa_twitter_card_tags');
 
+
+/**
+ * Prints twitter conversion tracking ad code.
+ *
+ * This will let us track users who visit our site after being shown twitter ads.
+ * Leveraged correctly, this will let us target website visitors and turn them
+ * into return visitors.
+ *
+ * @see https://support.twitter.com/articles/20170807-conversion-tracking-for-websites
+ * @author Will Haynes
+ */
+function exa_twitter_conversion_tracker() {
+
+	echo '<script src="//platform.twitter.com/oct.js" type="text/javascript"></script>
+			<script type="text/javascript">
+				twttr.conversion.trackPid(\'l4v5w\');
+			</script>
+			<noscript>
+				<img height="1" width="1" style="display:none;" alt="" src="https://analytics.twitter.com/i/adsct?txn_id=l4v5w&p_id=Twitter" />
+				<img height="1" width="1" style="display:none;" alt="" src="//t.co/i/adsct?txn_id=l4v5w&p_id=Twitter" />
+			</noscript>';
+
+}
+add_action('wp_footer','exa_twitter_conversion_tracker');
+
 /**
  * The excerpt to serve to facebook, twitter, google, &c.
  *
- * TODO: add subhead support.
+ * TODO: Add _hrld_subhead support. These are often more appropriate for the space than
+ * 		 the lede.
  *
  * @see http://wordpress.stackexchange.com/questions/26729/get-excerpt-using-get-the-excerpt-outside-a-loop
  * @author Will Haynes
@@ -897,3 +923,4 @@ function exa_get_meta_excerpt($post_id = null) {
 
     return addslashes($the_excerpt); 
 }
+
