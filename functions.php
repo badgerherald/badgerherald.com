@@ -722,7 +722,7 @@ function exa_open_graph_tags()
 	/* 2. Description (string) */
 
 	$excerpt = exa_get_meta_excerpt();
-	$output .= "<meta property='og:description' content='$excerpt' />\n";
+	$output .= '<meta property="og:description" content="'.$excerpt.'" />'."\n";
 
 	/* 3. Site (string) */
 
