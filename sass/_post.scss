@@ -424,6 +424,60 @@ ul.edboard-members {
 	}
 }
 
+.sharebar {
+	font-family: $headline;
+	height: 29px;
+	line-height: 21px;
+	margin: 24px 0;
+	.sharetag {
+		font-weight: bold;
+		color: $hrld-dark-grey;
+		text-transform: uppercase;
+		float: left;
+		padding-top: 3px;
+		display: block;
+	}
+	.sharebarurl {
+		display: none;
+		margin-left: 10px;
+		-webkit-appearance:none;
+		float: left;
+		box-shadow: none !important;
+		background: #fff;
+		border-style: solid !important;
+		border-color: #e0eaee !important;
+		padding: 2px 5px;
+		width: 100px;
+		text-align: center;
+		border-radius: 2px;
+		border-width: 1px;
+		font-size: 13px;
+		&:focus {
+			outline: 0;
+		}
+	}
+	.sharebartwitter {
+		float: left;
+		padding-left: 10px;
+		margin-top: 1px;
+		.twitter-share-button {
+			vertical-align: bottom !important;
+		}
+	}
+	.sharebarfb {
+		float: left;
+		margin-top: 1px;
+		padding-left: 10px;
+	}
+}
+
+
+@media (min-width: 760px) {
+	.sharebarurl {
+		display: inline-block !important;
+	}
+}
+
 @media (min-width: 1060px) {
 	.post-sidebar.author-sidebar{
 		width: 300px;
@@ -466,6 +520,7 @@ ul.edboard-members {
 
 }
 
+
 @media (min-width: 1220px) {
 	.post-sidebar.author-sidebar, .post-sidebar.author-sidebar .sidebar-inner{
 		width: 380px;
@@ -473,7 +528,6 @@ ul.edboard-members {
 	.article-post {
 		width: 860px;
 	}
-
 	.article-content {
 		#slider {
 			ul.slider-related {

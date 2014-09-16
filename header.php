@@ -31,13 +31,17 @@ include('macros.php');
     <?php /* Chartbeat Part 1 */ ?>
 	<script type="text/javascript">var _sf_startpt=(new Date()).getTime()</script>
 
-	<title><?php 
+	<title><?php echo wp_title("&middot;",true,"right"); ?>
 
-	if(is_404()) {
-		echo "4-doge-4 · The Badger Herald";
+	<?php
+	/*
+	if( is_404() ) {
+		echo "404 &middot; " . bloginfo('name');
+	} else if( is_home() ) {
+		echo bloginfo('name') . " &middot " . bloginfo('description') . "."; 
 	} else {
-		bloginfo('name'); ?> · <?php is_home() ? bloginfo('description') : wp_title(''); 
-	}
+		echo wp_title('') . " &middot " . bloginfo('name'); 
+	} */
 
 	?></title>
 	<link rel="profile" href="http://gmpg.org/xfn/11" />

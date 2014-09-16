@@ -842,3 +842,290 @@ function exa_post_gallery($output = '', $attr) {
 }
 add_filter('post_gallery', 'exa_post_gallery', 10, 2);
 
+/**
+ * Retrieve the short url for the post
+ *
+ * Checks if the bit.ly service is enabled and returns the short url from bit.ly 
+ * If bit.ly is not enabled, this function returns wordpresses default shorter
+ * url.
+ *
+ * @author Will Haynes
+ */
+function exa_short_url() {
+
+	global $post;
+	global $bitly;
+
+	if( isset($bitly) ) { 
+		$url = $bitly->get_bitly_link("",$post->ID);
+	} else {
+		$url = wp_get_shortlink();
+	}
+	return $url;
+
+}
+
+/**
+ * Filter on wp_title() to generate the page title.
+ *
+ * We filter the wp_title to generate better SEO.
+ *
+ * @uses	get_bloginfo()
+ * @uses	is_home()
+ * @uses	is_front_page()
+ *
+ * @see http://bavotasan.com/2012/filtering-wp_title-for-better-seo/
+ * @author Will Haynes
+ *
+ */
+function exa_filter_wp_title( $title, $sep = "&middot;" ) {
+	global $page, $paged;
+
+	if ( is_feed() )
+		return $title;
+
+	$site_description = get_bloginfo( 'description' );
+
+	$filtered_title = $title . get_bloginfo( 'name' );
+	$filtered_title .= ( ! empty( $site_description ) && ( is_home() || is_front_page() ) ) ? $sep . $site_description: '';
+	$filtered_title .= ( 2 <= $paged || 2 <= $page ) ? $sep . sprintf( __( 'Page %s' ), max( $paged, $page ) ) : '';
+
+	return $filtered_title;
+}
+add_filter( 'wp_title', 'exa_filter_wp_title' );
+
+function print_filters_for( $hook = '' ) {
+    global $wp_filter;
+    if( empty( $hook ) || !isset( $wp_filter[$hook] ) )
+        return;
+
+    print '<pre>';
+    print_r( $wp_filter[$hook] );
+    print '</pre>';
+}
+
+
+
+/**
+ * Prints open graph tags to the head of wordpress pages.
+ *
+ * @see http://ogp.me
+ * @author Will Haynes
+ *
+ */
+function exa_open_graph_tags()
+{
+
+	global $post;
+
+	$output .= "\n<!-- Open Graph Tags: http://ogp.me -->\n";
+
+	/* 1. Title (string) */
+
+	$title = single_post_title( $prefix, false );
+	$output .= "<meta property='og:title' content='$title' />\n";
+
+	/* 2. Description (string) */
+
+	$excerpt = exa_get_meta_excerpt();
+	$output .= '<meta property="og:description" content="'.$excerpt.'" />'."\n";
+
+	/* 3. Site (string) */
+
+	$site = "The Badger Herald";
+	$output .= "<meta property='og:site_name' content='$site' />\n";
+
+	/* 4. Type (enum) */
+	
+	// is_single: When any single Post (or attachment, or custom Post Type) page is being displayed. 
+	// (todo) type of profile is also valid.
+
+	if( is_single() ) {
+
+		// type (enum)
+		$output .= "<meta property='og:type' content='article' />\n";
+
+		// article:published_time (datetime)
+		$published = new DateTime($post->post_date_gmt,new DateTimeZone('GMT'));
+		$published->setTimeZone( new DateTimeZone("America/Chicago") );
+		$output .= "<meta property='og:article:published_time' content='{$published->format(DateTime::ISO8601)}' />\n";
+
+		// article:modfied_time (datetime)
+		$modified = new DateTime($post->post_modified_gmt,new DateTimeZone('GMT'));
+		$modified->setTimeZone( new DateTimeZone("America/Chicago") );
+		$output .= "<meta property='og:article:modified_time' content='{$modified->format(DateTime::ISO8601)}' />\n";
+
+		// article:section (string)
+		$section = get_the_category();
+		if( $section ) {
+			$section = $section[0]->name;
+			$section = $section == 'oped' ? $section = 'opinion' : $section;
+			$output .= "<meta property='og:article:section' content='$section' />\n";
+		}
+
+		// article:tag (string array)
+		$tags = wp_get_post_terms($post->ID,'topic');
+		if( $tags ) {
+			foreach ($tags as $tag) {
+				$output .= "<meta property='og:article:tag' content='{$tag->name}' />\n";
+			}
+		}
+		// Currently unused (profile tag) (todo)
+		// $output .= "<meta property='og:article:author' content='' />\n";
+
+	} else {
+
+		// type (enum)
+		$output .= "<meta property='og:type' content='website' />\n";
+
+	}
+
+	/* 5. Url */
+
+	$url = get_the_permalink();
+	$output .= "<meta property='og:url' content='$url' />\n";
+	
+
+	/* 6. Image */
+
+	// todo: We should add some fancy images for other common pages like:
+	//  · http://badgerherald.com/
+	//  · http://badgerherald.com/news/
+	//  · http://badgerherald.com/about/
+	//  · http://badgerherald.com/shoutouts/
+
+	$img = wp_get_attachment_url( get_post_thumbnail_id($post->ID) );
+	if( $img && is_single() ) {
+		$output .= "<meta property='og:image' content='$img' />\n";
+	}
+
+	/* 7. Finish up */
+
+	$output .= "\n";
+	echo $output;
+
+}
+add_action('wp_head','exa_open_graph_tags');
+
+
+/**
+ * Prints twitter card text to the head of wordpress pages.
+ *
+ * @see https://dev.twitter.com/cards/
+ * @author Will Haynes
+ */
+function exa_twitter_card_tags() {
+
+
+	global $post;
+
+	// Currently, we only have cards on 
+	// single post pages.
+	if( is_single() ) :
+
+	$output .= "\n<!-- Twitter Card Tags: https://dev.twitter.com/cards/ -->\n";
+
+	/* 1. Card type, and image */
+
+	$img = wp_get_attachment_url( get_post_thumbnail_id($post->ID) );
+
+	if( $img ) {
+		$output .= "<meta name='twitter:card' content='summary_large_image' />\n";
+		$output .= "<meta name='twitter:image:src' content='$img' />\n";
+	} else {
+		$output .= "<meta name='twitter:card' content='summary' />\n";
+	}
+
+	/* 2. Title */
+
+	$title = single_post_title( $prefix, false );
+	$output .= "<meta name='twitter:title' content='$title' />\n";
+
+	/* 3. Excerpt */
+
+	$excerpt = exa_get_meta_excerpt();
+	$output .= "<meta name='twitter:description' content='$excerpt' />\n";
+	
+	/* 4. Site */
+
+	$output .= "<meta name='twitter:site' content='@badgerherald' />\n";
+	
+	/* 5. Creator */
+
+	if(	hrld_author_has("hrld_twitter_handle") ) {
+		$twitter = get_hrld_author("hrld_twitter_handle");
+		$output .= "<meta name='twitter:creator' content='@$twitter' />\n";
+	}
+	
+
+
+	endif;
+
+	/* 6. Finish up */
+
+	$output .= "\n";
+	echo $output;
+
+
+}
+add_action('wp_head','exa_twitter_card_tags');
+
+
+/**
+ * Prints twitter conversion tracking ad code.
+ *
+ * This will let us track users who visit our site after being shown twitter ads.
+ * Leveraged correctly, this will let us target website visitors and turn them
+ * into return visitors.
+ *
+ * @see https://support.twitter.com/articles/20170807-conversion-tracking-for-websites
+ * @author Will Haynes
+ */
+function exa_twitter_conversion_tracker() {
+
+	echo '<script src="//platform.twitter.com/oct.js" type="text/javascript"></script>
+			<script type="text/javascript">
+				twttr.conversion.trackPid(\'l4v5w\');
+			</script>
+			<noscript>
+				<img height="1" width="1" style="display:none;" alt="" src="https://analytics.twitter.com/i/adsct?txn_id=l4v5w&p_id=Twitter" />
+				<img height="1" width="1" style="display:none;" alt="" src="//t.co/i/adsct?txn_id=l4v5w&p_id=Twitter" />
+			</noscript>';
+
+}
+add_action('wp_footer','exa_twitter_conversion_tracker');
+
+/**
+ * The excerpt to serve to facebook, twitter, google, &c.
+ *
+ * TODO: Add _hrld_subhead support. These are often more appropriate for the space than
+ * 		 the lede.
+ *
+ * @see http://wordpress.stackexchange.com/questions/26729/get-excerpt-using-get-the-excerpt-outside-a-loop
+ * @author Will Haynes
+ */
+function exa_get_meta_excerpt($post_id = null) {
+
+	global $post;
+
+	if( !$post_id ) {
+		$post_id = $post->ID;
+	}
+
+    $the_post = get_post($post_id); // Gets post ID
+    $the_excerpt = $the_post->post_content; // Gets post_content to be used as a basis for the excerpt
+    $excerpt_length = 35; // Sets excerpt length by word count
+    $the_excerpt = strip_tags(strip_shortcodes($the_excerpt)); // Strips tags and images
+    $words = explode(' ', $the_excerpt, $excerpt_length + 1);
+
+    if(count($words) > $excerpt_length) :
+        array_pop($words);
+        array_push($words, '…');
+        $the_excerpt = implode(' ', $words);
+    endif;
+
+    // replace all white space with single spaces.
+    $the_excerpt = preg_replace("/\s+/", " ", $the_excerpt);
+
+    return addslashes($the_excerpt); 
+}
