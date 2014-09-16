@@ -44,7 +44,7 @@ class dfp {
             } else if ("artsetc" == get_post_type()) {
                     self::$placement = "artsetc";
             } else {
-                    self::$placement = "misc";
+                    self::$placement = "homepage";
             }
 
             self::$initialized = true;
