@@ -636,7 +636,6 @@ function exa_the_author_link() {
 }
 
 function exa_post_gallery($output = '', $attr) {
-	print_r($attr);
 	$post = get_post();
 
 	global $homepageSlider;
@@ -982,7 +981,7 @@ function exa_open_graph_tags()
 
 	/* 5. Url */
 
-	$url = get_the_permalink();
+	$url = get_permalink($post->ID);
 	$output .= "<meta property='og:url' content='$url' />\n";
 	
 
@@ -1044,7 +1043,7 @@ function exa_twitter_card_tags() {
 	/* 3. Excerpt */
 
 	$excerpt = exa_get_meta_excerpt();
-	$output .= "<meta name='twitter:description' content='$excerpt' />\n";
+	$output .= '<meta name="twitter:description" content="'.$excerpt.'" />'."\n";
 	
 	/* 4. Site */
 
