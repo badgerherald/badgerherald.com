@@ -197,6 +197,121 @@ span.hrld-media-credit-org{
 		margin:0;
 		padding: 12px 20px;
 	}
+
+	/** ---------------------------------------- * 
+	 *
+	 * Swipe styling.
+	 *
+	 * @see https://github.com/bradbirdsall/Swipe
+	 *
+	 */
+	.swipe {
+	  overflow: hidden;
+	  visibility: hidden;
+	  position: relative;
+	}
+	.swipe-wrap {
+	  overflow: hidden;
+	  position: relative;
+	}
+	.swipe-wrap > div {
+	  float:left;
+	  width:100%;
+	  position: relative;
+	}
+
+	/* ----------------- /end swipe styling/ --- */
+
+	#slider {
+		width: 100%;
+		background: $hrld-black;
+		color: $hrld-light-grey;
+		margin-bottom: 12px;
+		a {
+			color: #fff;
+		}
+		.slider-content {
+			float: left;
+			text-align: left;
+			font-weight: 300;
+			font-size: 14px;
+			background: $hrld-black;
+		}
+		img {
+			height: auto;
+		}
+		h2,p,ul {
+			padding: 0px 20px;
+		}
+		h2 {
+			margin-top: 12px;
+		}
+		.slide{
+			text-align: center;
+			background: #2b2b2b;
+		}
+		.slider-content {
+			width: 100%;
+		}
+		.slide-image {
+			position: relative;
+			.entry-post-featured-credit {
+				bottom: 0;
+			}
+		}
+
+		.slider-related-title {
+			font-weight: 700;
+			font-family: $headline;
+			margin-top: 18px;
+			margin-bottom:6px;
+
+			/* not until iPad */
+			display: none;
+		}
+		ul.slider-related {
+			font-family: $headline;
+			list-style: none;
+			margin:0;
+
+			/* not until iPad */
+			display: none;
+
+			li {
+				line-height: 18px;
+				margin-bottom: 6px;
+				a {
+					color: $hrld-dark-grey;
+					font-weight: bold;
+					&:hover {
+						color: #fff;
+					}
+				}
+			}
+		}
+		ul.slider-nav {
+			list-style: none;
+			margin: 0;
+			padding:0;
+			li {
+				display: block;
+				width: flex(73,300);
+				margin-left: flex(1,300);
+				margin-right: flex(1, 300);
+				margin-top: 6px;
+				padding-bottom: 12px;
+				background: #2b2b2b;
+				float: left;
+				height: auto;
+				&.active {
+					background: $hrld-blue;
+				}
+				span {
+					display: none;
+				}
+			}
+		}
+	}
 }
 
 
@@ -246,6 +361,34 @@ span.hrld-media-credit-org{
 			margin: 0px 20px 18px 0px;
 			padding-bottom: 36%;
 		}
+		#slider {
+			margin-bottom: 18px;
+			position: relative;
+			img {
+			} .slider-content {
+			} .slider-related-title {
+				display: block;
+			} ul.slider-related {
+				display: block;
+			} ul.slider-nav {
+				position: relative;
+				overflow-y: hidden;
+				overflow-x: auto;
+				li {
+					width: flex(150, 760);
+					margin-right: flex(1, 760);
+					margin-left: flex(1, 760);
+					float: left;
+					height: auto;
+					img {
+						width: 100%;
+						max-width: 100%;
+						float: none;
+					}
+				}
+			}
+		}
+
 	} .article-content {
 		font-size: 16.5px;
 		line-height: 27px;
@@ -281,6 +424,60 @@ ul.edboard-members {
 	}
 }
 
+.sharebar {
+	font-family: $headline;
+	height: 29px;
+	line-height: 21px;
+	margin: 24px 0;
+	.sharetag {
+		font-weight: bold;
+		color: $hrld-dark-grey;
+		text-transform: uppercase;
+		float: left;
+		padding-top: 3px;
+		display: block;
+	}
+	.sharebarurl {
+		display: none;
+		margin-left: 10px;
+		-webkit-appearance:none;
+		float: left;
+		box-shadow: none !important;
+		background: #fff;
+		border-style: solid !important;
+		border-color: #e0eaee !important;
+		padding: 2px 5px;
+		width: 100px;
+		text-align: center;
+		border-radius: 2px;
+		border-width: 1px;
+		font-size: 13px;
+		&:focus {
+			outline: 0;
+		}
+	}
+	.sharebartwitter {
+		float: left;
+		padding-left: 10px;
+		margin-top: 1px;
+		.twitter-share-button {
+			vertical-align: bottom !important;
+		}
+	}
+	.sharebarfb {
+		float: left;
+		margin-top: 1px;
+		padding-left: 10px;
+	}
+}
+
+
+@media (min-width: 760px) {
+	.sharebarurl {
+		display: inline-block !important;
+	}
+}
+
 @media (min-width: 1060px) {
 	.post-sidebar.author-sidebar{
 		width: 300px;
@@ -291,6 +488,17 @@ ul.edboard-members {
 	}
 	.post-sidebar {
 		display: block;
+	}
+
+	.article-content {
+		#slider {
+			margin-bottom: 18px;
+			float: left; 
+			.slider-content {
+			}
+			ul.slider-nav {
+			}
+		}
 	}
 
 	.article-post {
@@ -312,12 +520,31 @@ ul.edboard-members {
 
 }
 
+
 @media (min-width: 1220px) {
 	.post-sidebar.author-sidebar, .post-sidebar.author-sidebar .sidebar-inner{
 		width: 380px;
 	}
 	.article-post {
 		width: 860px;
+	}
+	.article-content {
+		#slider {
+			ul.slider-related {
+				li,h4 {
+					display: inline;
+				}
+				li:before {
+					content: "|";
+					padding: 0 4px;
+				} li:first-child:before {
+					content: "";
+					padding:0;
+				}
+			}
+		} .slider-content {
+			width: 100%;
+		}
 	}
 }
 

@@ -635,3 +635,497 @@ function exa_the_author_link() {
 
 }
 
+function exa_post_gallery($output = '', $attr) {
+	print_r($attr);
+	$post = get_post();
+
+	global $homepageSlider;
+	$homepageSlider = true;
+
+    if ( isset( $attr['orderby'] ) ) {
+        $attr['orderby'] = sanitize_sql_orderby( $attr['orderby'] );
+        if ( ! $attr['orderby'] ) {
+            unset( $attr['orderby'] );
+        }
+    }
+    $html5 = current_theme_supports( 'html5', 'gallery' );
+    $atts = shortcode_atts( array(
+        'order'      => 'ASC',
+        'orderby'    => 'menu_order ID',
+        'id'         => $post ? $post->ID : 0,
+        'itemtag'    => $html5 ? 'figure'     : 'dl',
+        'icontag'    => $html5 ? 'div'        : 'dt',
+        'captiontag' => $html5 ? 'figcaption' : 'dd',
+        'columns'    => 3,
+        'size'       => 'thumbnail',
+        'include'    => '',
+        'exclude'    => '',
+        'link'       => ''
+    ), $attr, 'gallery' );
+ 
+    $id = intval( $atts['id'] );
+    if ( 'RAND' == $atts['order'] ) {
+        $atts['orderby'] = 'none';
+    }
+ 
+    if ( ! empty( $atts['include'] ) ) {
+        $_attachments = get_posts( array( 'include' => $atts['include'], 'post_status' => 'inherit', 'post_type' => 'attachment', 'post_mime_type' => 'image', 'order' => $atts['order'], 'orderby' => $atts['orderby'] ) );
+ 
+        $attachments = array();
+        foreach ( $_attachments as $key => $val ) {
+            $attachments[$val->ID] = $_attachments[$key];
+        }
+    } elseif ( ! empty( $atts['exclude'] ) ) {
+        $attachments = get_children( array( 'post_parent' => $id, 'exclude' => $atts['exclude'], 'post_status' => 'inherit', 'post_type' => 'attachment', 'post_mime_type' => 'image', 'order' => $atts['order'], 'orderby' => $atts['orderby'] ) );
+    } else {
+        $attachments = get_children( array( 'post_parent' => $id, 'post_status' => 'inherit', 'post_type' => 'attachment', 'post_mime_type' => 'image', 'order' => $atts['order'], 'orderby' => $atts['orderby'] ) );
+    }
+ 
+    if ( empty( $attachments ) ) {
+        return '';
+    }
+ 
+    if ( is_feed() ) {
+        $output = "\n";
+        foreach ( $attachments as $att_id => $attachment ) {
+            $output .= wp_get_attachment_link( $att_id, $atts['size'], true ) . "\n";
+        }
+        return $output;
+    }
+ 
+    $itemtag = tag_escape( $atts['itemtag'] );
+    $captiontag = tag_escape( $atts['captiontag'] );
+    $icontag = tag_escape( $atts['icontag'] );
+    $valid_tags = wp_kses_allowed_html( 'post' );
+    if ( ! isset( $valid_tags[ $itemtag ] ) ) {
+        $itemtag = 'dl';
+    }
+    if ( ! isset( $valid_tags[ $captiontag ] ) ) {
+        $captiontag = 'dd';
+    }
+    if ( ! isset( $valid_tags[ $icontag ] ) ) {
+        $icontag = 'dt';
+    }
+ 
+    $columns = intval( $atts['columns'] );
+    $itemwidth = $columns > 0 ? floor(100/$columns) : 100;
+    $float = is_rtl() ? 'right' : 'left';
+ 
+    $selector = "gallery-{$instance}";
+ 
+    $gallery_style = '';
+ 
+    /**
+     * Filter whether to print default gallery styles.
+     *
+     * @since 3.1.0
+     *
+     * @param bool $print Whether to print default gallery styles.
+     *                    Defaults to false if the theme supports HTML5 galleries.
+     *                    Otherwise, defaults to true.
+     */
+    if ( apply_filters( 'use_default_gallery_style', ! $html5 ) ) {
+        $gallery_style = "
+        <style type='text/css'>
+            #{$selector} {
+                margin: auto;
+            }
+            #{$selector} .gallery-item {
+                float: {$float};
+                margin-top: 10px;
+                text-align: center;
+                width: {$itemwidth}%;
+            }
+            #{$selector} img {
+                border: 2px solid #cfcfcf;
+            }
+            #{$selector} .gallery-caption {
+                margin-left: 0;
+            }
+            /* see gallery_shortcode() in wp-includes/media.php */
+        </style>\n\t\t";
+    }
+ 
+    $size_class = sanitize_html_class( $atts['size'] );
+    // $gallery_div = "<div id='$selector' class='gallery galleryid-{$id} gallery-columns-{$columns} gallery-size-{$size_class}'>";
+    $gallery_div = "<div id='slider'><div id='swipe' class='swipe'><div class='swipe-wrap'>";
+ 
+    /**
+     * Filter the default gallery shortcode CSS styles.
+     *
+     * @since 2.5.0
+     *
+     * @param string $gallery_style Default gallery shortcode CSS styles.
+     * @param string $gallery_div   Opening HTML div container for the gallery shortcode output.
+     */
+    $output = apply_filters( 'gallery_style', $gallery_style . $gallery_div );
+ 
+    $i = 0;
+    foreach ( $attachments as $id => $attachment ) {
+        if ( ! empty( $atts['link'] ) && 'file' === $atts['link'] ) {
+            $image_output = wp_get_attachment_link( $id, $atts['size'], false, false );
+        } elseif ( ! empty( $atts['link'] ) && 'none' === $atts['link'] ) {
+            $image_output = wp_get_attachment_image( $id, $atts['size'], false );
+        } else {
+            $image_output = wp_get_attachment_link( $id, $atts['size'], true, false );
+        }
+        $image_output = wp_get_attachment_image( $id, 'image-post-size', false );
+        $image_meta  = wp_get_attachment_metadata( $id );
+ 
+        $orientation = '';
+        if ( isset( $image_meta['height'], $image_meta['width'] ) ) {
+            $orientation = ( $image_meta['height'] > $image_meta['width'] ) ? 'portrait' : 'landscape';
+        }
+        $output .= "<div class='slide'>";
+        $output .= "<div class='slide-image'>";
+        $output .= $image_output;
+        //$output .= "
+        //    <{$icontag} class='gallery-icon {$orientation}'>
+        //        $image_output
+        //    </{$icontag}>";
+        $credit = get_hrld_media_credit($id);
+
+		if ($credit != "") {
+			$output .= "<div class='entry-post-featured-credit'>";
+				if(get_user_by('login', $credit)){
+				$hrld_user = get_user_by('login', $credit);
+				$output .= "<span class='hrld-media-credit'><span class='hrld-media-credit-name'><a href='".get_bloginfo('url')."/author/$credit'>$hrld_user->display_name</a></span><span class='hrld-media-credit-org'>/The Badger Herald</span></span>"; 
+			} else{
+				$hrld_credit_name_org = explode("/", $credit);
+				if($hrld_credit_name_org[1]){
+					$output .= "<span class='hrld-media-credit'><span class='hrld-media-credit-name'>$hrld_credit_name_org[0]</span><span class='hrld-media-credit-org'>/$hrld_credit_name_org[1]</span></span>";
+				}
+				else{
+					$output .= "<span class='hrld-media-credit'><span class='hrld-media-credit-org'>$hrld_credit_name_org[0]</span></span>";
+				}
+			}
+			$output .= "</div>";
+		}
+		$output .= "</div>";
+        
+        $output .= "<div class='slider-content'>";
+        if (trim($attachment->post_excerpt) ) {
+            $output .= "
+                <p>
+                " . wptexturize($attachment->post_excerpt) . "
+                </p>";
+        }
+        $output .= "</div>"; //class="slider-content"
+        $output .= "</div>"; //class="slide"
+    }
+ 
+    $output .= "</div>"; //class="swipe-wrap"
+    $output .= "</div>"; //class="swipe"
+
+    $output .= "<ul class='slider-nav clearfix'>";
+    foreach ($attachments as $id => $attachment) {
+    	if ( ! empty( $atts['link'] ) && 'file' === $atts['link'] ) {
+            $image_output = wp_get_attachment_link( $id, $atts['size'], false, false );
+        } elseif ( ! empty( $atts['link'] ) && 'none' === $atts['link'] ) {
+            $image_output = wp_get_attachment_image( $id, $atts['size'], false );
+        } else {
+            $image_output = wp_get_attachment_link( $id, $atts['size'], true, false );
+        }
+        $image_output = wp_get_attachment_image( $id, 'thumbnail', false );
+        $image_meta  = wp_get_attachment_metadata( $id );
+ 
+        $orientation = '';
+        if ( isset( $image_meta['height'], $image_meta['width'] ) ) {
+            $orientation = ( $image_meta['height'] > $image_meta['width'] ) ? 'portrait' : 'landscape';
+        }
+        $output .= "<li>".$image_output."</li>";
+    }
+    $output .= "</ul>";
+    $output .= "</div>"; //id="slider"
+ 
+    return $output;
+}
+add_filter('post_gallery', 'exa_post_gallery', 10, 2);
+
+/**
+ * Retrieve the short url for the post
+ *
+ * Checks if the bit.ly service is enabled and returns the short url from bit.ly 
+ * If bit.ly is not enabled, this function returns wordpresses default shorter
+ * url.
+ *
+ * @author Will Haynes
+ */
+function exa_short_url() {
+
+	global $post;
+	global $bitly;
+
+	if( isset($bitly) ) { 
+		$url = $bitly->get_bitly_link("",$post->ID);
+	} else {
+		$url = wp_get_shortlink();
+	}
+	return $url;
+
+}
+
+/**
+ * Filter on wp_title() to generate the page title.
+ *
+ * We filter the wp_title to generate better SEO.
+ *
+ * @uses	get_bloginfo()
+ * @uses	is_home()
+ * @uses	is_front_page()
+ *
+ * @see http://bavotasan.com/2012/filtering-wp_title-for-better-seo/
+ * @author Will Haynes
+ *
+ */
+function exa_filter_wp_title( $title, $sep = "&middot;" ) {
+	global $page, $paged;
+
+	if ( is_feed() )
+		return $title;
+
+	$site_description = get_bloginfo( 'description' );
+
+	$filtered_title = $title . get_bloginfo( 'name' );
+	$filtered_title .= ( ! empty( $site_description ) && ( is_home() || is_front_page() ) ) ? $sep . $site_description: '';
+	$filtered_title .= ( 2 <= $paged || 2 <= $page ) ? $sep . sprintf( __( 'Page %s' ), max( $paged, $page ) ) : '';
+
+	return $filtered_title;
+}
+add_filter( 'wp_title', 'exa_filter_wp_title' );
+
+function print_filters_for( $hook = '' ) {
+    global $wp_filter;
+    if( empty( $hook ) || !isset( $wp_filter[$hook] ) )
+        return;
+
+    print '<pre>';
+    print_r( $wp_filter[$hook] );
+    print '</pre>';
+}
+
+
+
+/**
+ * Prints open graph tags to the head of wordpress pages.
+ *
+ * @see http://ogp.me
+ * @author Will Haynes
+ *
+ */
+function exa_open_graph_tags()
+{
+
+	global $post;
+
+	$output .= "\n<!-- Open Graph Tags: http://ogp.me -->\n";
+
+	/* 1. Title (string) */
+
+	$title = single_post_title( $prefix, false );
+	$output .= "<meta property='og:title' content='$title' />\n";
+
+	/* 2. Description (string) */
+
+	$excerpt = exa_get_meta_excerpt();
+	$output .= '<meta property="og:description" content="'.$excerpt.'" />'."\n";
+
+	/* 3. Site (string) */
+
+	$site = "The Badger Herald";
+	$output .= "<meta property='og:site_name' content='$site' />\n";
+
+	/* 4. Type (enum) */
+	
+	// is_single: When any single Post (or attachment, or custom Post Type) page is being displayed. 
+	// (todo) type of profile is also valid.
+
+	if( is_single() ) {
+
+		// type (enum)
+		$output .= "<meta property='og:type' content='article' />\n";
+
+		// article:published_time (datetime)
+		$published = new DateTime($post->post_date_gmt,new DateTimeZone('GMT'));
+		$published->setTimeZone( new DateTimeZone("America/Chicago") );
+		$output .= "<meta property='og:article:published_time' content='{$published->format(DateTime::ISO8601)}' />\n";
+
+		// article:modfied_time (datetime)
+		$modified = new DateTime($post->post_modified_gmt,new DateTimeZone('GMT'));
+		$modified->setTimeZone( new DateTimeZone("America/Chicago") );
+		$output .= "<meta property='og:article:modified_time' content='{$modified->format(DateTime::ISO8601)}' />\n";
+
+		// article:section (string)
+		$section = get_the_category();
+		if( $section ) {
+			$section = $section[0]->name;
+			$section = $section == 'oped' ? $section = 'opinion' : $section;
+			$output .= "<meta property='og:article:section' content='$section' />\n";
+		}
+
+		// article:tag (string array)
+		$tags = wp_get_post_terms($post->ID,'topic');
+		if( $tags ) {
+			foreach ($tags as $tag) {
+				$output .= "<meta property='og:article:tag' content='{$tag->name}' />\n";
+			}
+		}
+		// Currently unused (profile tag) (todo)
+		// $output .= "<meta property='og:article:author' content='' />\n";
+
+	} else {
+
+		// type (enum)
+		$output .= "<meta property='og:type' content='website' />\n";
+
+	}
+
+	/* 5. Url */
+
+	$url = get_the_permalink();
+	$output .= "<meta property='og:url' content='$url' />\n";
+	
+
+	/* 6. Image */
+
+	// todo: We should add some fancy images for other common pages like:
+	//  · http://badgerherald.com/
+	//  · http://badgerherald.com/news/
+	//  · http://badgerherald.com/about/
+	//  · http://badgerherald.com/shoutouts/
+
+	$img = wp_get_attachment_url( get_post_thumbnail_id($post->ID) );
+	if( $img && is_single() ) {
+		$output .= "<meta property='og:image' content='$img' />\n";
+	}
+
+	/* 7. Finish up */
+
+	$output .= "\n";
+	echo $output;
+
+}
+add_action('wp_head','exa_open_graph_tags');
+
+
+/**
+ * Prints twitter card text to the head of wordpress pages.
+ *
+ * @see https://dev.twitter.com/cards/
+ * @author Will Haynes
+ */
+function exa_twitter_card_tags() {
+
+
+	global $post;
+
+	// Currently, we only have cards on 
+	// single post pages.
+	if( is_single() ) :
+
+	$output .= "\n<!-- Twitter Card Tags: https://dev.twitter.com/cards/ -->\n";
+
+	/* 1. Card type, and image */
+
+	$img = wp_get_attachment_url( get_post_thumbnail_id($post->ID) );
+
+	if( $img ) {
+		$output .= "<meta name='twitter:card' content='summary_large_image' />\n";
+		$output .= "<meta name='twitter:image:src' content='$img' />\n";
+	} else {
+		$output .= "<meta name='twitter:card' content='summary' />\n";
+	}
+
+	/* 2. Title */
+
+	$title = single_post_title( $prefix, false );
+	$output .= "<meta name='twitter:title' content='$title' />\n";
+
+	/* 3. Excerpt */
+
+	$excerpt = exa_get_meta_excerpt();
+	$output .= "<meta name='twitter:description' content='$excerpt' />\n";
+	
+	/* 4. Site */
+
+	$output .= "<meta name='twitter:site' content='@badgerherald' />\n";
+	
+	/* 5. Creator */
+
+	if(	hrld_author_has("hrld_twitter_handle") ) {
+		$twitter = get_hrld_author("hrld_twitter_handle");
+		$output .= "<meta name='twitter:creator' content='@$twitter' />\n";
+	}
+	
+
+
+	endif;
+
+	/* 6. Finish up */
+
+	$output .= "\n";
+	echo $output;
+
+
+}
+add_action('wp_head','exa_twitter_card_tags');
+
+
+/**
+ * Prints twitter conversion tracking ad code.
+ *
+ * This will let us track users who visit our site after being shown twitter ads.
+ * Leveraged correctly, this will let us target website visitors and turn them
+ * into return visitors.
+ *
+ * @see https://support.twitter.com/articles/20170807-conversion-tracking-for-websites
+ * @author Will Haynes
+ */
+function exa_twitter_conversion_tracker() {
+
+	echo '<script src="//platform.twitter.com/oct.js" type="text/javascript"></script>
+			<script type="text/javascript">
+				twttr.conversion.trackPid(\'l4v5w\');
+			</script>
+			<noscript>
+				<img height="1" width="1" style="display:none;" alt="" src="https://analytics.twitter.com/i/adsct?txn_id=l4v5w&p_id=Twitter" />
+				<img height="1" width="1" style="display:none;" alt="" src="//t.co/i/adsct?txn_id=l4v5w&p_id=Twitter" />
+			</noscript>';
+
+}
+add_action('wp_footer','exa_twitter_conversion_tracker');
+
+/**
+ * The excerpt to serve to facebook, twitter, google, &c.
+ *
+ * TODO: Add _hrld_subhead support. These are often more appropriate for the space than
+ * 		 the lede.
+ *
+ * @see http://wordpress.stackexchange.com/questions/26729/get-excerpt-using-get-the-excerpt-outside-a-loop
+ * @author Will Haynes
+ */
+function exa_get_meta_excerpt($post_id = null) {
+
+	global $post;
+
+	if( !$post_id ) {
+		$post_id = $post->ID;
+	}
+
+    $the_post = get_post($post_id); // Gets post ID
+    $the_excerpt = $the_post->post_content; // Gets post_content to be used as a basis for the excerpt
+    $excerpt_length = 35; // Sets excerpt length by word count
+    $the_excerpt = strip_tags(strip_shortcodes($the_excerpt)); // Strips tags and images
+    $words = explode(' ', $the_excerpt, $excerpt_length + 1);
+
+    if(count($words) > $excerpt_length) :
+        array_pop($words);
+        array_push($words, '…');
+        $the_excerpt = implode(' ', $words);
+    endif;
+
+    // replace all white space with single spaces.
+    $the_excerpt = preg_replace("/\s+/", " ", $the_excerpt);
+
+    return addslashes($the_excerpt); 
+}

@@ -127,6 +127,38 @@
 
 			<?php the_content(); ?>
 
+			<?php /* Bottom sharebar */ ?>
+
+			<div class="sharebar">
+
+				<span class="sharetag">Share</span>
+				<input class="sharebarurl" type="text" onclick="$(this).select()" value="<?php echo exa_short_url() ?>"/>
+				
+
+				
+				<div class="sharebarfb">
+				<div  class="fb-like" 
+					  data-href="<?php echo the_permalink(); ?>" 
+					  data-layout="button_count" 
+					  data-action="like" 
+					  data-width="90"
+					  data-show-faces="false" 
+					  data-share="true">
+				</div>
+				</div>
+				<div class="sharebartwitter">
+				<a  href="https://twitter.com/share" 
+					class="twitter-share-button " 
+					data-url="<?php echo exa_short_url(); ?>" 
+					data-text="<?php echo the_title(); ?>." 
+					data-via="badgerherald" 
+					data-related="badgerherald">Tweet</a>
+				</div>
+
+				<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+				
+			</div>
+			
 
 			<?php /* Simple widget to show Editorial Board members */ ?>
 			<?php if( get_the_author() == "Badger Herald Editorial Board" ) : ?>
