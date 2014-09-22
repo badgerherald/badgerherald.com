@@ -912,7 +912,7 @@ function exa_get_meta_excerpt($post_id = null) {
     if( function_exists('hrld_has_subhead') && hrld_has_subhead($post_id) ) {
     	$the_excerpt = hrld_get_subhead($post_id);
     	// Make sure it ends in a period, or it looks weird on facebook.
-    	$path = rtrim($the_excerpt, '.') . '.';
+    	$the_excerpt = rtrim($the_excerpt, '.') . '.';
     } else {
     	$the_excerpt = $the_post->post_content; // Gets post_content to be used as a basis for the excerpt
     	$excerpt_length = 35; // Sets excerpt length by word count
