@@ -23,7 +23,7 @@ get_header(); ?>
 <h3>For advertising inquiries, please contact:</h3>
 <strong>Nick Rush</strong><br />
 <span style="font-weight:300;font-size:80%">ADVERTISING DIRECTOR
-608.257.6899<br />
+608-257-4712 x301<br />
 <a href="mailto:addirector@badgerherald.com" style="font-size:90%">addirector@badgerherald.com</a>
 </div>
 			
