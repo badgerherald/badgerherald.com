@@ -1112,17 +1112,24 @@ function exa_get_meta_excerpt($post_id = null) {
 	}
 
     $the_post = get_post($post_id); // Gets post ID
-    $the_excerpt = $the_post->post_content; // Gets post_content to be used as a basis for the excerpt
-    $excerpt_length = 35; // Sets excerpt length by word count
-    $the_excerpt = strip_tags(strip_shortcodes($the_excerpt)); // Strips tags and images
-    $words = explode(' ', $the_excerpt, $excerpt_length + 1);
 
-    if(count($words) > $excerpt_length) :
-        array_pop($words);
-        array_push($words, '…');
-        $the_excerpt = implode(' ', $words);
-    endif;
+    // check if the hrld-setup plugin is active, and use subhead here instead.
+    if( function_exists('hrld_has_subhead') && hrld_has_subhead($post_id) ) {
+    	$the_excerpt = hrld_get_subhead($post_id);
+    	// Make sure it ends in a period, or it looks weird on facebook.
+    	$the_excerpt = rtrim($the_excerpt, '.') . '.';
+    } else {
+    	$the_excerpt = $the_post->post_content; // Gets post_content to be used as a basis for the excerpt
+    	$excerpt_length = 35; // Sets excerpt length by word count
+    	$the_excerpt = strip_tags(strip_shortcodes($the_excerpt)); // Strips tags and images
+    	$words = explode(' ', $the_excerpt, $excerpt_length + 1);
 
+    	if(count($words) > $excerpt_length) :
+    	    array_pop($words);
+    	    array_push($words, '…');
+    	    $the_excerpt = implode(' ', $words);
+    	endif;
+	}
     // replace all white space with single spaces.
     $the_excerpt = preg_replace("/\s+/", " ", $the_excerpt);
 
