@@ -1135,3 +1135,15 @@ function exa_get_meta_excerpt($post_id = null) {
 
     return addslashes($the_excerpt); 
 }
+
+/**
+ * Filters the single_template source for posts with the interactive category.
+ */
+function exa_interactive_single_template($single_template) {
+	global $post;
+	if (in_category('interactive', $post->ID)) {
+		return $_SERVER["DOCUMENT_ROOT"] . '/interactive/'.$post->post_name.'/index.php';
+	}
+	return $single_template;
+}
+add_filter('single_template', 'exa_interactive_single_template');
