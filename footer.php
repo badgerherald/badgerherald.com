@@ -93,7 +93,9 @@
 
 	</script>
 
-	<?php /* Tracking code */ ?>
+	<?php /* Tracking code */ 
+		if (hrld_is_production()) {
+	?>
 
 	<script type="text/javascript">
 
@@ -129,6 +131,7 @@
 
 	</script>
 
+	<?php } ?>
 
 </body>
 </html>
