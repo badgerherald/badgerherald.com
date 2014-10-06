@@ -133,7 +133,7 @@ get_header();
 			<div id="interactive">
 				<h3>Interactive</h3>
 
-				<a href="http://badgerherald.com/interactive/2014/the-puzzle-of-the-student-athlete/">
+				<a href="http://badgerherald.com/interactive/2014/04/28/the-puzzle-of-the-student-athlete/">
 				<img src="http://badgerherald.com/wordpress/media/2014/04/cover-718x470.jpg" />
 				<h4>The puzzle of the student-athlete</h4>
 				</a>
@@ -144,7 +144,7 @@ get_header();
 					
 					<span class="meta-author">By <a href="http://badgerherald.com/author/ndaniels" title="Nick Daniels' Profile">Nick Daniels</a></span>
 				</p>
-				<a href="http://badgerherald.com/interactive/2014/the-puzzle-of-the-student-athlete/">
+				<a href="http://badgerherald.com/interactive/2014/04/28/the-puzzle-of-the-student-athlete/">
 					<p>Student-athletes across all sports must balance a full class schedule with an equally arduous practice schedule.</p>
 				</a>
 			</div>
