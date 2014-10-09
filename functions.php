@@ -637,9 +637,7 @@ function exa_the_author_link() {
 
 function exa_post_gallery($output = '', $attr) {
 	$post = get_post();
-
-	global $homepageSlider;
-	$homepageSlider = true;
+	wp_enqueue_script('exa_post_gallery_js', get_template_directory_uri().'/js/exa-post-gallery.js', array('jquery'), false, true);
 
     if ( isset( $attr['orderby'] ) ) {
         $attr['orderby'] = sanitize_sql_orderby( $attr['orderby'] );
@@ -814,27 +812,17 @@ function exa_post_gallery($output = '', $attr) {
     }
  
     $output .= "</div>"; //class="swipe-wrap"
+    $output .= '<div class="swipe-slide-nav-page prev"></div><div class="swipe-slide-nav-page next"></div>';
     $output .= "</div>"; //class="swipe"
-
+    $output .= '<div class="slider-nav-container">';
     $output .= "<ul class='slider-nav clearfix'>";
     foreach ($attachments as $id => $attachment) {
-    	if ( ! empty( $atts['link'] ) && 'file' === $atts['link'] ) {
-            $image_output = wp_get_attachment_link( $id, $atts['size'], false, false );
-        } elseif ( ! empty( $atts['link'] ) && 'none' === $atts['link'] ) {
-            $image_output = wp_get_attachment_image( $id, $atts['size'], false );
-        } else {
-            $image_output = wp_get_attachment_link( $id, $atts['size'], true, false );
-        }
-        $image_output = wp_get_attachment_image( $id, 'thumbnail', false );
-        $image_meta  = wp_get_attachment_metadata( $id );
- 
-        $orientation = '';
-        if ( isset( $image_meta['height'], $image_meta['width'] ) ) {
-            $orientation = ( $image_meta['height'] > $image_meta['width'] ) ? 'portrait' : 'landscape';
-        }
+        $image_output = wp_get_attachment_image( $id, 'post-thumbnail', false );
         $output .= "<li>".$image_output."</li>";
     }
     $output .= "</ul>";
+    $output .= '<div class="slider-nav-page prev"></div><div class="slider-nav-page next"></div>';
+    $output .= '</div>';
     $output .= "</div>"; //id="slider"
  
     return $output;

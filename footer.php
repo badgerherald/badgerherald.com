@@ -29,9 +29,10 @@
 	
 	<?php /* TODO:  Do this in a WP way */ ?>
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-	<script src="<?php echo get_template_directory_uri(); ?>/js/exa.js" type="text/javascript"></script>
 	
 	<?php wp_footer(); ?> 
+	
+	<script src="<?php echo get_template_directory_uri(); ?>/js/exa.js" type="text/javascript"></script>
 
 	<?php /* TODO:  Only load this on the homepage */ ?>
 	<script type="text/javascript">

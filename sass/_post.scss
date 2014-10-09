@@ -289,15 +289,97 @@ span.hrld-media-credit-org{
 				}
 			}
 		}
+		.swipe-slide-nav-page {
+			width: 40%;
+			height: 100%;
+			background: transparent;
+			opacity: .5;
+			position: absolute;
+			top: 0;
+			&:after {
+				content: ' ';
+				height: 0;
+				position: absolute;
+				width: 0;
+				border: 10px solid transparent;
+				top: 50%;
+				top: calc(50% - 20px);
+			}
+			&.prev {
+				left: 0;
+				&:after {
+					border-right-color: #fff;
+					left: 10px;
+				}
+			}
+			&.next {
+				right: 0;
+				&:after {
+					border-left-color: #fff;
+					right: 10px;
+				}
+			}
+			&:hover {
+				cursor: pointer;
+				opacity: 1;
+			}
+		}
+		div.slider-nav-container{
+			width: 100%;
+			overflow: hidden;
+			position: relative;
+			.slider-nav-page {
+				width: 30px;
+				height: 100%;
+				position: absolute;
+				background: $hrld-black;
+				opacity: .5;
+				color: #fff;
+				top: 0;
+				&:after {
+					content: ' ';
+					height: 0;
+					position: absolute;
+					width: 0;
+					border: 10px solid transparent;
+					top: 50%;
+					top: calc(50% - 6px);
+				}
+				&.prev {
+					left: 0;
+					&:after {
+						border-right-color: #fff;
+						right: 12px;
+					}
+				}
+				&.next {
+					right: 0;
+					&:after {
+						border-left-color: #fff;
+						left: 12px;
+					}
+				}
+				&:hover {
+					opacity: .8;
+					cursor: pointer;
+				}
+			}
+		}
 		ul.slider-nav {
 			list-style: none;
+			position: relative;
+			left: 0;
 			margin: 0;
 			padding:0;
+			-webkit-transition: all 600ms ease-out;
+		    -moz-transition: all 600ms ease-out;
+		    -o-transition: all 600ms ease-out;
+		    transition: all 600ms ease-out;
 			li {
 				display: block;
 				width: flex(73,300);
-				margin-left: flex(1,300);
-				margin-right: flex(1, 300);
+				//margin-left: flex(1,300);
+				//margin-right: flex(1, 300);
 				margin-top: 6px;
 				padding-bottom: 12px;
 				background: #2b2b2b;
@@ -308,6 +390,9 @@ span.hrld-media-credit-org{
 				}
 				span {
 					display: none;
+				}
+				&:hover {
+					cursor: pointer;
 				}
 			}
 		}
@@ -376,8 +461,8 @@ span.hrld-media-credit-org{
 				overflow-x: auto;
 				li {
 					width: flex(150, 760);
-					margin-right: flex(1, 760);
-					margin-left: flex(1, 760);
+					//margin-right: flex(1, 760);
+					//margin-left: flex(1, 760);
 					float: left;
 					height: auto;
 					img {

@@ -86,7 +86,6 @@ $(document).ready(function() {
 		});
 		$(window).scroll(function(){
 			var scrollTop = $(window).scrollTop();
-			console.log(scrollTop + 78 + sidebar.height() + ', ' + sidebar_pos + ', ' + comments);
 			if(((scrollTop + 78) > sidebar_pos) && ((scrollTop + 78 + sidebar.height()) < comments)){
 				sidebar.addClass('fixed-sidebar')
 			} else{
