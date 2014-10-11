@@ -49,10 +49,11 @@
 		var galleryPages = Math.ceil(gallerySize / pagingSize);
 		var currGalPage = 0;
 		var thumbWidth = $('.slider-nav-container').width() / pagingSize;
+		console.log(thumbWidth);
 		var thumbRatio = 450/690;
-		var thumbHeight = (thumbWidth * thumbRatio) + 18;
+		var thumbHeight = (thumbWidth * thumbRatio) + 12; //12 is the bottom padding of each li within the thumbnail list.
 		galleryNav.children('li').each(function(index) {
-			$(this).width(thumbWidth);
+			$(this).width(thumbWidth-6);
 		});
 		galleryNav.width(thumbWidth * gallerySize);
 		galleryNav.height(thumbHeight);
@@ -80,6 +81,7 @@
 					}					
 				}
 			}
+			console.log(currGalPage * (pagingSize * thumbWidth * (-1)));
 			galleryNav.css('left', (currGalPage * (pagingSize * thumbWidth * (-1))) + 'px');
 		});
 
@@ -100,6 +102,17 @@
 				if (index < 0) {
 					index = gallerySize - 1;
 				}
+			}
+			if (currGalPage !== Math.floor(index/pagingSize)) {
+				currGalPage = Math.floor(index/pagingSize);
+				galleryNav.css('left', (currGalPage * (pagingSize * thumbWidth * (-1))) + 'px');
+				$('.slider-nav-page.next').css({'display':'block'});
+				$('.slider-nav-page.prev').css({'display':'block'});
+				if(currGalPage === galleryPages - 1) {
+					$('.slider-nav-page.next').css({'display':'none'});
+				} else if(currGalPage === 0) {
+					$('.slider-nav-page.prev').css({'display':'none'});
+				}	
 			}
 			console.log(index);
 			window.mySwipe.slide(index,speed);

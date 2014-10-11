@@ -328,6 +328,8 @@ span.hrld-media-credit-org{
 			width: 100%;
 			overflow: hidden;
 			position: relative;
+			margin-top: 6px;
+			border-top: solid 1px $hrld-black-dark-grey;
 			.slider-nav-page {
 				width: 30px;
 				height: 100%;
@@ -380,11 +382,13 @@ span.hrld-media-credit-org{
 				width: flex(73,300);
 				//margin-left: flex(1,300);
 				//margin-right: flex(1, 300);
-				margin-top: 6px;
 				padding-bottom: 12px;
 				background: #2b2b2b;
 				float: left;
 				height: auto;
+				box-sizing: border-box;
+				border-left: 3px solid $hrld-black;
+				border-right: 3px solid $hrld-black;
 				&.active {
 					background: $hrld-blue;
 				}
