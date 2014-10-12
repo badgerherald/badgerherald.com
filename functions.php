@@ -780,6 +780,15 @@ function exa_post_gallery($output = '', $attr) {
         //    <{$icontag} class='gallery-icon {$orientation}'>
         //        $image_output
         //    </{$icontag}>";
+		$output .= "</div>";
+        
+        $output .= "<div class='slider-content'>";
+        if (trim($attachment->post_excerpt) ) {
+            $output .= "
+                <p>
+                " . wptexturize($attachment->post_excerpt) . "
+                </p>";
+        }
         $credit = get_hrld_media_credit($id);
 
 		if ($credit != "") {
@@ -798,15 +807,6 @@ function exa_post_gallery($output = '', $attr) {
 			}
 			$output .= "</div>";
 		}
-		$output .= "</div>";
-        
-        $output .= "<div class='slider-content'>";
-        if (trim($attachment->post_excerpt) ) {
-            $output .= "
-                <p>
-                " . wptexturize($attachment->post_excerpt) . "
-                </p>";
-        }
         $output .= "</div>"; //class="slider-content"
         $output .= "</div>"; //class="slide"
     }

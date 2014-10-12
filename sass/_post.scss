@@ -235,7 +235,11 @@ span.hrld-media-credit-org{
 			text-align: left;
 			font-weight: 300;
 			font-size: 14px;
-			background: $hrld-black;
+			background: rgba(0,0,0,.65);
+			width: 100%;
+			position: absolute;
+			bottom: 0;
+
 		}
 		img {
 			height: auto;
@@ -249,9 +253,6 @@ span.hrld-media-credit-org{
 		.slide{
 			text-align: center;
 			background: #2b2b2b;
-		}
-		.slider-content {
-			width: 100%;
 		}
 		.slide-image {
 			position: relative;
