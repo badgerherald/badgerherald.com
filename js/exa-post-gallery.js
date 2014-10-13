@@ -58,6 +58,9 @@
 		galleryNav.width(thumbWidth * gallerySize);
 		galleryNav.height(thumbHeight);
 		$('.slider-nav-page.prev').css({'display':'none'});
+		if (gallerySize <= pagingSize) {
+			$('.slider-nav-page.next').css({'display':'none'});
+		}
 
 		$('.slider-nav-page').click(function() {
 			var next = true;
