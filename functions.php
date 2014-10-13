@@ -637,9 +637,7 @@ function exa_the_author_link() {
 
 function exa_post_gallery($output = '', $attr) {
 	$post = get_post();
-
-	global $homepageSlider;
-	$homepageSlider = true;
+	wp_enqueue_script('exa_post_gallery_js', get_template_directory_uri().'/js/exa-post-gallery.js', array('jquery'), false, true);
 
     if ( isset( $attr['orderby'] ) ) {
         $attr['orderby'] = sanitize_sql_orderby( $attr['orderby'] );
@@ -782,10 +780,18 @@ function exa_post_gallery($output = '', $attr) {
         //    <{$icontag} class='gallery-icon {$orientation}'>
         //        $image_output
         //    </{$icontag}>";
+		$output .= "</div>";
+        
+        $output .= "<div class='slider-content'>";
+        if (trim($attachment->post_excerpt) ) {
+            $output .= "
+                <p>
+                " . wptexturize($attachment->post_excerpt) . "
+                </p>";
+        }
         $credit = get_hrld_media_credit($id);
 
 		if ($credit != "") {
-			$output .= "<div class='entry-post-featured-credit'>";
 				if(get_user_by('login', $credit)){
 				$hrld_user = get_user_by('login', $credit);
 				$output .= "<span class='hrld-media-credit'><span class='hrld-media-credit-name'><a href='".get_bloginfo('url')."/author/$credit'>$hrld_user->display_name</a></span><span class='hrld-media-credit-org'>/The Badger Herald</span></span>"; 
@@ -798,43 +804,23 @@ function exa_post_gallery($output = '', $attr) {
 					$output .= "<span class='hrld-media-credit'><span class='hrld-media-credit-org'>$hrld_credit_name_org[0]</span></span>";
 				}
 			}
-			$output .= "</div>";
 		}
-		$output .= "</div>";
-        
-        $output .= "<div class='slider-content'>";
-        if (trim($attachment->post_excerpt) ) {
-            $output .= "
-                <p>
-                " . wptexturize($attachment->post_excerpt) . "
-                </p>";
-        }
         $output .= "</div>"; //class="slider-content"
         $output .= "</div>"; //class="slide"
     }
  
     $output .= "</div>"; //class="swipe-wrap"
+    $output .= '<div class="swipe-slide-nav-page prev"></div><div class="swipe-slide-nav-page next"></div>';
     $output .= "</div>"; //class="swipe"
-
+    $output .= '<div class="slider-nav-container">';
     $output .= "<ul class='slider-nav clearfix'>";
     foreach ($attachments as $id => $attachment) {
-    	if ( ! empty( $atts['link'] ) && 'file' === $atts['link'] ) {
-            $image_output = wp_get_attachment_link( $id, $atts['size'], false, false );
-        } elseif ( ! empty( $atts['link'] ) && 'none' === $atts['link'] ) {
-            $image_output = wp_get_attachment_image( $id, $atts['size'], false );
-        } else {
-            $image_output = wp_get_attachment_link( $id, $atts['size'], true, false );
-        }
-        $image_output = wp_get_attachment_image( $id, 'thumbnail', false );
-        $image_meta  = wp_get_attachment_metadata( $id );
- 
-        $orientation = '';
-        if ( isset( $image_meta['height'], $image_meta['width'] ) ) {
-            $orientation = ( $image_meta['height'] > $image_meta['width'] ) ? 'portrait' : 'landscape';
-        }
+        $image_output = wp_get_attachment_image( $id, 'post-thumbnail', false );
         $output .= "<li>".$image_output."</li>";
     }
     $output .= "</ul>";
+    $output .= '<div class="slider-nav-page prev"></div><div class="slider-nav-page next"></div>';
+    $output .= '</div>';
     $output .= "</div>"; //id="slider"
  
     return $output;
