@@ -792,7 +792,6 @@ function exa_post_gallery($output = '', $attr) {
         $credit = get_hrld_media_credit($id);
 
 		if ($credit != "") {
-			$output .= "<div class='entry-post-featured-credit'>";
 				if(get_user_by('login', $credit)){
 				$hrld_user = get_user_by('login', $credit);
 				$output .= "<span class='hrld-media-credit'><span class='hrld-media-credit-name'><a href='".get_bloginfo('url')."/author/$credit'>$hrld_user->display_name</a></span><span class='hrld-media-credit-org'>/The Badger Herald</span></span>"; 
@@ -805,7 +804,6 @@ function exa_post_gallery($output = '', $attr) {
 					$output .= "<span class='hrld-media-credit'><span class='hrld-media-credit-org'>$hrld_credit_name_org[0]</span></span>";
 				}
 			}
-			$output .= "</div>";
 		}
         $output .= "</div>"; //class="slider-content"
         $output .= "</div>"; //class="slide"

@@ -227,6 +227,7 @@ span.hrld-media-credit-org{
 		background: $hrld-black;
 		color: $hrld-light-grey;
 		margin-bottom: 12px;
+		font-family: $headline;
 		a {
 			color: #fff;
 		}
@@ -234,12 +235,23 @@ span.hrld-media-credit-org{
 			float: left;
 			text-align: left;
 			font-weight: 300;
-			font-size: 14px;
+			font-size: 16px;
 			background: rgba(0,0,0,.65);
 			width: 100%;
 			position: absolute;
+			font-family: $headline;
 			bottom: 0;
-
+			z-index: 100;
+			p {
+				margin: 6px 0;
+				margin-bottom: 3px;
+				font-family: $headline;
+			}
+			.hrld-media-credit {
+				font-size: 14px;
+				padding: 3px 20px;
+				float: right;
+			}
 		}
 		img {
 			height: auto;
@@ -252,7 +264,7 @@ span.hrld-media-credit-org{
 		}
 		.slide{
 			text-align: center;
-			background: #2b2b2b;
+			background: $hrld-black;
 		}
 		.slide-image {
 			position: relative;
@@ -294,9 +306,14 @@ span.hrld-media-credit-org{
 			width: 40%;
 			height: 100%;
 			background: transparent;
-			opacity: .5;
+			opacity: 0;
 			position: absolute;
 			top: 0;
+			z-index: 50;
+			-webkit-transition: all 250ms ease-out;
+		    -moz-transition: all 250ms ease-out;
+		    -o-transition: all 250ms ease-out;
+		    transition: all 250ms ease-out;
 			&:after {
 				content: ' ';
 				height: 0;
@@ -330,7 +347,6 @@ span.hrld-media-credit-org{
 			overflow: hidden;
 			position: relative;
 			margin-top: 6px;
-			border-top: solid 1px $hrld-black-dark-grey;
 			.slider-nav-page {
 				width: 30px;
 				height: 100%;
