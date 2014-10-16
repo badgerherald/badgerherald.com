@@ -40,8 +40,6 @@ if ( $the_query->have_posts() ) {
 	while ( $the_query->have_posts() ) {
 		$the_query->the_post();
 		$ru = getrusage();
-		error_log("This process used " . microtime(true) - $start .
-    		" ms for its computations\n");
 		
 		header('Location: ' . get_permalink());
 		//header('Location: http://google.com');
