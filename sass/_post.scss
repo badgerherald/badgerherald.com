@@ -420,6 +420,10 @@ span.hrld-media-credit-org{
 	}
 }
 
+.bottom-inhouse {
+	display: none;
+}
+
 
 @media (min-width: 760px) {
 
@@ -575,12 +579,50 @@ ul.edboard-members {
 		margin-top: 1px;
 		padding-left: 10px;
 	}
+
+
 }
 
 
 @media (min-width: 760px) {
 	.sharebarurl {
 		display: inline-block !important;
+	}
+	.bottom-inhouse {
+		margin: 18px 0;
+	}
+	.badger-like-inhouse {
+		display: block !important;
+		position: relative;
+		width: 100%;
+		height: 250px;
+		background: red url('img/inhouses/strut/badger-background.png') no-repeat;
+		background-position: -150px 0;
+		color: #fff;
+		.badger-like-inhouse-content {
+			position: absolute;
+			left:310px;
+			top:36px;
+		}
+		h2 {
+			font-size: 40px;
+			text-transform: uppercase;
+		}
+		h3 {
+			font-size: 14px;		
+			background: #000;	
+			width: 400px;
+			margin-top: 18px;
+			font-style: italic;
+			padding: 12px;
+			margin-bottom: 0;
+		}
+		.like-box {
+			background: #fff;
+			display: block;
+			width: 320px;
+			padding: 12px;
+		}
 	}
 }
 
@@ -624,6 +666,17 @@ ul.edboard-members {
 		display: none;
 	}
 
+	.badger-like-inhouse {
+		background-position: -100px 0;
+		.badger-like-inhouse-content {
+			left:380px;
+			top:48px;
+		}
+		h3 {
+			width: auto;
+		}
+	}
+
 }
 
 
@@ -652,6 +705,18 @@ ul.edboard-members {
 			width: 100%;
 		}
 	}
+
+	.badger-like-inhouse {
+		background-position: 0px 0;
+		.badger-like-inhouse-content {
+			left:480px;
+			top:48px;
+		}
+		h3 {
+			width: auto;
+		}
+	}
+
 }
 
 

@@ -10,11 +10,14 @@
 
 /* check if they weren't looking for an old school url */
 
+
+$start = microtime(true);
+
 function pageURL() {
 
  $pageURL .= $_SERVER["REQUEST_URI"];
+ return $pageURL;
 
- return preg_replace("#/bhrld#", "", $pageURL);
 }
 
 $args = array(
@@ -22,8 +25,8 @@ $args = array(
     'meta_query' => array(
         array(
             'key' => '_mt_url',
-            'value' => pageURL(),
-            'compare' => 'LIKE'
+            'value' => 'http://badgerherald.com' . pageURL(),
+            'compare' => '='
         )
     ),
     'post_type' => 'any'
@@ -36,6 +39,10 @@ $the_query = new WP_Query( $args );
 if ( $the_query->have_posts() ) {
 	while ( $the_query->have_posts() ) {
 		$the_query->the_post();
+		$ru = getrusage();
+		error_log("This process used " . microtime(true) - $start .
+    		" ms for its computations\n");
+		
 		header('Location: ' . get_permalink());
 		//header('Location: http://google.com');
 		?>
@@ -51,7 +58,8 @@ if ( $the_query->have_posts() ) {
 }
 /* Restore original Post Data */
 wp_reset_postdata();
-
+error_log("This process used " . microtime(true) - $start .
+    		" ms for its computations\n");
 
 get_header(); ?>
 
