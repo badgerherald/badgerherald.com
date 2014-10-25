@@ -51,10 +51,10 @@ get_header(); ?>
 <div class="post-sidebar">
 			<div class="post-sidebar-scroll fixed-sidebar-container">
 			<div class="meta-author">
-				<a class="meta-author-avatar" title="<?php echo exa_properize($hrld_credit_user->display_name); ?> Profile" href="<?php echo get_bloginfo('url').'/author/'.$hrld_credit_user->display_name ?>">
+				<a class="meta-author-avatar" title="<?php echo exa_properize($hrld_credit_user->display_name); ?> Profile" href="<?php echo get_bloginfo('url').'/author/'.$hrld_credit_user->user_login ?>">
 					<?php echo get_wp_user_avatar($hrld_credit_user->ID, 'small-thumbnail'); ?>
 				</a>
-				<span class="author">by <a href="<?php echo get_bloginfo('url').'/author/'.$hrld_credit_user->display_name ?>" title="<?php echo exa_properize($hrld_credit_user->display_name); ?> Profile"><?php echo $hrld_credit_user->display_name; ?></a></span>
+				<span class="author">by <a href="<?php echo get_bloginfo('url').'/author/'.$hrld_credit_user->user_login ?>" title="<?php echo exa_properize($hrld_credit_user->display_name); ?> Profile"><?php echo $hrld_credit_user->display_name; ?></a></span>
 				<span class="author-position">The Badger Herald</span>
 				<?php // If twitter
 				if(hrld_author_has("hrld_twitter_handle",$hrld_credit_user->ID)) {
