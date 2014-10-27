@@ -149,7 +149,7 @@
 				<div class="sharebartwitter">
 				<a  href="https://twitter.com/share" 
 					class="twitter-share-button " 
-					data-url="<?php echo exa_short_url(); ?>" 
+					data-url="<?php echo the_permalink(); ?>" 
 					data-text="<?php echo the_title(); ?>." 
 					data-via="badgerherald" 
 					data-related="badgerherald">Tweet</a>
