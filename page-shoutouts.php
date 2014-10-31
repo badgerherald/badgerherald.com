@@ -64,7 +64,6 @@ if ($_POST) {
 	} 
 	else {
 		if(mysql_query("INSERT INTO shoutouts_new (setid,text,date,ip,approved,sonum) VALUES ('$setid','$sotext',NOW(),'".$_SERVER['REMOTE_ADDR']."',0,'NULL')"))
-			mail ( "haynes24@gmail.com" , "New SO" , "New SO", "From: haynes24+soc@gmail.com\n" );
 			$error['success'] = true;
 			$error['message'] = "Shoutout successfully submitted";
 	}
