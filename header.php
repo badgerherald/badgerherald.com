@@ -92,20 +92,19 @@ include('macros.php');
 		
 		<div class="nav-bar">
 
-			<a href="<?php echo bloginfo("url"); ?>"><div class="bar-logo">
-
-			</div></a>
+			<a href="<?php echo bloginfo("url"); ?>"><div class="bar-logo"><span class="sm-only">The Badger </span>Herald</div></a>
 			
 			<?php /* container for the mobile hamburger icon */ ?>
 	        <div class="nav-control" alt="Menu">
-		         <div class="nav-icon" ></div>
 	        </div>
 			
 			<div class="nav-container">
-
+				<?php get_search_form( true );  ?>
 				<div class="nav-drop-tagline">The University of Wisconsin's Premier Independent Student Newspaper &mdash; <strong>Since 1969</strong></div>
 
 				<ul id="main-nav" class="dropdown-border">
+					<li>
+					</li> 
 					<li><a href="<?php echo (is_home() ? '#news' : get_bloginfo('url').'/news/'); ?>">News</a></li>
 					<li><a href="<?php echo (is_home() ? '#opinion' : get_bloginfo('url').'/oped/'); ?>">Opinion</a></li>
 					<li><a href="<?php echo (is_home() ? '#artsetc' : get_bloginfo('url').'/artsetc/'); ?>">ArtsEtc.</a></li>
@@ -115,18 +114,24 @@ include('macros.php');
 					<li class="about-off"><a href="<?php bloginfo('url'); ?>/about/">About</a></li>
 					<li><a href="http://themadisonmisnomer.com/">Misnomer</a></li>
 					<li><a href="<?php bloginfo('url'); ?>/advertise/">Advertise</a></li>
-				
-					<li>
-						<a class="search-link" href="<?php bloginfo('url'); ?>/search/">Search</a>
-						<?php /*<input type="text" placeholder="Search..." value="SEARCH" /> */ ?>
-						<?php get_search_form( true );  ?>
-					</li> 
 				</ul>
-
+				<div class="current-nav">
+					<?php
+						if(is_single()){
+							$category_terms = get_the_terms($post->ID, 'category');
+							if(count($category_terms) > 0) {
+								echo $category_terms[0]->name;
+							}
+						} else if(is_page()){
+							echo $post->post_name;
+						}
+					?>
+				</div>
 
 				<div class="clearfix"></div>
 
 			</div>
+			<div class="exit-nav-open sm-only"></div>
 
 		</div><!-- class="nav-bar" -->
 		
@@ -134,8 +139,13 @@ include('macros.php');
 
 	</div> <!-- #masthead -->
 	</div><!-- #main-header -->
-
-	
+	<?php
+	if (is_single()) { ?>
+		<div class="progress">
+		  <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%;">
+		  </div>
+		</div>
+	<?php } ?>
 	</div> <!-- #wrapper -->
 	</div> <!-- #page -->
 

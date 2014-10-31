@@ -98,25 +98,15 @@ $(document).ready(function() {
 		$(".add-so-button").css({'top':'-30px','display':'block'}).animate({'top':'43px','display':'block'},200);
 	}, 400 /* but after 2000 ms */);
 	$('#shoutoutText').focus();
-
-	$(".search-button").click(function(e) {
-		e.preventDefault();
-		$(this).find('input').first().attr("value","");
-	});
 	
 	$(".nav-control").click(function(e){
 		$(".nav-container").toggleClass("nav-open");
+		$(".nav-bar").toggleClass("nav-bar-open");
 	});
-
-	$("#main-nav #searchform #s").focus(function(){
-		$("#main-nav li a").addClass("nav-search-focus");
-		$(this).addClass("nav-search-focus");
+	$(".exit-nav-open").click(function(e) {
+		$(".nav-container").toggleClass("nav-open");
+		$(".nav-bar").toggleClass("nav-bar-open");
 	});
-	$("#main-nav #searchform").on("blur", "#s", function(){
-		$("#main-nav li a").removeClass("nav-search-focus");
-		$(this).removeClass("nav-search-focus");
-	});
-
 	
 	//Smooth scrolling to anchors from anchor links on same page.
 	$(function() {
