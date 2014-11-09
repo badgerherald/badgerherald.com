@@ -97,7 +97,7 @@ include('macros.php');
 			<?php /* container for the mobile hamburger icon */ ?>
 	        <div class="nav-control" alt="Menu">
 	        </div>
-			
+
 			<div class="nav-container">
 				<?php get_search_form( true );  ?>
 				<div class="nav-drop-tagline">The University of Wisconsin's Premier Independent Student Newspaper &mdash; <strong>Since 1969</strong></div>
@@ -115,23 +115,21 @@ include('macros.php');
 					<li><a href="http://themadisonmisnomer.com/">Misnomer</a></li>
 					<li><a href="<?php bloginfo('url'); ?>/advertise/">Advertise</a></li>
 				</ul>
-				<div class="current-nav">
-					<?php
-						if(is_single()){
-							$category_terms = get_the_terms($post->ID, 'category');
-							if(count($category_terms) > 0) {
-								echo $category_terms[0]->name;
-							}
-						} else if(is_page()){
-							echo $post->post_name;
-						}
-					?>
-				</div>
 
 				<div class="clearfix"></div>
 
 			</div>
 			<div class="exit-nav-open sm-only"></div>
+
+			<div class="current-nav">
+				<?php
+					if (!is_page()) {
+						echo ucfirst($wp_query->query_vars['category_name']);
+					} else {
+						echo ucfirst($wp_query->query_vars['name']);
+					}
+				?>
+			</div>
 
 		</div><!-- class="nav-bar" -->
 		
@@ -152,11 +150,9 @@ include('macros.php');
 	<div id="page" class="page-container-inner-masthead">
 	<div id="wrapper">
 	
-
 	<a id="logo" href="<?php bloginfo('url'); ?>">
 		<div class="logo-image"><img src="<?php bloginfo('template_url') ?>/img/logo/header-7.png" /></div>
 	</a>
-
 	<?php /* inner-masthead contains elements 'framed' by the logo and the navbar */ ?>
 	<div id="inner-masthead">
 

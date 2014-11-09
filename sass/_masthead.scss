@@ -85,7 +85,7 @@ a#logo {
 	border-right: 1px solid $hrld-dark-grey;
 	position: fixed;
 	text-align: center;
-	left: -275px;
+	left: -276px;
 	z-index: 9999;
 	@include transition(all, 250ms, ease-in-out);
 	.nav-drop-tagline {
@@ -116,8 +116,11 @@ a#logo {
 		cursor: pointer;
 	}
 }
+.current-nav {
+	display: none;
+}
 .nav-bar.nav-bar-open {
-	left: 275px;
+	left: 276px;
 	.exit-nav-open {
 		display: block;
 	}
@@ -221,7 +224,7 @@ ul#main-nav {
 @media (min-width: 1060px) {
 
 	/** _masthead.scss overrides */
-
+	/*
 	.nav-bar {
 		width: 1020px;
 		margin-left: 20px;
@@ -230,7 +233,33 @@ ul#main-nav {
 			display: none;
 		}
 	}
-
+	*/
+	.sm-only {
+		display: none;
+	}
+	.nav-bar {
+		.bar-logo {
+			margin-left: 20px;
+			width: 140px;
+			font-size: 24px;
+			letter-spacing: 2px;
+			text-align: left;
+			padding-left: 10px;
+			&:after, &:before {
+				border-width: 8px 70px 0 70px;
+			}
+			&:before {
+				left: 20px;
+				bottom: -8px;
+			}
+		}
+		.nav-control {
+			left: 160px;
+			&:before {
+				left: auto;
+			}
+		}
+	}
 	a#logo {
 		display: block;
 		width: 140px;
@@ -242,7 +271,7 @@ ul#main-nav {
 		padding-right: 20px;
 		padding-bottom: 6px;
 	}
-
+	/*
 	.nav-container {
 		.nav-drop-tagline {
 			display:none;
@@ -255,7 +284,7 @@ ul#main-nav {
 		position: absolute;
 		top:0;
 	}
-
+	*/
 	#inner-masthead {
 		.inner-mast-tagline {
 			display: block;
@@ -297,7 +326,7 @@ ul#main-nav {
 			}
 		}
 	}
-
+	/*
 	ul#main-nav,ul#mini-nav {
 		padding: 0 0 0 0;
 		margin: 0px;
@@ -365,11 +394,11 @@ ul#main-nav {
 		   color: #fff;
 		}
 
-		:-moz-placeholder { /* Firefox 18- */
+		:-moz-placeholder { 
 		   color: #fff;  
 		}
 
-		::-moz-placeholder {  /* Firefox 19+ */
+		::-moz-placeholder { 
 		   color: #fff;  
 		}
 
@@ -394,8 +423,9 @@ ul#main-nav {
 			&:hover{
 				cursor: pointer;
 			}
-		}
+		}	
 	}
+	*/
 }
 
 @media (min-width: 1220px) {
