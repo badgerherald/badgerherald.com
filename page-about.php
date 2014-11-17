@@ -18,7 +18,7 @@ function about_class($classes) {
 	return $classes;
 } add_filter('body_class','about_class');
 
-get_header(); ?>
+get_header('about'); ?>
 
 
 	<div class="about-nav fixed-sidebar-container">

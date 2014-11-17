@@ -99,14 +99,32 @@ $(document).ready(function() {
 	}, 400 /* but after 2000 ms */);
 	$('#shoutoutText').focus();
 	
+	var toggleNav = function() {
+		$(".nav-container").toggleClass("nav-open");
+		$(".nav-bar").toggleClass("nav-bar-open");
+	}
+
 	$(".nav-control").click(function(e){
-		$(".nav-container").toggleClass("nav-open");
-		$(".nav-bar").toggleClass("nav-bar-open");
+		toggleNav();
+		e.stopPropagation();
 	});
-	$(".exit-nav-open").click(function(e) {
-		$(".nav-container").toggleClass("nav-open");
-		$(".nav-bar").toggleClass("nav-bar-open");
+	$(".nav-container").click(function(e) {
+		e.stopPropagation();
 	});
+	$("body").click(function(e) {
+		if ($(".nav-container").hasClass("nav-open")) {
+			toggleNav();
+		}
+	});
+
+	if ($(".progress").length !== 0) {
+		$(window).scroll(function() {
+			var scrollTop = $(window).scrollTop();
+			var scrollH = $(document).height() - $(window).height();
+			var progress = Math.max(0, Math.min(1, scrollTop/scrollH)) * 100;
+			$(".progress .progress-bar").attr("aria-valuenow", Math.floor(progress)).css("width", progress+"%");
+		});
+	}
 	
 	//Smooth scrolling to anchors from anchor links on same page.
 	$(function() {

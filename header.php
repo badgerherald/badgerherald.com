@@ -92,7 +92,7 @@ include('macros.php');
 		
 		<div class="nav-bar">
 
-			<a href="<?php echo bloginfo("url"); ?>"><div class="bar-logo"><span class="sm-only">The Badger </span>Herald</div></a>
+			<a href="<?php echo bloginfo("url"); ?>"><div class="bar-logo"><span>The Badger </span>Herald</div></a>
 			
 			<?php /* container for the mobile hamburger icon */ ?>
 	        <div class="nav-control" alt="Menu">
@@ -103,8 +103,6 @@ include('macros.php');
 				<div class="nav-drop-tagline">The University of Wisconsin's Premier Independent Student Newspaper &mdash; <strong>Since 1969</strong></div>
 
 				<ul id="main-nav" class="dropdown-border">
-					<li>
-					</li> 
 					<li><a href="<?php echo (is_home() ? '#news' : get_bloginfo('url').'/news/'); ?>">News</a></li>
 					<li><a href="<?php echo (is_home() ? '#opinion' : get_bloginfo('url').'/oped/'); ?>">Opinion</a></li>
 					<li><a href="<?php echo (is_home() ? '#artsetc' : get_bloginfo('url').'/artsetc/'); ?>">ArtsEtc.</a></li>
@@ -119,7 +117,6 @@ include('macros.php');
 				<div class="clearfix"></div>
 
 			</div>
-			<div class="exit-nav-open sm-only"></div>
 
 			<div class="current-nav">
 				<?php
@@ -131,20 +128,32 @@ include('macros.php');
 				?>
 			</div>
 
+			<div class="title">
+				<?php
+					if (is_single()) {
+						$post_author = get_userdata($post->post_author);
+						echo $post->post_title;
+						echo '<span class="byline"> <i>by</i> '.$post_author->display_name.'</span>';
+					}
+				?>
+			</div>
+
+			<div class="exit-nav-open sm-only"></div>
+
 		</div><!-- class="nav-bar" -->
 		
 		</nav>
 
 	</div> <!-- #masthead -->
 	</div><!-- #main-header -->
+	</div> <!-- #wrapper -->
 	<?php
 	if (is_single()) { ?>
 		<div class="progress">
-		  <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%;">
+		  <div class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0;">
 		  </div>
 		</div>
 	<?php } ?>
-	</div> <!-- #wrapper -->
 	</div> <!-- #page -->
 
 	<div id="page" class="page-container-inner-masthead">
