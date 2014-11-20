@@ -98,33 +98,25 @@ $(document).ready(function() {
 		$(".add-so-button").css({'top':'-30px','display':'block'}).animate({'top':'43px','display':'block'},200);
 	}, 400 /* but after 2000 ms */);
 	$('#shoutoutText').focus();
+
+	$(".search-button").click(function(e) {
+		e.preventDefault();
+		$(this).find('input').first().attr("value","");
+	});
 	
-	var toggleNav = function() {
-		$(".nav-container").toggleClass("nav-open");
-		$(".nav-bar").toggleClass("nav-bar-open");
-	}
-
 	$(".nav-control").click(function(e){
-		toggleNav();
-		e.stopPropagation();
-	});
-	$(".nav-container").click(function(e) {
-		e.stopPropagation();
-	});
-	$("body").click(function(e) {
-		if ($(".nav-container").hasClass("nav-open")) {
-			toggleNav();
-		}
+		$(".nav-container").toggleClass("nav-open");
 	});
 
-	if ($(".progress").length !== 0) {
-		$(window).scroll(function() {
-			var scrollTop = $(window).scrollTop();
-			var scrollH = $(document).height() - $(window).height();
-			var progress = Math.max(0, Math.min(1, scrollTop/scrollH)) * 100;
-			$(".progress .progress-bar").attr("aria-valuenow", Math.floor(progress)).css("width", progress+"%");
-		});
-	}
+	$("#main-nav #searchform #s").focus(function(){
+		$("#main-nav li a").addClass("nav-search-focus");
+		$(this).addClass("nav-search-focus");
+	});
+	$("#main-nav #searchform").on("blur", "#s", function(){
+		$("#main-nav li a").removeClass("nav-search-focus");
+		$(this).removeClass("nav-search-focus");
+	});
+
 	
 	//Smooth scrolling to anchors from anchor links on same page.
 	$(function() {

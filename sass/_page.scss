@@ -30,19 +30,19 @@ body {
 	position: fixed;
 	width: 100%;
 	top : 0;
-	height: 42px; /* top margin, navbar, bottom margin */
+	height: 66px; /* top margin, navbar, bottom margin */
 	max-width: 540px;
+	border-bottom: 1px solid #e0eaee;
 	z-index: 9999;
 }
 
 .page-container-masthead {
 	position: fixed !important;
 	z-index: 9999;
-	background: rgba(239,244,246,.95);
-	height: 42px; /* top margin, navbar, bottom margin */
+	background: rgba(239,244,246,.9);
+	height: 66px; /* top margin, navbar, bottom margin */
 	width:100%;
 	top: 0;
-	border-bottom: 1px solid #e0eaee;
 }
 
 .page-container-inner-masthead {
@@ -132,6 +132,11 @@ body.admin-bar {
 	#masthead {
 		max-width: 1060px;
 		width: 1060px;
+		height: 78px;
+	}
+
+	.page-container-masthead {
+		height: 78px;
 	}
 
 	#inner-masthead {

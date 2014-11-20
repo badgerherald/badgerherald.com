@@ -92,14 +92,17 @@ include('macros.php');
 		
 		<div class="nav-bar">
 
-			<a href="<?php echo bloginfo("url"); ?>"><div class="bar-logo"><span>The Badger </span>Herald</div></a>
+			<a href="<?php echo bloginfo("url"); ?>"><div class="bar-logo">
+
+			</div></a>
 			
 			<?php /* container for the mobile hamburger icon */ ?>
 	        <div class="nav-control" alt="Menu">
+		         <div class="nav-icon" ></div>
 	        </div>
-
+			
 			<div class="nav-container">
-				<?php get_search_form( true );  ?>
+
 				<div class="nav-drop-tagline">The University of Wisconsin's Premier Independent Student Newspaper &mdash; <strong>Since 1969</strong></div>
 
 				<ul id="main-nav" class="dropdown-border">
@@ -112,33 +115,18 @@ include('macros.php');
 					<li class="about-off"><a href="<?php bloginfo('url'); ?>/about/">About</a></li>
 					<li><a href="http://themadisonmisnomer.com/">Misnomer</a></li>
 					<li><a href="<?php bloginfo('url'); ?>/advertise/">Advertise</a></li>
+				
+					<li>
+						<a class="search-link" href="<?php bloginfo('url'); ?>/search/">Search</a>
+						<?php /*<input type="text" placeholder="Search..." value="SEARCH" /> */ ?>
+						<?php get_search_form( true );  ?>
+					</li> 
 				</ul>
+
 
 				<div class="clearfix"></div>
 
 			</div>
-
-			<div class="current-nav">
-				<?php
-					if (!is_page()) {
-						echo ucfirst($wp_query->query_vars['category_name']);
-					} else {
-						echo ucfirst($wp_query->query_vars['name']);
-					}
-				?>
-			</div>
-
-			<div class="title">
-				<?php
-					if (is_single()) {
-						$post_author = get_userdata($post->post_author);
-						echo $post->post_title;
-						echo '<span class="byline"> <i>by</i> '.$post_author->display_name.'</span>';
-					}
-				?>
-			</div>
-
-			<div class="exit-nav-open sm-only"></div>
 
 		</div><!-- class="nav-bar" -->
 		
@@ -146,22 +134,19 @@ include('macros.php');
 
 	</div> <!-- #masthead -->
 	</div><!-- #main-header -->
+
+	
 	</div> <!-- #wrapper -->
-	<?php
-	if (is_single()) { ?>
-		<div class="progress">
-		  <div class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0;">
-		  </div>
-		</div>
-	<?php } ?>
 	</div> <!-- #page -->
 
 	<div id="page" class="page-container-inner-masthead">
 	<div id="wrapper">
 	
+
 	<a id="logo" href="<?php bloginfo('url'); ?>">
 		<div class="logo-image"><img src="<?php bloginfo('template_url') ?>/img/logo/header-7.png" /></div>
 	</a>
+
 	<?php /* inner-masthead contains elements 'framed' by the logo and the navbar */ ?>
 	<div id="inner-masthead">
 

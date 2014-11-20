@@ -26,8 +26,7 @@ $heraldblack:				#191919;
 
 
 /* logo blue */
-//$hrld-blue:					#3c74b9;
-$hrld-blue:					#2075d0;
+$hrld-blue:					#3c74b9;
 $hrld-blue-hover:			#3a97f7;
 /* this is the grey of the background */
 $hrld-light-grey:			#eff4f6;
@@ -43,12 +42,6 @@ $hrld-black:				#191919;
 /* this is dark grey on a black background */
 $hrld-black-dark-grey:		#414141;
 
-@mixin transition($prop, $time, $fn, $delay:0ms) {
-	-webkit-transition: $prop $time $fn $delay;
-    -moz-transition: $prop $time $fn $delay;
-    -o-transition: $prop $time $fn $delay;
-    transition: $prop $time $fn $delay;
-}
 
 
 
@@ -70,4 +63,3 @@ $twelveColumns:		940px;
 $thirteenColumns:	1020px;
 $fourteenColumns:	1100px;
 $fifteenColumns:	1180px;
-
