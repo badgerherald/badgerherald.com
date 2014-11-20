@@ -33,7 +33,7 @@
 			</div>
 
 			<div class="post-sidebar-ad">
-				<?php dfp::hrld_sidebar_lower_ad(); ?>
+				<?php dfp::small_sidekick(); ?>
 			</div>
             </div>
 
