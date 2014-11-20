@@ -10,11 +10,14 @@
 
 /* check if they weren't looking for an old school url */
 
+
+$start = microtime(true);
+
 function pageURL() {
 
  $pageURL .= $_SERVER["REQUEST_URI"];
+ return $pageURL;
 
- return preg_replace("#/bhrld#", "", $pageURL);
 }
 
 $args = array(
@@ -22,8 +25,8 @@ $args = array(
     'meta_query' => array(
         array(
             'key' => '_mt_url',
-            'value' => pageURL(),
-            'compare' => 'LIKE'
+            'value' => 'http://badgerherald.com' . pageURL(),
+            'compare' => '='
         )
     ),
     'post_type' => 'any'
@@ -36,6 +39,8 @@ $the_query = new WP_Query( $args );
 if ( $the_query->have_posts() ) {
 	while ( $the_query->have_posts() ) {
 		$the_query->the_post();
+		$ru = getrusage();
+		
 		header('Location: ' . get_permalink());
 		//header('Location: http://google.com');
 		?>
@@ -51,7 +56,8 @@ if ( $the_query->have_posts() ) {
 }
 /* Restore original Post Data */
 wp_reset_postdata();
-
+error_log("This process used " . microtime(true) - $start .
+    		" ms for its computations\n");
 
 get_header(); ?>
 
@@ -64,7 +70,7 @@ get_header(); ?>
 
 <img src="<?php bloginfo('template_url') ?>/img/4-doge-4.png"/>
 <div class="error-404-message">
-	<h1>Such Error. Much Embarrasing.</h1>
+	<h1>Such Error. Much Embarrassing.</h1>
 	<p><strong>4-doge-4</strong> – Sorry, We can't find what you're looking for. Doge really screwed the pooch on this one.</p>
 	<p><a href="http://badgerherald.com/">Visit our homepage</a>.</p>
 </div>

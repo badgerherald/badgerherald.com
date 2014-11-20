@@ -1133,3 +1133,6 @@ function exa_interactive_single_template($single_template) {
 	return $single_template;
 }
 add_filter('single_template', 'exa_interactive_single_template');
+
+
+include_once('inc/functions-dev.php');

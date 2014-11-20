@@ -16,7 +16,7 @@
 
 
         			<div class="colophon" style:"font-family:'pt sans'">
-	All Content &copy; The Badger Herald, 2013
+	All Content &copy; The Badger Herald, <?php echo date("Y"); ?>
 	</div>
 		</div><!-- #primary -->
 
