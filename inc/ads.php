@@ -97,7 +97,7 @@ class dfp {
 					googletag.defineSlot('/8653162/top-leaderboard//768x90//site-wide', [728, 90], 'div-gpt-ad-1416460552718-2').addService(googletag.pubads());
 					googletag.defineSlot('/8653162/variable-sidekick//300x250.300x600', [[300, 250], [300, 600]], 'div-gpt-ad-1416460552718-3').addService(googletag.pubads());
 					// Keep this off! Unless you want to generate multiple headers.
-					googletag.pubads().enableSingleRequest();
+					// googletag.pubads().enableSingleRequest();
 					googletag.enableServices();
 					});
 					</script>
