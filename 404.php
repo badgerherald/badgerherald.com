@@ -70,7 +70,7 @@ get_header(); ?>
 
 <img src="<?php bloginfo('template_url') ?>/img/4-doge-4.png"/>
 <div class="error-404-message">
-	<h1>Such Error. Much Embarrasing.</h1>
+	<h1>Such Error. Much Embarrassing.</h1>
 	<p><strong>4-doge-4</strong> – Sorry, We can't find what you're looking for. Doge really screwed the pooch on this one.</p>
 	<p><a href="http://badgerherald.com/">Visit our homepage</a>.</p>
 </div>
