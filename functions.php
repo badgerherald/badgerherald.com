@@ -298,9 +298,6 @@ function add_rewrite_rules($aRules) {
 	$aNewRules = array('shoutouts/so/([^/]+)/?$' => 'index.php?pagename=shoutouts&so_num=$matches[1]');
 	$aRules = $aNewRules + $aRules;
 
-	$aNewRules = array('search/?(.*)$' => 'index.php?s=$matches[1]');
-	$aRules = $aNewRules + $aRules;
-
 	return $aRules;
 }
  
