@@ -153,7 +153,7 @@ include('macros.php');
 		<div class="inner-mast-tagline">
 			UW-Madison's Premier Independent Student Newspaper.  <span class="since"><strong>Since 1969</strong></span>
 		</div>
-		<?php dfp::hrld_top_leaderboard_ad(); ?>
+		<?php dfp::top_leaderboard(); ?>
 		<a class="advertise-plug" href="http://badgerherald.com/advertise/">Student Org? Local Business? Advertise with the Herald.</a>
 		
 		<div class="social-buttons">
