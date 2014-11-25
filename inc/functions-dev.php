@@ -10,6 +10,8 @@
 /**
  * If hrld_dev is set, replaces whatever (local)host an attachment_url
  * is using with badgerherald.com
+ * 
+ * @author Will Haynes
  */
 function exa_dev_attachment_url( $link ) {
 

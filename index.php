@@ -9,6 +9,11 @@
  * @since Twenty Thirteen 1.0
  */
 
+// Set up ads for current page.
+global $DoubleClick;
+$DoubleClick->register_adslot('small-sidekick');
+// Done ads.
+
 get_header();
 
 ?>
@@ -100,7 +105,7 @@ get_header();
 
 			<div id="middle-column">
 				<div class="hp-square-ad">
-					<?php dfp::small_sidekick(); ?>
+					<?php $DoubleClick->display_ad('small-sidekick') ?>
 				</div>
 			
 

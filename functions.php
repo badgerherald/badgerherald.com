@@ -17,10 +17,7 @@
 if ( ! isset( $content_width ) )
 	$content_width = 690;
 
-/**
- * Require the ads function.
- */
-require_once('inc/ads.php');
+
 
 /**
  * Exa should run on WordPress 3.6 or later.
@@ -31,6 +28,48 @@ if ( version_compare( $GLOBALS['wp_version'], '3.6-alpha', '<' ) )
 global $shortcode_tags;
 if ( !array_key_exists( 'media-credit', $shortcode_tags ) )
     add_shortcode('media-credit', 'ignore_media_credit_shortcode' );
+
+
+/**
+ * Testing doubleclick object
+ */
+function exa_ad_setup() {
+
+	global $DoubleClick;
+	
+	$DoubleClick->networkCode = "95584455";
+	$DoubleClick->networkCode = "8653162";
+	//$DoubleClick->networkCode = "64222555";
+
+	/* breakpoints */
+	$DoubleClick->register_breakpoint('phone',array('minWidth'=>0,'maxWidth'=>720));
+	$DoubleClick->register_breakpoint('tablet',array('minWidth'=>760,'maxWidth'=>1040));
+	$DoubleClick->register_breakpoint('desktop',array('minWidth'=>1040,'maxWidth'=>1220));
+	$DoubleClick->register_breakpoint('xl',array('minWidth'=>1220,'maxWidth'=>9999));
+	
+	$DoubleClick->define_adslot(
+		'leaderboard',
+		'bhrld/site/leaderboard/728x90',
+		array("728","90"),
+		array('tablet','desktop','xl')
+		);
+	
+	$DoubleClick->define_adslot(
+		'small-sidekick',
+		'bh.site.small-sidekick.300x250',
+		array("300","250"),
+		array('phone','tablet','desktop','xl')
+		);
+
+		$DoubleClick->define_adslot(
+		'small-sidekick-desktop-xl',
+		'bh.site.small-sidekick.300x250',
+		array("300","250"),
+		array('desktop','xl')
+		);
+		
+}
+add_action('dfw_setup_ad_units','exa_ad_setup');
 
 /**
  * Calls methods to set up various elements of exa.
