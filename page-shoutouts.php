@@ -79,7 +79,8 @@ location.reload();
 </script>';
 }
 
-
+global $DoubleClick;
+$DoubleClick->register_adslot('small-sidekick-desktop-xl');
 get_header(); 
 
 ?>
@@ -247,7 +248,7 @@ get_header();
 	</form>
 	<img class="so-avatar" src="<?php bloginfo('template_url') ?>/img/icons/shoutout.png" />
 	<br/><br/>
-	<?php dfp::hrld_sidebar_ad(); ?>
+	<?php $DoubleClick->display_ad('small-sidekick-desktop-xl'); ?>
 </div>
 </div><!-- id="sidebar" -->
 
