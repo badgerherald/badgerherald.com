@@ -9,6 +9,10 @@
  * @since Twenty Thirteen 1.0
  */
 include('macros.php');
+
+global $DoubleClick;
+$DoubleClick->register_adslot('leaderboard');
+
 ?><!DOCTYPE html>
 <!--[if IE 7]>
 <html class="ie ie7" <?php language_attributes(); ?>>
@@ -60,7 +64,7 @@ include('macros.php');
 	-->
 	<link href='http://fonts.googleapis.com/css?family=Noto+Serif:400,700,400italic,700italic|Yanone+Kaffeesatz:400,300,700|Open+Sans|PT+Sans+Narrow:400,700' rel='stylesheet' type='text/css'>
 
-	<?php dfp::hrld_dfp_header() ?>
+	
 
 	<link rel="icon" 
      	type="image/png" 
@@ -153,7 +157,9 @@ include('macros.php');
 		<div class="inner-mast-tagline">
 			UW-Madison's Premier Independent Student Newspaper.  <span class="since"><strong>Since 1969</strong></span>
 		</div>
-		<?php dfp::top_leaderboard(); ?>
+		<div id='ad-leaderboard' class='top-leaderboard'>
+			<?php $DoubleClick->display_ad('leaderboard') ?>
+		</div>
 		<a class="advertise-plug" href="http://badgerherald.com/advertise/">Student Org? Local Business? Advertise with the Herald.</a>
 		
 		<div class="social-buttons">

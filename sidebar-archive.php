@@ -12,7 +12,6 @@
 ?>
 <div id="sidebar" class="stream-sidebar">
     <div class="sidebar-inner fixed-sidebar-container">
-		<?php dfp::hrld_sidebar_ad(); ?>
         <h2 id="categories-headline" class="categories-headline">Categories</h2>
         <div class="sidebar-scroll">
             <ul class="categories-list">
