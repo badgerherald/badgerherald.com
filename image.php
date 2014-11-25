@@ -44,6 +44,10 @@ else :
 	$next_attachment_url = wp_get_attachment_url();
 endif;
 
+// Register ads
+global $DoubleClick;
+$DoubleClick->register_adslot('small-sidekick-desktop-xl');
+// Done registering ads.
 get_header(); ?>
 
 <article id="post-<?php the_ID(); ?>" <?php post_class( 'image-attachment' ); ?>>
@@ -65,7 +69,7 @@ get_header(); ?>
 			</div>
 
 			<div class="post-sidebar-ad">
-				<?php dfp::small_sidekick(); ?>
+				<?php $DoubleClick->display_ad('small-sidekick-desktop-xl'); ?>
 			</div>
 			</div>
 

@@ -53,8 +53,6 @@ include('macros.php');
 	-->
 	<link href='http://fonts.googleapis.com/css?family=Noto+Serif:400,700,400italic,700italic|Yanone+Kaffeesatz:400,300,700|Open+Sans|PT+Sans+Narrow:400,700' rel='stylesheet' type='text/css'>
 
-	<?php dfp::hrld_dfp_header() ?>
-
 	<link rel="icon" 
      	type="image/png" 
      	href="favicon.png?v=exa6">

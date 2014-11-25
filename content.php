@@ -1,13 +1,13 @@
 <?php
 /**
- * The default template for displaying content. Used for both single and index/archive/search.
+ * The default template for displaying content. Used for single.
  *
  * @package WordPress
  * @subpackage Twenty_Thirteen
  * @since Twenty Thirteen 1.0
  */
 
-/* This is a change */
+global $DoubleClick;
 ?>
 
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
@@ -33,7 +33,7 @@
 			</div>
 
 			<div class="post-sidebar-ad">
-				<?php dfp::small_sidekick(); ?>
+				<?php $DoubleClick->display_ad('small-sidekick-desktop-xl') ?>
 			</div>
             </div>
 
