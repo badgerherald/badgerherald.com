@@ -49,27 +49,78 @@ function exa_ad_setup() {
 	
 	$DoubleClick->define_adslot(
 		'leaderboard',
-		'bhrld/site/leaderboard/728x90',
+		'bh/site/leaderboard/728x90',
 		array("728","90"),
 		array('tablet','desktop','xl')
 		);
 	
 	$DoubleClick->define_adslot(
 		'small-sidekick',
-		'bh.site.small-sidekick.300x250',
+		'bh/site/small-sidekick/300x250',
 		array("300","250"),
 		array('phone','tablet','desktop','xl')
 		);
 
-		$DoubleClick->define_adslot(
+	$DoubleClick->define_adslot(
+		'small-sidekick-phone-tablet',
+		'bh/site/small-sidekick/300x250',
+		array("300","250"),
+		array('phone','tablet')
+		);
+
+	$DoubleClick->define_adslot(
 		'small-sidekick-desktop-xl',
-		'bh.site.small-sidekick.300x250',
+		'bh/site/small-sidekick/300x250',
 		array("300","250"),
 		array('desktop','xl')
 		);
 		
 }
 add_action('dfw_setup_ad_units','exa_ad_setup');
+
+/**
+ * Registers an ad to display in the middle
+ * 
+ * @author Will Haynes
+ */
+function exa_register_content_adslot($identifier) {
+
+	global $DoubleClick;
+	if ( is_single() && ! is_admin() ) {
+		$DoubleClick->register_adslot('small-sidekick-phone-tablet');
+		add_filter('the_content','_exa_register_content_adslot');
+	}
+
+}
+add_action('dfw_setup_ad_units','exa_register_content_adslot');
+
+function _exa_register_content_adslot($content) {
+	
+	global $DoubleClick;
+
+	if ( is_single() && ! is_admin() ) {
+		$ad = $DoubleClick->display_ad('small-sidekick-phone-tablet',null,true);
+		$ad = "<div class='ad ad-in-content mobile-tablet'>" . $ad . "</div>";
+        return exa_insert_after_graph( $ad, 3, $content );
+    }
+    return $content;
+}
+
+function exa_insert_after_graph( $insertion, $graph_id, $content ) {
+	
+	$graphs = explode( '</p>', $content );
+	foreach ($graphs as $i => $p) {
+	    if ( trim( $p ) ) {
+	        $graphs[$i] .= '</p>';
+	    }
+	    if ( $graph_id == $i + 1 ) {
+	        $graphs[$i] .= $insertion;
+	    }
+	}
+	return implode( '', $graphs );
+	
+}
+
 
 /**
  * Calls methods to set up various elements of exa.
