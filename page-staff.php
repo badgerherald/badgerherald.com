@@ -36,7 +36,7 @@ function displayStaff($staffArray) {
 		$aMug = hrld_resize(null,get_wp_user_avatar_src($staff, 'original'),400,280,true);
 		
 		// Mug
-		echo "<img src='{$aMug['url']}' />";
+		echo "<div class='staff-about-mug-box'><img src='{$aMug['url']}' /></div>";
 
 		// Name
 		echo "<span class='staff-box-name'>" . get_the_author_meta("display_name",$staff) . "</span>";
