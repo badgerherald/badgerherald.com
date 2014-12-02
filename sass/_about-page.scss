@@ -66,7 +66,7 @@
 					}
 				}
 				&:before {
-					content: "·";
+					content: "-";
 					padding: 0px 6px 0px 6px;
 				}
 				&.active {
@@ -123,10 +123,13 @@
 	}
 	.staff-container {
 		margin-left: - flex(10,320);
+
 		h3 {
+			border-top: 1px solid $hrld-dark-grey;
 			margin-left: flex(10,320);
 			margin-bottom: 12px;
-			margin-top: 0px;
+			margin-top: 24px;
+			padding-top: 6px;
 			text-transform: uppercase;
 			font-size: 15px;
 			color: $hrld-dark-grey;
@@ -212,6 +215,16 @@
 			.staff-box-more-hover {
 				display: block;
 			}
+		}
+	}
+	.staff-writers {
+		font-family: $headline;
+		font-size: 15px;
+		color: $hrld-dark-grey;
+		font-weight: bold;
+		a {
+			
+			padding: 0px 1px;
 		}
 	}
 
@@ -416,27 +429,6 @@
 	.about-page {
 		.article-content {
 			width: 1020px;
-		}
-		.staff-box {
-			width: 153px;
-			margin-left: 20px;
-			margin-bottom: 24px;
-			height:185px;
-			font-size: 14px;
-		}
-		.staff-container {
-			margin-left:  -20px;
-			h3 {
-				margin-left: 20px;
-			} 
-		} .staff-box-more {
-			.staff-box-more-hover {
-				width: 300px;
-				&.odd {
-					left:inherit;
-					right:0;
-				}
-			}
 		}
 
 	}

@@ -84,6 +84,40 @@ function displayStaff($staffArray) {
 	endforeach;
 }
 
+function listWriters($section,$exclude = null) {
+
+	// people like staff, editorial board, &c.
+	$globalExclude = array(1023,4,2792,2857,2858);
+	if(!$exclude) {
+		$exclude = array();
+	}
+	$exclude = array_merge($globalExclude,$exclude);
+
+	/* Last four months */ 
+	$sdate = new DateTime();				// Time now.
+	$sdate->sub(new DateInterval('P4M'));	// Subtract 4 months.
+
+
+	if( class_exists('hrld_get_writers') ) {
+
+		echo "Writers: ";
+		$newsWriters = new hrld_get_writers();
+		$newsWriters->section($section);
+		$newsWriters->num_published(3,'more',$sdate);
+		$writers = $newsWriters->query();
+		$first = true;
+		foreach($writers as $w) {
+			if( !in_array($w->user_id,$exclude) ) :
+				if(!$first) {
+					echo ", ";
+				} $first = false;
+				echo "<a href='" . get_author_posts_url( $w->user_id ) . "'>$w->display_name</a>";
+			endif;
+		}
+	}
+
+}
+
 get_header('about'); ?>
 
 
@@ -101,100 +135,100 @@ get_header('about'); ?>
 	<div id="content" class="site-content article-content" role="main">
 
 		<?php /* The loop */ ?>
+
+
 		<?php while ( have_posts() ) : the_post(); ?>
 
 			<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-
 					
 				<div class="entry-content">
 				<h2>The Newsroom</h2>
 				
+				<?php
+
+					// Tara Golshan, Katie Caron, Polo Rocha.
+					$mgmt = array(2517,2420,2414);
+					// Alex, Rachael, Folarin, Danny, Brenda, Charlie, Sunni (not included currently), Alexandra (not included currenty)
+					$news   = array(2756, 2930, 2967, 2912, 2899, 2829, );
+					// Brianna, Maddie
+					$opinion   = array(2785, 2807);
+					// Dan, Eric, Chris
+					$sports   = array(2609, 2682, 2801);
+					// Erik, Selena 
+					$arts   = array(2602, 2794);
+					// Joey, Hayley
+					$photo   = array(2948, 2966);
+					// Emily, Kenna 
+					$design   = array(2963, 2964);
+					// Maddy, Audrey 
+					$copy   = array(2780, 2806);
+					// Matt 
+					$web   = array(2779);
+
+					// editorial staff excude.
+					$exclude = array_merge($mgmt,$news,$opinion,$sports,$arts,$photo,$design,$copy,$web);
+				?>
+
 				<div class="staff-container">
 					<h3>Editorial Management</h3>
-
-					<?php
-						// Tara Golshan, Katie Caron, Polo Rocha.
-						$mgmt = array(2517,2420,2414);
-						displayStaff($mgmt);
-					?>
+					<?php displayStaff($mgmt); ?>
 					<div class="clearfix"></div>
+				</div>
+
+				<div class="staff-container">
 					<h3>News</h3>
-
-					<?php
-						// Alex, Rachael, Folarin, Danny, Brenda, Charlie, Sunni (not included currently), Alexandra (not included currenty)
-						$mgmt   = array(2756, 2930, 2967, 2912, 2899, 2829, );
-						displayStaff($mgmt);
-					?>
+					<?php displayStaff($news); ?>
 					<div class="clearfix"></div>
+				</div>
 
+				<p class="staff-writers"><?php listWriters('news',$exclude);?></p>
+
+				<div class="staff-container">
 					<h3>Opinion</h3>
-
-					<?php
-						// Brianna, Maddie
-						$mgmt   = array(2785, 2807);
-						displayStaff($mgmt);
-					?>
+					<?php displayStaff($opinion); ?>
 					<div class="clearfix"></div>
-
+				</div>
+				
+				<p class="staff-writers"><?php listWriters('oped',$exclude);?></p>
+				
+				<div class="staff-container">
 					<h3>Sports</h3>
-
-					<?php
-						// Dan, Eric, Chris
-						$mgmt   = array(2609, 2682, 2801);
-						displayStaff($mgmt);
-					?>
+					<?php displayStaff($sports); ?>
 					<div class="clearfix"></div>
+				</div>
 
+				<p class="staff-writers"><?php listWriters('sports',$exclude);?></p>
 
+				<div class="staff-container">
 					<h3>ArtsEtc</h3>
-
-					<?php
-						// Erik, Selena 
-						$mgmt   = array(2602, 2794);
-						displayStaff($mgmt);
-					?>
+					<?php displayStaff($arts); ?>
 					<div class="clearfix"></div>
+				</div>
 
+				<p class="staff-writers"><?php listWriters('artsetc',$exclude);?></p>
 
+				<div class="staff-container">
 					<h3>Photo</h3>
-
-					<?php
-						// Joey, Hayley
-						$mgmt   = array(2948, 2966);
-						displayStaff($mgmt);
-					?>
+					<?php displayStaff($photo); ?>
 					<div class="clearfix"></div>
+				</div>
 
-
+				<div class="staff-container">
 					<h3>Design</h3>
-
-					<?php
-						// Emily, Kenna 
-						$mgmt   = array(2963, 2964);
-						displayStaff($mgmt);
-					?>
+					<?php displayStaff($design); ?>
 					<div class="clearfix"></div>
+				</div>
 
-
+				<div class="staff-container">
 					<h3>Copy</h3>
-
-					<?php
-						// Maddy, Audrey 
-						$mgmt   = array(2780, 2806);
-						displayStaff($mgmt);
-					?>
+					<?php displayStaff($copy); ?>
 					<div class="clearfix"></div>
+				</div>
 
-
+				<div class="staff-container">
 					<h3>Web</h3>
-
-					<?php
-						// Matt 
-						$mgmt   = array(2779);
-						displayStaff($mgmt);
-					?>
+					<?php displayStaff($web); ?>
 					<div class="clearfix"></div>
-
 				</div>
 
 				<h2>Business Staff</h2>
@@ -208,6 +242,8 @@ get_header('about'); ?>
 						displayStaff($mgmt);
 					?>
 					<div class="clearfix"></div>
+				</div>
+				<div class="staff-container">
 					<h3>Advertising</h3>
 
 					<?php
