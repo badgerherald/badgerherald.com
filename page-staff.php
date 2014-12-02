@@ -28,6 +28,11 @@ function displayStaff($staffArray) {
 		} $i+=1;
 		echo "<div class='staff-box'>";
 
+		if( is_string($staff) ) {
+			$user = get_userdatabylogin($staff);
+			$staff = $user->ID;
+		}
+
 		$aMug = hrld_resize(null,get_wp_user_avatar_src($staff, 'original'),400,280,true);
 		
 		// Mug
@@ -146,10 +151,9 @@ get_header('about'); ?>
 				
 				<?php
 
-					// Tara Golshan, Katie Caron, Polo Rocha.
-					$mgmt = array(2517,2420,2414);
-					// Alex, Rachael, Folarin, Danny, Brenda, Charlie, Sunni (not included currently), Alexandra (not included currenty)
-					$news   = array(2756, 2930, 2967, 2912, 2899, 2829, );
+
+					$mgmt = array('tgolshan','kcaron','procha');
+					$news = array('aarriaga', 'rlallensack', 'dmckay', 'nkravinsky', 'mcarney', 'lreigstad','sporps-hummell' );
 					// Brianna, Maddie
 					$opinion   = array(2785, 2807);
 					// Dan, Eric, Chris
