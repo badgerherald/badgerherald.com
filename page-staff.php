@@ -95,6 +95,14 @@ function listWriters($section,$exclude = null) {
 	$globalExclude = array(1023,4,2792,2857,2858);
 	if(!$exclude) {
 		$exclude = array();
+	} else {
+		// support usernames passed in instead of ids.
+		foreach($exclude as $i => $e) {
+			if ( is_string($e) ) {
+			$user = get_userdatabylogin($e);
+			$exclude[$i] = $user->ID;
+			}
+		}
 	}
 	$exclude = array_merge($globalExclude,$exclude);
 
