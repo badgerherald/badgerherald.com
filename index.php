@@ -11,7 +11,6 @@
 
 // Set up ads for current page.
 global $DoubleClick;
-$DoubleClick->register_adslot('small-sidekick');
 // Done ads.
 
 get_header();
@@ -105,7 +104,7 @@ get_header();
 
 			<div id="middle-column">
 				<div class="hp-square-ad">
-					<?php $DoubleClick->display_ad('small-sidekick') ?>
+					<?php $DoubleClick->place_ad('bh:sidekick','300x250') ?>
 				</div>
 			
 

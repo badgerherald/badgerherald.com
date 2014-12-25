@@ -33,7 +33,7 @@ global $DoubleClick;
 			</div>
 
 			<div class="post-sidebar-ad">
-				<?php $DoubleClick->display_ad('small-sidekick-desktop-xl') ?>
+				<?php $DoubleClick->place_ad('bh:sidekick','300x250',array('desktop','xl')) ?>
 			</div>
             </div>
 

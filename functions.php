@@ -29,77 +29,45 @@ global $shortcode_tags;
 if ( !array_key_exists( 'media-credit', $shortcode_tags ) )
     add_shortcode('media-credit', 'ignore_media_credit_shortcode' );
 
-
-/**
- * Testing doubleclick object
- */
 function exa_ad_setup() {
 
 	global $DoubleClick;
-	
-	$DoubleClick->networkCode = "95584455";
+
 	$DoubleClick->networkCode = "8653162";
-	//$DoubleClick->networkCode = "64222555";
+
+	if( !hrld_is_production() )
+		$DoubleClick->debug = true;
 
 	/* breakpoints */
-	$DoubleClick->register_breakpoint('phone',array('minWidth'=>0,'maxWidth'=>720));
-	$DoubleClick->register_breakpoint('tablet',array('minWidth'=>760,'maxWidth'=>1040));
-	$DoubleClick->register_breakpoint('desktop',array('minWidth'=>1040,'maxWidth'=>1220));
-	$DoubleClick->register_breakpoint('xl',array('minWidth'=>1220,'maxWidth'=>9999));
-	
-	$DoubleClick->define_adslot(
-		'leaderboard',
-		'bh/site/leaderboard/728x90',
-		array("728","90"),
-		array('tablet','desktop','xl')
-		);
-	
-	$DoubleClick->define_adslot(
-		'small-sidekick',
-		'bh/site/small-sidekick/300x250',
-		array("300","250"),
-		array('phone','tablet','desktop','xl')
-		);
+	$DoubleClick->register_breakpoint('phone',		array('minWidth'=>0,'maxWidth'=>720));
+	$DoubleClick->register_breakpoint('tablet',		array('minWidth'=>760,'maxWidth'=>1040));
+	$DoubleClick->register_breakpoint('desktop',	array('minWidth'=>1040,'maxWidth'=>1220));
+	$DoubleClick->register_breakpoint('xl',			array('minWidth'=>1220,'maxWidth'=>9999));
 
-	$DoubleClick->define_adslot(
-		'small-sidekick-phone-tablet',
-		'bh/site/small-sidekick/300x250',
-		array("300","250"),
-		array('phone','tablet')
-		);
-
-	$DoubleClick->define_adslot(
-		'small-sidekick-desktop-xl',
-		'bh/site/small-sidekick/300x250',
-		array("300","250"),
-		array('desktop','xl')
-		);
-		
 }
-add_action('dfw_setup_ad_units','exa_ad_setup');
+add_action('dfw_setup','exa_ad_setup');
 
 /**
  * Registers an ad to display in the middle
  * 
  * @author Will Haynes
  */
-function exa_register_content_adslot($identifier) {
+function exa_register_content_adslot() {
 
 	global $DoubleClick;
 	if ( is_single() && ! is_admin() ) {
-		$DoubleClick->register_adslot('small-sidekick-phone-tablet');
 		add_filter('the_content','_exa_register_content_adslot');
 	}
 
 }
-add_action('dfw_setup_ad_units','exa_register_content_adslot');
+add_action('dfw_setup','exa_register_content_adslot');
 
 function _exa_register_content_adslot($content) {
 	
 	global $DoubleClick;
 
 	if ( is_single() && ! is_admin() ) {
-		$ad = $DoubleClick->display_ad('small-sidekick-phone-tablet',null,true);
+		$ad = $DoubleClick->get_ad_placement('bh:sidekick','300x250',array('phone','tablet'));
 		$ad = "<div class='ad ad-in-content mobile-tablet'>" . $ad . "</div>";
         return exa_insert_after_graph( $ad, 3, $content );
     }

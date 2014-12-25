@@ -46,7 +46,6 @@ endif;
 
 // Register ads
 global $DoubleClick;
-$DoubleClick->register_adslot('small-sidekick-desktop-xl');
 // Done registering ads.
 get_header(); ?>
 
@@ -69,7 +68,7 @@ get_header(); ?>
 			</div>
 
 			<div class="post-sidebar-ad">
-				<?php $DoubleClick->display_ad('small-sidekick-desktop-xl'); ?>
+				<?php $DoubleClick->place_ad('bh:sidekick','300x250',array('desktop','xl')) ?>
 			</div>
 			</div>
 

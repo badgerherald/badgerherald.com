@@ -11,7 +11,6 @@
 include('macros.php');
 
 global $DoubleClick;
-$DoubleClick->register_adslot('leaderboard');
 
 ?><!DOCTYPE html>
 <!--[if IE 7]>
@@ -158,7 +157,7 @@ $DoubleClick->register_adslot('leaderboard');
 			UW-Madison's Premier Independent Student Newspaper.  <span class="since"><strong>Since 1969</strong></span>
 		</div>
 		<div id='ad-leaderboard' class='top-leaderboard'>
-			<?php $DoubleClick->display_ad('leaderboard') ?>
+			<?php $DoubleClick->place_ad('bh:leaderboard','728x90',array('desktop','xl','tablet')); ?>
 		</div>
 		<a class="advertise-plug" href="http://badgerherald.com/advertise/">Student Org? Local Business? Advertise with the Herald.</a>
 		

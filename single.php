@@ -9,7 +9,6 @@
 
 // Set up ads for current page.
 global $DoubleClick;
-$DoubleClick->register_adslot('small-sidekick-desktop-xl');
 // Done ads.
 
 get_header(); 
