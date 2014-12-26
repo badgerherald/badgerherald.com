@@ -121,7 +121,8 @@ function exa_setup() {
 	add_image_size( 'image-post-size', 860, 470, false );
 	add_image_size( 'small-thumbnail', 345, 225, true );
 	add_image_size( 'large-thumbnail', 690, 450, true );
-
+	add_image_size( 'author-banner', 2048, 600, false );
+	
 	/* For Mugs */
 	add_image_size( 'square', 160, 160, true );
 

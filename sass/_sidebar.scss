@@ -1,6 +1,6 @@
 #sidebar {
 	position: relative;
-
+	min-height: 600px;
 	.sidebar-inner {
 		margin-top:24px;
 	}
@@ -138,6 +138,25 @@ a.to-categories{
 		
 	}
 }
+
+article.endless-flow{
+	width: 90%;
+	.entry-thumbnail{
+		max-width: 200px;
+		float: left;
+		img{
+			float: left;
+		}
+	}
+	.entry-summary{
+		p{
+			font-size: 80%;
+		}
+	}
+	
+
+}
+
 @media (min-width: 480px) {
 	.categories-list{
 		li{
