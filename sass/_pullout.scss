@@ -24,7 +24,7 @@
     }
     input{
         height: 42px;
-        padding: 0 20px 0 76px;
+        padding: 0 20px 0 56px;
         box-sizing: border-box;
         width: 100%;
         border: none;
@@ -48,7 +48,7 @@
         display: block;
         position: absolute;
         left: 20px;
-        width: 56px;
+        width: 20px;
         top: 0;
         height: 100%;
         &:before, &:after {
@@ -57,19 +57,19 @@
             top: 50%;
             left: 0;
             margin: -8px 0 0;
-            background: $hrld-black-dark-grey
+            background: #fff;
         }
         &:before {
             width: 12px;
-            height: 6px;
-            border: 6px solid $hrld-black-dark-grey;
+            height: 12px;
+            border: 3px solid #fff;
             background: transparent;
-            @include border-radius(24px);
+            @include border-radius(12px);
         }
         &:after {
-            left: 20px;
-            width: 6px;
-            height: 14px;
+            left: 10px;
+            width: 3px;
+            height: 7px;
             margin-top: 0;
             @include rotate(-45);
         }
