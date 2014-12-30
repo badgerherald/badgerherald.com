@@ -4,6 +4,18 @@
    HTML5 display definitions
    ========================================================================== */
 
+
+/**
+ * apply a natural box layout model to all elements, but allowing components to change
+ *  makes padding and borders not increase width
+ */
+html {
+  box-sizing: border-box;
+}
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
 /**
  * Correct `block` display not defined in IE 8/9.
  */

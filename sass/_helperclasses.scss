@@ -110,26 +110,3 @@
   -webkit-box-shadow: 3px 3px 5px 0 #000;
   box-shadow:         3px 3px 5px 0 #000;
 }
-/****
-#nav.dropdown-border{
-	&:before, &:after{
-		content: ' ';
-		height: 0;
-		position: absolute;
-		width: 0;
-		border: 10px solid transparent;
-	}
-	&:before{
-		border-bottom-color: $heraldblack;
-		top: -18px;
-		z-index: 200;
-		right: 16px;
-	} 
-	&:after{
-		border-bottom-color: $heralddarkgrey;
-		top: -20px;
-		right: 16px;
-		z-index: 199;
-	}
-}
-*****/

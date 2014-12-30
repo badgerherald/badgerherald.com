@@ -1,4 +1,4 @@
-/*
+/* 
 Theme Name: Exa
 Theme URI: http://badgerherald.com/exa
 Author: The Badger Herald Web Department
@@ -34,13 +34,8 @@ Text Domain: badgerherald-exa
  * Masthead Styles
  * 
  */
+@import "pullout.scss";
 @import "masthead.scss";
-
-/** 
- * Navigation Styles
- * 
- */
-@import "nav.scss";
 
 @import "homepage.scss";
 /** 

@@ -104,9 +104,6 @@ $(document).ready(function() {
 		$(this).find('input').first().attr("value","");
 	});
 	
-	$(".nav-control").click(function(e){
-		$(".nav-container").toggleClass("nav-open");
-	});
 
 	$("#main-nav #searchform #s").focus(function(){
 		$("#main-nav li a").addClass("nav-search-focus");
@@ -116,6 +113,55 @@ $(document).ready(function() {
 		$("#main-nav li a").removeClass("nav-search-focus");
 		$(this).removeClass("nav-search-focus");
 	});
+
+
+	var toggleNav = function() {
+        $("#pullout").toggleClass("active");
+        $("#page").toggleClass("pullout-active");            
+    }
+
+    var updateNavActive = function(curr) {
+        $("ul#main-nav").children("li").each(function() {
+            $(this).removeClass("active");
+        });
+        curr.addClass("active");
+        var dataPostList = curr.attr("data-post-list");
+        $("#pullout .nav-stream-container").children(".nav-stream").each(function() {
+            $(this).removeClass("active");
+            if ($(this).attr("data-post-list") === dataPostList) {
+                $(this).addClass("active");
+            }
+        });
+    }
+    $(".nav-control").click(function(e){
+        toggleNav();
+        e.stopPropagation();
+    });
+    $(".nav-container").click(function(e) {
+        e.stopPropagation();
+    });
+    $(".nav-container a.close-icon").click(function(e) {
+        toggleNav();
+        e.stopPropagation();
+    });
+    $("body").click(function(e) {
+        if ($(".nav-container").hasClass("nav-open")) {
+            toggleNav();
+        }
+    });
+
+    $("ul#main-nav li").hover(function(e) {
+        updateNavActive($(this));
+    });
+
+    if ($(".progress").length !== 0) {
+        $(window).scroll(function() {
+            var scrollTop = $(window).scrollTop();
+            var scrollH = $(document).height() - $(window).height();
+            var progress = Math.max(0, Math.min(1, scrollTop/scrollH)) * 100;
+            $(".progress .progress-bar").attr("aria-valuenow", Math.floor(progress)).css("width", progress+"%");
+        });
+    }
 
 	
 	//Smooth scrolling to anchors from anchor links on same page.

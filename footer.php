@@ -12,20 +12,15 @@
 ?>
 
 		<div class="clearfix"></div>
-        </div> <!-- #main -->
 
+        </div> <!-- END div#primary -->
 
         			<div class="colophon" style:"font-family:'pt sans'">
 	All Content &copy; The Badger Herald, <?php echo date("Y"); ?>
 	</div>
-		</div><!-- #primary -->
+	
+		</div><!-- END div#page -->
 
-
-
-	</div><!-- #page -->
-
-
-	</div><!-- id="wrapper" -->
 	
 	<?php /* TODO:  Do this in a WP way */ ?>
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
