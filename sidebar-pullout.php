@@ -70,7 +70,7 @@
                 $beats_queries[$stream_beat]['recent']->the_post();
 
                 /* get content-block-thumb.php */
-                //get_template_part( 'content', 'block-thumb' );
+                get_template_part( 'content', 'block-thumb' );
             }
             wp_reset_postdata();
             ?>

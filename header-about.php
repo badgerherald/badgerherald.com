@@ -53,8 +53,7 @@ include('macros.php');
 
 <body <?php body_class("about-page"); ?>>
 
-
-	<?php /* Facebook like button javascript tag */ ?>
+<?php /* Facebook like button javascript tag */ ?>
 	<div id="fb-root"></div>
 	<script>(function(d, s, id) {
 	  var js, fjs = d.getElementsByTagName(s)[0];
@@ -64,86 +63,65 @@ include('macros.php');
 	  fjs.parentNode.insertBefore(js, fjs);
 	}(document, 'script', 'facebook-jssdk'));</script>
 
-	<div id="page" class="page-container-masthead">
-	<div id="wrapper">
+
+    <?php get_sidebar('pullout'); ?>
+		<div id="page">
+
+			<div id="masthead">
+				<div class="fixed-bar">
+					<?php /* container for the mobile hamburger icon */ ?>
+			        <div class="nav-control" alt="Menu"></div>
+			        <div class="wrapper bar-content">
+			        	<a href="<?php echo bloginfo("url"); ?>"><div class="bar-logo">The Badger Herald</div></a>
+			        	<div class="nav-category">
+			                <?php
+			                    if (!is_page()) {
+			                        echo ucfirst($wp_query->query_vars['category_name']);
+			                    } else {
+			                        echo ucfirst($wp_query->query_vars['name']);
+			                    }
+			                ?>
+			            </div>
+
+			            <div class="title">
+			                <?php
+			                    if (is_single()) {
+			                        $post_author = get_userdata($post->post_author);
+			                        echo $post->post_title;
+			                        echo '<span class="byline"> <i>by</i> '.$post_author->display_name.'</span>';
+			                    }
+			                ?>
+			            </div>
+			        </div>
+			        <?php
+				    if (is_single()) { ?>
+				        <div class="progress">
+				          <div class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0;">
+				          </div>
+				        </div>
+				    <?php } ?>
+				</div>
+				<div class="inner-masthead">
+					<div class="about-home-header">
 	
+						<div class="header-box">
+							<h1>The Badger Herald</h1>
+							<h2>A thorn in their side since 1969</h2>
+						</div>
 
-	<div id="main-header">
-	<div id="masthead">
-
-		<nav role="main">
-		
-		<div class="nav-bar">
-
-			<a href="<?php echo bloginfo("url"); ?>"><div class="bar-logo">
-
-			</div></a>
-			
-			<?php /* container for the mobile hamburger icon */ ?>
-	        <div class="nav-control" alt="Menu">
-		         <div class="nav-icon" ></div>
-	        </div>
-			
-			<div class="nav-container">
-
-				<div class="nav-drop-tagline">The University of Wisconsin's Premier Independent Student Newspaper &mdash; <strong>Since 1969</strong></div>
-
-				<ul id="main-nav" class="dropdown-border">
-					<li><a href="<?php echo (is_home() ? '#news' : get_bloginfo('url').'/news/'); ?>">News</a></li>
-					<li><a href="<?php echo (is_home() ? '#opinion' : get_bloginfo('url').'/oped/'); ?>">Opinion</a></li>
-					<li><a href="<?php echo (is_home() ? '#artsetc' : get_bloginfo('url').'/artsetc/'); ?>">ArtsEtc.</a></li>
-					<li><a href="<?php echo (is_home() ? '#sports' : get_bloginfo('url').'/sports/'); ?>">Sports</a></li>
-					<li><a href="<?php bloginfo('url'); ?>/shoutouts/">Shoutouts</a></li>
-					<li class="about-off"><a href="<?php bloginfo('url'); ?>/about/">About</a></li>
-					<li><a href="http://themadisonmisnomer.com/">Misnomer</a></li>
-					<li><a href="<?php bloginfo('url'); ?>/advertise/">Advertise</a></li>
-				<li>
-						<a class="search-link" href="<?php bloginfo('url'); ?>/search/">Search</a>
-						<?php /*<input type="text" placeholder="Search..." value="SEARCH" /> */ ?>
-						<?php get_search_form( true );  ?>
-					</li> 
-				</ul>
-
-
-				<div class="clearfix"></div>
-
+					</div> <!-- #wrapper -->
+				</div>
 			</div>
 
-		</div><!-- class="nav-bar" -->
-		
-		</nav>
 
-	</div> <!-- #masthead -->
-	</div><!-- #main-header -->
+			<div id="primary" class="wrapper">
 
-	
-	</div> <!-- #wrapper -->
-	</div> <!-- #page -->
+<?php /*
+			</div> <!-- END div#primary -->
+		</div> <!-- END div#page -->
+    </body>
+</html>
+*/
+?>
 
-	<div id="page" class="page-container-inner-masthead">
-
-
-	<div id="wrapper" class="about-home-header">
-	
-		<div class="header-box">
-			<h1>The Badger Herald</h1>
-			<h2>A thorn in their side since 1969</h2>
-		</div>
-
-	</div> <!-- #wrapper -->
-
-	</div> <!-- #page -->
-
-
-
-
-
-
-	<div id="page" class="page-container-content">
-	<div id="wrapper">
-	
-
-	<div id="primary">
-
-	<div id="main" class="site-main">
 

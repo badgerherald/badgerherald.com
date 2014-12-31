@@ -74,23 +74,6 @@
             @include rotate(-45);
         }
     }
-    /*
-    ::-webkit-input-placeholder {
-       color: $hrld-black-dark-grey;
-    }
-
-    :-moz-placeholder { 
-       color: $hrld-black-dark-grey;
-    }
-
-    ::-moz-placeholder { 
-       color: $hrld-black-dark-grey; 
-    }
-
-    :-ms-input-placeholder {  
-       color: $hrld-black-dark-grey;
-    }
-    */
 }
 .nav-list {
     width: 100%;
@@ -184,19 +167,20 @@
 
 @media (min-width: 1160px) {
     #pullout {
-        width: 600px;
-        left: -600px;
+        width: 680px;
+        left: -680px;
     }
 
     .nav-list {
-        width: 200px;
+        width: 180px;
     }
     .nav-stream-container {
         display: block;
-        width: 400px;
+        width: 500px;
         float: left;
         height: 100%;
         color: #fff;
+        padding: 12px 20px;
     }
     .nav-stream {
         width: 100%;
@@ -207,101 +191,40 @@
             display: block;
         }
     }
-    /*
-    .nav-post-stream {
-        box-sizing: border-box;
-        padding: 24px 20px;
-        text-align: left;
-        .featured {
-            border-bottom: solid 1px $hrld-dark-grey;
-            margin-bottom: 12px;
-            .featured-header-post {
-                .entry-thumbnail {
-                    width: 220px;
-                    float: left;
-                    margin-right: 20px;
-                    margin-bottom: 0;
-                }
-                .entry-title {
-                    font-size: 20px;
-                }
-                .entry-summary {
-                    font-size: 14px;
-                }
-                .summary-time-stamp {
-                    color: $hrld-dark-grey-hover;
-                }
-                .hp-feature-related-posts {
-                    margin-left: 240px;
-                }
-            }
-        }
-        .recommended {
-            width: 344px;
+    .block-thumb {
+        @include clearfix();
+        color: #fff;
+        margin: 12px 0;
+        .entry-thumbnail {
+            width: 140px;
             float: left;
-            .recommended-header-post {
-                .entry-thumbnail {
-                    width: 140px;
-                    float: left;
-                    margin-right: 20px;
-                    margin-bottom: 0px;
-                }
-                .entry-title {
-                    font-size: 16px;
-                    line-height: normal;
-                }
-            }
+            margin: 0 20px 0 0;
         }
-        .recent {
-            width: 220px;
+        .entry-header {
             float: left;
-            padding-left: 20px;
-            ul {
-                list-style-type: none;
-                padding: 0;
-                margin: 0;
-                margin-top: 12px;
-                width:100%;
+            display: block;
+            width: 300px;
+            .topic {
+                color: #fff;
+                display: block;
+                float: left;
+                clear: right;
+                padding: 2px 3px;
+                background: $hrld-blue;
                 font-family: $headline;
-                font-size: 16px;
-                .topic {
-                    text-transform: uppercase;
-                    color: $hrld-dark-grey-hover;
-                    font-size: 14px;
-                }
-                .summary-time-stamp{
-                    text-transform: none;
-                }
-                h4 {
-                    margin: 0;
-                    padding:0;
-                    a {
-                        color: $hrld-black;
-                        &:hover {
-                            color: $hrld-blue;
-                        }
-                    }
-                }
-                li {
-                    //border-bottom: 1px solid $hrld-dark-grey;
-                    padding: 3px 0;
-                    &:last-child {
-                        border-bottom: none;
-                    }
-                }
+                font-weight: 300;
+                text-transform: uppercase;
+                font-size: 12px;
             }
-        }
-        h2.header-title {
-            width: auto;
-            display: inline-block;
-            font-size: 18px;
-            background: $hrld-black;
-            color: $hrld-light-grey;
-            padding: 3px 10px;
-            text-transform: uppercase;
-            font-weight: bold;
+            .entry-title {
+                color: #fff;
+                display: block;
+                font-family: $headline;
+                font-weight: bold;
+                font-size: 18px;
+                float: left;
+                clear: left;
+            }
         }
     }
-    */
-
 }

@@ -141,8 +141,7 @@
 	        text-transform: uppercase;
 	        font-weight: bold;
 	        font-size: 16px;
-	        padding-left: 20px;
-	        padding-right: 10px;
+	        padding: 0 20px;
 	        border-right: 1px solid $hrld-dark-grey-border;
         }
         .title {
@@ -154,7 +153,7 @@
 	        color: $hrld-black;
 	        font-family: $headline;
 	        font-weight: bold;
-	        padding-left: 10px;
+	        padding-left: 20px;
 	        .byline {
 	            color: $hrld-dark-grey;
 	            i {
@@ -187,6 +186,7 @@
             line-height: 18px;
             text-transform: uppercase;
             float: left;
+            padding-top: 24px;
             .since {
                 padding-left:6px;
                 text-transform: none;
@@ -197,6 +197,7 @@
         	margin-bottom: 18px;
         	text-align: center;
             float: right;
+            padding-top: 24px;
         }
         .social-buttons {
             display: block;

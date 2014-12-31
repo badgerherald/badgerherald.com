@@ -15,7 +15,7 @@ global $DoubleClick;
 		
  		<div class="post-sidebar">
 			<div class="post-sidebar-scroll fixed-sidebar-container">
-			<div class="meta-author">
+			<div class="meta-author clearfix">
 
 				<a class="meta-author-avatar" title="<?php echo exa_properize(get_the_author()); ?> Profile" href="<?php exa_the_author_link() ?>">
 					<?php echo get_wp_user_avatar(get_the_author_meta('ID'), 'small-thumbnail'); ?>

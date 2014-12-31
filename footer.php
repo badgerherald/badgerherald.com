@@ -15,10 +15,10 @@
 
         </div> <!-- END div#primary -->
 
-        			<div class="colophon" style:"font-family:'pt sans'">
+        			<div class="colophon wrapper" style:"font-family:'pt sans'">
 	All Content &copy; The Badger Herald, <?php echo date("Y"); ?>
 	</div>
-	
+
 		</div><!-- END div#page -->
 
 	

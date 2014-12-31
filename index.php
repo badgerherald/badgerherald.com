@@ -29,7 +29,7 @@ get_header();
 													   * the slider script. 
 													   */ ?>
 
-	<div id="above-fold" class="clearfix">
+	<div id="above-fold">
 
 	<div  id="slider">
 
