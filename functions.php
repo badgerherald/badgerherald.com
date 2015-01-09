@@ -18,7 +18,6 @@ if ( ! isset( $content_width ) )
 	$content_width = 690;
 
 
-
 /**
  * Exa should run on WordPress 3.6 or later.
  */
@@ -29,78 +28,14 @@ global $shortcode_tags;
 if ( !array_key_exists( 'media-credit', $shortcode_tags ) )
     add_shortcode('media-credit', 'ignore_media_credit_shortcode' );
 
-function exa_ad_setup() {
-
-	global $DoubleClick;
-
-	$DoubleClick->networkCode = "8653162";
-
-	if( !hrld_is_production() )
-		$DoubleClick->debug = true;
-
-	/* breakpoints */
-	$DoubleClick->register_breakpoint('phone',		array('minWidth'=>0,'maxWidth'=>720));
-	$DoubleClick->register_breakpoint('tablet',		array('minWidth'=>760,'maxWidth'=>1040));
-	$DoubleClick->register_breakpoint('desktop',	array('minWidth'=>1040,'maxWidth'=>1220));
-	$DoubleClick->register_breakpoint('xl',			array('minWidth'=>1220,'maxWidth'=>9999));
-
-}
-add_action('dfw_setup','exa_ad_setup');
-
-/**
- * Registers an ad to display in the middle
- * 
- * @author Will Haynes
- */
-function exa_register_content_adslot() {
-
-	global $DoubleClick;
-	if ( is_single() && ! is_admin() ) {
-		add_filter('the_content','_exa_register_content_adslot');
-	}
-
-}
-add_action('dfw_setup','exa_register_content_adslot');
-
-function _exa_register_content_adslot($content) {
-	
-	global $DoubleClick;
-
-	if ( is_single() && ! is_admin() ) {
-		$ad = $DoubleClick->get_ad_placement('bh:sidekick','300x250',array('phone','tablet'));
-		$ad = "<div class='ad ad-in-content mobile-tablet'>" . $ad . "</div>";
-        return exa_insert_after_graph( $ad, 3, $content );
-    }
-    return $content;
-}
-
-function exa_insert_after_graph( $insertion, $graph_id, $content ) {
-	
-	$graphs = explode( '</p>', $content );
-	foreach ($graphs as $i => $p) {
-	    if ( trim( $p ) ) {
-	        $graphs[$i] .= '</p>';
-	    }
-	    if ( $graph_id == $i + 1 ) {
-	        $graphs[$i] .= $insertion;
-	    }
-	}
-	return implode( '', $graphs );
-	
-}
 
 
 /**
- * Calls methods to set up various elements of exa.
+ * Set up for various features of exa.
  *
- * @author Will Haynes
- * @since 29 Nov 2013
- * @return void
+ * @since 0.1
  */
 function exa_setup() {
-
-	/* Register News, Sports, Opinion & ArtsEtc. sections. */
-	// add_action( 'init', 'register_sections' );
 
 	/* Register different size thumbnail images */
 	add_theme_support('post-thumbnails');
@@ -133,11 +68,93 @@ add_action( 'after_setup_theme', 'exa_setup' );
 
 
 /**
+ * Setup doubleclick breakpoints and network codes.
+ * 
+ * @see https://github.com/willhaynes/DoubleClick-for-Wordpress
+ * @since 0.2
+ */
+function exa_ad_setup() {
+
+	global $DoubleClick;
+
+	$DoubleClick->networkCode = "8653162";
+
+	if( !hrld_is_production() )
+		$DoubleClick->debug = true;
+
+	/* breakpoints */
+	$DoubleClick->register_breakpoint('phone',		array('minWidth'=>0,'maxWidth'=>720));
+	$DoubleClick->register_breakpoint('tablet',		array('minWidth'=>760,'maxWidth'=>1040));
+	$DoubleClick->register_breakpoint('desktop',	array('minWidth'=>1040,'maxWidth'=>1220));
+	$DoubleClick->register_breakpoint('xl',			array('minWidth'=>1220,'maxWidth'=>9999));
+
+}
+add_action('dfw_setup','exa_ad_setup');
+
+/**
+ * Adds filter to content to display in the middle of content on mobile devices.
+ * 
+ * @since 0.2
+ */
+function exa_register_content_adslot() {
+
+	global $DoubleClick;
+	if ( is_single() && ! is_admin() ) {
+		add_filter('the_content','_exa_register_content_adslot');
+	}
+
+}
+add_action('dfw_setup','exa_register_content_adslot');
+
+/**
+ * Filters content and ads an adspot for phone and tablet devices.
+ * 
+ * Registered in exa_register_content_adslot()
+ * 
+ * @uses exa_insert_after_graph
+ * 
+ * @param string $content The post content is passed in.
+ * @since 0.2
+ */
+function _exa_register_content_adslot($content) {
+	
+	global $DoubleClick;
+
+	if ( is_single() && ! is_admin() ) {
+		$ad = $DoubleClick->get_ad_placement('bh:sidekick','300x250',array('phone','tablet'));
+		$ad = "<div class='ad ad-in-content mobile-tablet'>" . $ad . "</div>";
+        return exa_insert_after_graph( $ad, $content, 3 );
+    }
+    return $content;
+}
+
+/**
+ * Inserts a string in between paragraphs.
+ * 
+ * @param string $insertion The string to insert.
+ * @param string $content The content to insert into.
+ * @param int $graph The paragraph to insert after.
+ * @since 0.2
+ */
+function exa_insert_after_graph( $insertion, $content, $graph ) {
+	
+	$graphs = explode( '</p>', $content );
+	foreach ($graphs as $i => $p) {
+	    if ( trim( $p ) ) {
+	        $graphs[$i] .= '</p>';
+	    }
+	    if ( $graph_id == $i + 1 ) {
+	        $graphs[$i] .= $insertion;
+	    }
+	}
+	return implode( '', $graphs );
+	
+}
+
+/**
  * Enqueues scripts and styles for front end.
  *
- * @author Will Haynes
- * @since 29 Nov 2013
- * @return void
+ * @since 0.1
  */
 function exa_scripts_styles() {
 	
@@ -165,18 +182,24 @@ function exa_scripts_styles() {
 }
 add_action( 'wp_enqueue_scripts', 'exa_scripts_styles' );
 
+/**
+ * Enqueues scripts and styles for admin.
+ *
+ * @since 0.1
+ */
 function exa_admin_style() {
+
     wp_enqueue_style('exa-admin-style', get_template_directory_uri() . '/css/admin-style.css');
+
 }
 add_action('admin_enqueue_scripts', 'exa_admin_style');
-
 
 
 /**
  * Switches default core markup for search form to output valid HTML5.
  *
  * @param string $format Expected markup format, default is `xhtml`
- * @return string 'html5'
+ * @since 0.1
  */
 function exa_search_form_format( $format ) {
 	return 'html5';
@@ -186,85 +209,25 @@ add_filter( 'search_form_format', 'exa_search_form_format' );
 
 /**
  * Changes the default exerpt tag to include a permalink, and class of class="exerpt-more"
- *
- * Added: July 2013
  * 
  * @param $more 
- * @return Anchor tag exerpt link 
+ * @since 0.1
+ * @return Anchor tag excerpt link 
  */
 function new_excerpt_more( $more ) {
+
 	return ' <span class="excerpt-more">...</span>';
+
 }
 add_filter('excerpt_more', 'new_excerpt_more');
 
 
 /**
- * Alters the query for different post pages.
- *
- * @author Will Haynes
- * @since Oct 2013
- * @return void
+ * Get the list of beats (topic taxonomy) for a post.
+ * 
+ * @since 0.1
+ * @return Array List of beats.
  */
-function alter_queries( $query ) {
-
-	$all_sections = array( 'news', 'oped', 'artsetc', 'sports' );
-	/* Return if this is not the main query, or if it is a back end query */
-    if ( is_admin() || ! $query->is_main_query() ) {
-        return;
-    }
-
-    /* We no longer need this. This whole function may be deleted. - wjh.
-
-    if ( is_front_page() ) {
- 		$query->set( 'post_type',  $all_sections );
-		$query->set('posts_per_page', 25);
-        $query->set( 'tax_query',
-            array(
-                array(
-                    'taxonomy' => 'importance',
-                    'field' => 'slug',
-                    'terms' => array('featured','stream'),
-                    'operator' => 'IN'
-                )
-            )
-        );
-
-        return;
-    } else {
-		$query->set('posts_per_page', 25);
-    } 
-
-    if( $query->is_author ) {
-    	$query->set( 'post_type', $all_sections  );
-    }
-
-    if( is_search() ) {
-    	if (isset($_GET['section'])) {
-	    	$section = array(strtolower($_GET['section']));
-	    	if ($section == array('all') || !in_array($section[0], $all_sections)) {
-	    		$section = $all_sections;
-	    	}
-	    } else {
-	    	$section = $all_sections;
-	    }
-    	$query->set('post_type', $section);
-
-    	if (isset($_GET['date_range'])) {
-    		$date_range = $_GET['date_range'];
-    		if ($date_range == 'This month') {
-    			$query->set('year', date('Y'));
-    			$query->set('monthnum', date('m'));
-    		} elseif ($date_range == 'This year') {
-    			$query->set('year', date('Y'));
-    		}
-    	}
-    }
-	*/
-    return;
-}
-add_action( 'pre_get_posts', 'alter_queries', 1 );
-
-
 function exa_get_beats() {
 
 	global $post;
@@ -272,6 +235,12 @@ function exa_get_beats() {
 
 }
 
+/**
+ * Returns a boolean specifying if the post is featured or not.
+ * 
+ * @since 0.1
+ * @return boolean True if post is marked "featured", False if not.
+ */
 function exa_is_featured() {
 
 	global $post;
@@ -279,6 +248,12 @@ function exa_is_featured() {
 
 }
 
+/**
+ * Returns a boolean specifying if the post is marked in_stream or not.
+ * 
+ * @since 0.1
+ * @return boolean True if post is marked "in stream", False if not.
+ */
 function exa_is_instream() {
 
 	global $post;
@@ -289,25 +264,41 @@ function exa_is_instream() {
 /**
  * Takes a string, and returns a string that denotes ownership.
  * 
- * ex: passing "John" returns "John's"
- *     passing "Ross" returns "Ross'" (without the last s)
+ * ex: passing " John " returns " John's "
+ *     passing " Ross " returns " Ross' " (without the last s)
  *
- * @author Will Haynes
- * @since Oct 2013
+ * @since 0.1
  * @param String $name the name to 'propertize.'
- * @return a 'propertized' version of $name
+ * @return string a 'propertized' version of $name
  */
 function exa_properize($name) {
 	return $name.'\''.($name[strlen($name) - 1] != 's' ? 's' : '');
 }
 
-
-function custom_excerpt_length( $length ) {
+/**
+ * Filters the excerpt length to 24 words. 
+ * 
+ * @since 0.1
+ * @param int $length current length passed by filter.
+ * @return int 24
+ */
+function exa_custom_excerpt_length( $length ) {
 	return 24;
 }
-add_filter( 'excerpt_length', 'custom_excerpt_length', 999 );
+add_filter( 'excerpt_length', 'exa_custom_excerpt_length', 999 );
 
 
+/**
+ * Filters the excerpt length to 24 words. 
+ * 
+ * TODO: this function could use work.
+ * 
+ * @uses current_time
+ * @since 0.1
+ * @param int $from Start time in seconds since Jan 1, 1970.
+ * @param int $to (optional) End time in seconds since Jan 1, 1970.
+ * @return string A readable representation of the time interval.
+ */
 function exa_human_time_diff( $from, $to = '' ) {
 	if ( empty( $to ) )
 		$to = current_time( "timestamp" );
@@ -336,20 +327,31 @@ function exa_human_time_diff( $from, $to = '' ) {
 }
 
 
-/*
- * Exa register Shoutout parameters
- *
+/**
+ * Filters query_vars to register shoutout parameters
+ * 
+ * @since 0.1
+ * @param array $qvars array of query variables passed by filter.
+ * @return array array of query variables appended with shoutout query variables.
  */
-function add_query_vars($aVars) {
-	$aVars[] = "so_page"; // represents the name of the product category as shown in the URL
-	$aVars[] = "so_num"; // represents the name of the product category as shown in the URL
-	return $aVars;
-}
- 
-// hook add_query_vars function into query_vars
-add_filter('query_vars', 'add_query_vars');
+function exa_add_query_vars($qvars) {
 
-function add_rewrite_rules($aRules) {
+	$qvars[] = "so_page"; // represents the name of the product category as shown in the URL
+	$qvars[] = "so_num"; // represents the name of the product category as shown in the URL
+	return $aVars;
+
+}
+add_filter('query_vars', 'exa_add_query_vars');
+
+/**
+ * Adds rewrite rules for shoutouts.
+ * 
+ * @since 0.1
+ * @param array $aRules rewrite rules passed in by filter.
+ * @return array rewrite rules with shoutout rules appended.
+ */
+function exa_add_so_rewrite_rules($aRules) {
+
 	$aNewRules = array('shoutouts/page/([^/]+)/?$' => 'index.php?pagename=shoutouts&so_page=$matches[1]');
 	$aRules = $aNewRules + $aRules;
 
@@ -357,27 +359,20 @@ function add_rewrite_rules($aRules) {
 	$aRules = $aNewRules + $aRules;
 
 	return $aRules;
+
 }
- 
-// hook add_rewrite_rules function into rewrite_rules_array
-add_filter('rewrite_rules_array', 'add_rewrite_rules');
+add_filter('rewrite_rules_array', 'exa_add_so_rewrite_rules');
 
-
-/*
- * Add sidebar for refining search results to search pages.
- * By Zach Thomae - 9/7/13
+/**
+ * Returns array of beats for a passed in category.
+ * 
+ * @since 0.1
+ * @param string $category The category to fetch beats for.
+ * @return array List of beats.
  */
-if ( function_exists ('register_sidebar') ) {
-	register_sidebar('search');
-}
-
-
-
-add_filter( 'wp_insert_post_data', 'hrld_default_comments_on' );
-
-// Massively ugly, but beats should be kept out of the templates
 function exa_get_beats_slug_list($category) {
-	if ($category == 'news') {
+
+	if ($category == 'news') {	
 		$beats_slug_list = array('madison','higher-edu','wisconsin','student-gov','us','campus','uw-research','uw-system');
 	} elseif ($category == 'oped') {
 		$beats_slug_list = array('column','editorial','opinion-desk','letter','public-editor','oped-top-story');
@@ -389,24 +384,32 @@ function exa_get_beats_slug_list($category) {
 		$beats_slug_list = array();
 	}
 	return $beats_slug_list;
+
 }
 
 /**
  * Add container to video embeds
  *
- * By Matthew Neil
+ * @since 0.1
+ * @param string $html
+ * @param string $url
+ * @param $attr
+ * @param int $post_id
+ * @return $html video embed
  */
 function hrld_responsive_embed_oembed_html($html, $url, $attr, $post_id) {
  
- if (strpos($url,'youtu')) {
- 	return '<div class="video-container">' . $html . '</div>';
- } else {
- 	return $html;
- }
+ 	// Search for:
+	//  - youtube.com
+	//  - youtu.be
+	if (strpos($url,'youtu')) {
+		return '<div class="video-container">' . $html . '</div>';
+	} else {
+		return $html;
+	}
 
 }
 add_filter('embed_oembed_html', 'hrld_responsive_embed_oembed_html', 10, 4);
-
 
 
 /**
