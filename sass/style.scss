@@ -23,6 +23,7 @@ Text Domain: badgerherald-exa
 @import "functions.scss"; 		/* 1 */
 @import "normalize.scss";		/* 2 */
 @import "fonts.scss";			/* 3 */
+@import "grid.scss";
 
 /** 
  * Base Page Syles (much of which is altered in responsive)

@@ -1,0 +1,37 @@
+$oneColumns:        60px;
+$twoColumns:        140px;
+$threeColumns:      220px;
+$fourColumns:       300px;
+$fiveColumns:       380px;
+$sixColumns:        460px;
+$sevenColumns:      540px;
+$eightColumns:      620px;
+$nineColumns:       700px;
+$tenColumns:        780px;
+$elevenColumns:     860px;
+$twelveColumns:     940px;
+$thirteenColumns:   1020px;
+$fourteenColumns:   1100px;
+$fifteenColumns:    1180px;
+.col-1, .col-2, .col-3, .col-4, .col-5, .col-6, .col-7, .col-8,
+    .col-9, .col-10, .col-11, .col-12, .col-13, .col-14, .col-15 {
+        width: 100%;
+}
+
+@media (min-width: 760px) {
+    @for $i from 1 through 9 {
+        .col-#{$i} {
+            width: (60px * $i) + (20 * ($i - 1));
+            margin-right: 20px;
+        }
+    }
+}
+
+@media (min-width: 1160px) {
+    @for $i from 10 through 14 {
+        .col-#{$i} {
+            width: (60px * $i) + (20 * ($i - 1));
+            margin-right: 20px;
+        }
+    }
+}

@@ -13,11 +13,11 @@
     <a class="post-link clearfix" href="<?php the_permalink(); ?>" rel="bookmark">
         
         
-        <div class="entry-thumbnail">
+        <div class="entry-thumbnail col-2">
             <?php the_post_thumbnail(); ?>
         </div>
 
-        <header class="entry-header">
+        <header class="entry-header col-4">
         
         <span class="topic"><?php echo exa_topic( $post->ID ); ?></span>
         

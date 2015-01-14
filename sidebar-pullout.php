@@ -7,10 +7,10 @@
             <li data-post-list="oped"><a href="<?php echo (is_home() ? '#opinion' : get_bloginfo('url').'/oped/'); ?>">Opinion</a></li>
             <li data-post-list="artsetc"><a href="<?php echo (is_home() ? '#artsetc' : get_bloginfo('url').'/artsetc/'); ?>">ArtsEtc.</a></li>
             <li data-post-list="sports"><a href="<?php echo (is_home() ? '#sports' : get_bloginfo('url').'/sports/'); ?>">Sports</a></li>
-            <li data-post-list="null"><a href="<?php bloginfo('url'); ?>/shoutouts/">Shoutouts</a></li>
-            <li data-post-list="null" class="about-off"><a href="<?php bloginfo('url'); ?>/about/">About</a></li>
-            <li data-post-list="null"><a href="http://themadisonmisnomer.com/">Misnomer</a></li>
-            <li data-post-list="null"><a href="<?php bloginfo('url'); ?>/advertise/">Advertise</a></li>
+            <li class="no-stream" data-post-list="null"><a href="<?php bloginfo('url'); ?>/shoutouts/">Shoutouts</a></li>
+            <li class="no-stream" data-post-list="null" class="about-off"><a href="<?php bloginfo('url'); ?>/about/">About</a></li>
+            <li class="no-stream" data-post-list="null"><a href="http://themadisonmisnomer.com/">Misnomer</a></li>
+            <li class="no-stream" data-post-list="null"><a href="<?php bloginfo('url'); ?>/advertise/">Advertise</a></li>
         </ul>
     </div>
     <div class="nav-stream-container">
@@ -23,7 +23,7 @@
         );
         foreach ($beats_queries as $stream_beat => $stream_beat_query) {
         ?>
-        <div class="nav-stream" data-post-list="<?php echo $stream_beat; ?>">
+        <div class="nav-stream col-6" data-post-list="<?php echo $stream_beat; ?>">
             <?php
             /* Get featured post */
             $args = array();
@@ -47,7 +47,7 @@
                 $beats_queries[$stream_beat]['featured']->the_post();
 
                 /* get content-block-featured.php */
-                //get_template_part( 'content', 'block-featured' );
+                get_template_part( 'content', 'block-featured' );
 
                 $beats_queries[$stream_beat]['exclude'][] = $post->ID;
             }
@@ -55,7 +55,7 @@
 
             /* Get recent posts */
             $args = array();
-            $args['posts_per_page'] = 5;
+            $args['posts_per_page'] = 3;
             $args['post__not_in'] = $beats_queries[$stream_beat]['exclude'];
             $args['tax_query'] = array(
                 array(
