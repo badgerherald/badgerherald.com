@@ -1,25 +1,25 @@
 .about-page {
-
-	.page-container-inner-masthead {
+	#primary {
+		margin-top: 24px;
+	}
+	.inner-masthead {
 		background: url('img/about/protest.jpg')  no-repeat center bottom; 
   		-webkit-background-size: cover;
   		-moz-background-size: cover;
   		-o-background-size: cover;
   		background-size: cover;
 		height: 400px;
-		position: fixed !important;
+		position: relative;
 		top:0;
-
-	}
-
-	#primary {
-		margin-top: 400px;
+		margin-top: 0;
+		width: 100%;
+		display: block;
 	}
 
 	/** ------ NEEDS BETTER STYLING ------- **/
 	.header-box {
 		position: absolute;
-		top: 240px;
+		top: 50%;
 		text-align: center;
 		display: block;
 		width: 100%;
@@ -367,19 +367,20 @@
 
 
 }
-@media (min-width: 1060px) {
+@media (min-width: 1160px) {
 
 	.about-page {
-		.page-container-inner-masthead {
+		#primary {
+			margin-top: 0;
+		}
+		.inner-masthead {
 			height: 600px;
-		} #primary {
-			margin-top: 600px;
-		} 
+		}
 
 		/** ------ NEEDS BETTER STYLING ------- **/
 
 		.header-box {
-			top:400px;
+			top:50%;
 		} .about-home-header h1 {
 			font-size: 90px;
 			line-height: 80px;
@@ -432,7 +433,7 @@
 
 }
 
-@media (min-width: 1220px) {
+@media (min-width: 1320px) {
 
 	.about-page {
 		.article-content {

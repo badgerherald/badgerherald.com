@@ -45,6 +45,8 @@ body.admin-bar {
 	position: relative;
 	background: $hrld-light-grey;
 	width: 100%;
+	padding: 0 20px;
+	margin-top: 54px;
 }
 
 
@@ -56,11 +58,16 @@ body.admin-bar {
 	.wrapper {
 		max-width: 740px;
 	}
+	#primary {
+		margin-top: 0;
+	}
 
 }
 
 @media (min-width: 1160px) {
-
+	#primary {
+		padding: 0;
+	}
 	#page {
 		&.pullout-active {
 			left: 681px;

@@ -121,11 +121,14 @@ $(document).ready(function() {
     }
 
     var updateNavActive = function(curr) {
+        var dataPostList = curr.attr("data-post-list");
+        if (dataPostList === "null") {
+            return;
+        }
         $("ul#main-nav").children("li").each(function() {
             $(this).removeClass("active");
         });
         curr.addClass("active");
-        var dataPostList = curr.attr("data-post-list");
         $("#pullout .nav-stream-container").children(".nav-stream").each(function() {
             $(this).removeClass("active");
             if ($(this).attr("data-post-list") === dataPostList) {
