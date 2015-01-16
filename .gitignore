@@ -4,3 +4,5 @@ cache
 *.sublime-*
 node_modules
 Charter.txt
+
+style.css.map

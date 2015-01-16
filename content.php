@@ -21,12 +21,15 @@ global $DoubleClick;
 					<?php echo get_wp_user_avatar(get_the_author_meta('ID'), 'small-thumbnail'); ?>
 				</a>
 				<span class="author">by <a href="<?php exa_the_author_link() ?>" title="<?php echo exa_properize(get_the_author()); ?> Profile"><?php the_author() ?></a></span>
-				<span class="author-position">The Badger Herald</span>
+				<span class="author-position"><?php if( hrld_author_has("hrld_current_position", get_the_author_meta('ID'))) hrld_author('hrld_current_position',get_the_author_meta('ID')); else echo 'The Badger Herald'; ?></span>
 				
 				<?php // If twitter // TODO: if the username is too long, hide it.
-				if(hrld_author_has("hrld_twitter_handle",$staff)) {
-					$twitter_handle = get_hrld_author("hrld_twitter_handle",$staff);
-					echo "<a href='https://twitter.com/$twitter_handle' class='twitter-follow-button' data-show-count='false'>Follow @$twitter_handle</a>";
+				if(hrld_author_has("hrld_twitter_handle",get_the_author_meta('ID'))) {
+					$twitter_handle = get_hrld_author("hrld_twitter_handle",get_the_author_meta('ID'));
+					if( strlen($twitter_handle) > 11 )
+						echo "<a href='https://twitter.com/$twitter_handle' class='twitter-follow-button' data-show-count='false' data-show-screen-name='false'>Follow @$twitter_handle</a>";
+					else
+						echo "<a href='https://twitter.com/$twitter_handle' class='twitter-follow-button' data-show-count='false'>Follow @$twitter_handle</a>";
 					echo "<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>";
 				} ?>
 

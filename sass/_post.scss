@@ -508,7 +508,40 @@ span.hrld-media-credit-org{
 	}
 
 } 
-
+div.author-stream-gallery {
+	width: 780px;
+	overflow-x: scroll;
+	overflow-y: hidden;
+	margin-top: 15px;
+	margin-bottom: 15px;
+	height: 150px;
+	white-space: nowrap;
+	div{
+		display: inline-block;
+		a{
+			margin-left: 10px;	
+			display: inline-block;
+			height: 100%;
+			position: relative;
+			overflow: hidden;
+			img{
+				vertical-align: middle;
+			}	
+		}
+	}
+}
+articles{
+	display: block;
+}
+articles.best-articles{
+	h2{
+		color: red;
+	}
+	article{
+		border-left: 5px solid red;
+		padding-left: 3px;
+	}
+}
 h4.article-signature {
 	/* no styling */
 }
