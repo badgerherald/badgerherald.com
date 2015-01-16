@@ -593,7 +593,7 @@ ul.featured-stream-list{
 	}
 	.featured-stream-post{
 		width: 460px;
-		padding-right: 20px;
+		margin-right: 20px;
 		float: left;
 		.entry-thumbnail{
 			width: 460px;
@@ -603,7 +603,6 @@ ul.featured-stream-list{
 	ul.featured-stream-list{
 		float: left;
 		width: 140px;
-		padding-right: 20px;
 		li{
 			display: block;
 			.entry-thumbnail{
@@ -695,7 +694,6 @@ ul.featured-stream-list{
 	}
 	.featured-stream-post{
 		width: 760px;
-		padding-right: 20px;
 		float: none;
 		.entry-thumbnail{
 			margin-right: 20px;

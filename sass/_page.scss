@@ -1,7 +1,8 @@
-
+html {
+	height: 100%;
+}
 
 /* Page styles refer to general positioning and sizing. */
-
 body {
 	width: 100%;
 	background: $hrld-light-grey;
@@ -9,6 +10,7 @@ body {
     min-height:100%;
     position: relative;
     overflow-x: hidden;
+    @include clearfix();
 }
 
 
@@ -30,6 +32,7 @@ body {
 	@include transition(all, 250ms, linear);
 	&.pullout-active {
 		left: 260px;
+		position: fixed;
 	}
 }
 
@@ -61,17 +64,17 @@ body.admin-bar {
 	#primary {
 		margin-top: 0;
 	}
+	#page {
+		&.pullout-active {
+			left: 681px;
+		}
+	}
 
 }
 
 @media (min-width: 1160px) {
 	#primary {
 		padding: 0;
-	}
-	#page {
-		&.pullout-active {
-			left: 681px;
-		}
 	}
 
 	.wrapper {

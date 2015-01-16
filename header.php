@@ -87,7 +87,6 @@ global $DoubleClick;
 
     <?php get_sidebar('pullout'); ?>
 		<div id="page">
-
 			<div id="masthead">
 				<div class="fixed-bar">
 					<?php /* container for the mobile hamburger icon */ ?>
