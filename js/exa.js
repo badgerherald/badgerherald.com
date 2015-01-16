@@ -165,6 +165,9 @@ $(document).ready(function() {
         updateNavActive($(this));
     });
 
+    $("#pullout .nav-stream-container").children(".nav-stream").first().addClass("active");
+    $("ul#main-nav").children("li").first().addClass("active");
+
     if ($(".progress").length !== 0) {
         $(window).scroll(function() {
             var scrollTop = $(window).scrollTop();

@@ -2,7 +2,10 @@
     <?php get_search_form( true );  ?>
     <div class="nav-list">
         <ul id="main-nav">
+        <?php /* Popular posts
             <li class="popular-posts active" data-post-list="popular"><a>Popular</a></li>
+            */
+           ?>
             <li data-post-list="news"><a href="<?php echo (is_home() ? '#news' : get_bloginfo('url').'/news/'); ?>">News</a></li>
             <li data-post-list="oped"><a href="<?php echo (is_home() ? '#opinion' : get_bloginfo('url').'/oped/'); ?>">Opinion</a></li>
             <li data-post-list="artsetc"><a href="<?php echo (is_home() ? '#artsetc' : get_bloginfo('url').'/artsetc/'); ?>">ArtsEtc.</a></li>
