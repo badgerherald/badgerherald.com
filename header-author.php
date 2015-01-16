@@ -31,19 +31,8 @@ include('macros.php');
     <?php /* Chartbeat Part 1 */ ?>
 	<script type="text/javascript">var _sf_startpt=(new Date()).getTime()</script>
 
-	<title><?php echo wp_title("&middot;",true,"right"); ?>
 
-	<?php
-	/*
-	if( is_404() ) {
-		echo "404 &middot; " . bloginfo('name');
-	} else if( is_home() ) {
-		echo bloginfo('name') . " &middot " . bloginfo('description') . "."; 
-	} else {
-		echo wp_title('') . " &middot " . bloginfo('name'); 
-	} */
-
-	?></title>
+	<title><?php bloginfo('name'); ?> · <?php is_home() ? bloginfo('description') : wp_title(''); ?></title>
 	<link rel="profile" href="http://gmpg.org/xfn/11" />
 	<link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>" />
 	<!--[if lt IE 9]>
@@ -64,6 +53,8 @@ include('macros.php');
 
 <body <?php body_class(); ?>>
 
+<?php /* Facebook like button javascript tag */ ?>
+	<div id="fb-root"></div>
 	<script>(function(d, s, id) {
 	  var js, fjs = d.getElementsByTagName(s)[0];
 	  if (d.getElementById(id)) return;
@@ -73,13 +64,101 @@ include('macros.php');
 	}(document, 'script', 'facebook-jssdk'));</script>
 
 
+    <?php get_sidebar('pullout'); ?>
+		<div id="page">
 
-	<div id="page" class="page-container-content">
-	<div id="wrapper">
-	<a id="logo" href="<?php bloginfo('url'); ?>" style="float:none; width: inherit;">
-		<div>&#8592;Return to BadgerHerald.com</div>
-	</a>
+			<div id="masthead">
+				<div class="fixed-bar">
+					<?php /* container for the mobile hamburger icon */ ?>
+			        <div class="nav-control" alt="Menu"></div>
+			        <div class="wrapper bar-content">
+			        	<a href="<?php echo bloginfo("url"); ?>"><div class="bar-logo">The Badger Herald</div></a>
+			        	<div class="nav-category">
+			                <?php
+			                    if (!is_page()) {
+			                        echo ucfirst($wp_query->query_vars['category_name']);
+			                    } else {
+			                        echo ucfirst($wp_query->query_vars['name']);
+			                    }
+			                ?>
+			            </div>
 
-	<div id="primary" style="margin-top:5px;">
+			            <div class="title">
+			                <?php
+			                    if (is_single()) {
+			                        $post_author = get_userdata($post->post_author);
+			                        echo $post->post_title;
+			                        echo '<span class="byline"> <i>by</i> '.$post_author->display_name.'</span>';
+			                    } elseif (is_author()) {
+    								$author = get_user_by('id', get_query_var('author'));
+    								echo $author->display_name;
+			                    }
+			                ?>
+			            </div>
+			        </div>
+			        <?php
+				    if (is_single()) { ?>
+				        <div class="progress">
+				          <div class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0;">
+				          </div>
+				        </div>
+				    <?php } ?>
+				</div>
+				<div class="inner-masthead">
 
-	<div id="main" class="site-main">
+					<script>
+					jQuery(document).ready(function(){
+						var banner = jQuery('#hrld_author_top_banner'),
+							target_width = banner.parent().width(),
+							target_height = (banner.attr('banner_ratio')) * target_width;
+						
+						banner.css( 'width', '100%');
+						banner.css( 'height', target_height);
+						
+						
+						var sidebar_height = jQuery('#sidebar').css('height');
+						jQuery('#stream').css('min-height',sidebar_height);
+						
+					});
+
+					</script>
+					<?php 
+						$img_src_id = get_the_author_meta( '_hrld_staff_banner', get_query_var('author') );
+						if ($img_src_id != '')	{
+							$img_src = wp_get_attachment_image_src($img_src_id, 'author-banner');
+							if( $img_src == false)
+								$img_src = wp_get_attachment_image_src($img_src_id, 'full');
+							$url = $img_src[0];
+							$width = $img_src[1];
+							$height = $img_src[2];
+							$hwRatio = $height/$width;
+							if( $hwRatio > 0.31 )
+								$hwRatio = 0.31;
+							/**
+							*
+							* his is now being taken care of through jQuery.
+							*
+							* if ( isset( $content_width ) ) {
+							* 	$width = $content_width - 10;
+							* 	$height = $hwRatio * $width;
+							* }
+							*
+							**/
+							echo '<div id=hrld_author_top_banner banner_ratio ='.$hwRatio. ' class=hrld_author_top_banner style="background-position: center; background-repeat: no-repeat; background-position: center; background-image: url(\''.$url.'\'); background-size: cover; width: 100%; height: '.$height.'px"> </div>';
+						}
+					?>
+				</div>
+			</div>
+
+
+			<div id="primary" class="wrapper">
+
+<?php /*
+			</div> <!-- END div#primary -->
+		</div> <!-- END div#page -->
+    </body>
+</html>
+*/
+?>
+
+

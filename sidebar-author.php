@@ -29,6 +29,41 @@
             <?php if($bio != '') echo '<br /><span class=author-bio style=padding-right:40px;>'.$bio.'</span>'; ?>
         </div>
     </div><!-- class="inner-sidebar" -->
+    <?php
+            $attachments = array();
+            $args = array(
+                'post_type' => 'attachment',
+                'post_status' => 'inherit',
+                'meta_key' => '_hrld_media_credit',
+                'meta_value' => get_the_author_meta('user_nicename', get_query_var('author')),
+                'posts_per_page' => 5,
+                'nopaging' => true,
+            );
+            $query = new WP_Query( $args );
+            if ( $query->have_posts() ) : 
+            ?>
+            <div class="author-gallery">
+            <ul>
+            <?php
+                /* The loop */ 
+                while ( $query->have_posts() ) : 
+                    $query->the_post();
+                    $attachments[] = $post->ID;
+                    ?>
+                    <li><a href="<?php the_permalink(); ?>" class="" target="_blank">
+                    <?php
+                    echo wp_get_attachment_image($post->ID, array(150,150));
+                    ?>
+                    </a></li>
+                    <?php 
+                endwhile;
+            wp_reset_postdata(); ?>
+            <li><a href="#"><span>More</span></a></li>
+            </ul>
+            </div>
+            <?php   
+            endif;
+        ?>
    
 
 </div><!-- id="sidebar" -->
