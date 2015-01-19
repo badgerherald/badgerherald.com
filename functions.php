@@ -1017,6 +1017,22 @@ add_action('wp_head','exa_open_graph_tags');
 
 
 /**
+ * Adds the favicon link to wp_head.
+ * 
+ * favicon.ico can be compiled using imagemagick using:
+ * 
+ * 		$ cd ./img/favicons/
+ * 		$ convert -strip *.png favicon.ico
+ * 
+ * @since v0.2
+ */
+function exa_favicon() {
+	echo "<link rel='icon' href='" . get_template_directory_uri() . "/img/favicons/favicon.ico' type='image/x-icon' />";
+}
+add_action('wp_head','exa_favicon');
+
+
+/**
  * Prints twitter card text to the head of wordpress pages.
  *
  * @since 0.1

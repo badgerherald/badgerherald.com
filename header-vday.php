@@ -44,10 +44,6 @@ include('macros.php');
 	-->
 	<link href='http://fonts.googleapis.com/css?family=Noto+Serif:400,700,400italic,700italic|Yanone+Kaffeesatz:400,300,700|Open+Sans|PT+Sans+Narrow:400,700' rel='stylesheet' type='text/css'>
 
-	<link rel="icon" 
-     	type="image/png" 
-     	href="favicon.png?v=exa6">
-
 </head>
 
 <body <?php body_class("vday-page"); ?>>
