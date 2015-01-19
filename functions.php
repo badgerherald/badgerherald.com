@@ -338,7 +338,7 @@ function exa_add_query_vars($qvars) {
 
 	$qvars[] = "so_page"; // represents the name of the product category as shown in the URL
 	$qvars[] = "so_num"; // represents the name of the product category as shown in the URL
-	return $aVars;
+	return $qvars;
 
 }
 add_filter('query_vars', 'exa_add_query_vars');
