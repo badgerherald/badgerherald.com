@@ -519,7 +519,7 @@ function exa_send_to_editor( $html, $id, $attachment ) {
 
     return $html;
 }
-add_filter( 'media_send_to_editor', 'wpse_76214_send_to_editor', 10, 3 );
+add_filter( 'media_send_to_editor', 'exa_send_to_editor', 10, 3 );
 
 
 /**
