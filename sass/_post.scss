@@ -32,23 +32,6 @@
 			}
 		}
 	}
-.post-sidebar.author-sidebar{
-	display: block;
-	width: 100%;
-	.meta-author{
-		h1{
-			margin-bottom: 12px;
-			color: $hrld-black;
-			font-size: 24px;
-		}
-		span.author-position{
-			margin-bottom: 6px;
-		}
-		span{
-			margin-bottom: 6px;
-		}
-	}
-}
 
 .post-meta {
 	color: $hrld-dark-grey;

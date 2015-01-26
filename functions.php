@@ -450,10 +450,8 @@ function exa_get_the_date() {
 function exa_post_thumbnail_html( $html, $post_id, $post_thumbnail_id, $size, $attr ){
 	if($html){
 		return $html;
-	} elseif(is_home()){
+	} else {
 		return '<img src="'.get_template_directory_uri().'/img/temp/thumb.jpg'.'" height="'.get_option( 'thumbnail_size_w' ).'" width="'.get_option( 'thumbnail_size_h' ).'" />';
-	} else{
-		return $html;
 	}
 	
 }

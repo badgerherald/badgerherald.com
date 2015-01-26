@@ -13,7 +13,7 @@
     $author = get_user_by('id', get_query_var('author')); 
     $bio = get_the_author_meta('description', get_query_var('author'));
 ?>
-<div id="sidebar" class="stream-sidebar author-sidebar post-sidebar">
+<div id="sidebar" class="author-sidebar">
     <div class="sidebar-inner meta-author">
         <a class="meta-author-avatar" title="<?php echo exa_properize($author->display_name); ?> Profile" href="<?php echo get_bloginfo('url'); ?>/author/<?php echo $author->user_login; ?>">
             <?php echo get_wp_user_avatar(get_the_author_meta('ID', get_query_var('author')), 'small-thumbnail')?>
@@ -21,7 +21,11 @@
         </a>
         <h1 class="author-title"><?php printf( __( '%s', 'twentythirteen' ), $author->display_name ); ?></h1>
         <span class="author-position"><?php echo (hrld_author_has('hrld_current_position', $author->ID) ? get_hrld_author('hrld_current_position', $author->ID):'The Badger Herald'); ?></span>
-        <?php if(hrld_author_has('hrld_twitter_handle', $author->ID)){ ?><a href="https://twitter.com/<?php hrld_author('hrld_twitter_handle', $author->ID); ?>"><span class="author-twitter">@<?php hrld_author('hrld_twitter_handle', $author->ID); ?></span></a><?php } ?>
+        <?php if(hrld_author_has('hrld_twitter_handle', $author->ID)){ ?>
+        
+        <a href="https://twitter.com/<?php hrld_author('hrld_twitter_handle', $author->ID); ?>" class="twitter-follow-button" data-show-count="false">Follow @<?php hrld_author('hrld_twitter_handle', $author->ID); ?></a>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+        <?php } ?>
         <div class="sidebar-scroll author-detail clearfix">
             <?php if(hrld_author_has('hrld_staff_description', $author->ID)){ ?><span class="author-description"><?php hrld_author('hrld_staff_description', $author->ID); ?></span><?php } ?>
             <?php if(hrld_author_has('hrld_staff_extension', $author->ID)){ ?><span class="author-extension">Extension <?php hrld_author('hrld_staff_extension', $author->ID); ?></span><?php } ?>
@@ -36,13 +40,13 @@
                 'post_status' => 'inherit',
                 'meta_key' => '_hrld_media_credit',
                 'meta_value' => get_the_author_meta('user_nicename', get_query_var('author')),
-                'posts_per_page' => 5,
-                'nopaging' => true,
+                'posts_per_page' => 6
             );
             $query = new WP_Query( $args );
             if ( $query->have_posts() ) : 
             ?>
             <div class="author-gallery">
+            <h3>Photos by <?php printf( __( '%s', 'twentythirteen' ), $author->display_name ); ?> <a href="#">View All</a></h3>
             <ul>
             <?php
                 /* The loop */ 
@@ -58,7 +62,6 @@
                     <?php 
                 endwhile;
             wp_reset_postdata(); ?>
-            <li><a href="#"><span>More</span></a></li>
             </ul>
             </div>
             <?php   

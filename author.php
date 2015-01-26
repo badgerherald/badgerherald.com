@@ -24,32 +24,31 @@ get_header('author'); ?>
 <div id="stream" class="author-stream">
 		
 		<?php
-			$hasArticles = false;
 			$best_posts = get_the_author_meta( '_hrld_staff_best_posts', get_the_author_meta('ID', get_query_var('author')) );
 			if(!empty($best_posts)):
 		?>
-	<articles class="best-articles">
+	<div class="pinned-posts">
 		<?php
 			$args = array(
 				'post__in' => $best_posts,
 				'post_type' => 'any',
 				'post_status' => array('publish', 'inherit'),
 				'posts_per_page' => 3,
-				'nopaging' => true,
 			);
 			$query = new WP_Query( $args );
     		if ( $query->have_posts() ) : 
-    			$hasArticles = true;
-    	 		echo "<h2>best articles</h2>";
     		 /* The loop */ 
 				while ( $query->have_posts() ) : $query->the_post();
 					if( $post_category != '' && $post_category == ('attachment' || 'featured')) :
 						if( exa_is_featured() && $post_category == 'attachment') continue;
 						else if( get_post_type()  == 'attachment' && $post_category == 'featured') continue;
 					endif;
-				get_template_part( 'content', 'summary-endless-flow' ); 
+				?>
+				<div class="pinned-post">
+				<?php
+				get_template_part( 'content', 'block-featured' ); 
 		?>
-		<hr />
+		</div>
 				<?php endwhile; wp_reset_postdata(); ?>
 			<?php endif;  ?>
 	</articles>
@@ -82,9 +81,6 @@ get_header('author'); ?>
 
 		<?php 
 			endif; 
-		if( !$hasArticles){
-			echo '<article class="status-inherit hentry stream-post endless-flow no-post">Unfortunately, this author doesn\'t have any posts under this category.</article>';
-		}
 		?>
 	</articles>
 
