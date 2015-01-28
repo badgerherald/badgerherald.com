@@ -26,13 +26,16 @@ function displayStaff($staffArray) {
 		if($i%2!=0) {
 			$classes .= "odd ";
 		} $i+=1;
-		echo "<div class='staff-box'>";
 
 		if( is_string($staff) ) {
-			$user = get_userdatabylogin($staff);
+			$user = get_user_by('login', $staff);
+			if (!$user) {
+				continue;
+			}
 			$staff = $user->ID;
 		}
 
+		echo "<div class='staff-box'>";
 		$aMug = hrld_resize(null,get_wp_user_avatar_src($staff, 'original'),400,280,true);
 		
 		// Mug
@@ -160,25 +163,23 @@ get_header('about'); ?>
 				<?php
 
 
-					$mgmt = array('tgolshan','kcaron','procha');
-					$news = array('aarriaga', 'rlallensack', 'dmckay', 'nkravinsky', 'mcarney', 'lreigstad','sporps-hummell' );
-					// Brianna, Maddie
-					$opinion   = array(2785, 2807);
+					$mgmt = array('tgolshan','procha','kcaron');
+					$news = array('rlallensack', 'aiftikhar', 'aarriaga', 'hsperling', 'mcarney',  'nkravinsky','szimmermann','eneinfeldt', 'rvetterkind' );
+					
+					$opinion   = array('zwalters', 'msweitzer');
 					// Dan, Eric, Chris
-					$sports   = array(2609, 2682, 2801);
-					// Erik, Selena 
-					$arts   = array(2602, 2794);
-					// Joey, Hayley
-					$photo   = array(2948, 2966);
-					// Emily, Kenna 
-					$design   = array(2963, 2964);
-					// Maddy, Audrey 
-					$copy   = array(2780, 2806);
+					$sports   = array(2609, 2682, 2801); 
+					$arts   = array('shandler', 'apiehl');
+					$photo   = array('ebrown', 'jchan');
+					$design   = array('eshullaw', 'adebroux');
+					$copy   = array('mmichaelides', 'jsmall', 'lfraleigh');
 					// Matt 
 					$web   = array(2779);
+					$socialmedia = array('ajohnson', 'acoyne');
+					$comics = array('skirkby');
 
 					// editorial staff excude.
-					$exclude = array_merge($mgmt,$news,$opinion,$sports,$arts,$photo,$design,$copy,$web);
+					$exclude = array_merge($mgmt,$news,$opinion,$sports,$arts,$photo,$design,$copy,$web, $socialmedia, $comics);
 				?>
 
 				<div class="staff-container">
@@ -238,8 +239,20 @@ get_header('about'); ?>
 				</div>
 
 				<div class="staff-container">
+					<h3>Social Media</h3>
+					<?php displayStaff($socialmedia); ?>
+					<div class="clearfix"></div>
+				</div>
+
+				<div class="staff-container">
 					<h3>Web</h3>
 					<?php displayStaff($web); ?>
+					<div class="clearfix"></div>
+				</div>
+
+				<div class="staff-container">
+					<h3>Comics</h3>
+					<?php displayStaff($comics); ?>
 					<div class="clearfix"></div>
 				</div>
 
@@ -259,20 +272,19 @@ get_header('about'); ?>
 					<h3>Advertising</h3>
 
 					<?php
-						// Nick, David, Jordan, Zach, Nisha, Emily
-						$mgmt = array(2965, 2972, 2973, 2974, 2975, 2976);
+						$mgmt = array('nrush','durinstev', 'mrosenberg','jschwam','eahern','gperez','sstreeke','kschacht');
 						displayStaff($mgmt);
 					?>
-					<?php /*
 					<div class="clearfix"></div>
+				</div>
+				<div class="staff-container">
 					<h3>Marketing</h3>
 
 					<?php
-						// Katherine Krueger, Katie Caron, Will Haynes.
-						$mgmt = array(2274,2420,2608,2274,2420,2608);
+						$mgmt = array('rmargis');
 						displayStaff($mgmt);
-					*/ ?>
-		
+					 ?>
+					 <div class="clearfix"></div>
 
 				</div>
 
