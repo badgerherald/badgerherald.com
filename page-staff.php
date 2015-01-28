@@ -273,7 +273,7 @@ get_header('about'); ?>
 					<h3>Advertising</h3>
 
 					<?php
-						$mgmt = array('nrush','durintsev', 'mrosenberg','jschwam','eahern','gperez','sstreeke','kschacht');
+						$mgmt = array('nrush','durintsev', 'mrosenberg','jschwam','eahern','gperez','sstreeck','kschacht');
 						displayStaff($mgmt);
 					?>
 					<div class="clearfix"></div>
