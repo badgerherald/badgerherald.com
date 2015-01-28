@@ -175,7 +175,8 @@ get_header('about'); ?>
 					$copy   = array('mmichaelides', 'jsmall', 'lfraleigh');
 					// Matt 
 					$web   = array(2779);
-					$socialmedia = array('ajohnson', 'acoyne');
+					//allie johnson
+					$socialmedia = array('ajohnson1', 'acoyne');
 					$comics = array('skirkby');
 
 					// editorial staff excude.
