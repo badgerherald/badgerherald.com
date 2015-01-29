@@ -136,7 +136,7 @@ include('macros.php');
 								$hwRatio = 0.31;
 							/**
 							*
-							* his is now being taken care of through jQuery.
+							* This is now being taken care of through jQuery.
 							*
 							* if ( isset( $content_width ) ) {
 							* 	$width = $content_width - 10;
