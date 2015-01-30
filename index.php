@@ -162,7 +162,7 @@ get_header();
 
 	<?php
 
-		//$beats_info is an array that holds beat names.
+	//$beats_info is an array that holds beat names.
 	$beats = array("news" => "news",
 					"oped" => "opinion",
 					"artsetc" => "artsetc",
@@ -247,7 +247,6 @@ get_header();
 						hrld_html_tag_open("span","",array("summary-time-stamp"));
 							echo " &middot; ";
 							echo exa_human_time_diff(get_the_time('U'));
-							echo " ago";
 						hrld_html_tag_close("span");
 					hrld_html_tag_close("span");
 					hrld_html_tag_open("h4");

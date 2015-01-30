@@ -300,6 +300,7 @@ add_filter( 'excerpt_length', 'exa_custom_excerpt_length', 999 );
  * @return string A readable representation of the time interval.
  */
 function exa_human_time_diff( $from, $to = '' ) {
+	$since = '';
 	if ( empty( $to ) )
 		$to = current_time( "timestamp" );
 	$diff = (int) abs( $to - $from );
@@ -309,20 +310,23 @@ function exa_human_time_diff( $from, $to = '' ) {
 			$mins = 1;
 		}
 		/* translators: min=minute */
-		$since = sprintf( _n( '%s min', '%s mins', $mins ), $mins );
+		$since = sprintf( _n( '%s min ago', '%s mins ago', $mins ), $mins );
 	} elseif ( ( $diff <= DAY_IN_SECONDS ) && ( $diff > HOUR_IN_SECONDS ) ) {
 		$hours = round( $diff / HOUR_IN_SECONDS );
 		if ( $hours <= 1 ) {
 			$hours = 1;
 		}
-		$since = sprintf( _n( '%s hour', '%s hours', $hours ), $hours );
-	} elseif ( $diff >= DAY_IN_SECONDS ) {
+		$since = sprintf( _n( '%s hour ago', '%s hours ago', $hours ), $hours );
+	} elseif ( $diff >= DAY_IN_SECONDS && $diff < DAY_IN_SECONDS * 7) {
 		$days = round( $diff / DAY_IN_SECONDS );
 		if ( $days <= 1 ) {
 			$days = 1;
 		}
-		$since = sprintf( _n( '%s day', '%s days', $days ), $days );
+		$since = sprintf( _n( '%s day ago', '%s days ago', $days ), $days );
+	} elseif ( $diff >= DAY_IN_SECONDS * 7) {
+		$since = gmdate("M d, Y D", $from);
 	}
+
 	return $since;
 }
 
