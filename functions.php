@@ -1183,6 +1183,55 @@ function exa_interactive_single_template($single_template) {
 }
 add_filter('single_template', 'exa_interactive_single_template');
 
+	
+function hrld_html_tag_open($tag = "",$id = "",$class = array(),$content = "",$close = false, $misc = array()){
+	$result = "";
+	if( $tag != ""){
+		$result = "<$tag id=\"$id\" ";
+		if( !empty($class) ){
+			$result .= "class=\"";
+			foreach($class as $class_name){
+				$result .= $class_name." ";
+			}
+			$result .= "\" ";
+			
+		}
+		if( !empty($misc) ){
+			foreach($misc as $attr => $value){
+				$result .= "$attr=\"$value\" ";
+			}
+		}
+		if( $content != ""){
+			$result .= " >";
+			$result .= $content;
+			if( $close)
+				$result .= get_hrld_html_tag_close($tag);
+		}else
+			$result .= " >";
+	}else
+		$result = "";
+
+	echo $result;
+	return;
+
+}
+function hrld_html_tag_close($tag = ""){
+	$result = "";
+	if( $tag != ""){
+		$result = "</".$tag.">";
+	}
+
+	echo $result;
+	return;
+}
+function get_hrld_html_tag_close($tag = ""){
+	$result = "";
+	if( $tag != ""){
+		$result = "</".$tag.">";
+	}
+	return $result;
+}
+
 /**
  * Load more functions for develop enviornment.
  */
