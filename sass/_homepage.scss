@@ -400,81 +400,7 @@ ul.featured-stream-list{
 			}
 		}
 	}
-	#opinion{
-		.featured-container{
-			width: flex(400,740);
-			padding-right: 20px;
-			padding-bottom: 0;
-			margin-bottom: 0;
-		}
-		ul.featured-stream-list{
-			width: 100%;
-			border-top: none;
-			li{
-				margin-left: 0;
-				width: 100%;
-				.instream-stream-post{
-					width: 50%;
-					float: left;
-					.entry-thumbnail{
-						float: none;
-					}
-				}
-				&:first-child .instream-stream-post, &:nth-child(2) .instream-stream-post{
-					margin-top: 0;
-				}
-				&:nth-child(3) .instream-stream-post{
-					clear: left;
-				}
-			}
-		}
-		.instream-stream-post{
-			width: auto;
-			.entry-thumbnail{
-				width: 140px;
-				margin-right: 20px;
-				margin-bottom: 0;
-				float: left;
-			}
-			.entry-header{
-				float: none;
-			}
-			.entry-title{
-				float: none;
-				font-size: 17px;
-				line-height: 18px;
-			}
-		}
-		ul.list-stories{
-			width: flex(400,740);
-			margin-top: 24px;
-			padding-bottom: 0;
-			margin-bottom: 0;
-			padding-left: 0;
-			overflow: hidden;
-			max-height: 300px;
-		}
-		.opinion-desk{
-			width: flex(319,740);
-			float: right;
-			padding-bottom: 9999px;
-			margin-bottom: -9999px;
-			margin-top: 30px;
-			border-left: 1px solid #e0eaee;
-			.instream-stream-post{
-				.entry-thumbnail{
-					width: 120px;
-					margin-left: 20px;
-				}
-				.entry-summary{
-					display:none;
-				}
-			}
-			ul.opinion-desk-stream-list li:first-child .instream-stream-post{
-				margin-top: 0;
-			}
-		}
-	}
+
 }
 
 
@@ -618,49 +544,6 @@ ul.featured-stream-list{
 			}
 		}
 	}
-	#opinion{
-		.featured-container{
-			width: 360px;
-			padding-bottom: 9999px;
-			margin-bottom: -9999px;
-		}
-		ul.featured-stream-list{
-			width: 100%;
-			border-top: none;
-			li{
-				.instream-stream-post{
-					width: 100%;
-					float: none;
-					.entry-thumbnail{
-						float: left;
-					}
-				}
-				&:nth-child(2) .instream-stream-post{
-					margin-top: 24px;
-				}
-				&:nth-child(3) .instream-stream-post{
-					clear: none;
-				}
-			}
-		}
-		.instream-stream-post{
-			.entry-summary{
-				display: block;
-				float: none;
-			}
-		}
-		ul.list-stories{
-			width: 280px;
-			margin-top: 30px;
-			padding-left: 19px;
-			padding-bottom: 9999px;
-			margin-bottom: -9999px;
-			max-height: none;
-		}
-		.opinion-desk{
-			width: 319px;
-		}
-	}
 }
 
 @media (min-width: 1220px) {
@@ -719,14 +602,6 @@ ul.featured-stream-list{
 					margin-top: 12px;
 				}
 			}
-		}
-	}
-	#opinion{
-		ul.list-stories{
-			width: 300px;
-		}
-		.opinion-desk{
-			width: 459px;
 		}
 	}
 }

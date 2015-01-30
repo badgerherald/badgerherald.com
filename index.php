@@ -206,11 +206,11 @@ get_header();
 			//also records which posts to exclude in following steps
 			while( $featured->have_posts() ) {
 				$featured->the_post();
-				if($featured->current_post == 0 && !is_paged() && $beat != "opinion"){
+				if($featured->current_post == 0 && !is_paged()){
 					get_template_part( 'content', 'summary-featured' );
 				}else{
-					if( ($featured->current_post == 1 && !is_paged() && $beat != "opinion") || 
-						($featured->current_post == 0 && !is_paged() && $beat = "opinion")){
+					if( ($featured->current_post == 1 && !is_paged()) || 
+						($featured->current_post == 0 && !is_paged())){
 						hrld_html_tag_open("ul","",array("featured-stream-list"));
 					}
 					hrld_html_tag_open("li");
