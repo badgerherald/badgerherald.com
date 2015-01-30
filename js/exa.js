@@ -11,6 +11,8 @@ $(document).ready(function() {
 	/**
 	 * Fastclick library, to removed 300ms delay for
 	 * taps on mobile.
+	 *
+	 * @since v0.1
 	 */
 	$(function() {
 	    FastClick.attach(document.body);
@@ -18,11 +20,9 @@ $(document).ready(function() {
 
 	/** 
 	 * Scrolling for banners
-	 * 
 	 * Issues: bugs on iOS, safari devices.
 	 * 
-	 * @author Will Haynes
-	 * @since Nov 2013 
+	 * @since v0.1
 	 */
 	$(window).scroll(bannerScroll);
 	function bannerScroll() {
@@ -131,6 +131,37 @@ $(document).ready(function() {
             $("#page").toggleClass("pullout-active");
         }
     }
+
+    /**
+     * Returns $_GET variable from the url.
+     * (note: does not use jQuery)
+     * 
+     * To check the value of a get variable, use:
+     *		var value = getUrlVars()['<key>'];
+	 *
+     * This currently does not return get variables that don't have
+     * an associated value.
+     * 
+     * @since v0.2
+     * @returns object with (key => value)
+     */
+    function getUrlVars() {
+		var vars = {};
+		var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(m,key,value) {
+			vars[key] = value;
+		});
+		return vars;
+	}
+
+	/**
+	 * Open the pullout on pageload if pullout=true is a set get variable.
+	 *
+	 * @since v0.2
+	 */
+	if(getUrlVars()['pullout'] == 'true') {
+		toggleNav();
+	}
+
 
     var updateNavActive = function(curr) {
         var dataPostList = curr.attr("data-post-list");

@@ -197,11 +197,12 @@
         }
     }
 
-    .topic {
+    /* Styling for topic badges */
+    .topic-label {
         color: #fff;
         display: inline-block;
         padding: 1px 4px;
-        line-height: 18px;
+        line-height: 12px;
         clear:both;
         background: $hrld-blue;
         font-family: $headline;
@@ -214,7 +215,9 @@
         }
     }
 
-    .block-featured {
+    /* Styling for content-pullout-cover.php */
+
+    .pullout-cover {
         @include clearfix();
         color: #fff;
         margin: 12px 0;
@@ -242,7 +245,10 @@
             }
         }
     }
-    .block-thumb {
+
+    /* Styling for content-pullout-inline.php */
+
+    .pullout-inline {
         @include clearfix();
         color: $hrld-black;
         margin: 0 0 12px 0;

@@ -9,7 +9,7 @@
 ?>
 
 <?php ?>
-<article id="post-<?php the_ID(); ?>" <?php post_class("block-featured"); ?>>
+<article id="post-<?php the_ID(); ?>" <?php post_class("pullout-cover"); ?>>
     <a class="post-link clearfix" href="<?php the_permalink(); ?>" rel="bookmark">
         
         
@@ -19,7 +19,7 @@
 
         <header class="entry-header">
         
-        <span class="topic"><?php echo exa_topic( $post->ID ); ?></span>
+        <span class="topic-label small-topic-label"><?php echo exa_topic( $post->ID ); ?></span>
         
         <h2 class="entry-title">
             <?php the_title(); ?>
