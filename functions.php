@@ -1187,7 +1187,10 @@ add_filter('single_template', 'exa_interactive_single_template');
 function hrld_html_tag_open($tag = "",$id = "",$class = array(),$content = "",$close = false, $misc = array()){
 	$result = "";
 	if( $tag != ""){
-		$result = "<$tag id=\"$id\" ";
+		$result = "<$tag ";
+		if( $id != "" ){
+			$result .= "id=\"$id\" ";
+		}
 		if( !empty($class) ){
 			$result .= "class=\"";
 			foreach($class as $class_name){

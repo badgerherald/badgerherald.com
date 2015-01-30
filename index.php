@@ -42,7 +42,7 @@ get_header();
 														   */ ?>
 				<?php
 		
-				/* Build query for featured stories in news */
+				/* Build query for featured stories */
 
 				$args = array();
 				$args['tax_query'] = array(
@@ -163,16 +163,18 @@ get_header();
 	<?php
 
 		//$beats_info is an array that holds beat names.
-	$beats = array("news" => "news",
-					"oped" => "opinion",
-					"artsetc" => "artsetc",
-					"sports" => "sports");
+	$beats = array("news",
+					"opinion",
+					"artsetc",
+					"sports");
 
-	foreach($beats as $beat => $beat_name){
+	foreach($beats as $beat){
 		
-		hrld_html_tag_open("div", $beat, "clearfix");
+		wp_reset_postdata();
+
+		hrld_html_tag_open("div", $beat, array("clearfix"));
 			hrld_html_tag_open("div","",array("section-banner", "section-banner-$beat"));
-				hrld_html_tag_open("h2","",array(),$beat_name,true);
+				hrld_html_tag_open("h2","",array(),$beat,true);
 			hrld_html_tag_close("div");
 			hrld_html_tag_open("div","",array("col-container", "clearfix"));
 			hrld_html_tag_open("div","",array("featured-container", "featured-container-$beat"));
@@ -196,17 +198,17 @@ get_header();
 			$args['posts_per_page'] = 4;
 
 			$featured = new WP_Query( $args );
-			$excludenews = array();
+			$exclude = array();
 
 			//loop_featured
 			//also records which posts to exclude in following steps
 			while( $featured->have_posts() ) {
 				$featured->the_post();
-				if($featured->current_post == 0 && !is_paged()){
+				if($featured->current_post == 0 && !is_paged() && $beat != "opinion"){
 					get_template_part( 'content', 'summary-featured' );
 				}else{
-
-					if($featured->current_post == 1 && !is_paged()){
+					if( ($featured->current_post == 1 && !is_paged() && $beat != "opinion") || 
+						($featured->current_post == 0 && !is_paged() && $beat = "opinion")){
 						hrld_html_tag_open("ul","",array("featured-stream-list"));
 					}
 					hrld_html_tag_open("li");
@@ -223,10 +225,10 @@ get_header();
 			//close class="featured-container"
 			hrld_html_tag_close("div");
 
-			/* Build query for featured stories in news */
+			/* Build query for featured stories */
 			$args = array();
 			$args['posts_per_page'] = 10;
-			$args['post__not_in'] = $excludenews;
+			$args['post__not_in'] = $exclude;
 			$args['tax_query'] = array(
 		        array(
 		            'taxonomy' => 'category',
@@ -261,18 +263,18 @@ get_header();
 			wp_reset_postdata();
 			hrld_html_tag_close("div");
 
-			hrld_html_tag_open("div","",array("all-link", "all-link-news"));
+			hrld_html_tag_open("div","",array("all-link", "all-link-$beat"));
 				hrld_html_tag_open("a","",array(),"All ".ucfirst($beat),true, array("href" => get_bloginfo('url')."/$beat/"));
 			hrld_html_tag_close("div");
 		hrld_html_tag_close("div");
 
-
+		wp_reset_postdata();
 	}
 
 
+
+
 	?>
-
-
 
 
 <?php get_footer(); ?>
