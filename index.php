@@ -245,13 +245,13 @@ get_header();
 					hrld_html_tag_open("span","",array("topic"));
 						echo exa_topic( $post->ID );
 						hrld_html_tag_open("span","",array("summary-time-stamp"));
-							echo "&middot;";
+							echo " &middot; ";
 							echo exa_human_time_diff(get_the_time('U'));
 							echo " ago";
 						hrld_html_tag_close("span");
 					hrld_html_tag_close("span");
 					hrld_html_tag_open("h4");
-						hrld_html_tag_open("a","",array("topic"),get_the_title( $post->ID ),true, array( "href" => get_permalink( $post->ID )));
+						hrld_html_tag_open("a","",array(""),get_the_title( $post->ID ),true, array( "href" => get_permalink( $post->ID )));
 					hrld_html_tag_close("h4");
 				hrld_html_tag_close("li");
 
