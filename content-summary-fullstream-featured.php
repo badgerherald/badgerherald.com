@@ -17,7 +17,7 @@
 
 	<header class="entry-header">
 
-			<?php if(has_post_thumbnail() && (the_post_thumbnail() != false)){ ?>
+			<?php if(has_post_thumbnail()){ ?>
 		<div class="entry-thumbnail">
 			<?php the_post_thumbnail(); ?>
 		</div>
