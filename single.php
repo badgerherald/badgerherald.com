@@ -20,6 +20,10 @@ get_header();
 	<?php get_template_part( 'content', get_post_format() ); ?>
 	<div class="clearfix"></div>
 
+
+
+    <?php if(rand(0,1)) : ?>
+
     <div class="bottom-inhouse badger-like-inhouse">
     	<div class="badger-like-inhouse-content">
     	<h2>Strut your stuff.</h2>
@@ -29,6 +33,19 @@ get_header();
     		<div class="clearfix"></div>
     	</div>
     	</div>
+    </div>
+
+    <?php else : ?>
+
+    <div style='width:100%;height:250px;margin-bottom:24px;background:#eff4f6;'>
+    <div style='width:970px;float:right'>
+        <?php $DoubleClick->place_ad('bh:billboard','970x250',array('desktop','xl')); ?>   
+        <div class="clearfix"></div>
+        </div>
+    </div>
+
+    <?php endif; ?>
+
     </div>
 
 	<?php comments_template(); ?>
