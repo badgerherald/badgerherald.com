@@ -15,10 +15,26 @@ $start = microtime(true);
 
 function pageURL() {
 
- $pageURL .= $_SERVER["REQUEST_URI"];
+ $pageURL = $_SERVER["REQUEST_URI"];
  return $pageURL;
 
 }
+
+
+//Redirects /oped(/) requests to /opinion/, 
+//including opinion articles.
+if( stripos(pageURL(), "/oped/") == 0 ){
+
+	if( pageURL() == '/oped')
+		wp_redirect( home_url()."/opinion/", 301 );
+	else{
+		$split_url = explode("/oped/", pageURL());
+		if(isset($split_url[0]) && $split_url[0] != "")
+			wp_redirect( home_url()."/opinion/".$split_url[0], 301 );
+	}
+	exit;
+}
+
 
 $args = array(
     'order' => 'ASC',
