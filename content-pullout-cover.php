@@ -19,7 +19,7 @@
 
         <header class="entry-header">
         
-        <span class="topic-label small-topic-label"><?php echo exa_topic( $post->ID ); ?></span>
+        <span class="topic-label large-topic-label"><?php echo exa_topic( $post->ID ); ?></span>
         
         <h2 class="entry-title">
             <?php the_title(); ?>

@@ -58,7 +58,7 @@
             while( $beats_queries[$stream_beat]['featured']->have_posts() ) {
                 $beats_queries[$stream_beat]['featured']->the_post();
 
-                /* get content-block-featured.php */
+                /* get content-pullout-cover.php */
                 get_template_part( 'content', 'pullout-cover' );
 
                 $beats_queries[$stream_beat]['exclude'][] = $post->ID;
@@ -67,7 +67,7 @@
 
             /* Get recent posts */
             $args = array();
-            $args['posts_per_page'] = 3;
+            $args['posts_per_page'] = 10;
             $args['post__not_in'] = $beats_queries[$stream_beat]['exclude'];
             $args['tax_query'] = array(
                 array(
@@ -81,7 +81,7 @@
             while( $beats_queries[$stream_beat]['recent']->have_posts() ) {
                 $beats_queries[$stream_beat]['recent']->the_post();
 
-                /* get content-block-thumb.php */
+                /* get content-pullout-inline.php */
                 get_template_part( 'content', 'pullout-inline' );
             }
             wp_reset_postdata();
