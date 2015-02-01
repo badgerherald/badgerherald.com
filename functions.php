@@ -990,8 +990,9 @@ function exa_open_graph_tags() {
 	}
 
 	/* 5. Url */
+	// Replaces 'opinion' with 'oped'
 
-	$url = get_permalink($post->ID);
+	$url = exa_op_convert(get_permalink($post->ID), false);
 	$output .= "<meta property='og:url' content='$url' />\n";
 	
 
@@ -1239,7 +1240,33 @@ function get_hrld_html_tag_close($tag = ""){
 	return $result;
 }
 
+
 /**
+ * oped <-> opinion permalink conversion
+ *
+ *
+ * @since 0.1
+ * @param 
+ * @author Jason Chan
+ */
+function exa_op_convert($url = "", $newVersion = true){
+	if($url == "")
+		$url = get_permalink($post -> ID);
+	if( $url != false && $url != ''){
+		if( $newVersion){
+			if( stripos($url, home_url("/oped")) === 0 )
+				$url = str_replace("/oped", "/opinion", $url);
+		}else if( !$newVersion){
+			if( stripos($url, home_url("/opinion")) === 0 )
+				$url = str_replace("/opinion", "/oped", $url);
+		}	
+	}else{
+		$url = home_url();
+	}
+
+	return $url;
+}
+/*
  * Load more functions for develop enviornment.
  */
 include_once('inc/functions-dev.php');
