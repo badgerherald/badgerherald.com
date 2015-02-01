@@ -1250,16 +1250,18 @@ function get_hrld_html_tag_close($tag = ""){
  * @author Jason Chan
  */
 function exa_op_convert($url = "", $newVersion = true){
+	$date_change_category = 1422622800;  //Fri 30 Jan, 2015 07:00:00 CT
 	if($url == "")
 		$url = get_permalink($post -> ID);
 	if( $url != false && $url != ''){
+		$date = get_the_date('U', $post);
 		if( $newVersion){
 			if( stripos($url, home_url("/oped")) === 0 )
 				$url = str_replace("/oped", "/opinion", $url);
-		}else if( !$newVersion){
+		}else if( !$newVersion && $date < $date_change_category){
 			if( stripos($url, home_url("/opinion")) === 0 )
 				$url = str_replace("/opinion", "/oped", $url);
-		}	
+		}
 	}else{
 		$url = home_url();
 	}
@@ -1270,3 +1272,7 @@ function exa_op_convert($url = "", $newVersion = true){
  * Load more functions for develop enviornment.
  */
 include_once('inc/functions-dev.php');
+
+
+
+
