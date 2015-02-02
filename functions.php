@@ -992,7 +992,7 @@ function exa_open_graph_tags() {
 	/* 5. Url */
 	// Replaces 'opinion' with 'oped'
 
-	$url = exa_op_convert(get_permalink($post->ID), false);
+	$url = exa_social_url(get_permalink($post->ID), false);
 	$output .= "<meta property='og:url' content='$url' />\n";
 	
 
@@ -1245,11 +1245,11 @@ function get_hrld_html_tag_close($tag = ""){
  * oped <-> opinion permalink conversion
  *
  *
- * @since 0.1
+ * @since 0.2
  * @param 
  * @author Jason Chan
  */
-function exa_op_convert($url = "", $newVersion = true){
+function exa_social_url($url = "", $newVersion = true){
 	$date_change_category = 1422622800;  //Fri 30 Jan, 2015 07:00:00 CT
 	if($url == "")
 		$url = get_permalink($post -> ID);
