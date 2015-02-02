@@ -23,7 +23,7 @@ function pageURL() {
 
 //Redirects /oped(/) requests to /opinion/, 
 //including opinion articles.
-if( stripos(pageURL(), "/oped/") == 0 ){
+if( stripos(pageURL(), "/oped/") === 0 ){
 
 	if( pageURL() == '/oped')
 		wp_redirect( home_url()."/opinion/", 301 );
