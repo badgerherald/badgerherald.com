@@ -93,12 +93,12 @@
             top: 50%;
             left: 0;
             margin: -8px 0 0;
-            background: #fff;
+            background: $hrld-dark-grey;
         }
         &:before {
             width: 12px;
             height: 12px;
-            border: 3px solid #fff;
+            border: 3px solid $hrld-dark-grey;
             background: transparent;
             @include border-radius(12px);
         }
@@ -144,6 +144,7 @@
                 color: $hrld-blue;
                 &:before {
                     content: "";
+                    display: none;
                     position: absolute;
                     height: 100%;
                     right: -2px;
@@ -213,6 +214,13 @@
     }
     .nav-list {
         width: 180px;
+        ul#main-nav {
+            li.active a, li:hover a {
+                &:before {
+                    display: block;
+                }
+            }
+        }
     }
     .nav-stream-container {
         display: block;
