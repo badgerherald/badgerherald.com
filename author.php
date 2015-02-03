@@ -64,18 +64,22 @@ get_header('author'); ?>
 				'post__not_in' => $best_posts,
 				'author' => get_the_author_meta('ID', get_query_var('author')),
 				'post_type' => 'post',
-				'post_status' => 'publish'
+				'post_status' => 'publish',
+				'posts_per_page' => 2,
+				'paged' => 1
 			);
 			$query = new WP_Query( $args );
-    		if ( $query->have_posts() ) : 
+    		if ( have_posts() ) : 
     			$hasArticles = true;
     		 /* The loop */ 
-				while ( $query->have_posts() ) : $query->the_post();
+				while ( have_posts() ) : the_post();
 				get_template_part( 'content', 'summary-fullstream' ); 
 		?>
 		<hr />
-				<?php endwhile;
-		wp_reset_postdata(); ?>
+				<?php endwhile; ?>
+
+				<div class="all-link pagination-link"><?php next_posts_link( 'Older' ); ?></div>
+		<?php wp_reset_postdata(); ?>
 		
 		
 
