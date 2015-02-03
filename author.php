@@ -28,10 +28,10 @@ get_header(); ?>
 
 		$args = array(
 				'author' => get_the_author_meta('ID', get_query_var('author')),
-				'post_type' => 'post',
-				//'post_type' => array('post', 'attachment'),
-				'post_status' => 'publish',
-				//'post_status' => array('publish', 'inherit'),
+				//'post_type' => 'post',
+				'post_type' => array('post', 'attachment'),
+				//'post_status' => 'publish',
+				'post_status' => array('publish', 'inherit'),
 				'posts_per_page' => 3
 			);
 			$wp_query = new WP_Query( $args );
