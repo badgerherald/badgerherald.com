@@ -140,15 +140,7 @@ global $DoubleClick;
 
 			        </div><!-- .social-buttons -->
 				</div>
-			</div>
+			</div><?php /* masthead */ ?>
 
 
-			<div id="primary" class="wrapper">
-
-<?php /*
-			</div> <!-- END div#primary -->
-		</div> <!-- END div#page -->
-    </body>
-</html>
-*/
-?>
+	<div id="primary">

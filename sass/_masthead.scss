@@ -88,6 +88,15 @@
 	}
 }
 
+/* push the header bar below the admin bar. */
+body.admin-bar {
+    .fixed-bar {
+        top: 45px;
+    }
+}
+
+
+
 .inner-masthead {
 	display: none;
     position: relative;
