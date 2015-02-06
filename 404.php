@@ -12,7 +12,13 @@
 
 
 $start = microtime(true);
-
+/**
+ * easier way to access which page the client is trying to access..
+ * 
+ * @since 0.1
+ * @param 
+ * @return (string) url after the top level domain ex. (bhrld.com/)opinion/ -> opinion/
+ */
 function pageURL() {
 
  $pageURL = $_SERVER["REQUEST_URI"];
@@ -23,18 +29,25 @@ function pageURL() {
 
 //Redirects /oped(/) requests to /opinion/, 
 //including opinion articles.
+
+/*
+if( stripos(pageURL(), "/oped/") === 0 ){
+	$url = pageURL();
+	if( $url == '/oped'){
+=======
 if( stripos(pageURL(), "/oped/") === 0 ){
 
 	if( pageURL() == '/oped')
+>>>>>>> master
 		wp_redirect( home_url()."/opinion/", 301 );
-	else{
-		$split_url = explode("/oped/", pageURL());
+	}else{
+		$split_url = explode("/oped/", $url);
 		if(isset($split_url[0]) && $split_url[0] != "")
 			wp_redirect( home_url()."/opinion/".$split_url[0], 301 );
 	}
 	exit;
 }
-
+*/
 
 $args = array(
     'order' => 'ASC',

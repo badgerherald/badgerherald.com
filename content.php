@@ -138,7 +138,7 @@ global $DoubleClick;
 				
 				<div class="sharebarfb">
 				<div  class="fb-like" 
-					  data-href="<?php echo the_permalink(); ?>" 
+					  data-href="<?php echo exa_social_url(get_permalink($post->ID), false); ?>" 
 					  data-layout="button_count" 
 					  data-action="like" 
 					  data-width="90"
@@ -149,7 +149,7 @@ global $DoubleClick;
 				<div class="sharebartwitter">
 				<a  href="https://twitter.com/share" 
 					class="twitter-share-button " 
-					data-url="<?php echo the_permalink(); ?>" 
+					data-url="<?php echo exa_social_url(get_permalink($post->ID), false); ?>" 
 					data-text="<?php echo the_title(); ?>." 
 					data-via="badgerherald" 
 					data-related="badgerherald">Tweet</a>
