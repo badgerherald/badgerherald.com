@@ -24,10 +24,11 @@ get_header('author'); ?>
 	
 <div id="stream" class="author-stream">
 
-		<?php
-			$best_posts = get_the_author_meta( '_hrld_staff_best_posts', get_the_author_meta('ID', get_query_var('author')) );
-			if(!empty($best_posts)):
-		?>
+	<?php
+	if (!is_paged()) :
+		$best_posts = get_the_author_meta( '_hrld_staff_best_posts', get_the_author_meta('ID', get_query_var('author')) );
+		if(!empty($best_posts)):
+	?>
 	<div class="pinned-posts">
 		<?php
 			$args = array(
@@ -53,24 +54,16 @@ get_header('author'); ?>
 				<?php endwhile; wp_reset_postdata(); ?>
 			<?php endif;  ?>
 	
-	<?php 
-	else:
-		$best_posts = array();
-	endif; ?>
 	</div>
+	<?php 
+		else:
+			$best_posts = array();
+		endif; 
+	endif; // End !is_paged()
+	?>
 		
 		<?php
-			$args = array(
-				'post__not_in' => $best_posts,
-				'author' => get_the_author_meta('ID', get_query_var('author')),
-				'post_type' => 'post',
-				'post_status' => 'publish',
-				'posts_per_page' => 2,
-				'paged' => 1
-			);
-			$query = new WP_Query( $args );
     		if ( have_posts() ) : 
-    			$hasArticles = true;
     		 /* The loop */ 
 				while ( have_posts() ) : the_post();
 				get_template_part( 'content', 'summary-fullstream' ); 
@@ -79,7 +72,6 @@ get_header('author'); ?>
 				<?php endwhile; ?>
 
 				<div class="all-link pagination-link"><?php next_posts_link( 'Older' ); ?></div>
-		<?php wp_reset_postdata(); ?>
 		
 		
 

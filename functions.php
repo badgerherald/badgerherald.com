@@ -1193,3 +1193,20 @@ add_filter('single_template', 'exa_interactive_single_template');
 
 
 include_once('inc/functions-dev.php');
+
+function hrld_remove_pinned_author_posts($query){
+	if (is_admin() || !$query->is_main_query()) {
+		return;
+	}
+
+	if (is_author() && $query->is_main_query()) {
+		$user = get_user_by('slug', $query->query_vars['author_name']);
+		$pinned_posts = get_the_author_meta('_hrld_staff_best_posts', $user->ID);
+		if (empty($pinned_posts)) {
+			return;
+		}
+		$query->set('post__not_in', $pinned_posts);
+		return;
+	}
+}
+add_filter('pre_get_posts', 'hrld_remove_pinned_author_posts', 1);
