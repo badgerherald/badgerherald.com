@@ -24,18 +24,6 @@ get_header(); ?>
 	
 <div id="stream" class="author-stream">
 
-	<?php
-
-		$args = array(
-				'author' => get_the_author_meta('ID', get_query_var('author')),
-				//'post_type' => 'post',
-				'post_type' => array('post', 'attachment'),
-				//'post_status' => 'publish',
-				'post_status' => array('publish', 'inherit'),
-				'posts_per_page' => 3
-			);
-			$wp_query = new WP_Query( $args );
-	?>
 	<?php if ( have_posts() ) : ?>
 		<?php /* The loop */ ?>
 		<?php while ( have_posts() ) : the_post(); ?>
@@ -54,14 +42,14 @@ get_header(); ?>
 
 
 		<?php endwhile; ?>
+
 		<div class="all-link pagination-link">
-			<?php previous_posts_link( 'Newer' ); ?>
-			&nbsp;&nbsp;&nbsp;
-			<?php next_posts_link( 'Older' ); ?>
+			<div class="author-pagination pagination-prev"><?php previous_posts_link( 'Newer' ); ?></div>
+			<div class="author-pagination pagination-next"><?php next_posts_link( 'Older' ); ?></div>
 		</div>
 
-
-	
+	<?php elseif ($query->is_archive) : ?>
+		<?php //get_template_part( 'content', 'none' ); ?>
 	<?php endif; ?>
 
 	</div><!-- id="stream" -->
