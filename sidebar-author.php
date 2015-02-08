@@ -14,9 +14,12 @@
     $bio = get_the_author_meta('description', get_query_var('author'));
 ?>
 <div id="sidebar" class="author-sidebar">
-    <div class="sidebar-inner meta-author">
+    <div class="meta-author">
         <a class="meta-author-avatar" title="<?php echo exa_properize($author->display_name); ?> Profile" href="<?php echo get_bloginfo('url'); ?>/author/<?php echo $author->user_login; ?>">
-            <?php echo get_wp_user_avatar(get_the_author_meta('ID', get_query_var('author')), 'small-thumbnail')?>
+            <?php $avatar_src = get_wp_user_avatar_src(get_the_author_meta('ID', get_query_var('author')), 'original');
+                $avatar_crop = hrld_resize(null, $avatar_src, 200, 200, true);
+            ?>
+            <img src="<?php echo $avatar_crop['url']; ?>" alt="<?php echo $author->display_name;?>" width="<?php echo $avatar_crop['width'];?>" height="<?php echo $avatar_crop['height'];?>" />
             <?php //echo get_wp_user_avatar($author->ID, 'small-thumbnail')?>
         </a>
         <h1 class="author-title"><?php printf( __( '%s', 'twentythirteen' ), $author->display_name ); ?></h1>

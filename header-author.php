@@ -144,7 +144,7 @@ include('macros.php');
 							* }
 							*
 							**/
-							echo '<div id=hrld_author_top_banner banner_ratio ='.$hwRatio. ' class=hrld_author_top_banner style="background-position: center; background-repeat: no-repeat; background-position: center; background-image: url(\''.$url.'\'); background-size: cover; width: 100%; height: '.$height.'px"> </div>';
+							echo '<div id="hrld_author_top_banner" banner_ratio="'.$hwRatio.'" class="hrld_author_top_banner" style="background: linear-gradient(to bottom, rgba(0,0,0,0),rgba(0,0,0,0.4)), url(\''.$url.'\'); background-position: center; background-repeat: no-repeat; background-position: center; background-size: cover; width: 100%; height: '.$height.'px"> </div>';
 						}
 					?>
 				</div>

@@ -20,14 +20,17 @@ body.author {
             }
         }
         a.meta-author-avatar {
-            float: left;
-            width: 140px;
+            width: 200px;
+            height:200px;
             margin-right: 20px;
+            img {
+                max-height: 100%;
+            }
         }
         h1{
             margin-bottom: 12px;
             color: $hrld-black;
-            font-size: 24px;
+            font-size: 32px;
         }
         span {
             display: block;
@@ -78,6 +81,17 @@ body.author {
             float: left;
             width: 300px;
             margin-right: 20px;
+            margin-top: 52px;
+            a.meta-author-avatar {
+                position: absolute;
+                top: -160px;
+                left: -6px;
+                overflow: hidden;
+                border: solid 1px $hrld-dark-grey;
+                padding: 5px;
+                background: $hrld-light-grey;
+                @include border-radius(6px);
+            }
         }
         .author-gallery {
             float: left;
