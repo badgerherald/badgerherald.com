@@ -24,7 +24,8 @@ class dfp {
 		if (self::$initialized)
 			return;
 
-		if( !hrld_is_production('ads') ) {
+		//if( !hrld_is_production('ads') ) {
+		if( !hrld_is_production() ) {
 				self::$placement = "development";
 		} else {
 				self::$placement = "homepage";
