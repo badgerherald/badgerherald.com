@@ -204,6 +204,6 @@ $(document).ready(function() {
 	$(".answer-box label").click(function(e){
 		var answerParents = $(this).parents("div.quiz-question");
 		answerParents.find("li.answer-box").removeClass("inactive");
-	});
+	}); 
 
 });

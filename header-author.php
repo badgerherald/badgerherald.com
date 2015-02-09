@@ -83,7 +83,7 @@ include('macros.php');
 			                ?>
 			            </div>
 
-			            <div class="title">
+			            <div class="title author-title">
 			                <?php
 			                    if (is_single()) {
 			                        $post_author = get_userdata($post->post_author);

@@ -161,6 +161,12 @@
 	                font-size: 16px;
 	            }
 	        }
+            &.author-title {
+                display: none;
+                &.author-title-show {
+                    display: block;
+                }
+            }
 	    }
     }
     .inner-masthead {
