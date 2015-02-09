@@ -28,8 +28,6 @@ global $shortcode_tags;
 if ( !array_key_exists( 'media-credit', $shortcode_tags ) )
     add_shortcode('media-credit', 'ignore_media_credit_shortcode' );
 
-
-
 /**
  * Set up for various features of exa.
  *
@@ -37,7 +35,7 @@ if ( !array_key_exists( 'media-credit', $shortcode_tags ) )
  */
 function exa_setup() {
 
-	/* Register different size thumbnail images */
+	/* Register different size thumbnail images */	
 	add_theme_support('post-thumbnails');
 
 	/* Include custom editor styles, so the backend looks like
@@ -66,6 +64,58 @@ function exa_setup() {
 }
 add_action( 'after_setup_theme', 'exa_setup' );
 
+
+/**
+ * Outputs the mug for a user.
+ * 
+ * @since 0.2
+ * @param int $user_id the user id to print a mug for.
+ */
+function exa_mug($user_id) {
+	$src = get_wp_user_avatar_src($user_id, 'small-thumbnail');
+	echo "<img src='$src' />";
+}
+
+global $wp_functions;
+/**
+ * 
+ * 
+ */
+function exa_round_mug($user_id) {
+
+	global $wpua_functions;
+	if(!has_wp_user_avatar($user_id)) {
+		$src = $wpua_functions->wpua_default_image('square');
+		$src = $src['src'];
+	} else {
+		$src = get_wp_user_avatar_src($user_id, 'square');
+	}
+	echo "<div class='round-mug mug'>";
+	echo "\t<img src='$src' />";
+	echo "</div>";
+}
+
+
+/**
+ * This function fixes a bug with the default image src.
+ * 
+ */
+function _fix_wpua_src($image_src_array, $attachment_id, $size='thumbnail', $icon=0) {
+
+	global $wpua_avatar_default, $wpua_functions;
+
+	// if we have a default avatar.
+	if(!empty($wpua_avatar_default) && $wpua_functions->wpua_attachment_is_image($wpua_avatar_default)) {
+
+		if( is_array($size) && is_string($size[0]) ) {
+			$size = $size[0];
+			$image = wp_get_attachment_image_src($attachment_id, $size, $icon);
+			return $image;
+		}
+	}
+	return $image_src_array;
+}
+add_filter('wpua_get_attachment_image_src', '_fix_wpua_src',10,4);
 
 /**
  * Setup doubleclick breakpoints and network codes.

@@ -13,8 +13,6 @@
 
 		<div class="clearfix"></div>
 
-        </div> <!-- END div#primary -->
-
         			<div class="colophon wrapper" style:"font-family:'pt sans'">
 	All Content &copy; The Badger Herald, <?php echo date("Y"); ?>
 	</div>

@@ -141,6 +141,3 @@ global $DoubleClick;
 			        </div><!-- .social-buttons -->
 				</div>
 			</div><?php /* masthead */ ?>
-
-
-	<div id="primary">

@@ -17,7 +17,7 @@ body {
 .wrapper {
 	margin: 0 auto;
 	max-width: 540px;
-	width: 100%;
+	width: flex(300,320);
 }
 
 /* Page surrounds everything inside of body */
@@ -36,25 +36,28 @@ body {
 	}
 }
 
-body.admin-bar {
-	#container {
-		top: 32px !important;
-	}
-}
-
 /* Primary contains all content, with a buffer on both sides of it */
 
 #primary {
 	position: relative;
 	background: $hrld-light-grey;
 	width: 100%;
-	padding: 0 20px;
 	margin-top: 54px;
 }
 
-
+@media (min-width: 600px) {
+	body.admin-bar {
+		#pullout, .fixed-bar {
+			top: 46px !important;
+		}
+	}
+}
 @media (min-width: 760px) {
-
+	body.admin-bar {
+		#pullout, .fixed-bar {
+			top: 32px !important;
+		}
+	}
 	/** _page.scss overrides */
 
 	/* Wrapper */
@@ -72,13 +75,13 @@ body.admin-bar {
 
 }
 
-@media (min-width: 1160px) {
+@media (min-width: 1060px) {
 	#primary {
 		padding: 0;
 	}
 
 	.wrapper {
-		max-width: 1060px;
+		max-width: 1020px;
 	}
 
 }
@@ -86,7 +89,7 @@ body.admin-bar {
 @media (min-width:1320px) {
 
 	.wrapper {
-		max-width: 1200px;
+		max-width: 1180px;
 	}
 
 } 
