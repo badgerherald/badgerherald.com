@@ -1,7 +1,10 @@
 style.css
 .sass-cache
 cache
+
 *.sublime-*
+*.css.map
+
 node_modules
 Charter.txt
 

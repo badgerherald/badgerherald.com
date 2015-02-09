@@ -18,7 +18,6 @@ if ( ! isset( $content_width ) )
 	$content_width = 690;
 
 
-
 /**
  * Exa should run on WordPress 3.6 or later.
  */
@@ -29,78 +28,14 @@ global $shortcode_tags;
 if ( !array_key_exists( 'media-credit', $shortcode_tags ) )
     add_shortcode('media-credit', 'ignore_media_credit_shortcode' );
 
-function exa_ad_setup() {
-
-	global $DoubleClick;
-
-	$DoubleClick->networkCode = "8653162";
-
-	if( !hrld_is_production() )
-		$DoubleClick->debug = true;
-
-	/* breakpoints */
-	$DoubleClick->register_breakpoint('phone',		array('minWidth'=>0,'maxWidth'=>720));
-	$DoubleClick->register_breakpoint('tablet',		array('minWidth'=>760,'maxWidth'=>1040));
-	$DoubleClick->register_breakpoint('desktop',	array('minWidth'=>1040,'maxWidth'=>1220));
-	$DoubleClick->register_breakpoint('xl',			array('minWidth'=>1220,'maxWidth'=>9999));
-
-}
-add_action('dfw_setup','exa_ad_setup');
-
-/**
- * Registers an ad to display in the middle
- * 
- * @author Will Haynes
- */
-function exa_register_content_adslot() {
-
-	global $DoubleClick;
-	if ( is_single() && ! is_admin() ) {
-		add_filter('the_content','_exa_register_content_adslot');
-	}
-
-}
-add_action('dfw_setup','exa_register_content_adslot');
-
-function _exa_register_content_adslot($content) {
-	
-	global $DoubleClick;
-
-	if ( is_single() && ! is_admin() ) {
-		$ad = $DoubleClick->get_ad_placement('bh:sidekick','300x250',array('phone','tablet'));
-		$ad = "<div class='ad ad-in-content mobile-tablet'>" . $ad . "</div>";
-        return exa_insert_after_graph( $ad, 3, $content );
-    }
-    return $content;
-}
-
-function exa_insert_after_graph( $insertion, $graph_id, $content ) {
-	
-	$graphs = explode( '</p>', $content );
-	foreach ($graphs as $i => $p) {
-	    if ( trim( $p ) ) {
-	        $graphs[$i] .= '</p>';
-	    }
-	    if ( $graph_id == $i + 1 ) {
-	        $graphs[$i] .= $insertion;
-	    }
-	}
-	return implode( '', $graphs );
-	
-}
 
 
 /**
- * Calls methods to set up various elements of exa.
+ * Set up for various features of exa.
  *
- * @author Will Haynes
- * @since 29 Nov 2013
- * @return void
+ * @since 0.1
  */
 function exa_setup() {
-
-	/* Register News, Sports, Opinion & ArtsEtc. sections. */
-	// add_action( 'init', 'register_sections' );
 
 	/* Register different size thumbnail images */
 	add_theme_support('post-thumbnails');
@@ -121,8 +56,7 @@ function exa_setup() {
 	add_image_size( 'image-post-size', 860, 470, false );
 	add_image_size( 'small-thumbnail', 345, 225, true );
 	add_image_size( 'large-thumbnail', 690, 450, true );
-	add_image_size( 'author-banner', 2048, 635, false );
-	
+
 	/* For Mugs */
 	add_image_size( 'square', 160, 160, true );
 
@@ -134,11 +68,93 @@ add_action( 'after_setup_theme', 'exa_setup' );
 
 
 /**
+ * Setup doubleclick breakpoints and network codes.
+ * 
+ * @see https://github.com/willhaynes/DoubleClick-for-Wordpress
+ * @since 0.2
+ */
+function exa_ad_setup() {
+
+	global $DoubleClick;
+
+	$DoubleClick->networkCode = "8653162";
+
+	if( !hrld_is_production() )
+		$DoubleClick->debug = true;
+
+	/* breakpoints */
+	$DoubleClick->register_breakpoint('phone',		array('minWidth'=>0,'maxWidth'=>720));
+	$DoubleClick->register_breakpoint('tablet',		array('minWidth'=>760,'maxWidth'=>1040));
+	$DoubleClick->register_breakpoint('desktop',	array('minWidth'=>1040,'maxWidth'=>1220));
+	$DoubleClick->register_breakpoint('xl',			array('minWidth'=>1220,'maxWidth'=>9999));
+
+}
+add_action('dfw_setup','exa_ad_setup');
+
+/**
+ * Adds filter to content to display in the middle of content on mobile devices.
+ * 
+ * @since 0.2
+ */
+function exa_register_content_adslot() {
+
+	global $DoubleClick;
+	if ( is_single() && ! is_admin() ) {
+		add_filter('the_content','_exa_register_content_adslot');
+	}
+
+}
+add_action('dfw_setup','exa_register_content_adslot');
+
+/**
+ * Filters content and ads an adspot for phone and tablet devices.
+ * 
+ * Registered in exa_register_content_adslot()
+ * 
+ * @uses exa_insert_after_graph
+ * 
+ * @param string $content The post content is passed in.
+ * @since 0.2
+ */
+function _exa_register_content_adslot($content) {
+	
+	global $DoubleClick;
+
+	if ( is_single() && ! is_admin() ) {
+		$ad = $DoubleClick->get_ad_placement('bh:sidekick','300x250',array('phone','tablet'));
+		$ad = "<div class='ad ad-in-content mobile-tablet'>" . $ad . "</div>";
+        return exa_insert_after_graph( $ad, $content, 3 );
+    }
+    return $content;
+}
+
+/**
+ * Inserts a string in between paragraphs.
+ * 
+ * @param string $insertion The string to insert.
+ * @param string $content The content to insert into.
+ * @param int $graph The paragraph to insert after.
+ * @since 0.2
+ */
+function exa_insert_after_graph( $insertion, $content, $graph ) {
+	
+	$graphs = explode( '</p>', $content );
+	foreach ($graphs as $i => $p) {
+	    if ( trim( $p ) ) {
+	        $graphs[$i] .= '</p>';
+	    }
+	    if ( $graph_id == $i + 1 ) {
+	        $graphs[$i] .= $insertion;
+	    }
+	}
+	return implode( '', $graphs );
+	
+}
+
+/**
  * Enqueues scripts and styles for front end.
  *
- * @author Will Haynes
- * @since 29 Nov 2013
- * @return void
+ * @since 0.1
  */
 function exa_scripts_styles() {
 	
@@ -166,18 +182,24 @@ function exa_scripts_styles() {
 }
 add_action( 'wp_enqueue_scripts', 'exa_scripts_styles' );
 
+/**
+ * Enqueues scripts and styles for admin.
+ *
+ * @since 0.1
+ */
 function exa_admin_style() {
+
     wp_enqueue_style('exa-admin-style', get_template_directory_uri() . '/css/admin-style.css');
+
 }
 add_action('admin_enqueue_scripts', 'exa_admin_style');
-
 
 
 /**
  * Switches default core markup for search form to output valid HTML5.
  *
  * @param string $format Expected markup format, default is `xhtml`
- * @return string 'html5'
+ * @since 0.1
  */
 function exa_search_form_format( $format ) {
 	return 'html5';
@@ -187,85 +209,25 @@ add_filter( 'search_form_format', 'exa_search_form_format' );
 
 /**
  * Changes the default exerpt tag to include a permalink, and class of class="exerpt-more"
- *
- * Added: July 2013
  * 
  * @param $more 
- * @return Anchor tag exerpt link 
+ * @since 0.1
+ * @return Anchor tag excerpt link 
  */
 function new_excerpt_more( $more ) {
+
 	return ' <span class="excerpt-more">...</span>';
+
 }
 add_filter('excerpt_more', 'new_excerpt_more');
 
 
 /**
- * Alters the query for different post pages.
- *
- * @author Will Haynes
- * @since Oct 2013
- * @return void
+ * Get the list of beats (topic taxonomy) for a post.
+ * 
+ * @since 0.1
+ * @return Array List of beats.
  */
-function alter_queries( $query ) {
-
-	$all_sections = array( 'news', 'oped', 'artsetc', 'sports' );
-	/* Return if this is not the main query, or if it is a back end query */
-    if ( is_admin() || ! $query->is_main_query() ) {
-        return;
-    }
-
-    /* We no longer need this. This whole function may be deleted. - wjh.
-
-    if ( is_front_page() ) {
- 		$query->set( 'post_type',  $all_sections );
-		$query->set('posts_per_page', 25);
-        $query->set( 'tax_query',
-            array(
-                array(
-                    'taxonomy' => 'importance',
-                    'field' => 'slug',
-                    'terms' => array('featured','stream'),
-                    'operator' => 'IN'
-                )
-            )
-        );
-
-        return;
-    } else {
-		$query->set('posts_per_page', 25);
-    } 
-
-    if( $query->is_author ) {
-    	$query->set( 'post_type', $all_sections  );
-    }
-
-    if( is_search() ) {
-    	if (isset($_GET['section'])) {
-	    	$section = array(strtolower($_GET['section']));
-	    	if ($section == array('all') || !in_array($section[0], $all_sections)) {
-	    		$section = $all_sections;
-	    	}
-	    } else {
-	    	$section = $all_sections;
-	    }
-    	$query->set('post_type', $section);
-
-    	if (isset($_GET['date_range'])) {
-    		$date_range = $_GET['date_range'];
-    		if ($date_range == 'This month') {
-    			$query->set('year', date('Y'));
-    			$query->set('monthnum', date('m'));
-    		} elseif ($date_range == 'This year') {
-    			$query->set('year', date('Y'));
-    		}
-    	}
-    }
-	*/
-    return;
-}
-add_action( 'pre_get_posts', 'alter_queries', 1 );
-
-
 function exa_get_beats() {
 
 	global $post;
@@ -273,6 +235,12 @@ function exa_get_beats() {
 
 }
 
+/**
+ * Returns a boolean specifying if the post is featured or not.
+ * 
+ * @since 0.1
+ * @return boolean True if post is marked "featured", False if not.
+ */
 function exa_is_featured() {
 
 	global $post;
@@ -280,6 +248,12 @@ function exa_is_featured() {
 
 }
 
+/**
+ * Returns a boolean specifying if the post is marked in_stream or not.
+ * 
+ * @since 0.1
+ * @return boolean True if post is marked "in stream", False if not.
+ */
 function exa_is_instream() {
 
 	global $post;
@@ -290,26 +264,43 @@ function exa_is_instream() {
 /**
  * Takes a string, and returns a string that denotes ownership.
  * 
- * ex: passing "John" returns "John's"
- *     passing "Ross" returns "Ross'" (without the last s)
+ * ex: passing " John " returns " John's "
+ *     passing " Ross " returns " Ross' " (without the last s)
  *
- * @author Will Haynes
- * @since Oct 2013
+ * @since 0.1
  * @param String $name the name to 'propertize.'
- * @return a 'propertized' version of $name
+ * @return string a 'propertized' version of $name
  */
 function exa_properize($name) {
 	return $name.'\''.($name[strlen($name) - 1] != 's' ? 's' : '');
 }
 
-
-function custom_excerpt_length( $length ) {
+/**
+ * Filters the excerpt length to 24 words. 
+ * 
+ * @since 0.1
+ * @param int $length current length passed by filter.
+ * @return int 24
+ */
+function exa_custom_excerpt_length( $length ) {
 	return 24;
 }
-add_filter( 'excerpt_length', 'custom_excerpt_length', 999 );
+add_filter( 'excerpt_length', 'exa_custom_excerpt_length', 999 );
 
 
+/**
+ * Filters the excerpt length to 24 words. 
+ * 
+ * TODO: this function could use work.
+ * 
+ * @uses current_time
+ * @since 0.1
+ * @param int $from Start time in seconds since Jan 1, 1970.
+ * @param int $to (optional) End time in seconds since Jan 1, 1970.
+ * @return string A readable representation of the time interval.
+ */
 function exa_human_time_diff( $from, $to = '' ) {
+	$since = '';
 	if ( empty( $to ) )
 		$to = current_time( "timestamp" );
 	$diff = (int) abs( $to - $from );
@@ -319,38 +310,52 @@ function exa_human_time_diff( $from, $to = '' ) {
 			$mins = 1;
 		}
 		/* translators: min=minute */
-		$since = sprintf( _n( '%s min', '%s mins', $mins ), $mins );
+		$since = sprintf( _n( '%s min ago', '%s mins ago', $mins ), $mins );
 	} elseif ( ( $diff <= DAY_IN_SECONDS ) && ( $diff > HOUR_IN_SECONDS ) ) {
 		$hours = round( $diff / HOUR_IN_SECONDS );
 		if ( $hours <= 1 ) {
 			$hours = 1;
 		}
-		$since = sprintf( _n( '%s hour', '%s hours', $hours ), $hours );
-	} elseif ( $diff >= DAY_IN_SECONDS ) {
+		$since = sprintf( _n( '%s hour ago', '%s hours ago', $hours ), $hours );
+	} elseif ( $diff >= DAY_IN_SECONDS && $diff < DAY_IN_SECONDS * 7) {
 		$days = round( $diff / DAY_IN_SECONDS );
 		if ( $days <= 1 ) {
 			$days = 1;
 		}
-		$since = sprintf( _n( '%s day', '%s days', $days ), $days );
+		$since = sprintf( _n( '%s day ago', '%s days ago', $days ), $days );
+	} elseif ( $diff >= DAY_IN_SECONDS * 7) {
+		$since = gmdate("M d, Y D", $from);
 	}
+
 	return $since;
 }
 
 
-/*
- * Exa register Shoutout parameters
- *
+/**
+ * Filters query_vars to register shoutout parameters
+ * 
+ * @since 0.1
+ * @param array $qvars array of query variables passed by filter.
+ * @return array array of query variables appended with shoutout query variables.
  */
-function add_query_vars($aVars) {
-	$aVars[] = "so_page"; // represents the name of the product category as shown in the URL
-	$aVars[] = "so_num"; // represents the name of the product category as shown in the URL
-	return $aVars;
-}
- 
-// hook add_query_vars function into query_vars
-add_filter('query_vars', 'add_query_vars');
+function exa_add_query_vars($qvars) {
 
-function add_rewrite_rules($aRules) {
+	$qvars[] = "so_page"; // represents the name of the product category as shown in the URL
+	$qvars[] = "so_num"; // represents the name of the product category as shown in the URL
+	return $qvars;
+
+}
+add_filter('query_vars', 'exa_add_query_vars');
+
+/**
+ * Adds rewrite rules for shoutouts.
+ * 
+ * @since 0.1
+ * @param array $aRules rewrite rules passed in by filter.
+ * @return array rewrite rules with shoutout rules appended.
+ */
+function exa_add_so_rewrite_rules($aRules) {
+
 	$aNewRules = array('shoutouts/page/([^/]+)/?$' => 'index.php?pagename=shoutouts&so_page=$matches[1]');
 	$aRules = $aNewRules + $aRules;
 
@@ -358,27 +363,20 @@ function add_rewrite_rules($aRules) {
 	$aRules = $aNewRules + $aRules;
 
 	return $aRules;
+
 }
- 
-// hook add_rewrite_rules function into rewrite_rules_array
-add_filter('rewrite_rules_array', 'add_rewrite_rules');
+add_filter('rewrite_rules_array', 'exa_add_so_rewrite_rules');
 
-
-/*
- * Add sidebar for refining search results to search pages.
- * By Zach Thomae - 9/7/13
+/**
+ * Returns array of beats for a passed in category.
+ * 
+ * @since 0.1
+ * @param string $category The category to fetch beats for.
+ * @return array List of beats.
  */
-if ( function_exists ('register_sidebar') ) {
-	register_sidebar('search');
-}
-
-
-
-add_filter( 'wp_insert_post_data', 'hrld_default_comments_on' );
-
-// Massively ugly, but beats should be kept out of the templates
 function exa_get_beats_slug_list($category) {
-	if ($category == 'news') {
+
+	if ($category == 'news') {	
 		$beats_slug_list = array('madison','higher-edu','wisconsin','student-gov','us','campus','uw-research','uw-system');
 	} elseif ($category == 'oped') {
 		$beats_slug_list = array('column','editorial','opinion-desk','letter','public-editor','oped-top-story');
@@ -390,30 +388,40 @@ function exa_get_beats_slug_list($category) {
 		$beats_slug_list = array();
 	}
 	return $beats_slug_list;
+
 }
 
 /**
  * Add container to video embeds
  *
- * By Matthew Neil
+ * @since 0.1
+ * @param string $html The embed html
+ * @param string $url URL of the oembed
+ * @param array $attr Attributes of the embed
+ * @param int $post_id The post id of the post the embed appears in.
+ * @return $html video embed surrounded in div.video-container dom.
  */
 function hrld_responsive_embed_oembed_html($html, $url, $attr, $post_id) {
  
- if (strpos($url,'youtu')) {
- 	return '<div class="video-container">' . $html . '</div>';
- } else {
- 	return $html;
- }
+ 	// Search for:
+	//  - youtube.com
+	//  - youtu.be
+	if (strpos($url,'youtu')) {
+		return '<div class="video-container">' . $html . '</div>';
+	} else {
+		return $html;
+	}
 
 }
 add_filter('embed_oembed_html', 'hrld_responsive_embed_oembed_html', 10, 4);
 
 
-
 /**
- * returns the "topic" (currently just a category) of the post.
+ * Returns the "topic" or top category of the post.
  *
- *
+ * @since 0.1
+ * @param int $pid Post id.
+ * @return string Top post cateogry or "Herald" if no category is set.
  */
 function exa_topic($pid = null) {
 
@@ -431,21 +439,18 @@ function exa_topic($pid = null) {
 
 	return "Herald";
 }
-/*
-function exa_the_date() {
-
-	the_time("M j, Y")
-
-}
-
-function exa_get_the_date() {
-
-} */
 
 /**
- * Prints the post thumbnail of the post.
+ * Filters and returns the dom for the post thumbnail.
+ * 
  * If no thumbnail is available, will pick a suitable placer image.
  *
+ * @param string $html The html generated by wordpress
+ * @param int $post_id The post id
+ * @param int $post_thumbnail_id The post id of the thumbnail post attachment.
+ * @param ?? $size ?? Unused.
+ * @param ?? $attr ?? Unused.
+ * @since 0.1
  */
 function exa_post_thumbnail_html( $html, $post_id, $post_thumbnail_id, $size, $attr ){
 	if($html){
@@ -459,31 +464,30 @@ add_filter( 'post_thumbnail_html', 'exa_post_thumbnail_html', 20, 5 );
 
 
 /**
- * Remove options from the editor screen, because
- * editors have enough options already.
+ * Filter options other than p, h3 and h4 from the editor screen, because editors have 
+ * enough options already.
  *
+ * @param array $settings tiny_mce settings passed in by filter.
+ * @return array tiny_mce settings.
  */
+function hrld_customformatTinyMCE($settings) {
 
-function hrld_customformatTinyMCE($init) {
 	// Add block format elements you want to show in dropdown
-	$init['theme_advanced_blockformats'] = 'p,h3,h4';
-
-	// Add elements not included in standard tinyMCE doropdown p,h1,h2,h3,h4,h5,h6
-	//$init['extended_valid_elements'] = 'code[*]';
-
-	return $init;
+	$settings['theme_advanced_blockformats'] = 'p,h2,h3,h4';
+	return $settings;
 }
-
-// Modify Tiny_MCE init
 add_filter('tiny_mce_before_init', 'hrld_customformatTinyMCE' );
 
 /**
- * Plugin Name: Remove Attachment Link-To and set to value 'none' 
+ * Remove Attachment Link-To and set to value 'none'
+ * 
+ * Uses javascript to remove some of the options on the instert media screen.
+ * 
+ * @author Frank Bueltge
+ * @see https://wordpress.stackexchange.com/questions/76214/set-media-upload-attachment-link-to-none-and-hide-it-in-wp-v3-5
+ * @since 0.1
  */
-
-add_action( 'admin_footer-post-new.php', 'wpse_76214_script' );
-add_action( 'admin_footer-post.php', 'wpse_76214_script' );
-function wpse_76214_script() {
+function exa_remove_media_link_to() {
     ?>
     <script type="text/javascript">
     jQuery(document).ready( function($) {
@@ -496,21 +500,35 @@ function wpse_76214_script() {
     </script>
     <?php
 }
+add_action( 'admin_footer-post-new.php', 'exa_remove_media_link_to' );
+add_action( 'admin_footer-post.php', 'exa_remove_media_link_to' );
 
-// filter a-Tag in data, there was send to edit; fallback
-add_filter( 'media_send_to_editor', 'wpse_76214_send_to_editor', 10, 3 );
-function wpse_76214_send_to_editor( $html, $id, $attachment ) {
+
+/**
+ * Remove links set to the editor.
+ * 
+ * @author Frank Bueltge
+ * @see https://wordpress.stackexchange.com/questions/76214/set-media-upload-attachment-link-to-none-and-hide-it-in-wp-v3-5
+ * @since 0.1
+ * 
+ * @param string $html The unslashed HTML to send to the editor.
+ * @param in $id The attachment id.
+ * @param array $attachment An array of attachment attributes.
+ * 
+ * @return string The filtered HTML sent to the editor.
+ */
+function exa_send_to_editor( $html, $id, $attachment ) {
 
     $html = preg_replace( '@\<a([^>]*)>(.*?)\<\/a>@i', '$2', $html );
 
     return $html;
 }
+add_filter( 'media_send_to_editor', 'exa_send_to_editor', 10, 3 );
 
 
-
-/*
+/**
  * Resize images dynamically using wp built in functions
- * Victor Teixeira
+ * 
  *
  * php 5.2+
  *
@@ -521,7 +539,9 @@ function wpse_76214_send_to_editor( $html, $id, $attachment ) {
  * $image = hrld_resize( $thumb,'' , 140, 110, true );
  * ?>
  * <img src="<?php echo $image[url]; ?>" width="<?php echo $image[width]; ?>" height="<?php echo $image[height]; ?>" />
- *
+ * @since 0.1
+ * @author Victor Teixeira
+ * @see https://gist.github.com/seedprod/1367237
  * @param int $attach_id
  * @param string $img_url
  * @param int $width
@@ -630,73 +650,25 @@ function hrld_resize( $attach_id = null, $img_url = null, $width, $height, $crop
 }
 
 
-
-function exa_list_categories($showedit = false, $showtime = false) {
-	global $post;
-	$beats = exa_get_beats(); 
-	$category_base = get_bloginfo('url')."/".get_post_type()."/";
-	$post_type = get_post_type_object(get_post_type());
-	?>
-	<ul class="category-bar">
-		<li><a class="section-link" href="<?php echo $category_base; ?>"><?php echo $post_type->labels->name; ?></a></li>
-		
-		<?php foreach ($beats as $beat) : ?>
-
-		<li><a class="beat-link" href="<?php echo $category_base . "beats/".$beat->slug ?>"> <?php echo $beat->name ?></a></li>
-
-		<?php endforeach; 
-		if($showedit) {
-			 edit_post_link( __( 'Edit Post' . $post->ID ),  '<li class="edit-link-right">', '</li>' ); 
-		} elseif($showtime) {
-			echo '<li class="edit-link-right">' . exa_human_time_diff(get_the_time('U')) . '</li>';
-		}
-		?>
-	</ul>
-	<?php
-	
-}
-
-function exa_include_sidebar_square_ad() { ?>
-
-	<div id="ad-leaderboard">
-<!-- Sitewide.Rectangle.Sidebar.336x280 -->
-<div id='div-gpt-ad-1378705451226-2'>
-<script type='text/javascript'>
-googletag.cmd.push(function() { googletag.display('div-gpt-ad-1378705451226-2'); });
-</script>
-</div>
-	</div>
-
-<?php
-}
-
-
-function exa_include_article_square_ad() {
-
-
-	if(hrld_is_production()) :
-
- ?>
-
-	<div id="ad-leaderboard">
-<!-- Sitewide.Rectangle.Sidebar.336x280 -->
-<div id='div-gpt-ad-1378705451226-2'>
-<script type='text/javascript'>
-googletag.cmd.push(function() { googletag.display('div-gpt-ad-1378705451226-2'); });
-</script>
-</div>
-	</div>
-
-<?php
-
-	endif;
-}
-
+/**
+ * Prints the author link
+ * 
+ * @since 0.1
+ */
 function exa_the_author_link() {
 	echo get_bloginfo('url')."/author/".get_the_author_meta("user_nicename");
-
 }
 
+/**
+ * Filters post gallery generated 
+ * 
+ * @since 0.2
+ * 
+ * @param string $output
+ * @param array $attr attributes defined in the shortcode
+ * 
+ * @return string filtered html output for the gallery. 
+ */
 function exa_post_gallery($output = '', $attr) {
 	$post = get_post();
 	wp_enqueue_script('exa_post_gallery_js', get_template_directory_uri().'/js/exa-post-gallery.js', array('jquery'), false, true);
@@ -896,7 +868,9 @@ add_filter('post_gallery', 'exa_post_gallery', 10, 2);
  * If bit.ly is not enabled, this function returns wordpresses default shorter
  * url.
  *
- * @author Will Haynes
+ * @since 0.1
+ * 
+ * @return string The shortlink for the post.
  */
 function exa_short_url() {
 
@@ -917,13 +891,16 @@ function exa_short_url() {
  *
  * We filter the wp_title to generate better SEO.
  *
- * @uses	get_bloginfo()
- * @uses	is_home()
- * @uses	is_front_page()
+ * @uses get_bloginfo()
+ * @uses is_home()
+ * @uses is_front_page()
  *
  * @see http://bavotasan.com/2012/filtering-wp_title-for-better-seo/
- * @author Will Haynes
+ * 
+ * @param string $title The title passed in by the filter
+ * @param string $sep (optional) A seperator to use. default: middot
  *
+ * @return string filtered title.
  */
 function exa_filter_wp_title( $title, $sep = "&middot;" ) {
 	global $page, $paged;
@@ -941,27 +918,17 @@ function exa_filter_wp_title( $title, $sep = "&middot;" ) {
 }
 add_filter( 'wp_title', 'exa_filter_wp_title' );
 
-function print_filters_for( $hook = '' ) {
-    global $wp_filter;
-    if( empty( $hook ) || !isset( $wp_filter[$hook] ) )
-        return;
-
-    print '<pre>';
-    print_r( $wp_filter[$hook] );
-    print '</pre>';
-}
-
 
 
 /**
  * Prints open graph tags to the head of wordpress pages.
  *
- * @see http://ogp.me
+ * @since 0.1
  * @author Will Haynes
- *
+ * 
+ * @see http://ogp.me
  */
-function exa_open_graph_tags()
-{
+function exa_open_graph_tags() {
 
 	global $post;
 
@@ -1044,6 +1011,9 @@ function exa_open_graph_tags()
 	$img = wp_get_attachment_url( get_post_thumbnail_id($post->ID) );
 	if( $img && is_single() ) {
 		$output .= "<meta property='og:image' content='$img' />\n";
+	} else {
+		$img = get_template_directory_uri() . "/img/misc/social-thumb.png";
+		$output .= "<meta property='og:image' content='$img' />\n";
 	}
 
 	/* 7. Finish up */
@@ -1056,10 +1026,28 @@ add_action('wp_head','exa_open_graph_tags');
 
 
 /**
+ * Adds the favicon link to wp_head.
+ * 
+ * favicon.ico can be compiled using imagemagick using:
+ * 
+ * 		$ cd ./img/favicons/
+ * 		$ convert -strip *.png favicon.ico
+ * 
+ * @since v0.2
+ */
+function exa_favicon() {
+	echo "<link rel='icon' href='" . get_template_directory_uri() . "/img/favicons/favicon.ico' type='image/x-icon' />";
+}
+add_action('wp_head','exa_favicon');
+
+
+/**
  * Prints twitter card text to the head of wordpress pages.
  *
- * @see https://dev.twitter.com/cards/
+ * @since 0.1
  * @author Will Haynes
+ * 
+ * @see https://dev.twitter.com/cards/
  */
 function exa_twitter_card_tags() {
 
@@ -1113,7 +1101,6 @@ function exa_twitter_card_tags() {
 	$output .= "\n";
 	echo $output;
 
-
 }
 add_action('wp_head','exa_twitter_card_tags');
 
@@ -1125,6 +1112,8 @@ add_action('wp_head','exa_twitter_card_tags');
  * Leveraged correctly, this will let us target website visitors and turn them
  * into return visitors.
  *
+ * @since 0.2
+ * 
  * @see https://support.twitter.com/articles/20170807-conversion-tracking-for-websites
  * @author Will Haynes
  */
@@ -1148,6 +1137,8 @@ add_action('wp_footer','exa_twitter_conversion_tracker');
  * TODO: Add _hrld_subhead support. These are often more appropriate for the space than
  * 		 the lede.
  *
+ * @since 0.1
+ * 
  * @see http://wordpress.stackexchange.com/questions/26729/get-excerpt-using-get-the-excerpt-outside-a-loop
  * @author Will Haynes
  */
@@ -1186,6 +1177,11 @@ function exa_get_meta_excerpt($post_id = null) {
 
 /**
  * Filters the single_template source for posts with the interactive category.
+ * 
+ * @since 0.1
+ * @author Matt Neil
+ * 
+ * @return string the template for the post.
  */
 function exa_interactive_single_template($single_template) {
 	global $post;
@@ -1196,8 +1192,54 @@ function exa_interactive_single_template($single_template) {
 }
 add_filter('single_template', 'exa_interactive_single_template');
 
+	
+function hrld_html_tag_open($tag = "",$id = "",$class = array(),$content = "",$close = false, $misc = array()){
+	$result = "";
+	if( $tag != ""){
+		$result = "<$tag id=\"$id\" ";
+		if( !empty($class) ){
+			$result .= "class=\"";
+			foreach($class as $class_name){
+				$result .= $class_name." ";
+			}
+			$result .= "\" ";
+			
+		}
+		if( !empty($misc) ){
+			foreach($misc as $attr => $value){
+				$result .= "$attr=\"$value\" ";
+			}
+		}
+		if( $content != ""){
+			$result .= " >";
+			$result .= $content;
+			if( $close)
+				$result .= get_hrld_html_tag_close($tag);
+		}else
+			$result .= " >";
+	}else
+		$result = "";
 
-include_once('inc/functions-dev.php');
+	echo $result;
+	return;
+
+}
+function hrld_html_tag_close($tag = ""){
+	$result = "";
+	if( $tag != ""){
+		$result = "</".$tag.">";
+	}
+
+	echo $result;
+	return;
+}
+function get_hrld_html_tag_close($tag = ""){
+	$result = "";
+	if( $tag != ""){
+		$result = "</".$tag.">";
+	}
+	return $result;
+}
 
 /**
  * Filters pinned posts from the main author query so pagination works correctly
@@ -1220,3 +1262,8 @@ function hrld_remove_pinned_author_posts($query){
 	}
 }
 add_filter('pre_get_posts', 'hrld_remove_pinned_author_posts', 1);
+
+/**
+ * Load more functions for develop enviornment.
+ */
+include_once('inc/functions-dev.php');

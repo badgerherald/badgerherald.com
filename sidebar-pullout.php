@@ -1,3 +1,12 @@
+<?php
+/**
+ * The left screen pullout.
+ *
+ * @package exa
+ * @since v0.2
+ */
+?>
+
 <div id="pullout">
     <?php get_search_form( true );  ?>
     <div class="nav-list">
@@ -24,7 +33,7 @@
             'oped' => array(),
             'sports' => array()
         );
-        foreach ($beats_queries as $stream_beat => $stream_beat_query) {
+        foreach ($beats_queries as $stream_beat => $stream_beat_query) :
         ?>
         <div class="nav-stream col-6" data-post-list="<?php echo $stream_beat; ?>">
             <?php
@@ -49,8 +58,8 @@
             while( $beats_queries[$stream_beat]['featured']->have_posts() ) {
                 $beats_queries[$stream_beat]['featured']->the_post();
 
-                /* get content-block-featured.php */
-                get_template_part( 'content', 'block-featured' );
+                /* get content-pullout-cover.php */
+                get_template_part( 'content', 'pullout-cover' );
 
                 $beats_queries[$stream_beat]['exclude'][] = $post->ID;
             }
@@ -58,7 +67,7 @@
 
             /* Get recent posts */
             $args = array();
-            $args['posts_per_page'] = 3;
+            $args['posts_per_page'] = 10;
             $args['post__not_in'] = $beats_queries[$stream_beat]['exclude'];
             $args['tax_query'] = array(
                 array(
@@ -72,14 +81,12 @@
             while( $beats_queries[$stream_beat]['recent']->have_posts() ) {
                 $beats_queries[$stream_beat]['recent']->the_post();
 
-                /* get content-block-thumb.php */
-                get_template_part( 'content', 'block-thumb' );
+                /* get content-pullout-inline.php */
+                get_template_part( 'content', 'pullout-inline' );
             }
             wp_reset_postdata();
             ?>
         </div>
-        <?php
-        } // End foreach
-        ?>
+        <?php endforeach; ?>
     </div>
-</div> <!-- END div#pullout -->
+</div> <!-- end div#pullout -->

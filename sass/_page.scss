@@ -39,12 +39,6 @@ body {
 	}
 }
 
-body.admin-bar {
-	#container {
-		top: 32px !important;
-	}
-}
-
 /* Primary contains all content, with a buffer on both sides of it */
 
 #primary {
@@ -55,9 +49,19 @@ body.admin-bar {
 	margin-top: 54px;
 }
 
-
+@media (min-width: 600px) {
+	body.admin-bar {
+		#pullout, .fixed-bar {
+			top: 46px !important;
+		}
+	}
+}
 @media (min-width: 760px) {
-
+	body.admin-bar {
+		#pullout, .fixed-bar {
+			top: 32px !important;
+		}
+	}
 	/** _page.scss overrides */
 
 	/* Wrapper */

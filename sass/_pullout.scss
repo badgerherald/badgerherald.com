@@ -1,3 +1,37 @@
+
+
+/* Styling for topic-label badges */
+
+.topic-label {
+    color: #fff;
+    display: inline-block;
+    vertical-align: text-top;
+    padding: 3px 5px 1px;
+    line-height: 11px;
+    clear:both;
+    background: $hrld-blue;
+    font-family: $headline;
+    text-shadow: -1px 1px 0px rgba($hrld-black, .3);
+    font-weight: 300;
+    text-transform: uppercase;
+    font-size: 10px;
+    &:after {
+        content: "\A";
+        white-space: pre-line;
+    }
+}
+
+// Small (and standard) topic labels are 15px tall.
+// Large topic labels are 21px tall.
+
+.large-topic-label {
+    line-height: 14px;
+    font-size: 12px;
+    padding: 4px 8px 3px;
+}
+
+/* Styling for rest of pullout */
+
 #pullout {
     height: 100%;
     width: 260px;
@@ -59,12 +93,12 @@
             top: 50%;
             left: 0;
             margin: -8px 0 0;
-            background: #fff;
+            background: $hrld-dark-grey;
         }
         &:before {
             width: 12px;
             height: 12px;
-            border: 3px solid #fff;
+            border: 3px solid $hrld-dark-grey;
             background: transparent;
             @include border-radius(12px);
         }
@@ -77,6 +111,7 @@
         }
     }
 }
+
 .nav-list {
     width: 100%;
     border-right: solid 1px $hrld-dark-grey-border;
@@ -109,6 +144,7 @@
                 color: $hrld-blue;
                 &:before {
                     content: "";
+                    display: none;
                     position: absolute;
                     height: 100%;
                     right: -2px;
@@ -264,9 +300,15 @@
     #searchform {
         border-right: none;
     }
-
     .nav-list {
         width: 180px;
+        ul#main-nav {
+            li.active a, li:hover a {
+                &:before {
+                    display: block;
+                }
+            }
+        }
     }
     .nav-stream-container {
         display: block;
@@ -282,6 +324,72 @@
         height: 100%;
         &.active {
             display: block;
+        }
+    }
+
+    /* Styling for content-pullout-cover.php */
+
+    .pullout-cover {
+        @include clearfix();
+        color: #fff;
+        margin: 0 0 12px 0;
+        position: relative;
+        display: inline-block;
+        .entry-thumbnail {
+            width: 100%;
+            margin: 0 20px 0 0;
+        }
+        .entry-header {
+            position: absolute;
+            width: 100%;
+            bottom: 18px;
+            margin: 0;
+            padding: 10px 10px;
+            .topic-label {
+                float:left;
+                clear:both;
+                margin-bottom: 6px;
+            }
+            h2.entry-title {
+                float:left;
+                display: inline-block;
+                clear:both;
+                font-family: $headline;
+                background: #000;
+                padding: 3px 10px;
+                font-size: 18px;
+                color: #fff;
+                font-weight: bold;
+                margin: 0;
+            }
+        }
+    }
+
+    /* Styling for content-pullout-inline.php */
+
+    .pullout-inline {
+        @include clearfix();
+        color: $hrld-black;
+        margin: 0 0 12px 0;
+        display: inline-block;
+        .entry-thumbnail {
+            float: left;
+            margin: 0 20px 0 0;
+        }
+        .entry-header {
+            float: left;
+            display: block;
+            margin-right: 0;
+            h2.entry-title {
+                color: $hrld-black;
+                display: block;
+                font-family: $headline;
+                font-weight: bold;
+                font-size: 18px;
+                line-height:21px;
+                padding-top:6px;
+                margin: 0;
+            }
         }
     }
 }

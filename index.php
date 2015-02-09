@@ -160,31 +160,31 @@ get_header();
 	
 
 
-	<div id="news" class="clearfix">
+	<?php
 
-		<div class="section-banner section-banner-news">
+	//$beats_info is an array that holds beat names.
+	$beats = array("news" => "news",
+					"oped" => "opinion",
+					"artsetc" => "artsetc",
+					"sports" => "sports");
 
-			<h2>News</h2>
-
-		</div>
-        <div class="col-container clearfix">
-		<div class="featured-container featured-container-news">
+	foreach($beats as $beat => $beat_name){
 		
-		<?php
-		
-			/* Build query for featured stories in news */
+		hrld_html_tag_open("div", $beat, "clearfix");
+			hrld_html_tag_open("div","",array("section-banner", "section-banner-$beat"));
+				hrld_html_tag_open("h2","",array(),$beat_name,true);
+			hrld_html_tag_close("div");
+			hrld_html_tag_open("div","",array("col-container", "clearfix"));
+			hrld_html_tag_open("div","",array("featured-container", "featured-container-$beat"));
 
-			/** Featured news is a combination of
-			 *   a. In the taxonomy 'category' with the term 'news'
-			 *   b. In the taxonomy 'importance' with the term 'featured'
-			 */
 
+			//query_featured
 			$args = array();
 			$args['tax_query'] = array(
 	                array(
 	                    'taxonomy' => 'category',
 	                    'field' => 'slug',
-	                    'terms' => array('news'),
+	                    'terms' => array($beat),
 	                    'operator' => 'IN'
 	                ), array(
 	                    'taxonomy' => 'importance',
@@ -195,411 +195,81 @@ get_header();
 	            );
 			$args['posts_per_page'] = 4;
 
-			$news_featured = new WP_Query( $args );
-			$excludenews = array();
-		?>
+			$featured = new WP_Query( $args );
+			$exclude = array();
 
-		<?php while( $news_featured->have_posts() ) {
-			$news_featured->the_post();
-			if($news_featured->current_post == 0 && !is_paged()){
-				get_template_part( 'content', 'summary-featured' );
-			}
-			else{
-				if($news_featured->current_post == 1 && !is_paged()){
-					echo '<ul class="featured-stream-list">';
+			//loop_featured
+			//also records which posts to exclude in following steps
+			while( $featured->have_posts() ) {
+				$featured->the_post();
+				if($featured->current_post == 0 && !is_paged()){
+					get_template_part( 'content', 'summary-featured' );
+				}else{
+
+					if($featured->current_post == 1 && !is_paged()){
+						hrld_html_tag_open("ul","",array("featured-stream-list"));
+					}
+					hrld_html_tag_open("li");
+						get_template_part( 'content', 'summary-instream' );
+					hrld_html_tag_close("li");
 				}
-				echo '<li>';
-				get_template_part( 'content', 'summary-instream' );
-				echo '</li>';
+				$exclude[] = $post->ID;
 			}
-			$excludenews[] = $post->ID;
-		} ?>
-				</ul>
-		<?php
+			hrld_html_tag_close("ul");
+			
 			// Restore original Post Data
 			wp_reset_postdata();
-		?>
-		</div> <!-- class="featured-container" -->
-        
 
-		<?php
-		
+			//close class="featured-container"
+			hrld_html_tag_close("div");
+
 			/* Build query for featured stories in news */
 			$args = array();
 			$args['posts_per_page'] = 10;
-			$args['post__not_in'] = $excludenews;
+			$args['post__not_in'] = $exclude;
 			$args['tax_query'] = array(
 		        array(
 		            'taxonomy' => 'category',
 		            'field' => 'slug',
-		            'terms' => array('news'),
+		            'terms' => array($beat),
 		            'operator' => 'IN'
 		        )
 		    );
-			$news_featured = new WP_Query( $args );
-		
-		?>
-		
-		<ul class="list-stories homepage-news-recent">
-		<?php while( $news_featured->have_posts() ) : $news_featured->the_post(); ?>
+			$featured = new WP_Query( $args );
 
-			<li>
+			hrld_html_tag_open("ul","",array("list-stories", "homepage-$beat-recent"));
 
-				<span class="topic"><?php echo exa_topic( $post->ID ); ?><span class="summary-time-stamp"> &middot; <?php echo exa_human_time_diff(get_the_time('U')) ?> ago</span></span>
-				<h4><a href="<?php echo get_permalink( $post->ID ); ?>"><?php echo get_the_title( $post->ID ); ?></a></h4>
+			while( $featured->have_posts() ) : $featured->the_post();
 
-			</li>
+				hrld_html_tag_open("li");
+					hrld_html_tag_open("span","",array("topic"));
+						echo exa_topic( $post->ID );
+						hrld_html_tag_open("span","",array("summary-time-stamp"));
+							echo " &middot; ";
+							echo exa_human_time_diff(get_the_time('U'));
+						hrld_html_tag_close("span");
+					hrld_html_tag_close("span");
+					hrld_html_tag_open("h4");
+						hrld_html_tag_open("a","",array(""),get_the_title( $post->ID ),true, array( "href" => get_permalink( $post->ID )));
+					hrld_html_tag_close("h4");
+				hrld_html_tag_close("li");
 
-		<?php endwhile; ?>
-		</ul>
+			endwhile;
 
-		<?php
-			// Restore original Post Data
+			hrld_html_tag_close("ul");
 			wp_reset_postdata();
-		?>
-		</div>
-		<div class="all-link all-link-news"><a href="<?php bloginfo('url'); ?>/news/">All News</a></div>
-	</div><!-- id="news" -->
+			hrld_html_tag_close("div");
+
+			hrld_html_tag_open("div","",array("all-link", "all-link-$beat"));
+				hrld_html_tag_open("a","",array(),"All ".ucfirst($beat),true, array("href" => get_bloginfo('url')."/$beat/"));
+			hrld_html_tag_close("div");
+		hrld_html_tag_close("div");
 
 
-	<div id="opinion">
-
-		<div class="section-banner section-banner-banter">
-
-			<h2>Opinion</h2>
-
-		</div>
-        <div class="col-container clearfix">
-		<div class="featured-container featured-container-banter">
-		
-		<?php
-		
-			/* Build query for featured stories in banter */
-
-			$args = array();
-			$args['tax_query'] = array(
-	                array(
-	                    'taxonomy' => 'importance',
-	                    'field' => 'slug',
-	                    'terms' => array('featured'),
-	                    'operator' => 'IN'
-	                ), array(
-	                    'taxonomy' => 'category',
-	                    'field' => 'slug',
-	                    'terms' => array('oped'),
-	                    'operator' => 'IN'
-	                ), 
-	            );
-			$args['posts_per_page'] = 4;
-
-			$banter_featured = new WP_Query( $args );
-			$excludebanter = array();
-		?>
-
-		<?php while( $banter_featured->have_posts() ) {
-			$banter_featured->the_post();
-			if($banter_featured->current_post == 0 && !is_paged()){
-				echo '<ul class="featured-stream-list">';
-				echo '<li>';
-				get_template_part( 'content', 'summary-instream' );
-				echo '</li>';
-			}
-			else{
-				echo '<li>';
-				get_template_part( 'content', 'summary-instream' );
-				echo '</li>';
-			}
-			$excludebanter[] = $post->ID;
-		} ?>
-				</ul>
-		<?php
-			// Restore original Post Data
-			wp_reset_postdata();
-		?>
-		</div> <!-- class="featured-container featured-container-banter" -->
-        
-        <div class="opinion-desk">
-        <?php
-			/* Build query for from opinion desk */
-			$args = array();
-			$args['tax_query'] = array(
-	                array(
-	                    'taxonomy' => 'topic',
-	                    'field' => 'slug',
-	                    'terms' => array('opinion-desk'),
-	                    'operator' => 'IN'
-	                )
-	            );
-			$args['posts_per_page'] = 6;
-			$args['post__not_in'] = $excludebanter;
-			
-			$banter_featured = new WP_Query( $args );
-		?>
-        <?php while( $banter_featured->have_posts() ) {
-			$banter_featured->the_post();
-			if($banter_featured->current_post == 0 && !is_paged()){
-				echo '<ul class="opinion-desk-stream-list">';
-				echo '<li>';
-				get_template_part( 'content', 'summary-instream' );
-				echo '</li>';
-			}
-			else{
-				if($banter_featured->current_post == 1 && !is_paged()){
-					
-				}
-				echo '<li>';
-				get_template_part( 'content', 'summary-instream' );
-				echo '</li>';
-			}
-			$excludebanter[] = $post->ID;
-		} ?>
-				</ul>
-		<?php
-			// Restore original Post Data
-			wp_reset_postdata();
-		?>
-        </div>
-
-		<?php
-		
-			/* Build query for featured stories in banter */
-			$args = array();
-
-			$args['posts_per_page'] = 10;
-			$args['post__not_in'] = $excludebanter;
-			$args['tax_query'] = array(
-	                array(
-	                    'taxonomy' => 'category',
-	                    'field' => 'slug',
-	                    'terms' => array('oped'),
-	                    'operator' => 'IN'
-	                )
-	            );
-			$banter_featured = new WP_Query( $args );
-		
-		?>
-		
-		<ul class="list-stories homepage-banter-recent">
-		<?php while( $banter_featured->have_posts() ) : $banter_featured->the_post(); ?>
-
-			<li>
-
-				<span class="topic"><?php echo exa_topic( $post->ID ); ?><span class="summary-time-stamp"> &middot; <?php echo exa_human_time_diff(get_the_time('U')) ?> ago</span></span>
-				<h4><a href="<?php echo get_permalink( $post->ID ); ?>"><?php echo get_the_title( $post->ID ); ?></a></h4>
-
-			</li>
-
-		<?php endwhile; ?>
-		</ul>
-
-		<?php
-			// Restore original Post Data
-			wp_reset_postdata();
-		?>
-		</div>
-		<div class="all-link all-link-banter"><a href="<?php bloginfo('url'); ?>/oped/">All Opinion</a></div>
+	}
 
 
-
-	</div><!-- id="banter" -->
-
-	<div id="artsetc">
-
-		<div class="section-banner section-banner-artsetc">
-
-			<h2>ArtsEtc.</h2>
-
-		</div>
-		<div class="col-container clearfix">
-		<div class="featured-container featured-container-arts">
-		
-		<?php
-		
-			/* Build query for featured stories in arts */
-
-			$args = array();
-			$args['tax_query'] = array(
-	                array(
-	                    'taxonomy' => 'importance',
-	                    'field' => 'slug',
-	                    'terms' => array('featured'),
-	                    'operator' => 'IN'
-	                ), array(
-	                    'taxonomy' => 'category',
-	                    'field' => 'slug',
-	                    'terms' => array('artsetc'),
-	                    'operator' => 'IN'
-	                )
-	            );
-			$args['posts_per_page'] = 4;
-
-			$arts_featured = new WP_Query( $args );
-			$excludearts = array();
-		?>
-
-		<?php while( $arts_featured->have_posts() ) {
-			$arts_featured->the_post();
-			if($arts_featured->current_post == 0 && !is_paged()){
-				get_template_part( 'content', 'summary-featured' );
-			}
-			else{
-				if($arts_featured->current_post == 1 && !is_paged()){
-					echo '<ul class="featured-stream-list">';
-				}
-				echo '<li>';
-				get_template_part( 'content', 'summary-instream' );
-				echo '</li>';
-			}
-			$excludearts[] = $post->ID;
-		} ?>
-				</ul>
-		<?php
-			// Restore original Post Data
-			wp_reset_postdata();
-		?>
-		</div> <!-- class="featured-container featured-container-arts" -->
-
-		<?php
-		
-			/* Build query for featured stories in news */
-			$args = array();
-
-			$args['posts_per_page'] = 10;
-			$args['post__not_in'] = $excludearts;
-			$args['tax_query'] = array(
-	                array(
-	                    'taxonomy' => 'category',
-	                    'field' => 'slug',
-	                    'terms' => array('artsetc'),
-	                    'operator' => 'IN'
-	                )
-	            );
-			$arts_featured = new WP_Query( $args );
-		
-		?>
-		
-		<ul class="list-stories homepage-arts-recent">
-		<?php while( $arts_featured->have_posts() ) : $arts_featured->the_post(); ?>
-
-			<li>
-
-				<span class="topic"><?php echo exa_topic( $post->ID ); ?><span class="summary-time-stamp"> &middot; <?php echo exa_human_time_diff(get_the_time('U')) ?> ago</span></span>
-				<h4><a href="<?php echo get_permalink( $post->ID ); ?>"><?php echo get_the_title( $post->ID ); ?></a></h4>
-
-			</li>
-
-		<?php endwhile; ?>
-		</ul>
-
-		<?php
-			// Restore original Post Data
-			wp_reset_postdata();
-		?>
-		</div>
-		<div class="all-link all-link-arts"><a href="<?php bloginfo('url'); ?>/artsetc/">All Artsetc.</a></div>
-
-
-
-	</div><!-- id="artsetc" -->
-
-	<div id="sports">
-
-		<div class="section-banner section-banner-sports">
-
-			<h2>Sports</h2>
-
-		</div>
-		<div class="col-container clearfix">
-		<div class="featured-container featured-container-sports">
-		
-		<?php
-		
-			/* Build query for featured stories in sports */
-
-			$args = array();
-			$args['tax_query'] = array(
-	                array(
-	                    'taxonomy' => 'category',
-	                    'field' => 'slug',
-	                    'terms' => array('sports'),
-	                    'operator' => 'IN'
-	                ), array(
-	                    'taxonomy' => 'importance',
-	                    'field' => 'slug',
-	                    'terms' => array('featured'),
-	                    'operator' => 'IN'
-	                )
-	            );
-			$args['posts_per_page'] = 4;
-
-			$sports_featured = new WP_Query( $args );
-			$excludesports = array();
-		?>
-
-		<?php while( $sports_featured->have_posts() ) {
-			$sports_featured->the_post();
-			if($sports_featured->current_post == 0 && !is_paged()){
-				get_template_part( 'content', 'summary-featured' );
-			}
-			else{
-				if($sports_featured->current_post == 1 && !is_paged()){
-					echo '<ul class="featured-stream-list">';
-				}
-				echo '<li>';
-				get_template_part( 'content', 'summary-instream' );
-				echo '</li>';
-			}
-			$excludesports[] = $post->ID;
-		} ?>
-				</ul>
-		<?php
-			// Restore original Post Data
-			wp_reset_postdata();
-		?>
-		</div> <!-- class="featured-container" -->
-        
-
-		<?php
-		
-			/* Build query for featured stories in sports */
-			$args = array();
-			$args['tax_query'] = array(
-	                array(
-	                    'taxonomy' => 'category',
-	                    'field' => 'slug',
-	                    'terms' => array('sports'),
-	                    'operator' => 'IN'
-	                )
-	            );
-			$args['posts_per_page'] = 10;
-			$args['post__not_in'] = $excludesports;
-
-			$sports_featured = new WP_Query( $args );
-		
-		?>
-		
-		<ul class="list-stories homepage-sports-recent">
-		<?php while( $sports_featured->have_posts() ) : $sports_featured->the_post(); ?>
-
-			<li>
-
-				<span class="topic"><?php echo exa_topic( $post->ID ); ?><span class="summary-time-stamp"> &middot; <?php echo exa_human_time_diff(get_the_time('U')) ?> ago</span></span>
-				<h4><a href="<?php echo get_permalink( $post->ID ); ?>"><?php echo get_the_title( $post->ID ); ?></a></h4>
-
-			</li>
-
-		<?php endwhile; ?>
-		</ul>
-
-		<?php
-			// Restore original Post Data
-			wp_reset_postdata();
-		?>
-		</div>
-		<div class="all-link all-link-sports"><a href="<?php bloginfo('url'); ?>/sports/">All Sports</a></div>
-
-
-	</div><!-- id="sports" -->
+	?>
 
 
 
