@@ -7,6 +7,51 @@ body.author {
         margin-top: 0;
     }
 }
+.author-info {
+    display: block;
+    position: relative;
+    margin: 0 auto 24px;
+    text-align: center;
+    .author-avatar {
+        width: 140px;
+        height: 140px;
+        display: block;
+        overflow: hidden;
+        @include border-radius(70px);
+        margin: 24px auto 12px;
+        img {
+            width: 100%;
+            height: 100%;
+        }
+    }
+    .author-title {
+        display: block;
+        font-size: 32px;
+        margin: 12px auto;
+        font-family: $headline;
+        color: $hrld-black;
+    }
+    .twitter-follow-button {
+        margin-bottom: 12px;
+    }
+    span {
+        display: block;
+        line-height: normal;
+        color: $hrld-black;
+        font-family: $caption;
+        margin: 0 auto;
+        font-size: 14px;
+    }
+    .author-position {
+        color: $hrld-dark-grey;
+        font-size: 18px;
+        font-family: $headline;
+        margin: 6px auto 12px;
+        font-weight: 700;
+    }
+}
+
+
 .author-sidebar {
     display: block;
     .meta-author {
@@ -76,6 +121,36 @@ body.author {
     }
 }
 @media (min-width: 760px) {
+    .author-info {
+        // To prevent margin collapse
+        padding-top: 1px;
+        .author-avatar {
+            margin: 0 auto;
+            left: 0;
+            width: 160px;
+            height: 160px;
+            top: -80px;
+            right: 0;
+            position:absolute;
+            @include border-radius(80px);
+        }
+        .author-title {
+            margin: 92px auto 12px;
+        }
+        .twitter-follow-button {
+            margin-bottom: 0;
+            margin-left: 10px;
+            display: inline-block;
+            position: relative;
+            top: 4px;
+        }
+        .author-position {
+            margin: 0 auto 12px;
+            display: inline-block;
+        }
+    }
+
+
     .author-sidebar {
         .meta-author {
             float: left;
@@ -149,15 +224,23 @@ body.author {
     #stream.author-stream {
         margin-right: 0;
         margin-top: 12px;
-    }
-}
-@media (min-width: 1320px) {
-    #stream.author-stream {
-        width: 860px;
+        width: 100%;
     }
     .pinned-posts {
         .pinned-post {
-            width: 420px;
+            float: left;
+            width: 500px;
+            margin-right: 20px;
+            &:last-child {
+                margin-right: 0;
+            }
+        }
+    }
+}
+@media (min-width: 1320px) {
+    .pinned-posts {
+        .pinned-post {
+            width: 580px;
         }
     }
 }

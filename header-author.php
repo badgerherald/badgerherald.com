@@ -83,15 +83,16 @@ include('macros.php');
 			                ?>
 			            </div>
 
-			            <div class="title author-title">
+			            <div class="title author-title">	        
 			                <?php
-			                    if (is_single()) {
-			                        $post_author = get_userdata($post->post_author);
-			                        echo $post->post_title;
-			                        echo '<span class="byline"> <i>by</i> '.$post_author->display_name.'</span>';
-			                    } elseif (is_author()) {
+			                    if (is_author()) {
     								$author = get_user_by('id', get_query_var('author'));
-    								echo $author->display_name;
+    								$avatar_src = get_wp_user_avatar_src(get_the_author_meta('ID', get_query_var('author')), 'original');
+	            					$avatar_crop = hrld_resize(null, $avatar_src, 200, 200, true);
+	            					?>
+	            					<span class="avatar"><img src="<?php echo $avatar_crop['url']; ?>" alt="<?php echo $author->display_name;?>" width="<?php echo $avatar_crop['width'];?>" height="<?php echo $avatar_crop['height'];?>" /></span>
+	            					<?php
+    								echo '<span class="name">'.$author->display_name.'</span>';
 			                    }
 			                ?>
 			            </div>

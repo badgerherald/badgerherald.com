@@ -93,6 +93,27 @@ $(document).ready(function() {
 			}
 		});
 	}
+
+    /**
+     * Puts the Author's name in the fixed header when scrolled past the name in the body
+     * on Author pages.
+     *
+     * @since  v0.2
+     */
+    if ($(".title.author-title").length != 0) {
+        var author_name_pos = $(".author-info .author-title").offset().top;
+        $(window).resize( function() {
+            author_name_pos = $(".author-info .author-title").offset().top;
+        });
+        $(window).scroll( function() {
+            var scrollTop = $(window).scrollTop();
+            if (scrollTop > author_name_pos) {
+                $(".title.author-title").addClass("author-title-show");
+            } else {
+                $(".title.author-title").removeClass("author-title-show");
+            }
+        });
+    }
 	
 	window.setTimeout(function() {
 		$(".add-so-button").css({'top':'-30px','display':'block'}).animate({'top':'43px','display':'block'},200);
