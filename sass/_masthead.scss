@@ -1,6 +1,12 @@
 #masthead {
     left: inherit;
+    margin: 0;
 }
+
+.fixed-bar-placeholder {
+    height: 42px;
+}
+
 .fixed-bar {
 	position: fixed;
 	width: 100%;

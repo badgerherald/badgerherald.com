@@ -66,37 +66,6 @@ add_action( 'after_setup_theme', 'exa_setup' );
 
 
 /**
- * Outputs the mug for a user.
- * 
- * @since 0.2
- * @param int $user_id the user id to print a mug for.
- */
-function exa_mug($user_id) {
-	$src = get_wp_user_avatar_src($user_id, 'small-thumbnail');
-	echo "<img src='$src' />";
-}
-
-global $wp_functions;
-/**
- * 
- * 
- */
-function exa_round_mug($user_id) {
-
-	global $wpua_functions;
-	if(!has_wp_user_avatar($user_id)) {
-		$src = $wpua_functions->wpua_default_image('square');
-		$src = $src['src'];
-	} else {
-		$src = get_wp_user_avatar_src($user_id, 'square');
-	}
-	echo "<div class='round-mug mug'>";
-	echo "\t<img src='$src' />";
-	echo "</div>";
-}
-
-
-/**
  * This function fixes a bug with the default image src.
  * 
  */
@@ -1290,3 +1259,9 @@ function get_hrld_html_tag_close($tag = ""){
  * Load more functions for develop enviornment.
  */
 include_once('inc/functions-dev.php');
+
+/**
+ * Auto-generated html tags for things like
+ * author links, captions, &c.
+ */
+include_once('inc/functions-html-tags.php');

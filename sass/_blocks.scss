@@ -218,6 +218,12 @@
 	}
 }
 
+.leaderboard-block {
+	display:none;
+}
+
+
+
 @media (min-width: 760px) {
 
 	.column-block .column-block-article {
@@ -263,6 +269,10 @@
 			}
 
 		}
+	}
+
+	.leaderboard-block {
+		display: block;
 	}
 
 }
@@ -318,4 +328,175 @@
 		}
 	}
 
+
+
+
+
+}
+
+
+
+
+
+
+/********************************
+ * ARTICLE BLOCK ****************
+ ********************************/
+
+.article-display-block {
+	.hero img {
+		width:100%;
+		height:auto;
+	}
+
+	.article-text {
+		font-size: 17px;
+		line-height: 24px;
+	}
+
+	.article-title {
+		font-size: 30px;
+		line-height: 36px;
+		margin: 18px 0;
+	}
+
+	.article-header {
+
+		.article-meta {
+			font-family: $headline;
+			color: $hrld-dark-grey;
+			margin-bottom: 18px;
+			a {
+				color: $hrld-dark-grey;
+				font-weight: bold;
+				text-transform: uppercase;
+			}
+			a:hover {
+				color: $hrld-black;
+			}
+			.article-mug-box {
+				width:40px;
+				margin-right: 10px;
+				margin-top: -3px;
+				position: relative;
+				float:left;
+				img {
+					width: 100%;
+				}
+			}
+		}
+	}
+}
+
+@include breakpoint(tablet) {
+
+	.article-display-block {
+
+		.lede-sidebar {
+			float: right;
+			width: 300px;
+			margin-top: 12px;
+			display: block;
+			margin-left: 20px;
+			margin-bottom: 24px;
+			.popular-posts {
+				background: rgba(blue,.2);
+				margin:18px 0;
+				width:300px;
+				height:450px;
+			}
+		}
+
+		.article-text {
+			width: 540px;
+			margin-left: 80px;
+		}
+		.article-header {
+			margin-left: 80px;
+			width: 660px;
+			.article-meta {
+				.article-mug-box {
+					width:60px;
+					margin-right: 20px;
+					margin-left: -80px;
+					margin-top: -10px;
+				}
+			}
+		}
+
+	}
+}
+
+@include breakpoint(desktop) {
+
+	.article-display-block {
+
+		.lede-sidebar {
+			.sidebar-thing {
+				margin-bottom:300px;
+			}
+		}
+		.hero img {
+			max-width:700px;
+			width:700px;
+			display: block;
+			height:auto;
+			float: left;
+		}
+
+		.hero-ad {
+			float: left;
+			margin-left: 20px;
+		}
+
+		.article-header {
+			width: 620px;
+			.article-title {
+				font-size: 44px;
+				line-height: 48px;
+				margin-top: 24px;
+			}
+			.article-subhead {
+
+			}
+		}
+
+		.article-text {
+			width: 540px;
+			margin-left: 80px;
+		}
+
+	}
+
+}
+
+@include breakpoint(xl) {
+
+	.article-display-block {
+
+		.hero img {
+			max-width:860px;
+			width:860px;
+			height:600px;
+			float: left;
+		}
+
+		.hero-ad {
+			float: left;
+			margin-left: 20px;
+		}
+
+		.article-header {
+			width: 720px;
+			.article-title {
+				font-size: 44px;
+			}
+			.article-subhead {
+
+			}
+		}
+		.article-text {
+			width: 620px;
+		}
+	}
 }

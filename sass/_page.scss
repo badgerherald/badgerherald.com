@@ -45,12 +45,22 @@ body {
 	margin-top: 54px;
 }
 
+.dfw-unit {
+	display:none;
+}
+
+.dfw-mobile, .dfw-all {
+	display:block;
+}
+
 @media (min-width: 600px) {
 	body.admin-bar {
 		#pullout, .fixed-bar {
 			top: 46px !important;
 		}
 	}
+
+
 }
 @media (min-width: 760px) {
 	body.admin-bar {
@@ -73,9 +83,17 @@ body {
 		}
 	}
 
+	.dfw-tablet {
+		display:block;
+	}
+	.dfw-mobile:not(.dfw-tablet):not(.dfw-all) {
+		display: none;
+	}
+
 }
 
-@media (min-width: 1060px) {
+@include breakpoint(desktop) {
+
 	#primary {
 		padding: 0;
 	}
@@ -84,12 +102,26 @@ body {
 		max-width: 1020px;
 	}
 
+	.dfw-desktop {
+		display:block;
+	}
+	.dfw-mobile:not(.dfw-desktop):not(.dfw-all), .dfw-tablet:not(.dfw-desktop):not(.dfw-all) {
+		display: none;
+	}
+
 }
 
-@media (min-width:1320px) {
+@include breakpoint(xl) {
 
 	.wrapper {
 		max-width: 1180px;
+	}
+
+	.dfw-xl {
+		display:block;
+	}
+	.dfw-mobile:not(.dfw-xl):not(.dfw-all), .dfw-tablet:not(.dfw-xl):not(.dfw-all), .dfw-desktop:not(.dfw-xl):not(.dfw-all)  {
+		display: none;
 	}
 
 } 
