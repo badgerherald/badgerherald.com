@@ -198,7 +198,7 @@ $(document).ready(function() {
 
     $("#pullout .nav-stream-container").children(".nav-stream").first().addClass("active");
     $("ul#main-nav").children("li").first().addClass("active");
-
+/*
     if ($(".progress").length !== 0) {
         $(window).scroll(function() {
             var scrollTop = $(window).scrollTop();
@@ -207,7 +207,7 @@ $(document).ready(function() {
             $(".progress .progress-bar").attr("aria-valuenow", Math.floor(progress)).css("width", progress+"%");
         });
     }
-
+*/
 	
 	//Smooth scrolling to anchors from anchor links on same page.
 	$(function() {

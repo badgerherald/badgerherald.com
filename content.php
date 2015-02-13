@@ -35,8 +35,8 @@ global $DoubleClick;
 				</aside> */ ?>
 
 				<aside class="hero-ad">
-					<?php $DoubleClick->place_ad('bh:leaderboard',array('300x600','300x250'),array('xl')); ?>
-					<?php $DoubleClick->place_ad('bh:leaderboard','300x250',array('desktop')); ?>
+					<?php $DoubleClick->place_ad('bh:leaderboard',array('300x600','300x250'),array('desktop','xl')); ?>
+					<?php //$DoubleClick->place_ad('bh:leaderboard','300x250',array()); ?>
 				</aside>
 
 				<div class="clearfix"></div>
