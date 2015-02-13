@@ -14,6 +14,7 @@
 	top: 0;
     left: inherit;
 	background: rgba(239,244,246,1);
+    background: white;
 	border-bottom: 1px solid $hrld-dark-grey-border;
 	z-index: 9999;
 	.nav-control {
@@ -64,6 +65,7 @@
             width: 0;
             border: solid transparent;
             border-width: 10px 80px 0 80px;
+            display: none;
         }
         &:before {
             border-top-color: $hrld-blue;
