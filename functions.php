@@ -1265,3 +1265,8 @@ include_once('inc/functions-dev.php');
  * author links, captions, &c.
  */
 include_once('inc/functions-html-tags.php');
+
+/**
+ * Do all the fun ajax-y things.
+ */
+include_once('inc/functions-ajax.php');

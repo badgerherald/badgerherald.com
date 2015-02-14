@@ -153,6 +153,28 @@ $(document).ready(function() {
 		return vars;
 	}
 
+
+	/**
+	 * Insert Disqus Block when button is clicked.
+	 *
+	 * @since v0.2
+	 */
+	 var disqus_loaded = false;
+
+	function load_disqus() {
+
+ 		disqus_loaded = true;
+
+  		var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+  		dsq.src = "http://badgerherald.disqus.com/embed.js";
+  			(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  		var ldr = document.getElementById('disqus_loader');
+  		ldr.parentNode.removeChild(ldr);
+
+	}
+
+
+
 	/**
 	 * Open the pullout on pageload if pullout=true is a set get variable.
 	 *
@@ -235,6 +257,17 @@ $(document).ready(function() {
 	$(".answer-box label").click(function(e){
 		var answerParents = $(this).parents("div.quiz-question");
 		answerParents.find("li.answer-box").removeClass("inactive");
+	});
+
+	/**
+	 *
+	 *
+	 */
+	$('.comment-button').click( function(e) {
+		
+		e.preventDefault();
+		$(this).siblings('.comment-pane').show();
+
 	});
 
 });

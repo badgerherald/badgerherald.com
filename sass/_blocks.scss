@@ -214,7 +214,8 @@
 	display:none;
 	.ad {
 		display: block;
-		margin: 18px auto;
+		margin: 0 auto;
+		padding: 24px 0;
 	}
 }
 
@@ -344,6 +345,7 @@
  ********************************/
 
 .article-display-block {
+
 	.hero img {
 		width:100%;
 		height:auto;
@@ -389,6 +391,63 @@
 			}
 		}
 	}
+
+	.article-footnotes {
+
+		width:100%;
+		position: relative;
+		hr {
+			border-bottom: 2px solid $hrld-dark-grey;
+			width:180px;
+			margin-left:0;
+		}
+
+		p {
+			color: $hrld-dark-grey;
+			font-size: 14px;
+			font-family: $headline;
+		}
+	}
+
+	.comment-pane {
+		display: none;
+		color: #000;
+	}
+
+	.comment-button {
+		width: 120px;
+		padding:12px 0;
+		color:#fff;
+		background: $hrld-black;
+		font-weight: bold;
+		float:right;
+		text-align: center;
+		font-family: $headline;
+		border-radius: 3px;
+		margin-left: 20px;
+		margin-top: -6px;
+		position:relative;
+		&:after {
+			content: "";
+			display: block;
+			width: 0;
+			height: 0;
+			border-right: 10px solid transparent;
+			border-bottom: 10px solid transparent;
+			border-top: 10px solid #191919;
+			border-left: 10px solid #191919;
+			position: absolute;
+			bottom: -15px;
+			margin-left: 20px;
+		}
+		&:hover {
+			background: $hrld-blue;
+			&:after {
+				border-top-color: $hrld-blue;
+				border-left-color: $hrld-blue;
+			}
+		}
+	}
 }
 
 @include breakpoint(tablet) {
@@ -410,9 +469,20 @@
 			}
 		}
 
+		.footnote-sidebar {
+			width: 380px;
+			margin-left: 80px;
+			height: 400px;
+			display: block;
+			background: red;
+			float:right;
+			margin-top: -436px;
+		}
+
 		.article-text {
 			width: 540px;
 			margin-left: 80px;
+			position: relative;
 		}
 		.article-header {
 			margin-left: 80px;
@@ -426,7 +496,6 @@
 				}
 			}
 		}
-
 	}
 }
 
@@ -467,6 +536,11 @@
 		.article-text {
 			width: 540px;
 			margin-left: 80px;
+		}
+
+		.article-footnotes {
+			margin-left:80px;
+			width:540px;
 		}
 
 	}

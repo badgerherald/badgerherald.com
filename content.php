@@ -35,7 +35,7 @@ global $DoubleClick;
 				</aside> */ ?>
 
 				<aside class="hero-ad">
-					<?php $DoubleClick->place_ad('bh:leaderboard',array('300x600','300x250'),array('desktop','xl')); ?>
+					<?php $DoubleClick->place_ad('bh:leaderboard','300x250',array('desktop','xl')); ?>
 					<?php //$DoubleClick->place_ad('bh:leaderboard','300x250',array()); ?>
 				</aside>
 
@@ -111,6 +111,26 @@ global $DoubleClick;
 				<section class="article-text">
 
 					<?php the_content(); ?>
+
+				</section>
+
+				<section class="footnote-sidebar">
+					Article tweets place.
+				</section>
+
+				<div class="clearfix"></div>
+
+				<section class="article-footnotes">
+
+					<hr/>
+
+					<a class="comment-button" href="#">Comments</a>
+					<p>This article was published <strong><?php the_time("M j, Y") ?></strong> at <strong><?php the_time("g:i a"); ?></strong>, and last updated <strong><?php the_modified_time("M j, Y") ?></strong> at <strong><?php the_modified_time("g:i a"); ?></strong>.<p>
+
+						
+					<div class="comment-pane">
+						<?php comments_template(); ?> 
+					</div>
 
 				</section>
 
