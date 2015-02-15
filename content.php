@@ -8,6 +8,7 @@
  */
 
 global $DoubleClick;
+global $post;
 ?>
 
 <div class="block article-display-block">
@@ -59,7 +60,7 @@ global $DoubleClick;
 
 					<!-- <a class="article-section"><?php echo exa_section(); ?></a> -->
 
-					<h1 class="article-title"><?php the_title(); ?></h1>
+					<?php echo exa_get_tweet_link(get_the_title(),null,'article-title',1); ?>
 				
 				<?php if( hrld_has_subhead(get_the_ID()) ) : ?>
 				
@@ -69,13 +70,41 @@ global $DoubleClick;
 
 					<div class="article-meta">
 
-						<div class="article-mug-box">
+						<aside class="aside-pane aside-author" style="margin-left: -560px; top: 728px;">
+								
+								<?php exa_round_mug( get_the_author_meta('ID') ); ?>
+								<h3>Also by <?php the_author() ?></h3>
+
+								<?php 
+								// the query
+								$the_query = new WP_Query( array("author" => get_the_author_meta('ID')) ); ?>
+								
+								<?php if ( $the_query->have_posts() ) : ?>
+								
+									<!-- pagination here -->
+								
+									<!-- the loop -->
+									<?php while ( $the_query->have_posts() ) : $the_query->the_post(); ?>
+										<p><a href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>"><?php the_title(); ?></a></p>
+									<?php endwhile; ?>
+									<!-- end of the loop -->
+								
+									<!-- pagination here -->
+								
+									<?php wp_reset_postdata(); ?>
+								
+								<?php else : ?>
+									<p><?php _e( 'Sorry, no posts matched your criteria.' ); ?></p>
+								<?php endif; ?>
+
+						</aside>
+						<div class="article-mug-box open-author-pane">
 							<?php exa_mug($post->user_id,'small-thumbnail') ?>
 						</div>
 						
 						<span class="meta-author">
 							by 
-							<a href="<?php exa_the_author_link() ?>" title="<?php echo exa_properize(get_the_author()); ?> Profile">
+							<a class="author-link" href="<?php exa_the_author_link() ?>" title="<?php echo exa_properize(get_the_author()); ?> Profile">
 								<?php the_author() ?>
 							</a>
 						</span> &middot;
@@ -120,11 +149,13 @@ global $DoubleClick;
 
 				</section>
 
+				<?php echo exa_get_tweet_link(get_the_title(),null,'article-title',1); ?>
 				<section class="footnote-sidebar">
 					Article tweets place.
 				</section>
 
 				<div class="clearfix"></div>
+
 
 				<section class="article-footnotes">
 
@@ -138,6 +169,7 @@ global $DoubleClick;
 						<?php comments_template(); ?> 
 					</div>
 
+					
 				</section>
 
 			</main>

@@ -41,6 +41,14 @@ include_once('inc/functions-dev.php');
 include_once('inc/functions-html-tags.php');
 
 /**
+ * Social links
+ * 
+ * Contents:
+ *   - Currently nothing of importance is done in here.
+ */
+include_once('inc/functions-social.php');
+
+/**
  * Register icymi taxonomy.
  * 
  * Contents:
@@ -150,6 +158,12 @@ function exa_scripts_styles() {
 
 	if( ! is_singular('interactive') ) {
 		
+		/**
+		 * Load fontastic font.
+		 * @see ./css/fontastic/icon-reference.html 
+		 */
+		wp_enqueue_style( 'exa-icons', get_template_directory_uri() . '/css/fontastic/styles.css' );
+
 		/* Load main stylesheet. */
 		wp_enqueue_style( 'exa-style', get_stylesheet_uri() );
 

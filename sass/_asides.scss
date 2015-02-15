@@ -1,0 +1,37 @@
+.aside-pane {
+	position: absolute;
+	width: 380px;
+	left:0px;
+	display: block;	
+}
+
+.aside-author {
+	padding: 24px 0px;
+	background: #fff;
+	color : $hrld-black;
+	p {
+		border-top: 1px solid $hrld-dark-grey;
+		margin:0;
+		a {
+			padding: 12px 20px;
+			color : $hrld-black;
+			display: block;
+			font-family: $body;
+			font-weight: 700;
+			font-style: italic;
+			
+			&:hover {
+				color: $hrld-blue;
+			}
+		}
+	}
+	h3 {
+		text-transform: uppercase;
+		text-align: center;
+	}
+	.round-mug {
+		position: absolute;
+		left : 150px;
+		top : -54px;
+	}
+}

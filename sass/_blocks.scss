@@ -412,9 +412,20 @@
 		p {
 			margin-bottom: 30px;
 		}
+		a {
+			padding: 0px 4px;
+			margin: 0 -2px;
+			border-radius: 2px;
+			background: rgba(#c7d0d5,.05);
+			color: #195ea6;
+			text-shadow: 1px 1px rgba($hrld-blue,.1);
+			&:hover {
+				color: $hrld-blue;
+			}
+		}
 	}
 
-	.article-title {
+	.article-title, .article-title h1 {
 		font-size: 30px;
 		line-height: 36px;
 		margin: 18px 0;
@@ -463,13 +474,13 @@
 			font-family: $headline;
 			color: $hrld-dark-grey;
 			margin-bottom: 18px;
-			a {
+			a.author-link {
 				color: $hrld-dark-grey;
 				font-weight: bold;
 				text-transform: uppercase;
-			}
-			a:hover {
-				color: $hrld-black;
+				&:hover {
+					color: $hrld-black;
+				}
 			}
 			.article-mug-box {
 				width:40px;
@@ -542,7 +553,10 @@
 	}
 }
 
+
+
 @include breakpoint(tablet) {
+
 
 	.article-display-block {
 
@@ -586,6 +600,33 @@
 					margin-right: 20px;
 					margin-left: -80px;
 					margin-top: -10px;
+				}
+			}
+
+			.article-title h1 {
+				position: relative;
+				&:before {
+					content: 't';
+					font-size: 18px;
+					color: $hrld-dark-grey;
+					left: -(38px+50px);
+					top:-0px;
+					display: block;
+					font-family: $icon;
+					position: absolute;
+					visibility: hidden;
+					opacity: 0;
+				}
+			}
+			.article-title:hover h1 {
+				&:before {
+					-webkit-transition: all .2s ease-in-out;
+    				-moz-transition: all .2s ease-in-out;
+    				-o-transition: all .2s ease-in-out;
+    				transition: all .2s ease-in-out;
+					left: -40px;
+					visibility: visible;
+					opacity: 1;
 				}
 			}
 		}
@@ -640,7 +681,8 @@
 
 		.article-header {
 			width: 620px;
-			.article-title {
+			.article-title, .article-title h1 {
+				color: #000;
 				font-size: 44px;
 				line-height: 48px;
 				margin-top: 24px;
@@ -677,7 +719,7 @@
 
 		.article-header {
 			width: 720px;
-			.article-title {
+			.article-title, .article-title h1 {
 				font-size: 44px;
 			}
 			.article-subhead {
