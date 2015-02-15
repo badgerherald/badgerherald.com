@@ -43,7 +43,10 @@ get_header(); ?>
 
 		<?php endwhile; ?>
 
-		<div class="all-link pagination-link"><?php next_posts_link( 'Older' ); ?></div>
+		<div class="all-link pagination-link">
+			<div class="author-pagination pagination-prev"><?php previous_posts_link( 'Newer' ); ?></div>
+			<div class="author-pagination pagination-next"><?php next_posts_link( 'Older' ); ?></div>
+		</div>
 
 	<?php elseif ($query->is_archive) : ?>
 		<?php //get_template_part( 'content', 'none' ); ?>
