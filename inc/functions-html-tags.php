@@ -1,6 +1,10 @@
 <?php
 
-function exa_media_credit_tag() {
+/**
+ * Returns a media credit tag for the current posts feature image.
+ * 
+ */
+function exa_hero_media_credit_tag() {
 	
 	global $post;
 
@@ -34,8 +38,32 @@ function exa_media_credit_tag() {
 
 	endif;
 
-	echo $html_text;
+	return $html_text;
 	
+}
+
+function exa_hero_caption_text() {
+	
+	global $post;
+
+	$thumb_id = get_post_thumbnail_id($post->ID);
+
+	$args = array(
+		'post_type' => 'attachment',
+		'post_status' => null,
+		'post_parent' => $post->ID,
+		'include'  => $thumb_id
+	); 
+
+	$thumb_image = get_post($thumb_id);
+	$excerpt = $thumb_image->post_excerpt;
+
+	return $excerpt;
+
+}
+
+function exa_hero_caption() {
+	echo "<p class='hero-caption'>" . exa_hero_caption_text() . exa_hero_media_credit_tag() ."</p>";
 }
 
 /**

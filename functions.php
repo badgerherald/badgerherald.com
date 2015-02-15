@@ -4,10 +4,85 @@
  *
  * Contents:
  *
+ * 		#region: include other fuction files.
+ * 		#region: general wordpress theme setup.
+ * 		#region: filters that fix bugs and other things.
+ *
+ *
+ *
+ */
+
+
+/**
+ * ================================================================================================
+ *   #region: include other fuction files.
+ * ================================================================================================
+ */
+
+/**
+ * Load more functions for develop enviornment.
  * 
- *
- *
- *
+ * Contents:
+ *   - exa_dev_attachment_url()				(filter: wp_get_attachment_url)
+ */
+include_once('inc/functions-dev.php');
+
+/**
+ * Auto-generated html tags for things like
+ * author links, captions, &c.
+ * 
+ * Contents:
+ * 	 - exa_hero_media_credit_tag()
+ *   - exa_hero_caption_text()
+ *   - exa_hero_caption()
+ *   - exa_mug()
+ *   - exa_round_mug()
+ */
+include_once('inc/functions-html-tags.php');
+
+/**
+ * Register icymi taxonomy.
+ * 
+ * Contents:
+ * 	 - exa_register_icymi_taxonomy()		(action: init)
+ */
+include_once('inc/functions-icymi.php');
+
+/**
+ * Register importance taxonomy.
+ * 
+ * Contents:
+ *	 - // todo: list contents.
+ */
+include_once('inc/functions-importance.php');
+
+/**
+ * Ad setup and handling in exa.
+ * 
+ * Contents:
+ *   - exa_ad_setup()						(action: dfw_setup)
+ *   - exa_register_content_adslot()		(action: dfw_setup)
+ *   - exa_insert_after_graph()
+ */
+include_once('inc/functions-ads.php');
+
+/**
+ * Do all the fun ajax-y things.
+ * 
+ * Contents:
+ *   - Currently nothing of importance is done in here.
+ */
+include_once('inc/functions-ajax.php');
+
+
+
+
+
+
+/**
+ * ================================================================================================
+ *   #region: general wordpress theme setup.
+ * ================================================================================================
  */
 
 /**
@@ -16,7 +91,6 @@
  */
 if ( ! isset( $content_width ) )
 	$content_width = 690;
-
 
 /**
  * Exa should run on WordPress 3.6 or later.
@@ -66,114 +140,9 @@ add_action( 'after_setup_theme', 'exa_setup' );
 
 
 /**
- * This function fixes a bug with the default image src.
- * 
- */
-function _fix_wpua_src($image_src_array, $attachment_id, $size='thumbnail', $icon=0) {
-
-	global $wpua_avatar_default, $wpua_functions;
-
-	// if we have a default avatar.
-	if(!empty($wpua_avatar_default) && $wpua_functions->wpua_attachment_is_image($wpua_avatar_default)) {
-
-		if( is_array($size) && is_string($size[0]) ) {
-			$size = $size[0];
-			$image = wp_get_attachment_image_src($attachment_id, $size, $icon);
-			return $image;
-		}
-	}
-	return $image_src_array;
-}
-add_filter('wpua_get_attachment_image_src', '_fix_wpua_src',10,4);
-
-/**
- * Setup doubleclick breakpoints and network codes.
- * 
- * @see https://github.com/willhaynes/DoubleClick-for-Wordpress
- * @since 0.2
- */
-function exa_ad_setup() {
-
-	global $DoubleClick;
-
-	$DoubleClick->networkCode = "8653162";
-
-	if( !hrld_is_production() )
-		$DoubleClick->debug = true;
-
-	/* breakpoints */
-	$DoubleClick->register_breakpoint('phone',		array('minWidth'=>0,'maxWidth'=>720));
-	$DoubleClick->register_breakpoint('tablet',		array('minWidth'=>760,'maxWidth'=>1040));
-	$DoubleClick->register_breakpoint('desktop',	array('minWidth'=>1040,'maxWidth'=>1220));
-	$DoubleClick->register_breakpoint('xl',			array('minWidth'=>1220,'maxWidth'=>9999));
-
-}
-add_action('dfw_setup','exa_ad_setup');
-
-/**
- * Adds filter to content to display in the middle of content on mobile devices.
- * 
- * @since 0.2
- */
-function exa_register_content_adslot() {
-
-	global $DoubleClick;
-	if ( is_single() && ! is_admin() ) {
-		add_filter('the_content','_exa_register_content_adslot');
-	}
-
-}
-add_action('dfw_setup','exa_register_content_adslot');
-
-/**
- * Filters content and ads an adspot for phone and tablet devices.
- * 
- * Registered in exa_register_content_adslot()
- * 
- * @uses exa_insert_after_graph
- * 
- * @param string $content The post content is passed in.
- * @since 0.2
- */
-function _exa_register_content_adslot($content) {
-	
-	global $DoubleClick;
-
-	if ( is_single() && ! is_admin() ) {
-		$ad = $DoubleClick->get_ad_placement('bh:sidekick','300x250',array('phone','tablet'));
-		$ad = "<div class='ad ad-in-content mobile-tablet'>" . $ad . "</div>";
-        return exa_insert_after_graph( $ad, $content, 3 );
-    }
-    return $content;
-}
-
-/**
- * Inserts a string in between paragraphs.
- * 
- * @param string $insertion The string to insert.
- * @param string $content The content to insert into.
- * @param int $graph The paragraph to insert after.
- * @since 0.2
- */
-function exa_insert_after_graph( $insertion, $content, $graph ) {
-	
-	$graphs = explode( '</p>', $content );
-	foreach ($graphs as $i => $p) {
-	    if ( trim( $p ) ) {
-	        $graphs[$i] .= '</p>';
-	    }
-	    if ( $graph_id == $i + 1 ) {
-	        $graphs[$i] .= $insertion;
-	    }
-	}
-	return implode( '', $graphs );
-	
-}
-
-/**
  * Enqueues scripts and styles for front end.
  *
- * @since 0.1
+ * @since v0.1
  */
 function exa_scripts_styles() {
 	
@@ -184,10 +153,6 @@ function exa_scripts_styles() {
 		/* Load main stylesheet. */
 		wp_enqueue_style( 'exa-style', get_stylesheet_uri() );
 
-		/* Load swipe library */
-		/* TODO: only homepage */
-		wp_enqueue_script( 'swipe', get_template_directory_uri() . '/js/Swipe/swipe.js', array(), '2.0', true );
-
 		/* Load fastclick library */
 		wp_enqueue_script( 'fastclick', get_template_directory_uri() . '/js/fastclick/lib/fastclick.js', array(), '0.6.11', true );	
 	
@@ -195,11 +160,11 @@ function exa_scripts_styles() {
 
 		wp_enqueue_style( '', 'http://badgerherald.com/interactive/' . get_post_meta(get_the_ID(), '_hrld_interactive_include', true) . '/css/style.css' );
 
-
 	}
 	
 }
 add_action( 'wp_enqueue_scripts', 'exa_scripts_styles' );
+
 
 /**
  * Enqueues scripts and styles for admin.
@@ -242,6 +207,37 @@ add_filter('excerpt_more', 'new_excerpt_more');
 
 
 /**
+ * ================================================================================================
+ *   #region: filters that fix bugs and other things.
+ * ================================================================================================
+ */
+
+/**
+ * This function fixes a bug with the default image src.
+ * 
+ * @since v0.2
+ */
+function _fix_wpua_src($image_src_array, $attachment_id, $size='thumbnail', $icon=0) {
+
+	global $wpua_avatar_default, $wpua_functions;
+
+	// if we have a default avatar.
+	if(!empty($wpua_avatar_default) && $wpua_functions->wpua_attachment_is_image($wpua_avatar_default)) {
+
+		if( is_array($size) && is_string($size[0]) ) {
+			$size = $size[0];
+			$image = wp_get_attachment_image_src($attachment_id, $size, $icon);
+			return $image;
+		}
+	}
+	return $image_src_array;
+
+}
+add_filter('wpua_get_attachment_image_src', '_fix_wpua_src',10,4);
+
+
+
+/**
  * Get the list of beats (topic taxonomy) for a post.
  * 
  * @since 0.1
@@ -251,32 +247,6 @@ function exa_get_beats() {
 
 	global $post;
 	return wp_get_post_terms(get_the_ID(),"topic");
-
-}
-
-/**
- * Returns a boolean specifying if the post is featured or not.
- * 
- * @since 0.1
- * @return boolean True if post is marked "featured", False if not.
- */
-function exa_is_featured() {
-
-	global $post;
-	return (in_array("Featured",wp_get_post_terms(get_the_ID(),importance,array("fields" => "names"))));
-
-}
-
-/**
- * Returns a boolean specifying if the post is marked in_stream or not.
- * 
- * @since 0.1
- * @return boolean True if post is marked "in stream", False if not.
- */
-function exa_is_instream() {
-
-	global $post;
-	return (in_array("In Stream",wp_get_post_terms(get_the_ID(),importance,array("fields" => "names"))));
 
 }
 
@@ -935,6 +905,23 @@ add_filter( 'wp_title', 'exa_filter_wp_title' );
 
 
 /**
+ * Returns a string with the section.
+ * 
+ * @since v0.2
+ * @return string section.
+ */
+function exa_section() {
+	global $post;
+
+	$section = get_the_category();
+	if( $section ) {
+		$section = $section[0]->name;
+		$section = $section == 'oped' ? $section = 'opinion' : $section;
+	}
+	return $section;
+}
+
+/**
  * Prints open graph tags to the head of wordpress pages.
  *
  * @since 0.1
@@ -1254,19 +1241,3 @@ function get_hrld_html_tag_close($tag = ""){
 	}
 	return $result;
 }
-
-/**
- * Load more functions for develop enviornment.
- */
-include_once('inc/functions-dev.php');
-
-/**
- * Auto-generated html tags for things like
- * author links, captions, &c.
- */
-include_once('inc/functions-html-tags.php');
-
-/**
- * Do all the fun ajax-y things.
- */
-include_once('inc/functions-ajax.php');

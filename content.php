@@ -29,15 +29,18 @@ global $DoubleClick;
 
 				<?php the_post_thumbnail('image-post-size'); ?>
 				
-				<?php /*
-				<aside class="hero-caption">
-					<?php exa_media_credit_tag(); ?>
-				</aside> */ ?>
+				
+				<aside class="hero-aside">
 
-				<aside class="hero-ad">
-					<?php $DoubleClick->place_ad('bh:leaderboard','300x250',array('desktop','xl')); ?>
-					<?php //$DoubleClick->place_ad('bh:leaderboard','300x250',array()); ?>
-				</aside>
+					<div class="hero-ad">
+
+						<?php $DoubleClick->place_ad('bh:leaderboard','300x250',array('desktop','xl')); ?>
+						
+					</div>
+
+					<?php exa_hero_caption(); ?>
+
+				</aside>  
 
 				<div class="clearfix"></div>
 
@@ -54,10 +57,14 @@ global $DoubleClick;
 				?>
 				<header class="article-header">
 
+					<!-- <a class="article-section"><?php echo exa_section(); ?></a> -->
+
 					<h1 class="article-title"><?php the_title(); ?></h1>
 				
 				<?php if( hrld_has_subhead(get_the_ID()) ) : ?>
-					<h2 class="article-excerpt"><?php if(hrld_has_subhead(get_the_ID())){hrld_the_subhead();} ?></h2>
+				
+					<h2 class="article-subhead"><?php hrld_the_subhead(); ?></h2>
+				
 				<?php endif; ?>
 
 					<div class="article-meta">
@@ -74,8 +81,7 @@ global $DoubleClick;
 						</span> &middot;
 
 						<span class="meta-time">
-							Posted 
-							<strong><?php the_time("M j, Y") ?></strong> 
+							<?php the_time("M j, Y") ?>
 						</span>
 
 					</div>
