@@ -267,16 +267,6 @@ $(document).ready(function() {
 		answerParents.find("li.answer-box").removeClass("inactive");
 	});
 
-	/**
-	 *
-	 *
-	 */
-	$('.comment-button').click( function(e) {
-		
-		e.preventDefault();
-		$(this).siblings('.comment-pane').show();
-
-	});
 
 	/**
 	 * Open a tweet pane
@@ -308,6 +298,19 @@ $(document).ready(function() {
 
 		// Create a new pane.
 		var pane = createPane($(this),"author",true);
+
+	});
+
+	/**
+	 *
+	 *
+	 */
+	$('.open-comments-pane').click( function(e) {
+		
+		e.preventDefault();
+
+		// Create the pane.
+		var pane = createPane($(this),"comments",true);
 
 	});
 
@@ -422,7 +425,7 @@ $(document).ready(function() {
 		var scrollTop = $(window).scrollTop();
 		var clearance = 120;
 
-		pane.css("top",anchorTop - wrapper.offset().top);
+		// pane.css("top",anchorTop - wrapper.offset().top);
 
 
 		if( anchorTop < scrollTop + clearance ) {

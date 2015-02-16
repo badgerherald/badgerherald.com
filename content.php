@@ -129,7 +129,7 @@ global $post;
 					</div>
 
 					<div class="popular-posts sidebar-thing">
-						Pop Posts
+						<?php the_widget( "Popular_Post_Widget"); ?>
 					</div>
 
 					<div class="ad sidebar-thing">
@@ -149,7 +149,6 @@ global $post;
 
 				</section>
 
-				<?php echo exa_get_tweet_link(get_the_title(),null,'article-title',1); ?>
 				<section class="footnote-sidebar">
 					Article tweets place.
 				</section>
@@ -161,13 +160,9 @@ global $post;
 
 					<hr/>
 
-					<a class="comment-button" href="#">Comments</a>
+					<aside class="aside-pane comments-pane" style="margin-left: -560px;bottom:0px;height:600px;overflow:scroll;"><?php comments_template(); ?></aside>
+					<a class="comment-button open-comments-pane" href="#">Comments</a>
 					<p>This article was published <strong><?php the_time("M j, Y") ?></strong> at <strong><?php the_time("g:i a"); ?></strong>, and last updated <strong><?php the_modified_time("M j, Y") ?></strong> at <strong><?php the_modified_time("g:i a"); ?></strong>.<p>
-
-						
-					<div class="comment-pane">
-						<?php comments_template(); ?> 
-					</div>
 
 					
 				</section>

@@ -57,6 +57,14 @@ include_once('inc/functions-social.php');
 include_once('inc/functions-icymi.php');
 
 /**
+ * Registers Popular_Post_Widget
+ * 
+ * Contents:
+ * 	 - exa_register_icymi_taxonomy()		(action: init)
+ */
+include_once('inc/functions-popular-post-widget.php');
+
+/**
  * Register importance taxonomy.
  * 
  * Contents:

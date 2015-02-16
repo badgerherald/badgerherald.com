@@ -567,11 +567,53 @@
 			display: block;
 			margin-left: 20px;
 			margin-bottom: 24px;
-			.popular-posts {
-				background: rgba(blue,.2);
+			.popular-post-widget {
+				background: #fff;
 				margin:18px 0;
 				width:300px;
-				height:450px;
+				position: relative;
+				h3 {
+					width: 100%;
+					background: $hrld-black;
+					font-family: $headline;
+					text-transform: uppercase;
+					color: #fff;
+					margin: 0;
+					text-align: center;
+					padding: 12px 20px;
+
+				}
+				ul {
+					list-style-type: none;
+					padding: 0;
+					margin: 0;
+					li {
+						padding: 0;
+						margin: 0;
+						border-bottom: 1px solid #d7dbdd;
+						position:relative;
+						.graph-bar {
+							border: 0;
+							display: block;
+							background: $hrld-blue;
+							height: 2px;
+							margin-bottom:-1px;
+							z-index:1;
+							left: 0px;
+							text-align: left;
+						}
+						a {
+							display: block;
+							font-family: $headline;
+							color: #000;
+							padding: 12px 20px;
+							font-weight:700;
+							&:hover {
+								color: $hrld-blue;
+							}
+						}
+					}
+				}
 			}
 		}
 
