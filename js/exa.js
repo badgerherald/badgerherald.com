@@ -121,6 +121,7 @@ $(document).ready(function() {
 		return vars;
 	}
 
+
     /**
      * Toggles the class of the pullout navigation
      * 
@@ -227,7 +228,7 @@ $(document).ready(function() {
      * Handles the width calculations of the article progress bar
      *
      * @since  v0.2
-     */
+
     if ($(".progress").length !== 0) {
         $(window).scroll(function() {
             var scrollTop = $(window).scrollTop();
@@ -236,8 +237,8 @@ $(document).ready(function() {
             $(".progress .progress-bar").attr("aria-valuenow", Math.floor(progress)).css("width", progress+"%");
         });
     }
+    */
 
-	
 	//Smooth scrolling to anchors from anchor links on same page.
 	$(function() {
 	  $('a[href*=#]:not([href=#])').click(function() {
@@ -265,5 +266,212 @@ $(document).ready(function() {
 		var answerParents = $(this).parents("div.quiz-question");
 		answerParents.find("li.answer-box").removeClass("inactive");
 	});
+
+
+	/**
+	 * Open a tweet pane
+	 *
+	 *
+
+	$(".article-title.tweet-link").click( function(e) {
+
+		e.preventDefault();
+
+		// Create a new pane.
+		var pane = createPane($(this),"tweet",true);
+
+		var href = $(this).attr('href');
+
+		// pane.append('<iframe src="' + href + '"></iframe>');
+
+	});
+	 */
+
+	/**
+	 * Open an author pane
+	 *
+	 *
+	 */
+	$(".open-author-pane").click( function(e) {
+
+		e.preventDefault();
+
+		// Create a new pane.
+		var pane = createPane($(this),"author",true);
+
+	});
+
+	/**
+	 *
+	 *
+	 */
+	$('.open-comments-pane').click( function(e) {
+		
+		e.preventDefault();
+
+		// Create the pane.
+		var pane = createPane($(this),"comments",true);
+
+	});
+
+
+	/**
+	 * Creates a new pane and inserts it before
+	 * the passed in anchor.
+	 *
+	 * Also positions the pane and animates to its existance
+	 * in the case that it would be slightly off screen.
+	 *
+	 * @since v0.2
+	 */
+
+	var isPaneOpen = false;
+	var openPane;
+	var paneAnchor;
+	var anchorBottom;
+
+	function createPane(anchor,type,anchorBottom) {
+
+		anchorBottom = anchorBottom;
+
+		var block = anchor.parents('.block');
+		var wrapper = block.children('.wrapper');
+
+		if (!anchor.prev('*').hasClass('aside-pane') ){
+			var pane = $('<aside class="aside-pane aside-' + type + '">dd</aside>').insertBefore(anchor);
+		}
+		else {
+			var pane = anchor.prev('*');
+		}
+
+
+		$('<div id="#screen" class="screen"></div>').css({
+			"background":"green",
+			"width":"100%",
+			"height":"2000px",
+			"position":"fixed",
+			"left": "0",
+			"top" : "0",
+			"z-index": "4",
+			"background":"#eff4f6",
+			"opacity":".5"
+		}).prependTo('#page');
+		
+		pane.css({
+			"z-index":"5"
+		});
+
+		$('.screen').click(function () {
+			closePane();
+		});
+
+		var width = pane.outerWidth();
+		paneAnchor = anchor;
+
+		block.animate({'position':'relative','left':width+180});
+		openPane = pane.css({
+			'margin-left':-(width + 180),
+			'display':'block'
+		});
+
+		// window scroll decides how to position the pane
+		isPaneOpen = true;
+
+		var clearance = 120;
+
+		var pane = openPane;
+		var anchor = paneAnchor;
+		var block = pane.parents('.block');
+		var wrapper = block.children('.wrapper');
+		var anchorTop = anchor.offset().top;
+		var anchorHeight = anchor.outerHeight();
+
+		var scrollTop = $(window).scrollTop();
+
+		var blockTop = block.offset().top;
+		var blockBottom = blockTop + block.outerHeight();
+
+		var paneBottom = scrollTop+pane.outerHeight()+240;
+	
+		anchorPane();
+
+		return pane;
+
+	}
+
+	function closePane() {
+
+		$('.screen').remove();
+		var block = paneAnchor.parents('.block');
+		block.animate({'position':'relative','left':0});
+		openPane.css({'display':'none'});
+
+		openPane = false;
+		isPaneOpen = false;
+		paneAnchor = null;
+	}
+
+	function anchorPane() {
+
+		var anchor = paneAnchor;
+		var pane = openPane;
+		var block = anchor.parents('.block');
+		var wrapper = block.children('.wrapper');
+
+		var anchorTop = anchor.offset().top;
+		var anchorHeight = anchor.outerHeight();
+		var anchorBottom = anchorTop + anchorHeight;
+
+		var scrollTop = $(window).scrollTop();
+		var clearance = 120;
+
+		// pane.css("top",anchorTop - wrapper.offset().top);
+
+
+		if( anchorTop < scrollTop + clearance ) {
+			$("html, body").animate({ scrollTop: anchorTop - clearance });
+		} else if( anchorBottom > scrollTop + $(window).height()/3) {
+			$("html, body").animate({ scrollTop: anchorTop - $(window).height()/3 });
+		}
+
+
+/*
+		// This is not good enough. We must also check that we don't overflow our length.
+
+		var paneTop = pane.offset().top;
+		var paneBottom = paneTop + pane.outerHeight();
+
+
+		var blockTop = block.offset().top;
+		var blockBottom = blockTop + block.outerHeight();
+
+		if ( paneBottom > blockBottom ) {
+
+			pane.css({
+				"top":"inherit",
+				"bottom":"30px"
+			});
+
+			// But now it might be taller than our screen, or the amount of block showing.
+	
+			console.log('pt:'+paneTop);
+			console.log('st:'+scrollTop);
+			if( paneTop < blockTop || paneTop > scrollTop ) {
+	
+				var height = Math.max(blockTop,scrollTop);
+
+				height = $(window).height()  - (height - scrollTop) - 120;
+
+				pane.css({
+					"height":height
+				});
+
+			}
+
+		}
+
+		*/
+
+	}
 
 });

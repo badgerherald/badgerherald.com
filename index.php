@@ -3,15 +3,10 @@
  *
  * BH Homepage Theme.
  * 
- *
- * @package WordPress
- * @subpackage Twenty_Thirteen
- * @since Twenty Thirteen 1.0
  */
 
-// Set up ads for current page.
+
 global $DoubleClick;
-// Done ads.
 
 get_header();
 
@@ -29,9 +24,23 @@ get_header();
 													   * the slider script. 
 													   */ ?>
 
+	<?php include('inc/homepage.php'); ?>
+
+	<?php $q = $homepage->queryCover(); ?>
+
+	<?php while( $q->have_posts() ) : $q->the_post();?>
+
+		<?php get_template_part('inc/block','cover'); ?>
+
+	<?php endwhile; ?>
+
+	<?php get_template_part('inc/block','columns'); ?>
+	<?php get_template_part('inc/block','billboard'); ?>
+
+
 	<div id="above-fold">
 
-	<div  id="slider">
+	<div id="slider">
 
 			<div id="swipe" class="swipe">
 

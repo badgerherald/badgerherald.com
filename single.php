@@ -9,47 +9,22 @@
 
 // Set up ads for current page.
 global $DoubleClick;
-// Done ads.
 
-get_header(); 
+get_header('minimal'); 
+get_template_part( 'inc/block', 'leaderboard' );
 ?>
 
 <?php /* The loop */ ?>
+
 <?php while ( have_posts() ) : the_post(); ?>
 
 	<?php get_template_part( 'content', get_post_format() ); ?>
-	<div class="clearfix"></div>
 
+    <div class="clearfix"></div>
 
+    <?php get_template_part('inc/block','billboard'); ?>
+    <?php get_template_part('inc/block','cover'); ?>
 
-    <?php if(rand(0,1)) : ?>
-
-    <div class="bottom-inhouse badger-like-inhouse">
-    	<div class="badger-like-inhouse-content">
-    	<h2>Strut your stuff.</h2>
-    	<h3>'Like' The Badger Herald on Facebook for campus news and entertainment.</h3>
-    	<div class="like-box">
-    		<div class="fb-like" data-href="https://facebook.com/badgerherald" data-width="300" data-layout="standard" data-action="like" data-show-faces="true" data-share="false"></div>
-    		<div class="clearfix"></div>
-    	</div>
-    	</div>
-    </div>
-
-    <?php else : ?>
-
-    <div style='width:100%;height:250px;margin-bottom:24px;background:#eff4f6;'>
-    <div style='width:970px;float:right'>
-        <?php $DoubleClick->place_ad('bh:billboard','970x250',array('desktop','xl')); ?>   
-        <div class="clearfix"></div>
-        </div>
-    </div>
-
-    <?php endif; ?>
-
-    </div>
-
-	<?php comments_template(); ?>
-    <?php exa_get_tweets_API(); ?>
     <div class="clearfix"></div>
 
 <?php endwhile; ?>

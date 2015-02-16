@@ -1,0 +1,20 @@
+.hero img {
+  width: 100%;
+  height: auto; }
+
+@media (min-width: 1060px) {
+  .hero img {
+    width: 780px;
+    height: auto;
+    float: left; }
+  .hero aside.hero-caption {
+    float: left;
+    display: block;
+    width: 240px;
+    padding-left: 20px; } }
+@media (min-width: 1320px) {
+  .hero img {
+    width: 940px;
+    height: auto; } }
+
+/*# sourceMappingURL=_post.css.map */

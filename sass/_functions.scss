@@ -11,8 +11,9 @@ $base-line-height: 21px;
 
 /*  Fonts */
 $headline: 	'PT Sans Narrow', Helvetica, Arial, Sans-Serif;
-$body:		'Noto Serif', Oalatino, Georgia, Serif;
+$body:		  'Noto Serif', Oalatino, Georgia, Serif;
 $caption: 	open sans, helvetica, arial, sans-serif;
+$icon:      exa;
 
 /*  Colors */
 $heraldblue:				#3c74b9;
@@ -21,8 +22,6 @@ $heraldlightgrey:			#f5f2f2;
 $heraldlightgreyonwhite:	#ededed;
 $heralddarkgrey: 			#2c2c2c;
 $heraldblack:				#191919;
-
-
 
 
 /* logo blue */
@@ -125,3 +124,29 @@ $twelveColumns:		940px;
 $thirteenColumns:	1020px;
 $fourteenColumns:	1100px;
 $fifteenColumns:	1180px;
+
+
+
+/**
+ * Mixin for breakpoints.
+ */
+@mixin breakpoint($breakpoint) {
+ 
+  @if $breakpoint == "tablet" {
+    @media (min-width: 760px) {
+      @content;
+    }
+  }
+ 
+  @else if $breakpoint == "desktop" {
+    @media (min-width: 1060px) {
+      @content;
+    }
+  }
+
+  @else if $breakpoint == "xl" {
+    @media (min-width: 1320px) {
+      @content;
+    }
+  }
+}
