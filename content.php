@@ -11,6 +11,7 @@ global $DoubleClick;
 global $post;
 ?>
 
+<<<<<<< HEAD
 <div class="block article-display-block">
 	
 	<span class="context-label">ARTICLE BLOCK</span>

@@ -5,7 +5,7 @@
 	}
 }
 
-@media (min-width: 1060px) {
+@include breakpoint(desktop) {
 
 .hero {
 	img {
@@ -24,7 +24,7 @@
 }
 
 
-@media (min-width:1320px) {
+@include breakpoint(xl){
 
 .hero {
 	img {

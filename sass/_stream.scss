@@ -14,7 +14,6 @@
 		height: auto;
 	}
 }
-
 /* exerpt-more */
 .excerpt-more {
 	color: $heraldblue;
@@ -158,10 +157,6 @@
 		float: left;
 		margin-right: 20px;
 	}
-	#stream.author-stream{
-		margin-left: 320px;
-		margin-right: 0;
-	}
 	.stream-sidebar{
 		width: 300px;
 		float: left;
@@ -170,7 +165,7 @@
 		height: 174px;
 	}
 	.stream-post.featured-fullstream-post{
-		width: auto;
+		width: 100%;
 		.entry-thumbnail{
 			width: 380px;
 			margin-right: 20px;
@@ -190,9 +185,6 @@
 @media (min-width: 1320px) {
 	#stream{
 		width: 780px;
-	}
-	#stream.author-stream{
-		margin-left: 380px;
 	}
 	.stream-sidebar, .stream-sidebar .sidebar-inner{
 		width: 380px;

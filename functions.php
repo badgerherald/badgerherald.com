@@ -466,7 +466,7 @@ function exa_topic($pid = null) {
 function exa_post_thumbnail_html( $html, $post_id, $post_thumbnail_id, $size, $attr ){
 	if($html){
 		return $html;
-	} else{
+	} else {
 		return '<img src="'.get_template_directory_uri().'/img/temp/thumb.jpg'.'" height="'.get_option( 'thumbnail_size_w' ).'" width="'.get_option( 'thumbnail_size_h' ).'" />';
 	}
 	
@@ -631,18 +631,23 @@ function hrld_resize( $attach_id = null, $img_url = null, $width, $height, $crop
 		}
 
 		// no cached files - let's finally resize it
-		$new_img_path = image_resize( $file_path, $width, $height, $crop );
-		$new_img_size = getimagesize( $new_img_path );
-		$new_img = str_replace( basename( $image_src[0] ), basename( $new_img_path ), $image_src[0] );
+		$new_img_editor = wp_get_image_editor($file_path);
+		if ( ! is_wp_error( $new_img_editor ) ) {
+			$new_img_editor->set_quality(100);
+		    $new_img_editor->resize( $width, $height, $crop );
+		    $new_img_editor->save( $cropped_img_path );
+			$new_img_size = getimagesize( $cropped_img_path);
+			$new_img = str_replace( basename( $image_src[0] ), basename( $cropped_img_path ), $image_src[0] );
 
-		// resized output
-		$hrld_image = array (
-			'url' => $new_img,
-			'width' => $new_img_size[0],
-			'height' => $new_img_size[1]
-		);
-		
-		return $hrld_image;
+			// resized output
+			$hrld_image = array (
+				'url' => $new_img,
+				'width' => $new_img_size[0],
+				'height' => $new_img_size[1]
+			);
+			
+			return $hrld_image;
+		}
 	}
 
 	// default output - without resizing
@@ -1263,3 +1268,30 @@ function get_hrld_html_tag_close($tag = ""){
 	}
 	return $result;
 }
+
+/**
+ * Filters pinned posts from the main author query so pagination works correctly
+ * @param  [type] $query [description]
+ * @return [type]        [description]
+ */
+function hrld_remove_pinned_author_posts($query){
+	if (is_admin() || !$query->is_main_query()) {
+		return;
+	}
+
+	if (is_author() && $query->is_main_query()) {
+		$user = get_user_by('slug', $query->query_vars['author_name']);
+		$pinned_posts = get_the_author_meta('_hrld_staff_best_posts', $user->ID);
+		if (empty($pinned_posts)) {
+			return;
+		}
+		$query->set('post__not_in', $pinned_posts);
+		return;
+	}
+}
+add_filter('pre_get_posts', 'hrld_remove_pinned_author_posts', 1);
+
+/**
+ * Load more functions for develop enviornment.
+ */
+include_once('inc/functions-dev.php');
