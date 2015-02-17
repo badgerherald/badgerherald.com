@@ -1,8 +1,15 @@
 .aside-pane {
 	position: absolute;
-	width: 380px;
 	left:0px;
 	display: block;	
+}
+
+.aside-pane-slim {
+	width: 380px;
+}
+
+.aside-pane-wide {
+	width: 540px;
 }
 
 .aside-author {
@@ -36,8 +43,12 @@
 	}
 }
 
-.aside-comments {
-	padding: 24px 0px;
+.comments-pane {
+	padding: 24px 20px;
+	margin-right: -80px;
 	background: #fff;
 	color : $hrld-black;
-}
+	display: none;
+	color: #000;
+	background:#fff;
+	}

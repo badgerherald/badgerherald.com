@@ -70,7 +70,7 @@ global $post;
 
 					<div class="article-meta">
 
-						<aside class="aside-pane aside-author" style="margin-left: -560px; top: 728px;">
+						<aside class="aside-pane aside-author aside-pane-slim" style="margin-left: -560px; top: 728px;">
 								
 								<?php exa_round_mug( get_the_author_meta('ID') ); ?>
 								<h3>Also by <?php the_author() ?></h3>
@@ -160,8 +160,10 @@ global $post;
 
 					<hr/>
 
-					<aside class="aside-pane comments-pane" style="margin-left: -560px;bottom:0px;height:600px;overflow:scroll;"><?php comments_template(); ?></aside>
+					<aside class="aside-pane comments-pane aside-pane-wide"><?php comments_template(); ?></aside>
+					
 					<a class="comment-button open-comments-pane" href="#">Comments</a>
+					
 					<p>This article was published <strong><?php the_time("M j, Y") ?></strong> at <strong><?php the_time("g:i a"); ?></strong>, and last updated <strong><?php the_modified_time("M j, Y") ?></strong> at <strong><?php the_modified_time("g:i a"); ?></strong>.<p>
 
 					

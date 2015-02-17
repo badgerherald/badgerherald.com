@@ -8,6 +8,33 @@
 
 $(document).ready(function() {
 
+
+	/**
+	 * A pair of functions to turn of html scrolling.
+	 *
+	 * This is to turn scrolling for a child element on.
+	 */
+	function lockScroll() {
+		// lock scroll position, but retain settings for later
+		var scrollPosition = [
+		  self.pageXOffset || document.documentElement.scrollLeft || document.body.scrollLeft,
+		  self.pageYOffset || document.documentElement.scrollTop  || document.body.scrollTop
+		];
+		var html = jQuery('html'); // it would make more sense to apply this to body, but IE7 won't have that
+		html.data('scroll-position', scrollPosition);
+		html.data('previous-overflow', html.css('overflow'));
+		html.css('overflow', 'hidden');
+		window.scrollTo(scrollPosition[0], scrollPosition[1]);
+	}
+	
+	function unlockScroll() {
+		// un-lock scroll position
+		var html = jQuery('html');
+		var scrollPosition = html.data('scroll-position');
+		html.css('overflow', html.data('previous-overflow'));
+		window.scrollTo(scrollPosition[0], scrollPosition[1])
+  	}
+
 	/**
 	 * Fastclick library, to removed 300ms delay for
 	 * taps on mobile.
@@ -349,11 +376,13 @@ $(document).ready(function() {
 	var isPaneOpen = false;
 	var openPane;
 	var paneAnchor;
-	var anchorBottom;
 
-	function createPane(anchor,type,anchorBottom) {
+	// anchoredBottom meaning that we're positioned abosolute to the bottom.
+	var anchoredBottom = false;
 
-		anchorBottom = anchorBottom;
+	function createPane(anchor,type,modal) {
+
+		paneAnchor = anchor;
 
 		var block = anchor.parents('.block');
 		var wrapper = block.children('.wrapper');
@@ -386,13 +415,22 @@ $(document).ready(function() {
 			closePane();
 		});
 
-		var width = pane.outerWidth();
-		paneAnchor = anchor;
+		var width = 540;
 
-		block.animate({'position':'relative','left':width+180});
+		// have an extra column, fine.
+		if(pane.hasClass('aside-pane-wide')) {
+			width = 640;
+		}
+
+		var offset = parseInt(pane.css('margin-right'));
+
+		console.log(offset);
+
+		block.animate({'position':'relative','left':width});
 		openPane = pane.css({
-			'margin-left':-(width + 180),
-			'display':'block'
+			'margin-left':-width+offset,
+			'display':'block',
+			'top':'inherit'
 		});
 
 		// window scroll decides how to position the pane
@@ -413,7 +451,10 @@ $(document).ready(function() {
 		var blockBottom = blockTop + block.outerHeight();
 
 		var paneBottom = scrollTop+pane.outerHeight()+240;
-	
+
+		if(modal) {
+			$(window).scroll(function(e){ e.preventDefault()});
+		}	
 		anchorPane();
 
 		return pane;
@@ -427,9 +468,28 @@ $(document).ready(function() {
 		block.animate({'position':'relative','left':0});
 		openPane.css({'display':'none'});
 
+		/* * *
+		 * Kind of a hack, but:
+		 *
+		 * Set margin-right, and exa will send it more
+		 * left when it calculates the width.
+		 *
+		 * * */
+
+		openPane.css({
+			'margin-left': 0,
+		});
+
+		/* * *
+		     *
+		 * * */
+
 		openPane = false;
 		isPaneOpen = false;
 		paneAnchor = null;
+
+
+
 	}
 
 	function anchorPane() {
@@ -444,24 +504,24 @@ $(document).ready(function() {
 		var anchorBottom = anchorTop + anchorHeight;
 
 		var scrollTop = $(window).scrollTop();
-		var clearance = 120;
+		var clearance = 60;
 
 		// pane.css("top",anchorTop - wrapper.offset().top);
 
 
+		// Have we animated yet? Want to avoid glitches that might happen
+		// on small screens that could animate between areas.
+		var animated = false;
+
 		if( anchorTop < scrollTop + clearance ) {
+			// Of the page upper.
 			$("html, body").animate({ scrollTop: anchorTop - clearance });
-		} else if( anchorBottom > scrollTop + $(window).height()/3) {
-			$("html, body").animate({ scrollTop: anchorTop - $(window).height()/3 });
 		}
 
-
-/*
 		// This is not good enough. We must also check that we don't overflow our length.
 
 		var paneTop = pane.offset().top;
 		var paneBottom = paneTop + pane.outerHeight();
-
 
 		var blockTop = block.offset().top;
 		var blockBottom = blockTop + block.outerHeight();
@@ -474,24 +534,35 @@ $(document).ready(function() {
 			});
 
 			// But now it might be taller than our screen, or the amount of block showing.
-	
+			
+			// We moved pane, update these.
+			paneTop = pane.offset().top;
+			paneBottom = paneTop + pane.outerHeight();
+
 			console.log('pt:'+paneTop);
 			console.log('st:'+scrollTop);
-			if( paneTop < blockTop || paneTop > scrollTop ) {
-	
-				var height = Math.max(blockTop,scrollTop);
 
-				height = $(window).height()  - (height - scrollTop) - 120;
+			var screenSpace = $(window).height() - clearance*2;
+			if( paneTop < blockTop || pane.outerHeight() > screenSpace ) {
+
+				var height = Math.min(block.outerHeight(),screenSpace);
 
 				pane.css({
-					"height":height
+					"height":height,
+					"overflow":"scroll"
 				});
 
 			}
 
+			anchoredBottom = true;
+
+			if( !animated && anchorBottom > scrollTop + $(window).height()/3) {
+				// Of the page lower.
+				$("html, body").animate({ scrollTop: anchorTop - $(window).height() + clearance });
+			}
+
 		}
 
-		*/
 
 	}
 
