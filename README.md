@@ -36,12 +36,6 @@ Else, please read the (little) documentation and check out the issues for things
 
 ## Docs.
 
-#### Homepage:
+#### dom layout.
 
- - __River__: The river comprises the full page of tiling `.block` dom elements. These elements in turn have their some names of their own.
-	- __Brook__: Posts labeled as "Brook" generally appear in lists, instead of tiled.
-	- __Stream__: Stream elements are generally part of series that take them
-	of of chronological order.
-	- __Pebble__: Pebbles are individual story displays that might appear in river elements. 
-
-_More docs to come soon..._
+There's two main sections. There's the `pullout`, that sits on the left side of the screen, and there's the content `river` down the other side. The `river` is composed of 100% width elements named `blocks` that tile vertically down the screen. Everything that's in these blocks is then styled seperately (with a core set of normalized rules).
