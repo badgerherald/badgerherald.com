@@ -1,18 +1,17 @@
 /**
- * Functionality specific to Twenty Thirteen.
+ * JS functionality specific to Exa.
  *
- * Provides helper functions to enhance the theme experience.
+ * 
  */
-
-
-
-$(document).ready(function() {
+jQuery(document).ready(function($) {
 
 
 	/**
 	 * A pair of functions to turn of html scrolling.
-	 *
 	 * This is to turn scrolling for a child element on.
+	 *
+	 * Don't really work correctly right now. But would be nice to have
+	 * someday.
 	 */
 	function lockScroll() {
 		// lock scroll position, but retain settings for later

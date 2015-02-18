@@ -7,9 +7,6 @@
  * 		#region: include other fuction files.
  * 		#region: general wordpress theme setup.
  * 		#region: filters that fix bugs and other things.
- *
- *
- *
  */
 
 
@@ -90,6 +87,13 @@ include_once('inc/functions-ads.php');
  */
 include_once('inc/functions-ajax.php');
 
+/**
+ * Integrate 3rd party services that we use.
+ * 
+ * Contents:
+ *   - 
+ */
+include_once('inc/functions-services.php');
 
 
 
@@ -177,7 +181,12 @@ function exa_scripts_styles() {
 
 		/* Load fastclick library */
 		wp_enqueue_script( 'fastclick', get_template_directory_uri() . '/js/fastclick/lib/fastclick.js', array(), '0.6.11', true );	
-	
+		
+		/* Load exa.js. (and jQuery, implicitly) */
+		wp_enqueue_script('exa-script', get_template_directory_uri() . '/js/exa.js',array('jquery','fastclick'),'0.1',true);
+
+		// Note that jQuery runs in no conflict mode — $ is not a valid function.
+		
 	} else {
 
 		wp_enqueue_style( '', 'http://badgerherald.com/interactive/' . get_post_meta(get_the_ID(), '_hrld_interactive_include', true) . '/css/style.css' );
@@ -1128,31 +1137,7 @@ function exa_twitter_card_tags() {
 add_action('wp_head','exa_twitter_card_tags');
 
 
-/**
- * Prints twitter conversion tracking ad code.
- *
- * This will let us track users who visit our site after being shown twitter ads.
- * Leveraged correctly, this will let us target website visitors and turn them
- * into return visitors.
- *
- * @since 0.2
- * 
- * @see https://support.twitter.com/articles/20170807-conversion-tracking-for-websites
- * @author Will Haynes
- */
-function exa_twitter_conversion_tracker() {
 
-	echo '<script src="//platform.twitter.com/oct.js" type="text/javascript"></script>
-			<script type="text/javascript">
-				twttr.conversion.trackPid(\'l4v5w\');
-			</script>
-			<noscript>
-				<img height="1" width="1" style="display:none;" alt="" src="https://analytics.twitter.com/i/adsct?txn_id=l4v5w&p_id=Twitter" />
-				<img height="1" width="1" style="display:none;" alt="" src="//t.co/i/adsct?txn_id=l4v5w&p_id=Twitter" />
-			</noscript>';
-
-}
-add_action('wp_footer','exa_twitter_conversion_tracker');
 
 /**
  * The excerpt to serve to facebook, twitter, google, &c.
