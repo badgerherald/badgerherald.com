@@ -1258,6 +1258,7 @@ function get_hrld_html_tag_close($tag = ""){
 
 /**
  * Filters pinned posts from the main author query so pagination works correctly
+ * 
  * @param  [type] $query [description]
  * @return [type]        [description]
  */
@@ -1278,7 +1279,15 @@ function hrld_remove_pinned_author_posts($query){
 }
 add_filter('pre_get_posts', 'hrld_remove_pinned_author_posts', 1);
 
+
 /**
- * Load more functions for develop enviornment.
+ * Unhide the kitchen sink for all users all the time.
+ * 
+ * @param array $args args passed in by WordPress 
+ * @since v0.2
  */
-include_once('inc/functions-dev.php');
+function exa_unhide_kitchensink( $args ) {
+	$args['wordpress_adv_hidden'] = false;
+	return $args;
+}
+add_filter( 'tiny_mce_before_init', 'exa_unhide_kitchensink' );
