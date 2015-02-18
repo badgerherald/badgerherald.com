@@ -11,29 +11,20 @@
  */
 ?>
 
-		<div class="clearfix"></div>
-<<<<<<< HEAD
-
-    <div class="colophon wrapper" style:"font-family:'pt sans'">
-		All Content &copy; The Badger Herald, <?php echo date("Y"); ?>
-	</div>
-
-	</div><!-- END div#page -->
-=======
+	<!-- clearfix the content -->
+	<div class="clearfix"></div>
 		
-        			<div class="colophon wrapper" style:"font-family:'pt sans'">
-	All Content &copy; The Badger Herald, <?php echo date("Y"); ?>
+
+	<div class="block footer-block">
+    	<div class="wrapper">
+			<p>All Content &copy; The Badger Herald, <?php echo date("Y"); ?></p>
+			<p>Proudly powered by WordPress. <a href="http://github.com/badgerherald/">Fork us on Github</a>.
+		</div>
 	</div>
 
-		</div><!-- END div#page -->
+</div><!-- END div#page -->
 	
-	<?php /* TODO:  Do this in a WP way */ ?>
-	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-	
-	<?php wp_footer(); ?> 
->>>>>>> FETCH_HEAD
-	
-	<?php wp_footer(); ?>
+<?php wp_footer(); ?>
 
 </body>
 </html>
