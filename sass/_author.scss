@@ -1,0 +1,168 @@
+body.author {
+    .inner-masthead {
+        display: block;
+        margin-top: 40px;
+    }
+    #primary {
+        margin-top: 0;
+    }
+}
+.author-info {
+    display: block;
+    position: relative;
+    margin: 0 auto 24px;
+    text-align: center;
+    .author-avatar {
+        width: 140px;
+        height: 140px;
+        display: block;
+        overflow: hidden;
+        @include border-radius(70px);
+        margin: 24px auto 12px;
+        img {
+            width: 100%;
+            height: 100%;
+        }
+    }
+    .author-title {
+        display: block;
+        font-size: 32px;
+        margin: 12px auto;
+        font-family: $headline;
+        color: $hrld-black;
+    }
+    .twitter-follow-button {
+        margin-bottom: 6px;
+    }
+    a.author-media {
+        display: block;
+        color: $hrld-blue;
+        margin-bottom: 12px;
+        font-family: $headline;
+        font-weight: 700;
+        &:hover {
+            color: $hrld-blue-hover;
+        }
+    }
+    span {
+        display: block;
+        line-height: normal;
+        color: $hrld-black;
+        font-family: $caption;
+        margin: 0 auto;
+        font-size: 14px;
+    }
+    .author-position {
+        color: $hrld-dark-grey;
+        font-size: 18px;
+        font-family: $headline;
+        margin: 6px auto 12px;
+        font-weight: 700;
+    }
+}
+
+
+.author-sidebar {
+    display: block;
+    .meta-author {
+        font-family: $headline;
+        color: $hrld-dark-grey;
+        a {
+            color: $hrld-dark-grey;
+            font-weight: 700;
+            &:hover{
+                color: $hrld-dark-grey-hover;
+            }
+        }
+        a.meta-author-avatar {
+            width: 200px;
+            height:200px;
+            margin-right: 20px;
+            img {
+                max-height: 100%;
+            }
+        }
+        h1{
+            margin-bottom: 12px;
+            color: $hrld-black;
+            font-size: 32px;
+        }
+        span {
+            display: block;
+            line-height: 18px;
+        } span.author-position, span.author {
+            margin-bottom: 6px;
+        }
+    }
+    .author-gallery {
+        h3 {
+            font-family: $headline;
+            font-size: 18px;
+            margin-top: 24px;
+            line-height: 30px;
+            margin-bottom: 12px;
+            a {
+                float: right;
+            }
+    
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+            li {
+                padding: 0;
+                margin: 0 10px 10px 0;
+                float: left;
+                display: block;
+                width: 90px;
+                height: 90px;
+                text-align: center;
+                img {
+                    height: 100%;
+                }
+            }
+        }
+    }   
+}
+@media (min-width: 760px) {
+    .author-info {
+        // To prevent margin collapse
+        padding-top: 1px;
+        .author-avatar {
+            margin: 0 auto;
+            left: 0;
+            width: 200px;
+            height: 200px;
+            top: -124px;
+            right: 0;
+            position:absolute;
+            @include border-radius(100px);
+        }
+        .author-title {
+            margin: 92px auto 12px;
+        }
+        .twitter-follow-button {
+            margin-bottom: 0;
+            margin-left: 10px;
+            display: inline-block;
+            position: relative;
+            top: 4px;
+        }
+        a.author-media {
+            display: inline-block;
+            margin-left: 10px;
+        }
+        .author-position {
+            margin: 0 auto 12px;
+            display: inline-block;
+        }
+    }
+}
+@media (min-width: 1160px) {
+    #stream.author-stream {
+        margin: 0 auto;
+        float: none;
+        width: 100%;
+    }
+}

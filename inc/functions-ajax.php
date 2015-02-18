@@ -31,19 +31,29 @@ function exa_ajax_setup() {
 	global $post;
 
 	// Count the clicks.
+    /* 
 	wp_enqueue_script( 'exa_ajax', get_template_directory_uri() . '/js/ajax.js', array( 'jquery' ));
+    */
 
 	// When enqueueing the script, provide some js variables.
+    /* 
     wp_localize_script( 'exa_ajax', 'exa', array(
         'ajaxurl'       => admin_url( 'admin-ajax.php' ),
         'id'			=> $post->ID,
         'nonce'    	 	=> wp_create_nonce( 'exa' ))
     );
-
-
+    */
+    if (is_author()) {
+        $author = get_user_by('id', get_query_var('author'));
+        wp_enqueue_script('exa_author_ajax', get_template_directory_uri().'/js/author-ajax.js', array('jquery'));
+        wp_localize_script('exa_author_ajax', 'hrld_author', array(
+            'ajaxurl' => admin_url('admin-ajax.php'),
+            'user_nicename' => $author->user_login
+        ));
+    }
 } 
 // No need to register scripts that don't get used yet.
-// add_action( 'wp_enqueue_scripts', 'exa_ajax_setup' );
+add_action( 'wp_enqueue_scripts', 'exa_ajax_setup' );
 
 
 function exa_ajax() {
