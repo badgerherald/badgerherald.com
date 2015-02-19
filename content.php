@@ -99,7 +99,7 @@ global $post;
 
 						</aside>
 						<div class="article-mug-box open-author-pane">
-							<?php exa_mug($post->user_id,'small-thumbnail') ?>
+							<?php exa_mug(get_the_author_meta('ID'),'small-thumbnail') ?>
 						</div>
 						
 						<span class="meta-author">
