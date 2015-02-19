@@ -31,7 +31,7 @@ Class Popular_Post_Widget extends AnalyticBridgePopularPostWidget {
 					<?php echo get_the_title($r->post_id); ?>
 				</a>
 				</li>
-
+				<div class="graph-bar" style="width:<?php echo ((double)$r->weighted_pageviews/(double)$outof)*100; ?>%"></div>
 			<?php endforeach; ?>
 	
 			</ul>
