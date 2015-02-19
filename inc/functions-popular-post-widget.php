@@ -26,12 +26,13 @@ Class Popular_Post_Widget extends AnalyticBridgePopularPostWidget {
 			$popPosts->size = 7;
 			$outof = 0;
 			foreach($popPosts as $r) : ?>
-				<?php if(!$outof) $outof = $r->weighted_pageviews; ?>
+				<?php if(!$outof) $outof = $r->weighted_pageviews + $r->weighted_pageviews*.1; ?>
 				<li><a href="#" title="<?php echo get_the_title($r->post_id); ?>" class="">
 					<?php echo get_the_title($r->post_id); ?>
 				</a>
-				</li>
 				<div class="graph-bar" style="width:<?php echo ((double)$r->weighted_pageviews/(double)$outof)*100; ?>%"></div>
+				</li>
+				
 			<?php endforeach; ?>
 	
 			</ul>
