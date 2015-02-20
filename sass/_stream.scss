@@ -23,6 +23,23 @@
 }
 .all-link.pagination-link{
 	border-top: none;
+	.pagination-prev{
+		text-align: left;
+	}
+	.pagination-prev a{
+		background: url("img/icons/arrow-left-blue.png") no-repeat left center;
+		padding-left: 16px;
+
+	}
+	.pagination-next a{
+		background: url("img/icons/arrow-right-blue.png") no-repeat right center;
+		padding-left: 16px; 
+	}
+	.author-pagination{
+		max-width: 180px;
+		display: inline-block;
+		color: #a6b5bd;
+	}
 }
 .stream-post {
 	color : $heraldblack;

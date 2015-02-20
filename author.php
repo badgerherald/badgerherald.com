@@ -29,9 +29,12 @@ get_header('minimal'); ?>
             $img_src = wp_get_attachment_image_src($img_src_id, 'full');
         exa_full_width_cover_image($img_src[0]);
     }
-
+    $author_media = new HrldMediaQuery($author->user_login);
+    $photo_count = $author_media->creditCount();
+    $post_count = count_user_posts($author->ID);
+    $is_Photographer = $photo_count > $post_count;
 ?>
-<div class="author-info">
+<div class="author-info <?php if($img_src_id === '') echo 'no-banner'; ?>">
 	<a class="author-avatar" title="<?php echo exa_properize($author->display_name); ?> Profile" href="<?php echo get_bloginfo('url'); ?>/author/<?php echo $author->user_login; ?>">
         <?php 
             $avatar_src = get_wp_user_avatar_src(get_the_author_meta('ID', get_query_var('author')), 'original');
@@ -42,9 +45,27 @@ get_header('minimal'); ?>
     </a>
     <h1 class="author-title"><?php printf( __( '%s', 'twentythirteen' ), $author->display_name ); ?></h1>
     <h3 class="author-position"><?php echo (hrld_author_has('hrld_current_position', $author->ID) ? get_hrld_author('hrld_current_position', $author->ID):'The Badger Herald'); ?></h3>
-    <a href="https://twitter.com/<?php hrld_author('hrld_twitter_handle', $author->ID); ?>" class="twitter-follow-button" data-show-count="false">Follow @<?php hrld_author('hrld_twitter_handle', $author->ID); ?></a>
+    <?php
+    if (hrld_author_has('hrld_twitter_handle', $author->ID)) {
+        ?>
+        <a href="https://twitter.com/<?php hrld_author('hrld_twitter_handle', $author->ID); ?>" class="twitter-follow-button" data-show-count="false">Follow @<?php hrld_author('hrld_twitter_handle', $author->ID); ?></a>
+        <?php
+    }
+    ?>
 	<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
-    <a href="#" class="author-media">Photos (<?php echo hrld_media_credit_count($author->user_login); ?>)</a>
+    <?php
+    if ($photo_count != 0) {
+        ?>
+        <a href="#media" class="author-media-link switch-view-link<?php if ($is_Photographer) echo ' hidden'; ?>">Photos <span class="count">(<?php echo $photo_count; ?>)</span></a>
+        <?php
+    }
+    if ($post_count != 0) {
+        ?>
+        <a href="#posts" class="author-posts-link switch-view-link<?php if (!$is_Photographer) echo ' hidden'; ?>">Posts <span class="count">(<?php echo $post_count; ?>)</span></a>
+        <?php
+    }
+    ?>
+
 	<div class="author-detail">
             <?php if(hrld_author_has('hrld_staff_description', $author->ID)){ ?><span class="author-description"><?php hrld_author('hrld_staff_description', $author->ID); ?></span><?php } ?>
             <?php if(hrld_author_has('hrld_staff_extension', $author->ID)){ ?><span class="author-extension">Extension <?php hrld_author('hrld_staff_extension', $author->ID); ?></span><?php } ?>
@@ -52,7 +73,29 @@ get_header('minimal'); ?>
             <?php if($bio != '') echo '<span class=author-bio>'.$bio.'</span>'; ?>
         </div>
 </div>
-<div class="author-posts-block">
+<?php
+if ($is_Photographer) {
+    ?>
+    <div class="block author-media-block">
+        <div class="wrapper">
+            <div class="media-list">
+            <?php
+                while($author_media->query->have_posts() ) : $author_media->query->the_post();
+                    ?>
+                    <div class="media-thumbnail">
+                        <?php echo wp_get_attachment_image(get_the_ID(), 'square'); ?>
+                    </div>
+                    <?php
+                endwhile;
+            ?>
+            </div>
+        </div>
+    </div>
+    <?php
+}
+if ($post_count != 0) {
+?>
+<div class="author-posts-block<?php if ($is_Photographer) echo ' hidden'; ?>">
     <?php
         if (!is_paged()) :
             $best_posts = get_the_author_meta( '_hrld_staff_best_posts', get_the_author_meta('ID', get_query_var('author')) );
@@ -83,15 +126,17 @@ get_header('minimal'); ?>
     		<hr />
     				<?php endwhile; ?>
 
-    				<div class="all-link pagination-link"><?php next_posts_link( 'Older' ); ?></div>
-    		
-    		
-
+    				<div class="all-link pagination-link">
+                        <div class="author-pagination pagination-prev"><?php previous_posts_link( 'Newer' ); ?></div>
+                        <div class="author-pagination pagination-next"><?php next_posts_link( 'Older' ); ?></div>
+                    </div>
     		<?php 
     			endif; 
     		?>
 
     </div><!-- id="stream" -->
 </div>
-
-<?php get_footer(''); ?>
+<?php 
+} // end if
+get_footer('');
+?>
