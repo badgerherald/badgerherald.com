@@ -16,7 +16,7 @@
             */
            ?>
             <li data-post-list="news"><a href="<?php echo (is_home() ? '#news' : get_bloginfo('url').'/news/'); ?>">News</a></li>
-            <li data-post-list="oped"><a href="<?php echo (is_home() ? '#opinion' : get_bloginfo('url').'/oped/'); ?>">Opinion</a></li>
+            <li data-post-list="opinion"><a href="<?php echo (is_home() ? '#opinion' : get_bloginfo('url').'/opinion/'); ?>">Opinion</a></li>
             <li data-post-list="artsetc"><a href="<?php echo (is_home() ? '#artsetc' : get_bloginfo('url').'/artsetc/'); ?>">ArtsEtc.</a></li>
             <li data-post-list="sports"><a href="<?php echo (is_home() ? '#sports' : get_bloginfo('url').'/sports/'); ?>">Sports</a></li>
             <li class="no-stream" data-post-list="null"><a href="<?php bloginfo('url'); ?>/shoutouts/">Shoutouts</a></li>
@@ -30,7 +30,7 @@
         $beats_queries = array(
             'news' => array(),
             'artsetc' => array(),
-            'oped' => array(),
+            'opinion' => array(),
             'sports' => array()
         );
         foreach ($beats_queries as $stream_beat => $stream_beat_query) :

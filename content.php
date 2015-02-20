@@ -70,7 +70,7 @@ global $post;
 
 					<div class="article-meta">
 
-						<aside class="aside-pane aside-author aside-pane-slim" style="margin-left: -560px; top: 728px;">
+						<aside class="aside-pane aside-author aside-pane-slim" style="margin-left: -560px; top: 728px; display: none;">
 								
 								<?php exa_round_mug( get_the_author_meta('ID') ); ?>
 								<h3>Also by <?php the_author() ?></h3>
