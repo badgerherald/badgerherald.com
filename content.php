@@ -149,9 +149,11 @@ global $post;
 
 				</section>
 
+				<?php /*
 				<section class="footnote-sidebar">
 					Article tweets place.
 				</section>
+				*/ ?>
 
 				<div class="clearfix"></div>
 

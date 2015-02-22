@@ -362,6 +362,11 @@ jQuery(document).ready(function($) {
 	});
 
 
+	/** -----------------------------------------------------
+	 * Section: Panes
+	 * ---------------------------------------------------- */
+
+
 	/**
 	 * Creates a new pane and inserts it before
 	 * the passed in anchor.
@@ -564,5 +569,90 @@ jQuery(document).ready(function($) {
 
 
 	}
+
+	/** -----------------------------------------------------
+	 * Section: Article Sidebar
+	 * ---------------------------------------------------- */
+
+
+	/**
+	 * Space children in sidebar.
+	 *
+	 * @since v0.2
+	 */
+	function positionSidebarChildren() {
+
+		// height of the article text.
+		var textHeight = $(".article-text").outerHeight();
+		
+		// height of the children.
+		var childrenHeight = 0;
+		
+		$(".lede-sidebar").children().each(function(){
+			childrenHeight = childrenHeight + $(this).height();
+		});
+
+		var numChildren = $(".lede-sidebar").children().length;
+
+		var spacing = (textHeight - childrenHeight)/numChildren;
+
+		while(spacing < 300) {
+
+			// delete last child.
+			$(".lede-sidebar").children().last().remove();
+
+			numChildren = numChildren - 1;
+			childrenHeight = 0;
+
+			$(".lede-sidebar").children().each(function(){
+				childrenHeight = childrenHeight + $(this).height();
+			});
+
+			spacing = (textHeight - childrenHeight)/numChildren;
+
+		}
+
+		// Don't try to be too perfect.
+		spacing = spacing - 30;
+
+		$(".lede-sidebar").css('height',textHeight);
+		$(".lede-sidebar").children().css('margin-bottom',spacing);
+
+	}
+
+
+	/**
+	 * Fixed position the children.
+	 *
+	 * @since v0.2
+	 */
+	var fixedChild;
+
+	$(window).scroll(function() {
+
+		var topmostChild;
+		var 
+		var i = 0;
+
+		child = $(".lede-sidebar").children().eq( i++ );
+
+		while( $(".lede-sidebar").children().length >= i ) {
+			var fromTop = $(child).offset().top - $(window).scrollTop();
+			console.log($(fromTop));
+			if( fromTop > 0 ) {
+				topmostChild = child;
+				i = 1000; // break the loop
+			}
+
+			child = $(".lede-sidebar").children().eq( i++ );
+
+		}
+
+		// If there's not another child, use the bottom of the container
+
+
+	});
+
+	
 
 });
