@@ -41,3 +41,6 @@
 .icon-twitter-bird:before {
   content: "t";
 }
+.icon-new-window:before {
+  content: "w";
+}

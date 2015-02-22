@@ -165,13 +165,12 @@ global $post;
 					<a class="comment-button open-comments-pane" href="#">Comments</a>
 					
 					<p>This article was published <strong><?php the_time("M j, Y") ?></strong> at <strong><?php the_time("g:i a"); ?></strong>, and last updated <strong><?php the_modified_time("M j, Y") ?></strong> at <strong><?php the_modified_time("g:i a"); ?></strong>.<p>
-
 					
 				</section>
 
 			</main>
 			
-		</article><!-- #post -->
+		</article><!-- #post-xx -->
 
 	</div><!-- .wrapper -->
 
