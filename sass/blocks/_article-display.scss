@@ -143,7 +143,46 @@
 					}
 				}
 			}
-
+		}
+		.wp-caption {
+			width: 100% !important; // wordpress adds an element style for width;
+			font-size: 16px;
+			line-height: 18px;
+			color: $hrld-dark-grey;
+			margin: 24px 0;
+			.hrld-media-credit-name a {
+				padding-right: 3px;
+				color: $hrld-black;
+				font-weight: bold;
+				text-shadow: none;
+				// font-weight: 800;
+				text-transform: uppercase;
+				&:hover {
+					color: $hrld-blue;
+				}
+			}
+			dd {
+				margin-left:0;
+			} img {
+				width:100%;
+				height:auto;
+			}
+			p, dd { 
+				margin: 6px 0px 12px;
+				&:last-child {
+					margin-bottom: 0;
+				}
+			} * {
+				font-family: $headline !important;
+			} .wp-caption-text {
+				max-width:700px;
+			} .hrld-media-credit {
+				margin-top: 6px;
+				display: block;
+			}
+		}
+		img {
+			height: auto;
 		}
 	}
 
@@ -161,7 +200,6 @@
 	.article-header {
 
 		.article-section {
-
 			display: inline-block;
 			font-family: $headline;
 			background: $hrld-blue;
@@ -346,7 +384,7 @@
 		.article-text {
 			font-size: 20px;
 			line-height: 30px;
-			width: 540px;
+			width: flex(540,740) !important;
 			margin-left: 80px;
 			position: relative;
 			a.hrld-inline-link {
@@ -362,6 +400,42 @@
 					min-width: 140px;
 					max-width: 140px;
 				}
+			}
+			.wp-caption {
+				position: relative; 
+				font-size: 16px;
+				line-height: 24px;
+				margin: 12px 0 24px; 
+				img {
+					width: 100%;
+					height: auto;
+				}
+			}
+			.alignleft {
+				float: left;
+				margin-left: -80px !important;
+				padding-right: 20px;
+				width: 300px !important;
+				height: auto;
+			}
+			img.alignleft,img.alignright,img.alignnone,img.aligncenter {
+				margin: 12px 0 24px; 
+			}
+			.alignright {
+				float: right;
+				margin-right: -80px !important;
+				padding-left: 20px;
+				width: 300px !important;
+				height: auto;
+			}
+			.alignnone, .aligncenter {
+				width:flex(740,540) !important;
+				float:left;
+				margin-left: -80px;
+			}
+			.video-container {
+				float: left;
+				clear: right;
 			}
 		}
 
@@ -413,6 +487,7 @@
 
 		.lede-sidebar {
 			// debugging thing.
+			margin-left: 80px;
 			.sidebar-thing {
 				margin-bottom:300px;
 			}
@@ -466,6 +541,12 @@
 			}
 		}
 
+		.alignnone, .aligncenter, img.alignnone, img.aligncenter {
+			width:660px !important;
+			margin-left: -80px;
+			float: none;
+		}
+
 		.article-text {
 			width: 540px;
 			margin-left: 80px;
@@ -503,5 +584,14 @@
 		.article-text {
 			width: 620px;
 		}
+
+		.wp-caption {
+			&.alignnone, &.aligncenter {
+				width:780px !important;
+				margin-left: -80px;
+			}
+
+		}
+
 	}
 }
