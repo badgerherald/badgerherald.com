@@ -184,6 +184,9 @@
 		img {
 			height: auto;
 		}
+		& > img.alignleft,& >img.alignright,&>img.alignnone,&>img.aligncenter {
+			margin: 0px 0 24px; 
+		}
 	}
 
 	.article-title, .article-title h1 {
@@ -320,8 +323,8 @@
 			width: 300px;
 			margin-top: 12px;
 			display: block;
-			margin-left: 100px;
 			margin-bottom: 24px;
+			margin-left: 80px;
 			.popular-post-widget {
 				background: #fff;
 				margin:18px 0;
@@ -384,11 +387,14 @@
 		.article-text {
 			font-size: 20px;
 			line-height: 30px;
-			width: flex(540,740) !important;
-			margin-left: 80px;
+			width:100%;
 			position: relative;
+			p,h1,h2,h3,h4,h5,h6 {
+				margin-left: 80px;
+				margin-right: 80px;
+				width: (540,720);
+			}
 			a.hrld-inline-link {
-				// position: relative;
 				margin-left: -80px;
 				padding:12px 20px;
 				overflow:auto;
@@ -413,25 +419,20 @@
 			}
 			.alignleft {
 				float: left;
-				margin-left: -80px !important;
+				// margin-left: -80px !important;
 				padding-right: 20px;
 				width: 300px !important;
 				height: auto;
 			}
-			img.alignleft,img.alignright,img.alignnone,img.aligncenter {
-				margin: 12px 0 24px; 
-			}
 			.alignright {
 				float: right;
-				margin-right: -80px !important;
 				padding-left: 20px;
 				width: 300px !important;
 				height: auto;
 			}
 			.alignnone, .aligncenter {
-				width:flex(740,540) !important;
+				width:100%;
 				float:left;
-				margin-left: -80px;
 			}
 			.video-container {
 				float: left;
@@ -486,8 +487,7 @@
 	.article-display-block {
 
 		.lede-sidebar {
-			// debugging thing.
-			margin-left: 80px;
+			margin-left: 0;
 			.sidebar-thing {
 				margin-bottom:300px;
 			}
@@ -541,15 +541,12 @@
 			}
 		}
 
-		.alignnone, .aligncenter, img.alignnone, img.aligncenter {
-			width:660px !important;
-			margin-left: -80px;
-			float: none;
-		}
-
 		.article-text {
-			width: 540px;
-			margin-left: 80px;
+			width:700px;
+			.alignnone, .aligncenter, & > img.alignnone, & > img.aligncenter {
+				width:100% !important;
+				float: left;
+			}
 		}
 
 		.article-footnotes {
@@ -582,13 +579,12 @@
 			}
 		}
 		.article-text {
-			width: 620px;
+			width: 780px;
 		}
 
 		.wp-caption {
 			&.alignnone, &.aligncenter {
 				width:780px !important;
-				margin-left: -80px;
 			}
 
 		}
