@@ -110,8 +110,7 @@ Class Homepage {
 
 		// Display the blocks;
 		foreach($this->blocks as $b) {
-			$GLOBALS['block'] = $b;
-			exa_block($b->identifier, null);
+			exa_block($b->identifier, $b);
 		}
 
 		
@@ -188,30 +187,3 @@ Class Homepage {
 	}
 
 }
-
-Class Block {
-
-	public $identifier;
-	public $query;
-	public $args;
-
-	public function __construct() {
-		echo "hi";
-	}
-
-	public function __toString() {
-
-		$s = "## " . $this->identifier . " block.\n";
-
-
-		$s .= "  \$args = " . print_r($this->args,true) . "";
-
-		foreach($this->query->posts as $p) {
-			$s .= "  - " . $p->post_title . "\n";
-		}
-
-		return $s . "\n\n";
-	}
-
-}
-

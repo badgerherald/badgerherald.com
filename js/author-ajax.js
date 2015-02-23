@@ -35,7 +35,7 @@ jQuery(document).ready(function($) {
                 $(".author-media-link").addClass("hidden");
                 $(".author-posts-link").removeClass("hidden");
                 $(".loading-block").remove();
-                var media_block = '<div class="block author-media-block">';
+                var media_block = '<div class="block author-media-block showcase-block">';
                 media_block += '<div class="wrapper">';
                 media_block += '<div class="media-list">';
                 media_block += '</div></div></div>';
@@ -49,6 +49,7 @@ jQuery(document).ready(function($) {
                     }
                 }
                 $(".author-media-block .wrapper .media-list").append($(media_thumbs));
+                $(".showcase-block").hrld_showcase({imgs: "img.wp-post-image, img[class*='wp-image-']"});
             })
             .fail(function(response) {
                 console.log("Post failed: " + response);

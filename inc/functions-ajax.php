@@ -45,7 +45,7 @@ function exa_ajax_setup() {
     */
     if (is_author()) {
         $author = get_user_by('id', get_query_var('author'));
-        wp_enqueue_script('exa_author_ajax', get_template_directory_uri().'/js/author-ajax.js', array('jquery'));
+        wp_enqueue_script('exa_author_ajax', get_template_directory_uri().'/js/author-ajax.js', array('jquery', 'hrld-showcase-script-class'));
         wp_localize_script('exa_author_ajax', 'hrld_author', array(
             'ajaxurl' => admin_url('admin-ajax.php'),
             'user_nicename' => $author->user_login
