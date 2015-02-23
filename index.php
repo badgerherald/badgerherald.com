@@ -12,18 +12,6 @@ get_header();
 
 ?>
 
-	
-	<?php 
-
-	if(file_exists($_SERVER["DOCUMENT_ROOT"] . "/fold/fold.php")) {
-		include($_SERVER["DOCUMENT_ROOT"] . "/fold/fold.php");
-	}
-
-	?>
-	<?php $homepageSlider = true; /* Boolean to tell footer.php to load 
-													   * the slider script. 
-													   */ ?>
-
 	<?php include('inc/homepage.php'); ?>
 
 	<?php $q = $homepage->queryCover(); ?>
