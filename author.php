@@ -76,14 +76,14 @@ get_header('minimal'); ?>
 <?php
 if ($is_Photographer) {
     ?>
-    <div class="block author-media-block">
+    <div class="block author-media-block showcase-block">
         <div class="wrapper">
             <div class="media-list">
             <?php
                 while($author_media->query->have_posts() ) : $author_media->query->the_post();
                     ?>
                     <div class="media-thumbnail">
-                        <?php echo wp_get_attachment_image(get_the_ID(), 'square'); ?>
+                        <?php echo wp_get_attachment_image(get_the_ID(), 'square', false, array('class'=>'wp-image-'.get_the_ID())); ?>
                     </div>
                     <?php
                 endwhile;

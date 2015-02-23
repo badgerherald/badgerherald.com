@@ -275,16 +275,15 @@ jQuery(document).ready(function($) {
      * Handles the width calculations of the article progress bar
      *
      * @since  v0.2
-
+     */
     if ($(".progress").length !== 0) {
         $(window).scroll(function() {
             var scrollTop = $(window).scrollTop();
-            var scrollH = ($("#content").height() + $("#content").offset().top) - ($(window).height() / 2);
+            var scrollH = ($(".article-display-block").height() + $(".article-display-block").offset().top) - $(window).height();
             var progress = Math.max(0, Math.min(1, scrollTop/scrollH)) * 100;
             $(".progress .progress-bar").attr("aria-valuenow", Math.floor(progress)).css("width", progress+"%");
         });
     }
-    */
 
 	//Smooth scrolling to anchors from anchor links on same page.
 	$(function() {
@@ -631,7 +630,6 @@ jQuery(document).ready(function($) {
 	$(window).scroll(function() {
 
 		var topmostChild;
-		var 
 		var i = 0;
 
 		child = $(".lede-sidebar").children().eq( i++ );

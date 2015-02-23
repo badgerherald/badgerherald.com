@@ -195,8 +195,18 @@ function exa_scripts_styles() {
 
 	}
 	
+	if (is_author()){
+		wp_enqueue_style('hrld-showcase-style');
+		wp_enqueue_script( 'hrld-showcase-script-class');
+		wp_enqueue_script( 'hrld-showcase-init');
+	}
+	
 }
 add_action( 'wp_enqueue_scripts', 'exa_scripts_styles' );
+
+/**
+ * Enqueues the scripts from the hrld-showcase plugin on author pages.
+ */
 
 
 /**
