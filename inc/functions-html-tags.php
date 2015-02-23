@@ -119,6 +119,6 @@ function exa_round_mug($user_id,$size = 'square',$classes = '') {
 	echo "</div>";
 }
 
-function exa_full_width_cover_image($url, $classes = '') {
-	echo '<div class="block full-width-cover-image full-width-aspect-3by1 '.$classes.'" style="background-image:url('.$url.')"></div>';
+function exa_full_width_cover_image($url, $classes = array()) {
+	echo '<div class="block full-width-cover-image full-width-aspect-3by1 '.implode(' ', $classes).'" style="background-image:url('.$url.')"></div>';
 }

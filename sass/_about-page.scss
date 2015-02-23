@@ -19,7 +19,7 @@
 	/** ------ NEEDS BETTER STYLING ------- **/
 	.header-box {
 		position: absolute;
-		top: 50%;
+		top: 20%;
 		text-align: center;
 		display: block;
 		width: 100%;
@@ -27,7 +27,7 @@
 		color: #fff;
 	}
 	.about-home-header h1 {
-		font-size: 50px;
+		font-size: 42px;
 		line-height: 42px;
 		text-transform: uppercase;
 		color: #fff;
@@ -320,6 +320,16 @@
 			}
 		}
 
+		.header-box {
+			top: 50%;
+		}
+		.about-home-header h1 {
+			font-size: 50px;
+			line-height: 42px;
+			text-transform: uppercase;
+			color: #fff;
+		}
+
 
 	.staff-box {
 		width: flex(165,740);
@@ -392,13 +402,15 @@
 
 
 		.about-nav {
-			position: absolute;
+			padding-left: 160px;
 			ul {
 				list-style: none;
 				width: 140px;
-				float: left;
+				position: absolute;
+				left: 0;
 				padding: 18px 0 0px 0; margin:0px;
 				border-bottom: 1px solid $hrld-dark-grey;
+				z-index: 999;
 				li {
 					display: block;
 					a {
@@ -411,13 +423,15 @@
 						padding: 0px
 					}
 				}
+				&.fixed-sidebar {
+					left: 50%;
+					margin-left: -590px;
+				}
 			}
 		}
 
 		.article-content {
-			width: 860px;
-			float: left;
-			margin-left: 160px;
+			padding-left: 160px;
 		}
 
 		.contact-container {
@@ -437,7 +451,6 @@
 
 	.about-page {
 		.article-content {
-			width: 1020px;
 		}
 		.staff-box {
 		height:230px;
@@ -448,6 +461,12 @@
 			margin-bottom: 12px;
 			img {
 				min-height: 100%;
+			}
+		}
+		.about-nav ul {
+
+			&.fixed-sidebar {
+				margin-left: -670px;
 			}
 		}
 	}

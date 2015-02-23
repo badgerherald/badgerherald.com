@@ -252,6 +252,9 @@
 		display: block;
 		width: 100%;
 	}
+	&.pos-bottom {
+		background-position: center bottom;
+	}
 }
 
 .full-width-aspect-3by1:before {
