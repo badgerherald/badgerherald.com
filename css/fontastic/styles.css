@@ -44,3 +44,15 @@
 .icon-new-window:before {
   content: "w";
 }
+.icon-arrow-down:before {
+  content: "v";
+}
+.icon-arrow-right:before {
+  content: ">";
+}
+.icon-arrow-left:before {
+  content: "<";
+}
+.icon-arrow-up:before {
+  content: "^";
+}

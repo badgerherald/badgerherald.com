@@ -18,7 +18,6 @@
 function exa_ad_setup() {
 
 	global $DoubleClick;
-
 	$DoubleClick->networkCode = "8653162";
 
 	if( !hrld_is_production() )

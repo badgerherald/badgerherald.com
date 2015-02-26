@@ -39,3 +39,9 @@ Else, please read the (little) documentation and check out the issues for things
 #### dom layout.
 
 There's two main sections. There's the `pullout`, that sits on the left side of the screen, and there's the content `river` down the other side. The `river` is composed of 100% width elements named `blocks` that tile vertically down the screen. Everything that's in these blocks is then styled seperately (with a core set of normalized rules).
+
+#### icons.
+
+Bundled in this theme is an exa fontastic font with svg icons.
+
+See `./css/fontastic/icon-reference.html` to see the character mappings.
