@@ -38,106 +38,91 @@ global $DoubleClick;
 
 	<?php } ?>
 
-	<title><?php echo wp_title("&middot;",true,"right"); ?>
-
-	<?php
-	/*
-	if( is_404() ) {
-		echo "404 &middot; " . bloginfo('name');
-	} else if( is_home() ) {
-		echo bloginfo('name') . " &middot " . bloginfo('description') . "."; 
-	} else {
-		echo wp_title('') . " &middot " . bloginfo('name'); 
-	} */
-
-	?></title>
+	<title><?php echo wp_title("&middot;",true,"right"); ?></title>
+	
 	<link rel="profile" href="http://gmpg.org/xfn/11" />
 	<link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>" />
 	<!--[if lt IE 9]>
 	<script src="<?php echo get_template_directory_uri(); ?>/js/html5.js" type="text/javascript"></script>
 	<![endif]-->
 	<?php wp_head(); ?>
-	<!-- 
-		Google fonts 
-		TODO: move to wordpress enque
-	-->
-	<link href='http://fonts.googleapis.com/css?family=Noto+Serif:400,700,400italic,700italic|Yanone+Kaffeesatz:400,300,700|Open+Sans|PT+Sans+Narrow:400,700' rel='stylesheet' type='text/css'>
 
 </head>
 
 <body <?php body_class(); ?>>
 
+<?php /* Facebook like button javascript tag */ ?>
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=293002107472228";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
 
-	<?php /* Facebook like button javascript tag */ ?>
-	<div id="fb-root"></div>
-	<script>(function(d, s, id) {
-	  var js, fjs = d.getElementsByTagName(s)[0];
-	  if (d.getElementById(id)) return;
-	  js = d.createElement(s); js.id = id;
-	  js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=293002107472228";
-	  fjs.parentNode.insertBefore(js, fjs);
-	}(document, 'script', 'facebook-jssdk'));</script>
+<?php get_sidebar('pullout'); ?>
 
+<?php /* #page opened here, closed in footer.php */ ?>
+<div id="page">
 
-    <?php get_sidebar('pullout'); ?>
-	<div id="page">
-		<div id="masthead">
-			<div class="fixed-bar">
-				<?php /* container for the mobile hamburger icon */ ?>
-		        <div class="nav-control" alt="Menu"></div>
-		        <div class="wrapper bar-content">
-		        	<a href="<?php echo bloginfo("url"); ?>"><div class="bar-logo">The Badger Herald</div></a>
-		        	<div class="nav-category">
-		                <?php
-		                    if (!is_page()) {
-		                        echo ucfirst($wp_query->query_vars['category_name']);
-		                    } else {
-		                        echo ucfirst($wp_query->query_vars['name']);
-		                    }
-		                ?>
-		            </div>
+	<div id="masthead">
 
-		            <div class="title">
-		                <?php
-		                    if (is_single()) {
-		                        $post_author = get_userdata($post->post_author);
-		                        echo $post->post_title;
-		                        echo '<span class="byline"> <i>by</i> '.$post_author->display_name.'</span>';
-		                    }
-		                ?>
-		            </div>
+		<div class="fixed-bar">
+			<?php /* container for the mobile hamburger icon */ ?>
+	        <div class="nav-control" alt="Menu"></div>
+	        <div class="wrapper bar-content">
+	        	
+	        	<a href="<?php echo bloginfo("url"); ?>"><div class="bar-logo">The Badger Herald</div></a>
+	        	
+	            <?php
+	                if (!is_page()) {
+	                    echo ucfirst($wp_query->query_vars['category_name']);
+	                } else {
+	                    echo ucfirst($wp_query->query_vars['name']);
+	                }
+	            ?>
+	            <?php
+	                if (is_single()) {
+	                    $post_author = get_userdata($post->post_author);
+	                    echo $post->post_title;
+	                    echo '<span class="byline"> <i>by</i> '.$post_author->display_name.'</span>';
+	                }
+	            ?>
+
+	        </div>
+	        <?php
+		    if (is_single()) { ?>
+		        <div class="progress">
+		          <div class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0;">
+		          </div>
 		        </div>
-		        <?php
-			    if (is_single()) { ?>
-			        <div class="progress">
-			          <div class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0;">
-			          </div>
-			        </div>
-			    <?php } ?>
+		    <?php } ?>
+		</div>
+		<div class="inner-masthead wrapper">
+			<a id="logo" href="<?php bloginfo('url'); ?>">
+				<div class="logo-image"><img src="<?php bloginfo('template_url') ?>/img/logo/header-7.png" /></div>
+			</a>
+			<div class="tagline">
+				UW-Madison's Premier Independent Student Newspaper.  <span class="since"><strong>Since 1969</strong></span>
 			</div>
-			<div class="inner-masthead wrapper">
-				<a id="logo" href="<?php bloginfo('url'); ?>">
-					<div class="logo-image"><img src="<?php bloginfo('template_url') ?>/img/logo/header-7.png" /></div>
-				</a>
-				<div class="tagline">
-					UW-Madison's Premier Independent Student Newspaper.  <span class="since"><strong>Since 1969</strong></span>
-				</div>
-				<div id='ad-leaderboard' class='top-leaderboard'>
-					<?php $DoubleClick->place_ad('bh:leaderboard','728x90',array('desktop','xl','tablet')); ?>
-				</div>
-				<a class="advertise-plug" href="http://badgerherald.com/advertise/">Student Org? Local Business? Advertise with the Herald.</a>
-				
-				<div class="social-buttons">
-
-		            <div class="twitter">
-		                <a href="https://twitter.com/badgerherald" class="twitter-follow-button" data-show-count="false">Follow @badgerherald</a>
-		                <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
-		            </div><!-- .twitter -->
-
-		            <div class="facebook">
-		                <div class="fb-like" data-href="http://facebook.com/badgerherald" data-layout="button_count" data-action="like" data-show-faces="false" data-share="false"></div>
-		            </div><!-- .facebook -->
-
-		        </div><!-- .social-buttons -->
+			<div id='ad-leaderboard' class='top-leaderboard'>
+				<?php $DoubleClick->place_ad('bh:leaderboard','728x90',array('desktop','xl','tablet')); ?>
 			</div>
-		</div><?php /* masthead */ ?>
+			<a class="advertise-plug" href="http://badgerherald.com/advertise/">Student Org? Local Business? Advertise with the Herald.</a>
+			
+			<div class="social-buttons">
+
+	            <div class="twitter">
+	                <a href="https://twitter.com/badgerherald" class="twitter-follow-button" data-show-count="false">Follow @badgerherald</a>
+	                <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+	            </div><!-- .twitter -->
+
+	            <div class="facebook">
+	                <div class="fb-like" data-href="http://facebook.com/badgerherald" data-layout="button_count" data-action="like" data-show-faces="false" data-share="false"></div>
+	            </div><!-- .facebook -->
+
+	        </div><!-- .social-buttons -->
+		</div>
+
+	</div><?php /* masthead */ ?>
