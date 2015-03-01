@@ -178,6 +178,9 @@ function exa_scripts_styles() {
 		 */
 		wp_enqueue_style( 'exa-icons', get_template_directory_uri() . '/css/fontastic/styles.css' );
 
+		/* Load google font. */
+		wp_enqueue_style( 'exa-fonts', 'http://fonts.googleapis.com/css?family=Noto+Serif:400,700,400italic,700italic|Yanone+Kaffeesatz:400,300,700|Open+Sans|PT+Sans+Narrow:400,700');
+
 		/* Load main stylesheet. */
 		wp_enqueue_style( 'exa-style', get_stylesheet_uri() );
 
