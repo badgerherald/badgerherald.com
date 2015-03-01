@@ -198,10 +198,10 @@ function exa_scripts_styles() {
 
 	}
 	
-	if (is_author()){
+	if (is_author() || is_single()){
 		wp_enqueue_style('hrld-showcase-style');
 		wp_enqueue_script( 'hrld-showcase-script-class');
-		wp_enqueue_script( 'hrld-showcase-init');
+		wp_enqueue_script('exa-hrld-showcase-init', get_template_directory_uri().'/js/hrld-showcase-init.js', array('hrld-showcase-script-class', 'jquery'));
 	}
 	
 }
@@ -1113,3 +1113,16 @@ function filter_ptags_on_images($content){
 }
 
 add_filter('the_content', 'filter_ptags_on_images');
+
+function exa_add_media_credit_showcase($attachments) {
+	foreach ($attachments as & $attachment) {
+		$credit = get_hrld_media_credit($attachment['ID']);
+		if ($user = get_user_by('login', $credit)) {
+			$attachment['media_credit'] = $user->display_name.'/The Badger Herald';
+		} else {
+			$attachment['media_credit'] = $credit;
+		}
+	}
+	return $attachments;
+}
+add_filter('hrld_showcase_image_data', 'exa_add_media_credit_showcase');
