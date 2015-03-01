@@ -618,6 +618,9 @@ jQuery(document).ready(function($) {
 		$(".lede-sidebar").children().css('margin-bottom',spacing);
 
 	}
+	$(window).scroll( function() {
+		positionSidebarChildren();
+	});
 
 
 	/**
