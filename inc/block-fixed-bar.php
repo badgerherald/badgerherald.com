@@ -19,15 +19,29 @@
 				}
 			?>
 			</a>
-
-			<span class="title">
 			<?php
 			if (is_single()) :
+			?>
+			<span class="title">
+			<?php
 				$post_author = get_userdata($post->post_author);
 				echo $post->post_title;
 			?>
 			</span>
-			<?php echo '<span class="byline">by <a href="'. $post_author->url .'">'.$post_author->display_name.'</a></span>'; ?>
+			<?php echo '<span class="byline">by <a href="'. $post_author->url .'">'.$post_author->display_name.'</a></span>'; 
+			elseif (is_author()) :
+		    ?>
+		        <span class="title author-title">
+		        <?php
+		            $author = get_user_by('id', get_query_var('author'));
+					$avatar_src = get_wp_user_avatar_src(get_the_author_meta('ID', get_query_var('author')), 'original');
+            		$avatar_crop = hrld_resize(null, $avatar_src, 200, 200, true);
+            	?>
+            		<span class="avatar"><img src="<?php echo $avatar_crop['url']; ?>" alt="<?php echo $author->display_name;?>" width="<?php echo $avatar_crop['width'];?>" height="<?php echo $avatar_crop['height'];?>" /></span>
+            	<?php
+					echo '<span class="name">'.$author->display_name.'</span>';
+				?>
+				</span>
 			<?php endif; ?>
 			
 		</div>

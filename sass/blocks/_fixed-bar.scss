@@ -157,13 +157,13 @@
             }
 
             /* Author Pages */
-            &.author-title {
+            .title.author-title {
                 display: none;
                 &.author-title-show {
-                    display: block;
+                    display: inline;
                 }
                 span.name {
-                    float: right;
+                    float: left;
                     display: inline-block;
                 }
                 .avatar {
@@ -171,6 +171,8 @@
                     width: 42px;
                     display: inline-block;
                     margin-right: 10px;
+                    margin-left: 20px;
+                    float: left;
                     overflow: hidden;
                     padding: 3px;
                     img {
