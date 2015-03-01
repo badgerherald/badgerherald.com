@@ -26,14 +26,14 @@ global $DoubleClick;
 	<meta charset="<?php bloginfo( 'charset' ); ?>" />
 	
 	<meta name="viewport" content="width=device-width, 
-    minimum-scale=1.0, maximum-scale=1.0">
+	minimum-scale=1.0, maximum-scale=1.0">
 
-    <?php /* Remove 300ms tap delay for mobile zoom */ ?>
-    <meta name="viewport" content="width=device-width, user-scalable=no">
+	<?php /* Remove 300ms tap delay for mobile zoom */ ?>
+	<meta name="viewport" content="width=device-width, user-scalable=no">
 
-    <?php /* Chartbeat Part 1 */
-    	if (hrld_is_production()) {
-    ?>
+	<?php /* Chartbeat Part 1 */
+		if (hrld_is_production()) {
+	?>
 	<script type="text/javascript">var _sf_startpt=(new Date()).getTime()</script>
 
 	<?php } ?>
@@ -66,43 +66,16 @@ global $DoubleClick;
 <?php /* #page opened here, closed in footer.php */ ?>
 <div id="page">
 
-	<div id="masthead">
+	<?php get_template_part('inc/block','fixed-bar'); ?>
 
-		<div class="fixed-bar">
-			<?php /* container for the mobile hamburger icon */ ?>
-	        <div class="nav-control" alt="Menu"></div>
-	        <div class="wrapper bar-content">
-	        	
-	        	<a href="<?php echo bloginfo("url"); ?>"><div class="bar-logo">The Badger Herald</div></a>
-	        	
-	            <?php
-	                if (!is_page()) {
-	                    echo ucfirst($wp_query->query_vars['category_name']);
-	                } else {
-	                    echo ucfirst($wp_query->query_vars['name']);
-	                }
-	            ?>
-	            <?php
-	                if (is_single()) {
-	                    $post_author = get_userdata($post->post_author);
-	                    echo $post->post_title;
-	                    echo '<span class="byline"> <i>by</i> '.$post_author->display_name.'</span>';
-	                }
-	            ?>
-
-	        </div>
-	        <?php
-		    if (is_single()) { ?>
-		        <div class="progress">
-		          <div class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0;">
-		          </div>
-		        </div>
-		    <?php } ?>
-		</div>
-		<div class="inner-masthead wrapper">
+	<div class="standing-head-block block">
+		
+		<div class="wrapper">
+			
 			<a id="logo" href="<?php bloginfo('url'); ?>">
 				<div class="logo-image"><img src="<?php bloginfo('template_url') ?>/img/logo/header-7.png" /></div>
 			</a>
+
 			<div class="tagline">
 				UW-Madison's Premier Independent Student Newspaper.  <span class="since"><strong>Since 1969</strong></span>
 			</div>
@@ -113,16 +86,16 @@ global $DoubleClick;
 			
 			<div class="social-buttons">
 
-	            <div class="twitter">
-	                <a href="https://twitter.com/badgerherald" class="twitter-follow-button" data-show-count="false">Follow @badgerherald</a>
-	                <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
-	            </div><!-- .twitter -->
+				<div class="twitter">
+					<a href="https://twitter.com/badgerherald" class="twitter-follow-button" data-show-count="false">Follow @badgerherald</a>
+					<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+				</div><!-- .twitter -->
 
-	            <div class="facebook">
-	                <div class="fb-like" data-href="http://facebook.com/badgerherald" data-layout="button_count" data-action="like" data-show-faces="false" data-share="false"></div>
-	            </div><!-- .facebook -->
+				<div class="facebook">
+					<div class="fb-like" data-href="http://facebook.com/badgerherald" data-layout="button_count" data-action="like" data-show-faces="false" data-share="false"></div>
+				</div><!-- .facebook -->
 
-	        </div><!-- .social-buttons -->
+			</div><!-- .social-buttons -->
 		</div>
 
 	</div><?php /* masthead */ ?>
