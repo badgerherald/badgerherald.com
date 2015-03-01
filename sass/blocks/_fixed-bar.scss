@@ -215,4 +215,11 @@
 
 @include breakpoint(xl) {
     // it just works.
+    .fixed-bar-block {
+        .wrapper {
+            margin: 0 auto;
+            width:1180px;
+            max-width:1180px;
+        }
+    }
 }
