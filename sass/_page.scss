@@ -59,7 +59,7 @@ body {
 
 @media (min-width: 600px) {
 	body.admin-bar {
-		#pullout, .fixed-bar {
+		#pullout, .fixed-bar-block {
 			top: 46px !important;
 		}
 	}
@@ -68,7 +68,7 @@ body {
 
 @media (min-width: 760px) {
 	body.admin-bar {
-		#pullout, .fixed-bar {
+		#pullout, .fixed-bar-block {
 			top: 32px !important;
 		}
 	}
