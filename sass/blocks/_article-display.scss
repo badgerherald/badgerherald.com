@@ -143,6 +143,7 @@
 		font-size: 30px;
 		line-height: 36px;
 		margin: 18px 0;
+		color: $hrld-black;
 	}
 
 	.article-subhead {
@@ -301,13 +302,19 @@
  * ----------------------------------------------------------------------------
  */
 
+.article-display-block {
+	.lede-sidebar {
+ 		display: none;
+	}
+}
+
 @include breakpoint(tablet) {
 	.article-display-block {
 		.lede-sidebar {
 			float: right;
 			width: 300px;
-			margin-top: 12px;
 			display: block;
+			margin-top: 12px;
 			margin-bottom: 24px;
 			margin-left: 80px;
 			.popular-post-widget {

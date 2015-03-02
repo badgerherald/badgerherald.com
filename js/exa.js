@@ -625,13 +625,16 @@ jQuery(document).ready(function($) {
 		// Tablet or smaller.
 		else {
 
-			$(".lede-sidebar").css('height',auto);
+			$(".lede-sidebar").css('height','auto');
 			$(".lede-sidebar").children().css('margin-bottom','24px');
 
 		}
 
 	}
 	$(window).scroll( function() {
+		positionSidebarChildren();
+	});
+	$(window).resize( function() {
 		positionSidebarChildren();
 	});
 
