@@ -160,12 +160,19 @@ global $post;
 
 				<section class="article-footnotes">
 
+					<?php exa_sharebar(); ?>
+
 					<hr/>
 
 					<aside class="aside-pane comments-pane aside-pane-wide"><?php comments_template(); ?></aside>
 					
 					<a class="comment-button open-comments-pane" href="#">Comments</a>
 					
+					<?php /* LTE Disclaimer */ ?>
+					<?php if( get_the_author() == "Letter to the Editor" ) : ?>
+						<p class="letter-to-editor-disclaimer"><em><strong>Letters to the editor</strong> are published on the discretion of the opinion desk and editor. They may not reflect the views of the Herald. Email your own letters to the editor to oped@badgerherald.com</em></p>
+					<?php endif; ?>
+
 					<p>This article was published <strong><?php the_time("M j, Y") ?></strong> at <strong><?php the_time("g:i a"); ?></strong>, and last updated <strong><?php the_modified_time("M j, Y") ?></strong> at <strong><?php the_modified_time("g:i a"); ?></strong>.<p>
 					
 				</section>

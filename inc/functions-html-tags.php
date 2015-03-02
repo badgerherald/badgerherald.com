@@ -122,3 +122,42 @@ function exa_round_mug($user_id,$size = 'square',$classes = '') {
 function exa_full_width_cover_image($url, $classes = array()) {
 	echo '<div class="block full-width-cover-image full-width-aspect-3by1 '.implode(' ', $classes).'" style="background-image:url('.$url.')"></div>';
 }
+
+/**
+ * Returns a sharebar with facebook, twitter and shorturl
+ * 
+ */
+function exa_sharebar() { ?>
+
+	<div class="sharebar">
+
+		<span class="sharetag">Share</span>
+		<input class="sharebarurl" type="text" onclick="$(this).select()" value="<?php echo exa_short_url() ?>"/>
+		
+
+		
+		<div class="sharebarfb">
+		<div  class="fb-like" 
+			  data-href="<?php echo exa_social_url(get_permalink($post->ID), false); ?>" 
+			  data-layout="button_count" 
+			  data-action="like" 
+			  data-width="90"
+			  data-show-faces="false" 
+			  data-share="true">
+		</div>
+		</div>
+		<div class="sharebartwitter">
+		<a  href="https://twitter.com/share" 
+			class="twitter-share-button " 
+			data-url="<?php echo exa_social_url(get_permalink($post->ID), false); ?>" 
+			data-text="<?php echo the_title(); ?>." 
+			data-via="badgerherald" 
+			data-related="badgerherald">Tweet</a>
+		</div>
+
+		<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+		
+	</div>
+
+
+<?php } 
