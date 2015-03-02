@@ -4,7 +4,7 @@
  * This block shows the main contents on single.php.
  *
  * ## Basic DOM Structure:
- * 
+ *
  * 		div.block.article-display-block
  *			div.wrapper
  *				article#post-xx.post-classes
@@ -19,17 +19,17 @@
  *
  * ## Notes:
  *
- * 	- the hero div and contents are only displayed if the post has a 
+ * 	- the hero div and contents are only displayed if the post has a
  * 	  feature image to display.
  *	- `.lede-sidebar` is positioned absolutely. Its height and the
- * 	  positions of its contents is then decided by javascript on 
+ * 	  positions of its contents is then decided by javascript on
  *	  pageload.
  *  - much of the style in the `.article-text` style method is duplicated
- *    in the editor styles. 
+ *    in the editor styles.
  *
  *
  * ## Contents:
- *  
+ *
  *  1.0 Hero styles.
  *  2.0 Article header styles.
  *  3.0 Lede sidebar styles.
@@ -44,13 +44,13 @@
  * 1.0 Hero styles.
  * ----------------------------------------------------------------------------
  */
- 
+
 .article-display-block {
 
 	.hero {
-		
+
 		position: relative;
-		
+
 		.hero-aside {
 
 			.hero-ad {
@@ -174,15 +174,15 @@
 				left:0;
 				bottom: -6px;
 				//border-style: solid;
-                //border-width: 6px 40px 0 40px;
-                //border-color: $hrld-blue transparent transparent transparent ;
-            }
-            &:hover {
-            	background: $hrld-black;
-            	&:after {
-            		border-color: $hrld-black transparent transparent transparent ;
-            	}
-            }
+				//border-width: 6px 40px 0 40px;
+				//border-color: $hrld-blue transparent transparent transparent ;
+			}
+			&:hover {
+				background: $hrld-black;
+				&:after {
+					border-color: $hrld-black transparent transparent transparent ;
+				}
+			}
 		}
 
 		.article-meta {
@@ -211,7 +211,7 @@
 	}
 }
 
-@include breakpoint(tablet) { 
+@include breakpoint(tablet) {
 
 	/* Header tablet styles */
 
@@ -247,9 +247,9 @@
 			.article-title:hover h1 {
 				&:before {
 					-webkit-transition: all .2s ease-in-out;
-    				-moz-transition: all .2s ease-in-out;
-    				-o-transition: all .2s ease-in-out;
-    				transition: all .2s ease-in-out;
+					-moz-transition: all .2s ease-in-out;
+					-o-transition: all .2s ease-in-out;
+					transition: all .2s ease-in-out;
 					left: -40px;
 					visibility: visible;
 					opacity: 1;
@@ -279,7 +279,7 @@
 	}
 }
 
-@include breakpoint(xl) { 
+@include breakpoint(xl) {
 
 	/* Header xl styles */
 
@@ -304,7 +304,7 @@
 
 .article-display-block {
 	.lede-sidebar {
- 		display: none;
+		display: none;
 	}
 }
 
@@ -426,7 +426,7 @@
 				font-weight: 700;
 				font-size: 18px;
 				line-height: 21px;
-				&:before {		
+				&:before {
 					/* new window icon */
 					font-family: $icon;
 					content: ' w';
@@ -449,7 +449,7 @@
 					clear: left;
 					display: block;
 				}
-			}	
+			}
 			.hrld-inline-link-excerpt-small {
 
 			}
@@ -486,7 +486,7 @@
 				width:100%;
 				height:auto;
 			}
-			p, dd { 
+			p, dd {
 				margin: 6px 0px 12px;
 				&:last-child {
 					margin-bottom: 0;
@@ -504,13 +504,13 @@
 			height: auto;
 		}
 		& > img.alignleft,& >img.alignright,&>img.alignnone,&>img.aligncenter {
-			margin: 0px 0 24px; 
+			margin: 0px 0 24px;
 		}
 	}
 }
 
 
-@include breakpoint(tablet) { 
+@include breakpoint(tablet) {
 
 	/* .article-text tablet styles */
 
@@ -540,10 +540,10 @@
 				}
 			}
 			.wp-caption {
-				position: relative; 
+				position: relative;
 				font-size: 16px;
 				line-height: 24px;
-				margin: 12px 0 24px; 
+				margin: 12px 0 24px;
 				img {
 					width: 100%;
 					height: auto;
@@ -589,7 +589,7 @@
 	}
 }
 
-@include breakpoint(xl) { 
+@include breakpoint(xl) {
 
 	/* .article-text xl styles */
 
@@ -612,70 +612,128 @@
  */
 
 .article-display-block {
+
 	.article-footnotes {
+
 		width:100%;
 		position: relative;
+		
+		/* 5.1 - Comment button */
+
+		.comment-button {
+			width: 120px;
+			padding:12px 0;
+			color:#fff;
+			background: $hrld-black;
+			font-weight: bold;
+			float:right;
+			text-align: center;
+			font-family: $headline;
+			border-radius: 3px;
+			margin-left: 20px;
+			margin-top: -6px;
+			position:relative;
+			&:after {
+				content: "";
+				display: block;
+				width: 0;
+				height: 0;
+				border-right: 10px solid transparent;
+				border-bottom: 10px solid transparent;
+				border-top: 10px solid #191919;
+				border-left: 10px solid #191919;
+				position: absolute;
+				bottom: -15px;
+				margin-left: 20px;
+			}
+			&:hover {
+				background: $hrld-blue;
+				&:after {
+				  border-top-color: $hrld-blue;
+				  border-left-color: $hrld-blue;
+				}
+			}
+		}
+
+		/* 5.2 - Share bar */
+
+		.sharebar {
+			font-family: $headline;
+			height: 29px;
+			line-height: 21px;
+			margin: 24px 0;
+			.sharetag {
+				font-weight: bold;
+				color: $hrld-dark-grey;
+				text-transform: uppercase;
+				float: left;
+				padding-top: 3px;
+				display: block;
+			}
+			.sharebarurl {
+				display: none;
+				margin-left: 10px;
+				-webkit-appearance:none;
+				float: left;
+				box-shadow: none !important;
+				background: #fff;
+				border-style: solid !important;
+				border-color: #e0eaee !important;
+				padding: 2px 5px;
+				width: 130px;
+				text-align: center;
+				border-radius: 2px;
+				border-width: 1px;
+				font-size: 13px;
+				&:focus {
+					outline: 0;
+				}
+			}
+			.sharebartwitter {
+				float: left;
+				padding-left: 10px;
+				margin-top: 1px;
+				.twitter-share-button {
+					vertical-align: bottom !important;
+				}
+			}
+			.sharebarfb {
+				float: left;
+				margin-top: 1px;
+				padding-left: 10px;
+			}
+		}
+
+		/* 5.3 - Assorted */
+
 		hr {
 			border-bottom: 1px solid $hrld-dark-grey;
 			width:180px;
 			margin-left:0;
 		}
-
+		
 		p {
 			color: $hrld-dark-grey;
 			font-size: 14px;
 			font-family: $headline;
 		}
+
 	}
 
-	.comment-button {
-		width: 120px;
-		padding:12px 0;
-		color:#fff;
-		background: $hrld-black;
-		font-weight: bold;
-		float:right;
-		text-align: center;
-		font-family: $headline;
-		border-radius: 3px;
-		margin-left: 20px;
-		margin-top: -6px;
-		position:relative;
-		&:after {
-			content: "";
-			display: block;
-			width: 0;
-			height: 0;
-			border-right: 10px solid transparent;
-			border-bottom: 10px solid transparent;
-			border-top: 10px solid #191919;
-			border-left: 10px solid #191919;
-			position: absolute;
-			bottom: -15px;
-			margin-left: 20px;
-		}
-		&:hover {
-			background: $hrld-blue;
-			&:after {
-				border-top-color: $hrld-blue;
-				border-left-color: $hrld-blue;
-			}
-		}
-	}
 }
 
-@include breakpoint(desktop) {
-	.article-display-block {
-		.article-footnotes {
-			margin-left:80px;
-			width:540px;
-		}
-	}
-}
-
+/* 5.4 - Responsive */
 
 @include breakpoint(tablet) {
+
 	.article-display-block {
+
+		.article-footnotes {
+	  		.sharebarurl {
+				display: inline-block !important;
+	  		}
+	  	}
+		
 		.footnote-sidebar {
 			width: 380px;
 			margin-left: 80px;
@@ -685,5 +743,22 @@
 			float:right;
 			margin-top: -436px;
 		}
+
 	}
+
+}
+
+@include breakpoint(desktop) {
+
+	.article-display-block {
+
+		.article-footnotes {
+		
+			margin-left:80px;
+			width:540px;
+
+		}
+
+	}
+	
 }
