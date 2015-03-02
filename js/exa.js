@@ -497,6 +497,7 @@ jQuery(document).ready(function($) {
 
 	function anchorPane() {
 
+
 		var anchor = paneAnchor;
 		var pane = openPane;
 		var block = anchor.parents('.block');
@@ -581,41 +582,53 @@ jQuery(document).ready(function($) {
 	 */
 	function positionSidebarChildren() {
 
-		// height of the article text.
-		var textHeight = $(".article-text").outerHeight();
-		
-		// height of the children.
-		var childrenHeight = 0;
-		
-		$(".lede-sidebar").children().each(function(){
-			childrenHeight = childrenHeight + $(this).height();
-		});
+		if(document.documentElement.clientWidth > 1040) {
 
-		var numChildren = $(".lede-sidebar").children().length;
-
-		var spacing = (textHeight - childrenHeight)/numChildren;
-
-		while(spacing < 300) {
-
-			// delete last child.
-			$(".lede-sidebar").children().last().remove();
-
-			numChildren = numChildren - 1;
-			childrenHeight = 0;
-
+			// height of the article text.
+			var textHeight = $(".article-text").outerHeight();
+			
+			// height of the children.
+			var childrenHeight = 0;
+			
 			$(".lede-sidebar").children().each(function(){
 				childrenHeight = childrenHeight + $(this).height();
 			});
-
-			spacing = (textHeight - childrenHeight)/numChildren;
+	
+			var numChildren = $(".lede-sidebar").children().length;
+	
+			var spacing = (textHeight - childrenHeight)/numChildren;
+	
+			while(spacing < 300) {
+	
+				// delete last child.
+				$(".lede-sidebar").children().last().remove();
+	
+				numChildren = numChildren - 1;
+				childrenHeight = 0;
+	
+				$(".lede-sidebar").children().each(function(){
+					childrenHeight = childrenHeight + $(this).height();
+				});
+	
+				spacing = (textHeight - childrenHeight)/numChildren;
+	
+			}
+	
+			// Don't try to be too perfect.
+			spacing = spacing - 30;
+	
+			$(".lede-sidebar").css('height',textHeight);
+			$(".lede-sidebar").children().css('margin-bottom',spacing);
 
 		}
 
-		// Don't try to be too perfect.
-		spacing = spacing - 30;
+		// Tablet or smaller.
+		else {
 
-		$(".lede-sidebar").css('height',textHeight);
-		$(".lede-sidebar").children().css('margin-bottom',spacing);
+			$(".lede-sidebar").css('height',auto);
+			$(".lede-sidebar").children().css('margin-bottom','24px');
+
+		}
 
 	}
 	$(window).scroll( function() {
