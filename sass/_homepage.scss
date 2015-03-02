@@ -3,31 +3,12 @@
  * Slider, ad, and top posts
  * 
  */
+
+.old-homepage-block {
+	margin-top:0;
+}
 #above-fold {
 	@include clearfix();
-	/** ---------------------------------------- * 
-	 *
-	 * Swipe styling.
-	 *
-	 * @see https://github.com/bradbirdsall/Swipe
-	 *
-	 */
-	.swipe {
-	  overflow: hidden;
-	  visibility: hidden;
-	  position: relative;
-	}
-	.swipe-wrap {
-	  overflow: hidden;
-	  position: relative;
-	}
-	.swipe-wrap > div {
-	  float:left;
-	  width:100%;
-	  position: relative;
-	}
-
-	/* ----------------- /end swipe styling/ --- */
 
 	#slider {
 		width: 100%;
@@ -179,7 +160,7 @@
 		} /* .todays-shoutout */
 	} #top-posts {
 		display:none;
-	} #interactive {
+	} #most-recent {
 		display:none;
 	}
 
@@ -467,43 +448,43 @@ ul.featured-stream-list{
                             }
                     }
             }
-        } #interactive {
+        } #most-recent {
 			width:220px;
 			float:left;
 			display: block;
 			margin-left: 20px;
 			background: #fff;
+			height: 600px;
 			h3 {
 				margin-top: 0;
 				margin-bottom: 0px;
-				padding:12px 20px;
+				padding:9px 20px;
+				background: black;
+				color: #fff;
+				text-align: center;
 				font-family: $headline;
 				text-transform: uppercase;
-			} h4 {
-				font-family: $body;
-				font-size: 20px;
-				margin-top: 6px;
-				line-height: 30px;
+			} 
+			a.hp-most-recent {
 				color: #000;
-				margin: 12px 20px;
-			} a p {
-				color: #000;
-				padding: 0px 20px 24px;
-			} p.athr {
-				margin: 12px 20px 18px;
+				display: block;
+				padding: 12px 20px 12px;
 				font-family: $headline;
-				font-style: italic;
-				a {
-					font-style: normal;
+				font-weight: bold;
+				border-bottom: 1px solid $hrld-dark-grey;
+				time {
+					color: $hrld-blue;
+					display: block;
+					width: 100%;
 					text-transform: uppercase;
-					color:#000;
-					font-weight: bold;
-					padding-left: 3px;
-				}	
-				img {
-					position: relative;
-					top: 8px;
-					margin-right: 5px;
+					font-size: 11px;
+					font-weight: normal;
+				}
+				&:hover {
+					color: $hrld-blue;
+					time {
+						color: $hrld-black;
+					}
 				}
 			} 
 		}
