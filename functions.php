@@ -859,7 +859,7 @@ function exa_open_graph_tags() {
 	//  · http://badgerherald.com/shoutouts/
 
 	$img = wp_get_attachment_url( get_post_thumbnail_id($post->ID) );
-	if( $img && is_single() ) {
+	if( $img ) {
 		$output .= "<meta property='og:image' content='$img' />\n";
 	} else {
 		$img = get_template_directory_uri() . "/img/misc/social-thumb.png";
