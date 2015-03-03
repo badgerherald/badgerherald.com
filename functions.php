@@ -872,7 +872,7 @@ function exa_open_graph_tags() {
 	echo $output;
 
 }
-add_action('wp_head','open_graph_tags');
+add_action('wp_head','exa_open_graph_tags');
 
 
 /**
@@ -1019,7 +1019,7 @@ function exa_interactive_single_template($single_template) {
 add_filter('single_template', 'exa_interactive_single_template');
 
 	
-function hrld_html_tag_open($tag = "",$id = "",$class = array(),$content = "",$close = false, $misc = array()){
+function hrld_html_tag_open($tag = "",$id = "",$class = array(''),$content = "",$close = false, $misc = array()){
 	$result = "";
 	if( $tag != ""){
 		$result = "<$tag id=\"$id\" ";

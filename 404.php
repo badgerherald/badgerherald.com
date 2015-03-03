@@ -56,8 +56,6 @@ if ( $the_query->have_posts() ) {
 }
 /* Restore original Post Data */
 wp_reset_postdata();
-error_log("This process used " . microtime(true) - $start .
-    		" ms for its computations\n");
 
 get_header(); ?>
 
