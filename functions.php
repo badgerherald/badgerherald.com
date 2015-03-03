@@ -1166,7 +1166,7 @@ function exa_social_url($url = "", $newVersion = true){
  */
 function exa_post_gallery($output = '', $attr) {
 
-	return "";
+	return "<div></div>";
 	$post = get_post();
 	wp_enqueue_script('swipe', get_template_directory_uri().'/js/Swipe/swipe.js', array('jquery'), false, true);
 	wp_enqueue_script('exa_post_gallery_js', get_template_directory_uri().'/js/exa-post-gallery.js', array('jquery'), false, true);

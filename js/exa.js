@@ -631,12 +631,14 @@ jQuery(document).ready(function($) {
 		}
 
 	}
-	$(window).scroll( function() {
+/*	$(window).scroll( function() {
 		positionSidebarChildren();
 	});
 	$(window).resize( function() {
 		positionSidebarChildren();
 	});
+*/
+	positionSidebarChildren();
 
 
 	/**
