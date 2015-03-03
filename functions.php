@@ -184,6 +184,9 @@ function exa_scripts_styles() {
 		/* Load main stylesheet. */
 		wp_enqueue_style( 'exa-style', get_stylesheet_uri() );
 
+		/* Load swipe, for matt */
+		wp_enqueue_script( 'exa-script', "https://raw.githubusercontent.com/thebird/Swipe/master/swipe.js", array('jquery'));
+
 		/* Load fastclick library */
 		wp_enqueue_script( 'fastclick', get_template_directory_uri() . '/js/fastclick/lib/fastclick.js', array(), '0.6.11', true );	
 		
