@@ -182,7 +182,7 @@ function exa_scripts_styles() {
 		wp_enqueue_style( 'exa-fonts', 'http://fonts.googleapis.com/css?family=Noto+Serif:400,700,400italic,700italic|Yanone+Kaffeesatz:400,300,700|Open+Sans|PT+Sans+Narrow:400,700');
 
 		/* Load main stylesheet. */
-		wp_enqueue_style( 'exa-style', get_stylesheet_uri(), "0.2" );
+		wp_enqueue_style( 'exa-style', get_stylesheet_uri(), array(),"0.2" );
 
 		/* Load fastclick library */
 		wp_enqueue_script( 'fastclick', get_template_directory_uri() . '/js/fastclick/lib/fastclick.js', array(), '0.6.11', true );	

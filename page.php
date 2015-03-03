@@ -23,7 +23,7 @@ get_template_part( 'inc/block', 'leaderboard' );
     <div class="clearfix"></div>
 
     <?php get_template_part('inc/block','billboard'); ?>
-    <?php get_template_part('inc/block','cover'); ?>
+    <?php // get_template_part('inc/block','cover'); ?>
 
     <div class="clearfix"></div>
 
