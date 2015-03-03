@@ -1,15 +1,10 @@
 .standing-head-block {
     left: inherit;
     margin: 0;
+    margin-top: 12px;
 }
 
 /* push the header bar below the admin bar. */
-
-body.admin-bar {
-    .fixed-bar-block {
-        top: 45px;
-    }
-}
 
 .standing-head-block {
 	display: none;
@@ -36,6 +31,7 @@ body.admin-bar {
 @media (min-width: 1160px) {
 
     .standing-head-block {
+        margin-top: 0;
 	    a#logo {
 	        display: block;
 	        width: 140px;

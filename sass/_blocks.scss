@@ -224,6 +224,7 @@
 .billboard-block {
 	background: #fff;
 	display:none;
+	margin:48px 0 ;
 	.ad {
 		display: block;
 		margin: 0 auto;
@@ -315,7 +316,7 @@
 	}
 }
 
-@media (min-width: 1060px) {
+@media (min-width: 1160px) {
 
 	.billboard-block {
 		display: block;
