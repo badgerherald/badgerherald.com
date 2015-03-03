@@ -7,8 +7,6 @@
 
 	<div id="slider">
 
-
-
 				<?php
 		
 				/* Build query for featured stories in news */
@@ -37,7 +35,7 @@
 					<div class="slider-content">
 					<a href="<?php the_permalink() ?>">
 						<h2><?php the_title(); ?></h2>
-						<p><?php the_excerpt(); ?></p>
+						<?php the_excerpt(); ?>
 						</a>
 						<?php if(hrld_related_has_posts()) : ?>
 							<ul class="slider-related">
@@ -64,12 +62,12 @@
 
 			<div id="middle-column">
 				<div class="hp-square-ad">
-					<?php $DoubleClick->place_ad('bh:sidekick','300x250') ?>
+					<?php $DoubleClick->place_ad('bh:sidekick','300x250',array('desktop','xl')) ?>
 				</div>
 			
 
 				<div class="todays-shoutout">
-				<?php $DoubleClick->place_ad('bh:sidekick','300x250') ?>
+				<?php $DoubleClick->place_ad('bh:sidekick','300x250',array('desktop','xl')) ?>
 				</div>
 			
 			</div> <!-- #middle-column -->
@@ -113,7 +111,7 @@
 
 	//$beats_info is an array that holds beat names.
 	$beats = array("news" => "news",
-					"oped" => "opinion",
+					"opinion" => "opinion",
 					"artsetc" => "artsetc",
 					"sports" => "sports");
 

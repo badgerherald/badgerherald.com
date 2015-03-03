@@ -11,6 +11,7 @@
 	@include clearfix();
 
 	#slider {
+		@include clearfix();
 		width: 100%;
 		background: $hrld-black;
 		color: $hrld-light-grey;
