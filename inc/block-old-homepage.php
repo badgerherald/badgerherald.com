@@ -104,7 +104,7 @@
 </div>
 	<?php get_template_part('inc/block','billboard'); ?>
 
-<div class="block" style="margin-top:42px;">
+<div class="block">
 <div class="wrapper">
 
 	<?php

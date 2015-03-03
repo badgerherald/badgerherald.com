@@ -9,7 +9,7 @@
 }
 #above-fold {
 	@include clearfix();
-
+	margin-top:12px;
 	#slider {
 		@include clearfix();
 		width: 100%;
@@ -91,6 +91,7 @@
 			width: 300px;
 			height: 250px;
 			margin-bottom: 12px;
+			display: none;
 		}
 		.todays-shoutout {
 			margin: 0;
@@ -305,9 +306,10 @@ ul.featured-stream-list{
 	overflow: hidden;
 }
 
-@media (min-width: 760px) {
+@include breakpoint(tablet) {
 
 	#above-fold {
+		margin-top: 0;
 		#slider {
 			margin-bottom: 18px;
 			position: relative;
@@ -328,6 +330,7 @@ ul.featured-stream-list{
 			}
 		} #middle-column {
 			.hp-square-ad {
+				display: block;
 				width: 300px;
 				height: 250px;
 				margin-bottom: 12px;
@@ -339,7 +342,7 @@ ul.featured-stream-list{
 					height: 172px;
 				}
 			}	
-		} #top-posts {
+		} #most-recent {
 			display:none;
 		} 
 	} 
@@ -388,7 +391,7 @@ ul.featured-stream-list{
 
 
 
-@media (min-width: 1160px) {
+@include breakpoint(desktop) {
 	
 	#above-fold {
 		margin-bottom: 30px;
@@ -527,7 +530,7 @@ ul.featured-stream-list{
 	}
 }
 
-@media (min-width: 1320px) {
+@include breakpoint(xl) {
 
 	#above-fold {
 		margin-bottom: 30px;

@@ -140,7 +140,7 @@ $fifteenColumns:	1180px;
   }
  
   @else if $breakpoint == "desktop" {
-    @media (min-width: 1060px) {
+    @media (min-width: 1160px) {
       @content;
     }
   }
