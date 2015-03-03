@@ -1,185 +1,134 @@
-
+html {
+	height: 100%;
+}
 
 /* Page styles refer to general positioning and sizing. */
-
 body {
-	padding-bottom: 25px;
+	width: 100%;
 	background: $hrld-light-grey;
     height:100%;
     min-height:100%;
+    position: relative;
+    overflow-x: hidden;
+    @include clearfix();
 }
 
-/* Wrapper */
-#wrapper {
+
+.wrapper {
 	margin: 0 auto;
 	max-width: 540px;
-	width: 100%;
+	width: flex(300,320);
 	position: relative;
+}
+.wrapper.colophon{
+	clear: both;
 }
 
 /* Page surrounds everything inside of body */
 
 #page {
 	width: 100%; /* This width is based on 320px width of an iPhone screen */
-	position: relative;	/* #page must be relative so that elements in it are positioned relative to it */
-}
-
-/* Masthead is positioned absolutely, on top of page */
-
-#masthead {
-	position: fixed;
-	width: 100%;
-	top : 0;
-	height: 66px; /* top margin, navbar, bottom margin */
-	max-width: 540px;
-	border-bottom: 1px solid #e0eaee;
-	z-index: 9999;
-}
-
-.page-container-masthead {
-	position: fixed !important;
-	z-index: 9999;
-	background: rgba(239,244,246,.9);
-	height: 66px; /* top margin, navbar, bottom margin */
-	width:100%;
-	top: 0;
-}
-
-.page-container-inner-masthead {
-	top:0;
-	position: absolute !important;
-}
-
-.page-container-content {
-	background: $hrld-light-grey;
-	z-index: 1000;
-}
-
-body.admin-bar {
-	#masthead {
-		top: 32px !important;
+	position: absolute;	/* #page must be relative so that elements in it are positioned relative to it */
+	height: 100%;
+	margin: 0;
+	padding: 0;
+	left: 0;
+	@include transition(all, 250ms, linear);
+	&.pullout-active {
+		left: 260px;
+		position: fixed;
 	}
-}
-
-#inner-masthead {
-	display: none;
-	position: fixed;
-	width: flex(740,760);
-	max-width: 800px;
-	padding: 0 flex(10,760);
-	top:78px;
-	z-index: 900;
 }
 
 /* Primary contains all content, with a buffer on both sides of it */
 
 #primary {
-	width: flex(300,320);
-	padding: 12px flex(10,320) 0;
-	margin-top: 66px;
 	position: relative;
 	background: $hrld-light-grey;
-}
-
-#main-header {
 	width: 100%;
-	position: relative;
+	margin-top: 54px;
 }
 
-@media (min-width: 760px) {
-
-	/** _page.scss overrides */
-
-	/* Wrapper */
-	#wrapper {
-		max-width: 780px;
-	}
-
-	#masthead {
-		max-width: 780px;
-	}
-
-	#inner-masthead {
-		display: block;
-	}
-
-
-
-
-	#primary {
-		/* TODO: determined correct value */
-		width: flex(740,760);
-		padding:12px flex(10,760) 0;
-
-		/* IMPORTANT: the padding on 
-		primary is how you push page content
-		up and down. It should match the height
-		of #inner-masthead */
-		margin-top: 180px;
-	}
-
+.dfw-unit {
+	display:none;
 }
 
-@media (min-width: 1060px) {
+.dfw-mobile, .dfw-all {
+	display:block;
+}
 
-	/** _page.scss overrides */
-
-	#wrapper {
-		max-width: 1060px;
-		width: 1060px;
-	}
-
-	#masthead {
-		max-width: 1060px;
-		width: 1060px;
-		height: 78px;
-	}
-
-	.page-container-masthead {
-		height: 78px;
-	}
-
-	#inner-masthead {
-		width: 860px;
-		max-width: none;
-		padding: 0;
-		top:0px;
-		margin-left: 180px;
-		margin-top: 90px;
-		.advertise-plug {
-			display: block;
+@media (min-width: 600px) {
+	body.admin-bar {
+		#pullout, .fixed-bar-block {
+			top: 46px !important;
 		}
 	}
 
-	#primary {
-		width: 1020px;
-		padding:24px 20px 0;
-		/* TODO: determined correct value */
-		margin-top: 230px;
-		z-index: 5000;
+}
 
+@media (min-width: 760px) {
+	body.admin-bar {
+		#pullout, .fixed-bar-block {
+			top: 32px !important;
+		}
+	}
+	/** _page.scss overrides */
+
+	/* Wrapper */
+	.wrapper {
+		max-width: 740px;
+	}
+	#primary {
+		margin-top: 0;
+	}
+	#page {
+		&.pullout-active {
+			left: 681px;
+		}
+	}
+
+	.dfw-tablet {
+		display:block;
+	}
+	.dfw-mobile:not(.dfw-tablet):not(.dfw-all) {
+		display: none;
 	}
 
 }
 
-@media (min-width:1220px) {
-
-	#wrapper {
-		max-width: 1220px;
-		width: 1220px;
-	}
-
-	#inner-masthead {
-		width:1020px;
-	}
-	#masthead {
-		max-width: 1220px;
-		width: 1220px;
-	}
+@include breakpoint(desktop) {
 
 	#primary {
-		width: 1180px;
+		padding: 0;
 	}
+
+	.wrapper {
+		max-width: 1020px;
+
+	}
+
+	.dfw-desktop {
+		display:block;
+	}
+	.dfw-mobile:not(.dfw-desktop):not(.dfw-all), .dfw-tablet:not(.dfw-desktop):not(.dfw-all) {
+		display: none;
+	}
+
+}
+
+@include breakpoint(xl) {
+
+	.wrapper {
+		max-width: 1180px;
+	}
+
+	.dfw-xl {
+		display:block;
+	}
+	.dfw-mobile:not(.dfw-xl):not(.dfw-all), .dfw-tablet:not(.dfw-xl):not(.dfw-all), .dfw-desktop:not(.dfw-xl):not(.dfw-all)  {
+		display: none;
+	}
+
 } 
 
 

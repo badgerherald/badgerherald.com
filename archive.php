@@ -64,13 +64,10 @@ get_header(); ?>
 		<?php twentythirteen_paging_nav(); ?>
 
 	<?php elseif ($query->is_archive) : ?>
-		Aadfasdfasd
 		<?php //get_template_part( 'content', 'none' ); ?>
 	<?php endif; ?>
 
 	</div><!-- id="stream" -->
-
-	<?php get_sidebar(get_post_type() ); ?>
 
 	<div id="clearfix"></div>
 

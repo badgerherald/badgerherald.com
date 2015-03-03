@@ -8,13 +8,12 @@
 /* Thumbnail image */
 
 .entry-thumbnail {
-	margin: 0 0 18px 0;
+	margin-bottom: 18px;
 	img {
 		width: 100%;
 		height: auto;
 	}
 }
-
 /* exerpt-more */
 .excerpt-more {
 	color: $heraldblue;
@@ -37,9 +36,9 @@
 		padding-left: 16px; 
 	}
 	.author-pagination{
-	max-width: 180px;
-	display: inline-block;
-	color: #a6b5bd;
+		max-width: 180px;
+		display: inline-block;
+		color: #a6b5bd;
 	}
 }
 
@@ -167,28 +166,26 @@
 	}
 }
 
-@media (min-width: 1060px) {
+@media (min-width: 1160px) {
 	.stream-post{
 		margin-bottom: 12px;
 	}
+	/*
 	#stream{
 		width: 700px;
 		float: left;
 		margin-right: 20px;
 	}
-	#stream.author-stream{
-		margin-left: 320px;
-		margin-right: 0;
-	}
 	.stream-sidebar{
 		width: 300px;
 		float: left;
 	}
+	*/
 	#section-header .section-banner{
 		height: 174px;
 	}
 	.stream-post.featured-fullstream-post{
-		width: auto;
+		width: 100%;
 		.entry-thumbnail{
 			width: 380px;
 			margin-right: 20px;
@@ -205,16 +202,15 @@
 	}
 }
 
-@media (min-width: 1220px) {
+@media (min-width: 1320px) {
+	/*
 	#stream{
 		width: 780px;
-	}
-	#stream.author-stream{
-		margin-left: 380px;
 	}
 	.stream-sidebar, .stream-sidebar .sidebar-inner{
 		width: 380px;
 	}
+	*/
 	.stream-post.instream-stream-post {
 		.entry-thumbnail {
 			float: left;

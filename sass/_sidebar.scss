@@ -1,6 +1,5 @@
 #sidebar {
 	position: relative;
-
 	.sidebar-inner {
 		margin-top:24px;
 	}
@@ -138,6 +137,7 @@ a.to-categories{
 		
 	}
 }
+
 @media (min-width: 480px) {
 	.categories-list{
 		li{
@@ -170,7 +170,7 @@ a.to-categories{
 	}
 }
 
-@media (min-width: 1060px) {
+@media (min-width: 1160px) {
 	.stream-sidebar #ad-leaderboard{
 		float: none;
 		margin-right: 0;		
@@ -192,5 +192,5 @@ a.to-categories{
 	}
 }
 
-@media (min-width: 1220px) {
+@media (min-width: 1320px) {
 }

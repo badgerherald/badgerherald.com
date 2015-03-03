@@ -1,0 +1,17 @@
+.footer-block {
+	background: $hrld-black;
+	margin-bottom:0px;
+	padding: 24px 0;
+	color: #fff;
+	p {
+		font-family: $headline;
+		color: #c7d0d5;
+		margin: 0;
+		a {
+			color: #fff;
+			&:hover {
+				border-bottom: 1px solid #fff;
+			}
+		}
+	} 
+}

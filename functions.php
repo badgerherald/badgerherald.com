@@ -4,10 +4,107 @@
  *
  * Contents:
  *
+ * 		#region: include other fuction files.
+ * 		#region: general wordpress theme setup.
+ * 		#region: filters that fix bugs and other things.
+ */
+
+
+/**
+ * ================================================================================================
+ *   #region: include other fuction files.
+ * ================================================================================================
+ */
+
+/**
+ * Load more functions for develop enviornment.
  * 
- *
- *
- *
+ * Contents:
+ *   - exa_dev_attachment_url()				(filter: wp_get_attachment_url)
+ */
+include_once('inc/functions-dev.php');
+
+/**
+ * Auto-generated html tags for things like
+ * author links, captions, &c.
+ * 
+ * Contents:
+ * 	 - exa_hero_media_credit_tag()
+ *   - exa_hero_caption_text()
+ *   - exa_hero_caption()
+ *   - exa_mug()
+ *   - exa_round_mug()
+ */
+include_once('inc/functions-html-tags.php');
+
+include_once('inc/functions-block.php');
+
+/**
+ * Social links
+ * 
+ * Contents:
+ *   - Currently nothing of importance is done in here.
+ */
+include_once('inc/functions-social.php');
+
+/**
+ * Register icymi taxonomy.
+ * 
+ * Contents:
+ * 	 - exa_register_icymi_taxonomy()		(action: init)
+ */
+include_once('inc/functions-icymi.php');
+
+/**
+ * Registers Popular_Post_Widget
+ * 
+ * Contents:
+ * 	 - exa_register_icymi_taxonomy()		(action: init)
+ */
+include_once('inc/functions-popular-post-widget.php');
+
+/**
+ * Register importance taxonomy.
+ * 
+ * Contents:
+ *	 - // todo: list contents.
+ */
+include_once('inc/functions-importance.php');
+
+/**
+ * Ad setup and handling in exa.
+ * 
+ * Contents:
+ *   - exa_ad_setup()						(action: dfw_setup)
+ *   - exa_register_content_adslot()		(action: dfw_setup)
+ *   - exa_insert_after_graph()
+ */
+include_once('inc/functions-ads.php');
+
+/**
+ * Do all the fun ajax-y things.
+ * 
+ * Contents:
+ *   - Currently nothing of importance is done in here.
+ */
+include_once('inc/functions-ajax.php');
+
+/**
+ * Integrate 3rd party services that we use.
+ * 
+ * Contents:
+ *   - 
+ */
+include_once('inc/functions-services.php');
+
+
+
+
+
+/**
+ * ================================================================================================
+ *   #region: general wordpress theme setup.
+ * ================================================================================================
  */
 
 /**
@@ -16,7 +113,6 @@
  */
 if ( ! isset( $content_width ) )
 	$content_width = 690;
-
 
 /**
  * Exa should run on WordPress 3.6 or later.
@@ -28,8 +124,6 @@ global $shortcode_tags;
 if ( !array_key_exists( 'media-credit', $shortcode_tags ) )
     add_shortcode('media-credit', 'ignore_media_credit_shortcode' );
 
-
-
 /**
  * Set up for various features of exa.
  *
@@ -37,7 +131,7 @@ if ( !array_key_exists( 'media-credit', $shortcode_tags ) )
  */
 function exa_setup() {
 
-	/* Register different size thumbnail images */
+	/* Register different size thumbnail images */	
 	add_theme_support('post-thumbnails');
 
 	/* Include custom editor styles, so the backend looks like
@@ -68,93 +162,9 @@ add_action( 'after_setup_theme', 'exa_setup' );
 
 
 /**
- * Setup doubleclick breakpoints and network codes.
- * 
- * @see https://github.com/willhaynes/DoubleClick-for-Wordpress
- * @since 0.2
- */
-function exa_ad_setup() {
-
-	global $DoubleClick;
-
-	$DoubleClick->networkCode = "8653162";
-
-	if( !hrld_is_production() )
-		$DoubleClick->debug = true;
-
-	/* breakpoints */
-	$DoubleClick->register_breakpoint('phone',		array('minWidth'=>0,'maxWidth'=>720));
-	$DoubleClick->register_breakpoint('tablet',		array('minWidth'=>760,'maxWidth'=>1040));
-	$DoubleClick->register_breakpoint('desktop',	array('minWidth'=>1040,'maxWidth'=>1220));
-	$DoubleClick->register_breakpoint('xl',			array('minWidth'=>1220,'maxWidth'=>9999));
-
-}
-add_action('dfw_setup','exa_ad_setup');
-
-/**
- * Adds filter to content to display in the middle of content on mobile devices.
- * 
- * @since 0.2
- */
-function exa_register_content_adslot() {
-
-	global $DoubleClick;
-	if ( is_single() && ! is_admin() ) {
-		add_filter('the_content','_exa_register_content_adslot');
-	}
-
-}
-add_action('dfw_setup','exa_register_content_adslot');
-
-/**
- * Filters content and ads an adspot for phone and tablet devices.
- * 
- * Registered in exa_register_content_adslot()
- * 
- * @uses exa_insert_after_graph
- * 
- * @param string $content The post content is passed in.
- * @since 0.2
- */
-function _exa_register_content_adslot($content) {
-	
-	global $DoubleClick;
-
-	if ( is_single() && ! is_admin() ) {
-		$ad = $DoubleClick->get_ad_placement('bh:sidekick','300x250',array('phone','tablet'));
-		$ad = "<div class='ad ad-in-content mobile-tablet'>" . $ad . "</div>";
-        return exa_insert_after_graph( $ad, $content, 3 );
-    }
-    return $content;
-}
-
-/**
- * Inserts a string in between paragraphs.
- * 
- * @param string $insertion The string to insert.
- * @param string $content The content to insert into.
- * @param int $graph The paragraph to insert after.
- * @since 0.2
- */
-function exa_insert_after_graph( $insertion, $content, $graph ) {
-	
-	$graphs = explode( '</p>', $content );
-	foreach ($graphs as $i => $p) {
-	    if ( trim( $p ) ) {
-	        $graphs[$i] .= '</p>';
-	    }
-	    if ( $graph_id == $i + 1 ) {
-	        $graphs[$i] .= $insertion;
-	    }
-	}
-	return implode( '', $graphs );
-	
-}
-
-/**
  * Enqueues scripts and styles for front end.
  *
- * @since 0.1
+ * @since v0.1
  */
 function exa_scripts_styles() {
 	
@@ -162,25 +172,45 @@ function exa_scripts_styles() {
 
 	if( ! is_singular('interactive') ) {
 		
+		/**
+		 * Load fontastic font.
+		 * @see ./css/fontastic/icon-reference.html 
+		 */
+		wp_enqueue_style( 'exa-icons', get_template_directory_uri() . '/css/fontastic/styles.css' );
+
+		/* Load google font. */
+		wp_enqueue_style( 'exa-fonts', 'http://fonts.googleapis.com/css?family=Noto+Serif:400,700,400italic,700italic|Yanone+Kaffeesatz:400,300,700|Open+Sans|PT+Sans+Narrow:400,700');
+
 		/* Load main stylesheet. */
 		wp_enqueue_style( 'exa-style', get_stylesheet_uri() );
 
-		/* Load swipe library */
-		/* TODO: only homepage */
-		wp_enqueue_script( 'swipe', get_template_directory_uri() . '/js/Swipe/swipe.js', array(), '2.0', true );
-
 		/* Load fastclick library */
 		wp_enqueue_script( 'fastclick', get_template_directory_uri() . '/js/fastclick/lib/fastclick.js', array(), '0.6.11', true );	
-	
+		
+		/* Load exa.js. (and jQuery, implicitly) */
+		wp_enqueue_script('exa-script', get_template_directory_uri() . '/js/exa.js',array('jquery','fastclick'),'0.1',true);
+
+		// Note that jQuery runs in no conflict mode — $ is not a valid function.
+		
 	} else {
 
 		wp_enqueue_style( '', 'http://badgerherald.com/interactive/' . get_post_meta(get_the_ID(), '_hrld_interactive_include', true) . '/css/style.css' );
 
-
+	}
+	
+	if (is_author() || is_single()){
+		wp_enqueue_style('hrld-showcase-style');
+		wp_enqueue_script( 'hrld-showcase-script-class');
+		wp_enqueue_script('exa-hrld-showcase-init', get_template_directory_uri().'/js/hrld-showcase-init.js', array('hrld-showcase-script-class', 'jquery'));
 	}
 	
 }
 add_action( 'wp_enqueue_scripts', 'exa_scripts_styles' );
+
+/**
+ * Enqueues the scripts from the hrld-showcase plugin on author pages.
+ */
+
 
 /**
  * Enqueues scripts and styles for admin.
@@ -223,6 +253,37 @@ add_filter('excerpt_more', 'new_excerpt_more');
 
 
 /**
+ * ================================================================================================
+ *   #region: filters that fix bugs and other things.
+ * ================================================================================================
+ */
+
+/**
+ * This function fixes a bug with the default image src.
+ * 
+ * @since v0.2
+ */
+function _fix_wpua_src($image_src_array, $attachment_id, $size='thumbnail', $icon=0) {
+
+	global $wpua_avatar_default, $wpua_functions;
+
+	// if we have a default avatar.
+	if(!empty($wpua_avatar_default) && $wpua_functions->wpua_attachment_is_image($wpua_avatar_default)) {
+
+		if( is_array($size) && is_string($size[0]) ) {
+			$size = $size[0];
+			$image = wp_get_attachment_image_src($attachment_id, $size, $icon);
+			return $image;
+		}
+	}
+	return $image_src_array;
+
+}
+add_filter('wpua_get_attachment_image_src', '_fix_wpua_src',10,4);
+
+
+
+/**
  * Get the list of beats (topic taxonomy) for a post.
  * 
  * @since 0.1
@@ -232,32 +293,6 @@ function exa_get_beats() {
 
 	global $post;
 	return wp_get_post_terms(get_the_ID(),"topic");
-
-}
-
-/**
- * Returns a boolean specifying if the post is featured or not.
- * 
- * @since 0.1
- * @return boolean True if post is marked "featured", False if not.
- */
-function exa_is_featured() {
-
-	global $post;
-	return (in_array("Featured",wp_get_post_terms(get_the_ID(),importance,array("fields" => "names"))));
-
-}
-
-/**
- * Returns a boolean specifying if the post is marked in_stream or not.
- * 
- * @since 0.1
- * @return boolean True if post is marked "in stream", False if not.
- */
-function exa_is_instream() {
-
-	global $post;
-	return (in_array("In Stream",wp_get_post_terms(get_the_ID(),importance,array("fields" => "names"))));
 
 }
 
@@ -455,7 +490,7 @@ function exa_topic($pid = null) {
 function exa_post_thumbnail_html( $html, $post_id, $post_thumbnail_id, $size, $attr ){
 	if($html){
 		return $html;
-	} else{
+	} else {
 		return '<img src="'.get_template_directory_uri().'/img/temp/thumb.jpg'.'" height="'.get_option( 'thumbnail_size_w' ).'" width="'.get_option( 'thumbnail_size_h' ).'" />';
 	}
 	
@@ -620,18 +655,23 @@ function hrld_resize( $attach_id = null, $img_url = null, $width, $height, $crop
 		}
 
 		// no cached files - let's finally resize it
-		$new_img_path = image_resize( $file_path, $width, $height, $crop );
-		$new_img_size = getimagesize( $new_img_path );
-		$new_img = str_replace( basename( $image_src[0] ), basename( $new_img_path ), $image_src[0] );
+		$new_img_editor = wp_get_image_editor($file_path);
+		if ( ! is_wp_error( $new_img_editor ) ) {
+			$new_img_editor->set_quality(100);
+		    $new_img_editor->resize( $width, $height, $crop );
+		    $new_img_editor->save( $cropped_img_path );
+			$new_img_size = getimagesize( $cropped_img_path);
+			$new_img = str_replace( basename( $image_src[0] ), basename( $cropped_img_path ), $image_src[0] );
 
-		// resized output
-		$hrld_image = array (
-			'url' => $new_img,
-			'width' => $new_img_size[0],
-			'height' => $new_img_size[1]
-		);
-		
-		return $hrld_image;
+			// resized output
+			$hrld_image = array (
+				'url' => $new_img,
+				'width' => $new_img_size[0],
+				'height' => $new_img_size[1]
+			);
+			
+			return $hrld_image;
+		}
 	}
 
 	// default output - without resizing
@@ -653,208 +693,6 @@ function hrld_resize( $attach_id = null, $img_url = null, $width, $height, $crop
 function exa_the_author_link() {
 	echo get_bloginfo('url')."/author/".get_the_author_meta("user_nicename");
 }
-
-/**
- * Filters post gallery generated 
- * 
- * @since 0.2
- * 
- * @param string $output
- * @param array $attr attributes defined in the shortcode
- * 
- * @return string filtered html output for the gallery. 
- */
-function exa_post_gallery($output = '', $attr) {
-	$post = get_post();
-	wp_enqueue_script('exa_post_gallery_js', get_template_directory_uri().'/js/exa-post-gallery.js', array('jquery'), false, true);
-
-    if ( isset( $attr['orderby'] ) ) {
-        $attr['orderby'] = sanitize_sql_orderby( $attr['orderby'] );
-        if ( ! $attr['orderby'] ) {
-            unset( $attr['orderby'] );
-        }
-    }
-    $html5 = current_theme_supports( 'html5', 'gallery' );
-    $atts = shortcode_atts( array(
-        'order'      => 'ASC',
-        'orderby'    => 'menu_order ID',
-        'id'         => $post ? $post->ID : 0,
-        'itemtag'    => $html5 ? 'figure'     : 'dl',
-        'icontag'    => $html5 ? 'div'        : 'dt',
-        'captiontag' => $html5 ? 'figcaption' : 'dd',
-        'columns'    => 3,
-        'size'       => 'thumbnail',
-        'include'    => '',
-        'exclude'    => '',
-        'link'       => ''
-    ), $attr, 'gallery' );
- 
-    $id = intval( $atts['id'] );
-    if ( 'RAND' == $atts['order'] ) {
-        $atts['orderby'] = 'none';
-    }
- 
-    if ( ! empty( $atts['include'] ) ) {
-        $_attachments = get_posts( array( 'include' => $atts['include'], 'post_status' => 'inherit', 'post_type' => 'attachment', 'post_mime_type' => 'image', 'order' => $atts['order'], 'orderby' => $atts['orderby'] ) );
- 
-        $attachments = array();
-        foreach ( $_attachments as $key => $val ) {
-            $attachments[$val->ID] = $_attachments[$key];
-        }
-    } elseif ( ! empty( $atts['exclude'] ) ) {
-        $attachments = get_children( array( 'post_parent' => $id, 'exclude' => $atts['exclude'], 'post_status' => 'inherit', 'post_type' => 'attachment', 'post_mime_type' => 'image', 'order' => $atts['order'], 'orderby' => $atts['orderby'] ) );
-    } else {
-        $attachments = get_children( array( 'post_parent' => $id, 'post_status' => 'inherit', 'post_type' => 'attachment', 'post_mime_type' => 'image', 'order' => $atts['order'], 'orderby' => $atts['orderby'] ) );
-    }
- 
-    if ( empty( $attachments ) ) {
-        return '';
-    }
- 
-    if ( is_feed() ) {
-        $output = "\n";
-        foreach ( $attachments as $att_id => $attachment ) {
-            $output .= wp_get_attachment_link( $att_id, $atts['size'], true ) . "\n";
-        }
-        return $output;
-    }
- 
-    $itemtag = tag_escape( $atts['itemtag'] );
-    $captiontag = tag_escape( $atts['captiontag'] );
-    $icontag = tag_escape( $atts['icontag'] );
-    $valid_tags = wp_kses_allowed_html( 'post' );
-    if ( ! isset( $valid_tags[ $itemtag ] ) ) {
-        $itemtag = 'dl';
-    }
-    if ( ! isset( $valid_tags[ $captiontag ] ) ) {
-        $captiontag = 'dd';
-    }
-    if ( ! isset( $valid_tags[ $icontag ] ) ) {
-        $icontag = 'dt';
-    }
- 
-    $columns = intval( $atts['columns'] );
-    $itemwidth = $columns > 0 ? floor(100/$columns) : 100;
-    $float = is_rtl() ? 'right' : 'left';
- 
-    $selector = "gallery-{$instance}";
- 
-    $gallery_style = '';
- 
-    /**
-     * Filter whether to print default gallery styles.
-     *
-     * @since 3.1.0
-     *
-     * @param bool $print Whether to print default gallery styles.
-     *                    Defaults to false if the theme supports HTML5 galleries.
-     *                    Otherwise, defaults to true.
-     */
-    if ( apply_filters( 'use_default_gallery_style', ! $html5 ) ) {
-        $gallery_style = "
-        <style type='text/css'>
-            #{$selector} {
-                margin: auto;
-            }
-            #{$selector} .gallery-item {
-                float: {$float};
-                margin-top: 10px;
-                text-align: center;
-                width: {$itemwidth}%;
-            }
-            #{$selector} img {
-                border: 2px solid #cfcfcf;
-            }
-            #{$selector} .gallery-caption {
-                margin-left: 0;
-            }
-            /* see gallery_shortcode() in wp-includes/media.php */
-        </style>\n\t\t";
-    }
- 
-    $size_class = sanitize_html_class( $atts['size'] );
-    // $gallery_div = "<div id='$selector' class='gallery galleryid-{$id} gallery-columns-{$columns} gallery-size-{$size_class}'>";
-    $gallery_div = "<div id='slider'><div id='swipe' class='swipe'><div class='swipe-wrap'>";
- 
-    /**
-     * Filter the default gallery shortcode CSS styles.
-     *
-     * @since 2.5.0
-     *
-     * @param string $gallery_style Default gallery shortcode CSS styles.
-     * @param string $gallery_div   Opening HTML div container for the gallery shortcode output.
-     */
-    $output = apply_filters( 'gallery_style', $gallery_style . $gallery_div );
- 
-    $i = 0;
-    foreach ( $attachments as $id => $attachment ) {
-        if ( ! empty( $atts['link'] ) && 'file' === $atts['link'] ) {
-            $image_output = wp_get_attachment_link( $id, $atts['size'], false, false );
-        } elseif ( ! empty( $atts['link'] ) && 'none' === $atts['link'] ) {
-            $image_output = wp_get_attachment_image( $id, $atts['size'], false );
-        } else {
-            $image_output = wp_get_attachment_link( $id, $atts['size'], true, false );
-        }
-        $image_output = wp_get_attachment_image( $id, 'image-post-size', false );
-        $image_meta  = wp_get_attachment_metadata( $id );
- 
-        $orientation = '';
-        if ( isset( $image_meta['height'], $image_meta['width'] ) ) {
-            $orientation = ( $image_meta['height'] > $image_meta['width'] ) ? 'portrait' : 'landscape';
-        }
-        $output .= "<div class='slide'>";
-        $output .= "<div class='slide-image'>";
-        $output .= $image_output;
-        //$output .= "
-        //    <{$icontag} class='gallery-icon {$orientation}'>
-        //        $image_output
-        //    </{$icontag}>";
-		$output .= "</div>";
-        
-        $output .= "<div class='slider-content'>";
-        if (trim($attachment->post_excerpt) ) {
-            $output .= "
-                <p>
-                " . wptexturize($attachment->post_excerpt) . "
-                </p>";
-        }
-        $credit = get_hrld_media_credit($id);
-
-		if ($credit != "") {
-				if(get_user_by('login', $credit)){
-				$hrld_user = get_user_by('login', $credit);
-				$output .= "<span class='hrld-media-credit'><span class='hrld-media-credit-name'><a href='".get_bloginfo('url')."/author/$credit'>$hrld_user->display_name</a></span><span class='hrld-media-credit-org'>/The Badger Herald</span></span>"; 
-			} else{
-				$hrld_credit_name_org = explode("/", $credit);
-				if($hrld_credit_name_org[1]){
-					$output .= "<span class='hrld-media-credit'><span class='hrld-media-credit-name'>$hrld_credit_name_org[0]</span><span class='hrld-media-credit-org'>/$hrld_credit_name_org[1]</span></span>";
-				}
-				else{
-					$output .= "<span class='hrld-media-credit'><span class='hrld-media-credit-org'>$hrld_credit_name_org[0]</span></span>";
-				}
-			}
-		}
-        $output .= "</div>"; //class="slider-content"
-        $output .= "</div>"; //class="slide"
-    }
- 
-    $output .= "</div>"; //class="swipe-wrap"
-    $output .= '<div class="swipe-slide-nav-page prev"></div><div class="swipe-slide-nav-page next"></div>';
-    $output .= "</div>"; //class="swipe"
-    $output .= '<div class="slider-nav-container">';
-    $output .= "<ul class='slider-nav clearfix'>";
-    foreach ($attachments as $id => $attachment) {
-        $image_output = wp_get_attachment_image( $id, 'post-thumbnail', false );
-        $output .= "<li>".$image_output."</li>";
-    }
-    $output .= "</ul>";
-    $output .= '<div class="slider-nav-page prev"></div><div class="slider-nav-page next"></div>';
-    $output .= '</div>';
-    $output .= "</div>"; //id="slider"
- 
-    return $output;
-}
-add_filter('post_gallery', 'exa_post_gallery', 10, 2);
 
 /**
  * Retrieve the short url for the post
@@ -914,6 +752,23 @@ function exa_filter_wp_title( $title, $sep = "&middot;" ) {
 add_filter( 'wp_title', 'exa_filter_wp_title' );
 
 
+
+/**
+ * Returns a string with the section.
+ * 
+ * @since v0.2
+ * @return string section.
+ */
+function exa_section() {
+	global $post;
+
+	$section = get_the_category();
+	if( $section ) {
+		$section = $section[0]->name;
+		$section = $section == 'oped' ? $section = 'opinion' : $section;
+	}
+	return $section;
+}
 
 /**
  * Prints open graph tags to the head of wordpress pages.
@@ -990,7 +845,6 @@ function exa_open_graph_tags() {
 	}
 
 	/* 5. Url */
-	// Replaces 'opinion' with 'oped'
 
 	$url = exa_social_url(get_permalink($post->ID), false);
 	$output .= "<meta property='og:url' content='$url' />\n";
@@ -1018,7 +872,7 @@ function exa_open_graph_tags() {
 	echo $output;
 
 }
-add_action('wp_head','exa_open_graph_tags');
+add_action('wp_head','open_graph_tags');
 
 
 /**
@@ -1101,31 +955,7 @@ function exa_twitter_card_tags() {
 add_action('wp_head','exa_twitter_card_tags');
 
 
-/**
- * Prints twitter conversion tracking ad code.
- *
- * This will let us track users who visit our site after being shown twitter ads.
- * Leveraged correctly, this will let us target website visitors and turn them
- * into return visitors.
- *
- * @since 0.2
- * 
- * @see https://support.twitter.com/articles/20170807-conversion-tracking-for-websites
- * @author Will Haynes
- */
-function exa_twitter_conversion_tracker() {
 
-	echo '<script src="//platform.twitter.com/oct.js" type="text/javascript"></script>
-			<script type="text/javascript">
-				twttr.conversion.trackPid(\'l4v5w\');
-			</script>
-			<noscript>
-				<img height="1" width="1" style="display:none;" alt="" src="https://analytics.twitter.com/i/adsct?txn_id=l4v5w&p_id=Twitter" />
-				<img height="1" width="1" style="display:none;" alt="" src="//t.co/i/adsct?txn_id=l4v5w&p_id=Twitter" />
-			</noscript>';
-
-}
-add_action('wp_footer','exa_twitter_conversion_tracker');
 
 /**
  * The excerpt to serve to facebook, twitter, google, &c.
@@ -1192,10 +1022,7 @@ add_filter('single_template', 'exa_interactive_single_template');
 function hrld_html_tag_open($tag = "",$id = "",$class = array(),$content = "",$close = false, $misc = array()){
 	$result = "";
 	if( $tag != ""){
-		$result = "<$tag ";
-		if( $id != "" ){
-			$result .= "id=\"$id\" ";
-		}
+		$result = "<$tag id=\"$id\" ";
 		if( !empty($class) ){
 			$result .= "class=\"";
 			foreach($class as $class_name){
@@ -1240,39 +1067,89 @@ function get_hrld_html_tag_close($tag = ""){
 	return $result;
 }
 
+/**
+ * Filters pinned posts from the main author query so pagination works correctly
+ * 
+ * @param  [type] $query [description]
+ * @return [type]        [description]
+ */
+function hrld_remove_pinned_author_posts($query){
+	if (is_admin() || !$query->is_main_query()) {
+		return;
+	}
+
+	if (is_author() && $query->is_main_query()) {
+		$user = get_user_by('slug', $query->query_vars['author_name']);
+		$pinned_posts = get_the_author_meta('_hrld_staff_best_posts', $user->ID);
+		if (empty($pinned_posts)) {
+			return;
+		}
+		$query->set('post__not_in', $pinned_posts);
+		return;
+	}
+}
+add_filter('pre_get_posts', 'hrld_remove_pinned_author_posts', 1);
+
 
 /**
- * oped <-> opinion permalink conversion
+ * Unhide the kitchen sink for all users all the time.
+ * 
+ * @param array $args args passed in by WordPress 
+ * @since v0.2
+ */
+function exa_unhide_kitchensink( $args ) {
+	$args['wordpress_adv_hidden'] = false;
+	return $args;
+}
+add_filter( 'tiny_mce_before_init', 'exa_unhide_kitchensink' );
+
+/**
+ * Remove p tag from around images
+ * 
+ * @see http://css-tricks.com/snippets/wordpress/remove-paragraph-tags-from-around-images/
+ */
+function filter_ptags_on_images($content){
+   return preg_replace('/<p>\s*(<a .*>)?\s*(<img .* \/>)\s*(<\/a>)?\s*<\/p>/iU', '\1\2\3', $content);
+}
+
+add_filter('the_content', 'filter_ptags_on_images');
+
+function exa_add_media_credit_showcase($attachments) {
+	foreach ($attachments as & $attachment) {
+		$credit = get_hrld_media_credit($attachment['ID']);
+		if ($user = get_user_by('login', $credit)) {
+			$attachment['media_credit'] = $user->display_name.'/The Badger Herald';
+		} else {
+			$attachment['media_credit'] = $credit;
+		}
+	}
+	return $attachments;
+}
+add_filter('hrld_showcase_image_data', 'exa_add_media_credit_showcase');
+
+
+/**
+ * Returns a url for 
  *
- *
- * @since 0.2
- * @param 
+ * @since v0.2
+ * @param
  * @author Jason Chan
  */
 function exa_social_url($url = "", $newVersion = true){
-	$date_change_category = 1422622800;  //Fri 30 Jan, 2015 07:00:00 CT
+	$date_change_category = 1422622800; //Fri 30 Jan, 2015 07:00:00 CT
 	if($url == "")
 		$url = get_permalink($post -> ID);
 	if( $url != false && $url != ''){
 		$date = get_the_date('U', $post);
-		if( $newVersion){
-			if( stripos($url, home_url("/oped")) === 0 )
-				$url = str_replace("/oped", "/opinion", $url);
-		}else if( !$newVersion && $date < $date_change_category){
+	if( $newVersion){
+		if( stripos($url, home_url("/oped")) === 0 )
+			$url = str_replace("/oped", "/opinion", $url);
+		} else if( !$newVersion && $date < $date_change_category){
 			if( stripos($url, home_url("/opinion")) === 0 )
 				$url = str_replace("/opinion", "/oped", $url);
+			}
+		} else {
+			$url = home_url();
 		}
-	}else{
-		$url = home_url();
-	}
-
 	return $url;
 }
-/*
- * Load more functions for develop enviornment.
- */
-include_once('inc/functions-dev.php');
-
-
-
-

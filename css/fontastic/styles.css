@@ -1,0 +1,58 @@
+@charset "UTF-8";
+
+@font-face {
+  font-family: "exa";
+  src:url("fonts/exa.eot");
+  src:url("fonts/exa.eot?#iefix") format("embedded-opentype"),
+    url("fonts/exa.woff") format("woff"),
+    url("fonts/exa.ttf") format("truetype"),
+    url("fonts/exa.svg#exa") format("svg");
+  font-weight: normal;
+  font-style: normal;
+
+}
+
+[data-icon]:before {
+  font-family: "exa" !important;
+  content: attr(data-icon);
+  font-style: normal !important;
+  font-weight: normal !important;
+  font-variant: normal !important;
+  text-transform: none !important;
+  speak: none;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+[class^="icon-"]:before,
+[class*=" icon-"]:before {
+  font-family: "exa" !important;
+  font-style: normal !important;
+  font-weight: normal !important;
+  font-variant: normal !important;
+  text-transform: none !important;
+  speak: none;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-twitter-bird:before {
+  content: "t";
+}
+.icon-new-window:before {
+  content: "w";
+}
+.icon-arrow-down:before {
+  content: "v";
+}
+.icon-arrow-right:before {
+  content: ">";
+}
+.icon-arrow-left:before {
+  content: "<";
+}
+.icon-arrow-up:before {
+  content: "^";
+}

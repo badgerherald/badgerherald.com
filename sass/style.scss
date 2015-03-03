@@ -1,14 +1,13 @@
-/*
-Theme Name: Exa
+/*  
+Theme Name: exa
 Theme URI: http://badgerherald.com/exa
-Author: The Badger Herald Web Department
+Author: The Badger Herald
 Author URI: http://badgerherald.com/
-Description: The sixth iteration of The Badger Herald's website.  The first theme on wordpress.
-Version: 1.0.8
-License: NONE YET
-License URI: NONE
-Tags: Badger, Herald, University of Wisconsin, Newspaper, Custom Post Types
-Text Domain: badgerherald-exa
+Description: The Badger Herald's college media platform.
+Version: 0.2
+License: GLPv3
+Tags: College Media, Editorial, Newspaper.
+Text Domain: exa
 */
 
 
@@ -23,24 +22,25 @@ Text Domain: badgerherald-exa
 @import "functions.scss"; 		/* 1 */
 @import "normalize.scss";		/* 2 */
 @import "fonts.scss";			/* 3 */
+@import "grid.scss";
 
 /** 
  * Base Page Syles (much of which is altered in responsive)
  * 
  */
 @import "page.scss";
-
+@import "blocks.scss";
+@import "blocks/footer.scss";
+@import "blocks/article-display.scss";
+@import "blocks/most-recent.scss";
+@import "blocks/fixed-bar.scss";
+@import "asides.scss";
 /** 
  * Masthead Styles
  * 
  */
+@import "pullout.scss";
 @import "masthead.scss";
-
-/** 
- * Navigation Styles
- * 
- */
-@import "nav.scss";
 
 @import "homepage.scss";
 /** 
@@ -61,6 +61,7 @@ Text Domain: badgerherald-exa
 @import "post.scss";
 
 @import "about-page.scss";
+@import "author.scss";
 @import "vday-page.scss";
 @import "4-doge-4.scss";
 

@@ -4,6 +4,18 @@
    HTML5 display definitions
    ========================================================================== */
 
+
+/**
+ * apply a natural box layout model to all elements, but allowing components to change
+ *  makes padding and borders not increase width
+ */
+html {
+  box-sizing: border-box;
+}
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
 /**
  * Correct `block` display not defined in IE 8/9.
  */
@@ -101,10 +113,24 @@ a:hover {
    ========================================================================== */
 
 /**
+ * Use ligatures and kerning in paragraphs.
+ */
+* { 
+    text-rendering: optimizeLegibility;
+    font-variant-ligatures: common-ligatures; 
+    -webkit-font-variant-ligatures: common-ligatures;
+    font-variant-ligatures: common-ligatures;
+    -moz-font-feature-settings: "kern=1"; 
+    -webkit-font-feature-settings: "kern";
+    -moz-font-feature-settings: "kern"; 
+    font-feature-settings: "kern"; 
+    font-kerning: normal; 
+}
+
+/**
  * Address variable `h1` font-size and margin within `section` and `article`
  * contexts in Firefox 4+, Safari 5, and Chrome.
  */
-
 h1 {
     font-size: 2em;
     margin: 0.67em 0;

@@ -3,33 +3,15 @@
  * Slider, ad, and top posts
  * 
  */
+
+.old-homepage-block {
+	margin-top:0;
+}
 #above-fold {
-
-	/** ---------------------------------------- * 
-	 *
-	 * Swipe styling.
-	 *
-	 * @see https://github.com/bradbirdsall/Swipe
-	 *
-	 */
-	.swipe {
-	  overflow: hidden;
-	  visibility: hidden;
-	  position: relative;
-	}
-	.swipe-wrap {
-	  overflow: hidden;
-	  position: relative;
-	}
-	.swipe-wrap > div {
-	  float:left;
-	  width:100%;
-	  position: relative;
-	}
-
-	/* ----------------- /end swipe styling/ --- */
-
+	@include clearfix();
+	margin-top:12px;
 	#slider {
+		@include clearfix();
 		width: 100%;
 		background: $hrld-black;
 		color: $hrld-light-grey;
@@ -109,6 +91,7 @@
 			width: 300px;
 			height: 250px;
 			margin-bottom: 12px;
+			display: none;
 		}
 		.todays-shoutout {
 			margin: 0;
@@ -179,7 +162,7 @@
 		} /* .todays-shoutout */
 	} #top-posts {
 		display:none;
-	} #interactive {
+	} #most-recent {
 		display:none;
 	}
 
@@ -323,9 +306,10 @@ ul.featured-stream-list{
 	overflow: hidden;
 }
 
-@media (min-width: 760px) {
+@include breakpoint(tablet) {
 
 	#above-fold {
+		margin-top: 0;
 		#slider {
 			margin-bottom: 18px;
 			position: relative;
@@ -346,6 +330,7 @@ ul.featured-stream-list{
 			}
 		} #middle-column {
 			.hp-square-ad {
+				display: block;
 				width: 300px;
 				height: 250px;
 				margin-bottom: 12px;
@@ -357,7 +342,7 @@ ul.featured-stream-list{
 					height: 172px;
 				}
 			}	
-		} #top-posts {
+		} #most-recent {
 			display:none;
 		} 
 	} 
@@ -406,7 +391,7 @@ ul.featured-stream-list{
 
 
 
-@media (min-width: 1060px) {
+@include breakpoint(desktop) {
 	
 	#above-fold {
 		margin-bottom: 30px;
@@ -467,43 +452,43 @@ ul.featured-stream-list{
                             }
                     }
             }
-        } #interactive {
+        } #most-recent {
 			width:220px;
 			float:left;
 			display: block;
 			margin-left: 20px;
 			background: #fff;
+			height: 600px;
 			h3 {
 				margin-top: 0;
 				margin-bottom: 0px;
-				padding:12px 20px;
+				padding:9px 20px;
+				background: black;
+				color: #fff;
+				text-align: center;
 				font-family: $headline;
 				text-transform: uppercase;
-			} h4 {
-				font-family: $body;
-				font-size: 20px;
-				margin-top: 6px;
-				line-height: 30px;
+			} 
+			a.hp-most-recent {
 				color: #000;
-				margin: 12px 20px;
-			} a p {
-				color: #000;
-				padding: 0px 20px 24px;
-			} p.athr {
-				margin: 12px 20px 18px;
+				display: block;
+				padding: 12px 20px 12px;
 				font-family: $headline;
-				font-style: italic;
-				a {
-					font-style: normal;
+				font-weight: bold;
+				border-bottom: 1px solid $hrld-dark-grey;
+				time {
+					color: $hrld-blue;
+					display: block;
+					width: 100%;
 					text-transform: uppercase;
-					color:#000;
-					font-weight: bold;
-					padding-left: 3px;
-				}	
-				img {
-					position: relative;
-					top: 8px;
-					margin-right: 5px;
+					font-size: 11px;
+					font-weight: normal;
+				}
+				&:hover {
+					color: $hrld-blue;
+					time {
+						color: $hrld-black;
+					}
 				}
 			} 
 		}
@@ -521,7 +506,7 @@ ul.featured-stream-list{
 	}
 	.featured-stream-post{
 		width: 460px;
-		padding-right: 20px;
+		margin-right: 20px;
 		float: left;
 		.entry-thumbnail{
 			width: 460px;
@@ -531,7 +516,6 @@ ul.featured-stream-list{
 	ul.featured-stream-list{
 		float: left;
 		width: 140px;
-		padding-right: 20px;
 		li{
 			display: block;
 			.entry-thumbnail{
@@ -546,7 +530,7 @@ ul.featured-stream-list{
 	}
 }
 
-@media (min-width: 1220px) {
+@include breakpoint(xl) {
 
 	#above-fold {
 		margin-bottom: 30px;
@@ -580,7 +564,6 @@ ul.featured-stream-list{
 	}
 	.featured-stream-post{
 		width: 760px;
-		padding-right: 20px;
 		float: none;
 		.entry-thumbnail{
 			margin-right: 20px;
