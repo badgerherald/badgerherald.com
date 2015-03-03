@@ -182,7 +182,7 @@ function exa_scripts_styles() {
 		wp_enqueue_style( 'exa-fonts', 'http://fonts.googleapis.com/css?family=Noto+Serif:400,700,400italic,700italic|Yanone+Kaffeesatz:400,300,700|Open+Sans|PT+Sans+Narrow:400,700');
 
 		/* Load main stylesheet. */
-		wp_enqueue_style( 'exa-style', get_stylesheet_uri() );
+		wp_enqueue_style( 'exa-style', get_stylesheet_uri(), "0.2" );
 
 		/* Load fastclick library */
 		wp_enqueue_script( 'fastclick', get_template_directory_uri() . '/js/fastclick/lib/fastclick.js', array(), '0.6.11', true );	
@@ -1165,6 +1165,8 @@ function exa_social_url($url = "", $newVersion = true){
  * @return string filtered html output for the gallery. 
  */
 function exa_post_gallery($output = '', $attr) {
+
+	return "";
 	$post = get_post();
 	wp_enqueue_script('swipe', get_template_directory_uri().'/js/Swipe/swipe.js', array('jquery'), false, true);
 	wp_enqueue_script('exa_post_gallery_js', get_template_directory_uri().'/js/exa-post-gallery.js', array('jquery'), false, true);
