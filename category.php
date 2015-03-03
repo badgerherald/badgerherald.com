@@ -21,7 +21,7 @@ get_header();
 
 ?>	
 	
-	<header id="section-header" class="<?php echo $classes ?> clearfix">
+	<header id="section-header" class="<?php echo $classes ?> wrapper clearfix">
 		
 		<?php $category = single_cat_title( '', false); ?>
 		<div class="section-banner section-banner-<?php echo strtolower($category); ?>">
@@ -30,7 +30,7 @@ get_header();
 
 		</div>
 	</header>
-	<div id="stream">
+	<div id="stream" class="wrapper">
 
 	<?php if ( have_posts() ) : ?>
 

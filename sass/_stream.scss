@@ -170,6 +170,7 @@
 	.stream-post{
 		margin-bottom: 12px;
 	}
+	/*
 	#stream{
 		width: 700px;
 		float: left;
@@ -179,6 +180,7 @@
 		width: 300px;
 		float: left;
 	}
+	*/
 	#section-header .section-banner{
 		height: 174px;
 	}
@@ -201,12 +203,14 @@
 }
 
 @media (min-width: 1320px) {
+	/*
 	#stream{
 		width: 780px;
 	}
 	.stream-sidebar, .stream-sidebar .sidebar-inner{
 		width: 380px;
 	}
+	*/
 	.stream-post.instream-stream-post {
 		.entry-thumbnail {
 			float: left;
