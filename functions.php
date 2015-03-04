@@ -183,14 +183,16 @@ function exa_scripts_styles() {
 		/* Load google font. */
 		wp_enqueue_style( 'exa-fonts', 'http://fonts.googleapis.com/css?family=Noto+Serif:400,700,400italic,700italic|Yanone+Kaffeesatz:400,300,700|Open+Sans|PT+Sans+Narrow:400,700');
 
+		$mtime = filemtime(dirname(__FILE__) . '/style.css');
 		/* Load main stylesheet. */
-		wp_enqueue_style( 'exa-style', get_stylesheet_uri(), array(),"0.2" );
+		wp_enqueue_style( 'exa-style', get_stylesheet_uri(), array(),$mtime );
 
 		/* Load fastclick library */
 		wp_enqueue_script( 'fastclick', get_template_directory_uri() . '/js/fastclick/lib/fastclick.js', array(), '0.6.11', true );	
 		
+		$mtime = filemtime(dirname(__FILE__) . '/js/exa.js');
 		/* Load exa.js. (and jQuery, implicitly) */
-		wp_enqueue_script('exa-script', get_template_directory_uri() . '/js/exa.js',array('jquery','fastclick'),'0.1',true);
+		wp_enqueue_script('exa-script', get_template_directory_uri() . '/js/exa.js',array('jquery','fastclick'),$mtime,true);
 
 		// Note that jQuery runs in no conflict mode — $ is not a valid function.
 		
