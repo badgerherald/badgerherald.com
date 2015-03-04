@@ -39,6 +39,8 @@ include_once('inc/functions-html-tags.php');
 
 include_once('inc/functions-block.php');
 
+include_once('inc/functions-embeds.php');
+
 /**
  * Social links
  * 
