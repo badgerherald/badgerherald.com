@@ -175,19 +175,40 @@ jQuery(document).ready(function($) {
      * @since  v0.2
      */
     var toggleNav = function() {
-        if ($("#page").hasClass("pullout-active")) {
+
+
+        // position the bar to the top of the screen
+        var placeholder = $('.fixed-bar-block-placeholder');
+		var fromTop = placeholder.offset().top;
+		var fixedBar = $('.fixed-bar-block');
+
+		if(!fixedBar.hasClass('fixed')) {
+			var body = $("html, body");
+			$(window).scrollTop(fromTop);
+		}
+
+		openPullout();
+    
+    }
+
+    var openPullout = function() {
+    	console.log('called');
+    	if ($("#page").hasClass("pullout-active")) {
             var offset = $("#page").css("top");
             $("#page").css({"top":"auto"});
             offset = parseInt(offset) * -1;
             $("#pullout").toggleClass("active");
             $("#page").toggleClass("pullout-active");
             $("body, html").scrollTop(offset);
+            fixedBar.css('position','');
         } else {
             var offset = window.pageYOffset;
             $("#page").css({"top": "-" + offset + "px"});
             $("#pullout").toggleClass("active");
             $("#page").toggleClass("pullout-active");
+            fixedBar.css('position','fixed');
         }
+        $(window).scroll();
     }
 
 	/**
@@ -312,6 +333,33 @@ jQuery(document).ready(function($) {
 		var answerParents = $(this).parents("div.quiz-question");
 		answerParents.find("li.answer-box").removeClass("inactive");
 	}); 
+
+
+	/**
+	 * Manage where the fixed bar is (if there is content above it.)
+	 *
+	 */
+
+	var placeholder = $('.fixed-bar-block-placeholder');
+	var fixedBar = $('.fixed-bar-block');
+
+	$(window).scroll(checkFixedBar);
+	$(window).resize(checkFixedBar);
+	$(window).scroll();
+
+	function checkFixedBar() {
+		var st = $(window).scrollTop()
+		var fromTop = placeholder.offset().top;
+		var barHeight = fixedBar.outerHeight();
+
+		if( (fromTop - st) <= 0) {
+			fixedBar.addClass('fixed');
+			placeholder.css('height',barHeight);
+		} else {
+			fixedBar.removeClass('fixed');
+			placeholder.css('height',0);
+		}
+	}
 
 
 	/**
