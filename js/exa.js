@@ -427,7 +427,7 @@ jQuery(document).ready(function($) {
 
 		var offset = parseInt(pane.css('margin-right'));
 
-		console.log(offset);
+		// console.log(offset);
 
 		block.animate({'position':'relative','left':width});
 		openPane = pane.css({
@@ -543,8 +543,8 @@ jQuery(document).ready(function($) {
 			paneTop = pane.offset().top;
 			paneBottom = paneTop + pane.outerHeight();
 
-			console.log('pt:'+paneTop);
-			console.log('st:'+scrollTop);
+			//console.log('pt:'+paneTop);
+			//console.log('st:'+scrollTop);
 
 			var screenSpace = $(window).height() - clearance*2;
 			if( paneTop < blockTop || pane.outerHeight() > screenSpace ) {
@@ -657,7 +657,7 @@ jQuery(document).ready(function($) {
 
 		while( $(".lede-sidebar").children().length >= i ) {
 			var fromTop = $(child).offset().top - $(window).scrollTop();
-			console.log($(fromTop));
+			//console.log($(fromTop));
 			if( fromTop > 0 ) {
 				topmostChild = child;
 				i = 1000; // break the loop
