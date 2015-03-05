@@ -233,6 +233,9 @@
 }
 
 .leaderboard-block {
+	.wrapper {
+		margin:0;
+	}
 	.icymi-box {
 		display: none;
 	}
@@ -313,6 +316,9 @@
 
 	.leaderboard-block {
 		display: block;
+		.wrapper {
+			margin:0 auto;
+		}
 	}
 }
 

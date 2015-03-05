@@ -50,8 +50,11 @@
 	.hero {
 
 		position: relative;
-
+		margin-bottom: 32px;
 		.hero-aside {
+
+			display: block;
+
 
 			.hero-ad {
 				display:none;
@@ -92,7 +95,7 @@
 			.hero-aside {
 				margin-left: 20px;
 				width: 300px;
-				float: left;
+				float: right;
 				.hero-ad {
 					display: block;
 				}

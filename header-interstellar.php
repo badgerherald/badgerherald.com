@@ -61,8 +61,8 @@ global $DoubleClick;
   fjs.parentNode.insertBefore(js, fjs);
 }(document, 'script', 'facebook-jssdk'));</script>
 
-
 <?php get_sidebar('pullout'); ?>
+
 <div id="page">
 
 <?php get_template_part( 'inc/block', 'interstellar' ); ?>
