@@ -10,7 +10,11 @@
 // Set up ads for current page.
 global $DoubleClick;
 
-get_header('minimal'); 
+if( isset( $_REQUEST['sca']) || rand(0,2) == 1)
+	get_header('interstellar'); 
+else
+	get_header('minimal');
+
 get_template_part( 'inc/block', 'leaderboard' );
 ?>
 
