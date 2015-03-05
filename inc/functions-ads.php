@@ -35,22 +35,6 @@ add_action('dfw_setup','exa_ad_setup');
 
 
 
-/**
- * Adds filter to content to display in the middle of content on mobile devices.
- * 
- * @since 0.2
- */
-function exa_register_content_adslot() {
-
-	global $DoubleClick;
-	if ( is_single() && ! is_admin() ) {
-		add_filter('the_content','_exa_register_content_adslot');
-	}
-
-}
-add_action('the_post','exa_register_content_adslot');
-
-
 
 /**
  * Filters content and ads an adspot for phone and tablet devices.
@@ -67,20 +51,20 @@ function _exa_register_content_adslot($content) {
 	global $DoubleClick;
 
 	if ( isset($DoubleClick) && is_single() && ! is_admin() ) {
-		$ad = $DoubleClick->get_ad_placement('bh:sidekick','300x250',array('phone','tablet'));
+		$ad = $DoubleClick->get_ad_placement('bh:sidekick','300x250',array('mobile','tablet'));
 		$ad = "<div class='ad ad-in-content mobile-tablet'>" . $ad . "</div>";
-        return exa_insert_after_graph( $ad, $content, 3 );
+        $content = exa_insert_after_graph( $ad, $content, 2 );
     }
 
 	if ( isset($DoubleClick) && is_single() && ! is_admin() ) {
-		$ad = $DoubleClick->get_ad_placement('bh:sidekick2','300x250',array('phone','tablet'));
+		$ad = $DoubleClick->get_ad_placement('bh:sidekick2','300x250',array('mobile','tablet'));
 		$ad = "<div class='ad ad-in-content mobile-tablet'>" . $ad . "</div>";
-        return exa_insert_after_graph( $ad, $content, 12 );
+        $content = exa_insert_after_graph( $ad, $content, 8 );
     }
 
     return $content;
 }
-
+add_filter('the_content','_exa_register_content_adslot');
 
 
 /**
@@ -98,7 +82,7 @@ function exa_insert_after_graph( $insertion, $content, $graph ) {
 	    if ( trim( $p ) ) {
 	        $graphs[$i] .= '</p>';
 	    }
-	    if ( $graph_id == $i + 1 ) {
+	    if ( $graph == $i + 1 ) {
 	        $graphs[$i] .= $insertion;
 	    }
 	}
