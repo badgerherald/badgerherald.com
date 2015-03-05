@@ -48,7 +48,7 @@ function exa_register_content_adslot() {
 	}
 
 }
-add_action('dfw_setup','exa_register_content_adslot');
+add_action('the_post','exa_register_content_adslot');
 
 
 
@@ -66,11 +66,18 @@ function _exa_register_content_adslot($content) {
 	
 	global $DoubleClick;
 
-	if ( is_single() && ! is_admin() ) {
+	if ( isset($DoubleClick) && is_single() && ! is_admin() ) {
 		$ad = $DoubleClick->get_ad_placement('bh:sidekick','300x250',array('phone','tablet'));
 		$ad = "<div class='ad ad-in-content mobile-tablet'>" . $ad . "</div>";
         return exa_insert_after_graph( $ad, $content, 3 );
     }
+
+	if ( isset($DoubleClick) && is_single() && ! is_admin() ) {
+		$ad = $DoubleClick->get_ad_placement('bh:sidekick2','300x250',array('phone','tablet'));
+		$ad = "<div class='ad ad-in-content mobile-tablet'>" . $ad . "</div>";
+        return exa_insert_after_graph( $ad, $content, 12 );
+    }
+
     return $content;
 }
 
