@@ -1121,6 +1121,10 @@ add_filter('the_content', 'filter_ptags_on_images');
 function exa_add_media_credit_showcase($attachments) {
 	foreach ($attachments as & $attachment) {
 		$credit = get_hrld_media_credit($attachment['ID']);
+		if ($credit == null)
+		{
+			$attachment['media_credit'] = '';
+		}
 		if ($user = get_user_by('login', $credit)) {
 			$attachment['media_credit'] = $user->display_name.'/The Badger Herald';
 		} else {
@@ -1359,4 +1363,4 @@ function exa_post_gallery($output = '', $attr) {
  
     return $output;
 }
-add_filter('post_gallery', 'exa_post_gallery', 10, 2);
+//add_filter('post_gallery', 'exa_post_gallery', 10, 2);
