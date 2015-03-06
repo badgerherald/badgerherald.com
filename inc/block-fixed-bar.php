@@ -10,7 +10,7 @@
 		
 		<div class="fixed-bar-dock">
 			
-			<a class="category" href="">
+			<a class="category" href="<?php echo home_url('/') . $wp_query->query_vars['category_name']; ?>">
 			<?php
 				if (!is_page()) {
 					echo ucfirst($wp_query->query_vars['category_name']);
@@ -28,7 +28,7 @@
 				echo $post->post_title;
 			?>
 			</span>
-			<?php echo '<span class="byline">by <a href="'. $post_author->url .'">'.$post_author->display_name.'</a></span>'; 
+			<?php echo '<span class="byline">by <a href="'. get_author_posts_url($post->post_author) .'">'.$post_author->display_name.'</a></span>'; 
 			elseif (is_author()) :
 		    ?>
 		        <span class="title author-title">
