@@ -536,7 +536,7 @@
 			line-height: 30px;
 			width:100%;
 			position: relative;
-			p,h1,h2,h3,h4,h5,h6 {
+			p,h1,h2,h3,h4,h5,h6,.twitter-tweet {
 				margin-left: 80px;
 				margin-right: 80px;
 				width: (540,720);
@@ -583,7 +583,10 @@
 			}
 			.video-container {
 				float: left;
-				// clear: right;
+				max-width: 100%;
+				iframe {
+					max-width: 100%;
+				}
 			}
 		}
 	}
