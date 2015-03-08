@@ -181,7 +181,7 @@ function exa_scripts_styles() {
 		wp_enqueue_style( 'exa-icons', get_template_directory_uri() . '/css/fontastic/styles.css' );
 
 		/* Load google font. */
-		wp_enqueue_style( 'exa-fonts', 'http://fonts.googleapis.com/css?family=Noto+Serif:400,700,400italic,700italic|Yanone+Kaffeesatz:400,300,700|Open+Sans|PT+Sans+Narrow:400,700');
+		wp_enqueue_style( 'exa-fonts', 'https://fonts.googleapis.com/css?family=Noto+Serif:400,700,400italic,700italic|Yanone+Kaffeesatz:400,300,700|Open+Sans|PT+Sans+Narrow:400,700');
 
 		$mtime = filemtime(dirname(__FILE__) . '/style.css');
 		/* Load main stylesheet. */
