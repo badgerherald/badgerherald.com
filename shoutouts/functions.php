@@ -33,7 +33,7 @@ class ShoutoutList {
 		
 		global $so_dbh;
 
-		mysql_selectdb(SO_DB_NAME,$so_dbh);
+		//mysql_selectdb(SO_DB_NAME,$so_dbh);
 
 		if($pagenum==NULL) {
 			$pagenum = 1;
@@ -253,7 +253,7 @@ class Shoutout {
 			$referencedText .= $hashtagSplit[$x];
 			$setid = $this->setid;		
 			$hashtags[$x] = trim($hashtags[$x],"#");				
-			$sql = "SELECT id FROM " . SO_DB_SHOUTOUTS . " WHERE setid=$setid AND sonum='$hashtags[$x]' AND approved=1 LIMIT 1";
+			$sql = "SELECT id FROM " . SO_DB_NAME . " WHERE setid=$setid AND sonum='$hashtags[$x]' AND approved=1 LIMIT 1";
 
 
 $dbh = mysql_connect(SO_DB_SERVER.':'.SO_DB_PORT,SO_DB_USERNAME,SO_DB_PASSWORD); 
@@ -270,18 +270,20 @@ mysql_query("SET COLLATION_CONNECTION = 'utf8_general_ci'");
 
 
 			$result = mysql_query($sql);
-			$referenceSO = mysql_fetch_assoc($result);
-			$referenceSO = (int)$referenceSO[id];				
-			if($x != sizeof($hashtagSplit)-1){
-				if($referenceSO!=NULL) {
-					$referencedText .= "<a target='_blank' href='" . SITE_ROOT . SHOUTOUT_ROOT  . "so/" . $referenceSO . "' title='Shoutout #" . $hashtags[$x] . "'>";
-					$referencedText .="#";
-					$referencedText .=$hashtags[$x];
-					$referencedText .="</a>";
-				}
-				else {
-					$referencedText .="#";
-					$referencedText .=$hashtags[$x];
+			if($result) {
+				$referenceSO = mysql_fetch_assoc($result);
+				$referenceSO = (int)$referenceSO[id];				
+				if($x != sizeof($hashtagSplit)-1){
+					if($referenceSO!=NULL) {
+						$referencedText .= "<a target='_blank' href='" . SITE_ROOT . SHOUTOUT_ROOT  . "so/" . $referenceSO . "' title='Shoutout #" . $hashtags[$x] . "'>";
+						$referencedText .="#";
+						$referencedText .=$hashtags[$x];
+						$referencedText .="</a>";
+					}
+					else {
+						$referencedText .="#";
+						$referencedText .=$hashtags[$x];
+					}
 				}
 			}
 		}
