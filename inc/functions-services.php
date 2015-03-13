@@ -45,7 +45,7 @@ function exa_register_analytics() {
 
 GA;
 
-	 	$chartbeatTitle = is_home() ? 'Homepage' : wp_title('');
+	 	$chartbeatTitle = is_home() ? 'Homepage' : wp_title('',false);
 		
 		/* Chartbeat footer tag */
 
