@@ -290,7 +290,7 @@ get_header('minimal');
 					<h3>Marketing</h3>
 
 					<?php
-						$mgmt = array('rmargis');
+						$mgmt = array('rmargis', 'kleus', 'cjiang', 'amenos', 'sroehre', 'nsheahan', 'oriedel', 'ghoang', 'sstreeck');
 						displayStaff($mgmt);
 					 ?>
 					 <div class="clearfix"></div>
