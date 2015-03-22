@@ -50,8 +50,11 @@
 	.hero {
 
 		position: relative;
-
+		margin-bottom: 32px;
 		.hero-aside {
+
+			display: block;
+
 
 			.hero-ad {
 				display:none;
@@ -92,7 +95,7 @@
 			.hero-aside {
 				margin-left: 20px;
 				width: 300px;
-				float: left;
+				float: right;
 				.hero-ad {
 					display: block;
 				}
@@ -401,6 +404,17 @@
 				color: $hrld-blue;
 			}
 		}
+		.ad-in-content {
+			margin: 24px 0;
+			&:after {
+				content : "Advertisement";
+				font-family: $headline;
+				text-transform: uppercase;
+				color: $hrld-dark-grey;
+				font-size: 12px;
+				line-height: 14px;
+			}
+		}
 		a.hrld-inline-link {
 			cursor: pointer;
 			margin: 0px 0 12px;
@@ -453,6 +467,7 @@
 			.hrld-inline-link-excerpt-small {
 
 			}
+
 			&:hover {
 				background: #fff;
 				.hrld-inline-link-title {
@@ -506,6 +521,13 @@
 		& > img.alignleft,& >img.alignright,&>img.alignnone,&>img.aligncenter {
 			margin: 0px 0 24px;
 		}
+		.video-container {
+			float: left;
+			max-width: 100%;
+			iframe {
+				max-width: 100%;
+			}
+		}
 	}
 }
 
@@ -521,7 +543,7 @@
 			line-height: 30px;
 			width:100%;
 			position: relative;
-			p,h1,h2,h3,h4,h5,h6 {
+			p,h1,h2,h3,h4,h5,h6,.twitter-tweet {
 				margin-left: 80px;
 				margin-right: 80px;
 				width: (540,720);
@@ -568,7 +590,12 @@
 			}
 			.video-container {
 				float: left;
-				clear: right;
+				max-width: 100%;
+				margin-bottom: 24px;
+				iframe {
+					max-width: 100%;
+					//width: 100%;
+				}
 			}
 		}
 	}
@@ -584,6 +611,9 @@
 			.alignnone, .aligncenter, & > img.alignnone, & > img.aligncenter {
 				width:100% !important;
 				float: left;
+			}
+			.ad-in-content {
+				display: none;
 			}
 		}
 	}

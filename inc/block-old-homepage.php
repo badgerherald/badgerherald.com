@@ -117,7 +117,7 @@
 
 	foreach($beats as $beat => $beat_name){
 		
-		hrld_html_tag_open("div", $beat, "clearfix");
+		hrld_html_tag_open("div", $beat, array("clearfix"));
 			hrld_html_tag_open("div","",array("section-banner", "section-banner-$beat"));
 				hrld_html_tag_open("h2","",array(),$beat_name,true);
 			hrld_html_tag_close("div");

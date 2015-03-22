@@ -175,19 +175,40 @@ jQuery(document).ready(function($) {
      * @since  v0.2
      */
     var toggleNav = function() {
-        if ($("#page").hasClass("pullout-active")) {
+
+
+        // position the bar to the top of the screen
+        var placeholder = $('.fixed-bar-block-placeholder');
+		var fromTop = placeholder.offset().top;
+		var fixedBar = $('.fixed-bar-block');
+
+		if(!fixedBar.hasClass('fixed')) {
+			var body = $("html, body");
+			$(window).scrollTop(fromTop);
+		}
+
+		openPullout();
+    
+    }
+
+    var openPullout = function() {
+    	console.log('called');
+    	if ($("#page").hasClass("pullout-active")) {
             var offset = $("#page").css("top");
             $("#page").css({"top":"auto"});
             offset = parseInt(offset) * -1;
             $("#pullout").toggleClass("active");
             $("#page").toggleClass("pullout-active");
             $("body, html").scrollTop(offset);
+            fixedBar.css('position','');
         } else {
             var offset = window.pageYOffset;
             $("#page").css({"top": "-" + offset + "px"});
             $("#pullout").toggleClass("active");
             $("#page").toggleClass("pullout-active");
+            fixedBar.css('position','fixed');
         }
+        $(window).scroll();
     }
 
 	/**
@@ -315,6 +336,33 @@ jQuery(document).ready(function($) {
 
 
 	/**
+	 * Manage where the fixed bar is (if there is content above it.)
+	 *
+	 */
+
+	var placeholder = $('.fixed-bar-block-placeholder');
+	var fixedBar = $('.fixed-bar-block');
+
+	$(window).scroll(checkFixedBar);
+	$(window).resize(checkFixedBar);
+	$(window).scroll();
+
+	function checkFixedBar() {
+		var st = $(window).scrollTop()
+		var fromTop = placeholder.offset().top;
+		var barHeight = fixedBar.outerHeight();
+
+		if( (fromTop - st) <= 0) {
+			fixedBar.addClass('fixed');
+			placeholder.css('height',barHeight);
+		} else {
+			fixedBar.removeClass('fixed');
+			placeholder.css('height',0);
+		}
+	}
+
+
+	/**
 	 * Open a tweet pane
 	 *
 	 *
@@ -427,7 +475,7 @@ jQuery(document).ready(function($) {
 
 		var offset = parseInt(pane.css('margin-right'));
 
-		console.log(offset);
+		// console.log(offset);
 
 		block.animate({'position':'relative','left':width});
 		openPane = pane.css({
@@ -543,8 +591,8 @@ jQuery(document).ready(function($) {
 			paneTop = pane.offset().top;
 			paneBottom = paneTop + pane.outerHeight();
 
-			console.log('pt:'+paneTop);
-			console.log('st:'+scrollTop);
+			//console.log('pt:'+paneTop);
+			//console.log('st:'+scrollTop);
 
 			var screenSpace = $(window).height() - clearance*2;
 			if( paneTop < blockTop || pane.outerHeight() > screenSpace ) {
@@ -631,12 +679,14 @@ jQuery(document).ready(function($) {
 		}
 
 	}
-	$(window).scroll( function() {
+/*	$(window).scroll( function() {
 		positionSidebarChildren();
 	});
 	$(window).resize( function() {
 		positionSidebarChildren();
 	});
+*/
+	positionSidebarChildren();
 
 
 	/**
@@ -655,7 +705,7 @@ jQuery(document).ready(function($) {
 
 		while( $(".lede-sidebar").children().length >= i ) {
 			var fromTop = $(child).offset().top - $(window).scrollTop();
-			console.log($(fromTop));
+			//console.log($(fromTop));
 			if( fromTop > 0 ) {
 				topmostChild = child;
 				i = 1000; // break the loop

@@ -1,32 +1,207 @@
-.shoutout-header {
-	background: #000 url('./img/shoutouts/shoutout-header.png') no-repeat center right;
-	height: 120px;
-	color: #fff;
+
+.shoutout-bubble {
+	background: $hrld-black;
+	width: 100%;
 	position: relative;
+	textarea {
+		background: transparent;
+		border: none;
+		width: 100%;
+		font-size: 18px;
+		font-family: $body;
+		font-style: italic;
+		color:#fff;
+		padding: 24px 20px;
+		min-height: 200px;
+	}
 	h1 {
 		font-size: 60px;
+		color: #fff;
+		line-height: 66px;
+		margin: 48px 80px;
 		text-transform: uppercase;
-		line-height: 60px;
-		padding: 30px 20px 0px 20px;
-		position: absolute;
-
-		a {
-			color: #fff;
-		}
 	}
 	h2 {
-		padding: 20px;
-		font-family: $body;
-		font-weight: normal;
-		margin: 0;
-		font-size: 16px;
-		line-height: 16px;
+		padding: 12px 0 6px;
+		margin: 0 20px;
+		text-transform: uppercase;
+		color: #fff;
+		border-bottom: 1px solid #535353;
+		&.error {
+			color: red;
+		}
+	}
+	p {
+		text-transform: none;
+		color: $hrld-dark-grey;
+		font-style:italic;
+		margin:60px 0;
+	}
+	&:before {
+		content: '';
+		bottom:0px;
+		margin-bottom: -60px;
+		right:100px;
+		width: 0;
+		height: 0;
+		border-style: solid;
+		border-width: 0 60px 60px 0;
+		border-color: transparent $hrld-black transparent transparent;
+		position:absolute;
+	}
+	&:after {
+		content: '';
+		position:absolute;
+		bottom:-80px;
+		margin-bottom: -18px;
+		right:0;
+		width: 80px;
+		height: 80px;
+		background: url('img/icons/shoutout.png');
+		background-size: cover;
+		display: block;
+	}
+	.so-button {
+		background: $hrld-blue;
+		border: none;
 		position: absolute;
-		top : 66px;
-		opacity: .6px;
+		right: 20px;
+		bottom: 0px;
+		color: #fff;
+		font-family: $headline;
+		text-transform: uppercase;
+		font-weight: 300;
+		padding: 12px 20px;
+		margin:24px 0;
+	}
+
+}
+
+.shoutout-navbar {
+	list-style: none;
+	display: block;
+	margin: 24px 80px;
+	padding: 0;
+	width:100%;
+	li {
+		display: inline;
+		padding:0 5px;
+		a.current-page {
+			padding:0px 8px;
+			display: inline-block;
+			background: #d4dce0;
+		}
+		&:first-child {
+			padding-left:0;
+		}
 	}
 }
 
+@include breakpoint(tablet) {
+
+	.shoutout-bubble {
+		background: $hrld-black;
+		width: 100%;
+		textarea {
+			background: transparent;
+			border: none;
+			font-size: 40px;
+			color:#fff;
+			min-height: 400px;
+			padding: 24px 80px;
+			&:focus {
+				outline: none;
+			}
+		}
+
+	}
+
+
+}
+
+.shoutout-container {
+	margin-left:30px;
+	background: $hrld-black;
+	position:relative;
+	margin-bottom:24px;
+	clear:left;
+	&:before {
+		content: '';
+		top:40px;
+		width: 0;
+		height: 0;
+		border-style: solid;
+		border-width: 0 20px 20px 0;
+		border-color: transparent #000000 transparent transparent;
+		position:absolute;
+		left:-20px;
+	}
+	&:after {
+		content: '';
+		position:absolute;
+		top:0px;
+		width: 30px;
+		height: 30px;
+		background: url('img/icons/shoutout.png');
+		background-size: cover;
+		display: block;
+		left:-41px;
+	}
+	a.shoutout-number-link {
+		padding-right: 10px;
+		border-right: 1px solid #535353;
+		margin-right: 10px;
+	}
+	a {
+		color: #2d80e1 !important;
+	}
+	p.so-text {
+		color: #eff4f6;
+		font-family: $headline;
+		text-transform: uppercase;
+		font-size: 22px;
+		line-height: 28px;
+		font-weight: 700;
+		padding: 12px 20px !important;
+	}
+	p.so-title {
+		color: #535353;
+		text-transform: uppercase;
+		font-size: 14px;
+		font-family: $headline;
+		border-bottom: 1px solid #535353;
+		margin: 0 20px !important;
+		padding: 0px 0 !important;
+	}
+}
+
+@include breakpoint(tablet) {
+
+	.shoutout-container {
+
+		width:auto;
+		margin-right: -80px;
+		max-width:340px;
+		margin-left:80px;
+
+		p {
+			margin: 0 !important;
+		}
+	}
+
+}
+
+@include breakpoint(desktop) {
+	.shoutout-container {
+		max-width: 540px;
+	}
+
+	.shoutout-bubble {
+		width: 700px;
+		float: left;
+	}
+}
+/*
 .shoutout-add-header {
 	background: #000 url('./img/shoutouts/shoutout-header-left.png') no-repeat center left;
 	height: 120px;
@@ -124,4 +299,4 @@
 	width:380px;
 }
 
-}
+}*/
