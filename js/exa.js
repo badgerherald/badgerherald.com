@@ -314,7 +314,7 @@ jQuery(document).ready(function($) {
 		  target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
 		  if (target.length) {
 			$('html,body').animate({
-			  scrollTop: target.offset().top - 79
+			  scrollTop: target.offset().top - 72
 			}, 1000);
 			return false;
 		  }
@@ -342,10 +342,12 @@ jQuery(document).ready(function($) {
 
 	var placeholder = $('.fixed-bar-block-placeholder');
 	var fixedBar = $('.fixed-bar-block');
-
-	$(window).scroll(checkFixedBar);
-	$(window).resize(checkFixedBar);
-	$(window).scroll();
+    if (fixedBar.length !== 0 && placeholder.length !== 0)
+    {
+        $(window).scroll(checkFixedBar);
+        $(window).resize(checkFixedBar);
+        $(window).scroll();
+    }
 
 	function checkFixedBar() {
 		var st = $(window).scrollTop()
