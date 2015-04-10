@@ -514,6 +514,7 @@ function hrld_customformatTinyMCE($settings) {
 	// Add block format elements you want to show in dropdown
 	$settings['theme_advanced_blockformats'] = 'p,h2,h3,h4';
 	return $settings;
+
 }
 add_filter('tiny_mce_before_init', 'hrld_customformatTinyMCE' );
 

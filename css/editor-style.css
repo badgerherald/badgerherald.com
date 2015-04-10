@@ -9,6 +9,7 @@ Description: Used to style the TinyMCE editor.
  *
  * 1.0 - Body
  * 2.0 - Headings
+ * 2.5 - Inline links.
  * 3.0 - Text Elements
  * 4.0 - Links
  * 5.0 - Alignment
@@ -33,7 +34,7 @@ html .mceContentBody {
 body {
 	color: #141412;
 	background: #eff4f6;
-	padding: 80px;
+	padding: 60px;
 	box-sizing: border-box;
 	font-size: 20px;
 	font-family: 'pt serif', Georgia, Palatino, serif;
@@ -96,6 +97,71 @@ hr {
 	margin: 0 0 24px;
 }
 
+/**
+ * 2.5 inline link
+ * ----------------------------------------------------------------------------
+ */
+
+a.hrld-inline-link {
+  cursor: pointer;
+  margin: 0px 0 12px;
+  font-family: "PT Sans Narrow", Helvetica, Arial, Sans-Serif;
+  font-size: 15px;
+  line-height: 18px;
+  color: #191919;
+  position: relative;
+  padding: 9px 10px;
+  display: block;
+  background: #fff; }
+  a.hrld-inline-link .hrld-inline-thumbnail {
+    width: 120px;
+    min-width: 120px;
+    max-width: 120px;
+    margin-top: 3px;
+    float: right;
+    clear: left;
+    padding: 0px 0px 6px 10px; }
+  a.hrld-inline-link .hrld-inline-link-title {
+    display: block;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 21px; }
+    a.hrld-inline-link .hrld-inline-link-title:before {
+      /* new window icon */
+      font-family: exa;
+      content: ' w';
+      float: right;
+      width: 32px;
+      height: 32px;
+      display: block;
+      text-align: right;
+      visibility: hidden;
+      color: #191919; }
+  a.hrld-inline-link .hrld-inline-link-excerpt {
+    color: #a6b5bd;
+    display: block;
+    margin-top: 6px; }
+    a.hrld-inline-link .hrld-inline-link-excerpt:after {
+      content: " ";
+      clear: left;
+      display: block; }
+  a.hrld-inline-link:hover {
+    background: #fff; }
+    a.hrld-inline-link:hover .hrld-inline-link-title {
+      color: #2075d0; }
+      a.hrld-inline-link:hover .hrld-inline-link-title:before {
+        visibility: visible; }
+
+a.hrld-inline-link {
+  padding: 12px 20px;
+  overflow: auto; }
+  a.hrld-inline-link img.hrld-inline-thumbnail {
+    float: left;
+    padding-left: 0;
+    padding-right: 20px;
+    width: 140px;
+    min-width: 140px;
+    max-width: 140px; }
 
 /**
  * 3.0 Text Elements
