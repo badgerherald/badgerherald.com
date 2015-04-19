@@ -185,7 +185,7 @@ function exa_scripts_styles() {
 
 		$mtime = filemtime(dirname(__FILE__) . '/style.css');
 		/* Load main stylesheet. */
-		wp_enqueue_style( 'exa-style', get_stylesheet_uri(), array(),$mtime );
+		wp_enqueue_style( 'exa-style', get_template_directory_uri() . '/style.css', array(),$mtime );
 
 		/* Load fastclick library */
 		wp_enqueue_script( 'fastclick', get_template_directory_uri() . '/js/fastclick/lib/fastclick.js', array(), '0.6.11', true );	
