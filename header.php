@@ -82,7 +82,7 @@ global $DoubleClick;
 			<div id='ad-leaderboard' class='top-leaderboard'>
 				<?php $DoubleClick->place_ad('bh:leaderboard','728x90',array('desktop','xl','tablet')); ?>
 			</div>
-			<a class="advertise-plug" href="http://badgerherald.com/advertise/">Student Org? Local Business? Advertise with the Herald.</a>
+			<a class="advertise-plug" href="http://advertise.badgerherald.com/">Student Org? Local Business? Advertise with the Herald.</a>
 			
 			<div class="social-buttons">
 
