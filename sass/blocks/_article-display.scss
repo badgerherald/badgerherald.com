@@ -404,9 +404,99 @@
 				color: $hrld-blue;
 			}
 		}
+		h1 {
+			font-family: $headline;
+			margin: 18px 0;
+			display: inline-block;
+		}
+		h2 {
+			font-family: $headline;
+			font-size: 27px;
+			margin: 24px 0px 12px;
+			display: inline-block;
+		}
+		h3 {
+			font-family: $body;
+			color: $hrld-blue;
+			font-weight: normal;
+			margin: 18px 0 12px;
+			font-size: 23px;
+			display: inline-block;
+		}
+		h4 {
+			font-family: $body;
+			color: $hrld-blue;
+			font-weight: normal;
+			margin: 18px 0 12px;
+			font-size: 18px;
+			display: inline-block;
+		}
+		h5,h6 {
+			color: $hrld-dark-grey;
+			font-weight: normal;
+			font-size: 21px;
+			font-size: 18px;
+			margin: 18px 0 12px;
+		}
+
+		/** Lists */
+
+		ul {
+			list-style-type: none;
+			margin: 24px 0;
+			li {
+				margin: 12px 0;
+				padding-left: 20px;
+				&:before {
+					content: '>';
+					font-family: $icon;
+					font-size: .6em;
+					position: absolute;
+					margin-left: -30px;
+				}
+			}
+		}
+		ol {
+			list-style-type: none;
+			margin: 0;
+			counter-reset:li-counter;
+			li {
+				margin: 12px 0;
+				padding-left: 20px;
+				&:before {
+					content: counter(li-counter);
+					counter-increment: li-counter;
+					font-family: $headline;
+					font-weight: bold;
+					position: absolute;
+					margin-left: -40px;
+					margin-top: 5px;
+					background: #fff;
+					font-size: .8em;
+					padding: 0px 3px;
+					display: block;
+					min-width: 20px;
+					height: 20px;
+					text-align: center;
+					line-height: 20px;
+				}
+			}
+		}
+		blockquote {
+			font-family: $headline;
+			background: #fff;
+			margin-left: 0;
+			border-left: 2px solid $hrld-blue;
+		}
+		blockquote p {
+			margin-left: 0;
+			padding: 12px 20px;
+			font-family: $headline;
+			font-size: 18px;
+		}
 		.ad-in-content {
 			margin: 24px 0;
-			&:after {
+			&:before {
 				content : "Advertisement";
 				font-family: $headline;
 				text-transform: uppercase;
@@ -547,6 +637,12 @@
 				margin-left: 80px;
 				margin-right: 80px;
 				width: (540,720);
+			}
+			blockquote, ul, ol, dl {
+				margin-left: 80px;
+				li {
+					padding:0;
+				}
 			}
 			a.hrld-inline-link {
 				margin-left: -80px;
