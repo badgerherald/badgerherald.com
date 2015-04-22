@@ -460,6 +460,7 @@
 			list-style-type: none;
 			margin: 0;
 			counter-reset:li-counter;
+			margin: 24px 0;
 			li {
 				margin: 12px 0;
 				padding-left: 20px;
@@ -633,10 +634,13 @@
 			line-height: 30px;
 			width:100%;
 			position: relative;
-			p,h1,h2,h3,h4,h5,h6,.twitter-tweet {
+			p,h1,h2,h3,h4,h5,h6 {
 				margin-left: 80px;
 				margin-right: 80px;
 				width: (540,720);
+			}
+			.twitter-tweet {
+				margin-left: 80px !important;
 			}
 			blockquote, ul, ol, dl {
 				margin-left: 80px;
