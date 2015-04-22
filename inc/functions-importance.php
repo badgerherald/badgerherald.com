@@ -13,11 +13,9 @@
  * @since v0.1
  * @return boolean True if post is marked "featured", False if not.
  */
-function exa_is_featured() {
-	if(!$post) {
-		global $post;
-	}
-	return (in_array("Featured",wp_get_post_terms($post->ID,importance,array("fields" => "names"))));
+function exa_is_featured($post = null) {
+	$post = get_post($post);
+	return (in_array("Featured",wp_get_post_terms($post->ID,"importance",array("fields" => "names"))));
 }
 
 /**
@@ -27,10 +25,8 @@ function exa_is_featured() {
  * @return boolean True if post is marked "in stream", False if not.
  */
 function exa_is_instream($post = null) {
-	if(!$post) {
-		global $post;
-	}
-	return (in_array("In Stream",wp_get_post_terms($post->ID,importance,array("fields" => "names"))));
+	$post = get_post($post);
+	return (in_array("In Stream",wp_get_post_terms($post->ID,"importance",array("fields" => "names"))));
 }
 
 /**
@@ -40,9 +36,6 @@ function exa_is_instream($post = null) {
  * @return boolean True if post is marked "in stream", False if not.
  */
 function exa_is_cover($post = null) {
-
-	if(!$post) {
-		global $post;
-	}
-	return (in_array("Cover",wp_get_post_terms($post->ID,importance,array("fields" => "names"))));
+	$post = get_post($post);
+	return (in_array("Cover",wp_get_post_terms($post->ID,"importance",array("fields" => "names"))));
 }

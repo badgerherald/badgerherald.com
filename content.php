@@ -9,11 +9,10 @@
 
 global $DoubleClick;
 global $post;
+
 ?>
 
 <div class="block article-display-block showcase-block">
-	
-	<span class="context-label">ARTICLE BLOCK</span>
 	
 	<div class="wrapper">
 	

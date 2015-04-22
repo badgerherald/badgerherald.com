@@ -12,6 +12,31 @@
 
 /**
  * ================================================================================================
+ *   #region: define undefined constants.
+ * ================================================================================================
+ */
+
+/**
+ * Is this a production environment?
+ * Default: TRUE.
+ */
+if ( ! defined( 'EXA_PRODUCTION' ) )
+	define( 'EXA_PRODUCTION', TRUE );
+
+/**
+ * Is this a herald development enviornment?
+ * 
+ * 	// todo: we should move this and the related functionality 
+ * 			 (functions-dev.php) to the child theme.
+ * 
+ * Default: TRUE.
+ */
+if ( ! defined( 'HRLD_DEV' ) )
+	define( 'HRLD_DEV', TRUE );
+
+
+/**
+ * ================================================================================================
  *   #region: include other fuction files.
  * ================================================================================================
  */
@@ -787,11 +812,11 @@ function exa_open_graph_tags() {
 
 	global $post;
 
-	$output .= "\n<!-- Open Graph Tags: http://ogp.me -->\n";
+	$output = "\n<!-- Open Graph Tags: http://ogp.me -->\n";
 
 	/* 1. Title (string) */
 
-	$title = single_post_title( $prefix, false );
+	$title = single_post_title( null, false );
 	$output .= "<meta property='og:title' content='$title' />\n";
 
 	/* 2. Description (string) */
@@ -909,6 +934,8 @@ function exa_twitter_card_tags() {
 
 	global $post;
 
+	$output = '';
+
 	// Currently, we only have cards on 
 	// single post pages.
 	if( is_single() ) :
@@ -928,7 +955,7 @@ function exa_twitter_card_tags() {
 
 	/* 2. Title */
 
-	$title = single_post_title( $prefix, false );
+	$title = single_post_title( "", false );
 	$output .= "<meta name='twitter:title' content='$title' />\n";
 
 	/* 3. Excerpt */
@@ -1145,11 +1172,12 @@ add_filter('hrld_showcase_image_data', 'exa_add_media_credit_showcase');
  * @author Jason Chan
  */
 function exa_social_url($url = "", $newVersion = true){
+
 	$date_change_category = 1422622800; //Fri 30 Jan, 2015 07:00:00 CT
 	if($url == "")
 		$url = get_permalink($post -> ID);
 	if( $url != false && $url != ''){
-		$date = get_the_date('U', $post);
+		$date = get_the_date('U');
 	if( $newVersion){
 		if( stripos($url, home_url("/oped")) === 0 )
 			$url = str_replace("/oped", "/opinion", $url);

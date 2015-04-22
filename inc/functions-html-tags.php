@@ -28,7 +28,7 @@ function exa_hero_media_credit_tag() {
 			$html_text = '<span class="hrld-media-credit"><span class="hrld-media-credit-name"><a href="'.get_bloginfo('url').'/author/'.$credit.'">'.$hrld_user->display_name.'</a></span><span class="hrld-media-credit-org">/The Badger Herald</span></span>'; 
 		} else{
 			$hrld_credit_name_org = explode("/", $credit);
-			if($hrld_credit_name_org[1]){
+			if(array_key_exists(1,$hrld_credit_name_org) && $hrld_credit_name_org[1]){
 				$html_text = '<span class="hrld-media-credit"><span class="hrld-media-credit-name">'.$hrld_credit_name_org[0].'</span><span class="hrld-media-credit-org">/'.$hrld_credit_name_org[1].'</span></span>';
 			}
 			else{

@@ -144,6 +144,7 @@ function exa_icymi_query($count = 10) {
 				array(
 					'taxonomy' => 'icymi',
 					'field'    => 'slug',
+					'terms'	   => array( $period->slug ),
 				),
 			),  
 
@@ -191,6 +192,7 @@ function exa_icymi_query($count = 10) {
 	// We were only asked for $count number of posts!
 	$icymiQuery->posts = array_slice($icymiQuery->posts,0,$count);
 	$icymiQuery->post_count = $count;
+
 	
 	return $icymiQuery;
 

@@ -21,7 +21,7 @@
  */
 function exa_register_analytics() {
 
-	$js;	// Build our JS string.
+	$js = "";	// Build our JS string.
 
 	if (true || hrld_is_production()) {
  
