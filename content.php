@@ -7,6 +7,7 @@
  * @since Twenty Thirteen 1.0
  */
 
+global $AnalyticBridge;
 global $DoubleClick;
 global $post;
 
@@ -58,8 +59,9 @@ global $post;
 				<header class="article-header">
 
 					<!-- <a class="article-section"><?php echo exa_section(); ?></a> -->
-
-					<?php echo exa_get_tweet_link(get_the_title(),null,'article-title',1); ?>
+					
+					<h1 class="article-title"><?php the_title() ?></h1>
+					
 				
 				<?php if( hrld_has_subhead(get_the_ID()) ) : ?>
 				
@@ -143,6 +145,8 @@ global $post;
 				 */ 
 				?>
 				<section class="article-text">
+
+					<?php $AnalyticBridge->metric(); ?>
 
 					<?php the_content(); ?>
 
