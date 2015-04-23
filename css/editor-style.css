@@ -73,7 +73,7 @@ h4 {
 	font-family: 'pt serif';
 	font-weight: bold;
 	font-size: 18px;
-	margin: 12px 95px 12px;
+	margin: 12px 80px 12px;
 	display: inline-block;
 }
 h4:before {
@@ -107,6 +107,55 @@ blockquote p {
 	padding: 12px 20px;
 	font-family: 'pt sans';
 	font-size: 18px;
+}
+
+/** Lists */
+
+ul {
+	list-style-type: none;
+	margin: 24px 80px;
+	padding: 0 0 0 20px;
+}
+ul li {
+	margin: 12px 0;
+	padding-left: 20px;
+}
+ul li:before {
+	content: '>';
+	font-family: 'exa';
+	font-size: .6em;
+	position: absolute;
+	margin-left: -30px;
+	margin-top: 6px;
+}
+
+ol {
+	list-style-type: none;
+	margin: 0;
+	counter-reset:li-counter;
+	margin: 24px 80px;
+	padding: 0 0 0 20px;
+}
+ol li {
+	margin: 12px 0;
+	padding-left: 20px;
+}
+ol li:before {
+	content: counter(li-counter);
+	counter-increment: li-counter;
+	font-family: 'exa';
+	font-weight: bold;
+	position: absolute;
+	margin-left: -40px;
+	margin-top: 5px;
+	background: #fff;
+	font-size: .8em;
+	padding: 0px 3px;
+	display: block;
+	min-width: 20px;
+	height: 20px;
+	text-align: center;
+	line-height: 20px;
 }
 
 
@@ -193,25 +242,6 @@ a.hrld-inline-link {
 p {
 	margin: 24px 80px 24px;
 	font-size: 20px;
-}
-
-ol,
-ul {
-	margin: 16px 0;
-	padding: 0 0 0 40px;
-}
-
-ul {
-	list-style-type: square;
-}
-
-ol {
-	list-style: decimal outside;
-}
-
-li > ul,
-li > ol {
-	margin: 0;
 }
 
 dl {
