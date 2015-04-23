@@ -177,17 +177,6 @@ global $post;
 				</section>
 
 			</main>
-
-			<?php 
-
-			/**
-			 * Called below the article, after main.
-			 * 
-			 * @since v0.3
-			 */
-			do_action('exa_below_article');
-
-			?>
 			
 		</article><!-- #post-xx -->
 
