@@ -96,6 +96,19 @@ ul,li {
 	font-size: 18px;
 }
 
+blockquote {
+	font-family: 'pt sans';
+	background: #fff;
+	margin-left: 0;
+	border-left: 2px solid #247ad0;
+}
+blockquote p {
+	margin-left: 0;
+	padding: 12px 20px;
+	font-family: 'pt sans';
+	font-size: 18px;
+}
+
 
 
 hr {

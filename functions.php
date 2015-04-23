@@ -537,7 +537,6 @@ add_filter( 'post_thumbnail_html', 'exa_post_thumbnail_html', 20, 5 );
  */
 function exa_TinyMCE_customformat($settings) {
 
-	print_r($settings);
 	// Add block format elements you want to show in dropdown
 	$settings['block_formats'] = 'Paragraph=p;Top Header (h2)=h2;Subhead (h3)=h3;Explainer (h4)=h4';
 	return $settings;
@@ -573,12 +572,22 @@ function exa_TinyMCE_dropdown_style( $settings ) {
 }
 add_filter( 'tiny_mce_before_init', 'exa_TinyMCE_dropdown_style' );
 
-add_filter( 'mce_buttons_2', 'fb_mce_editor_buttons' );
+
 function fb_mce_editor_buttons( $buttons ) {
 
     array_unshift( $buttons, 'styleselect' );
+
+    $value = array_search( 'formatselect', $buttons );
+	if ( FALSE !== $value ) {
+	    foreach ( $buttons as $key => $value ) {
+	        if ( 'formatselect' === $value )
+	            unset( $buttons[$key] );
+	    }
+	}
+
     return $buttons;
 }
+add_filter( 'mce_buttons_2', 'fb_mce_editor_buttons' );
 
 
 /**
