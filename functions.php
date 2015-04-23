@@ -163,6 +163,7 @@ function exa_setup() {
 
 	/* Include custom editor styles, so the backend looks like
 	 * the front end. */
+	add_editor_style( 'css/fontastic/styles.css' );
 	add_editor_style( 'css/editor-style.css' );
 
 	/* Adds RSS feed links to <head> for posts and comments. */
@@ -534,14 +535,51 @@ add_filter( 'post_thumbnail_html', 'exa_post_thumbnail_html', 20, 5 );
  * @param array $settings tiny_mce settings passed in by filter.
  * @return array tiny_mce settings.
  */
-function hrld_customformatTinyMCE($settings) {
+function exa_TinyMCE_customformat($settings) {
 
+	print_r($settings);
 	// Add block format elements you want to show in dropdown
-	$settings['theme_advanced_blockformats'] = 'p,h2,h3,h4';
+	$settings['block_formats'] = 'Paragraph=p;Top Header (h2)=h2;Subhead (h3)=h3;Explainer (h4)=h4';
 	return $settings;
 
 }
-add_filter('tiny_mce_before_init', 'hrld_customformatTinyMCE' );
+add_filter('tiny_mce_before_init', 'exa_TinyMCE_customformat' );
+
+function exa_TinyMCE_dropdown_style( $settings ) {
+
+    $style_formats = array(
+        array(
+            'title' => 'Paragraph',
+            'format' => 'p',
+        ),
+        array(
+            'title' => 'Header',
+            'format' => 'h2',
+        ),
+        array(
+            'title' => 'Subhead',
+            'format' => 'h3',
+        ),
+        array(
+            'title' => 'Breaker',
+            'format' => 'h4',
+        ),
+    );
+
+    $settings['style_formats'] = json_encode( $style_formats );
+
+    return $settings;
+
+}
+add_filter( 'tiny_mce_before_init', 'exa_TinyMCE_dropdown_style' );
+
+add_filter( 'mce_buttons_2', 'fb_mce_editor_buttons' );
+function fb_mce_editor_buttons( $buttons ) {
+
+    array_unshift( $buttons, 'styleselect' );
+    return $buttons;
+}
+
 
 /**
  * Remove Attachment Link-To and set to value 'none'

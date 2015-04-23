@@ -399,7 +399,6 @@
 			margin: 0 -2px;
 			border-radius: 2px;
 			color: #195ea6;
-			text-shadow: 1px 1px rgba($hrld-blue,.1);
 			&:hover {
 				color: $hrld-blue;
 			}
@@ -411,25 +410,35 @@
 		}
 		h2 {
 			font-family: $headline;
-			font-size: 27px;
+			font-size: 30px;
 			margin: 24px 0px 12px;
 			display: inline-block;
 		}
 		h3 {
-			font-family: $body;
-			color: $hrld-blue;
-			font-weight: normal;
-			margin: 18px 0 12px;
-			font-size: 23px;
+			font-family: $headline;
+			color: $hrld-dark-grey;
+			font-weight: bold;
+			margin: 12px 0 0px;
+			font-size: 24px;
 			display: inline-block;
+			text-shadow: -1px 1px rgba(#fff,.8);
+			// text-transform: uppercase;
 		}
 		h4 {
 			font-family: $body;
-			color: $hrld-blue;
-			font-weight: normal;
-			margin: 18px 0 12px;
+			color: $hrld-black;
+			font-weight: bold;
 			font-size: 18px;
+			margin: 12px 0 12px;
 			display: inline-block;
+			margin-left: 15px;
+			&:before {
+				content: "*";
+				font-family: $icon;
+				position: absolute;
+				margin-left: -15px;
+				margin-top:-15px;
+			}
 		}
 		h5,h6 {
 			color: $hrld-dark-grey;
@@ -637,7 +646,9 @@
 			p,h1,h2,h3,h4,h5,h6 {
 				margin-left: 80px;
 				margin-right: 80px;
-				width: (540,720);
+				}
+			h4 {
+				margin-left: 80px;
 			}
 			.twitter-tweet {
 				margin-left: 80px !important;
