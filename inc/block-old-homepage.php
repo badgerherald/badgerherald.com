@@ -18,6 +18,12 @@
 		                    'field' => 'slug',
 		                    'terms' => array('featured'),
 		                    'operator' => 'IN'
+		                ),
+		                array(
+		                	'taxonomy' => 'importance',
+		                    'field' => 'slug',
+		                    'terms' => array('not-in-main-feature'),
+		                    'operator' => 'NOT IN'
 		                )
 		            );
 				$args['posts_per_page'] = 1;
