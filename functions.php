@@ -175,7 +175,7 @@ function exa_setup() {
 	set_post_thumbnail_size( 690, 450, true );
 
 	/* Register custom image size for image post formats. */
-	add_image_size( 'image-post-size', 860, 470, false );
+	add_image_size( 'image-post-size', 860, 470, true );
 	add_image_size( 'small-thumbnail', 345, 225, true );
 	add_image_size( 'large-thumbnail', 690, 450, true );
 
