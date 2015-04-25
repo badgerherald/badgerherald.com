@@ -1034,6 +1034,42 @@ function exa_twitter_card_tags() {
 add_action('wp_head','exa_twitter_card_tags');
 
 
+function exa_toggle_feature_boxes(){
+	add_meta_box( '_hrld_optionalFeature', __('Hide Featured Image'), 'exa_toggle_feature_box', 'post', 'side', 'default');
+}
+
+function exa_toggle_feature_box(){ ?>
+	<p>
+		<?php $hide_feature = get_post_meta( get_the_ID(), '_hrld_optionalFeature', true); ?>
+		<input type="checkbox" name="_hrld_optionalFeature" id="_hrld_optionalFeature" value="true" <?php if( $hide_feature == "true"){echo 'checked'; } else{echo "unchecked"; } ?> />
+		<label for="_hrld_optionalFeature"><?php _e('Check here to hide featured image when published. Useful for vertical images.'); ?></label>
+	</p>
+
+<?php }
+
+function exa_toggle_feature_save($post_id, $post){
+	if( isset($_POST['_hrld_optionalFeature']) && $_POST['_hrld_optionalFeature'] == 'true'){
+		update_post_meta($post_id, '_hrld_optionalFeature', 'true');
+	}else{
+		update_post_meta($post_id, '_hrld_optionalFeature', 'false');
+	}
+}
+
+function exa_toggle_feature_setup(){
+
+	add_action( 'add_meta_boxes', 'exa_toggle_feature_boxes' );
+
+	add_action( 'save_post', 'exa_toggle_feature_save');
+	add_action( 'pre_post_update', 'exa_toggle_feature_save');
+	add_action( 'edit_post', 'exa_toggle_feature_save');
+	add_action( 'publish_post', 'exa_toggle_feature_save');
+	add_action( 'edit_page_form', 'exa_toggle_feature_save');
+
+
+}
+add_action( 'load-post.php', 'exa_toggle_feature_setup' );
+add_action( 'load-post-new.php', 'exa_toggle_feature_setup' );
+
 
 
 /**
