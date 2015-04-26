@@ -24,7 +24,7 @@ global $post;
 		 * Retrieve and display feature-image (hero).
 		 * 
 		 */
-		$hide_feature = get_post_meta( get_the_ID(), '_hrld_optionalFeature', true);
+		$hide_feature = get_post_meta( get_the_ID(), '_exa_show_featured_image', true);
 		if ( has_post_thumbnail() && $hide_feature == "false") : ?>
 				
 			<div class="hero">
