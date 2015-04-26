@@ -25,7 +25,7 @@ global $post;
 		 * 
 		 */
 		$hide_feature = get_post_meta( get_the_ID(), '_exa_show_featured_image', true);
-		if ( has_post_thumbnail() && $hide_feature == "false") : ?>
+		if ( has_post_thumbnail() && !($hide_feature == "true") : ?>
 				
 			<div class="hero">
 
