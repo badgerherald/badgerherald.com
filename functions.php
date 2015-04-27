@@ -1035,23 +1035,23 @@ add_action('wp_head','exa_twitter_card_tags');
 
 
 function exa_toggle_feature_boxes(){
-	add_meta_box( '_exa_show_featured_image', __('Hide Featured Image'), 'exa_toggle_feature_box', 'post', 'side', 'default');
+	add_meta_box( '_exa_hide_featured_image', __('Hide Featured Image'), 'exa_toggle_feature_box', 'post', 'side', 'default');
 }
 
 function exa_toggle_feature_box(){ ?>
 	<p>
-		<?php $hide_feature = get_post_meta( get_the_ID(), '_exa_show_featured_image', true); ?>
-		<input type="checkbox" name="_exa_show_featured_image" id="_exa_show_featured_image" value="true" <?php if( $hide_feature == "true"){echo 'checked'; } else{echo "unchecked"; } ?> />
-		<label for="_exa_show_featured_image"><?php _e('Check here to hide featured image when published. Useful for vertical images.'); ?></label>
+		<?php $hide_feature = get_post_meta( get_the_ID(), '_exa_hide_featured_image', true); ?>
+		<input type="checkbox" name="_exa_hide_featured_image" id="_exa_hide_featured_image" value="true" <?php if( $hide_feature == "true"){echo 'checked'; } else{echo "unchecked"; } ?> />
+		<label for="_exa_hide_featured_image"><?php _e('Check here to hide featured image when published. Useful for vertical images.'); ?></label>
 	</p>
 
 <?php }
 
 function exa_toggle_feature_save($post_id, $post){
-	if( isset($_POST['_exa_show_featured_image']) && $_POST['_exa_show_featured_image'] == 'true'){
-		update_post_meta($post_id, '_exa_show_featured_image', 'true');
+	if( isset($_POST['_exa_hide_featured_image']) && $_POST['_exa_hide_featured_image'] == 'true'){
+		update_post_meta($post_id, '_exa_hide_featured_image', 'true');
 	}else{
-		update_post_meta($post_id, '_exa_show_featured_image', 'false');
+		update_post_meta($post_id, '_exa_hide_featured_image', 'false');
 	}
 }
 
