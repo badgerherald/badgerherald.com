@@ -11,13 +11,6 @@
  * @since Twenty Thirteen 1.0
  */
 
-// Add a body class to target styling.
-
-function about_class($classes) {
-	$classes[] = 'about-page';
-	return $classes;
-} add_filter('body_class','about_class');
-
 get_header('minimal');
 ?>
 <div class="block full-width-cover-image full-width-aspect-3by1 pos-bottom" style="background-image:url(<?php echo get_template_directory_uri(); ?>/img/about/protest.jpg)">
