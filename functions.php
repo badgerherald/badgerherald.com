@@ -179,8 +179,11 @@ function exa_setup() {
 	add_image_size( 'small-thumbnail', 345, 225, true );
 	add_image_size( 'large-thumbnail', 690, 450, true );
 
-	/* For Mugs */
+	
 	add_image_size( 'square', 160, 160, true );
+
+	/* For Mugs */
+	add_image_size( 'exa-mug', 480, 320, true );
 
 	/* This theme uses its own gallery styles. 
 	add_filter( 'use_default_gallery_style', '__return_false' ); */
@@ -544,6 +547,7 @@ function exa_TinyMCE_customformat($settings) {
 }
 add_filter('tiny_mce_before_init', 'exa_TinyMCE_customformat' );
 
+/*
 function exa_TinyMCE_dropdown_style( $settings ) {
 
     $style_formats = array(
@@ -588,6 +592,7 @@ function fb_mce_editor_buttons( $buttons ) {
     return $buttons;
 }
 add_filter( 'mce_buttons_2', 'fb_mce_editor_buttons' );
+*/
 
 
 /**
