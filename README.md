@@ -36,9 +36,20 @@ Else, please read the (little) documentation and check out the issues for things
 
 ## Docs.
 
-#### dom layout.
+Until we make this repo public, docs will need to be built and read locally. This is fairly straight forward.
 
-There's two main sections. There's the `pullout`, that sits on the left side of the screen, and there's the content `river` down the other side. The `river` is composed of 100% width elements named `blocks` that tile vertically down the screen. Everything that's in these blocks is then styled seperately (with a core set of normalized rules).
+`cd` to the folder containing exa and run:
+
+	pip install -r requirements.txt
+
+This will install all python requirements for running the docs locally.
+
+Once that is complete, run the command:
+
+	mkdocs serve
+
+And docs should be available at [127.0.0.1:8000](http://127.0.0.1:8000/) on your local machine. Changes to .md files in `/docs` will instantly refresh in the browser.
+
 
 #### icons.
 
