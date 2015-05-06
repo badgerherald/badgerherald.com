@@ -15,3 +15,9 @@ Each page is built by stacking a series of **Blocks**. Each block spans 100% wid
 ### Javascript
 
 // todo. 
+
+#### icons.
+
+Bundled in this theme is an exa fontastic font with svg icons.
+
+See `./css/fontastic/icon-reference.html` to see the character mappings.

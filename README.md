@@ -50,9 +50,3 @@ Once that is complete, run the command:
 
 And docs should be available at [127.0.0.1:8000](http://127.0.0.1:8000/) on your local machine. Changes to .md files in `/docs` will instantly refresh in the browser.
 
-
-#### icons.
-
-Bundled in this theme is an exa fontastic font with svg icons.
-
-See `./css/fontastic/icon-reference.html` to see the character mappings.
