@@ -500,10 +500,12 @@ function exa_topic($pid = null) {
 
 	$beats = wp_get_post_terms($pid,"topic");
 	$category_base = get_bloginfo('url')."/".get_post_type()."/";
-
-	foreach ($beats as $beat) : 
-		return $beat->name ; 
-	endforeach;
+	print_r("hello");
+	if( !empty($beats) ) {
+		foreach ($beats as $beat) : 
+			return $beat->name; 
+		endforeach;
+	}
 
 	return "Herald";
 }
