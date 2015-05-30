@@ -31,12 +31,8 @@ global $DoubleClick;
 	<?php /* Remove 300ms tap delay for mobile zoom */ ?>
 	<meta name="viewport" content="width=device-width, user-scalable=no">
 
-	<?php /* Chartbeat Part 1 */
-		if (hrld_is_production()) {
-	?>
+	<!-- Chartbeat timestamp -->
 	<script type="text/javascript">var _sf_startpt=(new Date()).getTime()</script>
-
-	<?php } ?>
 
 	<title><?php echo wp_title("&middot;",true,"right"); ?></title>
 	
