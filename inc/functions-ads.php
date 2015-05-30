@@ -94,7 +94,7 @@ function exa_insert_after_graph( $insertion, $content, $graph ) {
  * Support DoubleClick for WordPress even when it's not
  * installed.
  */
-if( !class_exists('DoubleClick') ) {
+if( !class_exists('DoubleClick') && !is_admin() ) {
 	class DoubleClick {
 		public function __construct($networkCode = null) {}
 		public function place_ad($identifier,$sizes,$args = null) {}
