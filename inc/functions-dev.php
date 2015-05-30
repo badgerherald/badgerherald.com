@@ -8,7 +8,7 @@
 
 
 /**
- * If hrld_dev is set, replaces whatever (local)host an attachment_url
+ * If EXA_DEV is set, replaces whatever (local)host an attachment_url
  * is using with badgerherald.com
  * 
  * @author Will Haynes
@@ -16,7 +16,7 @@
 function exa_dev_attachment_url( $link ) {
 
 	$url = parse_url( $link );
-	if( HRLD_DEV && !strpos( $url['host'], 'badgerherald.com') ) {
+	if( EXA_DEV && !strpos( $url['host'], 'badgerherald.com') ) {
 		$link = preg_replace('/.*uploads/', 'http://badgerherald.com/media', $link); 
 	}
 	return $link;

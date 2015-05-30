@@ -31,8 +31,8 @@ if ( ! defined( 'EXA_PRODUCTION' ) )
  * 
  * Default: TRUE.
  */
-if ( ! defined( 'HRLD_DEV' ) )
-	define( 'HRLD_DEV', TRUE );
+if ( ! defined( 'EXA_DEV' ) )
+	define( 'EXA_DEV', TRUE );
 
 
 /**
@@ -66,6 +66,12 @@ include_once('inc/functions-block.php');
 
 include_once('inc/functions-embeds.php');
 
+include_once('inc/functions-taxonomies.php');
+
+include_once('inc/functions-related-posts.php');
+
+include_once('inc/functions-authors.php');
+
 /**
  * Social links
  * 
@@ -88,7 +94,9 @@ include_once('inc/functions-icymi.php');
  * Contents:
  * 	 - exa_register_icymi_taxonomy()		(action: init)
  */
-include_once('inc/functions-popular-post-widget.php');
+
+if( class_exists('Popular_Post_Widget') )
+	include_once('inc/functions-popular-post-widget.php');
 
 /**
  * Register importance taxonomy.
@@ -125,8 +133,36 @@ include_once('inc/functions-ajax.php');
 include_once('inc/functions-services.php');
 
 
+/** Production site ----------------------------------------------------- */
+/*                                                                        */
+/* Used for development. Is this site the production site or not?         */
+/*                                                                        */
+/* ---------------------------------------------------------------------- */
 
+/**
+ * Returns whether the site is a production site or not.
+ * as defined (currently) in the WP_CONFIG file.
+ *
+ * @since Sept 11, 2013
+ * @author Will Haynes
+ */
+function hrld_is_production() {
+	return HRLD_PRODUCTION;
+}
 
+/**
+ * Turn comments on by default
+ *
+ * @author Will Haynes
+ * @see http://wordpress.stackexchange.com/questions/38405/why-are-the-comments-disabled-by-default-on-my-custom-post-types
+ */
+function hrld_default_comments_on( $data ) {
+
+	$data['comment_status'] = 'open';
+	return $data;
+	
+}
+add_filter( 'wp_insert_post_data', 'hrld_default_comments_on' );
 
 /**
  * ================================================================================================
@@ -140,12 +176,6 @@ include_once('inc/functions-services.php');
  */
 if ( ! isset( $content_width ) )
 	$content_width = 690;
-
-/**
- * Exa should run on WordPress 3.6 or later.
- */
-if ( version_compare( $GLOBALS['wp_version'], '3.6-alpha', '<' ) )
-	require( get_template_directory() . '/inc/back-compat.php' );
 
 global $shortcode_tags;
 if ( !array_key_exists( 'media-credit', $shortcode_tags ) )
@@ -488,17 +518,14 @@ add_filter('embed_oembed_html', 'hrld_responsive_embed_oembed_html', 10, 4);
  * Returns the "topic" or top category of the post.
  *
  * @since 0.1
- * @param int $pid Post id.
+ * @param int|WP_Post $post post id or post object
  * @return string Top post cateogry or "Herald" if no category is set.
  */
-function exa_topic($pid = null) {
+function exa_topic($post = null) {
 
-	if( !$pid ) {
-		global $post;
-		$pid = $post->ID;
-	}
+	$post = get_post($post);
 
-	$beats = wp_get_post_terms($pid,"topic");
+	$beats = wp_get_post_terms($post->ID,"topic");
 	$category_base = get_bloginfo('url')."/".get_post_type()."/";
 	print_r("hello");
 	if( !empty($beats) ) {

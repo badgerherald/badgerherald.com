@@ -147,8 +147,6 @@ global $post;
 				?>
 				<section class="article-text">
 
-					<?php $AnalyticBridge->metric(); ?>
-
 					<?php the_content(); ?>
 
 				</section>
