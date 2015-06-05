@@ -7,13 +7,13 @@
  * @since Twenty Thirteen 1.0
  */
 
+global $AnalyticBridge;
 global $DoubleClick;
 global $post;
+
 ?>
 
 <div class="block article-display-block showcase-block">
-	
-	<span class="context-label">ARTICLE BLOCK</span>
 	
 	<div class="wrapper">
 	
@@ -24,7 +24,8 @@ global $post;
 		 * Retrieve and display feature-image (hero).
 		 * 
 		 */
-		if ( has_post_thumbnail() && ! post_password_required() ) : ?>
+		$hide_feature = get_post_meta( get_the_ID(), '_exa_hide_featured_image', true);
+		if ( has_post_thumbnail() && !($hide_feature == "true")) : ?>
 				
 			<div class="hero">
 
@@ -59,8 +60,9 @@ global $post;
 				<header class="article-header">
 
 					<!-- <a class="article-section"><?php echo exa_section(); ?></a> -->
-
-					<?php echo exa_get_tweet_link(get_the_title(),null,'article-title',1); ?>
+					
+					<h1 class="article-title"><?php the_title() ?></h1>
+					
 				
 				<?php if( hrld_has_subhead(get_the_ID()) ) : ?>
 				

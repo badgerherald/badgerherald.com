@@ -12,6 +12,31 @@
 
 /**
  * ================================================================================================
+ *   #region: define undefined constants.
+ * ================================================================================================
+ */
+
+/**
+ * Is this a production environment?
+ * Default: TRUE.
+ */
+if ( ! defined( 'EXA_PRODUCTION' ) )
+	define( 'EXA_PRODUCTION', TRUE );
+
+/**
+ * Is this a herald development enviornment?
+ * 
+ * 	// todo: we should move this and the related functionality 
+ * 			 (functions-dev.php) to the child theme.
+ * 
+ * Default: TRUE.
+ */
+if ( ! defined( 'EXA_DEV' ) )
+	define( 'EXA_DEV', TRUE );
+
+
+/**
+ * ================================================================================================
  *   #region: include other fuction files.
  * ================================================================================================
  */
@@ -41,6 +66,12 @@ include_once('inc/functions-block.php');
 
 include_once('inc/functions-embeds.php');
 
+include_once('inc/functions-taxonomies.php');
+
+include_once('inc/functions-related-posts.php');
+
+include_once('inc/functions-authors.php');
+
 /**
  * Social links
  * 
@@ -63,7 +94,9 @@ include_once('inc/functions-icymi.php');
  * Contents:
  * 	 - exa_register_icymi_taxonomy()		(action: init)
  */
-include_once('inc/functions-popular-post-widget.php');
+
+if( class_exists('Popular_Post_Widget') )
+	include_once('inc/functions-popular-post-widget.php');
 
 /**
  * Register importance taxonomy.
@@ -100,8 +133,36 @@ include_once('inc/functions-ajax.php');
 include_once('inc/functions-services.php');
 
 
+/** Production site ----------------------------------------------------- */
+/*                                                                        */
+/* Used for development. Is this site the production site or not?         */
+/*                                                                        */
+/* ---------------------------------------------------------------------- */
 
+/**
+ * Returns whether the site is a production site or not.
+ * as defined (currently) in the WP_CONFIG file.
+ *
+ * @since Sept 11, 2013
+ * @author Will Haynes
+ */
+function hrld_is_production() {
+	return HRLD_PRODUCTION;
+}
 
+/**
+ * Turn comments on by default
+ *
+ * @author Will Haynes
+ * @see http://wordpress.stackexchange.com/questions/38405/why-are-the-comments-disabled-by-default-on-my-custom-post-types
+ */
+function hrld_default_comments_on( $data ) {
+
+	$data['comment_status'] = 'open';
+	return $data;
+	
+}
+add_filter( 'wp_insert_post_data', 'hrld_default_comments_on' );
 
 /**
  * ================================================================================================
@@ -115,12 +176,6 @@ include_once('inc/functions-services.php');
  */
 if ( ! isset( $content_width ) )
 	$content_width = 690;
-
-/**
- * Exa should run on WordPress 3.6 or later.
- */
-if ( version_compare( $GLOBALS['wp_version'], '3.6-alpha', '<' ) )
-	require( get_template_directory() . '/inc/back-compat.php' );
 
 global $shortcode_tags;
 if ( !array_key_exists( 'media-credit', $shortcode_tags ) )
@@ -138,6 +193,7 @@ function exa_setup() {
 
 	/* Include custom editor styles, so the backend looks like
 	 * the front end. */
+	add_editor_style( 'css/fontastic/styles.css' );
 	add_editor_style( 'css/editor-style.css' );
 
 	/* Adds RSS feed links to <head> for posts and comments. */
@@ -149,12 +205,15 @@ function exa_setup() {
 	set_post_thumbnail_size( 690, 450, true );
 
 	/* Register custom image size for image post formats. */
-	add_image_size( 'image-post-size', 860, 470, false );
+	add_image_size( 'image-post-size', 860, 470, true );
 	add_image_size( 'small-thumbnail', 345, 225, true );
 	add_image_size( 'large-thumbnail', 690, 450, true );
 
-	/* For Mugs */
+	
 	add_image_size( 'square', 160, 160, true );
+
+	/* For Mugs */
+	add_image_size( 'exa-mug', 480, 320, true );
 
 	/* This theme uses its own gallery styles. 
 	add_filter( 'use_default_gallery_style', '__return_false' ); */
@@ -185,7 +244,7 @@ function exa_scripts_styles() {
 
 		$mtime = filemtime(dirname(__FILE__) . '/style.css');
 		/* Load main stylesheet. */
-		wp_enqueue_style( 'exa-style', get_stylesheet_uri(), array(),$mtime );
+		wp_enqueue_style( 'exa-style', get_template_directory_uri() . '/style.css', array(),$mtime );
 
 		/* Load fastclick library */
 		wp_enqueue_script( 'fastclick', get_template_directory_uri() . '/js/fastclick/lib/fastclick.js', array(), '0.6.11', true );	
@@ -459,22 +518,21 @@ add_filter('embed_oembed_html', 'hrld_responsive_embed_oembed_html', 10, 4);
  * Returns the "topic" or top category of the post.
  *
  * @since 0.1
- * @param int $pid Post id.
+ * @param int|WP_Post $post post id or post object
  * @return string Top post cateogry or "Herald" if no category is set.
  */
-function exa_topic($pid = null) {
+function exa_topic($post = null) {
 
-	if( !$pid ) {
-		global $post;
-		$pid = $post->ID;
-	}
+	$post = get_post($post);
 
-	$beats = wp_get_post_terms($pid,"topic");
+	$beats = wp_get_post_terms($post->ID,"topic");
 	$category_base = get_bloginfo('url')."/".get_post_type()."/";
-
-	foreach ($beats as $beat) : 
-		return $beat->name ; 
-	endforeach;
+	print_r("hello");
+	if( !empty($beats) ) {
+		foreach ($beats as $beat) : 
+			return $beat->name; 
+		endforeach;
+	}
 
 	return "Herald";
 }
@@ -509,13 +567,62 @@ add_filter( 'post_thumbnail_html', 'exa_post_thumbnail_html', 20, 5 );
  * @param array $settings tiny_mce settings passed in by filter.
  * @return array tiny_mce settings.
  */
-function hrld_customformatTinyMCE($settings) {
+function exa_TinyMCE_customformat($settings) {
 
 	// Add block format elements you want to show in dropdown
-	$settings['theme_advanced_blockformats'] = 'p,h2,h3,h4';
+	$settings['block_formats'] = 'Paragraph=p;Top Header (h2)=h2;Subhead (h3)=h3;Explainer (h4)=h4';
 	return $settings;
+
 }
-add_filter('tiny_mce_before_init', 'hrld_customformatTinyMCE' );
+add_filter('tiny_mce_before_init', 'exa_TinyMCE_customformat' );
+
+/*
+function exa_TinyMCE_dropdown_style( $settings ) {
+
+    $style_formats = array(
+        array(
+            'title' => 'Paragraph',
+            'format' => 'p',
+        ),
+        array(
+            'title' => 'Header',
+            'format' => 'h2',
+        ),
+        array(
+            'title' => 'Subhead',
+            'format' => 'h3',
+        ),
+        array(
+            'title' => 'Breaker',
+            'format' => 'h4',
+        ),
+    );
+
+    $settings['style_formats'] = json_encode( $style_formats );
+
+    return $settings;
+
+}
+add_filter( 'tiny_mce_before_init', 'exa_TinyMCE_dropdown_style' );
+
+
+function fb_mce_editor_buttons( $buttons ) {
+
+    array_unshift( $buttons, 'styleselect' );
+
+    $value = array_search( 'formatselect', $buttons );
+	if ( FALSE !== $value ) {
+	    foreach ( $buttons as $key => $value ) {
+	        if ( 'formatselect' === $value )
+	            unset( $buttons[$key] );
+	    }
+	}
+
+    return $buttons;
+}
+add_filter( 'mce_buttons_2', 'fb_mce_editor_buttons' );
+*/
+
 
 /**
  * Remove Attachment Link-To and set to value 'none'
@@ -786,11 +893,11 @@ function exa_open_graph_tags() {
 
 	global $post;
 
-	$output .= "\n<!-- Open Graph Tags: http://ogp.me -->\n";
+	$output = "\n<!-- Open Graph Tags: http://ogp.me -->\n";
 
 	/* 1. Title (string) */
 
-	$title = single_post_title( $prefix, false );
+	$title = single_post_title( null, false );
 	$output .= "<meta property='og:title' content='$title' />\n";
 
 	/* 2. Description (string) */
@@ -908,6 +1015,8 @@ function exa_twitter_card_tags() {
 
 	global $post;
 
+	$output = '';
+
 	// Currently, we only have cards on 
 	// single post pages.
 	if( is_single() ) :
@@ -927,7 +1036,7 @@ function exa_twitter_card_tags() {
 
 	/* 2. Title */
 
-	$title = single_post_title( $prefix, false );
+	$title = single_post_title( "", false );
 	$output .= "<meta name='twitter:title' content='$title' />\n";
 
 	/* 3. Excerpt */
@@ -958,6 +1067,42 @@ function exa_twitter_card_tags() {
 }
 add_action('wp_head','exa_twitter_card_tags');
 
+
+function exa_toggle_feature_boxes(){
+	add_meta_box( '_exa_hide_featured_image', __('Hide Featured Image'), 'exa_toggle_feature_box', 'post', 'side', 'default');
+}
+
+function exa_toggle_feature_box(){ ?>
+	<p>
+		<?php $hide_feature = get_post_meta( get_the_ID(), '_exa_hide_featured_image', true); ?>
+		<input type="checkbox" name="_exa_hide_featured_image" id="_exa_hide_featured_image" value="true" <?php if( $hide_feature == "true"){echo 'checked'; } else{echo "unchecked"; } ?> />
+		<label for="_exa_hide_featured_image"><?php _e('Check here to hide featured image when published. Useful for vertical images.'); ?></label>
+	</p>
+
+<?php }
+
+function exa_toggle_feature_save($post_id, $post){
+	if( isset($_POST['_exa_hide_featured_image']) && $_POST['_exa_hide_featured_image'] == 'true'){
+		update_post_meta($post_id, '_exa_hide_featured_image', 'true');
+	}else{
+		update_post_meta($post_id, '_exa_hide_featured_image', 'false');
+	}
+}
+
+function exa_toggle_feature_setup(){
+
+	add_action( 'add_meta_boxes', 'exa_toggle_feature_boxes' );
+
+	add_action( 'save_post', 'exa_toggle_feature_save');
+	add_action( 'pre_post_update', 'exa_toggle_feature_save');
+	add_action( 'edit_post', 'exa_toggle_feature_save');
+	add_action( 'publish_post', 'exa_toggle_feature_save');
+	add_action( 'edit_page_form', 'exa_toggle_feature_save');
+
+
+}
+add_action( 'load-post.php', 'exa_toggle_feature_setup' );
+add_action( 'load-post-new.php', 'exa_toggle_feature_setup' );
 
 
 
@@ -1144,11 +1289,12 @@ add_filter('hrld_showcase_image_data', 'exa_add_media_credit_showcase');
  * @author Jason Chan
  */
 function exa_social_url($url = "", $newVersion = true){
+
 	$date_change_category = 1422622800; //Fri 30 Jan, 2015 07:00:00 CT
 	if($url == "")
 		$url = get_permalink($post -> ID);
 	if( $url != false && $url != ''){
-		$date = get_the_date('U', $post);
+		$date = get_the_date('U');
 	if( $newVersion){
 		if( stripos($url, home_url("/oped")) === 0 )
 			$url = str_replace("/oped", "/opinion", $url);

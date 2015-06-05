@@ -56,3 +56,6 @@
 .icon-arrow-up:before {
   content: "^";
 }
+.icon-shape-1:before {
+  content: "*";
+}

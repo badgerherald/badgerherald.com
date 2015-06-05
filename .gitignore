@@ -9,3 +9,6 @@ node_modules
 Charter.txt
 
 style.css.map
+
+# mkdocs
+site/*

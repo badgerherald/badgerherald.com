@@ -31,12 +31,8 @@ global $DoubleClick;
 	<?php /* Remove 300ms tap delay for mobile zoom */ ?>
 	<meta name="viewport" content="width=device-width, user-scalable=no">
 
-	<?php /* Chartbeat Part 1 */
-		if (hrld_is_production()) {
-	?>
+	<!-- Chartbeat timestamp -->
 	<script type="text/javascript">var _sf_startpt=(new Date()).getTime()</script>
-
-	<?php } ?>
 
 	<title><?php echo wp_title("&middot;",true,"right"); ?></title>
 	
@@ -82,7 +78,7 @@ global $DoubleClick;
 			<div id='ad-leaderboard' class='top-leaderboard'>
 				<?php $DoubleClick->place_ad('bh:leaderboard','728x90',array('desktop','xl','tablet')); ?>
 			</div>
-			<a class="advertise-plug" href="http://badgerherald.com/advertise/">Student Org? Local Business? Advertise with the Herald.</a>
+			<a class="advertise-plug" href="http://advertise.badgerherald.com/">Student Org? Local Business? Advertise with the Herald.</a>
 			
 			<div class="social-buttons">
 

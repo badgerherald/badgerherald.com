@@ -24,6 +24,17 @@ get_template_part( 'inc/block', 'leaderboard' );
 
 	<?php get_template_part( 'content', get_post_format() ); ?>
 
+	<?php
+	/**
+	 * Called below the article, after main.
+	 * 
+	 * @since v0.3
+	 */
+	do_action('exa_below_article');
+
+	?>
+
+
     <div class="clearfix"></div>
 
     <?php get_template_part('inc/block','billboard'); ?>

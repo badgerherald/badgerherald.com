@@ -22,7 +22,7 @@
             <li class="no-stream" data-post-list="null"><a href="<?php bloginfo('url'); ?>/shoutouts/">Shoutouts</a></li>
             <li class="no-stream" data-post-list="null" class="about-off"><a href="<?php bloginfo('url'); ?>/about/">About</a></li>
             <li class="no-stream" data-post-list="null"><a href="http://themadisonmisnomer.com/">Misnomer</a></li>
-            <li class="no-stream" data-post-list="null"><a href="<?php bloginfo('url'); ?>/advertise/">Advertise</a></li>
+            <li class="no-stream" data-post-list="null"><a href="http://advertise.badgerherald.com">Advertise</a></li>
         </ul>
     </div>
     <div class="nav-stream-container">

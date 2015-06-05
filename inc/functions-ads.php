@@ -89,3 +89,16 @@ function exa_insert_after_graph( $insertion, $content, $graph ) {
 	return implode( '', $graphs );
 	
 }
+
+/**
+ * Support DoubleClick for WordPress even when it's not
+ * installed.
+ */
+if( !class_exists('DoubleClick') && !is_admin() ) {
+	class DoubleClick {
+		public function __construct($networkCode = null) {}
+		public function place_ad($identifier,$sizes,$args = null) {}
+		public function get_ad_placement($identifier,$sizes,$args = null) {}
+	}
+	$DoubleClick = new DoubleClick();
+}

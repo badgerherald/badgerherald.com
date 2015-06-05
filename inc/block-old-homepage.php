@@ -18,6 +18,12 @@
 		                    'field' => 'slug',
 		                    'terms' => array('featured'),
 		                    'operator' => 'IN'
+		                ),
+		                array(
+		                	'taxonomy' => 'importance',
+		                    'field' => 'slug',
+		                    'terms' => array('not-in-main-feature'),
+		                    'operator' => 'NOT IN'
 		                )
 		            );
 				$args['posts_per_page'] = 1;
@@ -115,7 +121,7 @@
 					"artsetc" => "artsetc",
 					"sports" => "sports");
 
-	foreach($beats as $beat => $beat_name){
+	foreach($beats as $beat => $beat_name) {
 		
 		hrld_html_tag_open("div", $beat, array("clearfix"));
 			hrld_html_tag_open("div","",array("section-banner", "section-banner-$beat"));
@@ -145,10 +151,12 @@
 			$featured = new WP_Query( $args );
 			$exclude = array();
 
+
 			//loop_featured
 			//also records which posts to exclude in following steps
-			while( $featured->have_posts() ) {
-				$featured->the_post();
+			while( $featured->have_posts() ) : $featured->the_post(); 
+
+
 				if($featured->current_post == 0 && !is_paged()){
 					get_template_part( 'content', 'summary-featured' );
 				}else{
@@ -161,11 +169,13 @@
 					hrld_html_tag_close("li");
 				}
 				$exclude[] = $post->ID;
-			}
-			hrld_html_tag_close("ul");
+			endwhile;
 			
 			// Restore original Post Data
 			wp_reset_postdata();
+			wp_reset_query();
+
+			hrld_html_tag_close("ul");
 
 			//close class="featured-container"
 			hrld_html_tag_close("div");

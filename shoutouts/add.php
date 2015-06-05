@@ -159,7 +159,7 @@ if ($_POST) {
 			</a>
 		</div>
 		
-		<a href="http://badgerherald.com/ads" class="duck-link">Advertise With The Herald</a>
+		<a href="http://advertise.badgerherald.com/" class="duck-link">Advertise With The Herald</a>
 		
 		<div class="duck">
 			<a href="#">
