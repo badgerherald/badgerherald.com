@@ -30,7 +30,7 @@ Text Domain: exa
 @import "blocks/most-recent.scss";
 @import "blocks/fixed-bar.scss";
 @import "blocks/interstellar.scss";
-@import "asides.scss";
+@import "misc/depricate/asides.scss"; // asides are probably a thing we should have, but lets model its implementation off of blocks.
 
 /** 
  * Masthead Styles
@@ -45,7 +45,7 @@ Text Domain: exa
  * Stream page styling.
  * Homepage, categories, beats, search, &c.
  */
-@import "stream.scss";
+@import "misc/depricate/stream.scss";
 
 /** 
  * Sidebar & Widget stylings
