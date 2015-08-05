@@ -6,6 +6,39 @@
 jQuery(document).ready(function($) {
 
 
+    // Adds a dotted overlay effect to img with a container div.dotted-overlays,
+    // see css for actual styling.
+    //
+    // Takes:
+    //
+    //      <div class="dotted-overlay-container">
+    //          <img />
+    //      </div>
+    //
+    // And adds:
+    //
+    //      <div class="dotted-overlay-container">
+    //          <div class="dotted-overlay"></div>
+    //          <img />
+    //      </div>
+    //
+    // The new `div.dotted-overlay` object is sized to the same size
+    // as the img. This overlay can then be stlyed with css.
+    var dotOverlay = function() {
+
+        var t = $(this).parent('.dotted-overlay-container');
+        t.prepend('<div class="dotted-overlay"></div>');
+        img = t.find('img');
+        t.find('div.dotted-overlay').css({
+            'width':img.outerWidth(),
+            'height':img.outerHeight(),
+        });
+
+    }
+    // Run even after each img is done loaded.
+    // This ensures the image has a width and height, if one is set to auto.
+    $('div.dotted-overlay-container img').on('load',dotOverlay);
+
 	/**
 	 * A pair of functions to turn of html scrolling.
 	 * This is to turn scrolling for a child element on.

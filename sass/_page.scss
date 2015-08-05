@@ -49,14 +49,6 @@ body {
 	margin-top: 54px;
 }
 
-.dfw-unit {
-	display:none;
-}
-
-.dfw-mobile, .dfw-all {
-	display:block;
-}
-
 @media (min-width: 600px) {
 	body.admin-bar {
 		#pullout, .fixed-bar-block {
@@ -87,13 +79,6 @@ body {
 		}
 	}
 
-	.dfw-tablet {
-		display:block;
-	}
-	.dfw-mobile:not(.dfw-tablet):not(.dfw-all) {
-		display: none;
-	}
-
 }
 
 @include breakpoint(desktop) {
@@ -107,26 +92,12 @@ body {
 
 	}
 
-	.dfw-desktop {
-		display:block;
-	}
-	.dfw-mobile:not(.dfw-desktop):not(.dfw-all), .dfw-tablet:not(.dfw-desktop):not(.dfw-all) {
-		display: none;
-	}
-
 }
 
 @include breakpoint(xl) {
 
 	.wrapper {
 		max-width: 1180px;
-	}
-
-	.dfw-xl {
-		display:block;
-	}
-	.dfw-mobile:not(.dfw-xl):not(.dfw-all), .dfw-tablet:not(.dfw-xl):not(.dfw-all), .dfw-desktop:not(.dfw-xl):not(.dfw-all)  {
-		display: none;
 	}
 
 } 

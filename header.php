@@ -10,8 +10,6 @@
  */
 include('macros.php');
 
-global $DoubleClick;
-
 ?><!DOCTYPE html>
 <!--[if IE 7]>
 <html class="ie ie7" <?php language_attributes(); ?>>
@@ -63,35 +61,6 @@ global $DoubleClick;
 <div id="page">
 
 	<?php get_template_part('inc/block','fixed-bar'); ?>
-
-	<div class="standing-head-block block">
-		
-		<div class="wrapper">
-			
-			<a id="logo" href="<?php bloginfo('url'); ?>">
-				<div class="logo-image"><img src="<?php bloginfo('template_url') ?>/img/logo/header-7.png" /></div>
-			</a>
-
-			<div class="tagline">
-				UW-Madison's Premier Independent Student Newspaper.  <span class="since"><strong>Since 1969</strong></span>
-			</div>
-			<div id='ad-leaderboard' class='top-leaderboard'>
-				<?php $DoubleClick->place_ad('bh:leaderboard','728x90',array('desktop','xl','tablet')); ?>
-			</div>
-			<a class="advertise-plug" href="http://advertise.badgerherald.com/">Student Org? Local Business? Advertise with the Herald.</a>
-			
-			<div class="social-buttons">
-
-				<div class="twitter">
-					<a href="https://twitter.com/badgerherald" class="twitter-follow-button" data-show-count="false">Follow @badgerherald</a>
-					<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
-				</div><!-- .twitter -->
-
-				<div class="facebook">
-					<div class="fb-like" data-href="http://facebook.com/badgerherald" data-layout="button_count" data-action="like" data-show-faces="false" data-share="false"></div>
-				</div><!-- .facebook -->
-
-			</div><!-- .social-buttons -->
-		</div>
-
-	</div><?php /* masthead */ ?>
+	<?php get_template_part('inc/block','leaderboard'); ?>
+	<?php get_template_part('inc/blocks/mobile-header'); ?>
+	<?php get_template_part('inc/blocks/header'); ?>

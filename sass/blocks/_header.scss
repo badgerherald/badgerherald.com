@@ -1,0 +1,151 @@
+/**
+ * Header Block
+ * ---------------------------------------------------------
+ * php: ./inc/blocks/header.php
+ * since: 0.3
+ * -----------------------------------------------------------------------------
+ */
+
+.header-block {
+    display: none;
+}
+
+@media (min-width: 760px) {
+
+    .header-block {
+        .wrapper {
+            border-top: 6px solid $blue;
+            padding-top:24px;
+        }
+        display: block;
+        height:156px + 24px;
+        #logo {
+            img {
+               display: block;
+            }
+            width: flex(100,740);
+            display: block;
+            top:0;
+        }
+        .header-right {
+            padding-top: 24px;
+            position: absolute;
+            height: 100%;
+            padding-left: flex(120,740);    // this is the amount that it clears the logo by.
+            width: 100%;
+            top:0;
+            background-size: contain;
+            .story-container {
+                position: absolute;
+                width: 100%;
+                bottom: 0;
+                .story {
+                    height: 91px;
+                    width: flex(340,620);
+                    &:last-child { display:none; }
+                    position: relative;
+                    float: left;
+                    img {
+                        width: auto;
+                        height:100%;
+                    }
+                    .block-headline-container {
+                        position: absolute;
+                        z-index: 2;
+                        display: block;
+                        bottom: 10px;
+                        left: 40px;
+                    }
+                    &:hover .block-headline-container {
+                        transition: bottom .2s;
+                        bottom: 13px;
+                    }
+                }
+            }
+            .social-buttons {
+                text-align: right;
+                position: absolute;
+                bottom: 0;
+                width: 300px;
+                right: 0;
+                h3 {
+                    font-size: 13px;
+                    font-style: italic;
+                    margin-bottom: 6px;
+                }
+                .twitter {
+                    .twitter-follow-button { vertical-align: bottom !important; }
+                }
+                .facebook {
+                    margin-bottom: 5px;
+                }
+            }
+            .top-bar {
+                border-bottom: 1px solid $greyBorder;
+                font-family: $headline;
+                font-size: 14px;
+                font-weight: bolder;
+                color:$textGrey;
+                .tagline {
+                    float:left;
+                }
+                ul#menu-header {
+                    float: right;
+                    list-style-type: none;
+                    margin: 0; padding: 0;  // at this time, lists have auto padding and margins.
+                    li {
+                        display: inline;
+                        a {
+                            color:$textGrey;
+                            padding-left:3px;
+                            padding-right:3px;
+                            display: inline-block;
+                            &:hover {
+                                color:$black;
+                            }
+                        }
+                    }
+                    // last child is always blue!
+                    li:last-child a {
+                        color:$blue;
+                        &:hover { color:$black; }
+                    }
+                }
+                .tagline, ul li a {
+                    padding-top:3px;
+                }
+            }
+        }
+    }
+}
+
+@media (min-width: 1160px) {
+    .header-block {
+        #logo {
+            width: 100px;
+        }
+        .header-right {
+            .story-container {
+                .story {
+                    width: 360px;
+                    &:last-child { display:block; margin-left:20px; }
+                }
+            }
+        }
+    }
+}
+
+@media (min-width: 1320px) {
+    .inner-masthead {
+        .tagline {
+            width: 200px;
+            .since {
+                display: block;
+                line-height: 30px;
+                text-transform: none;
+                color: $hrld-dark-grey-hover;
+                padding-left: 0;
+            }
+        }
+    }
+}

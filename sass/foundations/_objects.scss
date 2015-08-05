@@ -1,0 +1,134 @@
+// Mixin: animate things.
+@mixin animate() {
+	transition: all .25s ease;
+}
+
+/**
+ * Block Headline styles.
+ * ---------------------------------------------------------
+ *
+ * supports the style:
+ *
+ * 		<a><div.block-headline-container>
+ *			<h2.block-headline><span>Title</span></h2>
+ *		 </div></a>
+ *
+ *  And
+ *
+ * 		<div.block-headline-container>
+ *			<h2.block-headline><a>Title</a></h2>
+ *		 </div>
+ * ----------------------------------------------------------------------------
+ */
+
+.block-headline a, 
+.block-headline span {
+	color: #fff;
+	font-size: 36px;
+	line-height:60px;
+	display: inline;
+	text-transform: none;
+	font-style: normal;
+	border: 0;
+	font-weight: 700;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	text-rendering: optimizeLegibility;
+	background-color: $hrld-black;
+	-webkit-box-shadow: -10px 0 0 $hrld-black,10px 0 0 $hrld-black;
+	-moz-box-shadow: -10px 0 0 $hrld-black,10px 0 0 $hrld-black;
+	box-shadow: -10px 0 0 $hrld-black,10px 0 0 $hrld-black;
+}
+
+h1.block-headline a, 
+h1.block-headline span
+ {
+	font-size: 36px;
+	line-height: 60px;
+	padding: 4px 0 2px;
+}
+
+h2.block-headline a, h2.block-headline span {
+	font-size: 18px;
+	line-height: 30px;
+	padding: 2px 0 1px;
+}
+
+.block-headline {
+	margin-left: 10px;
+	margin-right: 10px;
+}
+
+.block-headline:hover a,
+a:hover .block-headline span {
+	transition: all 1s ease;
+	transition: color 0.25s ease;
+	color: $hrld-black;
+	background-color: #fff;
+	-webkit-box-shadow: -10px 0 0 #fff,10px 0 0 #fff;
+	-moz-box-shadow: -10px 0 0 #fff,10px 0 0 #fff;
+	box-shadow: -10px 0 0 #fff,10px 0 0 #fff;
+}
+
+
+/**
+ * Dotted image overlays.
+ * ---------------------------------------------------------
+ * supports the style:
+ *
+ * 		<a><div.dotted-overlay>
+ *			<div></div>			
+ *			<img />
+ *		</div></a>
+ * ----------------------------------------------------------------------------
+ */
+
+// Mixin: An inline svg. Allows color to be set dynamically. 
+// 
+// ex.
+//	  @include dotted(black);
+//	  @include dotted(rgba(black,.2));
+//
+// Note: do not reset background: after using this mixin. Use background-color:
+@mixin dotted($color) {
+	background-image: url('data:image/svg+xml;utf8,
+		<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="4" height="4">
+			<rect width="1" height="1" style="fill:#{$color}" />
+			<rect x="2" y="2" width="1" height="1" style="fill:#{$color}" />
+		</svg>
+		');
+}
+
+.dotted-overlay-container {
+	display: inline;
+	position: relative;
+	.dotted-overlay {
+		position: absolute;
+		z-index:10;
+		z-index: 1;
+	}
+}
+
+a:hover .dotted-overlay-container .dotted-overlay {
+	@include animate();
+	@include dotted($black);
+	background-color: rgba($black,.4);
+}
+
+/**
+ * Round Mugs
+ * ---------------------------------------------------------
+ * style for element created by exa_round_mug()
+ * ----------------------------------------------------------------------------
+ */
+ 
+.round-mug {
+	width:80px;
+	height:80px;
+	overflow:hidden;
+	border-radius: 40px;
+	img {
+		width: 100%;
+		height: 100%;
+	}
+}

@@ -1,0 +1,22 @@
+/**
+ * Mobile Header Block
+ * ---------------------------------------------------------
+ * php: ./inc/blocks/mobile-header.php
+ * since: 0.3
+ * -----------------------------------------------------------------------------
+ */
+
+.mobile-header-block {
+    a img {
+        width:flex(160,320);
+        height: auto;
+    }
+}
+
+@media (min-width: 760px) {
+
+    .mobile-header-block {
+        display: none;
+    }
+
+}

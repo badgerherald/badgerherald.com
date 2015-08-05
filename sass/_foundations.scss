@@ -24,6 +24,16 @@ $heraldlightgreyonwhite:	#ededed;
 $heralddarkgrey: 			#2c2c2c;
 $heraldblack:				#191919;
 
+/* v0.3 colors — preferred use. */
+$blue: #3c74b9;
+$grey: #eff4f6;
+$greyBorder: #c7d0d5;
+$textGrey: #a6b5bd;
+$greyBorderOnBlack: #262626;
+$textGreyOnBlack: #5c5c5c;
+$black: #191919;
+$white: #fff;
+
 
 /* logo blue */
 //$hrld-blue:					#3c74b9;
@@ -110,11 +120,11 @@ $hrld-black-dark-grey:		#414141;
 $gutter: 20px;
 
 /*  Column Widths for Full Width 1180px */
-$oneColumns:		60px;
-$twoColumns:		140px;
+$oneColumns:		  60px;
+$twoColumns:		  140px;
 $threeColumns:		220px;
-$fourColumns:		300px;
-$fiveColumns:		380px;
+$fourColumns:		 300px;
+$fiveColumns:		 380px;
 $sixColumns:		460px;
 $sevenColumns:		540px;
 $eightColumns:		620px;
@@ -126,7 +136,21 @@ $thirteenColumns:	1020px;
 $fourteenColumns:	1100px;
 $fifteenColumns:	1180px;
 
-
+$oneCol: 60px;
+$twoCol: 140px;
+$threeCol: 220px;
+$fourCol:    300px;
+$fiveCol:    380px;
+$sixCol:    460px;
+$sevenCol:    540px;
+$eightCol:    620px;
+$nineCol:   700px;
+$tenCol:    780px;
+$elevenCol:   860px;
+$twelveCol:   940px;
+$thirteenCol: 1020px;
+$fourteenCol: 1100px;
+$fifteenCol:  1180px;
 
 /**
  * Mixin for breakpoints.
@@ -151,3 +175,8 @@ $fifteenColumns:	1180px;
     }
   }
 }
+
+@import "foundations/normalize.scss";
+@import "foundations/grid.scss";
+@import "foundations/fonts.scss";
+@import "foundations/objects.scss";

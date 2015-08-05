@@ -215,6 +215,13 @@ function exa_setup() {
 	/* For Mugs */
 	add_image_size( 'exa-mug', 480, 320, true );
 
+	/* Nav menus */
+
+	//add_theme_support('menus');
+
+	// header
+	register_nav_menu( 'header', __("Links displayed on the right of the Header. It's best to use four or five links at most.") );
+
 	/* This theme uses its own gallery styles. 
 	add_filter( 'use_default_gallery_style', '__return_false' ); */
 
