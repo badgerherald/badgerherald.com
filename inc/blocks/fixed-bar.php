@@ -4,8 +4,19 @@
 	<?php /* container for the mobile hamburger icon */ ?>
 
 	<div class="wrapper bar-content">
-
+		<?php 
+			wp_nav_menu( array(
+				'theme_location' => 'fixed-bar'
+				)
+			);
+		?>
+		<form class="search" action="/" method="get">
+			<?php $query = get_search_query(); ?>
+			<input type="text" name="s" placeholder="Search..." value="<?php echo $query ?>"></input>
+			<input type="submit" value="Submit"></input>
+		</form>
 	</div>
+
 	<div class="button"></div>
 
 	<?php /* Progress Bar */ ?>

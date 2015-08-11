@@ -13,6 +13,7 @@
 @media (min-width: 760px) {
 
     .header-block {
+        margin: 12px 0;
         .wrapper {
             border-top: 6px solid $blue;
             padding-top:24px;
@@ -31,8 +32,8 @@
             padding-top: 24px;
             position: absolute;
             height: 100%;
-            padding-left: flex(120,740);    // this is the amount that it clears the logo by.
-            width: 100%;
+            margin-left: flex(120,740);    // this is the amount that it clears the logo by.
+            width: flex(740-120,740);
             top:0;
             background-size: contain;
             .story-container {

@@ -221,7 +221,7 @@ function exa_setup() {
 
 	// header
 	register_nav_menu( 'header', __("Links displayed on the right of the Header. It's best to use four or five links at most.") );
-
+	register_nav_menu( 'fixed-bar', __("Links displayed in the 'fixed bar' on the top of every screen.") );
 	/* This theme uses its own gallery styles. 
 	add_filter( 'use_default_gallery_style', '__return_false' ); */
 
@@ -244,7 +244,7 @@ function exa_scripts_styles() {
 		 * Load fontastic font.
 		 * @see ./css/fontastic/icon-reference.html 
 		 */
-		wp_enqueue_style( 'exa-icons', get_template_directory_uri() . '/css/fontastic/styles.css' );
+		wp_enqueue_style( 'exa-icons', get_template_directory_uri() . '/css/fontastic/styles.css?v=2' );
 
 		/* Load google font. */
 		wp_enqueue_style( 'exa-fonts', 'https://fonts.googleapis.com/css?family=Noto+Serif:400,700,400italic,700italic|Yanone+Kaffeesatz:400,300,700|Open+Sans|PT+Sans+Narrow:400,700');

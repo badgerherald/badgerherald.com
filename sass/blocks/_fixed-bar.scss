@@ -1,27 +1,117 @@
-$ribbon-height: 6px;
+$ribbon-height: 42px;
+$ribbon-shown-on-collapse: 6px; // mirrored in js.
+$mobileWPAdminBarHeight: 46px;
+$WPAdminBarHeight: 32px;
+
+@media (min-width: 600px) {
+    .admin-bar .fixed-bar-block.fixed {
+        margin-top: $ribbon-shown-on-collapse - $ribbon-height + $mobileWPAdminBarHeight !important;
+    }
+}
+
+@media (min-width: 783px) {
+    .admin-bar .fixed-bar-block.fixed {
+        margin-top: $ribbon-shown-on-collapse - $ribbon-height + $WPAdminBarHeight !important;
+    }
+}
 
 .fixed-bar-block-placeholder {
-    height: 6px;
+    height: $ribbon-height;
 }
+
 .fixed-bar-block {
-    //.wrapper {
-    //    margin: 0;
-    //    width:inherit;
-    //    max-width:inherit;
-    //}
     &.fixed {
        // this class added with js.
        position: fixed;
+       top: 0;
+       margin-top:$ribbon-shown-on-collapse - $ribbon-height;
     }
     margin: 0;
     width: 100%;
     height: $ribbon-height;
-    top: 0;
+    top: 0 ;
     left: inherit;
     background: white;
     border-bottom: 1px solid $hrld-dark-grey-border;
     z-index: 9998;
+    .search {
+        width: 300px;
+        position: absolute;
+        right: 0;
+        top: 6px;
+        input[type=text] {      // the input field.
+            @include animate;
+            display: block;
+            padding: 5px 12px 6px;
+            outline: none;
+            color: $black;
+            border: none;
+            font-family: $headline;
+            border-left: 2px solid $grey;
+            width:180px;
+            float:right;
+            &:focus {
+                @include animate;   
+                border-left-color: $blue;    
+                width:300px; 
+            }
+        }
+        input[type=submit] {    // the submit field.
+            position: absolute;
+            right: 0px;
+            text-indent: -99999px;
+            width:30px;
+            height:30px;
+            opacity: .5;
+            border: none;
+            background: transparent;
+        }
+        // The search icon is actually the before element.
+        &:before {
+            content: "s";
+            font-family: $icon;
+            padding:4px 8px;
+            position:absolute;
+            right:0;
+            width:30px;
+            height:30px;
+            color: $textGrey;
+        }
+        &:hover:before {
+            color: $blue;
+            pointer: cursor;
+        }
+    }
+    ul.menu {
+        list-style-type: none;
+        margin: 0; padding: 0;
+        position: relative;
+        left: -12px;
+        li {
+            display: inline-block;
+            font-family: $headline;
+            font-weight: bold;
+            margin: 0; padding: 0;
+            float: left;
+            a {
+                display: block;
+                position: relative;
+                padding: 10px 12px;
+                color: $black;
+                &:hover {
+                    color: $blue;
+                }
+                &:after {
+                    content: "\00b7"; // middot.
+                    position: absolute;
+                    right: 0;
+                    color: $textGrey;
+                }
+            }
+        }
+    }
     .button {
+        display: none;
         background: white url('./img/icons/nav-toggle.svg') no-repeat center 3px;
         background-size: 24px 9px;
         border-bottom: 1px solid $hrld-dark-grey-border;  
@@ -32,7 +122,7 @@ $ribbon-height: 6px;
         left: 20px; 
         position: absolute;
         border-radius: 0px 0 3px 3px;
-        top: 5px;
+        top: $ribbon-height - 1;
         z-index: 9999;
     }
 }

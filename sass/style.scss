@@ -18,60 +18,61 @@ Text Domain: exa
  * variable definitions, common mixins, &c.
  */
 @import "foundations.scss";
+@import "foundations/page.scss";
 
 /** 
  * Base Page Syles
  * 
  */
-@import "page.scss";
-@import "blocks.scss";
+@import "blocks.scss";					// blocks coded before they got their own styles.
 @import "blocks/footer.scss";
 @import "blocks/article-display.scss";
 @import "blocks/most-recent.scss";
 @import "blocks/fixed-bar.scss";
 @import "blocks/interstellar.scss";
-@import "misc/depricate/asides.scss"; // asides are probably a thing we should have, but lets model its implementation off of blocks.
+@import "depricate/asides.scss"; 		// asides are probably a thing we should have, but lets model its implementation off of blocks.
 
 /** 
  * Masthead Styles
  * 
  */
-@import "pullout.scss";
+@import "foundations/pullout.scss";
 @import "blocks/header.scss";
 @import "blocks/mobile-header.scss";
+@import "blocks/menu-search-bar.scss";
+@import "depricate/homepage.scss";
 
-@import "homepage.scss";
 /** 
  * Stream page styling.
  * Homepage, categories, beats, search, &c.
  */
-@import "misc/depricate/stream.scss";
+@import "depricate/stream.scss";
 
 /** 
  * Sidebar & Widget stylings
  */
-@import "sidebar.scss";
+@import "depricate/sidebar.scss";
 
 /** 
  * Post page stylings
  * 
  */
-@import "post.scss";
+@import "depricate/post.scss";
 
 // should probably moved to hexa.
-@import "misc/about-page.scss";
-@import "author.scss";
-@import "misc/vday-page.scss";
-@import "misc/4-doge-4.scss";
+@import "depricate/about-page.scss";
+@import "depricate/author.scss";
+@import "depricate/vday-page.scss";
+@import "depricate/4-doge-4.scss";
 
-@import "misc/student-choice.scss";
-@import "misc/march-madness.scss";
+@import "depricate/student-choice.scss";
+@import "depricate/march-madness.scss";
 
 /**
  * Shoutout page styling
  *
  */
-@import "misc/shoutouts.scss";
+@import "depricate/shoutouts.scss";
 
 /** 
  * HTML5 Boilerplate helper classes.

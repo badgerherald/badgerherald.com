@@ -13,9 +13,7 @@ global $DoubleClick;
 if( isset( $_REQUEST['sca']))
 	get_header('interstellar'); 
 else
-	get_header('minimal');
-
-get_template_part( 'inc/block', 'leaderboard' );
+	get_header('');
 ?>
 
 <?php /* The loop */ ?>

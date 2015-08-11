@@ -375,25 +375,45 @@ jQuery(document).ready(function($) {
 
 	var placeholder = $('.fixed-bar-block-placeholder');
 	var fixedBar = $('.fixed-bar-block');
-    if (fixedBar.length !== 0 && placeholder.length !== 0)
-    {
+	var ribbonShownOnCollapse = 6;
+
+    if (fixedBar.length !== 0 && placeholder.length !== 0) {
+
         $(window).scroll(checkFixedBar);
         $(window).resize(checkFixedBar);
         $(window).scroll();
+
+        // account for wordpress bar.
+        if ($('#wpadminbar').length) {
+
+        	placeholder[0].style.setProperty('top', 0 , "important");
+        	fixedBar[0].style.setProperty('top', 0 , "important" );
+
+        }
+
+
     }
 
 	function checkFixedBar() {
-		var st = $(window).scrollTop()
+
+		var st = $(window).scrollTop();
 		var fromTop = placeholder.offset().top;
 		var barHeight = fixedBar.outerHeight();
 
-		if( (fromTop - st) <= 0) {
+		var adminBarHeight = 0;
+		if ($('#wpadminbar').length && $(window).outerWidth() > 600) {
+			adminBarHeight = $('#wpadminbar').height();
+		}
+
+		if( (fromTop - ribbonShownOnCollapse + barHeight - adminBarHeight - st) <= 0) {
 			fixedBar.addClass('fixed');
 			placeholder.css('height',barHeight);
+
 		} else {
 			fixedBar.removeClass('fixed');
 			placeholder.css('height',0);
 		}
+
 	}
 
 

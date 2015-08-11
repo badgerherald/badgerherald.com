@@ -7,10 +7,14 @@
  */
 
 .mobile-header-block {
-    a img {
-        width:flex(160,320);
-        height: auto;
-    }
+	.wrapper {
+		border-top: 3px solid $blue;
+		padding-top: 20px;
+		a img {
+		    width:flex(160,320);
+		    height: auto;
+		}
+	}
 }
 
 @media (min-width: 760px) {

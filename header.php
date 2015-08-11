@@ -54,7 +54,7 @@ include('macros.php');
 <?php /* #page opened here, closed in footer.php */ ?>
 <div id="page">
 
-	<?php get_template_part('inc/block','fixed-bar'); ?>
 	<?php get_template_part('inc/block','leaderboard'); ?>
+	<?php get_template_part('inc/blocks/menu-search-bar'); ?>
 	<?php get_template_part('inc/blocks/mobile-header'); ?>
 	<?php get_template_part('inc/blocks/header'); ?>

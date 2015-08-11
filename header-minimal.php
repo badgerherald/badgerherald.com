@@ -65,4 +65,4 @@ global $DoubleClick;
 <?php get_sidebar('pullout'); ?>
 <div id="page">
 
-	<?php get_template_part('inc/block','fixed-bar'); ?>
+	<?php get_template_part('inc/blocks/fixed-bar'); ?>

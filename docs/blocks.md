@@ -56,14 +56,16 @@ Use WordPress function `get_template_part()` to include your new block in whiche
 			<?php get_template_part('inc/blocks/alert-banner'); ?>
 ```
 
-**Including sass.** Include a reference to your sass file in `./sass/style.scss` using `@import`
+###### 4. Including sass.
+
+Include a reference to your sass file in `./sass/style.scss` using `@import`
 
 * ***ex.***  
 ```
 	@import "blocks/alert-banner.scss";
 ```
 
-###### 4. DOM.
+###### 5. DOM.
 
 You can now write your php/html code in your block's .php file. 
 
@@ -86,7 +88,7 @@ You can now write your php/html code in your block's .php file.
 * The outer `div.block.alert-banner-block` spans the entire browsers width. If you'd like to change the background of the block, or break out of the page, use this div.
 * The inner `div.wrapper` makes each block a uniform width and centers them on the screen. Generally this is where your code will go.
 
-###### 5. Style
+###### 6. Style
 
 After writing some code, you can style that code:
 

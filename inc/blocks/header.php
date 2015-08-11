@@ -2,7 +2,7 @@
 	
 	<div class="wrapper">
 		
-		<a id="logo" href="<?php bloginfo('url'); ?>">
+		<a id="logo" href="<?php echo bloginfo('url'); ?>">
 			<img src="<?php bloginfo('template_url') ?>/img/logo/logo.png" />
 		</a>
 
