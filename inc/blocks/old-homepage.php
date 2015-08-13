@@ -108,7 +108,7 @@
 
 </div>
 </div>
-	<?php get_template_part('inc/block','billboard'); ?>
+	<?php get_template_part('inc/blocks/billboard'); ?>
 
 <div class="block">
 <div class="wrapper">

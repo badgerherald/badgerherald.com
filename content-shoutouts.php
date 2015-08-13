@@ -11,11 +11,6 @@
  * @since Twenty Thirteen 1.0
  */
 
-
-
-
-
-
 global $wp_query;
 
 
