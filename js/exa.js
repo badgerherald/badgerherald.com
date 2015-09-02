@@ -6,6 +6,56 @@
 jQuery(document).ready(function($) {
 
 
+    // Adds a dotted overlay effect to img with a container div.dotted-overlays,
+    // see css for actual styling.
+    //
+    // Takes:
+    //
+    //      <div class="dotted-overlay-container">
+    //          <img />
+    //      </div>
+    //
+    // And adds:
+    //
+    //      <div class="dotted-overlay-container">
+    //          <div class="dotted-overlay"></div>
+    //          <img />
+    //      </div>
+    //
+    // The new `div.dotted-overlay` object is sized to the same size
+    // as the img. This overlay can then be stlyed with css.
+    var dotOverlay = function(overlayContainer) {
+        var t = overlayContainer.parent('.dotted-overlay-container');
+        t.prepend('<div class="dotted-overlay"></div>');
+        sizeDotOverlay(overlayContainer);
+    }
+
+    var sizeDotOverlay = function(overlayContainer) {
+    	var t = overlayContainer.parent('.dotted-overlay-container');
+        img = t.find('img');
+        t.find('div.dotted-overlay').css({
+            'width':img.outerWidth(),
+            'height':img.outerHeight(),
+        });
+    }
+    // Run even after each img is done loaded.
+    // This ensures the image has a width and height, if one is set to auto.
+	$('div.dotted-overlay-container img').each(function() {
+		dotOverlay($(this));
+		$(this).on('load',function() {
+	        sizeDotOverlay($(this));
+	    });
+	});
+
+	// The overlay needs t0 be resized everytime the window is
+	// resized.
+	$(window).on('resize',function() {
+		$('div.dotted-overlay-container img').each(function() {
+	        sizeDotOverlay($(this));
+	    });
+	});
+
+
 	/**
 	 * A pair of functions to turn of html scrolling.
 	 * This is to turn scrolling for a child element on.
@@ -342,25 +392,45 @@ jQuery(document).ready(function($) {
 
 	var placeholder = $('.fixed-bar-block-placeholder');
 	var fixedBar = $('.fixed-bar-block');
-    if (fixedBar.length !== 0 && placeholder.length !== 0)
-    {
+	var ribbonShownOnCollapse = 6;
+
+    if (fixedBar.length !== 0 && placeholder.length !== 0) {
+
         $(window).scroll(checkFixedBar);
         $(window).resize(checkFixedBar);
         $(window).scroll();
+
+        // account for wordpress bar.
+        if ($('#wpadminbar').length) {
+
+        	placeholder[0].style.setProperty('top', 0 , "important");
+        	fixedBar[0].style.setProperty('top', 0 , "important" );
+
+        }
+
+
     }
 
 	function checkFixedBar() {
-		var st = $(window).scrollTop()
+
+		var st = $(window).scrollTop();
 		var fromTop = placeholder.offset().top;
 		var barHeight = fixedBar.outerHeight();
 
-		if( (fromTop - st) <= 0) {
+		var adminBarHeight = 0;
+		if ($('#wpadminbar').length && $(window).outerWidth() > 600) {
+			adminBarHeight = $('#wpadminbar').height();
+		}
+
+		if( (fromTop - ribbonShownOnCollapse + barHeight - adminBarHeight - st) <= 0) {
 			fixedBar.addClass('fixed');
 			placeholder.css('height',barHeight);
+
 		} else {
 			fixedBar.removeClass('fixed');
 			placeholder.css('height',0);
 		}
+
 	}
 
 

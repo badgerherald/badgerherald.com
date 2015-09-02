@@ -38,9 +38,6 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-.icon-twitter-bird:before {
-  content: "t";
-}
 .icon-new-window:before {
   content: "w";
 }
@@ -58,4 +55,10 @@
 }
 .icon-shape-1:before {
   content: "*";
+}
+.icon-twitter-bird:before {
+  content: "t";
+}
+.icon-search-find:before {
+  content: "s";
 }

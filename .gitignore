@@ -6,7 +6,6 @@ cache
 *.css.map
 
 node_modules
-Charter.txt
 
 style.css.map
 

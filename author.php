@@ -17,7 +17,7 @@
  * @since Twenty Thirteen 1.0
  */
 
-get_header('minimal'); ?>
+get_header(); ?>
 <?php 
     $author = get_user_by('id', get_query_var('author')); 
     $bio = get_the_author_meta('description', get_query_var('author'));

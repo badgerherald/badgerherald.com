@@ -8,7 +8,6 @@ body {
 	background: $hrld-light-grey;
     height:100%;
     min-height:100%;
-    position: relative;
     overflow-x: hidden;
     @include clearfix();
 }
@@ -49,10 +48,18 @@ body {
 	margin-top: 54px;
 }
 
+/* Style for all blocks */
+.block {
+	display: block; 
+	margin: 24px 0;
+	width: 100%;
+	position: relative;
+}
+
 @media (min-width: 600px) {
 	body.admin-bar {
 		#pullout, .fixed-bar-block {
-			top: 46px !important;
+//			top: 46px !important;
 		}
 	}
 
@@ -61,7 +68,7 @@ body {
 @media (min-width: 760px) {
 	body.admin-bar {
 		#pullout, .fixed-bar-block {
-			top: 32px !important;
+//			top: 32px !important;
 		}
 	}
 	/** _page.scss overrides */

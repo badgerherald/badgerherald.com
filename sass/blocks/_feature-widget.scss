@@ -1,0 +1,45 @@
+/**
+ * Feature and Widget block
+ * ---------------------------------------------------------
+ * php: ./inc/blocks/feature-widget.php
+ * since: 0.3
+ * -----------------------------------------------------------------------------
+ */
+
+.feature-widget-block {
+	.wrapper {
+		background: green;
+	}
+	a.story {
+		width:100%;
+		img {
+			width:100%;
+			height:auto;
+		}
+		.block-headline-container {
+			width:flex(240,300);
+			margin-left: flex(10,300);
+			position: absolute;
+			bottom: 24px;
+			z-index: 2;
+		}
+	}
+}
+
+@include breakpoint('tablet') {
+	.feature-widget-block {
+		a.story {
+			.block-headline-container {
+				width: flex(600,760);
+				margin-left:80px;
+			}
+		}
+	}
+}
+@include breakpoint('desktop') {
+	.feature {
+		width: 700px;
+		position: relative;
+	}
+
+}

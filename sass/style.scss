@@ -12,77 +12,71 @@ Text Domain: exa
 
 
 /**
- * § 1.0 Base
+ * § 1.0 Foundations
  *
- * 1. SCSS functions for dynamic sizing, &c.
- * 2. CSS Normalize.
- * 3. Basic font definitions.
- *
+ * Styles common to all blocks, including css resets, font definitions,
+ * variable definitions, common mixins, &c.
  */
-@import "functions.scss"; 		/* 1 */
-@import "normalize.scss";		/* 2 */
-@import "fonts.scss";			/* 3 */
-@import "grid.scss";
+@import "foundations.scss";
+@import "foundations/page.scss";
 
 /** 
- * Base Page Syles (much of which is altered in responsive)
+ * Base Page Syles
  * 
  */
-@import "page.scss";
-@import "blocks.scss";
+@import "blocks.scss";					// blocks coded before they got their own styles.
 @import "blocks/footer.scss";
 @import "blocks/article-display.scss";
 @import "blocks/most-recent.scss";
 @import "blocks/fixed-bar.scss";
 @import "blocks/interstellar.scss";
-@import "asides.scss";
+@import "blocks/feature-widget.scss";
+@import "depricate/asides.scss"; 		// asides are probably a thing we should have, but lets model its implementation off of blocks.
+
 /** 
  * Masthead Styles
  * 
  */
-@import "pullout.scss";
-@import "masthead.scss";
+@import "foundations/pullout.scss";
+@import "blocks/header.scss";
+@import "blocks/mobile-header.scss";
+@import "blocks/menu-search-bar.scss";
+@import "depricate/homepage.scss";
 
-@import "homepage.scss";
 /** 
  * Stream page styling.
  * Homepage, categories, beats, search, &c.
  */
-@import "stream.scss";
+@import "depricate/stream.scss";
 
 /** 
  * Sidebar & Widget stylings
  */
-@import "sidebar.scss";
+@import "depricate/sidebar.scss";
 
 /** 
  * Post page stylings
  * 
  */
-@import "post.scss";
+@import "depricate/post.scss";
 
-@import "about-page.scss";
-@import "author.scss";
-@import "vday-page.scss";
-@import "4-doge-4.scss";
+// should probably moved to hexa.
+@import "depricate/about-page.scss";
+@import "depricate/author.scss";
+@import "depricate/vday-page.scss";
+@import "depricate/4-doge-4.scss";
 
-@import "student-choice.scss";
-@import "march-madness.scss";
+@import "depricate/student-choice.scss";
+@import "depricate/march-madness.scss";
 
 /**
  * Shoutout page styling
  *
  */
-@import "shoutouts.scss";
-// @import "halloween.scss";
+@import "depricate/shoutouts.scss";
+
 /** 
  * HTML5 Boilerplate helper classes.
  * 
  */
-@import "helperclasses.scss";
-
-/** 
- * Responsive changes
- * 
- */
-/* @import "responsive.scss"; */
+@import "foundations/helperclasses.scss";

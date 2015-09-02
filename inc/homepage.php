@@ -1,4 +1,7 @@
 <?php
+/**
+ * Work in progress. This probably isn't used anywhere right now.
+ */
 
 /**
  * Global homepage object.
