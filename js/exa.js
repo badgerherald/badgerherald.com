@@ -24,20 +24,37 @@ jQuery(document).ready(function($) {
     //
     // The new `div.dotted-overlay` object is sized to the same size
     // as the img. This overlay can then be stlyed with css.
-    var dotOverlay = function() {
-
-        var t = $(this).parent('.dotted-overlay-container');
+    var dotOverlay = function(overlayContainer) {
+        var t = overlayContainer.parent('.dotted-overlay-container');
         t.prepend('<div class="dotted-overlay"></div>');
+        sizeDotOverlay(overlayContainer);
+    }
+
+    var sizeDotOverlay = function(overlayContainer) {
+    	var t = overlayContainer.parent('.dotted-overlay-container');
         img = t.find('img');
         t.find('div.dotted-overlay').css({
             'width':img.outerWidth(),
             'height':img.outerHeight(),
         });
-
     }
     // Run even after each img is done loaded.
     // This ensures the image has a width and height, if one is set to auto.
-    $('div.dotted-overlay-container img').on('load',dotOverlay);
+	$('div.dotted-overlay-container img').each(function() {
+		dotOverlay($(this));
+		$(this).on('load',function() {
+	        sizeDotOverlay($(this));
+	    });
+	});
+
+	// The overlay needs t0 be resized everytime the window is
+	// resized.
+	$(window).on('resize',function() {
+		$('div.dotted-overlay-container img').each(function() {
+	        sizeDotOverlay($(this));
+	    });
+	});
+
 
 	/**
 	 * A pair of functions to turn of html scrolling.

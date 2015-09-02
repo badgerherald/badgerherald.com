@@ -1,4 +1,4 @@
-<div class="block header-block">
+<div class="block header-block blue">
 	
 	<div class="wrapper">
 		

@@ -40,18 +40,21 @@
 	box-shadow: -10px 0 0 $hrld-black,10px 0 0 $hrld-black;
 }
 
-h1.block-headline a, 
-h1.block-headline span
- {
-	font-size: 36px;
-	line-height: 60px;
-	padding: 4px 0 2px;
-}
-
-h2.block-headline a, h2.block-headline span {
+.block-headline a, 
+.block-headline span {
 	font-size: 18px;
 	line-height: 30px;
 	padding: 2px 0 1px;
+}
+
+@include breakpoint('tablet') {
+	h1.block-headline a, 
+	h1.block-headline span
+	 {
+		font-size: 36px;
+		line-height: 60px;
+		padding: 4px 0 2px;
+	}
 }
 
 .block-headline {
@@ -106,6 +109,9 @@ a:hover .block-headline span {
 		position: absolute;
 		z-index:10;
 		z-index: 1;
+	}
+	img {
+		display: block;
 	}
 }
 

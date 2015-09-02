@@ -36,7 +36,6 @@ else
     <div class="clearfix"></div>
 
     <?php get_template_part('inc/blocks/billboard'); ?>
-    <?php // get_template_part('inc/block','cover'); ?>
 
     <div class="clearfix"></div>
 
