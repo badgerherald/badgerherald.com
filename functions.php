@@ -192,10 +192,10 @@ class Exa {
 	 */
 	public static function addShownId($ids) {
 		if( is_array($ids) ) {
-			$shownIds = array_merge($shownIds,$ids);
+			self::$shownIds = array_merge(self::$shownIds,$ids);
 		}
-		elseif( is_int($ids)) {
-			$shownIds[] = $ids;
+		else {
+			self::$shownIds[] = $ids;
 		}
 	}
 
@@ -207,7 +207,7 @@ class Exa {
 	 * @return array List of ids shown on the page.
 	 */
 	public static function shownIds() {
-		return $shownIds;
+		return self::$shownIds;
 	}
 }
 

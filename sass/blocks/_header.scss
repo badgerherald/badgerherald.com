@@ -124,7 +124,7 @@
     }
 }
 
-@media (min-width: 1160px) {
+@include breakpoint(desktop) {
     .header-block {
         #logo {
             width: 100px;
@@ -140,7 +140,7 @@
     }
 }
 
-@media (min-width: 1320px) {
+@include breakpoint(xl) {
     .inner-masthead {
         .tagline {
             width: 200px;

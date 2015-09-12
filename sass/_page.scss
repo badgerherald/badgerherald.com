@@ -88,8 +88,7 @@ body {
 	}
 
 	.wrapper {
-		max-width: 1020px;
-
+		width: 1020px;
 	}
 
 }
@@ -97,7 +96,7 @@ body {
 @include breakpoint(xl) {
 
 	.wrapper {
-		max-width: 1180px;
+		width: 1180px;
 	}
 
 } 

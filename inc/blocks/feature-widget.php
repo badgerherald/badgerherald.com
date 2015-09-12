@@ -28,10 +28,29 @@
 					<div class="dotted-overlay-container">
 						<?php the_post_thumbnail('post-thumbnail'); ?>
 					</div>
-					
-					<div class="block-headline-container">
-						<h1 class="block-headline"><span><?php the_title(); ?></span></h1>
-					</div>  <rect x="2" y="2" width="1" height="1" style="fill:red" />
+
+					<div class="title-container">
+						
+						<div class="block-headline-container">
+							<h1 class="block-headline"><span><?php the_title(); ?></span></h1>
+						</div>
+
+						<div class="byline">
+							
+							<div class="mug">
+								<?php exa_mug(get_the_author_meta('ID'),'small-thumbnail') ?>
+							</div>
+						
+							<span class="author">
+								by 
+								<span class="author-name"><?php the_author() ?></span>
+							</span>
+
+						</div>
+
+						<div class="lede"><?php the_excerpt(); ?></div>
+
+					</div>
 
 				</a>
 					
@@ -46,7 +65,36 @@
 
 		<div class="widget">
 
+			<h3 class="title">Most Recent</h3>
+
+			<?php
+
+			$args = array();
+			$args['posts_per_page'] = 5;
+			$slider_query = new WP_Query( $args ); 
+
+			while( $slider_query->have_posts() ) : $slider_query->the_post(); ?>
+
+				<a class="most-recent-post" href="<?php the_permalink(); ?>">
+        			
+        			<?php if(has_post_thumbnail()) : ?>
+        				<div class="thumbnail">
+            				<?php the_post_thumbnail(); ?>
+        				</div>
+        			<?php endif; ?>
+        			
+        			<div class="title">
+						<?php the_title(); ?><time><?php echo exa_human_time_diff(get_the_time('U')) ?></time>
+					</div>
+					<div class="clearfix"></div>
+				</a>
+				
+
+			<?php endwhile ?>
+
 		</div>
+
+		<div class="clearfix"></div>
 
 	</div>
 </div>

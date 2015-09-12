@@ -164,13 +164,13 @@ $fifteenCol:  1180px;
   }
  
   @else if $breakpoint == "desktop" {
-    @media (min-width: 1160px) {
+    @media (min-width: 1060px) {
       @content;
     }
   }
 
   @else if $breakpoint == "xl" {
-    @media (min-width: 1320px) {
+    @media (min-width: 1220px) {
       @content;
     }
   }
