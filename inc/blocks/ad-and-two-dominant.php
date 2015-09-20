@@ -8,7 +8,6 @@ global $DoubleClick;
 ?>
 
 <div class="block ad-and-two-dominant-block">
-	
 	<div class="wrapper">
 		<div class="sidekick-ad">
 		<?php 
@@ -28,7 +27,9 @@ global $DoubleClick;
 		?>
     	</div>
 
-	<?php
+    	<div class="feature">
+    	
+		<?php
 
 		$query_args = array(
 			'showposts' 	=> 2,
@@ -47,7 +48,7 @@ global $DoubleClick;
 		if ( $my_query->have_posts() ) {
 			while ( $my_query->have_posts() ) : $my_query->the_post(); Exa::addShownId(get_the_ID()); ?>
 
-		<div class="feature">
+			
 	
 				<a href="<?php the_permalink(); ?>" class="story">
 				
@@ -77,6 +78,7 @@ global $DoubleClick;
 					</div>
 	
 				</a>
+
 					
 			<?	endwhile;
 			} else {

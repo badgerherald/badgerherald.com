@@ -138,3 +138,24 @@ a:hover .dotted-overlay-container .dotted-overlay {
 		height: 100%;
 	}
 }
+
+/**
+ * Memes logo
+ * ---------------------------------------------------------
+ * include in a square &:before or &:after element
+ * ----------------------------------------------------------------------------
+ */
+
+@mixin banterlogo {
+	background-image: url('data:image/svg+xml;utf8,
+		<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="64" height="64">
+			<rect width="64" height="64" style="fill:#{$white}" stroke-width="10" stroke="#{$red}" />
+			<polygon points="0,18 32,32 24,0 0,0" style="fill:#{$red}" />
+			<polygon points="64,6 64,45 32,32" style="fill:#{$red}" />
+			<polygon points="40,64 0,64 0,58 32,32" style="fill:#{$red}" />
+		</svg>
+		');
+	background-size: cover;
+}
+
+
