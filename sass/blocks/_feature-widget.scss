@@ -100,24 +100,27 @@
 			float: left;
 			margin-left: 20px;
 			position: relative;
-			padding-top: 32px;
+			text-align: center;
+			padding-top: 36px;
+			display: block;
+			padding-bottom: 36px;
 			h3.title {
 				background: $blue;
 				margin:0;
-				padding: 6px 20px 6px;
-				position: absolute;
-				top:-6px;
-				left: -6px;
-				text-align: center;
+				padding: 3px 10px 3px;
+				display: inline-block;
 				color: $white;
-				font-family: $headline;
+				font-family: $body;
 				text-transform: uppercase;
-				display: inline;
+				font-style: italic;
+				margin-bottom: 18px;
+				font-weight: bold;
 			}
 			.thumbnail {
 				width: 80px;
 				float:left;
 				margin-right: 10px;
+				display: none;
 				img {
 					width: 100%;
 					height: auto;
@@ -128,7 +131,7 @@
 				padding: 12px 20px;
 				display: block;
 				.title {
-					font-size: 16px;
+					font-size: 18px;
 					font-weight: bold;
 					line-height: 21px;
 					font-family: $headline;
@@ -141,6 +144,7 @@
 						display: block;
 						font-weight: normal;
 						text-decoration: none;
+						text-transform: uppercase;
 					}
 				}
 				&:hover {

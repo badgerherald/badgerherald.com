@@ -70,7 +70,7 @@
 			<?php
 
 			$args = array();
-			$args['posts_per_page'] = 5;
+			$args['posts_per_page'] = 4;
 			$slider_query = new WP_Query( $args ); 
 
 			while( $slider_query->have_posts() ) : $slider_query->the_post(); ?>

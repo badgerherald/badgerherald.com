@@ -15,7 +15,7 @@ global $post;
 
 <?php 
 
-get_template_part('inc/blocks/hero-feature');
+get_template_part('inc/blocks/hero');
 
 ?>
 <div class="block article-display-block showcase-block">

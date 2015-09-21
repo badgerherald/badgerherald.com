@@ -15,7 +15,8 @@ global $post;
 
 <?php 
 
-get_template_part('inc/blocks/hero-feature');
+get_template_part('header');
+get_template_part('inc/blocks/hero');
 
 ?>
 <div class="block article-display-block showcase-block">
@@ -160,4 +161,6 @@ get_template_part('inc/blocks/hero-feature');
 	</div><!-- .wrapper -->
 
 </div><!-- .block -->
+
+<?php get_template_part('footer');
 
