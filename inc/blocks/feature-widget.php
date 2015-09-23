@@ -10,6 +10,7 @@
 			$query_args = array(
 				'showposts' 	=> 1,
 				'post_status'	=> 'publish',
+				'post__not_in'	=> Exa::shownIds(),
 				'tax_query' => array(
 					array(
 					    'taxonomy' => 'importance',

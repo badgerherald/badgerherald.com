@@ -19,7 +19,7 @@ global $DoubleClick;
 		    	'xl' => '300x250'      
 			);
 			$args = array(
-		    	'lazyLoad' => false 
+		    	'lazyLoad' => true 
 			);
 
 			$DoubleClick->place_ad('ad-and-two-dominant-block',$sizes,$args);
