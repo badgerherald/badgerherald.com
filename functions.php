@@ -170,6 +170,47 @@ add_filter( 'wp_insert_post_data', 'hrld_default_comments_on' );
  * ================================================================================================
  */
 
+
+/**
+ * Holds static global information about the theme and page loading.
+ */
+class Exa {
+
+	/**
+	 * Array of WordPress ids already loaded on the page.
+	 * @since v0.3
+	 * @var Array
+	 */
+	private static $shownIds = array();
+
+	/**
+	 * Add a value to the array of shown WordPress ids already
+	 * loaded on the page.
+	 * 
+	 * @since v0.3
+	 * @param $ids int|Array The values shown.
+	 */
+	public static function addShownId($ids) {
+		if( is_array($ids) ) {
+			$shownIds = array_merge($shownIds,$ids);
+		}
+		elseif( is_int($ids)) {
+			$shownIds[] = $ids;
+		}
+	}
+
+	/**
+	 * Returns an array of WordPress ids already loaded on
+	 * the page.
+	 * 
+	 * @since v0.3
+	 * @return array List of ids shown on the page.
+	 */
+	public static function shownIds() {
+		return $shownIds;
+	}
+}
+
 /**
  * Sets up the content width value based on the theme's design.
  * @see twentythirteen_content_width() for template-specific adjustments.

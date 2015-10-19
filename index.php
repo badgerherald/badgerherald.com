@@ -6,5 +6,6 @@
  */
 
 get_header();
+//get_template_part('inc/blocks/feature-widget');
 get_template_part('inc/blocks/old-homepage');
 get_footer();
