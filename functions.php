@@ -215,6 +215,9 @@ function exa_setup() {
 	/* For Mugs */
 	add_image_size( 'exa-mug', 480, 320, true );
 
+	/* Post Formats */
+	add_theme_support('post-formats', array('video'));
+
 	/* Nav menus */
 
 	//add_theme_support('menus');

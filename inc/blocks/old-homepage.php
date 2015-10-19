@@ -109,6 +109,7 @@
 </div>
 </div>
 	<?php get_template_part('inc/blocks/billboard'); ?>
+	<?php get_template_part('inc/blocks/latest-videos'); ?>
 
 <div class="block">
 <div class="wrapper">
