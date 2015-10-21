@@ -47,7 +47,7 @@ if ( ! defined( 'EXA_DEV' ) )
  * Contents:
  *   - exa_dev_attachment_url()				(filter: wp_get_attachment_url)
  */
-include_once('inc/functions-dev.php');
+include_once('inc/functions/dev.php');
 
 /**
  * Auto-generated html tags for things like
@@ -60,17 +60,18 @@ include_once('inc/functions-dev.php');
  *   - exa_mug()
  *   - exa_round_mug()
  */
-include_once('inc/functions-html-tags.php');
+include_once('inc/functions/html-tags.php');
 
-include_once('inc/functions-block.php');
+include_once('inc/functions/block.php');
 
-include_once('inc/functions-embeds.php');
+include_once('inc/functions/embeds.php');
 
-include_once('inc/functions-taxonomies.php');
+include_once('inc/functions/taxonomies.php');
 
-include_once('inc/functions-related-posts.php');
+include_once('inc/functions/related-posts.php');
 
-include_once('inc/functions-authors.php');
+
+include_once('inc/functions/authors.php');
 
 /**
  * Social links
@@ -78,7 +79,7 @@ include_once('inc/functions-authors.php');
  * Contents:
  *   - Currently nothing of importance is done in here.
  */
-include_once('inc/functions-social.php');
+include_once('inc/functions/social.php');
 
 /**
  * Register icymi taxonomy.
@@ -86,7 +87,7 @@ include_once('inc/functions-social.php');
  * Contents:
  * 	 - exa_register_icymi_taxonomy()		(action: init)
  */
-include_once('inc/functions-icymi.php');
+include_once('inc/functions/icymi.php');
 
 /**
  * Registers Popular_Post_Widget
@@ -96,7 +97,7 @@ include_once('inc/functions-icymi.php');
  */
 
 if( class_exists('Popular_Post_Widget') )
-	include_once('inc/functions-popular-post-widget.php');
+	include_once('inc/functions/popular-post-widget.php');
 
 /**
  * Register importance taxonomy.
@@ -104,7 +105,7 @@ if( class_exists('Popular_Post_Widget') )
  * Contents:
  *	 - // todo: list contents.
  */
-include_once('inc/functions-importance.php');
+include_once('inc/functions/importance.php');
 
 /**
  * Ad setup and handling in exa.
@@ -114,7 +115,7 @@ include_once('inc/functions-importance.php');
  *   - exa_register_content_adslot()		(action: dfw_setup)
  *   - exa_insert_after_graph()
  */
-include_once('inc/functions-ads.php');
+include_once('inc/functions/ads.php');
 
 /**
  * Do all the fun ajax-y things.
@@ -122,7 +123,7 @@ include_once('inc/functions-ads.php');
  * Contents:
  *   - Currently nothing of importance is done in here.
  */
-include_once('inc/functions-ajax.php');
+include_once('inc/functions/ajax.php');
 
 /**
  * Integrate 3rd party services that we use.
@@ -130,7 +131,7 @@ include_once('inc/functions-ajax.php');
  * Contents:
  *   - 
  */
-include_once('inc/functions-services.php');
+include_once('inc/functions/services.php');
 
 
 /** Production site ----------------------------------------------------- */
