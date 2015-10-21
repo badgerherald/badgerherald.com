@@ -26,8 +26,8 @@ function exa_ad_setup() {
 	/* breakpoints */
 	$DoubleClick->register_breakpoint('mobile',		array('minWidth'=>0,'maxWidth'=>720));
 	$DoubleClick->register_breakpoint('phone',		array('minWidth'=>0,'maxWidth'=>720));
-	$DoubleClick->register_breakpoint('tablet',		array('minWidth'=>760,'maxWidth'=>1040));
-	$DoubleClick->register_breakpoint('desktop',	array('minWidth'=>1040,'maxWidth'=>1220));
+	$DoubleClick->register_breakpoint('tablet',		array('minWidth'=>760,'maxWidth'=>1060));
+	$DoubleClick->register_breakpoint('desktop',	array('minWidth'=>1060,'maxWidth'=>1220));
 	$DoubleClick->register_breakpoint('xl',			array('minWidth'=>1220,'maxWidth'=>9999));
 
 }

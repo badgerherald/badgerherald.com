@@ -192,10 +192,10 @@ class Exa {
 	 */
 	public static function addShownId($ids) {
 		if( is_array($ids) ) {
-			$shownIds = array_merge($shownIds,$ids);
+			self::$shownIds = array_merge(self::$shownIds,$ids);
 		}
-		elseif( is_int($ids)) {
-			$shownIds[] = $ids;
+		else {
+			self::$shownIds[] = $ids;
 		}
 	}
 
@@ -207,7 +207,7 @@ class Exa {
 	 * @return array List of ids shown on the page.
 	 */
 	public static function shownIds() {
-		return $shownIds;
+		return self::$shownIds;
 	}
 }
 
@@ -578,7 +578,6 @@ function exa_topic($post = null) {
 
 	$beats = wp_get_post_terms($post->ID,"topic");
 	$category_base = get_bloginfo('url')."/".get_post_type()."/";
-	print_r("hello");
 	if( !empty($beats) ) {
 		foreach ($beats as $beat) : 
 			return $beat->name; 

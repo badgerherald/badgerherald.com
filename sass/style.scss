@@ -27,10 +27,12 @@ Text Domain: exa
 @import "blocks.scss";					// blocks coded before they got their own styles.
 @import "blocks/footer.scss";
 @import "blocks/article-display.scss";
+@import "blocks/hero.scss";
 @import "blocks/most-recent.scss";
 @import "blocks/fixed-bar.scss";
 @import "blocks/interstellar.scss";
 @import "blocks/feature-widget.scss";
+@import "blocks/list-and-banter.scss";
 @import "depricate/asides.scss"; 		// asides are probably a thing we should have, but lets model its implementation off of blocks.
 @import "blocks/latest-videos-block.scss";
 
@@ -42,6 +44,7 @@ Text Domain: exa
 @import "blocks/header.scss";
 @import "blocks/mobile-header.scss";
 @import "blocks/menu-search-bar.scss";
+@import "blocks/ad-and-two-dominant.scss";
 @import "depricate/homepage.scss";
 
 /** 

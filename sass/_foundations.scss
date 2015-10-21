@@ -33,6 +33,7 @@ $greyBorderOnBlack: #262626;
 $textGreyOnBlack: #5c5c5c;
 $black: #191919;
 $white: #fff;
+$red: #c81212;
 
 
 /* logo blue */
@@ -164,13 +165,13 @@ $fifteenCol:  1180px;
   }
  
   @else if $breakpoint == "desktop" {
-    @media (min-width: 1160px) {
+    @media (min-width: 1060px) {
       @content;
     }
   }
 
   @else if $breakpoint == "xl" {
-    @media (min-width: 1320px) {
+    @media (min-width: 1220px) {
       @content;
     }
   }

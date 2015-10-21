@@ -50,6 +50,7 @@
 					</a>
 						
 				<?	endwhile;
+				wp_reset_query();
 				} else {
 					// todo: test this output.
 					echo "No Posts";
