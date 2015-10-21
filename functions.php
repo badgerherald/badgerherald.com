@@ -70,6 +70,7 @@ include_once('inc/functions/taxonomies.php');
 
 include_once('inc/functions/related-posts.php');
 
+include_once('inc/functions/layout.php');
 
 include_once('inc/functions/authors.php');
 
@@ -256,9 +257,6 @@ function exa_setup() {
 
 	/* For Mugs */
 	add_image_size( 'exa-mug', 480, 320, true );
-
-	/* Post Formats */
-	add_theme_support('post-formats', array('video'));
 
 	/* Nav menus */
 

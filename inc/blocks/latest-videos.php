@@ -8,9 +8,9 @@
             $args['post_type'] = 'post';
             $args['tax_query'] = array(
                 array(
-                    'taxonomy' => 'post_format',
+                    'taxonomy' => 'exa_layout',
                     'field' => 'slug',
-                    'terms' => array('post-format-video')
+                    'terms' => array('video')
                     )
                 );
             $args['posts_per_page'] = 5;
