@@ -20,8 +20,8 @@
             while ($latest_videos_query->have_posts()) : $latest_videos_query->the_post();
 
                 /* Get the first youtube link within the post */
-                $embed_URL = explode(" ", get_the_content());
-                $video_ID = explode("?v=", $embed_URL[0]);
+                $embed_URL = exa_video_link();
+                $video_ID = explode("?v=", $embed_URL);
                 $video_ID = $video_ID[1];
                 $thumb_SRC = 'https://img.youtube.com/vi/' . $video_ID . '/hqdefault.jpg';
                 $post_title = get_the_title();
