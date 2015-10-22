@@ -16,7 +16,7 @@ global $post;
 <?php 
 
 get_template_part('header');
-get_template_part('inc/blocks/hero');
+get_template_part('inc/blocks/hero','video');
 
 ?>
 <div class="block article-display-block showcase-block">

@@ -36,6 +36,7 @@ function _exa_register_layout_taxonomy() {
 }
 add_action( 'init', '_exa_register_layout_taxonomy', 0 );
 
+
 /**
  * Returns video link for the passed in post.
  * Currently the top link in the post.
@@ -58,14 +59,13 @@ function exa_video_link($post = null) {
 
 }
 
+
 /**
  * Returns true if the given link is a youtube embed.
  * 
  * @since v0.4
  */
 function _exa_is_youtube_link($link) {
-
-	// @see http://stackoverflow.com/a/13476188
 
 	$rx = array(	
 			'#http://((m|www)\.)?youtube\.com/watch.*#i',
@@ -85,4 +85,5 @@ function _exa_is_youtube_link($link) {
 
 }
 
-?>
+
+
