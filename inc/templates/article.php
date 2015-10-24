@@ -13,11 +13,13 @@ global $post;
 
 ?>
 
-<?php 
-
-get_template_part('header');
-get_template_part('inc/blocks/hero');
-
+<?php
+	get_header();
+	get_template_part('inc/blocks/leaderboard');
+	get_template_part('inc/blocks/menu-search-bar');
+	get_template_part('inc/blocks/mobile-header');
+	get_template_part('inc/blocks/header');
+	get_template_part('inc/blocks/hero');
 ?>
 <div class="block article-display-block showcase-block">
 	

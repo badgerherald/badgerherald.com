@@ -13,12 +13,18 @@ global $post;
 
 ?>
 
-<?php 
+<?php get_template_part('header'); ?>
 
-get_template_part('header');
-get_template_part('inc/blocks/hero','video');
+<div class="black" style="padding-top:18px;">
+	<?php
+		get_template_part('inc/blocks/leaderboard');
+		get_template_part('inc/blocks/menu-search-bar');
+		get_template_part('inc/blocks/mobile-header');
+		get_template_part('inc/blocks/header','black');
+		get_template_part('inc/blocks/hero','video');
+	?>
+</div>
 
-?>
 <div class="block article-display-block showcase-block">
 	
 	<div class="wrapper">
