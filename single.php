@@ -1,6 +1,6 @@
 <?php 
 
-if(has_term('video','exa_layout')) {
+if(exa_is_video_post()) {
 	get_template_part('inc/templates/video');
 } else {
 	get_template_part('inc/templates/article');

@@ -59,6 +59,27 @@ function exa_video_link($post = null) {
 
 }
 
+/**
+ * Filter out youtube links that start posts,
+ * but only if that post is a video post.
+ * 
+ * @since v0.4
+ */
+function exa_filter_video_link($html) {
+
+	if(!exa_is_video_post()) {
+		return $html;
+	}
+
+	global $post;
+	
+	$graphs = preg_split('/\n+/', $html);
+	array_shift($graphs);
+
+	return implode("\n",$graphs);
+
+}
+add_filter('the_content','exa_filter_video_link',1);
 
 /**
  * Returns true if the given link is a youtube embed.
@@ -85,5 +106,19 @@ function _exa_is_youtube_link($link) {
 
 }
 
+
+/**
+ * Returns true if the given post is a video.
+ * 
+ * @since v0.4
+ * 
+ * @param mixed $post optional post id/object/&c.
+ * @return boolean true if the post is a video post, false otherwise.
+ */
+function exa_is_video_post($post = null) {
+
+	$post = get_post($post);
+	return has_term('video','exa_layout');
+}
 
 
