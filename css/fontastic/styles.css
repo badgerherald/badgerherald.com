@@ -5,7 +5,7 @@
   src:url("fonts/exa.eot");
   src:url("fonts/exa.eot?#iefix") format("embedded-opentype"),
     url("fonts/exa.woff") format("woff"),
-    url("fonts/exa.ttf") format("truetype"),
+    url("fonts/exa.ttf?v=2") format("truetype"),
     url("fonts/exa.svg#exa") format("svg");
   font-weight: normal;
   font-style: normal;
@@ -61,4 +61,7 @@
 }
 .icon-search-find:before {
   content: "s";
+}
+.icon-video:before {
+  content: "p";
 }

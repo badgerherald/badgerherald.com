@@ -1,7 +1,14 @@
 <div class="block latest-videos-block">
     <div class="wrapper">
-        <h1>Latest Videos</h1>
-        <div class="video-list">
+        <div class="block-title">
+            <h2>Latest Videos</h2>
+            <hr />
+            <div class="subscribers">
+                <script src="https://apis.google.com/js/platform.js"></script>
+                <div class="g-ytsubscribe" data-channel="badgerherald" data-layout="default" data-count="default"></div>
+            </div>
+        </div>
+        <div class="videos">
         <?php 
             /* Build query for posts with video post-format */
             $args = array();
@@ -17,24 +24,19 @@
 
             $latest_videos_query = new WP_Query($args);
 
-            while ($latest_videos_query->have_posts()) : $latest_videos_query->the_post();
-
-                /* Get the first youtube link within the post */
-                $embed_URL = exa_video_link();
-                $video_ID = explode("?v=", $embed_URL);
-                $video_ID = $video_ID[1];
-                $thumb_SRC = 'https://img.youtube.com/vi/' . $video_ID . '/hqdefault.jpg';
-                $post_title = get_the_title();
-                ?>
-                <div class="video-post-cotainer">
-                    <div class="thumbnail-container">
-                        <img src="<?php echo $thumb_SRC; ?>" title="<?php echo $post_title; ?>"
+            while ($latest_videos_query->have_posts()) : $latest_videos_query->the_post(); ?>
+                <a href="<?php the_permalink(); ?>" class="post">
+                    <div class="video-post">
+                        <div class="thumbnail">
+                            <?php the_post_thumbnail('post-thumbnail'); ?>
+                        </div>
+                        <h3 class="title"><?php the_title() ?></h3>
                     </div>
-                    <h2 class="video-title"><?php echo $post_title; ?></h2>
-                </div>
+                </a>
                 <?php
             endwhile;
         ?>
         </div>
+        <div class="clearfix"></div>
     </div>
 </div>
