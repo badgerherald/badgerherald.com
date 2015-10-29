@@ -15,6 +15,7 @@ global $post;
 
 <?php
 	get_header();
+//	get_template_part('inc/blocks/preflight');
 	get_template_part('inc/blocks/leaderboard');
 	get_template_part('inc/blocks/menu-search-bar');
 	get_template_part('inc/blocks/mobile-header');
