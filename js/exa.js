@@ -55,7 +55,6 @@ jQuery(document).ready(function($) {
 	    });
 	});
 
-
 	/**
 	 * A pair of functions to turn of html scrolling.
 	 * This is to turn scrolling for a child element on.
@@ -218,135 +217,11 @@ jQuery(document).ready(function($) {
 		return vars;
 	}
 
-
-    /**
-     * Toggles the class of the pullout navigation
-     * 
-     * @since  v0.2
-     */
-    var toggleNav = function() {
-
-
-        // position the bar to the top of the screen
-        var placeholder = $('.fixed-bar-block-placeholder');
-		var fromTop = placeholder.offset().top;
-		var fixedBar = $('.fixed-bar-block');
-
-		if(!fixedBar.hasClass('fixed')) {
-			var body = $("html, body");
-			$(window).scrollTop(fromTop);
-		}
-
-		openPullout();
-    
-    }
-
-    var openPullout = function() {
-    	console.log('called');
-    	if ($("#page").hasClass("pullout-active")) {
-            var offset = $("#page").css("top");
-            $("#page").css({"top":"auto"});
-            offset = parseInt(offset) * -1;
-            $("#pullout").toggleClass("active");
-            $("#page").toggleClass("pullout-active");
-            $("body, html").scrollTop(offset);
-            fixedBar.css('position','');
-        } else {
-            var offset = window.pageYOffset;
-            $("#page").css({"top": "-" + offset + "px"});
-            $("#pullout").toggleClass("active");
-            $("#page").toggleClass("pullout-active");
-            fixedBar.css('position','fixed');
-        }
-        $(window).scroll();
-    }
-
-	/**
-	 * Open the pullout on pageload if pullout=true is a set get variable.
-	 *
-	 * @since v0.2
-	 */
-	if(getUrlVars()['pullout'] == 'true') {
-		toggleNav();
-	}
-
-    /**
-     * Updates the class of the currently hovered nav section
-     * @param  {jQuery object} curr The current DOM element hovered
-     * 
-     * @since  v0.2
-     */
-    var updateNavActive = function(curr) {
-        var dataPostList = curr.attr("data-post-list");
-        if (dataPostList === "null") {
-            return;
-        }
-        $("ul#main-nav").children("li").each(function() {
-            $(this).removeClass("active");
-        });
-        curr.addClass("active");
-        $("#pullout .nav-stream-container").children(".nav-stream").each(function() {
-            $(this).removeClass("active");
-            if ($(this).attr("data-post-list") === dataPostList) {
-                $(this).addClass("active");
-            }
-        });
-    }
-
-    /**
-     * Toggles the pullout when menu button is clicked
-     *
-     * @since  v0.2
-     */
-    $(".nav-control").click(function(e){
-        toggleNav();
-        e.stopPropagation();
-    });
-
-    /**
-     * Closes the pullout if the body of the page is clicked
-     *
-     * @since  v0.2
-     */
-    $("body").click(function(e) {
-        if ($("#pullout").hasClass("active")) {
-            toggleNav();
-        }
-    });
-
-    /**
-     * Prevents propagation of click event if #pullout is clicked.
-     * This stops the previous body click event handler from closing the pullout
-     * while it is open if clicked within it.
-     *
-     * @since  v0.2
-     */
-    $("#pullout").click(function(e) {
-        e.stopPropagation();
-    });
-
-    /**
-     * Updates the current nav section on hover
-     *
-     * @since  v0.2
-     */
-    $("ul#main-nav li").hover(function(e) {
-        updateNavActive($(this));
-    });
-
-    /**
-     * Initiates the first section of the pullout as active on page load.
-     *
-     * @since  v0.2
-     */
-    $("#pullout .nav-stream-container").children(".nav-stream").first().addClass("active");
-    $("ul#main-nav").children("li").first().addClass("active");
-
     /**
      * Handles the width calculations of the article progress bar
      *
      * @since  v0.2
-     */
+
     if ($(".progress").length !== 0) {
         $(window).scroll(function() {
             var scrollTop = $(window).scrollTop();
@@ -355,6 +230,7 @@ jQuery(document).ready(function($) {
             $(".progress .progress-bar").attr("aria-valuenow", Math.floor(progress)).css("width", progress+"%");
         });
     }
+    */
 
 	//Smooth scrolling to anchors from anchor links on same page.
 	$(function() {
@@ -373,9 +249,7 @@ jQuery(document).ready(function($) {
 	});
 
 	$(window).scroll(function() {
-
 		$(window).resize();
-
 	});
 
 	//script for quiz function
