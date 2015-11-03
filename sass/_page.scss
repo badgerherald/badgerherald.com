@@ -34,10 +34,6 @@ body {
 	padding: 0;
 	left: 0;
 	@include transition(all, 250ms, linear);
-	&.pullout-active {
-		left: 260px;
-		position: fixed;
-	}
 }
 
 /* Primary contains all content, with a buffer on both sides of it */
@@ -50,19 +46,11 @@ body {
 }
 
 @media (min-width: 600px) {
-	body.admin-bar {
-		#pullout, .fixed-bar-block {
-			top: 46px !important;
-		}
-	}
-
+	body.admin-bar {}
 }
 
 @media (min-width: 760px) {
 	body.admin-bar {
-		#pullout, .fixed-bar-block {
-			top: 32px !important;
-		}
 	}
 	/** _page.scss overrides */
 
@@ -73,12 +61,6 @@ body {
 	#primary {
 		margin-top: 0;
 	}
-	#page {
-		&.pullout-active {
-			left: 681px;
-		}
-	}
-
 }
 
 @include breakpoint(desktop) {

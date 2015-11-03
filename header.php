@@ -48,12 +48,5 @@
   fjs.parentNode.insertBefore(js, fjs);
 }(document, 'script', 'facebook-jssdk'));</script>
 
-<?php // get_sidebar('pullout'); ?>
-
 <?php /* #page opened here, closed in footer.php */ ?>
 <div id="page">
-
-	<?php get_template_part('inc/blocks/leaderboard'); ?>
-	<?php get_template_part('inc/blocks/menu-search-bar'); ?>
-	<?php get_template_part('inc/blocks/mobile-header'); ?>
-	<?php get_template_part('inc/blocks/header'); ?>

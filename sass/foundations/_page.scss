@@ -56,6 +56,10 @@ body {
 	position: relative;
 }
 
+.black {
+	background: $black;
+}
+
 @media (min-width: 600px) {
 	body.admin-bar {
 		#pullout, .fixed-bar-block {

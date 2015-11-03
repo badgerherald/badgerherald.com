@@ -34,12 +34,14 @@ Text Domain: exa
 @import "blocks/feature-widget.scss";
 @import "blocks/list-and-banter.scss";
 @import "depricate/asides.scss"; 		// asides are probably a thing we should have, but lets model its implementation off of blocks.
+@import "blocks/latest-videos-block.scss";
+@import "blocks/hero-video.scss";
+@import "blocks/preflight.scss";
 
 /** 
  * Masthead Styles
  * 
  */
-@import "foundations/pullout.scss";
 @import "blocks/header.scss";
 @import "blocks/mobile-header.scss";
 @import "blocks/menu-search-bar.scss";

@@ -13,15 +13,18 @@ global $post;
 
 ?>
 
-<?php
-	get_header();
-//	get_template_part('inc/blocks/preflight');
-	get_template_part('inc/blocks/leaderboard');
-	get_template_part('inc/blocks/menu-search-bar');
-	get_template_part('inc/blocks/mobile-header');
-	get_template_part('inc/blocks/header');
-	get_template_part('inc/blocks/hero');
-?>
+<?php get_template_part('header'); ?>
+
+<div class="black" style="padding-top:18px;">
+	<?php
+		get_template_part('inc/blocks/leaderboard');
+		get_template_part('inc/blocks/menu-search-bar');
+		get_template_part('inc/blocks/mobile-header');
+		get_template_part('inc/blocks/header','black');
+		get_template_part('inc/blocks/hero','video');
+	?>
+</div>
+
 <div class="block article-display-block showcase-block">
 	
 	<div class="wrapper">
