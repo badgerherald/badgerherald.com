@@ -1,7 +1,5 @@
 <?php global $DoubleClick; ?>
 
-<?php get_template_part('inc/blocks/latest-videos'); ?>
-
 <div class="block">
 <div class="wrapper">
 

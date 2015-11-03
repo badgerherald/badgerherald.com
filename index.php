@@ -15,5 +15,6 @@ get_template_part('inc/blocks/header');
 get_template_part('inc/blocks/feature-widget');
 get_template_part('inc/blocks/ad-and-two-dominant');
 get_template_part('inc/blocks/list-and-banter');
+//get_template_part('inc/blocks/latest-videos');
 get_template_part('inc/blocks/old-homepage');
 get_footer();
