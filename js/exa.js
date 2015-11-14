@@ -6,6 +6,23 @@
 jQuery(document).ready(function($) {
 
 
+	// Remove the preflight block until its loaded.
+	jQuery(".preflight-block .dfw-unit").on("dfw:beforeAdLoaded", function() {
+		// add the class loaded to the preflight block.
+		var preflightBlock = $(this).closest(".preflight-block");
+		preflightBlock.hide();
+	});
+
+	// Decorate the preflight once its loaded on the page: 
+	// Adds a didLoad class to the preflight block.
+	jQuery(".preflight-block .dfw-unit").on("dfw:afterAdLoaded", function() {
+		// add the class loaded to the preflight block.
+		var preflightBlock = $(this).closest(".preflight-block");
+		preflightBlock.addClass("loaded");
+		preflightBlock.show();
+	});
+
+
     // Adds a dotted overlay effect to img with a container div.dotted-overlays,
     // see css for actual styling.
     //
