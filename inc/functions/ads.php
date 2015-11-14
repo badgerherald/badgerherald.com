@@ -4,7 +4,7 @@
  * 
  * Mostly ads are served with the help of a DoubleClick plugin for WordPress.
  * 
- * @see https://github.com/willhaynes/DoubleClick-for-Wordpress
+ * @see https://github.com/inn/DoubleClick-for-Wordpress
  * @since v0.2
  */
 
@@ -12,16 +12,12 @@
 /**
  * Setup doubleclick breakpoints and network codes.
  * 
- * @see https://github.com/willhaynes/DoubleClick-for-Wordpress
- * @since 0.2
+ * @see https://github.com/inn/DoubleClick-for-Wordpress
+ * @since v0.2
  */
 function exa_ad_setup() {
 
 	global $DoubleClick;
-	$DoubleClick->networkCode = "8653162";
-
-	if( !hrld_is_production() )
-		$DoubleClick->debug = true;
 
 	/* breakpoints */
 	$DoubleClick->register_breakpoint('mobile',		array('minWidth'=>0,'maxWidth'=>720));
@@ -44,7 +40,7 @@ add_action('dfw_setup','exa_ad_setup');
  * @uses exa_insert_after_graph
  * 
  * @param string $content The post content is passed in.
- * @since 0.2
+ * @since v0.2
  */
 function _exa_register_content_adslot($content) {
 	
@@ -73,7 +69,7 @@ add_filter('the_content','_exa_register_content_adslot');
  * @param string $insertion The string to insert.
  * @param string $content The content to insert into.
  * @param int $graph The paragraph to insert after.
- * @since 0.2
+ * @since v0.2
  */
 function exa_insert_after_graph( $insertion, $content, $graph ) {
 	
