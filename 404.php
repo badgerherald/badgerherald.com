@@ -8,55 +8,6 @@
  */
 
 
-/* check if they weren't looking for an old school url */
-
-
-$start = microtime(true);
-
-function pageURL() {
-
- $pageURL .= $_SERVER["REQUEST_URI"];
- return $pageURL;
-
-}
-
-$args = array(
-    'order' => 'ASC',
-    'meta_query' => array(
-        array(
-            'key' => '_mt_url',
-            'value' => 'http://badgerherald.com' . pageURL(),
-            'compare' => '='
-        )
-    ),
-    'post_type' => 'any'
-);
-
-// The Query
-$the_query = new WP_Query( $args );
-
-// The Loop
-if ( $the_query->have_posts() ) {
-	while ( $the_query->have_posts() ) {
-		$the_query->the_post();
-		$ru = getrusage();
-		
-		header('Location: ' . get_permalink());
-		//header('Location: http://google.com');
-		?>
-		<script type='text/javascript'>
-			<!--
-			window.location = "<?php the_permalink() ?>";
-			//-->
-		</script>
-
-		<?php
-		exit;
-	}
-}
-/* Restore original Post Data */
-wp_reset_postdata();
-
 get_header(); ?>
 
 
