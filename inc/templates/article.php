@@ -16,7 +16,7 @@ global $post;
 <?php
 	get_header();
 
-	if( $rand(0,2)!=1 ) {
+	if( true ) {
 		get_template_part('inc/blocks/preflight');
 	} else {
 		get_template_part('inc/blocks/leaderboard');
