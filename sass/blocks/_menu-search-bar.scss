@@ -24,12 +24,12 @@
 		        border: none;
 		        font-family: $headline;
 		        border-left: 2px solid $grey;
-		        width:180px;
+		        width:160px;
 		        float:right;
 		        &:focus {
 		            @include animate;   
 		            border-left-color: $blue;    
-		            width:240px; 
+		            width:200px; 
 		        }
 		    }
 		    input[type=submit] {    // the submit field.
@@ -63,9 +63,7 @@
  			list-style-type: none;
  			color: $black;
  			font-family: $headline;
- 			//text-transform: uppercase;
- 			font-size: 15px;
- 			//font-weight: bold; 	
+ 			font-size: 15px; 	
  			display: table-cell;
  			position: absolute;
  			z-index: 9990;
@@ -117,4 +115,30 @@
  			}
  		}
  	}
- }
+}
+
+@include breakpoint("tablet") {
+	.menu-search-bar-block {
+		.wrapper .menu {
+ 			background: transparent; // *	
+ 			display: block; // *
+ 			margin-left: -10px;
+ 			li {
+ 				display: inline; // *
+ 				clear:none; //*
+ 				width:inherit; // *
+ 				a {
+ 					padding: 8px 10px 6px 10px; //*
+ 					background: transparent; //*
+ 					font-weight: bold; //*
+ 					text-transform: uppercase;
+ 					&:hover {
+ 					}
+ 				}
+ 			}
+ 			&:before {
+ 				display: none; // *
+ 			}
+ 		}
+ 	}
+}
