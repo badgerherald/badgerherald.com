@@ -5,6 +5,8 @@
  * 
  */
 
+if( class_exists("AnalyticBridgePopularPostWidget")) :
+
 Class Popular_Post_Widget extends AnalyticBridgePopularPostWidget {
 
 	/**
@@ -47,3 +49,5 @@ Class Popular_Post_Widget extends AnalyticBridgePopularPostWidget {
 add_action( 'widgets_init', function(){
      register_widget( 'Popular_Post_Widget' );
 });
+
+endif;
