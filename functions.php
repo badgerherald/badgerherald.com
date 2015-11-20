@@ -74,6 +74,8 @@ include_once('inc/functions/layout.php');
 
 include_once('inc/functions/authors.php');
 
+include_once('inc/functions/popular-post-widget.php');
+
 /**
  * Social links
  * 
