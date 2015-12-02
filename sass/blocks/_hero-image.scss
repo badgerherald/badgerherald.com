@@ -1,14 +1,9 @@
 .hero-image-block {
 	background: $black;
-	color:#fff;
-	margin-bottom: -24px;
 	.image-box {
-
     	position: relative;
     	padding-bottom: 5%;
     	padding-top: 30px; 
-    	justify-content:center;
-    	align-items:center;
     	overflow:hidden;
     	width: 100%;
     	img{
@@ -19,15 +14,10 @@
     	.hero-caption{
     		color: #eee;
 	    	.hrld-media-credit{
+	    		font-size: 0.8em;
 	    		display: block;
-	    		span{
+	    		span, a{
 	    			color: #aaa;
-		    		a {
-						color: #aaa;
-						&:hover {
-							color: #aaa;
-						}
-					}
 				}
 	    	}
     	}
