@@ -21,7 +21,7 @@ global $post;
 //		get_template_part('inc/blocks/preflight');
 		get_template_part('inc/blocks/leaderboard');
 		get_template_part('inc/blocks/menu-search-bar','black');
-		get_template_part('inc/blocks/mobile-header');
+		get_template_part('inc/blocks/mobile-header','black');
 		get_template_part('inc/blocks/header','black');
 		get_template_part('inc/blocks/hero','video');
 	?>
