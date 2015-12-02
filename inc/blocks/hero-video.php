@@ -8,7 +8,6 @@ global $DoubleClick;
 global $post;
 
 ?>
-asdfasdf
 <div class="block hero-video-block">
 	<div class="wrapper">
 	
