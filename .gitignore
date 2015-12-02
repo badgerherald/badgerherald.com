@@ -2,6 +2,8 @@ style.css
 .sass-cache
 cache
 
+*..DS_Store
+
 *.sublime-*
 *.css.map
 
