@@ -1,0 +1,43 @@
+.hero-image-block {
+	background: $black;
+	color:#fff;
+	margin-bottom: -24px;
+	.image-box {
+
+    	position: relative;
+    	padding-bottom: 5%;
+    	padding-top: 30px; 
+    	justify-content:center;
+    	align-items:center;
+    	overflow:hidden;
+    	width: 100%;
+    	img{
+    		min-height: 100%;
+    		min-width: 100%;
+    		height: auto;
+    	}
+    	.hero-caption{
+    		color: #eee;
+	    	.hrld-media-credit{
+	    		display: block;
+	    		span{
+	    			color: #aaa;
+		    		a {
+						color: #aaa;
+						&:hover {
+							color: #aaa;
+						}
+					}
+				}
+	    	}
+    	}
+	}
+}
+
+@include breakpoint(xl) {
+	.hero-image-block {
+		.wrapper {
+			width:1020px;
+		}
+	}
+}
