@@ -31,7 +31,7 @@
 			<script>
 
 				(function() {
-					var cx = '017748836545253253952:wjly4mzvsyu;
+					var cx = '017748836545253253952:wjly4mzvsyu';
 
 					var gcse = document.createElement('script'); gcse.type = 'text/javascript'; gcse.async = true;
 					gcse.src = (document.location.protocol == 'https' ? 'https:' : 'http:') +
