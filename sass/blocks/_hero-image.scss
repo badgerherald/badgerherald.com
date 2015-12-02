@@ -13,9 +13,15 @@
     	}
     	.hero-caption{
     		color: #eee;
+    		> *{
+    			display: block;
+    		}
+    		.hero-caption-title{
+    			font-size: 1.5em;
+    			line-height: 1.3em;
+    		}
 	    	.hrld-media-credit{
 	    		font-size: 0.8em;
-	    		display: block;
 	    		span, a{
 	    			color: #aaa;
 				}
