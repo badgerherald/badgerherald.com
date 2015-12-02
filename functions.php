@@ -921,6 +921,9 @@ function exa_open_graph_tags() {
 
 	global $post;
 
+	if( !$post)
+		return null;
+
 	$output = "\n<!-- Open Graph Tags: http://ogp.me -->\n";
 
 	/* 1. Title (string) */
@@ -1149,7 +1152,10 @@ function exa_get_meta_excerpt($post_id = null) {
 
 	global $post;
 
-	if( !$post_id ) {
+	if( !$post)
+		return null;
+
+	if( !$post_id) {
 		$post_id = $post->ID;
 	}
 
