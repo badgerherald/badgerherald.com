@@ -85,6 +85,14 @@
  					}
  				}
  			}
+ 			&.white{
+ 						li a {
+ 							color: white;
+ 							&:hover {
+ 								color: $grey;
+ 							}
+ 						}
+ 					}
  			&:hover {
  				li {
  					display: block;
