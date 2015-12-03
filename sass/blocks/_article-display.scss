@@ -44,56 +44,48 @@
 
 	/* Header phone styles */
 
-	.article-title, .article-title h1 {
-		font-size: 30px;
-		line-height: 36px;
-		margin: 18px 0;
-		color: $hrld-black;
-	}
-
-	.article-subhead {
-		margin-bottom: 24px;
-		font-weight: 400;
-	}
-
 	.article-header {
-
-		.article-section {
-			display: inline-block;
+		.article-topics {
+			margin: 0;
+			padding: 0;
 			font-family: $headline;
-			background: $hrld-blue;
-			color: #fff;
-			font-weight:700;
-			bottom:-12px;
-			text-transform: uppercase;
-			padding: 6px 12px;
-			font-weight:12px;
-			margin-left:-80px;
-			text-align: center;
-			position:relative;
-			&:after {
-				content: ' ';
-				width:0;
-				height:0;
-				position:absolute;
-				left:0;
-				bottom: -6px;
-				//border-style: solid;
-				//border-width: 6px 40px 0 40px;
-				//border-color: $hrld-blue transparent transparent transparent ;
-			}
-			&:hover {
-				background: $hrld-black;
-				&:after {
-					border-color: $hrld-black transparent transparent transparent ;
+			clear:both;
+			li {
+				float: left;
+				display: inline-block;
+				margin: 0;
+				padding: 0;
+				a, span {
+					display: block;
+					padding: 6px 12px;
+					background: $white;
+					&.section {
+						background: $blue;
+						color: #fff;
+						font-weight:700;
+					}
+				}
+				a:hover {
+					text-decoration: underline;
 				}
 			}
+		}
+
+		.article-title, .article-title h1 {
+			font-size: 30px;
+			line-height: 36px;
+			margin: 18px 0;
+			color: $hrld-black;
+		}
+		.article-subhead {
+			margin-bottom: 24px;
+			font-weight: 400;
 		}
 
 		.article-meta {
 			font-family: $headline;
 			color: $hrld-dark-grey;
-			margin-bottom: 18px;
+			margin-bottom: 24px;
 			a.author-link {
 				color: $hrld-dark-grey;
 				font-weight: bold;
@@ -113,6 +105,52 @@
 				}
 			}
 		}
+
+	}
+	.lede-sidebar {
+		width: 100%;
+		display: block;
+		top:0;
+		right:0;
+		margin-top: 12px;
+		margin-bottom: 24px;
+		.popular-post-widget {
+			margin:18px 0;
+			width: 100%;
+			position: relative;
+			h3 {
+				width: 100%;
+				background: $hrld-black;
+				font-family: $headline;
+				text-transform: uppercase;
+				color: #fff;
+				margin: 0;
+				text-align: center;
+				padding: 12px 20px;
+
+			}
+			a {
+				img {
+					height: auto;
+					display: block;
+					width: 80px;
+					float: right;
+				}
+				h2 {
+					font-size: 16px;
+					font-weight: normal;
+					color: $blue;
+				}
+				display: block;
+				font-family: $headline;
+				color: #000;
+				padding: 18px 0px;
+				font-weight:700;
+				&:hover {
+					color: $hrld-blue;
+				}
+			}
+		}
 	}
 }
 
@@ -121,44 +159,13 @@
 	/* Header tablet styles */
 
 	.article-display-block {
-
 		.article-header {
-			margin-left: 80px;
-			width: 660px;
-			.article-meta {
-				.article-mug-box {
-					width:60px;
-					margin-right: 20px;
-					margin-left: -80px;
-					margin-top: -10px;
-				}
+			.article-title, .article-title h1 {
+				font-size: 42px;
+				line-height: 52px;
 			}
-
-			.article-title h1 {
-				position: relative;
-				&:before {
-					content: 't';
-					font-size: 18px;
-					color: $hrld-dark-grey;
-					left: -(38px+50px);
-					top:-0px;
-					display: block;
-					font-family: $icon;
-					position: absolute;
-					visibility: hidden;
-					opacity: 0;
-				}
-			}
-			.article-title:hover h1 {
-				&:before {
-					-webkit-transition: all .2s ease-in-out;
-					-moz-transition: all .2s ease-in-out;
-					-o-transition: all .2s ease-in-out;
-					transition: all .2s ease-in-out;
-					left: -40px;
-					visibility: visible;
-					opacity: 1;
-				}
+			.article-subhead {
+				font-size: 24px;
 			}
 		}
 	}
@@ -169,6 +176,9 @@
 	/* Header desktop styles */
 
 	.article-display-block {
+		main {
+			max-width: 660px;
+		}
 		.article-header {
 			width: 620px;
 			.article-title, .article-title h1 {
@@ -180,6 +190,12 @@
 			.article-subhead {
 
 			}
+		}
+		.lede-sidebar {
+			width: 300px;
+			position: absolute;
+			top:0;
+			right: 0;
 		}
 	}
 }
@@ -199,91 +215,10 @@
 			}
 		}
 	}
+
+
 }
 
-
-/**
- * 3.0 Lede sidebar styles.
- * ----------------------------------------------------------------------------
- */
-
-.article-display-block {
-	.lede-sidebar {
-		display: none;
-	}
-}
-
-@include breakpoint(tablet) {
-	.article-display-block {
-		.lede-sidebar {
-			float: right;
-			width: 300px;
-			display: block;
-			margin-top: 12px;
-			margin-bottom: 24px;
-			margin-left: 80px;
-			.popular-post-widget {
-				background: #fff;
-				margin:18px 0;
-				width:300px;
-				position: relative;
-				h3 {
-					width: 100%;
-					background: $hrld-black;
-					font-family: $headline;
-					text-transform: uppercase;
-					color: #fff;
-					margin: 0;
-					text-align: center;
-					padding: 12px 20px;
-
-				}
-				ul {
-					list-style-type: none;
-					padding: 0;
-					margin: 0;
-					li {
-						padding: 0;
-						margin: 0;
-						border-bottom: 1px solid #d7dbdd;
-						position:relative;
-						.graph-bar {
-							border: 0;
-							display: block;
-							background: $hrld-blue;
-							height: 2px;
-							margin-bottom:-1px;
-							z-index:1;
-							left: 0px;
-							text-align: left;
-						}
-						a {
-							display: block;
-							font-family: $headline;
-							color: #000;
-							padding: 12px 20px;
-							font-weight:700;
-							&:hover {
-								color: $hrld-blue;
-							}
-						}
-					}
-				}
-			}
-		}
-	}
-}
-
-
-@include breakpoint(desktop) {
-
-	.article-display-block {
-		.lede-sidebar {
-			margin-left: 0;
-		}
-	}
-
-}
 
 /**
  * 4.0 Article Text Styles.

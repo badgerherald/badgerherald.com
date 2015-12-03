@@ -33,9 +33,14 @@ get_template_part('inc/blocks/hero-feature');
 				?>
 				<header class="article-header">
 
-					<!-- <a class="article-section"><?php echo exa_section(); ?></a> -->
+				<ul class="article-topics">
+					<li><a href="<?php echo exa_section_permalink() ?>" class="section"><?php echo exa_section(); ?></a></li>
+					<li><span><?php echo exa_topic(); ?></span></li>
+				</ul>
+
+				<div class="clearfix"></div>
 					
-					<h1 class="article-title"><?php the_title() ?></h1>
+				<h1 class="article-title"><?php the_title() ?></h1>
 					
 				
 				<?php if( hrld_has_subhead(get_the_ID()) ) : ?>
@@ -93,26 +98,20 @@ get_template_part('inc/blocks/hero-feature');
 
 				</header>
 
-				<?php 
-				/**
-			 	 * The sidebar to the post.
-				 */ 
-				?>
-				<section class="lede-sidebar">
-					
-					<div class="ad sidebar-thing">
-						<?php $DoubleClick->place_ad('bh:leaderboard','300x250',array('tablet','xl','desktop')); ?>
-					</div>
 
-					<div class="popular-posts sidebar-thing">
-						<?php the_widget( "Popular_Post_Widget"); ?>
-					</div>
+	<?php
+	$hide_feature = get_post_meta( get_the_ID(), '_exa_hide_featured_image', true);
+	if ( has_post_thumbnail() && !($hide_feature == "true")) : ?>
+			
+		<div class="hero">
+	
+			<?php the_post_thumbnail('image-post-size'); ?>
 
-					<div class="ad sidebar-thing">
-						<?php $DoubleClick->place_ad('bh:leaderboard','300x250',array('xl','desktop')); ?>
-					</div>
-
-				</section>
+			<div class="clearfix"></div>
+	
+		</div>
+	
+	<?php endif; /* if has feature image */ ?>
 
 				<?php 
 				/**
@@ -125,14 +124,7 @@ get_template_part('inc/blocks/hero-feature');
 
 				</section>
 
-				<?php /*
-				<section class="footnote-sidebar">
-					Article tweets place.
-				</section>
-				*/ ?>
-
 				<div class="clearfix"></div>
-
 
 				<section class="article-footnotes">
 
@@ -156,6 +148,32 @@ get_template_part('inc/blocks/hero-feature');
 			</main>
 			
 		</article><!-- #post-xx -->
+
+		<?php 
+		/**
+		 * The sidebar to the post.
+		 */ 
+		?>
+		<section class="lede-sidebar">
+
+			<div class="popular-posts sidebar-thing">
+				<?php the_widget( "Popular_Post_Widget"); ?>
+			</div>
+
+			<div class="ad sidebar-thing">
+			<?php 
+			
+				$sizes = '300x250';
+				$args = array(
+		    		'lazyLoad' => true 
+				);
+	
+				$DoubleClick->place_ad('post-sidebar-2',$sizes,$args);
+
+			?>
+			</div>
+
+		</section>
 
 	</div><!-- .wrapper -->
 

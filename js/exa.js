@@ -64,7 +64,7 @@ jQuery(document).ready(function($) {
 	    });
 	});
 
-	// The overlay needs t0 be resized everytime the window is
+	// The overlay needs to be resized everytime the window is
 	// resized.
 	$(window).on('resize',function() {
 		$('div.dotted-overlay-container img').each(function() {
@@ -590,7 +590,7 @@ jQuery(document).ready(function($) {
 	 * Space children in sidebar.
 	 *
 	 * @since v0.2
-	 */
+	 
 	function positionSidebarChildren() {
 
 		if(document.documentElement.clientWidth > 1040) {
@@ -648,15 +648,16 @@ jQuery(document).ready(function($) {
 	$(window).resize( function() {
 		positionSidebarChildren();
 	});
-*/
+	*/
+/*
 	positionSidebarChildren();
-
+*/
 
 	/**
 	 * Fixed position the children.
 	 *
 	 * @since v0.2
-	 */
+	 
 	var fixedChild;
 
 	$(window).scroll(function() {
@@ -682,6 +683,8 @@ jQuery(document).ready(function($) {
 
 
 	});
+
+	*/
 
 	
 

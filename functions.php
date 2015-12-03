@@ -910,6 +910,22 @@ function exa_section() {
 }
 
 /**
+ * Returns a url for the section.
+ * 
+ * @since v0.4
+ * @return string section.
+ */
+function exa_section_permalink() {
+	global $post;
+
+	$section = get_the_category();
+	if( $section ) {
+		return get_term_link($section[0]->term_id,"category");
+	}
+	return "";
+}
+
+/**
  * Prints open graph tags to the head of wordpress pages.
  *
  * @since 0.1
