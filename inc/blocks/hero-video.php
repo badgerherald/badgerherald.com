@@ -1,6 +1,6 @@
 <?php
 /**
- * Retrieve and display feature-image (hero).
+ * Retrieve and display feature-image, in this case the video (hero).
  * 
  */
 
@@ -8,7 +8,6 @@ global $DoubleClick;
 global $post;
 
 ?>
-asdfasdf
 <div class="block hero-video-block">
 	<div class="wrapper">
 	
