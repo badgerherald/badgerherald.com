@@ -921,8 +921,8 @@ function exa_open_graph_tags() {
 
 	global $post;
 
-	if( !$post)
-		return null;
+	if( !$post )
+		return;
 
 	$output = "\n<!-- Open Graph Tags: http://ogp.me -->\n";
 
@@ -1043,8 +1043,10 @@ add_action('wp_head','exa_favicon');
  */
 function exa_twitter_card_tags() {
 
-
 	global $post;
+
+	if(!$post)
+		return;
 
 	$output = '';
 
@@ -1150,16 +1152,14 @@ add_action( 'load-post-new.php', 'exa_toggle_feature_setup' );
  */
 function exa_get_meta_excerpt($post_id = null) {
 
-	global $post;
+	// Gets post ID
+    $the_post = get_post($post_id);
 
-	if( !$post)
-		return null;
+    if(!$the_post) {
+    	return;
+    }
 
-	if( !$post_id) {
-		$post_id = $post->ID;
-	}
-
-    $the_post = get_post($post_id); // Gets post ID
+    $post_id = $the_post->ID;
 
     // check if the hrld-setup plugin is active, and use subhead here instead.
     if( function_exists('hrld_has_subhead') && hrld_has_subhead($post_id) ) {
