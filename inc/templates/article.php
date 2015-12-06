@@ -89,9 +89,12 @@ global $post;
 						
 						<span class="meta-author">
 							by 
-							<a class="author-link" href="<?php exa_the_author_link() ?>" title="<?php echo exa_properize(get_the_author()); ?> Profile">
+							<!---<a class="author-link" href="<?php exa_the_author_link() ?>" title="<?php echo exa_properize(get_the_author()); ?> Profile">
 								<?php the_author() ?>
-							</a>
+							</a> -->
+							<?php //the_author(); 
+								echo hrld_bylines_the_authors('', true, array('class' => 'author-link'));
+							?>
 						</span> &middot;
 
 						<span class="meta-time">
