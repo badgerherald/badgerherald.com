@@ -21,6 +21,8 @@ function exa_hero_media_credit_tag() {
 	$credit = get_hrld_media_credit($thumb_id);
 	$excerpt = $thumb_image->post_excerpt;
 
+	$html_text = '';
+
 	if($credit != "") :
 
 	 	if(get_user_by('login', $credit)){
@@ -55,8 +57,10 @@ function exa_hero_caption_text() {
 		'include'  => $thumb_id
 	); 
 
-	$thumb_image = get_post($thumb_id);
+	$thumb_image = get_post( $thumb_id);
 	$excerpt = $thumb_image->post_excerpt;
+	if( !$excerpt)
+		$excerpt = $thumb_image->post_content;
 
 	return $excerpt;
 
