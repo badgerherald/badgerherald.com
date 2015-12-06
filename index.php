@@ -11,7 +11,7 @@ get_template_part('inc/blocks/leaderboard');
 get_template_part('inc/blocks/menu-search-bar');
 get_template_part('inc/blocks/mobile-header');
 get_template_part('inc/blocks/header');
-
+get_template_part('inc/blocks/breaking-news');
 get_template_part('inc/blocks/feature-widget');
 get_template_part('inc/blocks/ad-and-two-dominant');
 get_template_part('inc/blocks/list-and-banter');
