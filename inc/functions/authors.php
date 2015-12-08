@@ -87,7 +87,7 @@ add_action( 'admin_enqueue_scripts', 'hrld_user_custom_fields_image' );
 function hrld_user_custom_fields( $user){ 
 	
 	// js for custom fields
-	wp_enqueue_script('hrld_user_custom_fields_js', get_template_directory_uri().'/inc/js/hrld_user_custom_fields.js','jquery');
+	wp_enqueue_script('hrld_user_custom_fields_js', get_template_directory_uri().'/js/hrld_user_custom_fields.js','jquery');
 	?>
 
 	<h3>Extra Information</h3>
