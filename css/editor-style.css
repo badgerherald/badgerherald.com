@@ -108,7 +108,7 @@ blockquote p {
 	font-family: 'pt sans';
 	font-size: 18px;
 }
-.pullquote{
+.pullquote, .pullquote.alignleft{
 	display: block;
 	float: left;
 	padding: 25px 20px 25px 15px;

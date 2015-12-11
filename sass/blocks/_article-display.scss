@@ -600,6 +600,9 @@
 		&:before{
 			left: 1rem;
 		}
+		&.aligncenter{
+			margin-right: none;
+		}
 	}
 }
 
