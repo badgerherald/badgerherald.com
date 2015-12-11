@@ -4,6 +4,21 @@ Exa is an open source platform maintained primarily by students at [The Badger H
 
 This page will give you a rundown of how you can start contributing.
 
+## Conventions/Philosophies
+
+#### General design principles:
+
+ 1. Keep code maintainable and flexible.
+ 2. Keep code organized.
+ 3. Think critically about how data is stored.
+ 4. Keep it simple, make it easy for new contributors to get started.
+ 
+#### Good readings:
+
+###### [Pattern driven markup](https://24ways.org/2015/putting-my-patterns-through-their-paces/)
+
+> _Each page of the site is, as you might guess, stitched together from a host of tiny, reusable patterns. Some of them, like the search form and footer, are fairly unique, and used once per page; others are used more liberally, and built for reuse._
+
 ## Tools
 
 Exa is a WordPress theme built for college media. It's built with mantainability and extendability in mind, and to make it easy for new developers to join the team and get up to speed.
