@@ -51,21 +51,27 @@
                                                     {text: 'Center', value: 'aligncenter'},
                                                     {text: 'Right', value: 'alignright'}
                                                 ]
+                                            },
+                                            {
+                                                type: 'checkbox',
+                                                name: 'quotation',
+                                                label: 'Open quote symbol: Yes'
                                             }
 
 
                                         ],
                                         onsubmit: function( event) {
-                                            quote = event.data.quote.replace(/"/g, '');
+                                            quote = event.data.quote.replace(/(^\"{1})|(\"{1}$)/gm, '');
                                             quoteby = event.data.quoteby;
                                             align = event.data.align || '';
-                                            return_text  = '<div class="pullquote '+ align +'">';
+                                            quotation = event.data.quotation ? 'quotation' : '';
+                                            if( event.data.quotation)
+                                                quote += '"';
+                                            return_text  = '<div class="pullquote '+ align +' ' + quotation + '">';
                                             return_text +=      '<span class="quote">' + quote + '</span>';
                                             return_text +=      '<span class="quoteby"> &mdash;&nbsp;' + quoteby + '</span>';
                                             return_text += '</div>';
                                             ed.insertContent(return_text);
-
-                                             //editor.insertContent('Title: ' + e.data.title);
                                         }
                 });
 

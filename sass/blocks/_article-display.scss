@@ -538,14 +538,14 @@
 			display: block;
 			float: left;
 			position: relative;
-			padding: 30px 20px 25px 3rem;
+			padding: 30px 3rem 25px 3rem;
 			background-color: #000;	
 			color: #fff;
 			text-align: center;
 			font-size: 1.5rem;
 			margin-bottom: 1rem;
 			width: 100%;
-			&:before{
+			&.quotation:before{
 				content: '"';
 				font-size: 2.5rem;
 				font-family: cursive;
@@ -572,7 +572,7 @@
 	.pullquote{
 		width: 40%; 
 		margin-right: 40px;
-		padding-left: 2.5rem !important;
+		padding-left: 2.8rem !important;
 		&.alignright{
 			margin-left: 40px;
 		}
@@ -595,8 +595,10 @@
 
 @include breakpoint(desktop){
 	.pullquote{
-		padding-left: 2.5rem !important;
-		font-size: 2.2rem;
+		padding-left: 3rem !important;
+		padding-right: 2.8rem !important;
+		font-size: 2.3rem;
+		line-height: 1.6em;
 		&:before{
 			left: 1rem;
 		}
