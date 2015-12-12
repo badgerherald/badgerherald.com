@@ -42,10 +42,8 @@
 
 .article-display-block {
 
-	/* Header phone styles */
-
-	.article-header {
-		.article-topics {
+	header.article-header {
+		.topics {
 			margin: 0;
 			padding: 0;
 			font-family: $headline;
@@ -70,23 +68,24 @@
 				}
 			}
 		}
-
-		.article-title, .article-title h1 {
+		.title, .title h1 {
 			font-size: 30px;
 			line-height: 36px;
 			margin: 18px 0;
 			color: $hrld-black;
 		}
-		.article-subhead {
+		.subhead {
 			margin-bottom: 24px;
 			font-weight: 400;
 		}
+	}
 
-		.article-meta {
+	main.article-content {
+		.meta {
 			font-family: $headline;
 			color: $hrld-dark-grey;
 			margin-bottom: 24px;
-			a.author-link {
+			.byline a {
 				color: $hrld-dark-grey;
 				font-weight: bold;
 				text-transform: uppercase;
@@ -94,63 +93,121 @@
 					color: $hrld-black;
 				}
 			}
-			.article-mug-box {
-				width:40px;
+			.mug-box {
+				width: 40px;
 				margin-right: 10px;
 				margin-top: -3px;
 				position: relative;
-				float:left;
+				float: left;
 				img {
 					width: 100%;
 				}
 			}
 		}
-
+		.hero {
+			img {
+				width: 100%;
+				height: auto;
+			}
+			.hero-caption {
+				font-family: $headline;
+				color: $hrld-dark-grey;
+				padding-bottom: 12px;
+				position: relative;
+				.hrld-media-credit {
+					display: inline-block;
+					line-height: 36px;
+				}
+				a {
+					color: $hrld-dark-grey;
+					font-weight: bold;
+					text-transform: uppercase;
+					&:hover {
+						color: $hrld-black;
+					}
+				}
+				br {
+				}
+				&:after {
+					content: " ";
+					border-bottom: 1px solid $hrld-dark-grey;
+					width: 120px;
+					display: block;
+					position: absolute;
+					left:0;
+					bottom:0;
+					height: 1px;
+				}
+			}
+		}
 	}
-	.lede-sidebar {
+
+	aside.sidebar {
 		width: 100%;
 		display: block;
-		top:0;
-		right:0;
-		margin-top: 12px;
+		top: 0;
+		right: 0;
 		margin-bottom: 24px;
 		.popular-post-widget {
-			margin:18px 0;
-			width: 100%;
+			margin: 18px 0;
 			position: relative;
+			width: 100%;
 			h3 {
-				width: 100%;
 				background: $hrld-black;
 				font-family: $headline;
 				text-transform: uppercase;
 				color: #fff;
 				margin: 0;
 				text-align: center;
-				padding: 12px 20px;
-
+				font-size: 14px;
+				margin-bottom: 12px;
+				padding: 3px 20px 3px 20px;
+				display: inline;
 			}
 			a {
+				position: relative;
+				border-bottom: 1px solid $greyBorder;
+				background: white;
+				padding: 0px 10px;
+				display: block;
+				font-family: $headline;
+				color: #000;
+				font-weight:700;
+				.graph-bar {
+					background: $blue;
+					height: 2px;
+					position:absolute;
+					bottom:-1px;
+					left: 0;
+				}
 				img {
-					height: auto;
+					height: 80px;
 					display: block;
-					width: 80px;
+					width: auto;
+					margin-top: 20px;
+					padding: 0px 0 20px 15px;
 					float: right;
 				}
 				h2 {
 					font-size: 16px;
-					font-weight: normal;
-					color: $blue;
+					line-height: 21px;
+					margin-bottom: 20px;
+					font-weight: bold;
+					color: $black;
 				}
-				display: block;
-				font-family: $headline;
-				color: #000;
-				padding: 18px 0px;
-				font-weight:700;
+				.topic {
+					color: $hrld-dark-grey;
+					padding-top: 20px;
+					display: block;
+					font-weight: normal;
+				}
 				&:hover {
 					color: $hrld-blue;
 				}
 			}
+			
 		}
+		
 	}
 }
 
@@ -159,15 +216,21 @@
 	/* Header tablet styles */
 
 	.article-display-block {
-		.article-header {
-			.article-title, .article-title h1 {
+		
+		header.article-header {
+
+			.title, .title h1 {
 				font-size: 42px;
 				line-height: 52px;
 			}
-			.article-subhead {
+			.subhead {
 				font-size: 24px;
 			}
+
 		}
+
+
+
 	}
 }
 
@@ -176,11 +239,9 @@
 	/* Header desktop styles */
 
 	.article-display-block {
-		main {
-			max-width: 660px;
-		}
-		.article-header {
-			width: 620px;
+
+		header.article-header {
+			width: 860px;
 			.article-title, .article-title h1 {
 				color: #000;
 				font-size: 44px;
@@ -191,32 +252,51 @@
 
 			}
 		}
-		.lede-sidebar {
-			width: 300px;
-			position: absolute;
-			top:0;
-			right: 0;
+		main.article-content {
+			width: 700px;
+			position: relative;
+			float:left;
+			padding-right: 20px;
+			.hero {
+				img {
+					// width: 100%;
+				}
+			}
+		}
+		aside.sidebar {
+			width: 320px;
+			padding-left: 20px;
+			border-left: 1px solid $greyBorder;
+			border-top: 1px solid $greyBorder;
+			float:left;
 		}
 	}
 }
 
 @include breakpoint(xl) {
 
-	/* Header xl styles */
+	/* Header desktop styles */
 
 	.article-display-block {
-		.article-header {
-			width: 720px;
-			.article-title, .article-title h1 {
-				font-size: 44px;
-			}
-			.article-subhead {
 
+		main.article-content {
+			width: 860px;
+			.article-text {
+				padding-right: 80px;
+			}
+		}
+
+		main.article-content {
+			.hero {
+				.hero-caption {
+					padding-right: 80px;
+					&:after {
+						//left: 80px;
+					}
+				}
 			}
 		}
 	}
-
-
 }
 
 
@@ -233,7 +313,6 @@
 			margin-bottom: 24px;
 		}
 		a {
-			margin: 0 -2px;
 			border-radius: 2px;
 			color: #195ea6;
 			&:hover {
@@ -481,23 +560,23 @@
 			width:100%;
 			position: relative;
 			p,h1,h2,h3,h4,h5,h6 {
-				margin-left: 80px;
-				margin-right: 80px;
+			//	margin-left: 80px;
+			//	margin-right: 80px;
 				}
 			h4 {
-				margin-left: 80px;
+			//	margin-left: 80px;
 			}
 			.twitter-tweet {
-				margin-left: 80px !important;
+			//	margin-left: 80px !important;
 			}
 			blockquote, ul, ol, dl {
-				margin-left: 80px;
+			//	margin-left: 80px;
 				li {
 					padding:0;
 				}
 			}
 			a.hrld-inline-link {
-				margin-left: -80px;
+			//	margin-left: -80px;
 				padding:12px 20px;
 				overflow:auto;
 				img.hrld-inline-thumbnail {
@@ -555,7 +634,7 @@
 
 	.article-display-block {
 		.article-text {
-			width:700px;
+			width:680px;
 			.alignnone, .aligncenter, & > img.alignnone, & > img.aligncenter {
 				width:100% !important;
 				float: left;
@@ -637,7 +716,7 @@
 
 		hr {
 			border-bottom: 1px solid $hrld-dark-grey;
-			width:180px;
+			width:120px;
 			margin-left:0;
 		}
 		
@@ -674,14 +753,8 @@
 @include breakpoint(desktop) {
 
 	.article-display-block {
-
 		.article-footnotes {
-		
-			margin-left:80px;
 			width:540px;
-
 		}
-
 	}
-	
 }

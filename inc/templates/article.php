@@ -20,8 +20,13 @@ global $post;
 	get_template_part('inc/blocks/menu-search-bar');
 	get_template_part('inc/blocks/mobile-header');
 
-
-	get_template_part('content');
+	if ( have_posts() ) : 
+		while ( have_posts() ) : the_post();
+			get_template_part('content');
+		endwhile; 
+	else :
+		_e( '<p>Something went wrong.</p>' );
+	endif;
 
 ?>
 
@@ -31,11 +36,7 @@ global $post;
 	</div>
 </div>
 
-<?php 
-
-Exa::addShownId(get_the_ID());
-
-?>
+<?php Exa::addShownId(get_the_ID()); ?>
 
 <?php get_template_part('inc/blocks/feature-widget'); ?>
 <?php get_template_part('inc/blocks/ad-and-two-dominant'); ?>

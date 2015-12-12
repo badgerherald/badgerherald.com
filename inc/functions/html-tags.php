@@ -63,7 +63,14 @@ function exa_hero_caption_text() {
 }
 
 function exa_hero_caption() {
-	echo "<p class='hero-caption'>" . exa_hero_caption_text() . exa_hero_media_credit_tag() ."</p>";
+
+	$caption = exa_hero_caption_text();
+
+	if( !empty($caption) ) {
+		echo "<p class='hero-caption'>" . exa_hero_caption_text() . "<br/>" . exa_hero_media_credit_tag() ."</p>";
+	} else {
+		echo "<p class='hero-caption'>" . exa_hero_media_credit_tag() ."</p>";
+	}
 }
 
 /**
