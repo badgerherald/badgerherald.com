@@ -1,0 +1,84 @@
+ /**
+     * Breaking News Block
+     * ---------------------------------------------------------
+     * php: ./inc/blocks/breaking-news.php
+     * since: 0.3
+     * -----------------------------------------------------------------------------
+     */
+
+
+.breaking-news-block {
+  
+
+    .wrapper {
+        //for colored background
+        //background: $red;
+        position:relative;
+        font-family:$headline;   
+    }
+    
+    .BreakingBox {
+        float:left;
+        position:relative;
+        color: $red;
+        //for colored background
+        //color:$white;
+        padding-top:1px;
+        margin-top:2px;
+        margin-right:5px;
+        margin-left:5px;
+        text-transform:uppercase;
+        font-weight:bold;
+
+    }
+
+        
+    .postbox {
+        float:left;
+        position:relative;
+        margin-left:2px;
+        padding-left: 5px;
+        font-size: 85%;
+        width:85%;
+        padding-top:2px;
+        margin-top:2px;
+        margin-bottom:2px;
+        //for colored background
+        //background:white;
+    }
+    
+    .updated {
+        font-size: 75%;
+        color:$black;
+        //for colored background
+        //color:$red
+        position:relative;
+    }
+
+    a.link {
+        text-decoration:none;
+        color:$black;
+        //for colored background
+        //color:$red;
+    }
+}
+
+@include breakpoint("tablet") {
+    .alert-banner-block {
+        /* tablet and up style */
+        
+    }
+}
+
+@include breakpoint("desktop") {
+    .alert-banner-block {
+        /* des top and up style */
+        
+    }
+}
+
+@include breakpoint("xl") {
+    .alert-banner-block {
+        /* xl desktop and up style */
+    }   
+}
