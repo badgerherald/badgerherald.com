@@ -21,24 +21,25 @@
         while ( $my_query->have_posts() ) : $my_query->the_post();  ?>
             
             <?php $currentTime = time(); 
-            $local_timestamp = get_the_time('U');
+            $local_timestamp = get_the_modified_time('U');
             $seconds = 86400; 
             if (($currentTime - $local_timestamp)  < $seconds) : ?>
            
-                <div class="block breaking-news-block" >
+                <div class="block breaking-news-block">
                     <div class="wrapper">
-                        <span class="BreakingBox">
-                         breaking news:
-                           </span>    
-                        <span class="postbox">
-                            <a href="<?php the_permalink(); ?>" class="link">
+                        <a href="<?php the_permalink(); ?>" class="link">
+                             <span class="breaking-tag">
+                             Breaking:
+                               </span>    
+                            
+                            
                              <?php the_title(); ?>
-                            </a>
+                            
         
-                            <span class="updated">UPDATED: <?php the_time(); ?></span>
-                                
-                        </span>
-                        <div style="clear: both;"></div>
+                            <span class="updated">Updated: <?php the_modified_time() ?></span>
+                            </a>  
+                   
+                       
                     </div>
                 </div>
            <?php endif; ?>
