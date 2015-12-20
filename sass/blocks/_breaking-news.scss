@@ -1,85 +1,67 @@
- /**
-     * Breaking News Block
-     * ---------------------------------------------------------
-     * php: ./inc/blocks/breaking-news.php
-     * since: 0.3
-     * -----------------------------------------------------------------------------
-     */
+/**
+ * Breaking News Block
+ * ---------------------------------------------------------
+ * php: ./inc/blocks/breaking-news.php
+ * since: 0.4
+ * -----------------------------------------------------------------------------
+ */
 
 
 .breaking-news-block {
   
-    a.link {
-         display:block;
-         text-decoration:none;
-         color:$white;
-         background:$red;
-         font-family:$headline;  
-         padding-top:12px;
-         padding-bottom:12px;
-         padding-left:20px;
-         font-weight:bold;
-
-
-        &:hover{
-            background:#a10e0e;
-        }
-   
-        .wrapper {
-            background: $red;
-            position:relative;
-
-             
-        }
-
-       .breaking-tag {
-            padding-right:12px;
-            position:relative;
-            color: $white;
-            text-transform:uppercase;
-            font-weight:normal;
-
-         }
-
-         .updated{
-            opacity:.8;
-         }
-
-        
-    
-    
-       
-    
-    }
+	a.link {
+		display:block;
+		text-decoration:none;
+		color:$white;
+		background:$red;
+		font-family:$headline;  
+		padding-top:12px;
+		padding-bottom:12px;
+		padding-left:20px;
+		font-weight:bold;
+		.breaking-tag {
+			padding-right:12px;
+			position:relative;
+			color: $white;
+			text-transform:uppercase;
+			font-weight:normal;
+		}
+		.updated {
+			opacity:.8;
+		}
+		&:hover{
+			background:#a10e0e;
+		}
+	}
 }
 
 @include breakpoint("tablet") {
-    .breaking-news-block {
-        /* tablet and up style */
-        
-    }
+	.breaking-news-block {
+		/* tablet and up style */
+		
+	}
 }
 
 @include breakpoint("desktop") {
-    .breaking-news-block {
-        /* des top and up style */
-         .updated {
-            padding-top:12px;
-            padding-bottom:12px;
-            padding-left:20px;
-            width:200px;
-            display:block;
-            color:$white;
-            text-align:right;
-            position:absolute;
-            right:20px;
-            top:0;
-        }
-    }
+	.breaking-news-block {
+		/* desktop and up style */
+		.updated {
+			padding-top:12px;
+			padding-bottom:12px;
+			padding-left:20px;
+			width:200px;
+			display:block;
+			color:$white;
+			text-align:right;
+			position:absolute;
+			right:20px;
+			top:0;
+		}
+	}
 }
 
 @include breakpoint("xl") {
-    .breaking-news-block {
-        /* xl desktop and up style */
-    }   
+	.breaking-news-block {
+		/* xl desktop and up style */
+	}   
 }
