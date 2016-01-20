@@ -68,8 +68,6 @@ include_once('inc/functions/embeds.php');
 
 include_once('inc/functions/taxonomies.php');
 
-include_once('inc/functions/related-posts.php');
-
 include_once('inc/functions/layout.php');
 
 include_once('inc/functions/authors.php');

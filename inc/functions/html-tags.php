@@ -20,7 +20,7 @@ function exa_hero_media_credit_tag() {
 
 	$credit = get_hrld_media_credit($thumb_id);
 	$excerpt = $thumb_image->post_excerpt;
-
+	$html_text = "";
 	if($credit != "") :
 
 	 	if(get_user_by('login', $credit)){
@@ -38,7 +38,9 @@ function exa_hero_media_credit_tag() {
 
 	endif;
 
+
 	return $html_text;
+
 	
 }
 

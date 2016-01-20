@@ -13,11 +13,6 @@ global $post;
 
 ?>
 
-<?php 
-
-get_template_part('inc/blocks/hero-feature');
-
-?>
 <div class="block article-display-block showcase-block">
 	
 	<div class="wrapper">
@@ -61,6 +56,28 @@ get_template_part('inc/blocks/hero-feature');
 							   <?php the_author() ?>
 						   </a>
 					</span> &middot; <span class="meta-time"><?php the_time("M j, Y") ?></span>
+
+					<?php /* Facebook: */ ?>
+					<div class="facebook">
+					<div  class="fb-like" 
+						  data-href="<?php echo exa_social_url(get_permalink($post->ID), false); ?>" 
+						  data-layout="button_count" 
+						  data-action="like" 
+						  data-width="90"
+						  data-show-faces="false" 
+						  data-share="true">
+					</div>
+					</div>
+			
+					<?php /* Twitter: */ ?>
+					<div class="twitter">
+					<a  href="https://twitter.com/share" 
+						class="twitter-share-button " 
+						data-url="<?php echo exa_social_url(get_permalink($post->ID), false); ?>" 
+						data-text="<?php echo the_title(); ?>." 
+						data-via="badgerherald" 
+						data-related="badgerherald">Tweet</a>
+					</div>
 
 				</div>
 
