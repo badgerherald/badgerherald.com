@@ -68,8 +68,6 @@ include_once('inc/functions/embeds.php');
 
 include_once('inc/functions/taxonomies.php');
 
-include_once('inc/functions/related-posts.php');
-
 include_once('inc/functions/layout.php');
 
 include_once('inc/functions/authors.php');
@@ -908,6 +906,22 @@ function exa_section() {
 		$section = $section == 'oped' ? $section = 'opinion' : $section;
 	}
 	return $section;
+}
+
+/**
+ * Returns a url for the section.
+ * 
+ * @since v0.4
+ * @return string section.
+ */
+function exa_section_permalink() {
+	global $post;
+
+	$section = get_the_category();
+	if( $section ) {
+		return get_term_link($section[0]->term_id,"category");
+	}
+	return "";
 }
 
 /**

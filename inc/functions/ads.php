@@ -1,5 +1,23 @@
 <?php
 /**
+ * OpenX ad management
+ * 
+ * 
+ */
+
+function oncampus_footer_tag() {
+	echo "";
+}
+add_action("wp_footer","openx_footer_tag");
+
+
+function oncampus_serve_ad($size) {
+
+
+}
+
+
+/**
  * Deal with ads in our theme.
  * 
  * Mostly ads are served with the help of a DoubleClick plugin for WordPress.
