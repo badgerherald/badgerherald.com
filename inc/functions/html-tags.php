@@ -89,6 +89,12 @@ function exa_hero_caption() {
 function exa_mug($user_id, $size = 'square', $classes = '') {
 
 	global $wpua_functions;
+
+	if(!function_exists('has_wp_user_avatar')) {
+		echo "<img src='http://placekitten.com/200/100' classes='mug $classes' />";
+		return;
+	}
+	
 	if(!has_wp_user_avatar($user_id)) {
 		$src = $wpua_functions->wpua_default_image($size);
 		$src = $src['src'];
