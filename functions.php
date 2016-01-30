@@ -68,14 +68,13 @@ include_once('inc/functions/embeds.php');
 
 include_once('inc/functions/taxonomies.php');
 
-include_once('inc/functions/related-posts.php');
-
 include_once('inc/functions/layout.php');
 
 include_once('inc/functions/authors.php');
 
 include_once('inc/functions/popular-post-widget.php');
 
+include_once('inc/functions/tinymce.php');
 /**
  * Social links
  * 

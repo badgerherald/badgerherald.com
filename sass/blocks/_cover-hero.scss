@@ -1,0 +1,15 @@
+.cover-hero-block {
+	margin-top: 0;
+	padding: 0;
+	background: $black;
+	.hero {
+		width: 100%;
+		max-width: 1280px;
+		margin: 0 auto;
+	}
+	img {
+		width: 100%;
+		height: auto;
+		display: block;
+	}
+}
