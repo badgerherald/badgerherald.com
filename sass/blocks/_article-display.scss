@@ -429,6 +429,7 @@
 			font-family: $headline;
 			font-size: 18px;
 		}
+
 		.ad-in-content {
 			margin: 24px 0;
 			&:before {
@@ -556,6 +557,81 @@
 	}
 }
 
+.pullquote{
+			display: block;
+			float: left;
+			position: relative;
+			padding: 30px 3rem 25px 3rem;
+			background-color: #000;	
+			color: #fff;
+			text-align: center;
+			font-size: 1.5rem;
+			margin-bottom: 1rem;
+			width: 100%;
+			&.quotation:before{
+				content: '"';
+				font-size: 2.5rem;
+				font-family: cursive;
+				line-height: inherit;
+				position: absolute;
+				left: 1.2rem;
+			}
+			span.quote{
+				font-size: .667em;
+				position: relative;
+				float: left;
+				width: 100%;
+				text-align: left;
+				
+			}
+			span.quoteby{
+				font-size: .4em;
+				text-align: right;
+				float: right;
+			}
+}
+
+@include breakpoint(tablet) {
+	.pullquote{
+		width: 40%; 
+		margin-right: 40px;
+		padding-left: 2.8rem !important;
+		&.alignright{
+			margin-left: 40px;
+		}
+		&.aligncenter{
+			width: 100%;
+			margin-left: 80px; 
+			margin-right: 80px;
+		}
+		span.quote{
+			
+		}
+		span.quote:before{
+			
+		}
+		span.quoteby{
+			
+		}
+	}
+}
+
+@include breakpoint(desktop){
+	.pullquote{
+		padding-left: 3rem !important;
+		padding-right: 2.8rem !important;
+		font-size: 2.3rem;
+		line-height: 1.6em;
+		&:before{
+			left: 1rem;
+		}
+		&.aligncenter{
+			margin-right: none;
+		}
+	}
+}
+
+
 
 @include breakpoint(tablet) {
 
@@ -631,6 +707,12 @@
 				iframe {
 					max-width: 100%;
 					//width: 100%;
+				}
+			}
+			.ad-in-content {
+			margin: 24px 0;
+				&:before {
+					display: none;
 				}
 			}
 		}

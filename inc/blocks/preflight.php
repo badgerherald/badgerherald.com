@@ -1,4 +1,6 @@
-<?php global $DoubleClick ?>
+<?php 
+global $DoubleClick; 
+?>
 
 <div class="block preflight-block">
 	<div class="wrapper">
