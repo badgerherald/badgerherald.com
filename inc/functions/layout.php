@@ -133,7 +133,6 @@ function exa_is_video_post($post = null) {
 function exa_layout($post = null) {
 	$post = get_post($post);
 	$layout_terms = wp_get_post_terms($post->ID,'exa_layout');
-
 	if(empty($layout_terms)) {
 		return;
 	} else {

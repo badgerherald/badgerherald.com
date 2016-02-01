@@ -1,7 +1,23 @@
-<div class="block mobile-header-block">
-	
+<?php 
+
+global $block;
+if(!$block) {
+	$block = new Block('mobile-header');
+}
+
+/**
+ * Block documentation:
+ * 
+ * $args: 	array (
+ * 				"breakpoint" => array() of breakpoints to show block for.
+ * 				"background" => "black"/"grey"
+ * 		  	)
+ */
+
+?>
+
+<div class="<?php echo $block->classes(); ?>">
 	<div class="wrapper">
-		
 		<a id="logo" href="<?php bloginfo('url'); ?>">
 			<img src="<?php bloginfo('template_url') ?>/img/logo/header-horizontal.png" />
 		</a>
@@ -18,7 +34,5 @@
 			</div><!-- .twitter -->
 
 		</div>
-
 	</div>
-	
 </div>

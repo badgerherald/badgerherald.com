@@ -1,6 +1,48 @@
 
+/**
+ * NEW, block foundations:
+ * ----------------------------------------
+ */
 
+.block.mobile, .block.tablet, .block.desktop, .block.xl {
+	display: none;
+}
 
+.block.mobile {
+	display: block;
+}
+
+@include breakpoint('tablet') {
+	.block.mobile, .block.desktop, .block.xl {
+		display: none;
+	}
+	.block.tablet {
+		display: block;
+	}
+}
+
+@include breakpoint('desktop') {
+	.block.mobile, .block.tablet, .block.xl {
+		display: none;
+	}
+	.block.desktop {
+		display: block;
+	}
+}
+
+@include breakpoint('xl') {
+	.block.mobile, .block.tablet, .block.desktop {
+		display: none;
+	}
+	.block.xl {
+		display: block;
+	}
+}
+
+/**
+ * OLD, probably deletable stuff below here
+ * ----------------------------------------
+ */
 .cover-block {
 	.wrapper {
 		background: rgba(black,.2);

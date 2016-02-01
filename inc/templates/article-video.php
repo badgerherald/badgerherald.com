@@ -1,10 +1,10 @@
 <?php
 /**
- * The default template for displaying content. Used for single.
+ * The default template for displaying content. Used for single. 
  *
- * @package WordPress
- * @subpackage Twenty_Thirteen
- * @since Twenty Thirteen 1.0
+ * @package WordPress 
+ * @subpackage Twenty_Thirteen 
+ * @since Twenty Thirteen 1.0 
  */
 
 global $AnalyticBridge;
@@ -13,10 +13,9 @@ global $post;
 
 get_template_part('header'); 
 
-//get_template_part('inc/blocks/preflight');
-
 if(exa_hero_media_type() == 'video') : 
 ?>
+
 	<div class="black" style="padding-top:18px;">
 		<?php 
 		get_template_part('inc/blocks/leaderboard');
@@ -26,6 +25,7 @@ if(exa_hero_media_type() == 'video') :
 		get_template_part('inc/blocks/hero','video');
 		?>
 	</div>
+
 <?php 
 else :
 	get_template_part('inc/blocks/cover-hero');

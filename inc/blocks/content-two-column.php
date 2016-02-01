@@ -2,6 +2,11 @@
 
 
 global $DoubleClick;
+global $block;
+if(!$block) {
+	$block = new Block('article-display');
+}
+
 ?>
 
 <div class="block article-display-block showcase-block">
@@ -77,6 +82,7 @@ global $DoubleClick;
 				/* Hero */
 
 				$hide_feature = get_post_meta( get_the_ID(), '_exa_hide_featured_image', true);
+				$hide_feature = $hide_feature && $block->option('hide-hero');
 				if ( has_post_thumbnail() && !($hide_feature == "true")) : ?>
 						
 				<div class="hero">
