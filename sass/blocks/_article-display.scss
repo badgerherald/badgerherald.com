@@ -24,7 +24,6 @@
  *  - much of the style in the `.article-text` style method is duplicated
  *    in the editor styles.
  *
- *
  * ## Contents:
  *
  *  1.0 Hero styles.
@@ -41,7 +40,6 @@
  */
 
 .article-display-block {
-
 	header.article-header {
 		.topics {
 			margin: 0;
@@ -557,78 +555,82 @@
 	}
 }
 
-.pullquote{
-			display: block;
-			float: left;
-			position: relative;
-			padding: 30px 3rem 25px 3rem;
-			background-color: #000;	
-			color: #fff;
-			text-align: center;
-			font-size: 1.5rem;
-			margin-bottom: 1rem;
-			width: 100%;
-			&.quotation:before{
-				content: '"';
-				font-size: 2.5rem;
-				font-family: cursive;
-				line-height: inherit;
-				position: absolute;
-				left: 1.2rem;
-			}
-			span.quote{
-				font-size: .667em;
-				position: relative;
-				float: left;
-				width: 100%;
-				text-align: left;
-				
-			}
-			span.quoteby{
-				font-size: .4em;
-				text-align: right;
-				float: right;
-			}
+q.pullquote {
+	quotes: "“" "”";
+	&:before {
+		display: none;
+	}
+	&.quotemarks:before { 
+		font-size: 66px; 
+		float: left;
+		padding-right: 6px;
+		display: block;
+		position: relative;
+		top: 0px;
+	}	
+	&:after { 
+		content: "";
+		width: 80px;
+		height: 3px;
+		background: $textGrey;
+		display: block;
+		position: absolute;
+		bottom: 0;
+	}
+	display: block;
+	width: 100%;
+	float: left;
+	font-weight: bolder;
+	color: $black ;
+	font-size: 30px;
+	line-height: 36px;
+	margin: 18px 0 60px;
+	padding: 18px 0px 18px;
+	position: relative;
+	font-style: italic;
+	cite {
+		display: block;
+		position: relative;
+		left: 0;
+		margin-top: 18px;
+		margin-bottom: -18px;
+		color: $textGrey;
+		font-weight: normal;
+		font-size: 18px;
+	}
 }
 
 @include breakpoint(tablet) {
-	.pullquote{
-		width: 40%; 
-		margin-right: 40px;
-		padding-left: 2.8rem !important;
-		&.alignright{
-			margin-left: 40px;
+	
+	q.pullquote{
+		&.alignleft {
+			width: 360px;
+			float: left;
+			padding-right: 60px;
 		}
-		&.aligncenter{
-			width: 100%;
-			margin-left: 80px; 
-			margin-right: 80px;
+		&.alignright {
+			width: 360px;
+			float: right;
+			padding-left: 60px;
 		}
-		span.quote{
-			
-		}
-		span.quote:before{
-			
-		}
-		span.quoteby{
-			
+		&.aligncenter {
+			font-size: 42px;
+			line-height: 48px;
+			margin: 78px 0 96px;
+			cite {
+				font-size: 24px;
+			}
+			&.quotemarks:before { 
+				font-size: 100px; 
+				padding-right: 12px;
+				top: 6px;
+			}	
 		}
 	}
 }
 
 @include breakpoint(desktop){
-	.pullquote{
-		padding-left: 3rem !important;
-		padding-right: 2.8rem !important;
-		font-size: 2.3rem;
-		line-height: 1.6em;
-		&:before{
-			left: 1rem;
-		}
-		&.aligncenter{
-			margin-right: none;
-		}
-	}
+
 }
 
 
@@ -683,20 +685,20 @@
 					height: auto;
 				}
 			}
-			.alignleft {
+			img.alignleft {
 				float: left;
 				// margin-left: -80px !important;
 				padding-right: 20px;
 				width: 300px !important;
 				height: auto;
 			}
-			.alignright {
+			img.alignright {
 				float: right;
 				padding-left: 20px;
 				width: 300px !important;
 				height: auto;
 			}
-			.alignnone, .aligncenter {
+			img.alignnone, img.aligncenter {
 				width:100%;
 				float:left;
 			}
@@ -726,7 +728,7 @@
 	.article-display-block {
 		.article-text {
 			width:680px;
-			.alignnone, .aligncenter, & > img.alignnone, & > img.aligncenter {
+			img.alignnone, img.aligncenter, & > img.alignnone, & > img.aligncenter {
 				width:100% !important;
 				float: left;
 			}

@@ -26,17 +26,11 @@ function _exa_dev_attachment_url( $link ) {
 }
 add_filter('wp_get_attachment_url', '_exa_dev_attachment_url');
 
-
-
-
 function _exa_dev_calculate_image_srcset($sources) {
 
 	// YOU WIN. TURN IMAGE SRCSET OFF FOR NOW.
-	return; 
+	return;
 
-
-
-	
 	foreach($sources as $source) {
 		print_r($source['url']);
 		$source['url'] = _exa_dev_attachment_url( $source['url'] );
