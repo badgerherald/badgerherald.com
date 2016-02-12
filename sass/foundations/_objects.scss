@@ -23,7 +23,7 @@
 
 .block-headline a, 
 .block-headline span {
-	color: #fff;
+	color: $truewhite;
 	font-size: 36px;
 	line-height:60px;
 	display: inline;
@@ -34,10 +34,10 @@
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
 	text-rendering: optimizeLegibility;
-	background-color: $hrld-black;
-	-webkit-box-shadow: -10px 0 0 $hrld-black,10px 0 0 $hrld-black;
-	-moz-box-shadow: -10px 0 0 $hrld-black,10px 0 0 $hrld-black;
-	box-shadow: -10px 0 0 $hrld-black,10px 0 0 $hrld-black;
+	background-color: $black;
+	-webkit-box-shadow: -10px 0 0 $black,10px 0 0 $black;
+	-moz-box-shadow: -10px 0 0 $black,10px 0 0 $black;
+	box-shadow: -10px 0 0 $black,10px 0 0 $black;
 }
 
 .block-headline a, 
@@ -66,11 +66,11 @@
 a:hover .block-headline span {
 	transition: all 1s ease;
 	transition: color 0.25s ease;
-	color: $hrld-black;
-	background-color: #fff;
-	-webkit-box-shadow: -10px 0 0 #fff,10px 0 0 #fff;
-	-moz-box-shadow: -10px 0 0 #fff,10px 0 0 #fff;
-	box-shadow: -10px 0 0 #fff,10px 0 0 #fff;
+	color: $black;
+	background-color: $truewhite;
+	-webkit-box-shadow: -10px 0 0 $truewhite,10px 0 0 $truewhite;
+	-moz-box-shadow: -10px 0 0 $truewhite,10px 0 0 $truewhite;
+	box-shadow: -10px 0 0 $truewhite,10px 0 0 $truewhite;
 }
 
 
@@ -174,7 +174,7 @@ a:hover .dotted-overlay-container .dotted-overlay {
 	margin: 24px 0;
 	.sharetag {
 		font-weight: bold;
-		color: $hrld-dark-grey;
+		color: $darkgrey;
 		text-transform: uppercase;
 		float: left;
 		padding-top: 3px;
@@ -186,9 +186,9 @@ a:hover .dotted-overlay-container .dotted-overlay {
 		-webkit-appearance:none;
 		float: left;
 		box-shadow: none !important;
-		background: #fff;
+		background: $truewhite;
 		border-style: solid !important;
-		border-color: #e0eaee !important;
+		border-color: $darkgreyBorder !important;
 		padding: 2px 5px;
 		width: 130px;
 		text-align: center;

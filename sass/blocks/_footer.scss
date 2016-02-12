@@ -1,16 +1,16 @@
 .footer-block {
-	background: $hrld-black;
+	background: $black;
 	margin-bottom:0px;
 	padding: 24px 0;
-	color: #fff;
+	color: $truewhite;
 	p {
 		font-family: $headline;
-		color: #c7d0d5;
+		color: $greyBorder;
 		margin: 0;
 		a {
-			color: #fff;
+			color: $truewhite;
 			&:hover {
-				border-bottom: 1px solid #fff;
+				border-bottom: 1px solid $truewhite;
 			}
 		}
 	} 

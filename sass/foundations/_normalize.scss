@@ -177,7 +177,7 @@ hr {
 
 mark {
     background: #ff0;
-    color: #000;
+    color: $trueblack;
 }
 
 /**
@@ -434,11 +434,11 @@ table {
  */
 ::selection {
   background: #ff5f5f; /* Safari */
-  color: #000;
+  color: $trueblack;
   text-shadow: 0.1em 0.1em rgba(255,255,255,.4);
   }
 ::-moz-selection {
   background: #ff5f5f; /* Firefox */
-  color: #000;
+  color: $trueblack;
   text-shadow: 0.1em 0.1em rgba(0,0,0,.4);
 }

@@ -32,7 +32,7 @@ $WPAdminBarHeight: 32px;
     top: 0 ;
     left: inherit;
     background: white;
-    border-bottom: 1px solid $hrld-dark-grey-border;
+    border-bottom: 1px solid $darkgreyBorder;
     z-index: 9998;
     .search {
         width: 300px;
@@ -75,7 +75,7 @@ $WPAdminBarHeight: 32px;
             right:0;
             width:30px;
             height:30px;
-            color: $textGrey;
+            color: $greyText;
         }
         &:hover:before {
             color: $blue;
@@ -105,7 +105,7 @@ $WPAdminBarHeight: 32px;
                     content: "\00b7"; // middot.
                     position: absolute;
                     right: 0;
-                    color: $textGrey;
+                    color: $greyText;
                 }
             }
         }
@@ -114,9 +114,9 @@ $WPAdminBarHeight: 32px;
         display: none;
         background: white url('./img/icons/nav-toggle.svg') no-repeat center 3px;
         background-size: 24px 9px;
-        border-bottom: 1px solid $hrld-dark-grey-border;  
-        border-left: 1px solid $hrld-dark-grey-border; 
-        border-right: 1px solid $hrld-dark-grey-border; 
+        border-bottom: 1px solid $darkgreyBorder;  
+        border-left: 1px solid $darkgreyBorder; 
+        border-right: 1px solid $darkgreyBorder; 
         width: 42px;
         height: 21px;    
         left: 20px; 

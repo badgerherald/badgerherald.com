@@ -57,7 +57,7 @@
 					background: $white;
 					&.section {
 						background: $blue;
-						color: #fff;
+						color: $truewhite;
 						font-weight:700;
 					}
 				}
@@ -70,7 +70,7 @@
 			font-size: 30px;
 			line-height: 36px;
 			margin: 18px 0;
-			color: $hrld-black;
+			color: $black;
 		}
 		.subhead {
 			margin-bottom: 24px;
@@ -81,14 +81,14 @@
 	main.article-content {
 		.meta {
 			font-family: $headline;
-			color: $hrld-dark-grey;
+			color: $darkgrey;
 			margin-bottom: 24px;
 			.byline a {
-				color: $hrld-dark-grey;
+				color: $darkgrey;
 				font-weight: bold;
 				text-transform: uppercase;
 				&:hover {
-					color: $hrld-black;
+					color: $black;
 				}
 			}
 			.mug-box {
@@ -117,7 +117,7 @@
 			}
 			.hero-caption {
 				font-family: $headline;
-				color: $hrld-dark-grey;
+				color: $darkgrey;
 				padding-bottom: 12px;
 				position: relative;
 				.hrld-media-credit {
@@ -125,18 +125,18 @@
 					line-height: 36px;
 				}
 				a {
-					color: $hrld-dark-grey;
+					color: $darkgrey;
 					font-weight: bold;
 					text-transform: uppercase;
 					&:hover {
-						color: $hrld-black;
+						color: $black;
 					}
 				}
 				br {
 				}
 				&:after {
 					content: " ";
-					border-bottom: 1px solid $hrld-dark-grey;
+					border-bottom: 1px solid $darkgrey;
 					width: 120px;
 					display: block;
 					position: absolute;
@@ -162,10 +162,10 @@
 			position: relative;
 			width: 100%;
 			h3 {
-				background: $hrld-black;
+				background: $black;
 				font-family: $headline;
 				text-transform: uppercase;
-				color: #fff;
+				color: $truewhite;
 				margin: 0;
 				text-align: center;
 				font-size: 14px;
@@ -180,7 +180,7 @@
 				padding: 0px 10px;
 				display: block;
 				font-family: $headline;
-				color: #000;
+				color: $trueblack;
 				font-weight:700;
 				.graph-bar {
 					background: $blue;
@@ -205,13 +205,13 @@
 					color: $black;
 				}
 				.topic {
-					color: $hrld-dark-grey;
+					color: $darkgrey;
 					padding-top: 20px;
 					display: block;
 					font-weight: normal;
 				}
 				&:hover {
-					color: $hrld-blue;
+					color: $blue;
 				}
 			}
 			
@@ -251,7 +251,7 @@
 		header.article-header {
 			width: 860px;
 			.article-title, .article-title h1 {
-				color: #000;
+				color: $trueblack;
 				font-size: 44px;
 				line-height: 48px;
 				margin-top: 24px;
@@ -321,9 +321,9 @@
 		}
 		a {
 			border-radius: 2px;
-			color: #195ea6;
+			color: $darkblue;
 			&:hover {
-				color: $hrld-blue;
+				color: $blue;
 			}
 		}
 		h1 {
@@ -339,17 +339,17 @@
 		}
 		h3 {
 			font-family: $headline;
-			color: $hrld-dark-grey;
+			color: $darkgrey;
 			font-weight: bold;
 			margin: 12px 0 0px;
 			font-size: 24px;
 			display: inline-block;
-			text-shadow: -1px 1px rgba(#fff,.8);
+			text-shadow: -1px 1px rgba($truewhite,.8);
 			// text-transform: uppercase;
 		}
 		h4 {
 			font-family: $body;
-			color: $hrld-black;
+			color: $black;
 			font-weight: bold;
 			font-size: 18px;
 			margin: 12px 0 12px;
@@ -364,7 +364,7 @@
 			}
 		}
 		h5,h6 {
-			color: $hrld-dark-grey;
+			color: $darkgrey;
 			font-weight: normal;
 			font-size: 21px;
 			font-size: 18px;
@@ -404,7 +404,7 @@
 					position: absolute;
 					margin-left: -40px;
 					margin-top: 5px;
-					background: #fff;
+					background: $truewhite;
 					font-size: .8em;
 					padding: 0px 3px;
 					display: block;
@@ -417,9 +417,9 @@
 		}
 		blockquote {
 			font-family: $headline;
-			background: #fff;
+			background: $truewhite;
 			margin-left: 0;
-			border-left: 2px solid $hrld-blue;
+			border-left: 2px solid $blue;
 		}
 		blockquote p {
 			margin-left: 0;
@@ -434,7 +434,7 @@
 				content : "Advertisement";
 				font-family: $headline;
 				text-transform: uppercase;
-				color: $hrld-dark-grey;
+				color: $darkgrey;
 				font-size: 12px;
 				line-height: 14px;
 			}
@@ -445,11 +445,11 @@
 			font-family: $headline;
 			font-size: 15px;
 			line-height: 18px;
-			color: $hrld-black;
+			color: $black;
 			position: relative;
 			padding:9px 10px;
 			display: block;
-			background: #fff;
+			background: $truewhite;
 			.hrld-inline-thumbnail {
 				width: 120px;
 				min-width: 120px;
@@ -474,12 +474,12 @@
 					display: block;
 					text-align: right;
 					visibility: hidden;
-					color: $hrld-black;
+					color: $black;
 					// text-shadow: none;
 				}
 			}
 			.hrld-inline-link-excerpt {
-				color: $hrld-dark-grey;
+				color: $darkgrey;
 				display: block;
 				margin-top: 6px;
 				&:after {
@@ -493,9 +493,9 @@
 			}
 
 			&:hover {
-				background: #fff;
+				background: $truewhite;
 				.hrld-inline-link-title {
-					color: $hrld-blue;
+					color: $blue;
 					&:before {
 						visibility: visible;
 					}
@@ -506,17 +506,17 @@
 			width: 100% !important; // wordpress adds an element style for width;
 			font-size: 16px;
 			line-height: 18px;
-			color: $hrld-dark-grey;
+			color: $darkgrey;
 			margin: 24px 0;
 			.hrld-media-credit-name a {
 				padding-right: 3px;
-				color: $hrld-black;
+				color: $black;
 				font-weight: bold;
 				text-shadow: none;
 				// font-weight: 800;
 				text-transform: uppercase;
 				&:hover {
-					color: $hrld-blue;
+					color: $blue;
 				}
 			}
 			dd {
@@ -572,7 +572,7 @@ q.pullquote {
 		content: "";
 		width: 80px;
 		height: 3px;
-		background: $textGrey;
+		background: $greyText;
 		display: block;
 		position: absolute;
 		bottom: 0;
@@ -594,7 +594,7 @@ q.pullquote {
 		left: 0;
 		margin-top: 18px;
 		margin-bottom: -18px;
-		color: $textGrey;
+		color: $greyText;
 		font-weight: normal;
 		font-size: 18px;
 	}
@@ -773,8 +773,8 @@ q.pullquote {
 		.comment-button {
 			width: 120px;
 			padding:12px 0;
-			color:#fff;
-			background: $hrld-black;
+			color: $truewhite;
+			background: $black;
 			font-weight: bold;
 			float:right;
 			text-align: center;
@@ -790,17 +790,17 @@ q.pullquote {
 				height: 0;
 				border-right: 10px solid transparent;
 				border-bottom: 10px solid transparent;
-				border-top: 10px solid #191919;
-				border-left: 10px solid #191919;
+				border-top: 10px solid $black;
+				border-left: 10px solid $black;
 				position: absolute;
 				bottom: -15px;
 				margin-left: 20px;
 			}
 			&:hover {
-				background: $hrld-blue;
+				background: $blue;
 				&:after {
-				  border-top-color: $hrld-blue;
-				  border-left-color: $hrld-blue;
+				  border-top-color: $blue;
+				  border-left-color: $blue;
 				}
 			}
 		}
@@ -808,13 +808,13 @@ q.pullquote {
 		/* 5.3 - Assorted */
 
 		hr {
-			border-bottom: 1px solid $hrld-dark-grey;
+			border-bottom: 1px solid $darkgrey;
 			width:120px;
 			margin-left:0;
 		}
 		
 		p {
-			color: $hrld-dark-grey;
+			color: $darkgrey;
 			font-size: 14px;
 			font-family: $headline;
 		}
