@@ -14,21 +14,21 @@
 
 .aside-author {
 	padding: 24px 0px;
-	background: #fff;
-	color : $hrld-black;
+	background: $truewhite;
+	color : $black;
 	p {
-		border-top: 1px solid $hrld-dark-grey;
+		border-top: 1px solid $darkgrey;
 		margin:0;
 		a {
 			padding: 12px 20px;
-			color : $hrld-black;
+			color : $black;
 			display: block;
 			font-family: $body;
 			font-weight: 700;
 			font-style: italic;
 			
 			&:hover {
-				color: $hrld-blue;
+				color: $blue;
 			}
 		}
 	}
@@ -46,9 +46,9 @@
 .comments-pane {
 	padding: 24px 20px;
 	margin-right: -80px;
-	background: #fff;
-	color : $hrld-black;
+	background: $truewhite;
+	color : $black;
 	display: none;
-	color: #000;
-	background:#fff;
+	color: $trueblack;
+	background:$truewhite;
 	}

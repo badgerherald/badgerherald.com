@@ -20,24 +20,44 @@ Class Popular_Post_Widget extends AnalyticBridgePopularPostWidget {
 		<div class="popular-post-widget">
 
 			<h3>Popular Posts</h3>
-			<ul>
 
 			<?php
 
 			$popPosts = new AnayticBridgePopularPosts();
 			$popPosts->size = 7;
 			$outof = 0;
-			foreach($popPosts as $r) : ?>
-				<?php if(!$outof) $outof = $r->weighted_pageviews + $r->weighted_pageviews*.1; ?>
-				<li><a href="<?php echo get_permalink($r->post_id); ?>" title="<?php echo get_the_title($r->post_id); ?>" class="">
-					<?php echo get_the_title($r->post_id); ?>
+			$popPosts->query();
+			$popPosts->rewind();
+			$firstPopPost = $popPosts->current();
+			$outof = $firstPopPost->weighted_pageviews + $firstPopPost->weighted_pageviews*.1;
+			if($outof == 0) $outof = 1;
+			$iter = 0;
+
+			$query = new WP_Query( array(
+					"ids" => $popPosts->ids,
+					"posts_per_page" => $popPosts->size
+				)
+			);
+
+		if ( $query->have_posts() ) :
+			while ( $query->have_posts() ) : $query->the_post(); ?>
+
+				<?php $r = $popPosts->current(); ?>
+
+				<a href="<?php the_permalink() ?>">
+					<?php the_post_thumbnail('post-thumbnail'); ?>
+					<span class="topic"><?php echo exa_topic(); ?></span>
+					<h2><span><?php the_title(); ?></span></h2>
+					<div class="clearfix"></div>
+					<div class="graph-bar" style="width:<?php echo (/*(double)$r->weighted_pageviews/ */(double)$outof)*100; ?>%"></div>				
 				</a>
-				<div class="graph-bar" style="width:<?php echo ((double)$r->weighted_pageviews/(double)$outof)*100; ?>%"></div>
-				</li>
 				
-			<?php endforeach; ?>
-	
-			</ul>
+
+				<?php $r = $popPosts->next(); ?>
+		<?php $outof = $outof*.8; endwhile;
+		endif;
+		?>
+
 
 		</div>
 

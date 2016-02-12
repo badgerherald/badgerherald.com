@@ -18,7 +18,15 @@ get_header('');
 
 <?php while ( have_posts() ) : the_post(); ?>
 
-	<?php get_template_part( 'content', 'feature' ); ?>
+	<?php 
+
+	exa_block('mobile-header',null,array(
+		'breakpoints' => array('mobile')
+		));
+	get_template_part( 'inc/blocks/cover-hero' ); 
+
+	?>
+	<?php exa_block( 'content-two-column', null, array('hide-hero' => true) ); ?>
 
 	<?php
 	/**
@@ -29,7 +37,6 @@ get_header('');
 	do_action('exa_below_article');
 
 	?>
-
 
     <div class="clearfix"></div>
 

@@ -29,20 +29,20 @@ body.author {
         font-size: 32px;
         margin: 12px auto;
         font-family: $headline;
-        color: $hrld-black;
+        color: $black;
     }
     .twitter-follow-button {
         margin-bottom: 6px;
     }
     a.author-media-link, a.author-posts-link {
         display: block;
-        color: $hrld-blue;
+        color: $blue;
         margin-bottom: 12px;
         font-family: $headline;
         font-weight: 700;
         font-size: 18px;
         &:hover {
-            color: $hrld-blue-hover;
+            color: $blueLinkHover;
         }
         span.count {
             font-size: 14px;
@@ -51,13 +51,13 @@ body.author {
     .author-detail span {
         display: block;
         line-height: normal;
-        color: $hrld-black;
+        color: $black;
         font-family: $caption;
         margin: 0 auto;
         font-size: 14px;
     }
     .author-position {
-        color: $hrld-dark-grey;
+        color: $darkgrey;
         font-size: 18px;
         font-family: $headline;
         margin: 6px auto 12px;

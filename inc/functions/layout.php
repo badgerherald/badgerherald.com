@@ -122,3 +122,33 @@ function exa_is_video_post($post = null) {
 }
 
 
+/**
+ * Returns a string of the selected layout.
+ * 
+ * @since v0.4
+ * 
+ * @param mixed $post optional post id/object/&c.
+ * @return string layout option (e.g. 'cover','two-column')
+ */
+function exa_layout($post = null) {
+	$post = get_post($post);
+	$layout_terms = wp_get_post_terms($post->ID,'exa_layout');
+	if(empty($layout_terms)) {
+		return;
+	} else {
+		return $layout_terms[0]->slug;
+	}
+}
+
+function exa_hero_media_type($post = null) {
+	if(exa_video_link()) {
+		return "video";
+	} else {
+		$hide_feature = get_post_meta($post, '_exa_hide_featured_image', true);
+		if ( has_post_thumbnail() && !($hide_feature == "true")) {
+			return "image";
+		}
+	}
+	return "";
+}
+

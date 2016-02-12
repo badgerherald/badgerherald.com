@@ -33,34 +33,6 @@
 		</div><!-- .entry-summary -->
 
 	</a>
-    <?php if(hrld_related_has_posts() && !is_home()) : ?>
-
-	<div class="hp-feature-related-posts">
-		
-		<header class="related-header <?php if(!has_post_thumbnail()){ echo 'stream-no-thumbnail'; } ?>">
-			<h3><?php hrld_related_topic($post); ?></h3>
-		</header>
-
-		<ul class="related-post-articles">
-
-		<?php $related_posts = hrld_related_post_ids($post);
-			foreach($related_posts as $related_post) : ?>
-			
-				<li>
-					<a  href="<?php echo get_permalink($related_post); ?>">
-						<?php echo get_the_title($related_post); ?>
-
-					</a>
-				</li>
-
-			<?php endforeach; ?>
-		</ul>
-
-		<div class="clearfix"></div>
-
-	</div><!-- .hp-feature-related-posts -->
-
-	<?php endif; // has related posts ?>
 
 	<div class="clearfix"></div>
 

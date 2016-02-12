@@ -1,7 +1,7 @@
 /* twitter box */
 
 .twitter-box {
-	background: $heraldlightgrey;
+	background: $lightgrey;
 	padding: 12px 20px;
 }
 
@@ -16,7 +16,7 @@
 }
 /* exerpt-more */
 .excerpt-more {
-	color: $heraldblue;
+	color: $blue;
 	background: url('img/icons/arrow-right-blue.png') no-repeat 14px center;
 	padding-right:16px;
 	font-family: $body;
@@ -38,17 +38,17 @@
 	.author-pagination{
 		max-width: 180px;
 		display: inline-block;
-		color: #a6b5bd;
+		color: $greyText;
 	}
 }
 
 .stream-post {
-	color : $heraldblack;
+	color : $black;
 	margin-top: 24px;
 	font-family: $headline;
 	.topic {
 		text-transform: uppercase;
-		color: $hrld-dark-grey;
+		color: $darkgrey;
 		font-size: 14px;
 	}
 	.tiny-avatar {
@@ -67,17 +67,17 @@
 	}
 
 	h1,h2 {
-		color: $hrld-black;
+		color: $black;
 		font-size: 20px;
 		display: inline;
 		a:hover {
-			color: $heraldblue;
+			color: $blue;
 		}
 	}
 	.summary-time-stamp {
 		font-family: $headline;
 		margin-right: 2px;
-		color: $hrld-dark-grey;
+		color: $darkgrey;
 	}
 }
 .fullstream-post, .featured-stream-post, .featured-fullstream-post{
@@ -120,21 +120,21 @@
 	margin-top: 24px;
 }
 .summary-post-link {
-	color: $heraldblack;
+	color: $black;
 	display: block;
 }
 
 .summary-post-link:hover {
-	color: #000;
+	color: $trueblack;
 	h2 {
-		//border-bottom: 1px solid $heraldblack;
+		//border-bottom: 1px solid $black;
 		text-decoration: underline;
 	}
 	.excerpt-more {
 		background: url('img/icons/arrow-right-blue.png') no-repeat 16px center;
 	}
 	.entry-thumbnail img{
-		border-color: $hrld-blue;
+		border-color: $blue;
 	}
 	
 }

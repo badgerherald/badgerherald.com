@@ -15,13 +15,13 @@
 			.hero-caption {
 				font-family: $headline;
 				margin-top: 0px;
-				color: $hrld-dark-grey;
+				color: $darkgrey;
 				.hrld-media-credit {
 					display: block;
 					a {
-						color: $hrld-black;
+						color: $black;
 						&:hover {
-							color: $hrld-blue;
+							color: $blue;
 						}
 					}
 				}
@@ -63,7 +63,7 @@
 						content: '';
 						width: 80px;
 						display: block;
-						border-top: 1px solid $hrld-dark-grey;
+						border-top: 1px solid $darkgrey;
 						padding-bottom:6px;
 					}
 					.hrld-media-credit {
