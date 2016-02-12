@@ -25,7 +25,7 @@
 		max-width: 400px;
 		text-align: right;
 		font-family: $headline;
-		color: $hrld-dark-grey;
+		color: $darkgrey;
 		padding-bottom: 12px;
 		position: relative;
 		.hrld-media-credit {
@@ -33,18 +33,18 @@
 			line-height: 36px;
 		}
 		a {
-			color: $hrld-dark-grey;
+			color: $darkgrey;
 			font-weight: bold;
 			text-transform: uppercase;
 			&:hover {
-				color: $hrld-black;
+				color: $black;
 			}
 		}
 		br {
 		}
 		&:after {
 			content: " ";
-			border-bottom: 1px solid $hrld-dark-grey;
+			border-bottom: 1px solid $darkgrey;
 			width: 120px;
 			display: block;
 			position: absolute;

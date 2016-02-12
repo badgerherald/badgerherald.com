@@ -32,15 +32,15 @@
 	position: relative;
 	list-style-type: none;
 	li.post-in-sidebar {
-		border-bottom: 1px solid $heraldlightgreyonwhite;
-		border-top: 1px solid $heraldlightgreyonwhite;
+		border-bottom: 1px solid $lightgreyOnWhite;
+		border-top: 1px solid $lightgreyOnWhite;
 		margin-top:-1px;
 		width: flex(210,300);
 		padding:12px flex(5,300);
 		a.post-permalink {
-			color: $heraldblack;
+			color: $black;
 			&:hover {
-				color: $heraldblue;
+				color: $blue;
 			}
 			&.trending-story {
 				font-size: 14px;
@@ -66,17 +66,17 @@
 	z-index: 100;
 	display: block;
 	width: flex(210,300);
-	background: #fff;
+	background: $truewhite;
 //  TODO: Figure out a font size;
 	position: absolute;
 	font-size : em(40,32);
-	border-bottom: 2px solid $heraldlightgreyonwhite;
+	border-bottom: 2px solid $lightgreyOnWhite;
 }
 .categories-headline{
 	text-transform: uppercase;
 	margin-top: 24px;
 	margin-bottom: 12px;
-	color: $hrld-black;
+	color: $black;
 	font-size: 18px;
 }
 .categories-list{
@@ -87,32 +87,32 @@
 		padding: 0;
 		margin: 0;
 		a{
-			color: $hrld-dark-grey;
+			color: $darkgrey;
 			font-size: 14px;
 			font-family: $headline;
 			text-transform: uppercase;
 			display: block;
 			padding: 9px 0;
-			border-bottom: 1px solid $hrld-dark-grey;
+			border-bottom: 1px solid $darkgrey;
 			&:hover{
-				color: $hrld-dark-grey-hover;
+				color: $darkgreyHover;
 			}
 		}
 		&:first-child a{
-			border-top: 1px solid $hrld-dark-grey;
+			border-top: 1px solid $darkgrey;
 		}
 	}
 }
 a.to-categories{
 	display: block;
-	color: $hrld-dark-grey;
+	color: $darkgrey;
 	font-family: $headline;
 	text-transform: uppercase;
 	font-weight: 700;
 	margin-top: 18px;
 	font-size: 18px;
 	&:hover{
-		color: $hrld-dark-grey-hover;
+		color: $darkgreyHover;
 		text-decoration: underline;
 	}
 }
@@ -149,7 +149,7 @@ a.to-categories{
 				margin-right: flex(20,506);
 			}
 			&:nth-child(2) a{
-				border-top: 1px $hrld-dark-grey solid;
+				border-top: 1px $darkgrey solid;
 			}
 		}
 	}

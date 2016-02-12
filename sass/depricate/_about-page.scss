@@ -24,13 +24,13 @@
 		display: block;
 		width: 100%;
 		text-shadow: 3px 3px rgba(0,0,0,.4);
-		color: #fff;
+		color: $truewhite;
 	}
 	.about-home-header h1 {
 		font-size: 42px;
 		line-height: 42px;
 		text-transform: uppercase;
-		color: #fff;
+		color: $truewhite;
 	}
 	.about-home-header h2 {
 		font-family: $body;
@@ -51,18 +51,18 @@
 			list-style: none;
 			width: 100%;
 			padding: 0px 0 12px 0; margin:0;
-			border-bottom: 1px solid $hrld-dark-grey;
+			border-bottom: 1px solid $darkgrey;
 			li {
 				display: inline;
 				margin: 0; padding:0;
 				font-size: 16px;
 				a {
-					color: $hrld-black;
+					color: $black;
 					text-transform: uppercase;
 					font-family: $headline;
 					font-weight: 700;
 					&:hover {
-						color: $hrld-blue-hover;
+						color: $blueLinkHover;
 					}
 				}
 				&:before {
@@ -71,7 +71,7 @@
 				}
 				&.active {
 					a {
-						color: $hrld-blue;
+						color: $blue;
 					}
 				}
 				&:first-child:before {
@@ -88,7 +88,7 @@
 			margin-bottom: 0px;
 			text-transform: uppercase;
 			font-size: 15px;
-			color: $hrld-dark-grey;
+			color: $darkgrey;
 		} p {
 			margin-top: 6px;
 		} .extra-br {
@@ -125,21 +125,21 @@
 			display: block;
 			font-size: 12px;
 			line-height: 18px;
-			color: $hrld-dark-grey;
+			color: $darkgrey;
 		}
 	}
 	.staff-container {
 		margin-left: - flex(10,320);
 
 		h3 {
-			border-top: 1px solid $hrld-dark-grey;
+			border-top: 1px solid $darkgrey;
 			margin-left: flex(10,320);
 			margin-bottom: 12px;
 			margin-top: 24px;
 			padding-top: 6px;
 			text-transform: uppercase;
 			font-size: 15px;
-			color: $hrld-dark-grey;
+			color: $darkgrey;
 		} 
 	} .staff-box-twitter-more {
 		height:30px;
@@ -162,7 +162,7 @@
 			text-transform: uppercase;
 			font-family: $headline;
 			position: relative;
-			color:$hrld-dark-grey;
+			color:$darkgrey;
 			z-index: 100;
 			font-weight: bold;
 			font-size: 14px;
@@ -177,13 +177,13 @@
 			left: 0;
 			position: absolute;
 			z-index: 99;
-			color: #fff;
+			color: $truewhite;
 			&.odd {
 				left:inherit;
 				right:0;
 			}
 			.staff-box-more-hover-card {
-				background: $hrld-black;
+				background: $black;
 				margin-top: 36px;
 				padding: 18px 20px;
 				p {
@@ -191,7 +191,7 @@
 					line-height: 21px;
 				}
 				.staff-box-more-description {
-					font-family: $hrld-dark-grey;
+					font-family: $darkgrey;
 					font-style: italic;
 					
 					display: block;
@@ -208,7 +208,7 @@
 				content: " ";
 				pointer-events: none;
 				border-color: rgba(136, 183, 213, 0);
-				border-bottom-color: $hrld-black;
+				border-bottom-color: $black;
 				border-width: 15px;
 
 
@@ -227,7 +227,7 @@
 	.staff-writers {
 		font-family: $headline;
 		font-size: 15px;
-		color: $hrld-dark-grey;
+		color: $darkgrey;
 		font-weight: bold;
 		a {
 			
@@ -244,8 +244,8 @@
 		}
 	.get-involved {
 
-		background: $hrld-black;
-		color: #fff;
+		background: $black;
+		color: $truewhite;
 		margin-bottom: 24px;
 		padding:20px;
 
@@ -256,9 +256,9 @@
 			display: inline-block;
 			margin-top: 12px;
 			font-family: $headline;
-			color: #fff;
+			color: $truewhite;
 			&:hover {
-				border-color: #fff;
+				border-color: $truewhite;
 			}
 		} h3 {
 			border-bottom: 1px solid rgba(255,255,255,.2);
@@ -266,10 +266,10 @@
 		}
 		.involved-tag {
 			font-size: 18px;
-			color: #c7d0d5;
+			color: $greyBorder;
 			font-style: italic;
 		} .involved-deadline {
-			background: $hrld-blue;
+			background: $blue;
 			padding: 6px 20px;
 			display: inline-block;
 			margin-top: 12px;
@@ -327,7 +327,7 @@
 			font-size: 50px;
 			line-height: 42px;
 			text-transform: uppercase;
-			color: #fff;
+			color: $truewhite;
 		}
 
 
@@ -409,7 +409,7 @@
 				position: absolute;
 				left: 0;
 				padding: 18px 0 0px 0; margin:0px;
-				border-bottom: 1px solid $hrld-dark-grey;
+				border-bottom: 1px solid $darkgrey;
 				z-index: 999;
 				li {
 					display: block;
@@ -417,7 +417,7 @@
 						padding: 6px 0;
 						display: block;
 					}
-					border-top: 1px solid $hrld-dark-grey;
+					border-top: 1px solid $darkgrey;
 					&:before {
 						content: "";
 						padding: 0px
