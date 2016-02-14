@@ -94,13 +94,10 @@ a:hover .block-headline span {
 //
 // Note: do not reset background: after using this mixin. Use background-color:
 @mixin dotted($color) {
-	background-image: url('data:image/svg+xml;utf8, \a'
-		'<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="4" height="4">\a'
-			'<rect width="1" height="1" style="fill:#{$color}" />\a'
-			'<rect x="2" y="2" width="1" height="1" style="fill:#{$color}" />\a'
-		'</svg>\a'
-		);
+	background-image: url("./img/svg/dotted.svg");
 }
+
+
 
 .dotted-overlay-container {
 	display: inline;
@@ -147,14 +144,7 @@ a:hover .dotted-overlay-container .dotted-overlay {
  */
 
 @mixin banterlogo {
-	background-image: url('data:image/svg+xml;utf8,\a'
-		'<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="64" height="64">\a'
-			'<rect width="64" height="64" style="fill:#{$white}" stroke-width="10" stroke="#{$red}" />\a'
-			'<polygon points="0,18 32,32 24,0 0,0" style="fill:#{$red}" />\a'
-			'<polygon points="64,6 64,45 32,32" style="fill:#{$red}" />\a'
-			'<polygon points="40,64 0,64 0,58 32,32" style="fill:#{$red}" />\a'
-		'</svg>\a'
-		);
+	background-image: url('./img/svg/uwbanter.svg');
 	background-size: cover;
 }
 
