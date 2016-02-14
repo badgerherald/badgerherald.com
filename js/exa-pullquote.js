@@ -51,11 +51,6 @@
                                                 {text: 'Left', value: 'alignleft'},
                                                 {text: 'Right', value: 'alignright'}
                                             ]
-                                        },
-                                        {
-                                            type: 'checkbox',
-                                            name: 'quotation',
-                                            label: 'Quotemarks?'
                                         }
 
 

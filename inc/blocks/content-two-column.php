@@ -9,34 +9,15 @@ if(!$block) {
 
 ?>
 
+<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
+
+<?php 
+exa_block('headline');
+?>
+
 <div class="block article-display-block showcase-block">
-	
 	<div class="wrapper">
 	
-		<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-
-			<?php 
-			/**
-			 * Header
-			 */ 
-			?>
-			<header class="article-header">
-
-				<ul class="topics">
-					<li><a href="<?php echo exa_section_permalink() ?>" class="section"><?php echo exa_section(); ?></a></li>
-					<li><span><?php echo exa_topic(); ?></span></li>
-				</ul>
-	
-				<div class="clearfix"></div>
-					
-				<h1 class="title"><?php the_title() ?></h1>
-				
-				<?php if( hrld_has_subhead(get_the_ID()) ) : ?>
-					<h2 class="subhead"><?php hrld_the_subhead(); ?></h2>
-				<?php endif; ?>
-
-			</header>
-
 			<main class="article-content">
 
 				<div class="meta">
@@ -167,8 +148,11 @@ if(!$block) {
 
 
 
-		</article><!-- #post-xx -->
+		
 
 	</div><!-- .wrapper -->
 
 </div><!-- .block -->
+
+
+</article><!-- #post-xx -->

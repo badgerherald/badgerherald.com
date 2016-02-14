@@ -17,11 +17,33 @@ global $block;
  */
 function exa_block($name, $type = null, $args = null) {
 
+    // store current block
+    $curBlock = $GLOBALS['block'];
+
     $block = new Block($name,$type,$args);
     $GLOBALS['block'] = $block;
     get_template_part('./inc/blocks/' . $name,$type);
-    $GLOBALS['block'] = null;
 
+    // restore current block;
+    $GLOBALS['block'] = $block;
+
+}
+
+/**
+ * Filter banter block classes
+ */
+function exa_banter_block_classes($classes,$block) {
+    global $post;
+    if($block->name == "headline" && hexa_is_banter()) {
+        $classes .= " banter";
+    }
+    return $classes;
+}
+add_filter("exa_block_classes","exa_banter_block_classes",10,2);
+
+function hexa_is_banter($post = null) {
+    $post = get_post($post);
+    return in_category("banter",$post);
 }
 
 Class Block {
@@ -67,6 +89,8 @@ Class Block {
             }
         }
         
+        $str = apply_filters("exa_block_classes",$str,$this);
+
         return $str;
 
     }
