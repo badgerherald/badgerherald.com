@@ -16,45 +16,42 @@ $body:		  'Noto Serif', Oalatino, Georgia, Serif;
 $caption: 	open sans, helvetica, arial, sans-serif;
 $icon:      exa;
 
-/*  Colors */
-$heraldblue:				#3c74b9;
-$heraldbluehover:			#3a97f7;
-$heraldlightgrey:			#f5f2f2;
-$heraldlightgreyonwhite:	#ededed;
-$heralddarkgrey: 			#2c2c2c;
-$heraldblack:				#191919;
 
-/* v0.3 colors — preferred use. */
+/** v0.3.5 colors — preferred use. 
+ * (modifier)colorObjectOnBackgroundcolorAction 
+ * lightblueLinkOnBrownHover 
+ */
+
+//true colors
+$trueblack: #000;
+$truewhite: #fff;
+$trueblue: #0000ff;
+$truered: #ff0000;
+$truegreen:  #00ff00;
+
+//blues
 $blue: #3c74b9;
+$blueLinkHover: #3a97f7;
+$darkblue: #195ea6;
+
+//greys
 $grey: #eff4f6;
 $greyBorder: #c7d0d5;
-$textGrey: #a6b5bd;
+$greyText: #a6b5bd;
 $greyBorderOnBlack: #262626;
-$textGreyOnBlack: #5c5c5c;
+$greyTextOnBlack: #5c5c5c;
+$lightgrey: #f5f2f2;
+$lightgreyOnWhite: #ededed;
+$darkgrey: #2c2c2c;
+$darkgreyBorder: #e0eaee;
+$darkgreyHover: #7e8c93;
+
 $black: #191919;
-$white: #fff;
+$white: #ffffff;
 $red: #c81212;
 
 
-/* logo blue */
-//$hrld-blue:					#3c74b9;
-$hrld-blue:                 #2075d0;
-$hrld-blue-hover:			#3a97f7;
-/* this is the grey of the background */
-$hrld-light-grey:			#eff4f6;
 
-$hrld-dark-grey-border:     #e0eaee;
-
-/* grey for text */
-$hrld-dark-grey: 			#8ea1aa;
-
-/* hover color for hrld-dark-grey */
-$hrld-dark-grey-hover:		#7e8c93;
-
-$hrld-black:				#191919;
-
-/* this is dark grey on a black background */
-$hrld-black-dark-grey:		#414141;
 
 @mixin transition($prop, $time, $fn, $delay:0ms) {
     -webkit-transition: $prop $time $fn $delay;

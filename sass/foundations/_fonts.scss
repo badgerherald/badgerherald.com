@@ -17,9 +17,9 @@ p {
 
 a {
 	text-decoration: 	none;
-	color:				$hrld-blue;
+	color:				$blue;
 	&:hover {
-		color: $hrld-blue-hover;
+		color: $blueLinkHover;
 	}
 }
 
@@ -35,7 +35,7 @@ h1 {
 	margin: 0 0 6px 0;
 	padding: 0;
 	a {
-		color: $heraldblack;
+		color: $black;
 	}
 }
 
@@ -46,7 +46,7 @@ h2 {
 	margin: 0 0 -6px 0;
 	padding:0;
 	a {
-		color: $heraldblack;
+		color: $black;
 	}
 	&.author-title{
 		padding-top: 6px;
@@ -58,5 +58,5 @@ h3 {
 }
 
 hr {
-	border: 1px solid $heraldlightgreyonwhite;
+	border: 1px solid $blueLinkHover;
 }

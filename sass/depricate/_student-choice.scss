@@ -12,7 +12,7 @@
 		position: relative;
 	}
 	.student-choice-email {
-		background: $hrld-black;
+		background: $black;
 		padding: 20px 0px;
 		margin-bottom: 48px;
 	}
@@ -32,7 +32,7 @@
 }
 
 .student-choice-content.black #primary {
-	background: $hrld-black;
+	background: $black;
 	margin-top: 0;
 }
 
@@ -76,7 +76,7 @@
 		}
 	}
 	.answer-box{
-		border: 1px solid $hrld-dark-grey;
+		border: 1px solid $darkgrey;
 		border-top: none;
 	}
 	.question-title{
@@ -118,7 +118,7 @@
 		padding: 10px;
 		&:hover{
 			cursor: pointer;
-			background: $hrld-dark-grey;
+			background: $darkgrey;
 		}
 	}
 	li.inactive input[type=radio] + label{
@@ -127,10 +127,10 @@
 	input[type=radio]:checked + label{
 		opacity: 1;
 		background: #ae1023;
-		color: $hrld-light-grey;
+		color: $lightgrey;
 	}
 	input.email-input{
-		border: 2px solid $hrld-dark-grey;;
+		border: 2px solid $darkgrey;;
 		height: 50px;
 		border-radius: 5px;
 		padding: 0 10px;
@@ -140,20 +140,20 @@
 	}
 	.email-input-label{
 		font-family: $headline;
-		color: #fff;
+		color: $truewhite;
 		padding-bottom: 6px;
 		display: block;
 		font-size: 20px;
 	}
 	.quiz-submit{
-		background: $hrld-blue;
+		background: $blue;
 		margin-top: 24px;
 		display: block;
 		text-align: center;
 		height: 50px;
 		padding: 0 10px;
 		line-height: 50px;
-		color: $hrld-light-grey;
+		color: $lightgrey;
 		font-family: $headline;
 		text-transform: uppercase;
 		font-weight: 700;
@@ -167,7 +167,7 @@
 			outline: 0;
 		}
 		&:hover{
-			background-color: $hrld-blue-hover;
+			background-color: $blueLinkHover;
 		}
 	}
 	
@@ -177,10 +177,10 @@
 	text-align: center;
 	max-width: 620px;
 	margin: 0 auto;
-	color: $hrld-blue;
+	color: $blue;
 	padding: 72px 10px;
-	background: $hrld-black;
-	border: 1px solid $hrld-dark-grey;
+	background: $black;
+	border: 1px solid $darkgrey;
 	margin-bottom: 24px;
 }
 
@@ -207,7 +207,7 @@ p.email-err{
 		font-weight: 400;
 		font-size: 16px;
 		font-family: $body;
-		color: $hrld-dark-grey;
+		color: $darkgrey;
 		margin: 0;
 	}
 	.social-buttons{

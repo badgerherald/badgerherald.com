@@ -13,11 +13,11 @@
 	#slider {
 		@include clearfix();
 		width: 100%;
-		background: $hrld-black;
-		color: $hrld-light-grey;
+		background: $black;
+		color: $lightgrey;
 		margin-bottom: 12px;
 		a {
-			color: #fff;
+			color: $truewhite;
 		}
 		.slider-content {
 			float: left;
@@ -53,10 +53,10 @@
 				line-height: 18px;
 				margin-bottom: 6px;
 				a {
-					color: $hrld-dark-grey;
+					color: $darkgrey;
 					font-weight: bold;
 					&:hover {
-						color: #fff;
+						color: $truewhite;
 					}
 				}
 			}
@@ -73,7 +73,7 @@
 				height: 12px;
 				float: left;
 				&.active {
-					background: $hrld-blue;
+					background: $blue;
 				}
 				&:first-child {
 					width: flex(75,300);
@@ -99,9 +99,9 @@
 			padding-bottom: 24px;
 			position: relative;
 			.bubble-box {
-				background: $hrld-black;
+				background: $black;
 				margin-bottom: 78px;
-				color: $hrld-light-grey;
+				color: $lightgrey;
 				font-family: 'PT Sans';
 				position: relative;
 				h3 {
@@ -112,7 +112,7 @@
 				} p {
 					padding:6px 20px 24px;
 					margin: 0;
-					color: $hrld-dark-grey;
+					color: $darkgrey;
 					font-family: $headline;
 					font-style: italic;
 					font-size: 17px;
@@ -123,8 +123,8 @@
 					width: 0; height: 0; 
 					border-right: 30px solid transparent;
 					border-bottom: 30px solid transparent;
-					border-top: 30px solid $hrld-black;
-					border-left: 30px solid $hrld-black;
+					border-top: 30px solid $black;
+					border-left: 30px solid $black;
 					position: absolute;
 					bottom:-60px;
 					margin-left: 80px;
@@ -146,15 +146,15 @@
 					font-weight: 700;
 					&.more {
 						/* TODO: Add Icon */
-						color: $hrld-black;
+						color: $black;
 						&:hover {
-							color: $hrld-blue;
+							color: $blue;
 						}
 					} &.submit {
 						/* TODO: Add Icon */
-						color: $hrld-dark-grey;
+						color: $darkgrey;
 						&:hover {
-							color: $hrld-dark-grey-hover;
+							color: $darkgreyHover;
 						}
 					}
 				}
@@ -190,8 +190,8 @@
 	h2 {
 		position: absolute;
 		bottom:0;
-		background: $hrld-black;
-		color: #fff;
+		background: $black;
+		color: $truewhite;
 		font-size: 24px;
 		text-transform: uppercase;
 		padding: 12px 20px;
@@ -207,7 +207,7 @@
 .related-header {
 	font-size: 14px;
 	text-transform: uppercase;
-	color: $hrld-dark-grey;
+	color: $darkgrey;
 	h3 {
 		margin: 0;
 		padding: 0;
@@ -224,9 +224,9 @@ ul.related-post-articles {
 		font-size: 17px;
 		a {
 			font-weight: bold;
-			color: $hrld-black;
+			color: $black;
 			&:hover{
-				color: $hrld-blue;
+				color: $blue;
 			}
 		}
 	}
@@ -242,7 +242,7 @@ ul.list-stories {
 	font-size: 17px;
 	.topic {
 		text-transform: uppercase;
-		color: $hrld-dark-grey;
+		color: $darkgrey;
 		font-size: 14px;
 	}
 	.summary-time-stamp{
@@ -252,9 +252,9 @@ ul.list-stories {
 		margin:3px 0 9px 0;
 		padding:0;
 		a {
-			color: $hrld-black;
+			color: $black;
 			&:hover {
-				color: $hrld-blue;
+				color: $blue;
 			}
 		}
 	}
@@ -293,11 +293,11 @@ ul.featured-stream-list{
 	text-transform: uppercase;
 	font-size: 20px;
 	a {
-		color: $hrld-dark-grey;
+		color: $darkgrey;
 		background: url("img/icons/arrow-right-blue.png") no-repeat right center;
 		padding-right: 16px;
 		&:hover{
-			color: $hrld-dark-grey-hover;
+			color: $darkgreyHover;
 		}
 	}
 }
@@ -426,7 +426,7 @@ ul.featured-stream-list{
 			width: 180px;
 			margin-left: 20px;
 			height: 576px;
-            background: #fff;
+            background: $truewhite;
             padding: 12px 20px;
             h3,ul {
                     margin: 0; padding:0;
@@ -444,10 +444,10 @@ ul.featured-stream-list{
                             margin-bottom: 12px;
                             line-height: 18px;
                             a {
-                                    color: $hrld-black;
+                                    color: $black;
                                     font-weight: bold;
                                     &:hover {
-                                            color: $hrld-blue;
+                                            color: $blue;
                                     }
                             }
                     }
@@ -457,27 +457,27 @@ ul.featured-stream-list{
 			float:left;
 			display: block;
 			margin-left: 20px;
-			background: #fff;
+			background: $truewhite;
 			height: 600px;
 			h3 {
 				margin-top: 0;
 				margin-bottom: 0px;
 				padding:9px 20px;
-				background: black;
-				color: #fff;
+				background: $black;
+				color: $truewhite;
 				text-align: center;
 				font-family: $headline;
 				text-transform: uppercase;
 			} 
 			a.hp-most-recent {
-				color: #000;
+				color: $trueblack;
 				display: block;
 				padding: 12px 20px 12px;
 				font-family: $headline;
 				font-weight: bold;
-				border-bottom: 1px solid $hrld-dark-grey;
+				border-bottom: 1px solid $darkgrey;
 				time {
-					color: $hrld-blue;
+					color: $blue;
 					display: block;
 					width: 100%;
 					text-transform: uppercase;
@@ -485,9 +485,9 @@ ul.featured-stream-list{
 					font-weight: normal;
 				}
 				&:hover {
-					color: $hrld-blue;
+					color: $blue;
 					time {
-						color: $hrld-black;
+						color: $black;
 					}
 				}
 			} 

@@ -1,6 +1,6 @@
 
 .shoutout-bubble {
-	background: $hrld-black;
+	background: $black;
 	width: 100%;
 	position: relative;
 	textarea {
@@ -10,13 +10,13 @@
 		font-size: 18px;
 		font-family: $body;
 		font-style: italic;
-		color:#fff;
+		color:$truewhite;
 		padding: 24px 20px;
 		min-height: 200px;
 	}
 	h1 {
 		font-size: 60px;
-		color: #fff;
+		color: $truewhite;
 		line-height: 66px;
 		margin: 48px 80px;
 		text-transform: uppercase;
@@ -25,7 +25,7 @@
 		padding: 12px 0 6px;
 		margin: 0 20px;
 		text-transform: uppercase;
-		color: #fff;
+		color: $truewhite;
 		border-bottom: 1px solid #535353;
 		&.error {
 			color: red;
@@ -33,7 +33,7 @@
 	}
 	p {
 		text-transform: none;
-		color: $hrld-dark-grey;
+		color: $darkgrey;
 		font-style:italic;
 		margin:60px 0;
 	}
@@ -46,7 +46,7 @@
 		height: 0;
 		border-style: solid;
 		border-width: 0 60px 60px 0;
-		border-color: transparent $hrld-black transparent transparent;
+		border-color: transparent black transparent transparent;
 		position:absolute;
 	}
 	&:after {
@@ -62,12 +62,12 @@
 		display: block;
 	}
 	.so-button {
-		background: $hrld-blue;
+		background: $blue;
 		border: none;
 		position: absolute;
 		right: 20px;
 		bottom: 0px;
-		color: #fff;
+		color: $truewhite;
 		font-family: $headline;
 		text-transform: uppercase;
 		font-weight: 300;
@@ -100,13 +100,13 @@
 @include breakpoint(tablet) {
 
 	.shoutout-bubble {
-		background: $hrld-black;
+		background: $black;
 		width: 100%;
 		textarea {
 			background: transparent;
 			border: none;
 			font-size: 40px;
-			color:#fff;
+			color:$truewhite;
 			min-height: 400px;
 			padding: 24px 80px;
 			&:focus {
@@ -121,7 +121,7 @@
 
 .shoutout-container {
 	margin-left:30px;
-	background: $hrld-black;
+	background: $black;
 	position:relative;
 	margin-bottom:24px;
 	clear:left;
@@ -205,7 +205,7 @@
 .shoutout-add-header {
 	background: #000 url('./img/shoutouts/shoutout-header-left.png') no-repeat center left;
 	height: 120px;
-	color: #fff;
+	color: $truewhite;
 	position: relative;
 }
 
@@ -228,14 +228,14 @@
 	h2 {
 		text-transform: uppercase;
 		font-size: 14px;
-		color: $hrld-dark-grey;
+		color: $darkgrey;
 		margin: 12px 0 6px;
 	}
 }
 
 #shoutout-form {
 	width: 100%;
-	background: $hrld-black;
+	background: $black;
 	position: relative;
 	&:after {
 		content: "";
@@ -243,8 +243,8 @@
 		width: 0; height: 0; 
 		border-right: 30px solid transparent;
 		border-bottom: 30px solid transparent;
-		border-top: 30px solid $hrld-black;
-		border-left: 30px solid $hrld-black;
+		border-top: 30px solid black;
+		border-left: 30px solid black;
 		position: absolute;
 		bottom:-60px;
 		margin-left: 80px;
@@ -256,7 +256,7 @@
 	height: 70px;
 	background: transparent;
 	border: none;
-	color:#fff;
+	color:$truewhite;
 	margin-top: 6px;
 	outline: none;
 	font-size: em(18,16);
@@ -264,12 +264,12 @@
 }
 
 .so-button {
-	background: $heraldblue;
+	background: $blue;
 	border: none;
 	position: absolute;
 	right: 0px;
 	bottom: -42px;
-	color: #fff;
+	color: $truewhite;
 	font-family: $headline;
 	text-transform: uppercase;
 	font-weight: 300;
@@ -289,7 +289,7 @@
 .so-error {
 	background: #d73d3d;
 	padding: 6px 20px;
-	color: #fff;
+	color: $truewhite;
 	font-family: $caption;
 }
 

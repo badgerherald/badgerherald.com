@@ -23,7 +23,7 @@
 
 .block-headline a, 
 .block-headline span {
-	color: #fff;
+	color: $truewhite;
 	font-size: 36px;
 	line-height:60px;
 	display: inline;
@@ -34,15 +34,15 @@
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
 	text-rendering: optimizeLegibility;
-	background-color: $hrld-black;
-	-webkit-box-shadow: -10px 0 0 $hrld-black,10px 0 0 $hrld-black;
-	-moz-box-shadow: -10px 0 0 $hrld-black,10px 0 0 $hrld-black;
-	box-shadow: -10px 0 0 $hrld-black,10px 0 0 $hrld-black;
+	background-color: $black;
+	-webkit-box-shadow: -10px 0 0 $black,10px 0 0 $black;
+	-moz-box-shadow: -10px 0 0 $black,10px 0 0 $black;
+	box-shadow: -10px 0 0 $black,10px 0 0 $black;
 }
 
 .block-headline a, 
 .block-headline span {
-	font-size: 18px;
+	font-size: 20px;
 	line-height: 30px;
 	padding: 2px 0 1px;
 }
@@ -66,11 +66,11 @@
 a:hover .block-headline span {
 	transition: all 1s ease;
 	transition: color 0.25s ease;
-	color: $hrld-black;
-	background-color: #fff;
-	-webkit-box-shadow: -10px 0 0 #fff,10px 0 0 #fff;
-	-moz-box-shadow: -10px 0 0 #fff,10px 0 0 #fff;
-	box-shadow: -10px 0 0 #fff,10px 0 0 #fff;
+	color: $black;
+	background-color: $truewhite;
+	-webkit-box-shadow: -10px 0 0 $truewhite,10px 0 0 $truewhite;
+	-moz-box-shadow: -10px 0 0 $truewhite,10px 0 0 $truewhite;
+	box-shadow: -10px 0 0 $truewhite,10px 0 0 $truewhite;
 }
 
 
@@ -94,13 +94,10 @@ a:hover .block-headline span {
 //
 // Note: do not reset background: after using this mixin. Use background-color:
 @mixin dotted($color) {
-	background-image: url('data:image/svg+xml;utf8, \a'
-		'<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="4" height="4">\a'
-			'<rect width="1" height="1" style="fill:#{$color}" />\a'
-			'<rect x="2" y="2" width="1" height="1" style="fill:#{$color}" />\a'
-		'</svg>\a'
-		);
+	background-image: url("./img/svg/dotted.svg");
 }
+
+
 
 .dotted-overlay-container {
 	display: inline;
@@ -147,14 +144,7 @@ a:hover .dotted-overlay-container .dotted-overlay {
  */
 
 @mixin banterlogo {
-	background-image: url('data:image/svg+xml;utf8,\a'
-		'<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="64" height="64">\a'
-			'<rect width="64" height="64" style="fill:#{$white}" stroke-width="10" stroke="#{$red}" />\a'
-			'<polygon points="0,18 32,32 24,0 0,0" style="fill:#{$red}" />\a'
-			'<polygon points="64,6 64,45 32,32" style="fill:#{$red}" />\a'
-			'<polygon points="40,64 0,64 0,58 32,32" style="fill:#{$red}" />\a'
-		'</svg>\a'
-		);
+	background-image: url('./img/svg/uwbanter.svg');
 	background-size: cover;
 }
 
@@ -174,7 +164,7 @@ a:hover .dotted-overlay-container .dotted-overlay {
 	margin: 24px 0;
 	.sharetag {
 		font-weight: bold;
-		color: $hrld-dark-grey;
+		color: $darkgrey;
 		text-transform: uppercase;
 		float: left;
 		padding-top: 3px;
@@ -186,9 +176,9 @@ a:hover .dotted-overlay-container .dotted-overlay {
 		-webkit-appearance:none;
 		float: left;
 		box-shadow: none !important;
-		background: #fff;
+		background: $truewhite;
 		border-style: solid !important;
-		border-color: #e0eaee !important;
+		border-color: $darkgreyBorder !important;
 		padding: 2px 5px;
 		width: 130px;
 		text-align: center;

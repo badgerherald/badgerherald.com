@@ -20,7 +20,7 @@ function exa_hero_media_credit_tag() {
 
 	$credit = get_hrld_media_credit($thumb_id);
 	$excerpt = $thumb_image->post_excerpt;
-
+	$html_text = "";
 	if($credit != "") :
 
 	 	if(get_user_by('login', $credit)){
@@ -38,7 +38,9 @@ function exa_hero_media_credit_tag() {
 
 	endif;
 
+
 	return $html_text;
+
 	
 }
 
@@ -63,7 +65,14 @@ function exa_hero_caption_text() {
 }
 
 function exa_hero_caption() {
-	echo "<p class='hero-caption'>" . exa_hero_caption_text() . exa_hero_media_credit_tag() ."</p>";
+
+	$caption = exa_hero_caption_text();
+
+	if( !empty($caption) ) {
+		echo "<p class='hero-caption'>" . exa_hero_caption_text() . "<br/>" . exa_hero_media_credit_tag() ."</p>";
+	} else {
+		echo "<p class='hero-caption'>" . exa_hero_media_credit_tag() ."</p>";
+	}
 }
 
 /**
@@ -80,6 +89,12 @@ function exa_hero_caption() {
 function exa_mug($user_id, $size = 'square', $classes = '') {
 
 	global $wpua_functions;
+
+	if(!function_exists('has_wp_user_avatar')) {
+		echo "<img src='http://placekitten.com/200/100' classes='mug $classes' />";
+		return;
+	}
+	
 	if(!has_wp_user_avatar($user_id)) {
 		$src = $wpua_functions->wpua_default_image($size);
 		$src = $src['src'];

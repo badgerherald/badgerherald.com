@@ -68,14 +68,13 @@ include_once('inc/functions/embeds.php');
 
 include_once('inc/functions/taxonomies.php');
 
-include_once('inc/functions/related-posts.php');
-
 include_once('inc/functions/layout.php');
 
 include_once('inc/functions/authors.php');
 
 include_once('inc/functions/popular-post-widget.php');
 
+include_once('inc/functions/pullquotes.php');
 /**
  * Social links
  * 
@@ -174,7 +173,6 @@ add_filter( 'wp_insert_post_data', 'hrld_default_comments_on' );
  * ================================================================================================
  */
 
-
 /**
  * Holds static global information about the theme and page loading.
  */
@@ -213,6 +211,7 @@ class Exa {
 	public static function shownIds() {
 		return self::$shownIds;
 	}
+
 }
 
 /**
@@ -247,14 +246,14 @@ function exa_setup() {
 	/* This theme uses a custom image size for featured images, displayed on
 	 * "standard" posts and pages. */
 	add_theme_support( 'post-thumbnails' );
-	set_post_thumbnail_size( 690, 450, true );
+	set_post_thumbnail_size( 860, 470, true );
 
 	/* Register custom image size for image post formats. */
-	add_image_size( 'image-post-size', 860, 470, true );
+	add_image_size( 'cover', 1290, 600, true );
+	add_image_size( 'feature', 860, 470, true );
 	add_image_size( 'small-thumbnail', 345, 225, true );
 	add_image_size( 'large-thumbnail', 690, 450, true );
 
-	
 	add_image_size( 'square', 160, 160, true );
 
 	/* For Mugs */
@@ -274,6 +273,14 @@ function exa_setup() {
 add_action( 'after_setup_theme', 'exa_setup' );
 
 
+
+function __depricated_image_sizes($image, $attachment_id, $size, $icon) {
+	if(!$image && $size=="cover") {
+		return wp_get_attachment_image_src('feature');
+	}
+		return $image;
+}
+apply_filters('wp_get_attachment_image_src',10,4);
 /**
  * Enqueues scripts and styles for front end.
  *
@@ -910,6 +917,22 @@ function exa_section() {
 }
 
 /**
+ * Returns a url for the section.
+ * 
+ * @since v0.4
+ * @return string section.
+ */
+function exa_section_permalink() {
+	global $post;
+
+	$section = get_the_category();
+	if( $section ) {
+		return get_term_link($section[0]->term_id,"category");
+	}
+	return "";
+}
+
+/**
  * Prints open graph tags to the head of wordpress pages.
  *
  * @since 0.1
@@ -1274,6 +1297,17 @@ function hrld_remove_pinned_author_posts($query){
 add_filter('pre_get_posts', 'hrld_remove_pinned_author_posts', 1);
 
 
+function banter_post_count($query) {
+	if ( !is_admin() && $query->is_main_query() ) {
+
+		if ($query->is_category && $query->query_vars["category_name"] == "banter" ) {
+			$query->set('posts_per_page', (2*3) * 3);
+		}
+	}
+	return $query;
+}
+add_action('pre_get_posts','banter_post_count');
+
 /**
  * Unhide the kitchen sink for all users all the time.
  * 
@@ -1485,7 +1519,7 @@ function exa_post_gallery($output = '', $attr) {
         } else {
             $image_output = wp_get_attachment_link( $id, $atts['size'], true, false );
         }
-        $image_output = wp_get_attachment_image( $id, 'image-post-size', false );
+        $image_output = wp_get_attachment_image( $id, 'feature', false );
         $image_meta  = wp_get_attachment_metadata( $id );
  
         $orientation = '';

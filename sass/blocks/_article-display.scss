@@ -24,7 +24,6 @@
  *  - much of the style in the `.article-text` style method is duplicated
  *    in the editor styles.
  *
- *
  * ## Contents:
  *
  *  1.0 Hero styles.
@@ -41,126 +40,147 @@
  */
 
 .article-display-block {
+	
 
-	/* Header phone styles */
-
-	.article-title, .article-title h1 {
-		font-size: 30px;
-		line-height: 36px;
-		margin: 18px 0;
-		color: $hrld-black;
-	}
-
-	.article-subhead {
-		margin-bottom: 24px;
-		font-weight: 400;
-	}
-
-	.article-header {
-
-		.article-section {
-			display: inline-block;
+	main.article-content {
+		.meta {
 			font-family: $headline;
-			background: $hrld-blue;
-			color: #fff;
-			font-weight:700;
-			bottom:-12px;
-			text-transform: uppercase;
-			padding: 6px 12px;
-			font-weight:12px;
-			margin-left:-80px;
-			text-align: center;
-			position:relative;
-			&:after {
-				content: ' ';
-				width:0;
-				height:0;
-				position:absolute;
-				left:0;
-				bottom: -6px;
-				//border-style: solid;
-				//border-width: 6px 40px 0 40px;
-				//border-color: $hrld-blue transparent transparent transparent ;
-			}
-			&:hover {
-				background: $hrld-black;
-				&:after {
-					border-color: $hrld-black transparent transparent transparent ;
-				}
-			}
-		}
-
-		.article-meta {
-			font-family: $headline;
-			color: $hrld-dark-grey;
-			margin-bottom: 18px;
-			a.author-link {
-				color: $hrld-dark-grey;
+			color: $darkgrey;
+			margin-bottom: 24px;
+			.byline a {
+				color: $darkgrey;
 				font-weight: bold;
 				text-transform: uppercase;
 				&:hover {
-					color: $hrld-black;
+					color: $black;
 				}
 			}
-			.article-mug-box {
-				width:40px;
+			.mug-box {
+				width: 40px;
 				margin-right: 10px;
 				margin-top: -3px;
 				position: relative;
-				float:left;
+				float: left;
 				img {
 					width: 100%;
 				}
 			}
+			.facebook,.twitter {
+				float: right;
+				padding-left: 10px;
+				position: relative;
+			}
+			.facebook {
+				top: -1px;
+			}
+		}
+		.hero {
+			img {
+				width: 100%;
+				height: auto;
+			}
+			.hero-caption {
+				font-family: $headline;
+				color: $darkgrey;
+				padding-bottom: 12px;
+				position: relative;
+				.hrld-media-credit {
+					display: inline-block;
+					line-height: 36px;
+				}
+				a {
+					color: $darkgrey;
+					font-weight: bold;
+					text-transform: uppercase;
+					&:hover {
+						color: $black;
+					}
+				}
+				br {
+				}
+				&:after {
+					content: " ";
+					border-bottom: 1px solid $darkgrey;
+					width: 120px;
+					display: block;
+					position: absolute;
+					left:0;
+					bottom:0;
+					height: 1px;
+				}
+			}
 		}
 	}
-}
 
-@include breakpoint(tablet) {
-
-	/* Header tablet styles */
-
-	.article-display-block {
-
-		.article-header {
-			margin-left: 80px;
-			width: 660px;
-			.article-meta {
-				.article-mug-box {
-					width:60px;
-					margin-right: 20px;
-					margin-left: -80px;
-					margin-top: -10px;
-				}
-			}
-
-			.article-title h1 {
-				position: relative;
-				&:before {
-					content: 't';
-					font-size: 18px;
-					color: $hrld-dark-grey;
-					left: -(38px+50px);
-					top:-0px;
-					display: block;
-					font-family: $icon;
-					position: absolute;
-					visibility: hidden;
-					opacity: 0;
-				}
-			}
-			.article-title:hover h1 {
-				&:before {
-					-webkit-transition: all .2s ease-in-out;
-					-moz-transition: all .2s ease-in-out;
-					-o-transition: all .2s ease-in-out;
-					transition: all .2s ease-in-out;
-					left: -40px;
-					visibility: visible;
-					opacity: 1;
-				}
-			}
+	aside.sidebar {
+		width: 100%;
+		display: block;
+		top: 0;
+		right: 0;
+		margin-bottom: 24px;
+		.ad {
+			padding: 0 0 24px;
 		}
+		.popular-post-widget {
+			margin: 18px 0;
+			position: relative;
+			width: 100%;
+			h3 {
+				background: $black;
+				font-family: $headline;
+				text-transform: uppercase;
+				color: $truewhite;
+				margin: 0;
+				text-align: center;
+				font-size: 14px;
+				margin-bottom: 12px;
+				padding: 3px 20px 3px 20px;
+				display: inline;
+			}
+			a {
+				position: relative;
+				border-bottom: 1px solid $greyBorder;
+				background: white;
+				padding: 0px 10px;
+				display: block;
+				font-family: $headline;
+				color: $trueblack;
+				font-weight:700;
+				.graph-bar {
+					background: $blue;
+					height: 2px;
+					position:absolute;
+					bottom:-1px;
+					left: 0;
+				}
+				img {
+					height: 80px;
+					display: block;
+					width: auto;
+					margin-top: 20px;
+					padding: 0px 0 20px 15px;
+					float: right;
+				}
+				h2 {
+					font-size: 16px;
+					line-height: 21px;
+					margin-bottom: 20px;
+					font-weight: bold;
+					color: $black;
+				}
+				.topic {
+					color: $darkgrey;
+					padding-top: 20px;
+					display: block;
+					font-weight: normal;
+				}
+				&:hover {
+					color: $blue;
+				}
+			}
+			
+		}
+		
 	}
 }
 
@@ -169,104 +189,46 @@
 	/* Header desktop styles */
 
 	.article-display-block {
-		.article-header {
-			width: 620px;
-			.article-title, .article-title h1 {
-				color: #000;
-				font-size: 44px;
-				line-height: 48px;
-				margin-top: 24px;
+		
+		main.article-content {
+			width: 700px;
+			position: relative;
+			float:left;
+			padding-right: 20px;
+			.hero {
+				img {
+					// width: 100%;
+				}
 			}
-			.article-subhead {
-
-			}
+		}
+		aside.sidebar {
+			width: 320px;
+			padding-left: 20px;
+			border-left: 1px solid $greyBorder;
+			float:left;
 		}
 	}
 }
 
 @include breakpoint(xl) {
 
-	/* Header xl styles */
+	/* Header desktop styles */
 
 	.article-display-block {
-		.article-header {
-			width: 720px;
-			.article-title, .article-title h1 {
-				font-size: 44px;
-			}
-			.article-subhead {
 
+		main.article-content {
+			width: 860px;
+			.article-text {
+				padding-right: 80px;
 			}
 		}
-	}
-}
 
-
-/**
- * 3.0 Lede sidebar styles.
- * ----------------------------------------------------------------------------
- */
-
-.article-display-block {
-	.lede-sidebar {
-		display: none;
-	}
-}
-
-@include breakpoint(tablet) {
-	.article-display-block {
-		.lede-sidebar {
-			float: right;
-			width: 300px;
-			display: block;
-			margin-top: 12px;
-			margin-bottom: 24px;
-			margin-left: 80px;
-			.popular-post-widget {
-				background: #fff;
-				margin:18px 0;
-				width:300px;
-				position: relative;
-				h3 {
-					width: 100%;
-					background: $hrld-black;
-					font-family: $headline;
-					text-transform: uppercase;
-					color: #fff;
-					margin: 0;
-					text-align: center;
-					padding: 12px 20px;
-
-				}
-				ul {
-					list-style-type: none;
-					padding: 0;
-					margin: 0;
-					li {
-						padding: 0;
-						margin: 0;
-						border-bottom: 1px solid #d7dbdd;
-						position:relative;
-						.graph-bar {
-							border: 0;
-							display: block;
-							background: $hrld-blue;
-							height: 2px;
-							margin-bottom:-1px;
-							z-index:1;
-							left: 0px;
-							text-align: left;
-						}
-						a {
-							display: block;
-							font-family: $headline;
-							color: #000;
-							padding: 12px 20px;
-							font-weight:700;
-							&:hover {
-								color: $hrld-blue;
-							}
-						}
+		main.article-content {
+			.hero {
+				.hero-caption {
+					padding-right: 80px;
+					&:after {
+						//left: 80px;
 					}
 				}
 			}
@@ -274,16 +236,6 @@
 	}
 }
 
-
-@include breakpoint(desktop) {
-
-	.article-display-block {
-		.lede-sidebar {
-			margin-left: 0;
-		}
-	}
-
-}
 
 /**
  * 4.0 Article Text Styles.
@@ -298,11 +250,10 @@
 			margin-bottom: 24px;
 		}
 		a {
-			margin: 0 -2px;
 			border-radius: 2px;
-			color: #195ea6;
+			color: $darkblue;
 			&:hover {
-				color: $hrld-blue;
+				color: $blue;
 			}
 		}
 		h1 {
@@ -318,17 +269,17 @@
 		}
 		h3 {
 			font-family: $headline;
-			color: $hrld-dark-grey;
+			color: $darkgrey;
 			font-weight: bold;
 			margin: 12px 0 0px;
 			font-size: 24px;
 			display: inline-block;
-			text-shadow: -1px 1px rgba(#fff,.8);
+			text-shadow: -1px 1px rgba($truewhite,.8);
 			// text-transform: uppercase;
 		}
 		h4 {
 			font-family: $body;
-			color: $hrld-black;
+			color: $black;
 			font-weight: bold;
 			font-size: 18px;
 			margin: 12px 0 12px;
@@ -343,7 +294,7 @@
 			}
 		}
 		h5,h6 {
-			color: $hrld-dark-grey;
+			color: $darkgrey;
 			font-weight: normal;
 			font-size: 21px;
 			font-size: 18px;
@@ -383,7 +334,7 @@
 					position: absolute;
 					margin-left: -40px;
 					margin-top: 5px;
-					background: #fff;
+					background: $truewhite;
 					font-size: .8em;
 					padding: 0px 3px;
 					display: block;
@@ -396,9 +347,9 @@
 		}
 		blockquote {
 			font-family: $headline;
-			background: #fff;
+			background: $truewhite;
 			margin-left: 0;
-			border-left: 2px solid $hrld-blue;
+			border-left: 2px solid $blue;
 		}
 		blockquote p {
 			margin-left: 0;
@@ -406,13 +357,14 @@
 			font-family: $headline;
 			font-size: 18px;
 		}
+
 		.ad-in-content {
 			margin: 24px 0;
 			&:before {
 				content : "Advertisement";
 				font-family: $headline;
 				text-transform: uppercase;
-				color: $hrld-dark-grey;
+				color: $darkgrey;
 				font-size: 12px;
 				line-height: 14px;
 			}
@@ -423,11 +375,11 @@
 			font-family: $headline;
 			font-size: 15px;
 			line-height: 18px;
-			color: $hrld-black;
+			color: $black;
 			position: relative;
 			padding:9px 10px;
 			display: block;
-			background: #fff;
+			background: $truewhite;
 			.hrld-inline-thumbnail {
 				width: 120px;
 				min-width: 120px;
@@ -452,12 +404,12 @@
 					display: block;
 					text-align: right;
 					visibility: hidden;
-					color: $hrld-black;
+					color: $black;
 					// text-shadow: none;
 				}
 			}
 			.hrld-inline-link-excerpt {
-				color: $hrld-dark-grey;
+				color: $darkgrey;
 				display: block;
 				margin-top: 6px;
 				&:after {
@@ -471,9 +423,9 @@
 			}
 
 			&:hover {
-				background: #fff;
+				background: $truewhite;
 				.hrld-inline-link-title {
-					color: $hrld-blue;
+					color: $blue;
 					&:before {
 						visibility: visible;
 					}
@@ -484,17 +436,17 @@
 			width: 100% !important; // wordpress adds an element style for width;
 			font-size: 16px;
 			line-height: 18px;
-			color: $hrld-dark-grey;
+			color: $darkgrey;
 			margin: 24px 0;
 			.hrld-media-credit-name a {
 				padding-right: 3px;
-				color: $hrld-black;
+				color: $black;
 				font-weight: bold;
 				text-shadow: none;
 				// font-weight: 800;
 				text-transform: uppercase;
 				&:hover {
-					color: $hrld-blue;
+					color: $blue;
 				}
 			}
 			dd {
@@ -533,6 +485,85 @@
 	}
 }
 
+q.pullquote {
+	quotes: "“" "”";
+	&:before {
+		display: none;
+	}
+	&.quotemarks:before { 
+		font-size: 66px; 
+		float: left;
+		padding-right: 6px;
+		display: block;
+		position: relative;
+		top: 0px;
+	}	
+	&:after { 
+		content: "";
+		width: 80px;
+		height: 3px;
+		background: $greyText;
+		display: block;
+		position: absolute;
+		bottom: 0;
+	}
+	display: block;
+	width: 100%;
+	float: left;
+	font-weight: bolder;
+	color: $black ;
+	font-size: 30px;
+	line-height: 36px;
+	margin: 18px 0 60px;
+	padding: 18px 0px 18px;
+	position: relative;
+	font-style: italic;
+	cite {
+		display: block;
+		position: relative;
+		left: 0;
+		margin-top: 18px;
+		margin-bottom: -18px;
+		color: $greyText;
+		font-weight: normal;
+		font-size: 18px;
+	}
+}
+
+@include breakpoint(tablet) {
+	
+	q.pullquote{
+		&.alignleft {
+			width: 360px;
+			float: left;
+			padding-right: 60px;
+		}
+		&.alignright {
+			width: 360px;
+			float: right;
+			padding-left: 60px;
+		}
+		&.aligncenter {
+			font-size: 42px;
+			line-height: 48px;
+			margin: 78px 0 96px;
+			cite {
+				font-size: 24px;
+			}
+			&.quotemarks:before { 
+				font-size: 100px; 
+				padding-right: 12px;
+				top: 6px;
+			}	
+		}
+	}
+}
+
+@include breakpoint(desktop){
+
+}
+
+
 
 @include breakpoint(tablet) {
 
@@ -546,23 +577,23 @@
 			width:100%;
 			position: relative;
 			p,h1,h2,h3,h4,h5,h6 {
-				margin-left: 80px;
-				margin-right: 80px;
+			//	margin-left: 80px;
+			//	margin-right: 80px;
 				}
 			h4 {
-				margin-left: 80px;
+			//	margin-left: 80px;
 			}
 			.twitter-tweet {
-				margin-left: 80px !important;
+			//	margin-left: 80px !important;
 			}
 			blockquote, ul, ol, dl {
-				margin-left: 80px;
+			//	margin-left: 80px;
 				li {
 					padding:0;
 				}
 			}
 			a.hrld-inline-link {
-				margin-left: -80px;
+			//	margin-left: -80px;
 				padding:12px 20px;
 				overflow:auto;
 				img.hrld-inline-thumbnail {
@@ -584,20 +615,20 @@
 					height: auto;
 				}
 			}
-			.alignleft {
+			img.alignleft {
 				float: left;
 				// margin-left: -80px !important;
 				padding-right: 20px;
 				width: 300px !important;
 				height: auto;
 			}
-			.alignright {
+			img.alignright {
 				float: right;
 				padding-left: 20px;
 				width: 300px !important;
 				height: auto;
 			}
-			.alignnone, .aligncenter {
+			img.alignnone, img.aligncenter {
 				width:100%;
 				float:left;
 			}
@@ -610,6 +641,12 @@
 					//width: 100%;
 				}
 			}
+			.ad-in-content {
+			margin: 24px 0;
+				&:before {
+					display: none;
+				}
+			}
 		}
 	}
 }
@@ -620,8 +657,8 @@
 
 	.article-display-block {
 		.article-text {
-			width:700px;
-			.alignnone, .aligncenter, & > img.alignnone, & > img.aligncenter {
+			width:680px;
+			img.alignnone, img.aligncenter, & > img.alignnone, & > img.aligncenter {
 				width:100% !important;
 				float: left;
 			}
@@ -666,8 +703,8 @@
 		.comment-button {
 			width: 120px;
 			padding:12px 0;
-			color:#fff;
-			background: $hrld-black;
+			color: $truewhite;
+			background: $black;
 			font-weight: bold;
 			float:right;
 			text-align: center;
@@ -683,17 +720,17 @@
 				height: 0;
 				border-right: 10px solid transparent;
 				border-bottom: 10px solid transparent;
-				border-top: 10px solid #191919;
-				border-left: 10px solid #191919;
+				border-top: 10px solid $black;
+				border-left: 10px solid $black;
 				position: absolute;
 				bottom: -15px;
 				margin-left: 20px;
 			}
 			&:hover {
-				background: $hrld-blue;
+				background: $blue;
 				&:after {
-				  border-top-color: $hrld-blue;
-				  border-left-color: $hrld-blue;
+				  border-top-color: $blue;
+				  border-left-color: $blue;
 				}
 			}
 		}
@@ -701,13 +738,13 @@
 		/* 5.3 - Assorted */
 
 		hr {
-			border-bottom: 1px solid $hrld-dark-grey;
-			width:180px;
+			border-bottom: 1px solid $darkgrey;
+			width:120px;
 			margin-left:0;
 		}
 		
 		p {
-			color: $hrld-dark-grey;
+			color: $darkgrey;
 			font-size: 14px;
 			font-family: $headline;
 		}
@@ -739,14 +776,8 @@
 @include breakpoint(desktop) {
 
 	.article-display-block {
-
 		.article-footnotes {
-		
-			margin-left:80px;
 			width:540px;
-
 		}
-
 	}
-	
 }

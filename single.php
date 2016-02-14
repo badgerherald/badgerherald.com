@@ -1,7 +1,9 @@
 <?php 
 
-if(exa_is_video_post()) {
+if(exa_layout() == "video") {
 	get_template_part('inc/templates/article-video');
-} else {
+} else if(exa_layout() == "cover") {
+	get_template_part('inc/templates/article-cover');	
+}  else {
 	get_template_part('inc/templates/article');
 }

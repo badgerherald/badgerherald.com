@@ -1,0 +1,163 @@
+.banter-block {
+	.wrapper {
+		&:before {
+			content: " ";
+			position: absolute;
+			top: 0px;
+			width: 100%;
+			display: block;
+			height: 18px;
+			border-left: 6px solid $red;
+			border-right: 6px solid $red;
+			border-top: 6px solid $red;
+		}
+		&:after {
+			content: " ";
+			position: absolute;
+			bottom: 0px;
+			width: 100%;
+			display: block;
+			height: 18px;
+			border-left: 6px solid $red;
+			border-right: 6px solid $red;
+			border-bottom: 6px solid $red;
+		}
+	}
+	.inner-banter {
+		font-style: italic;
+		font-weight: bold;
+		text-align: center;
+		@include dotted(rgba(black,.2));
+		margin-left: 6px;
+		margin-right: 6px;
+		position: relative;
+		padding-bottom: 18px;
+		h1 {
+			font-family: $body;
+			text-transform: uppercase;
+			display: inline-block;
+			font-style: italic;
+			font-weight: bold;
+			font-size: 30px;
+			margin-left: 30px;
+			line-height: 24px;
+			margin-bottom: 0;
+			margin-top: 12px;
+			margin: 0 auto;
+			padding: 32px 0 32px;
+			padding-left: 40px;
+			/* include banter logo */
+			@include banterlogo;
+			background-size: 30px 30px;
+			background-repeat: no-repeat;
+			background-position: left center; 			
+		}
+		.fb-like {
+			display: none;
+			position: absolute;
+			top: 32px;
+			right: 20px;
+		}
+		.banter-link {
+			width: flex(300,320);
+			margin: flex(10,320);
+			padding-top: 18px;
+			margin-bottom: 32px;
+			border-top: 1px solid $greyBorder;
+			text-align: left;
+			font-size: 18px;
+			display: block;
+			float: left;
+			color: $black;
+			&:hover {
+				color: $red;
+			}
+			img {
+				width: 100%;
+				height: auto;
+			}
+			.title {
+				display: block;
+				font-size: 24px;
+				line-height: 24px;
+				
+			}
+			.topic {
+				display: block;
+				margin-top: 6px;
+				color: $red;
+				text-transform: uppercase;
+			}
+		}
+		nav.paging-navigation {
+			width: flex(300,320);
+			margin: flex(10,320);
+			height: 40px;
+			border-top: 1px solid $greyBorder;
+			a {
+				padding: 24px;
+				color: $red;
+				display: block;
+				font-size: 24px;
+				&:hover {
+					color: $black;
+				}
+				&:first-child {
+					float: left;
+				}
+				&:nth-child(2) {
+					float: right;
+				}
+			}
+		}
+	}
+}
+
+@include breakpoint('tablet') {
+	.banter-block {
+		.inner-banter {
+			.fb-like {
+				display: block;
+			}
+			.banter-link {
+				float: left;
+				width: 334px;
+				margin: 24px 0;
+				margin-left: 20px;
+				&:not(.mult-2) {
+					clear: left;
+				}
+			}
+			nav.paging-navigation {
+				width: auto;
+				padding: 20px;
+			}
+		}
+	}
+}
+
+@include breakpoint('desktop') {
+	.banter-block {
+		.inner-banter {
+			.banter-link {
+				width: 310px;
+				&:not(.mult-2) {
+					clear: none;
+				}
+				&:nth-child(3n+1) {
+					clear: left;
+				}
+			}
+		}
+	}
+}
+
+@include breakpoint('xl') {
+	.banter-block {
+		.inner-banter {
+			.banter-link {
+				width: 362px;
+			}
+		}
+	}
+}

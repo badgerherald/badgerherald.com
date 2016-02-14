@@ -108,7 +108,58 @@ blockquote p {
 	font-family: 'pt sans';
 	font-size: 18px;
 }
+.pullquote {
+  display: block;
+  float: left;
+  position: relative;
+  padding: 30px 3rem 25px 3rem !important;
+  background-color: #000;
+  color: #fff;
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  margin-left: 5px !important;
+  width: 100%; }
+  .pullquote.quotation:before {
+    content: '"';
+    font-size: 2.5rem;
+    font-family: cursive;
+    line-height: inherit;
+    position: absolute;
+    left: 1.2rem; 
+	top: 1rem; }
+  .pullquote span.quote {
+    font-size: .667em;
+    position: relative;
+    float: left;
+    width: 100%;
+    text-align: left; }
+  .pullquote span.quoteby {
+    font-size: .4em;
+    text-align: right;
+    float: right; }
 
+@media (min-width: 760px) {
+  .pullquote {
+    width: 40%;
+    margin-right: 40px !important;
+    padding-left: 2.8rem !important; }
+    .pullquote.alignright {
+      margin-left: 40px; }
+    .pullquote.aligncenter {
+      width: 100%;
+      margin-left: 80px !important;
+      margin-right: 80px !important; } }
+@media (min-width: 1060px) {
+  .pullquote {
+    padding-left: 3rem !important;
+    padding-right: 2.8rem !important;
+    font-size: 2.3rem;
+    line-height: 1.6em; }
+    .pullquote:before {
+      left: 1rem; }
+    .pullquote.aligncenter {
+      margin-right: none; } }
 /** Lists */
 
 ul {
