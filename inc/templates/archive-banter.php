@@ -20,3 +20,5 @@ exa_block('leaderboard');
 exa_block('menu-search-bar');
 exa_block('mobile-header');
 exa_block('banter');
+
+get_template_part('footer');
