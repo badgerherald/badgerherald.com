@@ -1,4 +1,4 @@
-.banter-header-block {
+.banter-block {
 	.wrapper {
 		&:before {
 			content: " ";
@@ -59,14 +59,16 @@
 			right: 20px;
 		}
 		.banter-link {
-			width: 100%;
-			padding: 10px;
-			border-top: 1px solid $grey;
+			width: flex(300,320);
+			margin: flex(10,320);
+			padding-top: 18px;
+			margin-bottom: 32px;
+			border-top: 1px solid $greyBorder;
 			text-align: left;
 			font-size: 18px;
 			display: block;
 			float: left;
-			height: 360px;
+			color: $black;
 			&:hover {
 				color: $red;
 			}
@@ -78,11 +80,83 @@
 				display: block;
 				font-size: 24px;
 				line-height: 24px;
+				
 			}
 			.topic {
 				display: block;
+				margin-top: 6px;
 				color: $red;
 				text-transform: uppercase;
+			}
+		}
+		nav.paging-navigation {
+			width: flex(300,320);
+			margin: flex(10,320);
+			height: 40px;
+			border-top: 1px solid $greyBorder;
+			a {
+				padding: 24px;
+				color: $red;
+				display: block;
+				font-size: 24px;
+				&:hover {
+					color: $black;
+				}
+				&:first-child {
+					float: left;
+				}
+				&:nth-child(2) {
+					float: right;
+				}
+			}
+		}
+	}
+}
+
+@include breakpoint('tablet') {
+	.banter-block {
+		.inner-banter {
+			.fb-like {
+				display: block;
+			}
+			.banter-link {
+				float: left;
+				width: 334px;
+				margin: 24px 0;
+				margin-left: 20px;
+				&:not(.mult-2) {
+					clear: left;
+				}
+			}
+			nav.paging-navigation {
+				width: auto;
+				padding: 20px;
+			}
+		}
+	}
+}
+
+@include breakpoint('desktop') {
+	.banter-block {
+		.inner-banter {
+			.banter-link {
+				width: 310px;
+				&:not(.mult-2) {
+					clear: none;
+				}
+				&:nth-child(3n+1) {
+					clear: left;
+				}
+			}
+		}
+	}
+}
+
+@include breakpoint('xl') {
+	.banter-block {
+		.inner-banter {
+			.banter-link {
+				width: 362px;
 			}
 		}
 	}
