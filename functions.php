@@ -1299,8 +1299,6 @@ add_filter('pre_get_posts', 'hrld_remove_pinned_author_posts', 1);
 
 function banter_post_count($query) {
 	if ( !is_admin() && $query->is_main_query() ) {
-		
-		print_r ($query);//->get( 'cat' ); 
 
 		if ($query->is_category && $query->query_vars["category_name"] == "banter" ) {
 			$query->set('posts_per_page', (2*3) * 3);
