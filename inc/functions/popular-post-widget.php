@@ -49,12 +49,12 @@ Class Popular_Post_Widget extends AnalyticBridgePopularPostWidget {
 					<span class="topic"><?php echo exa_topic(); ?></span>
 					<h2><span><?php the_title(); ?></span></h2>
 					<div class="clearfix"></div>
-					<div class="graph-bar" style="width:<?php echo (/*(double)$r->weighted_pageviews/ */(double)$outof)*100; ?>%"></div>				
+					<div class="graph-bar" style="width:<?php echo ((double)$r->weighted_pageviews/(double)$outof)*100; ?>%"></div>				
 				</a>
 				
 
 				<?php $r = $popPosts->next(); ?>
-		<?php $outof = $outof*.8; endwhile;
+		<?php endwhile;
 		endif;
 		?>
 
