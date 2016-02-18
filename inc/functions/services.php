@@ -27,14 +27,30 @@ function exa_register_analytics() {
  
  		$js .= "\n<script>\n";
 
- 		/* Google Analytics footer tag */
+ 		$js .= <<<"GAA"
+ 			/* Google Analytics */
 
- 		$js .= <<<"GA"
+			var _gaq = _gaq || [];
+			_gaq.push(['_setAccount', 'UA-2337436-1']);
+GAA;
 
- 	/* Google Analytics */
+		if(is_single()) {
 
-	var _gaq = _gaq || [];
-	_gaq.push(['_setAccount', 'UA-2337436-1']);
+			echo current_time('timestamp'). "  " ;
+			echo get_the_time('U');
+			$fiveDaysFresh = (current_time('timestamp') - get_the_time('U') > 0 && current_time('timestamp') - get_the_time('U') < 432000) ? 'Yes' : 'No';
+	
+			$js .= "       _gaq.push(['_setCustomVar',         ";
+			$js .= "			          1,                   ";
+			$js .= "                      '5 Days Fresh',      ";
+			$js .= "                      '$fiveDaysFresh',     ";
+			$js .= "                      ,                    ";
+			$js .= "                      2                    ";
+			$js .= "                 ]);                       ";
+    	                    
+		} 
+
+	$js .= <<<"GAB"
 	_gaq.push(['_trackPageview']);
 
 	(function() {
@@ -42,8 +58,7 @@ function exa_register_analytics() {
 		ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
 		var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
 	})();
-
-GA;
+GAB;
 
 	 	$chartbeatTitle = is_home() ? 'Homepage' : wp_title('',false);
 		
