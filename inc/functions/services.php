@@ -36,8 +36,7 @@ GAA;
 
 		if(is_single()) {
 
-			echo current_time('timestamp'). "  " ;
-			echo get_the_time('U');
+			wp_reset_query();
 			$fiveDaysFresh = ((current_time('timestamp') - get_the_time('U')) < 432000) ? 'Yes' : 'No';
 	
 			$js .= "       _gaq.push(['_setCustomVar',         ";
