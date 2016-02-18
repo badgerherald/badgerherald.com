@@ -43,9 +43,8 @@ GAA;
 			$js .= "       _gaq.push(['_setCustomVar',         ";
 			$js .= "			          1,                   ";
 			$js .= "                      '5 Days Fresh',      ";
-			$js .= "                      '$fiveDaysFresh',     ";
-			$js .= "                      ,                    ";
-			$js .= "                      2                    ";
+			$js .= "                      '$fiveDaysFresh',    ";
+			$js .= "                      3                    ";
 			$js .= "                 ]);                       ";
     	                    
 		} 
