@@ -62,6 +62,8 @@ include_once('inc/functions/dev.php');
  */
 include_once('inc/functions/html-tags.php');
 
+include_once('inc/functions/analytic-dashboard.php');
+
 include_once('inc/functions/block.php');
 
 include_once('inc/functions/embeds.php');
