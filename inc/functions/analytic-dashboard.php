@@ -58,12 +58,12 @@ function analytic_dashboard_html() {
 }
 
 .top-chart {
-	margin-top: -60px;
+	margin-top: -46px;
 }
 
 h4 {
 	color: #bbb;
-	margin-top: -12px;
+	margin-top: 0px;
 }
 
 hr {
