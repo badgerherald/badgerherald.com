@@ -21,7 +21,6 @@ if(exa_hero_media_type() == 'video') :
 		get_template_part('inc/blocks/leaderboard');
 		get_template_part('inc/blocks/menu-search-bar','black');
 		get_template_part('inc/blocks/mobile-header','black');
-		get_template_part('inc/blocks/header','black');
 		get_template_part('inc/blocks/hero','video');
 		?>
 	</div>
