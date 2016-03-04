@@ -108,19 +108,19 @@ After writing some code, you can style that code:
 		/* mobile and up style */
 	}
 	
-	@breakpoint(tablet) {
+	@include breakpoint(tablet) {
 		.alert-banner-block {
 			/* tablet and up style */
 		}
 	}
 
-	@breakpoint(desktop) {
+	@include breakpoint(desktop) {
 		.alert-banner-block {
 			/* desktop and up style */
 		}
 	}
 
-	@breakpoint(xl) {
+	@include breakpoint(xl) {
 		.alert-banner-block {
 			/* xl desktop and up style */
 		}	
