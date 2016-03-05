@@ -34,35 +34,26 @@ Class Popular_Post_Widget extends AnalyticBridgePopularPostWidget {
 			$iter = 0;
 
 			$query = new WP_Query( array(
-					"ids" => $popPosts->ids,
+					"post__in" => $popPosts->ids,
 					"posts_per_page" => $popPosts->size
 				)
 			);
 
-		if ( $query->have_posts() ) :
-			while ( $query->have_posts() ) : $query->the_post(); ?>
-
-				<?php $r = $popPosts->current(); ?>
-
-				<a href="<?php the_permalink() ?>">
-					<?php the_post_thumbnail('post-thumbnail'); ?>
-					<span class="topic"><?php echo exa_topic(); ?></span>
-					<h2><span><?php the_title(); ?></span></h2>
+		foreach($popPosts as $r) { ?>
+			<a href="<?php echo get_the_permalink($r->post_id) ?>">
+				<?php get_the_post_thumbnail($r->post_id,'post-thumbnail'); ?>
+					<span class="topic"><?php echo exa_topic($r->post_id); ?></span>
+					<h2><span><?php echo get_the_title($r->post_id); ?></span></h2>
 					<div class="clearfix"></div>
 					<div class="graph-bar" style="width:<?php echo ((double)$r->weighted_pageviews/(double)$outof)*100; ?>%"></div>				
 				</a>
-				
-
-				<?php $r = $popPosts->next(); ?>
-		<?php endwhile;
-		endif;
-		?>
-
-
+		<?php
+		}
+		?> 
 		</div>
 
-
-	<? }
+	<?php
+	}
 
 }
 

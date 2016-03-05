@@ -21,7 +21,6 @@ if(exa_hero_media_type() == 'video') :
 		get_template_part('inc/blocks/leaderboard');
 		get_template_part('inc/blocks/menu-search-bar','black');
 		get_template_part('inc/blocks/mobile-header','black');
-		get_template_part('inc/blocks/header','black');
 		get_template_part('inc/blocks/hero','video');
 		?>
 	</div>
@@ -31,8 +30,13 @@ else :
 	get_template_part('inc/blocks/cover-hero');
 endif;
 
+if ( have_posts() ) : 
+	while ( have_posts() ) : the_post();
 get_template_part('inc/blocks/content','two-column');
-
+	endwhile; 
+else :
+	_e( '<p>Something went wrong.</p>' );
+endif;
 ?>
 
 <div class="block read-next-block" style="border-top: 1px solid #c7d0d5; margin-top: 64px;">
