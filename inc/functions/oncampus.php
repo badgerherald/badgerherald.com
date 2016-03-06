@@ -8,6 +8,17 @@
  */
 
 
+function hexa_humpdate_ad_removal( $query ) {
+	if( $query->is_main_query() && $query->is_single()  ) {
+		if(has_term('Hump Day','topic',$query->posts[0]->ID)) {
+			OnCampus::$enabled = false;
+		}
+	}
+	return $query;
+}
+add_filter( 'loop_start', 'hexa_humpdate_ad_removal' , 10, 1 );
+
+
 Class OnCampus {
 	
 
@@ -16,6 +27,11 @@ Class OnCampus {
 	 * 
 	 */
 	public static $auid;
+
+	/**
+	 * Disable output (for say humpday purposes)
+	 */
+	public static $enabled = true;
 
 	/**
 	 * Defined at units
@@ -131,32 +147,35 @@ Class OnCampus {
 
 	public function footer() {
 
+		if(OnCampus::$enabled) :
 
-		echo "<script type='text/javascript'>\n";
-
-		echo "\tvar w = window.innerWidth;\n";
-		echo "\tvar OX_4d6552943f5a4 = OX();\n";
-
-		foreach ($this->displayads as $i=>$adspot) {
-			$first = true;
-			foreach ($this->breakpoints as $bp) {
-				$width = $bp->minWidth;
-				foreach ($adspot as $breakpoint=>$ad) {
-					if($breakpoint == $bp->identifier) {
-						echo $first ? "\n\tif" : " else if"; $first = false;
-						echo "(w > $width) {\n";
-						if($ad != "") {
-							echo "\tOX_4d6552943f5a4.addAdUnit('{$this->adunits[$ad]}');\n";
-  							echo "\tOX_4d6552943f5a4.setAdUnitSlotId('{$this->adunits[$ad]}','ad-$ad');\n";
-  						}
-						echo "\t}";
+			echo "<script type='text/javascript'>\n";
+	
+			echo "\tvar w = window.innerWidth;\n";
+			echo "\tvar OX_4d6552943f5a4 = OX();\n";
+	
+			foreach ($this->displayads as $i=>$adspot) {
+				$first = true;
+				foreach ($this->breakpoints as $bp) {
+					$width = $bp->minWidth;
+					foreach ($adspot as $breakpoint=>$ad) {
+						if($breakpoint == $bp->identifier) {
+							echo $first ? "\n\tif" : " else if"; $first = false;
+							echo "(w > $width) {\n";
+							if($ad != "") {
+								echo "\tOX_4d6552943f5a4.addAdUnit('{$this->adunits[$ad]}');\n";
+  								echo "\tOX_4d6552943f5a4.setAdUnitSlotId('{$this->adunits[$ad]}','ad-$ad');\n";
+  							}
+							echo "\t}";
+						}
 					}
 				}
 			}
-		}
-		echo "\n\n\tOX_4d6552943f5a4.load();\n";
+			echo "\n\n\tOX_4d6552943f5a4.load();\n";
+	
+			echo "</script>";
 
-		echo "</script>";
+		endif;
 
 	}
 
