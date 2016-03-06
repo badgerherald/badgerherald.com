@@ -1,7 +1,7 @@
 <?php 
 
 
-global $DoubleClick;
+global $OnCampus;
 global $block;
 if(!$block) {
 	$block = new Block('article-display');
@@ -115,13 +115,8 @@ exa_block('headline');
 
 				<div class="ad sidebar-thing">
 				<?php 
-				
-					$sizes = '300x250';
-					$args = array(
-			    		'lazyLoad' => true 
-					);
 		
-					$DoubleClick->place_ad('post-sidebar-2',$sizes,$args);
+					$OnCampus->place_ad(array('desktop'=>'upper-sidekick'));
 	
 				?>
 				</div>
@@ -132,13 +127,8 @@ exa_block('headline');
 	
 				<div class="ad sidebar-thing">
 				<?php 
-				
-					$sizes = '300x250';
-					$args = array(
-			    		'lazyLoad' => true 
-					);
 		
-					$DoubleClick->place_ad('post-sidebar-2',$sizes,$args);
+					$OnCampus->place_ad(array('desktop'=>'lower-sidekick'));
 	
 				?>
 				</div>

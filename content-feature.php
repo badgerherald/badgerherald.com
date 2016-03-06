@@ -8,7 +8,7 @@
  */
 
 global $AnalyticBridge;
-global $DoubleClick;
+global $OnCampus;
 global $post;
 
 ?>
@@ -101,7 +101,9 @@ get_template_part('inc/blocks/hero');
 				<section class="lede-sidebar">
 					
 					<div class="ad sidebar-thing">
-						<?php $DoubleClick->place_ad('bh:leaderboard','300x250',array('tablet','xl','desktop')); ?>
+						<?php 
+						$OnCampus->place_ad(array('tablet'=>'upper-sidekick')); 
+						?>
 					</div>
 
 					<div class="popular-posts sidebar-thing">
@@ -109,7 +111,9 @@ get_template_part('inc/blocks/hero');
 					</div>
 
 					<div class="ad sidebar-thing">
-						<?php $DoubleClick->place_ad('bh:leaderboard','300x250',array('xl','desktop')); ?>
+						<?php 
+						$OnCampus->place_ad(array('tablet'=>'lower-sidekick')); 
+						?>
 					</div>
 
 				</section>

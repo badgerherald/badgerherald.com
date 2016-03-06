@@ -7,9 +7,6 @@
  * @since Twenty Thirteen 1.0
  */
 
-// Set up ads for current page.
-global $DoubleClick;
-
 get_header(); 
 
 ?>

@@ -1,4 +1,4 @@
-<?php global $DoubleClick; ?>
+
 
 <div class="block">
 <div class="wrapper">

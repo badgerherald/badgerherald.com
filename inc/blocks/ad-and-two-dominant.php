@@ -4,26 +4,20 @@
  * 
  */
 
-global $DoubleClick;
+global $OnCampus;
 ?>
 
 <div class="block ad-and-two-dominant-block">
 	<div class="wrapper">
 		<div class="sidekick-ad">
 		<?php 
-			
-			$sizes = array(
-				'phone' => '300x250',
-				'tablet' => '728x90',
-		    	'desktop' => '300x250',
-		    	'xl' => '300x250'      
-			);
-			$args = array(
-		    	'lazyLoad' => true 
-			);
-
-			$DoubleClick->place_ad('ad-and-two-dominant-block',$sizes,$args);
-
+			$OnCampus->place_ad(
+				array(
+					'mobile'=>'homepage-sidekick',
+					'tablet'=>'',
+					'desktop'=>'homepage-sidekick',
+					)
+				); 
 		?>
     	</div>
 

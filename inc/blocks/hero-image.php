@@ -4,7 +4,6 @@
  * 
  */
 
-global $DoubleClick;
 global $post;
 
 ?>

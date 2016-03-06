@@ -4,7 +4,6 @@
  * 
  */
 
-global $DoubleClick;
 global $post;
 
 ?>
@@ -21,12 +20,6 @@ global $post;
 			<?php the_post_thumbnail('image-post-size'); ?>
 			
 			<aside class="hero-aside">
-	
-				<div class="hero-ad">
-	
-					<?php $DoubleClick->place_ad('bh:leaderboard','300x250',array('desktop','xl')); ?>
-					
-				</div>
 	
 				<?php exa_hero_caption(); ?>
 	

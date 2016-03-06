@@ -4,9 +4,6 @@
  * 
  */
 
-global $DoubleClick;
-global $post;
-
 ?>
 <div class="block hero-video-block">
 	<div class="wrapper">
