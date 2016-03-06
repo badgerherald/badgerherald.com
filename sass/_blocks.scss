@@ -160,13 +160,10 @@
 
 .leaderboard-block {
 	.wrapper {
-		margin:0;
-	}
-	.dfw-unit {
-		margin: 0 auto;
-	}
-	.icymi-box {
-		display: none;
+		.ad {
+			width:300px;
+			margin: 0 auto;
+		}
 	}
 }
 
@@ -244,9 +241,10 @@
 	}
 
 	.leaderboard-block {
-		display: block;
 		.wrapper {
-			margin:0 auto;
+			.ad {
+				width:100%;
+			}
 		}
 	}
 }
@@ -302,39 +300,6 @@
 		}
 	}
 
-	.leaderboard-block {
-		.leaderboard-ad {
-			float:left;
-		}
-		.icymi-box {
-			display: block;
-			width: 270px;
-			float: right;
-			text-align: right;
-			color: $darkgrey;
-			h4 {
-				margin:0 0 0px 0;
-				font-style: italic;
-				font-size: 12px;
-			}
-			a {
-				font-weight: bold;
-				color: $black;
-				font-family: $headline;
-				display: block;
-				span.time {
-					color: $blue;
-					font-family: $body;
-					font-style: italic;
-					font-size: 12px;
-				}
-				&:hover {
-					color: $blue;
-
-				}
-			}
-		}
-	}
 
 	.cover-2-column-block {
 		.wrapper {
