@@ -1,7 +1,7 @@
 <?php 
 
 function analytic_dashboard() {
-	add_menu_page( "Analytics", "Analytics", "edit_posts", "Analytics", "analytic_dashboard_html", "", 5);
+	add_menu_page( "Analytics", "Analytics", "edit_posts", "Analytics", "analytic_dashboard_html", "", 4);
 }
 add_action('admin_menu','analytic_dashboard');
 
