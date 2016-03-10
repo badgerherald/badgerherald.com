@@ -2,32 +2,23 @@
 /**
  * The Template for displaying all single posts.
  *
- * @package WordPress
- * @subpackage Twenty_Thirteen
- * @since Twenty Thirteen 1.0
+ * @package Exa
+ * @since v0.5
  */
 
-// Set up ads for current page.
+get_header();
 
-get_header('');
-
-?>
-
-<?php /* The loop */ ?>
-
-<?php while ( have_posts() ) : the_post(); ?>
-
-	<?php 
+while ( have_posts() ) : the_post(); 
 
 	exa_block('mobile-header',null,array(
-		'breakpoints' => array('mobile')
-		));
+										'breakpoints' => array('mobile')
+										)
+			);
+
 	get_template_part( 'inc/blocks/cover-hero' ); 
 
-	?>
-	<?php exa_block( 'content-two-column', null, array('hide-hero' => true) ); ?>
+	exa_block( 'content-two-column', null, array('hide-hero' => true) ); 
 
-	<?php
 	/**
 	 * Called below the article, after main.
 	 * 

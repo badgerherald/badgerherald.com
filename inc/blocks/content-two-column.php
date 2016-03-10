@@ -58,15 +58,10 @@ exa_block('headline');
 
 				</div>
 
-				<?php
+				<?php 
 
-				/* Hero */
-
-				$hide_feature = get_post_meta( get_the_ID(), '_exa_hide_featured_image', true);
-				$hide_feature = $hide_feature && $block->option('hide-hero');
-				$coverLayout = exa_layout() == "video" || exa_layout() == "cover";
-				if ( has_post_thumbnail() && !($hide_feature == "true") && !$coverLayout) : ?>
-						
+				if (exa_hero_style() == "standard" && exa_hero_media() != "none") :		
+				?>				
 				<div class="hero">
 				
 					<?php the_post_thumbnail('image-post-size'); ?>
@@ -77,11 +72,7 @@ exa_block('headline');
 				</div>
 				
 				<?php 
-
 				endif; 
-
-				/* End Hero */
-
 				?>
 
 				<section class="article-text">

@@ -6,6 +6,7 @@
 
 global $post;
 
+if (exa_hero_style() == "standard") :
 ?>
 
 <div class="block hero-block">
@@ -33,3 +34,7 @@ global $post;
 	
 	</div>
 </div>
+
+<?php 
+
+endif;

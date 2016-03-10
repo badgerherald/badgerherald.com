@@ -128,9 +128,19 @@ function exa_is_video_post($post = null) {
  * @since v0.4
  * 
  * @param mixed $post optional post id/object/&c.
- * @return string layout option (e.g. 'cover','two-column')
+ * @return string layout option (feature or standard)
  */
 function exa_layout($post = null) {
+
+	$post = get_post($post);
+	
+	if(has_term('layout-feature','exa_layout',$post)) {
+		return 'feature';
+	} else {
+		return 'standard';
+	}
+
+	/*
 	$post = get_post($post);
 	$layout_terms = wp_get_post_terms($post->ID,'exa_layout');
 	if(empty($layout_terms)) {
@@ -138,7 +148,42 @@ function exa_layout($post = null) {
 	} else {
 		return $layout_terms[0]->slug;
 	}
+	*/
 }
+
+function exa_hero_style($post = null) {
+
+	$post = get_post($post);
+
+	// handle the old format for hiding heros.
+	$hide_feature = get_post_meta( $post->ID, '_exa_hide_featured_image', "true");
+	if($hide_feature == "true") {
+		return 'none';
+	}
+
+	// new format for handling heros.
+	if(has_term('hero-cover','exa_layout',$post)) {
+		return 'cover';
+	} else if(has_term('media-none','exa_layout',$post)) {
+		return 'none';
+	} else {
+		return 'standard';
+	}
+
+}
+
+function exa_hero_media($post = null) {
+
+	$post = get_post($post);
+
+	if(has_term('media-video','exa_layout',$post)) {
+		return 'video';
+	} else {
+		return 'image';
+	}
+
+}
+
 
 function exa_hero_media_type($post = null) {
 	if(exa_video_link()) {
