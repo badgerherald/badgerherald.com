@@ -38,6 +38,22 @@ add_action( 'init', '_exa_register_layout_taxonomy', 0 );
 
 
 /**
+ * Saves default layout terms before saving the post
+ */
+function exa_default_layout_terms($post_id) {
+  
+	$layout_terms = get_the_terms( $post_id, 'exa_layout' );
+
+	if(empty($layout_terms)) {
+
+		wp_set_object_terms($post_id,array('hero-standard','media-image'),'exa_layout');
+	}
+
+}
+add_action( 'save_post', 'exa_default_layout_terms' );
+
+
+/**
  * Returns video link for the passed in post.
  * Currently the top link in the post.
  * 
