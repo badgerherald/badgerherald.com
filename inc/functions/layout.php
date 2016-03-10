@@ -67,7 +67,7 @@ function exa_video_link($post = null) {
  */
 function exa_filter_video_link($html) {
 
-	if(!exa_is_video_post()) {
+	if( !(exa_hero_media() == "video" && exa_hero_style() == "cover") ) {
 		return $html;
 	}
 
@@ -105,22 +105,6 @@ function _exa_is_youtube_link($link) {
 	return false;
 
 }
-
-
-/**
- * Returns true if the given post is a video.
- * 
- * @since v0.4
- * 
- * @param mixed $post optional post id/object/&c.
- * @return boolean true if the post is a video post, false otherwise.
- */
-function exa_is_video_post($post = null) {
-
-	$post = get_post($post);
-	return has_term('video','exa_layout');
-}
-
 
 /**
  * Returns a string of the selected layout.
