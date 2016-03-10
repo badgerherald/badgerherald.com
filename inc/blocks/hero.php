@@ -4,9 +4,9 @@
  * 
  */
 
-global $DoubleClick;
 global $post;
 
+if (exa_hero_style() == "standard") :
 ?>
 
 <div class="block hero-block">
@@ -22,12 +22,6 @@ global $post;
 			
 			<aside class="hero-aside">
 	
-				<div class="hero-ad">
-	
-					<?php $DoubleClick->place_ad('bh:leaderboard','300x250',array('desktop','xl')); ?>
-					
-				</div>
-	
 				<?php exa_hero_caption(); ?>
 	
 			</aside>  
@@ -40,3 +34,7 @@ global $post;
 	
 	</div>
 </div>
+
+<?php 
+
+endif;

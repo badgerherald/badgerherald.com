@@ -45,7 +45,7 @@ else :
 endif;
 
 // Register ads
-global $DoubleClick;
+global $OnCampus;
 // Done registering ads.
 get_header(); ?>
 
@@ -68,7 +68,7 @@ get_header(); ?>
 			</div>
 
 			<div class="post-sidebar-ad">
-				<?php $DoubleClick->place_ad('bh:sidekick','300x250',array('desktop','xl')) ?>
+				<?php $OnCampus->place_ad(array('desktop','upper-sidekick')) ?>
 			</div>
 			</div>
 

@@ -7,8 +7,4 @@
  * @since Twenty Thirteen 1.0
  */
 
-global $AnalyticBridge;
-global $DoubleClick;
-global $post;
-
 ?>

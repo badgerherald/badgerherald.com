@@ -7,7 +7,6 @@
  */
 
 global $AnalyticBridge;
-global $DoubleClick;
 global $post;
 
 ?>

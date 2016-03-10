@@ -8,7 +8,6 @@
  */
 
 global $AnalyticBridge;
-global $DoubleClick;
 global $post;
 
 get_template_part('header'); 

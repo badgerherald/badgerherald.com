@@ -4,9 +4,11 @@
  * 
  */
 
-global $DoubleClick;
 global $post;
 
+
+if (exa_hero_style() == "standard") :
+	
 ?>
 <div class="block hero-block hero-image-block">
 	<div class="wrapper">
@@ -19,3 +21,7 @@ global $post;
 
 	</div>
 </div>
+
+<?php 
+
+endif;

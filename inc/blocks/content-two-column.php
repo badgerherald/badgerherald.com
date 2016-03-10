@@ -1,7 +1,7 @@
 <?php 
 
 
-global $DoubleClick;
+global $OnCampus;
 global $block;
 if(!$block) {
 	$block = new Block('article-display');
@@ -58,15 +58,10 @@ exa_block('headline');
 
 				</div>
 
-				<?php
+				<?php 
 
-				/* Hero */
-
-				$hide_feature = get_post_meta( get_the_ID(), '_exa_hide_featured_image', true);
-				$hide_feature = $hide_feature && $block->option('hide-hero');
-				$coverLayout = exa_layout() == "video" || exa_layout() == "cover";
-				if ( has_post_thumbnail() && !($hide_feature == "true") && !$coverLayout) : ?>
-						
+				if (exa_hero_style() == "standard" && exa_hero_media() != "none") :		
+				?>				
 				<div class="hero">
 				
 					<?php the_post_thumbnail('image-post-size'); ?>
@@ -77,11 +72,7 @@ exa_block('headline');
 				</div>
 				
 				<?php 
-
 				endif; 
-
-				/* End Hero */
-
 				?>
 
 				<section class="article-text">
@@ -115,13 +106,8 @@ exa_block('headline');
 
 				<div class="ad sidebar-thing">
 				<?php 
-				
-					$sizes = '300x250';
-					$args = array(
-			    		'lazyLoad' => true 
-					);
 		
-					$DoubleClick->place_ad('post-sidebar-2',$sizes,$args);
+					$OnCampus->place_ad(array('desktop'=>'upper-sidekick'));
 	
 				?>
 				</div>
@@ -132,13 +118,8 @@ exa_block('headline');
 	
 				<div class="ad sidebar-thing">
 				<?php 
-				
-					$sizes = '300x250';
-					$args = array(
-			    		'lazyLoad' => true 
-					);
 		
-					$DoubleClick->place_ad('post-sidebar-2',$sizes,$args);
+					$OnCampus->place_ad(array('desktop'=>'lower-sidekick'));
 	
 				?>
 				</div>
