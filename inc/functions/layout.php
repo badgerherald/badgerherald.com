@@ -25,7 +25,7 @@ function _exa_register_layout_taxonomy() {
 		'labels'                     => $labels,
 		'hierarchical'               => true,
 		'public'                     => false,
-		'show_ui'                    => true, // turn of to disable admin ui. that's it!
+		'show_ui'                    => false,
 		'show_admin_column'          => false,
 		'show_in_nav_menus'          => false,
 		'show_tagcloud'              => false,
@@ -39,7 +39,7 @@ add_action( 'init', '_exa_register_layout_taxonomy', 0 );
 
 /**
  * Saves default layout terms before saving the post
- */
+
 function exa_default_layout_terms($post_id) {
   
 	$layout_terms = get_the_terms( $post_id, 'exa_layout' );
@@ -51,6 +51,74 @@ function exa_default_layout_terms($post_id) {
 
 }
 add_action( 'save_post', 'exa_default_layout_terms' );
+ */
+
+/**
+ * 
+ */
+function exa_toggle_feature_boxes(){
+	add_meta_box( '_exa_hide_featured_image', __('Layout'), 'exa_toggle_feature_box', 'post', 'side', 'default');
+}
+
+function exa_toggle_feature_box($post) {
+	
+	// Hero stuff:
+	echo "<p>Choose how the hero (feature media) displays with the post:</p>";
+	echo "<hr/><h2 style='padding:0'>Hero Style</h2>";
+	echo "<p>";
+
+	if(exa_hero_style($post->ID) == "standard") {
+		echo "<input type='radio' name='layout-hero' value='hero-standard' checked> Standard<br>";
+		echo "<input type='radio' name='layout-hero' value='hero-cover'> Cover<br>";
+	} else {
+		echo "<input type='radio' name='layout-hero' value='hero-standard'> Standard<br>";
+		echo "<input type='radio' name='layout-hero' value='hero-cover'checked> Cover<br>";
+	}
+	echo "</p>";
+	
+	echo "<hr/><h2 style='padding:0'>Media Type</h2>";
+	echo "<p>";
+
+	if(exa_hero_media($post->ID) == "none") {
+		echo "<input type='radio' name='layout-media' value='media-image'> Image<br>";
+		echo "<input type='radio' name='layout-media' value='media-video'> Video<br>";
+		echo "<input type='radio' name='layout-media' value='media-none' checked> None<br>";
+	} else if(exa_hero_media($post->ID) == "image") {
+		echo "<input type='radio' name='layout-media' value='media-image' checked> Image<br>";
+		echo "<input type='radio' name='layout-media' value='media-video'> Video<br>";
+		echo "<input type='radio' name='layout-media' value='media-none'> None<br>";
+	} else if(exa_hero_media($post->ID) == "video") {
+		echo "<input type='radio' name='layout-media' value='media-image'> Image<br>";
+		echo "<input type='radio' name='layout-media' value='media-video' checked> Video<br>";
+		echo "<input type='radio' name='layout-media' value='media-none'> None<br>";
+	}
+	echo "</p>";
+
+}
+
+function exa_toggle_feature_save($post_id, $post){
+
+	$hero_style = isset($_POST['layout-hero']) ? $_POST['layout-hero'] : 'hero-standard';
+	$hero_media = isset($_POST['layout-media']) ? $_POST['layout-media'] : 'media-image'; 
+
+	wp_set_object_terms($post_id,array($hero_style,$hero_media),'exa_layout');
+
+}
+
+function exa_toggle_feature_setup(){
+
+	add_action( 'add_meta_boxes', 'exa_toggle_feature_boxes' );
+
+	add_action( 'save_post', 'exa_toggle_feature_save');
+	add_action( 'pre_post_update', 'exa_toggle_feature_save');
+	add_action( 'edit_post', 'exa_toggle_feature_save');
+	add_action( 'publish_post', 'exa_toggle_feature_save');
+	add_action( 'edit_page_form', 'exa_toggle_feature_save');
+
+
+}
+add_action( 'load-post.php', 'exa_toggle_feature_setup' );
+add_action( 'load-post-new.php', 'exa_toggle_feature_setup' );
 
 
 /**
@@ -164,8 +232,6 @@ function exa_hero_style($post = null) {
 	// new format for handling heros.
 	if(has_term('hero-cover','exa_layout',$post)) {
 		return 'cover';
-	} else if(has_term('media-none','exa_layout',$post)) {
-		return 'none';
 	} else {
 		return 'standard';
 	}

@@ -88,18 +88,7 @@ include_once('inc/functions/pullquotes.php');
 include_once('inc/functions/social.php');
 
 /**
- * Register icymi taxonomy.
- * 
- * Contents:
- * 	 - exa_register_icymi_taxonomy()		(action: init)
- */
-include_once('inc/functions/icymi.php');
-
-/**
  * Registers Popular_Post_Widget
- * 
- * Contents:
- * 	 - exa_register_icymi_taxonomy()		(action: init)
  */
 
 if( class_exists('Popular_Post_Widget') )
@@ -1126,45 +1115,6 @@ function exa_twitter_card_tags() {
 
 }
 add_action('wp_head','exa_twitter_card_tags');
-
-
-function exa_toggle_feature_boxes(){
-	add_meta_box( '_exa_hide_featured_image', __('Hide Featured Image'), 'exa_toggle_feature_box', 'post', 'side', 'default');
-}
-
-function exa_toggle_feature_box(){ ?>
-	<p>
-		<?php $hide_feature = get_post_meta( get_the_ID(), '_exa_hide_featured_image', true); ?>
-		<input type="checkbox" name="_exa_hide_featured_image" id="_exa_hide_featured_image" value="true" <?php if( $hide_feature == "true"){echo 'checked'; } else{echo "unchecked"; } ?> />
-		<label for="_exa_hide_featured_image"><?php _e('Check here to hide featured image when published. Useful for vertical images.'); ?></label>
-	</p>
-
-<?php }
-
-function exa_toggle_feature_save($post_id, $post){
-	if( isset($_POST['_exa_hide_featured_image']) && $_POST['_exa_hide_featured_image'] == 'true'){
-		update_post_meta($post_id, '_exa_hide_featured_image', 'true');
-	}else{
-		update_post_meta($post_id, '_exa_hide_featured_image', 'false');
-	}
-}
-
-function exa_toggle_feature_setup(){
-
-	add_action( 'add_meta_boxes', 'exa_toggle_feature_boxes' );
-
-	add_action( 'save_post', 'exa_toggle_feature_save');
-	add_action( 'pre_post_update', 'exa_toggle_feature_save');
-	add_action( 'edit_post', 'exa_toggle_feature_save');
-	add_action( 'publish_post', 'exa_toggle_feature_save');
-	add_action( 'edit_page_form', 'exa_toggle_feature_save');
-
-
-}
-add_action( 'load-post.php', 'exa_toggle_feature_setup' );
-add_action( 'load-post-new.php', 'exa_toggle_feature_setup' );
-
-
 
 /**
  * The excerpt to serve to facebook, twitter, google, &c.
