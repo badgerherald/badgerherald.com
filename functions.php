@@ -169,8 +169,10 @@ function exa_setup() {
 	//add_theme_support('menus');
 
 	// header
-	register_nav_menu( 'header', __("Links displayed on the right of the Header. It's best to use four or five links at most.") );
-	register_nav_menu( 'fixed-bar', __("Links displayed in the 'fixed bar' on the top of every screen.") );
+	register_nav_menu( 'header-primary', __("HEADER SECTIONS: Main sections displayed in the header of every page") );
+	//register_nav_menu( 'header-secondary', __("Secondary nav items next to the search bar.") );
+	register_nav_menu( 'footer-primary', __("FOOTER SECTIONS: Main sections displayed in the footer") );
+	register_nav_menu( 'footer-secondary', __("FOOTER SECONDARY: Secondary nav items in the footer") );
 	/* This theme uses its own gallery styles. 
 	add_filter( 'use_default_gallery_style', '__return_false' ); */
 

@@ -16,7 +16,7 @@ if(!$block) {
 		<div class="middle-rail rail">
 			<?php
 			wp_nav_menu( array(
-				'theme_location' => 'fixed-bar'
+				'theme_location' => 'footer-primary'
 				)
 			);
 			?>
@@ -24,7 +24,7 @@ if(!$block) {
 		<div class="right-rail rail">
 			<?php 
 				wp_nav_menu( array(
-						'theme_location' => 'header'
+						'theme_location' => 'footer-secondary'
 					)
 				);
 			?>

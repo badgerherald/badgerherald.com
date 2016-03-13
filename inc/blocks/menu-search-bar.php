@@ -25,7 +25,7 @@ $block->default_args(
     <div class="wrapper">
 		<?php 
 			wp_nav_menu( array(
-				'theme_location' => 'fixed-bar'
+				'theme_location' => 'header-primary'
 				)
 			);
 		?>
