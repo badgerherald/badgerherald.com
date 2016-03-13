@@ -147,17 +147,6 @@
 	}
 }
 
-.billboard-block {
-	background: $truewhite;
-	display:none;
-	margin:48px 0 ;
-	.ad {
-		display: block;
-		margin: 0 auto;
-		padding: 24px 0;
-	}
-}
-
 .leaderboard-block {
 	.wrapper {
 		.ad {
@@ -250,10 +239,6 @@
 }
 
 @media (min-width: 1160px) {
-
-	.billboard-block {
-		display: block;
-	}
 
 	.column-block .column-block-article {
 	
