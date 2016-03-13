@@ -9,12 +9,11 @@
 get_header();
 
 while ( have_posts() ) : the_post(); 
-
-	exa_block('mobile-header',null,array('breakpoints' => array('mobile')));
-
+	
+	exa_block('header',array('breakpoints' => array('mobile')));
 	get_template_part( 'inc/blocks/cover-hero' ); 
 
-	exa_block( 'content-two-column', null, array('hide-hero' => true) ); 
+	exa_block('content-two-column',array('hide-hero' => true) ); 
 
 	/**
 	 * Called below the article, after main.

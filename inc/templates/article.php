@@ -16,9 +16,9 @@ global $post;
 
 get_header();
 
-get_template_part('inc/blocks/leaderboard');
-get_template_part('inc/blocks/menu-search-bar');
-get_template_part('inc/blocks/mobile-header');
+exa_block('leaderboard');
+exa_block('menu-search-bar');
+exa_block('header');
 
 if ( have_posts() ) : 
 	while ( have_posts() ) : the_post();

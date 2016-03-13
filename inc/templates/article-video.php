@@ -17,15 +17,16 @@ if(exa_hero_media_type() == 'video') :
 
 	<div class="black" style="padding-top:18px;">
 		<?php 
-		get_template_part('inc/blocks/leaderboard');
-		get_template_part('inc/blocks/menu-search-bar','black');
-		get_template_part('inc/blocks/mobile-header','black');
-		get_template_part('inc/blocks/hero','video');
+		exa_block('leaderboard');
+		exa_block('menu-search-bar-black');
+		exa_block('header',array('background'=>'black'));
+		exa_block('hero-video');
 		?>
 	</div>
 
 <?php 
 else :
+	exa_block('header',array('breakpoints' => array('mobile')));
 	get_template_part('inc/blocks/cover-hero');
 endif;
 

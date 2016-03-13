@@ -15,14 +15,14 @@ global $block;
  * @param string $name Name of block template to include.
  * @param array|WP_Query $args Optional argument to instantiate variables for template.
  */
-function exa_block($name, $type = null, $args = null) {
+function exa_block($name, $args = null) {
 
     // store current block
     $curBlock = $GLOBALS['block'];
 
-    $block = new Block($name,$type,$args);
+    $block = new Block($name,$args);
     $GLOBALS['block'] = $block;
-    get_template_part('./inc/blocks/' . $name,$type);
+    get_template_part('./inc/blocks/' . $name);
 
     // restore current block;
     $GLOBALS['block'] = $block;
@@ -49,16 +49,14 @@ function hexa_is_banter($post = null) {
 Class Block {
 
     public $name;
-    public $type;
 
     public $identifier;
     public $query;
     public $args;
 
-    public function __construct($name,$type = null,$args = null) {
+    public function __construct($name,$args = null) {
         $this->name = $name;
-        $this->type = $type;
-        $this->args = $args ? $args : array();
+        $this->args = is_array($args) ? $args : array();
     }
 
     public function __toString() {
@@ -93,6 +91,10 @@ Class Block {
 
         return $str;
 
+    }
+
+    public function default_args($args) {
+        $this->args = array_merge($this->args,$args);
     }
 
     public function option($option) {

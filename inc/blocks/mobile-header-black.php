@@ -1,4 +1,4 @@
-<div class="block mobile-header-block">
+<div class="block header-block">
 	
 	<div class="wrapper">
 		
