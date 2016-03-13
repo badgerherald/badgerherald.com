@@ -1,7 +1,7 @@
 .preflight-block {
 	// loaded gets added as a class if/when dfw fills the spot.
-	.scroll-view {
-		display:none;
+	iframe {
+		margin-left: 50px
 	}
 	&.loaded {
 		.scroll-view {

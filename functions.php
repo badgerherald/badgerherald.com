@@ -160,14 +160,11 @@ function hrld_default_comments_on( $data ) {
 }
 add_filter( 'wp_insert_post_data', 'hrld_default_comments_on' );
 
-/**
- * ================================================================================================
- *   #region: general wordpress theme setup.
- * ================================================================================================
- */
 
 /**
  * Holds static global information about the theme and page loading.
+ *
+ * @since v0.3
  */
 class Exa {
 
@@ -177,6 +174,8 @@ class Exa {
 	 * @var Array
 	 */
 	private static $shownIds = array();
+
+	private static $actionsAdded = false;
 
 	/**
 	 * Add a value to the array of shown WordPress ids already
@@ -206,6 +205,7 @@ class Exa {
 	}
 
 }
+
 
 /**
  * Sets up the content width value based on the theme's design.
@@ -844,9 +844,9 @@ function exa_the_author_link() {
  * 
  * @return string The shortlink for the post.
  */
-function exa_short_url() {
+function exa_short_url($post = null) {
 
-	global $post;
+	$post = get_post($post);
 	global $bitly;
 
 	if( isset($bitly) ) { 

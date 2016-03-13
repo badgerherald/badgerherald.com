@@ -147,13 +147,15 @@ Class OnCampus {
 
 	public function footer() {
 
+
+		// Load others:
 		if(OnCampus::$enabled) :
 
 			echo "<script type='text/javascript'>\n";
 	
 			echo "\tvar w = window.innerWidth;\n";
 			echo "\tvar OX_4d6552943f5a4 = OX();\n";
-	
+
 			foreach ($this->displayads as $i=>$adspot) {
 				$first = true;
 				foreach ($this->breakpoints as $bp) {
@@ -170,9 +172,8 @@ Class OnCampus {
 						}
 					}
 				}
-			}
+			} 
 			echo "\n\n\tOX_4d6552943f5a4.load();\n";
-	
 			echo "</script>";
 
 		endif;
@@ -222,18 +223,34 @@ class OnCampusBreakpoint {
 	}
 }
 
-
+// Global OnCampus object
 $OnCampus = new OnCampus();
+
+// Standard breakpoints:
 $OnCampus->register_breakpoint('mobile',0);
 $OnCampus->register_breakpoint('tablet',740);
 $OnCampus->register_breakpoint('desktop',1040);
 $OnCampus->register_breakpoint('xl',1180);
 
+// Register OnCampus Ads:
 $OnCampus->register_ad('leaderboard','538215136','728x90');
 $OnCampus->register_ad('upper-sidekick','538215223','300x250');
 $OnCampus->register_ad('lower-sidekick','538270652','300x250');
 $OnCampus->register_ad('homepage-sidekick','538295845','300x50');
 $OnCampus->register_ad('mobile-leaderboard','538295843','300x50');
+$OnCampus->register_ad('article-bottom','538309619','300x50');
+
+
+
+// Preflight breakpoints:
+$OnCampus->register_breakpoint('preflight-mobile',0);
+$OnCampus->register_breakpoint('preflight-tablet',740);
+$OnCampus->register_breakpoint('preflight-desktop',1040);
+
+// Register Preflight Ads:
+$OnCampus->register_ad('preflight-mobile','538309497','');
+$OnCampus->register_ad('preflight-tablet','538309498','');
+$OnCampus->register_ad('preflight-desktop','538309499','');
 
 /**
  * 

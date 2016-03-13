@@ -10,10 +10,7 @@ get_header();
 
 while ( have_posts() ) : the_post(); 
 
-	exa_block('mobile-header',null,array(
-										'breakpoints' => array('mobile')
-										)
-			);
+	exa_block('mobile-header',null,array('breakpoints' => array('mobile')));
 
 	get_template_part( 'inc/blocks/cover-hero' ); 
 
@@ -26,14 +23,6 @@ while ( have_posts() ) : the_post();
 	 */
 	do_action('exa_below_article');
 
-	?>
+endwhile;
 
-    <div class="clearfix"></div>
-
-    <?php get_template_part('inc/blocks/billboard'); ?>
-
-    <div class="clearfix"></div>
-
-<?php endwhile; ?>
-
-<?php get_footer(); ?>
+get_footer();
