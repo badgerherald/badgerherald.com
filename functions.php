@@ -1,20 +1,35 @@
 <?php
 /**
- * exa functions file.
- *
- * Contents:
- *
- * 		#region: include other fuction files.
- * 		#region: general wordpress theme setup.
- * 		#region: filters that fix bugs and other things.
+ * Exa Functions file
  */
 
+/** Taxonomies */
+include_once('inc/functions/topics.php');
+include_once('inc/functions/layout.php');
+include_once('inc/functions/importance.php');
 
-/**
- * =========================================================
- *   #region: define undefined constants.
- * =============================================================================
- */
+/** Other stuff */
+include_once('inc/functions/dev.php');
+include_once('inc/functions/oncampus.php');
+include_once('inc/functions/html-tags.php');
+include_once('inc/functions/analytic-dashboard.php');
+include_once('inc/functions/block.php');
+include_once('inc/functions/embeds.php');
+include_once('inc/functions/authors.php');
+include_once('inc/functions/popular-post-widget.php');
+include_once('inc/functions/pullquotes.php');
+include_once('inc/functions/social.php');
+include_once('inc/functions/ajax.php');
+include_once('inc/functions/services.php');
+if( class_exists('Popular_Post_Widget') ) {
+	include_once('inc/functions/popular-post-widget.php');
+}
+
+/** Production site ----------------------------------------------------- */
+/*                                                                        */
+/* Used for development. Is this site the production site or not?         */
+/*                                                                        */
+/* ---------------------------------------------------------------------- */
 
 /**
  * Is this a production environment?
@@ -34,113 +49,11 @@ if ( ! defined( 'EXA_PRODUCTION' ) )
 if ( ! defined( 'EXA_DEV' ) )
 	define( 'EXA_DEV', TRUE );
 
-
-/**
- * =========================================================
- *   #region: include other fuction files.
- * =============================================================================
- */
-
-/**
- * Load more functions for develop enviornment.
- * 
- * Contents:
- *   - exa_dev_attachment_url()				(filter: wp_get_attachment_url)
- */
-include_once('inc/functions/dev.php');
-
-include_once('inc/functions/oncampus.php');
-
-/**
- * Auto-generated html tags for things like
- * author links, captions, &c.
- * 
- * Contents:
- * 	 - exa_hero_media_credit_tag()
- *   - exa_hero_caption_text()
- *   - exa_hero_caption()
- *   - exa_mug()
- *   - exa_round_mug()
- */
-include_once('inc/functions/html-tags.php');
-
-include_once('inc/functions/analytic-dashboard.php');
-
-include_once('inc/functions/block.php');
-
-include_once('inc/functions/embeds.php');
-
-include_once('inc/functions/taxonomies.php');
-
-include_once('inc/functions/layout.php');
-
-include_once('inc/functions/authors.php');
-
-include_once('inc/functions/popular-post-widget.php');
-
-include_once('inc/functions/pullquotes.php');
-/**
- * Social links
- * 
- * Contents:
- *   - Currently nothing of importance is done in here.
- */
-include_once('inc/functions/social.php');
-
-/**
- * Registers Popular_Post_Widget
- */
-
-if( class_exists('Popular_Post_Widget') )
-	include_once('inc/functions/popular-post-widget.php');
-
-/**
- * Register importance taxonomy.
- * 
- * Contents:
- *	 - // todo: list contents.
- */
-include_once('inc/functions/importance.php');
-
-/**
- * Ad setup and handling in exa.
- * 
- * Contents:
- *   - exa_ad_setup()						(action: dfw_setup)
- *   - exa_register_content_adslot()		(action: dfw_setup)
- *   - exa_insert_after_graph()
- */
-include_once('inc/functions/ads.php');
-
-/**
- * Do all the fun ajax-y things.
- * 
- * Contents:
- *   - Currently nothing of importance is done in here.
- */
-include_once('inc/functions/ajax.php');
-
-/**
- * Integrate 3rd party services that we use.
- * 
- * Contents:
- *   - 
- */
-include_once('inc/functions/services.php');
-
-
-/** Production site ----------------------------------------------------- */
-/*                                                                        */
-/* Used for development. Is this site the production site or not?         */
-/*                                                                        */
-/* ---------------------------------------------------------------------- */
-
 /**
  * Returns whether the site is a production site or not.
  * as defined (currently) in the WP_CONFIG file.
  *
- * @since Sept 11, 2013
- * @author Will Haynes
+ * @since v0.2
  */
 function hrld_is_production() {
 	return HRLD_PRODUCTION;
@@ -149,7 +62,6 @@ function hrld_is_production() {
 /**
  * Turn comments on by default
  *
- * @author Will Haynes
  * @see http://wordpress.stackexchange.com/questions/38405/why-are-the-comments-disabled-by-default-on-my-custom-post-types
  */
 function hrld_default_comments_on( $data ) {
@@ -1252,6 +1164,11 @@ function hrld_remove_pinned_author_posts($query){
 add_filter('pre_get_posts', 'hrld_remove_pinned_author_posts', 1);
 
 
+/**
+ * Up the number of posts on banter pages
+ * 
+ * @since v0.5
+ */
 function banter_post_count($query) {
 	if ( !is_admin() && $query->is_main_query() ) {
 
@@ -1262,18 +1179,6 @@ function banter_post_count($query) {
 	return $query;
 }
 add_action('pre_get_posts','banter_post_count');
-
-/**
- * Unhide the kitchen sink for all users all the time.
- * 
- * @param array $args args passed in by WordPress 
- * @since v0.2
- */
-function exa_unhide_kitchensink( $args ) {
-	$args['wordpress_adv_hidden'] = false;
-	return $args;
-}
-add_filter( 'tiny_mce_before_init', 'exa_unhide_kitchensink' );
 
 /**
  * Remove p tag from around images

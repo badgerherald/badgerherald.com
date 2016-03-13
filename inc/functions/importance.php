@@ -7,6 +7,28 @@
  * @since v0.2
  */
 
+
+/**
+ * Registeres a taxanomy used to select the "importance" of a post.
+ *
+ * @since 0.1
+ * @return void
+ */
+function exa_register_importance_taxanomy() {
+
+	register_taxonomy("importance","post",array( 
+							'hierarchical' => true,
+							'label' => 'Importance',
+							'public' => 'true',
+							'show_in_nav_menus' => false,
+							'show_admin_column' => false,
+							'query_var' => true,
+							'show_in_menu' => 'false',
+							'singular_label' => 'Importance') 
+	);
+
+} add_action( 'init', 'exa_register_importance_taxanomy');
+
 /**
  * Returns a boolean specifying if the post is `featured` or not.
  * 
