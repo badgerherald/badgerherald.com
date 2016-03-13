@@ -3,7 +3,7 @@
 /**
  * Registeres a taxanomy used to select a post topic
  *
- * @since 0.1
+ * @since v0.1
  * @return void
  */
 function exa_register_topic_taxonomy() {
@@ -21,3 +21,38 @@ function exa_register_topic_taxonomy() {
 
 } 
 add_action( 'init', 'exa_register_topic_taxonomy');
+
+/**
+ * Get the list of beats (topic taxonomy) for a post.
+ * 
+ * @since v0.1
+ * @return Array List of beats.
+ */
+function exa_get_beats() {
+
+	global $post;
+	return wp_get_post_terms(get_the_ID(),"topic");
+
+}
+
+/**
+ * Returns the "topic" or top category of the post.
+ *
+ * @since v0.1
+ * @param int|WP_Post $post post id or post object
+ * @return string Top post cateogry or "Herald" if no category is set.
+ */
+function exa_topic($post = null) {
+
+	$post = get_post($post);
+
+	$beats = wp_get_post_terms($post->ID,"topic");
+	$category_base = get_bloginfo('url')."/".get_post_type()."/";
+	if( !empty($beats) ) {
+		foreach ($beats as $beat) : 
+			return $beat->name; 
+		endforeach;
+	}
+
+	return "Herald";
+}

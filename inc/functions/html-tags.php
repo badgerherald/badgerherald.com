@@ -213,3 +213,12 @@ function exa_facebook_link($post = null) {
 	return $sharer;
 
 }
+
+/**
+ * Prints the author link
+ * 
+ * @since 0.1
+ */
+function exa_the_author_link() {
+	echo get_bloginfo('url')."/author/".get_the_author_meta("user_nicename");
+}

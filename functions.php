@@ -281,13 +281,6 @@ function new_excerpt_more( $more ) {
 }
 add_filter('excerpt_more', 'new_excerpt_more');
 
-
-/**
- * ================================================================================================
- *   #region: filters that fix bugs and other things.
- * ================================================================================================
- */
-
 /**
  * This function fixes a bug with the default image src.
  * 
@@ -311,20 +304,6 @@ function _fix_wpua_src($image_src_array, $attachment_id, $size='thumbnail', $ico
 }
 add_filter('wpua_get_attachment_image_src', '_fix_wpua_src',10,4);
 
-
-
-/**
- * Get the list of beats (topic taxonomy) for a post.
- * 
- * @since 0.1
- * @return Array List of beats.
- */
-function exa_get_beats() {
-
-	global $post;
-	return wp_get_post_terms(get_the_ID(),"topic");
-
-}
 
 /**
  * Takes a string, and returns a string that denotes ownership.
@@ -433,30 +412,6 @@ function exa_add_so_rewrite_rules($aRules) {
 add_filter('rewrite_rules_array', 'exa_add_so_rewrite_rules');
 
 /**
- * Returns array of beats for a passed in category.
- * 
- * @since 0.1
- * @param string $category The category to fetch beats for.
- * @return array List of beats.
- */
-function exa_get_beats_slug_list($category) {
-
-	if ($category == 'news') {	
-		$beats_slug_list = array('madison','higher-edu','wisconsin','student-gov','us','campus','uw-research','uw-system');
-	} elseif ($category == 'oped') {
-		$beats_slug_list = array('column','editorial','opinion-desk','letter','public-editor','oped-top-story');
-	} elseif ($category == 'sports') {
-		$beats_slug_list = array('baseball','sports-column','football','mens-basketball','mens-hockey','mens-swimming','softball','volleyball','womens-basketball','womens-hockey','womens-swimming');
-	} elseif ($category == 'artsetc') {
-		$beats_slug_list = array('art','corner','books','chew-on-this','arts-column','film','food','herald-arcade','hump-day','low-fat-tue','arts-media','music','arts-point-counterpoint','tv');
-	} else {
-		$beats_slug_list = array();
-	}
-	return $beats_slug_list;
-
-}
-
-/**
  * Add container to video embeds
  *
  * @since 0.1
@@ -480,29 +435,6 @@ function hrld_responsive_embed_oembed_html($html, $url, $attr, $post_id) {
 }
 add_filter('embed_oembed_html', 'hrld_responsive_embed_oembed_html', 10, 4);
 
-
-/**
- * Returns the "topic" or top category of the post.
- *
- * @since 0.1
- * @param int|WP_Post $post post id or post object
- * @return string Top post cateogry or "Herald" if no category is set.
- */
-function exa_topic($post = null) {
-
-	$post = get_post($post);
-
-	$beats = wp_get_post_terms($post->ID,"topic");
-	$category_base = get_bloginfo('url')."/".get_post_type()."/";
-	if( !empty($beats) ) {
-		foreach ($beats as $beat) : 
-			return $beat->name; 
-		endforeach;
-	}
-
-	return "Herald";
-}
-
 /**
  * Filter options other than p, h3 and h4 from the editor screen, because editors have 
  * enough options already.
@@ -518,53 +450,6 @@ function exa_TinyMCE_customformat($settings) {
 
 }
 add_filter('tiny_mce_before_init', 'exa_TinyMCE_customformat' );
-
-/*
-function exa_TinyMCE_dropdown_style( $settings ) {
-
-    $style_formats = array(
-        array(
-            'title' => 'Paragraph',
-            'format' => 'p',
-        ),
-        array(
-            'title' => 'Header',
-            'format' => 'h2',
-        ),
-        array(
-            'title' => 'Subhead',
-            'format' => 'h3',
-        ),
-        array(
-            'title' => 'Breaker',
-            'format' => 'h4',
-        ),
-    );
-
-    $settings['style_formats'] = json_encode( $style_formats );
-
-    return $settings;
-
-}
-add_filter( 'tiny_mce_before_init', 'exa_TinyMCE_dropdown_style' );
-
-
-function fb_mce_editor_buttons( $buttons ) {
-
-    array_unshift( $buttons, 'styleselect' );
-
-    $value = array_search( 'formatselect', $buttons );
-	if ( FALSE !== $value ) {
-	    foreach ( $buttons as $key => $value ) {
-	        if ( 'formatselect' === $value )
-	            unset( $buttons[$key] );
-	    }
-	}
-
-    return $buttons;
-}
-add_filter( 'mce_buttons_2', 'fb_mce_editor_buttons' );
-*/
 
 
 /**
@@ -738,16 +623,6 @@ function hrld_resize( $attach_id = null, $img_url = null, $width, $height, $crop
 	return $hrld_image;
 }
 
-
-/**
- * Prints the author link
- * 
- * @since 0.1
- */
-function exa_the_author_link() {
-	echo get_bloginfo('url')."/author/".get_the_author_meta("user_nicename");
-}
-
 /**
  * Retrieve the short url for the post
  *
@@ -813,8 +688,9 @@ add_filter( 'wp_title', 'exa_filter_wp_title' );
  * @since v0.2
  * @return string section.
  */
-function exa_section() {
-	global $post;
+function exa_section($post = null) {
+	
+	$post = get_post($post);
 
 	$section = get_the_category();
 	if( $section ) {
@@ -830,8 +706,9 @@ function exa_section() {
  * @since v0.4
  * @return string section.
  */
-function exa_section_permalink() {
-	global $post;
+function exa_section_permalink($post = null) {
+
+	$post = get_post($post);
 
 	$section = get_the_category();
 	if( $section ) {
@@ -1190,7 +1067,6 @@ add_action('pre_get_posts','banter_post_count');
 function filter_ptags_on_images($content){
    return preg_replace('/<p>\s*(<a .*>)?\s*(<img .* \/>)\s*(<\/a>)?\s*<\/p>/iU', '\1\2\3', $content);
 }
-
 add_filter('the_content', 'filter_ptags_on_images');
 
 function exa_add_media_credit_showcase($attachments) {
@@ -1210,12 +1086,10 @@ function exa_add_media_credit_showcase($attachments) {
 }
 add_filter('hrld_showcase_image_data', 'exa_add_media_credit_showcase');
 
-
 /**
  * Returns a url for 
  *
  * @since v0.2
- * @param
  * @author Jason Chan
  */
 function exa_social_url($url = "", $newVersion = true){
@@ -1237,206 +1111,3 @@ function exa_social_url($url = "", $newVersion = true){
 		}
 	return $url;
 }
-
-/**
- * Filters post gallery generated 
- * 
- * @since 0.2
- * 
- * @param string $output
- * @param array $attr attributes defined in the shortcode
- * 
- * @return string filtered html output for the gallery. 
- */
-function exa_post_gallery($output = '', $attr) {
-
-	return "<div></div>";
-	$post = get_post();
-	wp_enqueue_script('swipe', get_template_directory_uri().'/js/Swipe/swipe.js', array('jquery'), false, true);
-	wp_enqueue_script('exa_post_gallery_js', get_template_directory_uri().'/js/exa-post-gallery.js', array('jquery'), false, true);
-    if ( isset( $attr['orderby'] ) ) {
-        $attr['orderby'] = sanitize_sql_orderby( $attr['orderby'] );
-        if ( ! $attr['orderby'] ) {
-            unset( $attr['orderby'] );
-        }
-    }
-    $html5 = current_theme_supports( 'html5', 'gallery' );
-    $atts = shortcode_atts( array(
-        'order'      => 'ASC',
-        'orderby'    => 'menu_order ID',
-        'id'         => $post ? $post->ID : 0,
-        'itemtag'    => $html5 ? 'figure'     : 'dl',
-        'icontag'    => $html5 ? 'div'        : 'dt',
-        'captiontag' => $html5 ? 'figcaption' : 'dd',
-        'columns'    => 3,
-        'size'       => 'thumbnail',
-        'include'    => '',
-        'exclude'    => '',
-        'link'       => ''
-    ), $attr, 'gallery' );
- 
-    $id = intval( $atts['id'] );
-    if ( 'RAND' == $atts['order'] ) {
-        $atts['orderby'] = 'none';
-    }
- 
-    if ( ! empty( $atts['include'] ) ) {
-        $_attachments = get_posts( array( 'include' => $atts['include'], 'post_status' => 'inherit', 'post_type' => 'attachment', 'post_mime_type' => 'image', 'order' => $atts['order'], 'orderby' => $atts['orderby'] ) );
- 
-        $attachments = array();
-        foreach ( $_attachments as $key => $val ) {
-            $attachments[$val->ID] = $_attachments[$key];
-        }
-    } elseif ( ! empty( $atts['exclude'] ) ) {
-        $attachments = get_children( array( 'post_parent' => $id, 'exclude' => $atts['exclude'], 'post_status' => 'inherit', 'post_type' => 'attachment', 'post_mime_type' => 'image', 'order' => $atts['order'], 'orderby' => $atts['orderby'] ) );
-    } else {
-        $attachments = get_children( array( 'post_parent' => $id, 'post_status' => 'inherit', 'post_type' => 'attachment', 'post_mime_type' => 'image', 'order' => $atts['order'], 'orderby' => $atts['orderby'] ) );
-    }
- 
-    if ( empty( $attachments ) ) {
-        return '';
-    }
- 
-    if ( is_feed() ) {
-        $output = "\n";
-        foreach ( $attachments as $att_id => $attachment ) {
-            $output .= wp_get_attachment_link( $att_id, $atts['size'], true ) . "\n";
-        }
-        return $output;
-    }
- 
-    $itemtag = tag_escape( $atts['itemtag'] );
-    $captiontag = tag_escape( $atts['captiontag'] );
-    $icontag = tag_escape( $atts['icontag'] );
-    $valid_tags = wp_kses_allowed_html( 'post' );
-    if ( ! isset( $valid_tags[ $itemtag ] ) ) {
-        $itemtag = 'dl';
-    }
-    if ( ! isset( $valid_tags[ $captiontag ] ) ) {
-        $captiontag = 'dd';
-    }
-    if ( ! isset( $valid_tags[ $icontag ] ) ) {
-        $icontag = 'dt';
-    }
- 
-    $columns = intval( $atts['columns'] );
-    $itemwidth = $columns > 0 ? floor(100/$columns) : 100;
-    $float = is_rtl() ? 'right' : 'left';
- 
-    $selector = "gallery-{$instance}";
- 
-    $gallery_style = '';
- 
-    /**
-     * Filter whether to print default gallery styles.
-     *
-     * @since 3.1.0
-     *
-     * @param bool $print Whether to print default gallery styles.
-     *                    Defaults to false if the theme supports HTML5 galleries.
-     *                    Otherwise, defaults to true.
-     */
-    if ( apply_filters( 'use_default_gallery_style', ! $html5 ) ) {
-        $gallery_style = "
-        <style type='text/css'>
-            #{$selector} {
-                margin: auto;
-            }
-            #{$selector} .gallery-item {
-                float: {$float};
-                margin-top: 10px;
-                text-align: center;
-                width: {$itemwidth}%;
-            }
-            #{$selector} img {
-                border: 2px solid #cfcfcf;
-            }
-            #{$selector} .gallery-caption {
-                margin-left: 0;
-            }
-            /* see gallery_shortcode() in wp-includes/media.php */
-        </style>\n\t\t";
-    }
- 
-    $size_class = sanitize_html_class( $atts['size'] );
-    // $gallery_div = "<div id='$selector' class='gallery galleryid-{$id} gallery-columns-{$columns} gallery-size-{$size_class}'>";
-    $gallery_div = "<div id='slider'><div id='swipe' class='swipe'><div class='swipe-wrap'>";
- 
-    /**
-     * Filter the default gallery shortcode CSS styles.
-     *
-     * @since 2.5.0
-     *
-     * @param string $gallery_style Default gallery shortcode CSS styles.
-     * @param string $gallery_div   Opening HTML div container for the gallery shortcode output.
-     */
-    $output = apply_filters( 'gallery_style', $gallery_style . $gallery_div );
- 
-    $i = 0;
-    foreach ( $attachments as $id => $attachment ) {
-        if ( ! empty( $atts['link'] ) && 'file' === $atts['link'] ) {
-            $image_output = wp_get_attachment_link( $id, $atts['size'], false, false );
-        } elseif ( ! empty( $atts['link'] ) && 'none' === $atts['link'] ) {
-            $image_output = wp_get_attachment_image( $id, $atts['size'], false );
-        } else {
-            $image_output = wp_get_attachment_link( $id, $atts['size'], true, false );
-        }
-        $image_output = wp_get_attachment_image( $id, 'feature', false );
-        $image_meta  = wp_get_attachment_metadata( $id );
- 
-        $orientation = '';
-        if ( isset( $image_meta['height'], $image_meta['width'] ) ) {
-            $orientation = ( $image_meta['height'] > $image_meta['width'] ) ? 'portrait' : 'landscape';
-        }
-        $output .= "<div class='slide'>";
-        $output .= "<div class='slide-image'>";
-        $output .= $image_output;
-        //$output .= "
-        //    <{$icontag} class='gallery-icon {$orientation}'>
-        //        $image_output
-        //    </{$icontag}>";
-		$output .= "</div>";
-        
-        $output .= "<div class='slider-content'>";
-        if (trim($attachment->post_excerpt) ) {
-            $output .= "
-                <p>
-                " . wptexturize($attachment->post_excerpt) . "
-                </p>";
-        }
-        $credit = get_hrld_media_credit($id);
-		if ($credit != "") {
-				if(get_user_by('login', $credit)){
-				$hrld_user = get_user_by('login', $credit);
-				$output .= "<span class='hrld-media-credit'><span class='hrld-media-credit-name'><a href='".get_bloginfo('url')."/author/$credit'>$hrld_user->display_name</a></span><span class='hrld-media-credit-org'>/The Badger Herald</span></span>"; 
-			} else{
-				$hrld_credit_name_org = explode("/", $credit);
-				if($hrld_credit_name_org[1]){
-					$output .= "<span class='hrld-media-credit'><span class='hrld-media-credit-name'>$hrld_credit_name_org[0]</span><span class='hrld-media-credit-org'>/$hrld_credit_name_org[1]</span></span>";
-				}
-				else{
-					$output .= "<span class='hrld-media-credit'><span class='hrld-media-credit-org'>$hrld_credit_name_org[0]</span></span>";
-				}
-			}
-		}
-        $output .= "</div>"; //class="slider-content"
-        $output .= "</div>"; //class="slide"
-    }
- 
-    $output .= "</div>"; //class="swipe-wrap"
-    $output .= '<div class="swipe-slide-nav-page prev"></div><div class="swipe-slide-nav-page next"></div>';
-    $output .= "</div>"; //class="swipe"
-    $output .= '<div class="slider-nav-container">';
-    $output .= "<ul class='slider-nav clearfix'>";
-    foreach ($attachments as $id => $attachment) {
-        $image_output = wp_get_attachment_image( $id, 'post-thumbnail', false );
-        $output .= "<li>".$image_output."</li>";
-    }
-    $output .= "</ul>";
-    $output .= '<div class="slider-nav-page prev"></div><div class="slider-nav-page next"></div>';
-    $output .= '</div>';
-    $output .= "</div>"; //id="slider"
- 
-    return $output;
-}
-//add_filter('post_gallery', 'exa_post_gallery', 10, 2);
