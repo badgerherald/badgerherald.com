@@ -288,13 +288,11 @@
 		h1 {
 			font-family: $headline;
 			margin: 18px 0;
-			display: inline-block;
 		}
 		h2 {
 			font-family: $headline;
 			font-size: 30px;
 			margin: 24px 0px 12px;
-			display: inline-block;
 		}
 		h3 {
 			font-family: $headline;
@@ -302,7 +300,6 @@
 			font-weight: bold;
 			margin: 12px 0 0px;
 			font-size: 24px;
-			display: inline-block;
 			text-shadow: -1px 1px rgba($truewhite,.8);
 			// text-transform: uppercase;
 		}
@@ -312,7 +309,6 @@
 			font-weight: bold;
 			font-size: 18px;
 			margin: 12px 0 12px;
-			display: inline-block;
 			margin-left: 15px;
 			&:before {
 				content: "*";

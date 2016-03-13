@@ -61,8 +61,6 @@ exa_block('header');
 				<hr />
 			<?php endif; ?>
 			
-
-
 		<?php endwhile; ?>
 
 		<?php twentythirteen_paging_nav(); ?>

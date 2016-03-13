@@ -31,7 +31,7 @@ function _exa_register_layout_taxonomy() {
 		'show_tagcloud'              => false,
 		'query_var'                  => 'exa_layout',
 	);
-	register_taxonomy( 'exa_layout', array( 'post' ), $args );
+	register_taxonomy( 'exa_layout', array( 'post','page' ), $args );
 
 }
 add_action( 'init', '_exa_register_layout_taxonomy', 0 );

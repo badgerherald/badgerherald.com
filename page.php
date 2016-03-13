@@ -1,24 +1,9 @@
-<?php
-/**
- * The Template for displaying all single posts.
- *
- * @package WordPress
- * @subpackage Twenty_Thirteen
- * @since Twenty Thirteen 1.0
- */
+<?php 
 
-get_header(); 
-
-?>
-
-<?php /* The loop */ ?>
-
-<?php while ( have_posts() ) : the_post(); ?>
-
-	<?php get_template_part( 'content', get_post_format() ); ?>
-
-    <div class="clearfix"></div>
-
-<?php endwhile; ?>
-
-<?php get_footer(); ?>
+if(exa_hero_style() == "cover" && exa_hero_media() == "video") {
+	get_template_part('inc/templates/article-video');
+} else if(exa_hero_style() == "cover") {
+	get_template_part('inc/templates/article-cover');	
+} else {
+	get_template_part('inc/templates/article');
+}
