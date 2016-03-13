@@ -5,7 +5,7 @@
   src:url("fonts/exa.eot");
   src:url("fonts/exa.eot?#iefix") format("embedded-opentype"),
     url("fonts/exa.woff") format("woff"),
-    url("fonts/exa.ttf?v=2") format("truetype"),
+    url("fonts/exa.ttf") format("truetype"),
     url("fonts/exa.svg#exa") format("svg");
   font-weight: normal;
   font-style: normal;
@@ -39,29 +39,35 @@
 }
 
 .icon-new-window:before {
-  content: "w";
+  content: "\77";
 }
 .icon-arrow-down:before {
-  content: "v";
+  content: "\76";
 }
 .icon-arrow-right:before {
-  content: ">";
+  content: "\3e";
 }
 .icon-arrow-left:before {
-  content: "<";
+  content: "\3c";
 }
 .icon-arrow-up:before {
-  content: "^";
+  content: "\5e";
 }
-.icon-shape-1:before {
-  content: "*";
+.icon-corner:before {
+  content: "\2a";
 }
 .icon-twitter-bird:before {
-  content: "t";
+  content: "\74";
 }
 .icon-search-find:before {
-  content: "s";
+  content: "\73";
 }
 .icon-video:before {
-  content: "p";
+  content: "\70";
+}
+.icon-angle-down:before {
+  content: "\64";
+}
+.icon-facebook:before {
+  content: "\66";
 }

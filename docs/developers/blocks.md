@@ -19,9 +19,9 @@ Note: Older blocks may live outside of these folders. This will be re-organized 
 
 ## How blocks get included.
 
-From the core [WordPress template files](https://developer.wordpress.org/themes/basics/template-hierarchy/), blocks are loaded just like any other template part.
+Blocks are loaded by calling exa_block just like any other template part.
 
-		<?php get_template_part('inc/blocks/mobile-header'); ?>
+		<?php exa_block('header'); ?>
 
 We're working on a way to pass variables into these files.
 
@@ -51,9 +51,8 @@ Use WordPress function `get_template_part()` to include your new block in whiche
 ```
 		<div id="page">
 
-			<?php get_template_part('inc/blocks/mobile-header'); ?>
-			<?php get_template_part('inc/blocks/header'); ?>
-			<?php get_template_part('inc/blocks/alert-banner'); ?>
+			<?php exa_block('header'); ?>
+			<?php exa_block('alert-banner'); ?>
 ```
 
 ###### 4. Including sass.

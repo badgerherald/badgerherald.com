@@ -65,13 +65,41 @@
 					width: 100%;
 				}
 			}
-			.facebook,.twitter {
-				float: right;
-				padding-left: 10px;
+			.tweet-button, .facebook-button{
+				font-size: 14px;
+				padding:3px 9px;
+				font-family: 'pt sans';
+				color: #fff;
+				margin-left: 6px;
+				float:right;
 				position: relative;
+				&:hover {
+					background: $black;
+				}
+			} 
+			.tweet-button {
+				background: #059FF5;
+				padding-left:27px;
+				&:before {
+					content: 't';
+					font-family: $icon;
+					padding-right: 5px;
+					font-size: 12px;
+					position:absolute;
+					left: 9px;
+				}
 			}
-			.facebook {
-				top: -1px;
+			.facebook-button {
+				background: #4965A2;
+				padding-left:27px;
+				&:before {
+					content: 'f';
+					font-family: $icon;
+					padding-right: 5px;
+					font-size: 12px;
+					position:absolute;
+					left: 9px;
+				}
 			}
 		}
 		.hero {
@@ -698,43 +726,6 @@ q.pullquote {
 
 		width:100%;
 		position: relative;
-		
-		/* 5.1 - Comment button */
-
-		.comment-button {
-			width: 120px;
-			padding:12px 0;
-			color: $truewhite;
-			background: $black;
-			font-weight: bold;
-			float:right;
-			text-align: center;
-			font-family: $headline;
-			border-radius: 3px;
-			margin-left: 20px;
-			margin-top: -6px;
-			position:relative;
-			&:after {
-				content: "";
-				display: block;
-				width: 0;
-				height: 0;
-				border-right: 10px solid transparent;
-				border-bottom: 10px solid transparent;
-				border-top: 10px solid $black;
-				border-left: 10px solid $black;
-				position: absolute;
-				bottom: -15px;
-				margin-left: 20px;
-			}
-			&:hover {
-				background: $blue;
-				&:after {
-				  border-top-color: $blue;
-				  border-left-color: $blue;
-				}
-			}
-		}
 
 		/* 5.3 - Assorted */
 

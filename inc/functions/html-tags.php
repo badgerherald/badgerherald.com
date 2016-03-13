@@ -140,16 +140,17 @@ function exa_full_width_cover_image($url, $classes = array()) {
 
 /**
  * Returns a sharebar with facebook, twitter and shorturl
- * 
  */
-function exa_sharebar() { ?>
+function exa_sharebar($post = null) { 
+
+	$post = get_post($post);
+	
+	?>
 
 	<div class="sharebar">
 
 		<span class="sharetag">Share</span>
 		<input class="sharebarurl" type="text" onclick="$(this).select()" value="<?php echo exa_short_url() ?>"/>
-		
-
 		
 		<div class="sharebarfb">
 		<div  class="fb-like" 
@@ -176,3 +177,39 @@ function exa_sharebar() { ?>
 
 
 <?php } 
+
+
+/**
+ * Returns a twitter tweet link.
+ * 
+ * @since v0.5
+ */
+function exa_tweet_link($post = null) {
+
+	$post = get_post($post);
+
+	$intent = "https://twitter.com/intent/tweet";
+	$intent .= "?text=" . urlencode(html_entity_decode(get_the_title($post->ID), ENT_COMPAT, 'UTF-8'));
+	$intent .= "&url=" . urlencode(html_entity_decode(get_the_permalink($post->ID), ENT_COMPAT, 'UTF-8'));
+	$intent .= "&via=badgerherald";
+	$intent .= "&related=badgerherald";
+	
+	return $intent;
+
+}
+
+/**
+ * Returns a facebook share link.
+ * 
+ * @since v0.5
+ */
+function exa_facebook_link($post = null) {
+
+	$post = get_post($post);
+
+	$sharer = "http://www.facebook.com/sharer/sharer.php";
+	$sharer .= "?u=" . urlencode(html_entity_decode(get_the_permalink($post->ID), ENT_COMPAT, 'UTF-8'));
+
+	return $sharer;
+
+}

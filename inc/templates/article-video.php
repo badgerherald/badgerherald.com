@@ -17,15 +17,16 @@ if(exa_hero_media_type() == 'video') :
 
 	<div class="black" style="padding-top:18px;">
 		<?php 
-		get_template_part('inc/blocks/leaderboard');
-		get_template_part('inc/blocks/menu-search-bar','black');
-		get_template_part('inc/blocks/mobile-header','black');
-		get_template_part('inc/blocks/hero','video');
+		exa_block('leaderboard');
+		exa_block('menu-search-bar',array('background'=>'black'));
+		exa_block('header',array('background'=>'black'));
+		exa_block('hero-video');
 		?>
 	</div>
 
 <?php 
 else :
+	exa_block('header',array('breakpoints' => array('mobile')));
 	get_template_part('inc/blocks/cover-hero');
 endif;
 
@@ -38,20 +39,6 @@ else :
 endif;
 ?>
 
-<div class="block read-next-block" style="border-top: 1px solid #c7d0d5; margin-top: 64px;">
-	<div class="wrapper" style="text-align: center;margin-top: 42px; ">
-			<h2 style=" font-family: pt serif; text-transform: uppercase; font-style: italic; background: #2379d0; color: #fff; font-size: 42px; display:inline-block; padding: 12px 20px; line-height: 54px; text-align: center; margin: 0 auto;">Read Next</h2>
-	</div>
-</div>
 
-<?php 
-
-Exa::addShownId(get_the_ID());
-
-?>
-
-<?php get_template_part('inc/blocks/feature-widget'); ?>
-<?php get_template_part('inc/blocks/ad-and-two-dominant'); ?>
-<?php get_template_part('inc/blocks/list-and-banter'); ?>
 
 <?php get_template_part('footer');

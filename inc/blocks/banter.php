@@ -13,7 +13,7 @@
 global $wp_query;
 global $block;
 if(!$block) {
-	$block = new Block('mobile-header');
+	$block = new Block('header');
 }
 
 ?>

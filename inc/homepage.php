@@ -113,7 +113,7 @@ Class Homepage {
 
 		// Display the blocks;
 		foreach($this->blocks as $b) {
-			exa_block($b->identifier, $b);
+			exa_block($b->identifier);
 		}
 
 		

@@ -85,14 +85,7 @@
  					}
  				}
  			}
- 			&.white{
- 						li a {
- 							color: white;
- 							&:hover {
- 								color: $grey;
- 							}
- 						}
- 					}
+
  			&:hover {
  				li {
  					display: block;
@@ -123,6 +116,17 @@
  			}
  		}
  	}
+}
+
+.menu-search-bar-block.black {
+	.wrapper .menu {
+ 		li a {
+ 			color: white;
+ 			&:hover {
+ 				color: $grey;
+ 			}
+ 		}
+	}
 }
 
 @include breakpoint("tablet") {

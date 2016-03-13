@@ -19,10 +19,6 @@ get_header();
 
     <div class="clearfix"></div>
 
-    <?php get_template_part('inc/blocks/billboard'); ?>
-
-    <div class="clearfix"></div>
-
 <?php endwhile; ?>
 
 <?php get_footer(); ?>

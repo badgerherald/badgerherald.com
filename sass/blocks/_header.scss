@@ -7,65 +7,32 @@
  */
 
 .header-block {
-    display: none;
+	margin: 12px 0;
+	.wrapper {
+		border-top: 5px solid $blue;
+		border-bottom: 1px solid $greyBorder;
+		padding: 18px 0;
+		a img {
+		    width:flex(160,300);
+		    height: auto;
+		}
+		.social-buttons {
+			display: none;
+		}
+	}
 }
 
-@include breakpoint("desktop") {
-    .header-block {
-        margin: 12px 0;
-        .wrapper {
-            border-top: 6px solid $blue;
-            padding-top:24px;
-        }
-        display: block;
-        height:156px + 24px;
-        #logo {
-            img {
-               display: block;
-            }
-            width: flex(100,740);
-            display: block;
-            top:0;
-        }
-        .header-right {
-            padding-top: 24px;
-            position: absolute;
-            height: 100%;
-            margin-left: flex(120,740);    // this is the amount that it clears the logo by.
-            width: flex(620,740);
-            top:0;
-            background-size: contain;
-            .story-container {
-                position: absolute;
-                width: 100%;
-                bottom: 0;
-                .story {
-                    height: 91px;
-                    width: flex(340,620);
-                    &:last-child { display:none; }
-                    position: relative;
-                    float: left;
-                    img {
-                        width: auto;
-                        height:100%;
-                    }
-                    .block-headline-container {
-                        position: absolute;
-                        z-index: 2;
-                        display: block;
-                        bottom: 10px;
-                        left: 40px;
-                    }
-                    &:hover .block-headline-container {
-                        transition: bottom .2s;
-                        bottom: 13px;
-                    }
-                }
-            }
-            .social-buttons {
+@include breakpoint("tablet") {
+	.header-block {
+		.wrapper {
+			a img {
+				width: flex(220,600);
+			}
+			.social-buttons {
+				display: block;
                 text-align: right;
                 position: absolute;
-                bottom: 0;
+                bottom: 24px;
                 width: 300px;
                 right: 0;
                 h3 {
@@ -80,90 +47,17 @@
                     margin-bottom: 5px;
                 }
             }
-            .top-bar {
-                border-bottom: 1px solid $greyBorder;
-                font-family: $headline;
-                font-size: 14px;
-                font-weight: bolder;
-                color:$greyText;
-                .tagline {
-                    float:left;
-                }
-                ul#menu-header {
-                    float: right;
-                    list-style-type: none;
-                    margin: 0; padding: 0;  // at this time, lists have auto padding and margins.
-                    li {
-                        display: inline;
-                        a {
-                            color:$greyText;
-                            padding-left:3px;
-                            padding-right:3px;
-                            display: inline-block;
-                            &:hover {
-                                color:$black;
-                            }
-                        }
-                    }
-                    // last child is always blue!
-                    li:last-child a {
-                        color:$blue;
-                    }
-                }
-                .tagline, ul li a {
-                    padding-top:3px;
-                }
-            }
-        }
-    }
-
-    .header-block.blue {
-        background: $blue;
-    }
-
-    .header-block.black {
-        background: $black;
-        .top-bar {
-            ul#menu-header li a {
-                color:$greyText;
-                &:hover {
-                    color:$white;
-                }
-            }
-        }
-        .social-buttons {
-            color: $white;
-        }
-    }
+		}
+	}
 }
+@include breakpoint("desktop") {
 
-@include breakpoint(desktop) {
-    .header-block {
-        #logo {
-            width: 100px;
-        }
-        .header-right {
-            .story-container {
-                .story {
-                    width: 360px;
-                    &:last-child { display:block; margin-left:20px; }
-                }
-            }
-        }
-    }
-}
+	.header-block {
+		.wrapper {
+			a img {
+				width: 220px;
+			}
+		}
+	}
 
-@include breakpoint(xl) {
-    .inner-masthead {
-        .tagline {
-            width: 200px;
-            .since {
-                display: block;
-                line-height: 30px;
-                text-transform: none;
-                color: $darkgreyHover;
-                padding-left: 0;
-            }
-        }
-    }
 }

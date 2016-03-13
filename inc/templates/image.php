@@ -17,12 +17,10 @@ global $post;
 
 <div class="black" style="padding-top:18px;">
 	<?php
-//		get_template_part('inc/blocks/preflight');
-		get_template_part('inc/blocks/leaderboard');
-		get_template_part('inc/blocks/menu-search-bar','black');
-		get_template_part('inc/blocks/mobile-header','black');
-		get_template_part('inc/blocks/header','black');
-		get_template_part('inc/blocks/hero', 'image');	//main content of this page
+		exa_block('leaderboard');
+		exa_block('menu-search-bar',array('background'=>'black'));
+		exa_block('header','black');
+		exa_block('hero', 'image');	//main content of this page
 	?>
 </div>
 
