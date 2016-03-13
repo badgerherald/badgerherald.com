@@ -17,9 +17,8 @@ global $post;
 
 <div class="black" style="padding-top:18px;">
 	<?php
-//		get_template_part('inc/blocks/preflight');
 		exa_block('leaderboard');
-		exa_block('menu-search-bar','black');
+		exa_block('menu-search-bar',array('background'=>'black'));
 		exa_block('header','black');
 		exa_block('hero', 'image');	//main content of this page
 	?>

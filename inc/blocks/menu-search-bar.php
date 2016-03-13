@@ -4,8 +4,24 @@
  * Description: Things my block does.
  *
  */
+
+global $block;
+
+if(!$block) {
+	$block = new Block('menu-search-bar');
+}
+
+$block->default_args(
+	array(
+		'background' => 'grey',
+		'breakpoint' => array()
+	)
+);
+
 ?>
-<div class="block menu-search-bar-block">
+
+
+<div class="<?php echo $block->classes(); echo " " . $block->args['background']; ?>">
     <div class="wrapper">
 		<?php 
 			wp_nav_menu( array(

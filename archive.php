@@ -18,8 +18,8 @@
  */
 
 get_header();
-get_template_part('inc/blocks/menu-search-bar');
-get_template_part('inc/blocks/header');
+exa_block('menu-search-bar');
+exa_block('header');
 
 ?>
 	

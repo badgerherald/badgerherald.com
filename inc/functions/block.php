@@ -94,7 +94,7 @@ Class Block {
     }
 
     public function default_args($args) {
-        $this->args = array_merge($this->args,$args);
+        $this->args = array_merge($args,$this->args);
     }
 
     public function option($option) {
