@@ -72,15 +72,34 @@
 				color: #fff;
 				margin-left: 6px;
 				float:right;
+				position: relative;
 				&:hover {
 					background: $black;
 				}
 			} 
 			.tweet-button {
 				background: #059FF5;
+				padding-left:27px;
+				&:before {
+					content: 't';
+					font-family: $icon;
+					padding-right: 5px;
+					font-size: 12px;
+					position:absolute;
+					left: 9px;
+				}
 			}
 			.facebook-button {
 				background: #4965A2;
+				padding-left:27px;
+				&:before {
+					content: 'f';
+					font-family: $icon;
+					padding-right: 5px;
+					font-size: 12px;
+					position:absolute;
+					left: 9px;
+				}
 			}
 		}
 		.hero {

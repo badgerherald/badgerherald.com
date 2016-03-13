@@ -10,6 +10,7 @@
 				padding:3px 9px;
 				font-family: 'pt sans';
 				color: #fff;
+				position: relative;
 			} 
 			.share-url {
 				display: none;
@@ -23,12 +24,31 @@
 			}
 			.tweet-button {
 				background: #059FF5;
+				padding-left:27px;
+				&:before {
+
+					content: 't';
+					font-family: $icon;
+					padding-right: 5px;
+					font-size: 10px;
+					position:absolute;
+					left: 9px;
+				}
 				&:hover {
 					background: $black;
 				}
 			}
 			.facebook-button {
 				background: #4965A2;
+				padding-left:27px;
+				&:before {
+					content: 'f';
+					font-family: $icon;
+					padding-right: 5px;
+					font-size: 10px;
+					position:absolute;
+					left: 9px;
+				}
 				&:hover {
 					background: $black;
 				}
@@ -140,6 +160,12 @@
 					padding:6px 15px;
 					margin-right: 6px;
 					display: inline-block;
+				}
+				.tweet-button, .facebook-button {
+					padding-left: 31px;
+					&:before {
+						left: 12px;
+					}
 				}
 				.comment-button { 
 					padding: 12px 20px;
