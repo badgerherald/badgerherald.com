@@ -24,7 +24,7 @@ if(!$block) {
     	<div class="inner-banter">
     		<h1>UW Banter</h1>
     		<div class="clearfix"></div>
-			<div class="fb-like" data-href="https://facebook.com/wiscmemes" data-layout="button_count" data-action="like" data-show-faces="false" data-share="false"></div>
+			<div class="fb-like" data-href="https://facebook.com/uwbanter" data-layout="button_count" data-action="like" data-show-faces="false" data-share="false"></div>
  			
  			<?php 
  			while ( have_posts() ) : the_post(); ?>

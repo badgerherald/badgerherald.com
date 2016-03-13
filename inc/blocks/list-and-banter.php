@@ -66,7 +66,7 @@
     	<div class="banter-widget">
     		<div class="inner-banter">
     		<h3>UW Banter</h3>
-			<div class="fb-like" data-href="https://facebook.com/wiscmemes" data-layout="button_count" data-action="like" data-show-faces="false" data-share="false"></div>
+			<div class="fb-like" data-href="https://facebook.com/uwbanter" data-layout="button_count" data-action="like" data-show-faces="false" data-share="false"></div>
 
  			<?php
 				$query_args = array(
