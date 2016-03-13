@@ -169,10 +169,10 @@ function exa_setup() {
 	//add_theme_support('menus');
 
 	// header
-	register_nav_menu( 'header-primary', __("HEADER SECTIONS: Main sections displayed in the header of every page") );
+	register_nav_menu( 'header-primary', __("Header Primary") );
 	//register_nav_menu( 'header-secondary', __("Secondary nav items next to the search bar.") );
-	register_nav_menu( 'footer-primary', __("FOOTER SECTIONS: Main sections displayed in the footer") );
-	register_nav_menu( 'footer-secondary', __("FOOTER SECONDARY: Secondary nav items in the footer") );
+	register_nav_menu( 'footer-primary', __("Footer Primary") );
+	register_nav_menu( 'footer-secondary', __("Footer Secondary") );
 	/* This theme uses its own gallery styles. 
 	add_filter( 'use_default_gallery_style', '__return_false' ); */
 
