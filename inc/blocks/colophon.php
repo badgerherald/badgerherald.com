@@ -6,12 +6,11 @@ if(!$block) {
 }
 
 ?>
+
 <div class="<?php echo $block->classes() ?>">
 	<div class="wrapper">
 		<div class="left-rail rail">
 			<img class="logo" src="<?php bloginfo('template_url') ?>/img/logo/header-horizontal-white.png" />
-			<p class="description"><?php echo get_bloginfo('description') ?></p>
-			<p>All Content &copy; The Badger Herald, 1995 - <?php echo date("Y"); ?></p>
 		</div>
 		<div class="middle-rail rail">
 			<?php
@@ -30,5 +29,10 @@ if(!$block) {
 			?>
 		</div>
 		<div class="clearfix"></div>
+		<div class="fine-print">
+			<p class="description"><?php echo get_bloginfo('description') ?></p>
+			<p>All Content &copy; The Badger Herald, 1995 - <?php echo date("Y"); ?></p>
+		</div>
 	</div>
 </div>
+

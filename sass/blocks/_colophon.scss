@@ -2,6 +2,7 @@
 	background: $black;
 	margin-bottom:0px;
 	.wrapper {
+		text-align: center;
 		padding: 24px 0;
 		color: $truewhite;
 		&, p {
@@ -20,6 +21,10 @@
 				color: $greyText;
 			}
 		}
+		p {
+			margin-top: 0px;
+			margin-bottom: 0px;
+		}
 		p.description {
 			margin-top: 42px;
 			font-size: 18px;
@@ -27,6 +32,7 @@
 		.left-rail {
 			img.logo {
 				width: 180px;
+				margin-bottom: 24px;
 				height: auto;
 			}
 		}
@@ -39,6 +45,7 @@
 @include breakpoint('tablet') {
 	.colophon-block {
 		.wrapper {
+			text-align: left;
 			.rail {
 				float:left;
 				border-bottom: none;
@@ -56,6 +63,9 @@
 			ul {
 				margin-top: 0;
 				padding-left: 20px;
+			}
+			.fine-print {
+				border-top: 1px solid $greyBorderOnBlack;
 			}
 		}
 	}
