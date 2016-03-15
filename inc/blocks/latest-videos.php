@@ -17,7 +17,7 @@
                 array(
                     'taxonomy' => 'exa_layout',
                     'field' => 'slug',
-                    'terms' => array('video')
+                    'terms' => array('media-video')
                     )
                 );
             $args['posts_per_page'] = 5;
