@@ -38,6 +38,7 @@ header.headline-block {
 
 @include breakpoint('tablet') {
 	
+
 	header.headline-block {
 
 			.title, .title h1 {
@@ -47,7 +48,19 @@ header.headline-block {
 			.subhead {
 				font-size: 24px;
 			}
+	}
 
+	header.headline-block.center {
+		.wrapper {
+			max-width: 880px;
+			text-align: center;
+			h1 {
+				font-size: 50px !important;
+			}
+			.topics {
+				display: none;
+			}
+		}
 	}
 }
 

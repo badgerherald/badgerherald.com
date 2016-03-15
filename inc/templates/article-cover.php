@@ -7,13 +7,14 @@
  */
 
 get_header();
+exa_block('menu-search-bar');
 
 while ( have_posts() ) : the_post(); 
 	
 	exa_block('header',array('breakpoints' => array('mobile')));
 	get_template_part( 'inc/blocks/cover-hero' ); 
 
-	exa_block('content-two-column',array('hide-hero' => true) ); 
+	exa_block('content-two-column',array('hide-hero' => true, 'layout' => exa_layout()) ); 
 
 endwhile;
 

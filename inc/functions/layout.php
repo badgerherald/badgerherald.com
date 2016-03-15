@@ -36,23 +36,6 @@ function _exa_register_layout_taxonomy() {
 }
 add_action( 'init', '_exa_register_layout_taxonomy', 0 );
 
-
-/**
- * Saves default layout terms before saving the post
-
-function exa_default_layout_terms($post_id) {
-  
-	$layout_terms = get_the_terms( $post_id, 'exa_layout' );
-
-	if(empty($layout_terms)) {
-
-		wp_set_object_terms($post_id,array('hero-standard','media-image'),'exa_layout');
-	}
-
-}
-add_action( 'save_post', 'exa_default_layout_terms' );
- */
-
 /**
  * 
  */
@@ -94,14 +77,28 @@ function exa_toggle_feature_box($post) {
 	}
 	echo "</p>";
 
+	
+	echo "<hr/><h2 style='padding:0'>Content Layout</h2>";
+	echo "<p>";
+
+	if(exa_layout($post->ID) == "standard") {
+		echo "<input type='radio' name='layout-layout' value='layout-standard' checked> Standard<br>";
+		echo "<input type='radio' name='layout-layout' value='layout-feature'> Feature<br>";
+	} else {
+		echo "<input type='radio' name='layout-layout' value='layout-standard'> Standard<br>";
+		echo "<input type='radio' name='layout-layout' value='layout-feature' checked> Feature<br>";
+	} 
+	echo "</p>";
+
 }
 
 function exa_toggle_feature_save($post_id, $post){
 
 	$hero_style = isset($_POST['layout-hero']) ? $_POST['layout-hero'] : 'hero-standard';
 	$hero_media = isset($_POST['layout-media']) ? $_POST['layout-media'] : 'media-image'; 
+	$layout = isset($_POST['layout-layout']) ? $_POST['layout-layout'] : 'layout-standard'; 
 
-	wp_set_object_terms($post_id,array($hero_style,$hero_media),'exa_layout');
+	wp_set_object_terms($post_id,array($hero_style,$hero_media,$layout),'exa_layout');
 
 }
 
@@ -208,15 +205,6 @@ function exa_layout($post = null) {
 		return 'standard';
 	}
 
-	/*
-	$post = get_post($post);
-	$layout_terms = wp_get_post_terms($post->ID,'exa_layout');
-	if(empty($layout_terms)) {
-		return;
-	} else {
-		return $layout_terms[0]->slug;
-	}
-	*/
 }
 
 function exa_hero_style($post = null) {

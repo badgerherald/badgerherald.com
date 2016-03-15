@@ -5,6 +5,9 @@ global $OnCampus;
 global $block;
 if(!$block) {
 	$block = new Block('article-display');
+	$block->default_args(
+		array('layout' => 'standard')
+		);
 }
 
 ?>
@@ -12,10 +15,13 @@ if(!$block) {
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 
 <?php 
-exa_block('headline');
+$args = array();
+$args['center'] = (exa_layout()=='feature');
+
+exa_block('headline',$args);
 ?>
 
-<div class="block article-display-block showcase-block">
+<div class="block article-display-block showcase-block <?php echo $block->args['layout']; ?>">
 	<div class="wrapper">
 		<main class="article-content">
 			<div class="meta">
@@ -62,6 +68,7 @@ exa_block('headline');
 
 		</main>
 
+		<?php if($block->args['layout'] == 'standard') : ?>
 		<aside class="sidebar">
 
 			<div class="ad sidebar-thing">
@@ -78,7 +85,11 @@ exa_block('headline');
 		
 		</aside>
 	
+		<?php endif; ?>
+
 		<div class="clearfix"></div>
+
+		
 
 	</div><!-- .wrapper -->
 

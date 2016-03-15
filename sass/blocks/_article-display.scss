@@ -263,6 +263,17 @@
 			}
 		}
 	}
+	.article-display-block.feature {
+		main.article-content {
+			.article-text, .meta {
+				padding-right: 0;
+				width: 780px;
+				margin: 0 auto;
+				margin-bottom: 24px;
+				margin-top: 54px;
+			}
+		}
+	}
 }
 
 
@@ -557,6 +568,12 @@ q.pullquote {
 
 @include breakpoint(tablet) {
 	
+	.article-display-block.feature {
+		.article-content {
+			margin: 0 auto;
+			float: none;
+		}
+	}
 	q.pullquote{
 		&.alignleft {
 			width: 360px;

@@ -32,7 +32,7 @@ endif;
 
 if ( have_posts() ) : 
 	while ( have_posts() ) : the_post();
-get_template_part('inc/blocks/content','two-column');
+		exa_block('content-two-column',array('layout'=>exa_layout()));
 	endwhile; 
 else :
 	_e( '<p>Something went wrong.</p>' );
