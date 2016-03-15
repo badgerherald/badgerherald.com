@@ -7,9 +7,11 @@ global $block;
 if(!$block) {
 	$block = new Block('headline');
 }
+
+$block->default_args(array('center'=>false));
 ?>
 
-<header class="block <?php echo $block->classes() ?>">
+<header class="<?php echo $block->classes(); echo $block->args['center'] ? ' center' : ''; ?> ">
 	<div class="wrapper">
 		
 			<ul class="topics">

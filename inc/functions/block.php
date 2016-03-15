@@ -25,7 +25,7 @@ function exa_block($name, $args = null) {
     get_template_part('./inc/blocks/' . $name);
 
     // restore current block;
-    $GLOBALS['block'] = $block;
+    $GLOBALS['block'] = $curBlock;
 
 }
 
