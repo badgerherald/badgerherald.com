@@ -41,7 +41,6 @@
 
 .article-display-block {
 	
-
 	main.article-content {
 		.meta {
 			font-family: $headline;
@@ -397,7 +396,8 @@
 		.ad-in-content {
 			margin: 24px 0;
 			&:before {
-				content : "Advertisement";
+				content : "Article continues after advertisement";
+				text-align: center;
 				font-family: $headline;
 				text-transform: uppercase;
 				color: $darkgrey;
@@ -469,7 +469,7 @@
 			}
 		}
 		.wp-caption {
-			width: 100% !important; // wordpress adds an element style for width;
+			width: 100%; // wordpress adds an element style for width;
 			font-size: 16px;
 			line-height: 18px;
 			color: $darkgrey;
@@ -684,10 +684,7 @@ q.pullquote {
 				}
 			}
 			.ad-in-content {
-			margin: 24px 0;
-				&:before {
-					display: none;
-				}
+				margin: 24px 0;
 			}
 		}
 	}
@@ -703,9 +700,6 @@ q.pullquote {
 			img.alignnone, img.aligncenter, & > img.alignnone, & > img.aligncenter {
 				width:100% !important;
 				float: left;
-			}
-			.ad-in-content {
-				display: none;
 			}
 		}
 	}
