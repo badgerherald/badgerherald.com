@@ -269,61 +269,6 @@ jQuery(document).ready(function($) {
 		$(window).resize();
 	});
 
-	//script for quiz function
-	$(".answer-box label").click(function(e){
-		var answerParents = $(this).parents("div.quiz-question");
-		answerParents.find("li.answer-box").removeClass("inactive");
-	}); 
-
-
-	/**
-	 * Manage where the fixed bar is (if there is content above it.)
-	 *
-	 */
-
-	var placeholder = $('.fixed-bar-block-placeholder');
-	var fixedBar = $('.fixed-bar-block');
-	var ribbonShownOnCollapse = 6;
-
-    if (fixedBar.length !== 0 && placeholder.length !== 0) {
-
-        $(window).scroll(checkFixedBar);
-        $(window).resize(checkFixedBar);
-        $(window).scroll();
-
-        // account for wordpress bar.
-        if ($('#wpadminbar').length) {
-
-        	placeholder[0].style.setProperty('top', 0 , "important");
-        	fixedBar[0].style.setProperty('top', 0 , "important" );
-
-        }
-
-
-    }
-
-	function checkFixedBar() {
-
-		var st = $(window).scrollTop();
-		var fromTop = placeholder.offset().top;
-		var barHeight = fixedBar.outerHeight();
-
-		var adminBarHeight = 0;
-		if ($('#wpadminbar').length && $(window).outerWidth() > 600) {
-			adminBarHeight = $('#wpadminbar').height();
-		}
-
-		if( (fromTop - ribbonShownOnCollapse + barHeight - adminBarHeight - st) <= 0) {
-			fixedBar.addClass('fixed');
-			placeholder.css('height',barHeight);
-
-		} else {
-			fixedBar.removeClass('fixed');
-			placeholder.css('height',0);
-		}
-
-	}
-
 	/**
 	 *
 	 *
