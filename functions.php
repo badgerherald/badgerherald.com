@@ -14,6 +14,7 @@ include_once('inc/functions/oncampus.php');
 include_once('inc/functions/html-tags.php');
 include_once('inc/functions/analytic-dashboard.php');
 include_once('inc/functions/block.php');
+include_once('inc/functions/headlines.php');
 include_once('inc/functions/embeds.php');
 include_once('inc/functions/authors.php');
 include_once('inc/functions/popular-post-widget.php');
@@ -237,22 +238,6 @@ function exa_scripts_styles() {
 }
 add_action( 'wp_enqueue_scripts', 'exa_scripts_styles' );
 
-/**
- * Enqueues the scripts from the hrld-showcase plugin on author pages.
- */
-
-
-/**
- * Enqueues scripts and styles for admin.
- *
- * @since 0.1
- */
-function exa_admin_style() {
-
-    wp_enqueue_style('exa-admin-style', get_template_directory_uri() . '/css/admin-style.css');
-
-}
-add_action('admin_enqueue_scripts', 'exa_admin_style');
 
 
 /**
