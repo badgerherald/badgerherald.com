@@ -469,7 +469,7 @@
 			}
 		}
 		.wp-caption {
-			width: 100%; // wordpress adds an element style for width;
+			max-width: 100% !important; // wordpress adds an element style for width;
 			font-size: 16px;
 			line-height: 18px;
 			color: $darkgrey;
