@@ -5,8 +5,6 @@
  * 
  */
 
-
-
 /** 
  * Get the deck
  */
@@ -119,6 +117,7 @@ if (is_admin()) :
  	 */
 	function exa_headline_admin_script() {
 
+		if ( 'edit.php' != $hook ) return;
 		wp_enqueue_style('exa-admin-style', get_template_directory_uri() . '/css/admin/headlines.css');
     	wp_enqueue_script( 'exa-headline-script', get_template_directory_uri() . '/js/admin/headlines.js' );
 
