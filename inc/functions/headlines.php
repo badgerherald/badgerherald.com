@@ -42,8 +42,9 @@ if (is_admin()) :
 	
 		$subhead = get_post_meta($post->ID, '_hrld_subhead', true);
 		
-		$althead_array = get_post_meta($post->ID, '_exa_altheads', true);
+		$althead_array = get_post_meta($post->ID, '_exa_altheads', true) ?: array();
 		$altheads = "";
+
 		foreach($althead_array as $head) {
 
 			$altheads .= $head . "\n";
@@ -115,9 +116,10 @@ if (is_admin()) :
  	 * 
  	 * @since v0.5
  	 */
-	function exa_headline_admin_script() {
+	function exa_headline_admin_script($hook) {
 
-		if ( 'edit.php' != $hook ) return;
+		if ( !('post.php' == $hook) ) return;
+
 		wp_enqueue_style('exa-admin-style', get_template_directory_uri() . '/css/admin/headlines.css');
     	wp_enqueue_script( 'exa-headline-script', get_template_directory_uri() . '/js/admin/headlines.js' );
 
