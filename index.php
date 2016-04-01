@@ -7,21 +7,19 @@
 
 get_header();
 
-//get_template_part('inc/blocks/leaderboard');
-//get_template_part('inc/blocks/menu-search-bar');
-//get_template_part('inc/blocks/header');
-get_template_part('inc/blocks/dirty-bird');
-//get_template_part('inc/blocks/breaking-news');
-//get_template_part('inc/blocks/feature-widget');
-//get_template_part('inc/blocks/ad-and-two-dominant');
-//get_template_part('inc/blocks/list-and-banter');
-//get_template_part('inc/blocks/latest-videos');
-//get_template_part('inc/blocks/old-homepage');
 
+exa_block('leaderboard');
+exa_block('menu-search-bar');
+exa_block('header');
+exa_block('dirty-bird');
+exa_block('breaking-news');
+exa_block('feature-widget');
+exa_block('ad-and-two-dominant');
+exa_block('list-and-banter');
+exa_block('latest-videos');
+exa_block('old-homepage');
 
-
-//get_template_part('inc/blocks/new-sports');
-//get_footer();
+get_footer();
 
 ?>
 
