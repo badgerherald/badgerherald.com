@@ -108,3 +108,5 @@ global $OnCampus;
 		<div class="clearfix"></div>
 	</div>
 </div>
+
+<?php exa_block('dirty-bird'); ?>
