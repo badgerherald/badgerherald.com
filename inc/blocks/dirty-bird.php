@@ -1,11 +1,10 @@
 <style>
 @media(min-width: 0px){
-<<<<<<< HEAD
+
 	.dirty-bird-block {
 		margin-bottom: -24px;
 	}
-=======
->>>>>>> origin/master
+
 	.dirty-bird-block a{
 		opacity:.7;
 	}
