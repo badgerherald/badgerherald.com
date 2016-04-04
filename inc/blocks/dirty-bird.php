@@ -1,6 +1,5 @@
 <style>
 @media(min-width: 0px){
-
 	.dirty-bird-block {
 		margin-bottom: -24px;
 	}

@@ -11,7 +11,6 @@ get_header();
 exa_block('leaderboard');
 exa_block('menu-search-bar');
 exa_block('header');
-exa_block('dirty-bird');
 exa_block('breaking-news');
 exa_block('feature-widget');
 exa_block('ad-and-two-dominant');
