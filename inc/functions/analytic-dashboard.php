@@ -24,8 +24,6 @@ function analytic_dashboard_html() {
 
 ?>
 
-
-
 <script>
 (function(w,d,s,g,js,fs){
   g=w.gapi||(w.gapi={});g.analytics={q:[],ready:function(f){this.q.push(f);}};
@@ -155,7 +153,6 @@ gapi.analytics.ready(function() {
     }
   });
   dataChart1.execute();
-
 
   /**
    * Creates a new DataChart instance showing top 5 most popular demos/tools
