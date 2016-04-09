@@ -72,8 +72,6 @@ GAA;
 
 	
 	if(is_single()) {
-		echo current_time('timestamp'). "  " ;
-		echo get_the_time('U');
 		$fiveDaysFresh = (current_time('timestamp') - get_the_time('U') > 0 && current_time('timestamp') - get_the_time('U') < 432000) ? 'Yes' : 'No';
 	
 		$js .= "       _gaq.push(['_setCustomVar',         ";
