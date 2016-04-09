@@ -70,7 +70,7 @@ function exa_register_google_analytics() {
 			_gaq.push(['_setAccount', 'UA-2337436-1']);
 GAA;
 
-	/*
+	
 	if(is_single()) {
 		echo current_time('timestamp'). "  " ;
 		echo get_the_time('U');
@@ -78,13 +78,13 @@ GAA;
 	
 		$js .= "       _gaq.push(['_setCustomVar',         ";
 		$js .= "			          1,                   ";
-		$js .= "                      '5 Days Fresh',      ";
-		$js .= "                      '$fiveDaysFresh',    ";
+		$js .= "                      'author',      ";
+		$js .= "                      '". get_the_author_meta('ID') ."',    ";
 		$js .= "                      ,                    ";
 		$js .= "                      2                    ";
 		$js .= "                 ]);                       ";                  
 	} 
-	*/
+	
 
 	$js .= <<<"GAB"
 	
