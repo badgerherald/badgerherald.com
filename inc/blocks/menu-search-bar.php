@@ -20,14 +20,17 @@ $block->default_args(
 
 ?>
 
-
 <div class="<?php echo $block->classes(); echo " " . $block->args['background']; ?>">
     <div class="wrapper">
 		<?php 
-			wp_nav_menu( array(
-				'theme_location' => 'header-primary'
-				)
-			);
+			if ( has_nav_menu( 'header-primary' ) ) {
+				wp_nav_menu( array(
+					'theme_location' => 'header-primary'
+					)
+				);
+			} else {
+				echo "No header-primary menu defined. Please define a menu for this location.";
+			}
 		?>
 		<div style="clear:both"></div>
 		
