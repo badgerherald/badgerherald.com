@@ -74,7 +74,7 @@ global $OnCampus;
 				</a>
 
 					
-			<?	endwhile;
+			<?php	endwhile;
 			} else {
 				// todo: test this output.
 				echo "No Posts";

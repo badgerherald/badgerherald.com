@@ -93,7 +93,7 @@ global $OnCampus;
 
 					</a></li>
 	
-				<?	endwhile;
+				<?php	endwhile;
 
 			echo "</ul>";
 
