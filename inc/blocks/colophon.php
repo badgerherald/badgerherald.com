@@ -14,18 +14,30 @@ if(!$block) {
 		</div>
 		<div class="middle-rail rail">
 			<?php
-			wp_nav_menu( array(
-				'theme_location' => 'footer-primary'
-				)
-			);
+			if ( has_nav_menu( 'footer-primary' ) ) {
+				wp_nav_menu( array(
+					'theme_location' => 'footer-primary'
+					)
+				);
+			} else {
+				echo "No footer-primary menu defined. Please define a menu for this location.";
+			}
+
+			?>
 			?>
 		</div>
 		<div class="right-rail rail">
 			<?php 
+
+			if ( has_nav_menu( 'footer-secondary' ) ) {
 				wp_nav_menu( array(
-						'theme_location' => 'footer-secondary'
+					'theme_location' => 'footer-secondary'
 					)
 				);
+			} else {
+				echo "No footer-secondary menu defined. Please define a menu for this location.";
+			}
+
 			?>
 		</div>
 		<div class="clearfix"></div>
