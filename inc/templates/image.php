@@ -36,11 +36,8 @@ global $post;
 
 Exa::addShownId(get_the_ID());
 
-?>
-
-<?php get_template_part('inc/blocks/feature-widget'); ?>
-<?php get_template_part('inc/blocks/ad-and-two-dominant'); ?>
-<?php get_template_part('inc/blocks/list-and-banter'); ?>
-
-<?php get_template_part('footer');
+exa_block('feature-widget'); 
+exa_block('ad-and-two-dominant');
+exa_block('list-and-banter');
+get_template_part('footer');
 

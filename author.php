@@ -76,7 +76,7 @@ get_header(); ?>
 <?php
 if ($is_Photographer) {
     ?>
-    <div class="block author-media-block showcase-block">
+    <div class="container author-media showcase-block">
         <div class="wrapper">
             <div class="media-list">
             <?php
@@ -95,7 +95,7 @@ if ($is_Photographer) {
 }
 if ($post_count != 0) {
 ?>
-<div class="author-posts-block<?php if ($is_Photographer) echo ' hidden'; ?>">
+<div class="author-posts<?php if ($is_Photographer) echo ' hidden'; ?>">
     <?php
         if (!is_paged()) :
             $best_posts = get_the_author_meta( '_hrld_staff_best_posts', get_the_author_meta('ID', get_query_var('author')) );

@@ -22,7 +22,14 @@ function exa_block($name, $args = null) {
 
     $block = new Block($name,$args);
     $GLOBALS['block'] = $block;
-    get_template_part('./inc/blocks/' . $name);
+
+    if(!locate_template('./inc/containers/' . $name)) {
+        get_template_part('./inc/containers/' . $name);
+    } else {
+        echo "<div class='container'><div class='wrapper'>";
+        echo "<p>Container $name not found</p>";
+        echo "</div></div>";
+    }
 
     // restore current block;
     $GLOBALS['block'] = $curBlock;
@@ -32,14 +39,14 @@ function exa_block($name, $args = null) {
 /**
  * Filter banter block classes
  */
-function exa_banter_block_classes($classes,$block) {
+function exa_banter_container_classes($classes,$block) {
     global $post;
     if($block->name == "headline" && hexa_is_banter()) {
         $classes .= " banter";
     }
     return $classes;
 }
-add_filter("exa_block_classes","exa_banter_block_classes",10,2);
+add_filter("exa_container_classes","exa_banter_container_classes",10,2);
 
 function hexa_is_banter($post = null) {
     $post = get_post($post);
@@ -61,7 +68,7 @@ Class Block {
 
     public function __toString() {
 
-        $s = "## " . $this->identifier . " block.\n";
+        $s = "## " . $this->identifier . " container.\n";
 
         $s .= "  \$args = " . print_r($this->args,true) . "";
 
@@ -74,12 +81,12 @@ Class Block {
 
     public function classes($classes = null) {
         
-        $str = "block";
+        $str = "container";
 
         if(empty($this->type)) {
-            $str .= " {$this->name}-block";
+            $str .= " {$this->name}";
         } else {
-            $str .= " {$this->name}-{$this->type}-block";
+            $str .= " {$this->name}-{$this->type}";
         }
         if(array_key_exists('breakpoints',$this->args)) {
             foreach($this->args['breakpoints'] as $breakpoint ) {
@@ -87,7 +94,7 @@ Class Block {
             }
         }
         
-        $str = apply_filters("exa_block_classes",$str,$this);
+        $str = apply_filters("exa_container_classes",$str,$this);
 
         return $str;
 

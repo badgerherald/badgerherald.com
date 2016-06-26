@@ -15,10 +15,10 @@ global $post;
 
 <?php 
 
-get_template_part('inc/blocks/hero');
+exa_block('hero');
 
 ?>
-<div class="block article-display-block showcase-block">
+<div class="container article-display showcase-block">
 	
 	<div class="wrapper">
 	

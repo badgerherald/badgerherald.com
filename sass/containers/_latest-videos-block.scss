@@ -1,0 +1,99 @@
+/**
+ * Video Bar Block
+ * ---------------------------------------------------------
+ * php: ./inc/blocks/latest-videos.php
+ * since: 0.3
+ * -----------------------------------------------------------------------------
+ */
+
+.container.latest-videos {
+    background: $black;
+    color: $white;
+    .block-title {
+        margin-bottom: 24px;
+        padding-top: 24px;
+    }
+    h2 {
+    	font-family: $body;
+    	font-style: italic;
+        background: $black;
+        display: inline;
+        position: relative;
+        padding-right: 10px;
+        z-index: 10;
+    	&:before {
+    		content: "p";
+    		font-style: normal !important;
+    		font-family: $icon !important;
+    		-webkit-font-smoothing: antialiased;
+            font-size: 16px;
+            padding-right: 6px;
+    	}
+    }
+    .videos a {
+        width:100%;
+    }
+    .video-post {
+        color: $white;
+        font-family: $headline;
+        font-size: 16px;
+        padding-bottom:32px;
+        h3 {
+            font-weight: normal;
+            margin-top: 12px;
+        }
+        &:hover {
+            text-decoration: underline;
+        }
+    	img {
+    		width: 100%;
+    		height: auto;
+    	}
+    }
+    .block-title hr {
+        border-color: $greyBorderOnBlack;
+        position: relative;
+        top: -23px;
+        z-index: 2;
+    }
+    .subscribers {
+        position:absolute;
+        right:0;
+        top:26px;
+        z-index: 10;
+        background: $black;
+        padding-left: 10px;
+    }
+}
+
+@include breakpoint('tablet') {
+    .container.latest-videos {
+        .videos a {
+            width: flex(360,740);
+            float: left;
+            &:nth-child(odd) {
+                margin-right: flex(20,740);
+            }
+        }
+    }
+}
+
+@include breakpoint('desktop') {
+     .container.latest-videos {
+        .videos a {
+            width: 188px; // not on grid. sorry 'bout that.
+            margin-right: 20px;
+            &:nth-child(odd) { margin-right: 20px; }
+            &:nth-child(even) { margin-right: 20px; }
+            &:last-child { margin-right: 0; }
+        }
+    }   
+}
+
+@include breakpoint('xl') {
+     .container.latest-videos {
+        .videos a {
+            width: 220px;
+        }
+    }
+}

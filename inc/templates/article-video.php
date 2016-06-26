@@ -27,7 +27,7 @@ if(exa_hero_media_type() == 'video') :
 <?php 
 else :
 	exa_block('header',array('breakpoints' => array('mobile')));
-	get_template_part('inc/blocks/cover-hero');
+	exa_block('cover-hero');
 endif;
 
 if ( have_posts() ) : 

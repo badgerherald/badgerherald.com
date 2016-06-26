@@ -1,0 +1,245 @@
+
+.container.footnotes {
+	.wrapper {
+		position:relative;
+		.meta {
+			position: relative;
+			width: 100%;
+			.tweet-button, .facebook-button, .share-url {
+				font-size: 14px;
+				padding:3px 9px;
+				font-family: 'pt sans';
+				color: #fff;
+				position: relative;
+			} 
+			.share-url {
+				display: none;
+				color: $greyText;
+				background: #fff;
+				border: none;
+				&:focus {
+					outline: none;
+					width: auto;
+				}
+			}
+			.tweet-button {
+				background: #059FF5;
+				padding-left:27px;
+				&:before {
+
+					content: 't';
+					font-family: $icon;
+					padding-right: 5px;
+					font-size: 10px;
+					position:absolute;
+					left: 9px;
+				}
+				&:hover {
+					background: $black;
+				}
+			}
+			.facebook-button {
+				background: #4965A2;
+				padding-left:27px;
+				&:before {
+					content: 'f';
+					font-family: $icon;
+					padding-right: 5px;
+					font-size: 10px;
+					position:absolute;
+					left: 9px;
+				}
+				&:hover {
+					background: $black;
+				}
+			}
+		
+			hr {
+				width: 240px;
+				background: $greyBorder;
+				margin: 24px 0 18px;
+				height: 1px;
+				border: none;
+			}
+			.fine-print {
+				p {
+					font-size: 16px;
+					font-family: $headline;
+					color: $greyText;
+				}
+			}
+			.comment-button {
+				padding: 6px 9px;
+				color: #fff;
+				font-size: 16px;
+				background: $black;
+				font-family: "pt sans";
+				display: inline-block;
+				position: relative;
+				position: absolute;
+				top: 0;
+				right: 0;
+				&:after {
+					content: "";
+					display: block;
+					width: 0;
+					height: 0;
+					border-right: 10px solid transparent;
+					border-bottom: 10px solid transparent;
+					border-top: 10px solid $black;
+					border-left: 10px solid $black;
+					position: absolute;
+					bottom: -15px;
+					margin-left: 0px;
+				}
+				&:hover {
+					background: $blue;
+					color: #fff;
+					&:after {
+					  border-top-color: $blue;
+					  border-left-color: $blue;
+					}
+				}
+			}
+		}
+		.tall-ad {
+			margin-top:48px;
+		}
+		.more {
+			position: relative;
+			margin-top: 42px;
+			h1 {
+				font-family: $body;
+				font-style: italic;
+				font-size: 36px;
+				.section {
+					color: $blue;
+					&:hover {
+						color: $black;
+					}
+				}
+			}
+			ul {
+				list-style: none;
+				margin:0;
+				margin-top: 12px;
+				padding:0;
+				li {
+					color: $black;
+					border-top: 1px solid $greyBorder;
+					padding: 18px 0 3px;
+					a {
+						color: $black;
+						font-size: 16px;
+						font-family: $headline;
+						&:hover {
+							color: $blue;
+						}
+						h3 {
+							font-weight: normal;
+							margin-top: 9px;
+						}
+					}
+				}
+				li a img {
+					width: 100%;
+					height: auto;
+					padding-bottom: 12px;
+				}
+			}
+		}
+	}
+}
+
+@include breakpoint('tablet') {
+	.container.footnotes {
+		.wrapper {
+			.meta {
+				.tweet-button, .facebook-button, .share-url {
+					font-size: 16px;
+					padding:6px 15px;
+					margin-right: 6px;
+					display: inline-block;
+				}
+				.tweet-button, .facebook-button {
+					padding-left: 31px;
+					&:before {
+						left: 12px;
+					}
+				}
+				.comment-button { 
+					padding: 12px 20px;
+				}
+			}
+			.tall-ad {
+				display: none;
+			}
+			.more {
+				h1 {
+					font-family: $body;
+					font-style: italic;
+					font-size: 42px;
+				}
+				li {
+					width: 380px;
+					margin: 0;
+					display: inline-block;
+					position: relative;
+					top: -1px;
+				}
+				ul {
+					margin-top: 36px;
+					border-top: 1px solid $greyBorder;
+				}
+				ul li:first-child {
+					float: right;
+					width: 300px;
+				}
+			}
+
+		}
+	}
+}
+
+@include breakpoint('desktop') {
+
+	.container.footnotes {
+		.wrapper {
+			.meta {
+				width: 680px;
+			}
+			.tall-ad {
+				display: block;
+				position: absolute;
+				margin-top: 0;
+				top: 0px;
+				right: 0px;
+			}
+			.more {
+				width: 680px;
+				ul li {
+					width: 300px;
+				}
+			}
+		}
+	}
+
+}
+
+@include breakpoint('xl') {
+
+	.container.footnotes {
+		.wrapper {
+			.meta {
+				width: 780px;
+			}
+			.more {
+				width: 780px;
+				ul li {
+					width: 380px;
+				}
+			}
+		}
+	}
+
+}
