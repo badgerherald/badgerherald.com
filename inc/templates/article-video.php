@@ -17,22 +17,22 @@ if(exa_hero_media_type() == 'video') :
 
 	<div class="black" style="padding-top:18px;">
 		<?php 
-		exa_block('leaderboard');
-		exa_block('menu-search-bar',array('background'=>'black'));
-		exa_block('header',array('background'=>'black'));
-		exa_block('hero-video');
+		exa_container('leaderboard');
+		exa_container('menu-search-bar',array('background'=>'black'));
+		exa_container('header',array('background'=>'black'));
+		exa_container('hero-video');
 		?>
 	</div>
 
 <?php 
 else :
-	exa_block('header',array('breakpoints' => array('mobile')));
-	exa_block('cover-hero');
+	exa_container('header',array('breakpoints' => array('mobile')));
+	exa_container('cover-hero');
 endif;
 
 if ( have_posts() ) : 
 	while ( have_posts() ) : the_post();
-		exa_block('content-two-column',array('layout'=>exa_layout()));
+		exa_container('content-two-column',array('layout'=>exa_layout()));
 	endwhile; 
 else :
 	_e( '<p>Something went wrong.</p>' );

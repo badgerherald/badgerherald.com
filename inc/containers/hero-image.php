@@ -8,15 +8,15 @@ global $post;
 
 if (exa_hero_style() == "standard") :
 
-global $block;
-if(!$block) {
-	$block = new Block('hero-image');
+global $container;
+if(!$container) {
+	$container = new container('hero-image');
 }
 	
 ?>
 
 
-<div class="<?php echo $block->classes(); ?>">
+<div class="<?php echo $container->classes(); ?>">
 	<div class="wrapper">
 	
 	<div class="image-box">

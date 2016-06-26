@@ -1,14 +1,14 @@
 <?php 
 
 
-global $block;
-if(!$block) {
-	$block = new Block('old-homepage');
+global $container;
+if(!$container) {
+	$container = new container('old-homepage');
 }
 
 ?>
 
-<div class="<?php echo $block->classes(); ?>">
+<div class="<?php echo $container->classes(); ?>">
 <div class="wrapper">
 
 	<?php

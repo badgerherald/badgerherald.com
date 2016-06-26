@@ -8,15 +8,15 @@
 get_header();
 
 
-exa_block('leaderboard');
-exa_block('menu-search-bar');
-exa_block('header');
-exa_block('breaking-news');
-exa_block('feature-widget');
-exa_block('ad-and-two-dominant');
-exa_block('list-and-banter');
-exa_block('latest-videos');
-exa_block('old-homepage');
+exa_container('leaderboard');
+exa_container('menu-search-bar');
+exa_container('header');
+exa_container('breaking-news');
+exa_container('feature-widget');
+exa_container('ad-and-two-dominant');
+exa_container('list-and-banter');
+exa_container('latest-videos');
+exa_container('old-homepage');
 
 get_footer();
 

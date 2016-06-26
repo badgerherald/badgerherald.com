@@ -1,27 +1,27 @@
 <?php
 /**
- * Functions for dealing with grabbing block content.
+ * Functions for dealing with grabbing a containers content.
  *
  * @since v0.2
  */
 
-global $block;
+global $container;
 
 /**
- * Includes the requested block template.
+ * Includes the requested container template.
  * 
  * @since v0.2
  * 
- * @param string $name Name of block template to include.
+ * @param string $name Name of container template to include.
  * @param array|WP_Query $args Optional argument to instantiate variables for template.
  */
-function exa_block($name, $args = null) {
+function exa_container($name, $args = null) {
 
-    // store current block
-    $curBlock = $GLOBALS['block'];
+    // store current container
+    $curContainer = $GLOBALS['container'];
 
-    $block = new Block($name,$args);
-    $GLOBALS['block'] = $block;
+    $container = new Container($name,$args);
+    $GLOBALS['container'] = $container;
 
     if(!locate_template('./inc/containers/' . $name)) {
         get_template_part('./inc/containers/' . $name);
@@ -31,17 +31,17 @@ function exa_block($name, $args = null) {
         echo "</div></div>";
     }
 
-    // restore current block;
-    $GLOBALS['block'] = $curBlock;
+    // restore current container;
+    $GLOBALS['container'] = $curContainer;
 
 }
 
 /**
- * Filter banter block classes
+ * Filter banter container classes
  */
-function exa_banter_container_classes($classes,$block) {
+function exa_banter_container_classes($classes,$container) {
     global $post;
-    if($block->name == "headline" && hexa_is_banter()) {
+    if($container->name == "headline" && hexa_is_banter()) {
         $classes .= " banter";
     }
     return $classes;
@@ -53,7 +53,7 @@ function hexa_is_banter($post = null) {
     return in_category("banter",$post);
 }
 
-Class Block {
+Class Container {
 
     public $name;
 

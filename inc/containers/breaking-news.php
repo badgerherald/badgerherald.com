@@ -1,6 +1,6 @@
 <?php
 /**
- * Block: breaking news block
+ * container: breaking news container
  * Description: Displays breaking news post if exists
  *
  */
@@ -16,9 +16,9 @@ $query_args = array(
     )
 );
 $my_query = new WP_Query( $query_args );
-global $block;
-if(!$block) {
-    $block = new Block('breaking-news');
+global $container;
+if(!$container) {
+    $container = new container('breaking-news');
 }
 
 if ($my_query->have_posts()) :
@@ -29,7 +29,7 @@ if ($my_query->have_posts()) :
         $seconds = 86400; 
         if (($currentTime - $local_timestamp)  < $seconds) : ?>
        
-            <div class="<?php echo $block->classes(); ?>">
+            <div class="<?php echo $container->classes(); ?>">
                 <div class="wrapper">
                     <a href="<?php the_permalink(); ?>" class="link">
                         <span class="breaking-tag">Breaking:</span>    

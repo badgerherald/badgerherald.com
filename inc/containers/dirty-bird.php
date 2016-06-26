@@ -1,34 +1,34 @@
 <style>
 @media(min-width: 0px){
-	.dirty-bird-block {
+	.dirty-bird-container {
 		margin-bottom: -24px;
 	}
 
-	.dirty-bird-block a{
+	.dirty-bird-container a{
 		opacity:.7;
 	}
-	.dirty-bird-block a img {
+	.dirty-bird-container a img {
 		opacity:.7;
 	}
-	.dirty-bird-block a:hover {
+	.dirty-bird-container a:hover {
 		opacity: 1;
 	}
-	.dirty-bird-block a:hover img {
+	.dirty-bird-container a:hover img {
 		opacity: 1;
 	}
-	.dirty-bird-block .mobile{
-		display:block;
+	.dirty-bird-container .mobile{
+		display:container;
 		overflow:hidden;
 		width:100%;
 		height:auto;
 	}
-	.dirty-bird-block .wrapper{
+	.dirty-bird-container .wrapper{
 		position:relative;
 	}
-	.dirty-bird-block .tablet, .desktop, .xl{
+	.dirty-bird-container .tablet, .desktop, .xl{
 		display:none;
 	}
-	.dirty-bird-block .bird{
+	.dirty-bird-container .bird{
 		position:absolute;
 		bottom:-80px;
 		left: 80px;
@@ -38,22 +38,22 @@
 }
 @media (min-width: 760px) {
 
-	.dirty-bird-block .mobile{
+	.dirty-bird-container .mobile{
 		display:none;
 	}
-	.dirty-bird-block .wrapper{
+	.dirty-bird-container .wrapper{
 		position:relative;
 	}
-	.dirty-bird-block .tablet{
-		display:block;
+	.dirty-bird-container .tablet{
+		display:container;
 	}
-	.dirty-bird-block .desktop{
+	.dirty-bird-container .desktop{
 		display:none;
 	}
-	.dirty-bird-block .xl{
+	.dirty-bird-container .xl{
 		display:none;
 	}
-	.dirty-bird-block .bird{
+	.dirty-bird-container .bird{
 
 	width:300px;
 	height:auto;
@@ -67,26 +67,26 @@
 
 }
 @media (min-width: 1060px){
-	.dirty-bird-block .mobile{
+	.dirty-bird-container .mobile{
 		display:none;
 	}
 
-	.dirty-bird-block .tablet{
+	.dirty-bird-container .tablet{
 		display:none;
 	}
-	.dirty-bird-block .desktop{
-		display:block;
+	.dirty-bird-container .desktop{
+		display:container;
 	}
-	.dirty-bird-block .xl{
+	.dirty-bird-container .xl{
 		display:none;
 	}
-	.dirty-bird-block .wrapper{
+	.dirty-bird-container .wrapper{
 		position:relative;
 	}
-	.dirty-bird-block .dirtybird{
-		display:block;
+	.dirty-bird-container .dirtybird{
+		display:container;
 	}
-	.dirty-bird-block .bird{
+	.dirty-bird-container .bird{
 		width:300px;
 		height:auto;
 		position:absolute;
@@ -96,17 +96,17 @@
 	}
 }
 @media (min-width: 1220px){
-	.dirty-bird-block .mobile{
+	.dirty-bird-container .mobile{
 		display:none;
 	}
-	.dirty-bird-block .tablet{
+	.dirty-bird-container .tablet{
 		display:none;
 	}
-	.dirty-bird-block .desktop{
+	.dirty-bird-container .desktop{
 		display:none;
 	}
-	.dirty-bird-block .xl{
-		display:block;
+	.dirty-bird-container .xl{
+		display:container;
 	}
 
 
@@ -116,7 +116,7 @@
 
 </style>
 
-<div class="block dirty-bird-block">
+<div class="container dirty-bird-container">
 	<div class="wrapper">
 	
 		<a href="http://dirtybird.badgerherald.com">

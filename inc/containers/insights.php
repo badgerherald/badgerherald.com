@@ -1,20 +1,20 @@
 <?php 
 /**
- * Block: menu search bar block
- * Description: Things my block does.
+ * container: menu search bar container
+ * Description: Things my container does.
  *
  */
 
 if (is_single()) :
 	
-global $block;
-if(!$block) {
-	$block = new Block('insights');
+global $container;
+if(!$container) {
+	$container = new container('insights');
 }
 
 ?>
 
-<div class="<?php echo $block->classes() ?>">
+<div class="<?php echo $container->classes() ?>">
 	<div class="wrapper">
 
 

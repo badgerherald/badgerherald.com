@@ -3,15 +3,15 @@
  * Header
  */ 
 
-global $block;
-if(!$block) {
-	$block = new Block('headline');
+global $container;
+if(!$container) {
+	$container = new container('headline');
 }
 
-$block->default_args(array('center'=>false));
+$container->default_args(array('center'=>false));
 ?>
 
-<header class="<?php echo $block->classes(); echo $block->args['center'] ? ' center' : ''; ?> ">
+<header class="<?php echo $container->classes(); echo $container->args['center'] ? ' center' : ''; ?> ">
 	<div class="wrapper">
 		
 			<ul class="topics">

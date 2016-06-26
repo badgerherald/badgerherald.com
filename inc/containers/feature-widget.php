@@ -1,13 +1,13 @@
 <?php  
 
-global $block;
-if(!$block) {
-	$block = new Block('feature-widget');
+global $container;
+if(!$container) {
+	$container = new container('feature-widget');
 }
 
 ?>
 
-<div class="<?php echo $block->classes(); ?>">
+<div class="<?php echo $container->classes(); ?>">
 	
 	<div class="wrapper">
 
@@ -39,8 +39,8 @@ if(!$block) {
 
 					<div class="title-container">
 						
-						<div class="block-headline-container">
-							<h1 class="block-headline"><span><?php the_title(); ?></span></h1>
+						<div class="container-headline-container">
+							<h1 class="container-headline"><span><?php the_title(); ?></span></h1>
 						</div>
 
 						<div class="byline">

@@ -1,14 +1,14 @@
 <?php 
 
 global $OnCampus;
-global $block;
-if(!$block) {
-	$block = new Block('preflight');
+global $container;
+if(!$container) {
+	$container = new container('preflight');
 }
 
 ?>
 
-<div class="<?php echo $block->classes(); ?>">
+<div class="<?php echo $container->classes(); ?>">
 
 		<div class="ad preflight-ad">
 

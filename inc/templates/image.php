@@ -17,18 +17,18 @@ global $post;
 
 <div class="black" style="padding-top:18px;">
 	<?php
-		exa_block('leaderboard');
-		exa_block('menu-search-bar',array('background'=>'black'));
-		exa_block('header','black');
-		exa_block('hero', 'image');	//main content of this page
+		exa_container('leaderboard');
+		exa_container('menu-search-bar',array('background'=>'black'));
+		exa_container('header','black');
+		exa_container('hero', 'image');	//main content of this page
 	?>
 </div>
 
 
 
-<div class="block read-next-block" style="border-top: 1px solid #c7d0d5; margin-top: 64px;">
+<div class="container read-next-container" style="border-top: 1px solid #c7d0d5; margin-top: 64px;">
 	<div class="wrapper" style="text-align: center;margin-top: 42px; ">
-			<h2 style=" font-family: pt serif; text-transform: uppercase; font-style: italic; background: #2379d0; color: #fff; font-size: 42px; display:inline-block; padding: 12px 20px; line-height: 54px; text-align: center; margin: 0 auto;">Read Next</h2>
+			<h2 style=" font-family: pt serif; text-transform: uppercase; font-style: italic; background: #2379d0; color: #fff; font-size: 42px; display:inline-container; padding: 12px 20px; line-height: 54px; text-align: center; margin: 0 auto;">Read Next</h2>
 	</div>
 </div>
 
@@ -36,8 +36,8 @@ global $post;
 
 Exa::addShownId(get_the_ID());
 
-exa_block('feature-widget'); 
-exa_block('ad-and-two-dominant');
-exa_block('list-and-banter');
+exa_container('feature-widget'); 
+exa_container('ad-and-two-dominant');
+exa_container('list-and-banter');
 get_template_part('footer');
 

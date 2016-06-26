@@ -1,15 +1,15 @@
 <?php 
 
-global $block;
+global $container;
 global $OnCampus;
-global $block;
-if(!$block) {
-	$block = new Block('footnotes');
+global $container;
+if(!$container) {
+	$container = new container('footnotes');
 }
 
 ?>
 
-<div class="<?php echo $block->classes(); ?>">
+<div class="<?php echo $container->classes(); ?>">
 
 	<div class="wrapper">
 

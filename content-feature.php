@@ -15,7 +15,7 @@ global $post;
 
 <?php 
 
-exa_block('hero');
+exa_container('hero');
 
 ?>
 <div class="container article-display showcase-block">
@@ -163,5 +163,5 @@ exa_block('hero');
 
 	</div><!-- .wrapper -->
 
-</div><!-- .block -->
+</div>
 

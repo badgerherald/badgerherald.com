@@ -1,12 +1,12 @@
 <?php 
 
-global $block;
+global $container;
 
-if(!$block) {
-	$block = new Block('header');
+if(!$container) {
+	$container = new container('header');
 }
 
-$block->default_args(
+$container->default_args(
 	array(
 		'background' => 'grey',
 		'breakpoint' => array()
@@ -15,10 +15,10 @@ $block->default_args(
 
 ?>
 
-<div class="<?php echo $block->classes(); ?>">
+<div class="<?php echo $container->classes(); ?>">
 	<div class="wrapper">
 		<a id="logo" href="<?php bloginfo('url'); ?>">
-			<?php if($block->args['background'] == 'black') : ?>
+			<?php if($container->args['background'] == 'black') : ?>
 				<img src="<?php bloginfo('template_url') ?>/img/logo/header-horizontal-white.png" />
 			<?php else : ?>
 				<img src="<?php bloginfo('template_url') ?>/img/logo/header-horizontal.png" />

@@ -107,7 +107,7 @@ if ($post_count != 0) {
                     'posts_per_page' => 2,
                 );
                 $query = new WP_Query( $args );
-                exa_block('cover-2-column');
+                exa_container('cover-2-column');
             else:
                 $best_posts = array();
             endif; 

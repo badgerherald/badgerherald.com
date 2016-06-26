@@ -2,10 +2,10 @@
 
 
 global $OnCampus;
-global $block;
-if(!$block) {
-	$block = new Block('article-display');
-	$block->default_args(
+global $container;
+if(!$container) {
+	$container = new container('article-display');
+	$container->default_args(
 		array('layout' => 'standard')
 		);
 }
@@ -18,10 +18,10 @@ if(!$block) {
 $args = array();
 $args['center'] = ( exa_layout() == 'feature' );
 
-exa_block('headline',$args);
+exa_container('headline',$args);
 ?>
 
-<div class="<?php echo $block->classes(); ?> article-display <?php echo $block->args['layout']; ?>">
+<div class="<?php echo $container->classes(); ?> article-display <?php echo $container->args['layout']; ?>">
 	<div class="wrapper">
 		<main class="article-content">
 			<div class="meta">
@@ -68,7 +68,7 @@ exa_block('headline',$args);
 
 		</main>
 
-		<?php if($block->args['layout'] == 'standard') : ?>
+		<?php if($container->args['layout'] == 'standard') : ?>
 		<aside class="sidebar">
 
 			<div class="ad sidebar-thing">
@@ -93,10 +93,10 @@ exa_block('headline',$args);
 
 	</div><!-- .wrapper -->
 
-</div><!-- .block -->
+</div><!-- .container -->
 
 </article><!-- #post-xx -->
 
 <?php 
 
-exa_block('footnotes');
+exa_container('footnotes');

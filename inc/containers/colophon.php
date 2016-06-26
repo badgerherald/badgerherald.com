@@ -1,13 +1,13 @@
 <?php 
 
-global $block;
-if(!$block) {
-	$block = new Block('colophon');
+global $container;
+if(!$container) {
+	$container = new container('colophon');
 }
 
 ?>
 
-<div class="<?php echo $block->classes() ?>">
+<div class="<?php echo $container->classes() ?>">
 	<div class="wrapper">
 		<div class="left-rail rail">
 			<img class="logo" src="<?php bloginfo('template_url') ?>/img/logo/header-horizontal-white.png" />

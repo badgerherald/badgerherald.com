@@ -4,13 +4,13 @@
  * 
  */
 
-global $block;
-if(!$block) {
-	$block = new Block('hero-video');
+global $container;
+if(!$container) {
+	$container = new container('hero-video');
 }
 
 ?>
-<div class="<?php echo $block->classes(); ?>">
+<div class="<?php echo $container->classes(); ?>">
 	<div class="wrapper">
 	
 	<div class="video-box">

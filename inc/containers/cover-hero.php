@@ -1,14 +1,14 @@
 <?php
 
-global $block;
-if(!$block) {
-	$block = new Block('cover-hero');
+global $container;
+if(!$container) {
+	$container = new container('cover-hero');
 }
 
 $hide_feature = get_post_meta( get_the_ID(), '_exa_hide_featured_image', true);
 if ( has_post_thumbnail() && !($hide_feature == "true")) : ?>
 
-	<div class="<?php echo $block->classes(); ?>">
+	<div class="<?php echo $container->classes(); ?>">
 	
 		<div class="hero">
 			<div class="wrapper">
@@ -23,7 +23,7 @@ if ( has_post_thumbnail() && !($hide_feature == "true")) : ?>
 
 	</div>
 
-	<div class="block standalone-caption-block">
+	<div class="container standalone-caption">
 		<div class="wrapper">
 			<?php exa_hero_caption(); ?>
 		</div>

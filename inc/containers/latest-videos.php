@@ -1,15 +1,15 @@
 <?php 
 
-global $block;
-if(!$block) {
-    $block = new Block('lastest-videos');
+global $container;
+if(!$container) {
+    $container = new container('lastest-videos');
 }
 
 ?>
 
-<div class="<?php echo $block->classes(); ?>">
+<div class="<?php echo $container->classes(); ?>">
     <div class="wrapper">
-        <div class="block-title">
+        <div class="container-title">
             <h2>Latest Videos</h2>
             <hr />
             <div class="subscribers">

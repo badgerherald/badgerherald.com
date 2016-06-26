@@ -5,15 +5,15 @@
  */
 
 global $post;
-global $block;
-if(!$block) {
-	$block = new Block('hero');
+global $container;
+if(!$container) {
+	$container = new container('hero');
 }
 
 if (exa_hero_style() == "standard") :
 ?>
 
-<div class="<?php echo $block->classes(); ?>">
+<div class="<?php echo $container->classes(); ?>">
 	<div class="wrapper">
 	
 	<?php

@@ -1,19 +1,19 @@
 <?php
 /**
- * Block: List & Banter
+ * container: List & Banter
  * Description: Four posts on the left, and banter widget on
  * 				the right.
  *
  */
 
-global $block;
-if(!$block) {
-	$block = new Block('list-and-banter');
+global $container;
+if(!$container) {
+	$container = new container('list-and-banter');
 }
 
 ?>
 
-<div class="<?php echo $block->classes(); ?>">    
+<div class="<?php echo $container->classes(); ?>">    
     <div class="wrapper">
     	
     	<div class="list">

@@ -1,14 +1,14 @@
 <?php 
 
 global $OnCampus;
-global $block;
-if(!$block) {
-	$block = new Block('leaderboard');
+global $container;
+if(!$container) {
+	$container = new container('leaderboard');
 }
 
 ?>
 
-<div class="<?php echo $block->classes(); ?>">
+<div class="<?php echo $container->classes(); ?>">
 	<div class="wrapper">
 		<div class="ad">
 	

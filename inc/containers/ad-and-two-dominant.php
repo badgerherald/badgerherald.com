@@ -5,14 +5,14 @@
  */
 
 global $OnCampus;
-global $block;
-if(!$block) {
-	$block = new Block('header');
+global $container;
+if(!$container) {
+	$container = new container('header');
 }
 
 ?>
 
-<div class="<?php echo $block->classes(); ?>">
+<div class="<?php echo $container->classes(); ?>">
 	<div class="wrapper">
 		<div class="sidekick-ad">
 		<?php 
@@ -57,8 +57,8 @@ if(!$block) {
 	
 					<div class="title-container">
 						
-						<div class="block-headline-container">
-							<h2 class="block-headline"><span><?php the_title(); ?></span></h2>
+						<div class="container-headline-container">
+							<h2 class="container-headline"><span><?php the_title(); ?></span></h2>
 						</div>
 	
 						<div class="byline">

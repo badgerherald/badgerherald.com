@@ -1,17 +1,17 @@
 <?php
 /**
- * Block: search result block
- * Description: Things my block does.
+ * container: search result container
+ * Description: Things my container does.
  *
  */
 
-global $block;
-if(!$block) {
-	$block = new Block('search');
+global $container;
+if(!$container) {
+	$container = new container('search');
 }
 
 ?>
-<div class="<?php echo $block->classes(); ?>">
+<div class="<?php echo $container->classes(); ?>">
     
     <div class="wrapper">
     <script>

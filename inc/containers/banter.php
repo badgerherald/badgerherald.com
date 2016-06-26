@@ -3,22 +3,22 @@
 
 
 /**
- * Block documentation:
+ * container documentation:
  * 
  * $args: 	array (
- * 				"breakpoint" => array() of breakpoints to show block for.
+ * 				"breakpoint" => array() of breakpoints to show container for.
  * 		  	)
  */
 
 global $wp_query;
-global $block;
-if(!$block) {
-	$block = new Block('header');
+global $container;
+if(!$container) {
+	$container = new container('header');
 }
 
 ?>
 
-<div class="<?php echo $block->classes(); ?>">
+<div class="<?php echo $container->classes(); ?>">
 	<div class="wrapper">
 
     	<div class="inner-banter">

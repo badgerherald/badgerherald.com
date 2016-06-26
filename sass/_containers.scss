@@ -1,41 +1,41 @@
 
 /**
- * NEW, block foundations:
+ * .container foundations:
  * ----------------------------------------
  */
 
-.block.mobile, .block.tablet, .block.desktop, .block.xl {
+.container.mobile, .container.tablet, .container.desktop, .container.xl {
 	display: none;
 }
 
-.block.mobile {
-	display: block;
+.container.mobile {
+	display:block;
 }
 
 @include breakpoint('tablet') {
-	.block.mobile, .block.desktop, .block.xl {
+	.container.mobile, .container.desktop, .container.xl {
 		display: none;
 	}
-	.block.tablet {
-		display: block;
+	.container.tablet {
+		display:block;
 	}
 }
 
 @include breakpoint('desktop') {
-	.block.mobile, .block.tablet, .block.xl {
+	.container.mobile, .container.tablet, .container.xl {
 		display: none;
 	}
-	.block.desktop {
-		display: block;
+	.container.desktop {
+		display:block;
 	}
 }
 
 @include breakpoint('xl') {
-	.block.mobile, .block.tablet, .block.desktop {
+	.container.mobile, .container.tablet, .container.desktop {
 		display: none;
 	}
-	.block.xl {
-		display: block;
+	.container.xl {
+		display:block;
 	}
 }
 
@@ -43,7 +43,7 @@
  * OLD, probably deletable stuff below here
  * ----------------------------------------
  */
-.cover-block {
+.cover.container {
 	.wrapper {
 		background: rgba($black,.2);
 		width: 100%;
@@ -51,11 +51,11 @@
 	}
 }
 
-.cover-2-column-block {
+.cover-2-column.container {
 	.wrapper {
 		width: 100%;
 	}
-	.cover-block {
+	.cover.container {
 		background: rgba($black, .2);
 		width: 100%;
 		height: 400px;
@@ -63,16 +63,16 @@
 	}
 }
 
-.column-block .column-block-header {
+.column.container .column.container-header {
 	h2 {
 		border-bottom: 2px solid $black;
-		display: block;
+		display:block;
 		padding-bottom:12px;
 		margin-bottom: 24px;
 	}
 }
 
-.column-block .column-block-article {
+.column.container .column.container-article {
 	margin-bottom:42px;
 	position: relative;
 	a:hover {
@@ -131,12 +131,12 @@
 		// margin-bottom:18px;
 		position:absolute;
 		left: 90px;
-		display: block;
+		display:block;
 		font-size:14px;
 		font-weight:700;
 		color: $trueblack;
 		&:after {
-			display: block;
+			display:block;
 			width: 60px;
 			border-bottom:2px solid $darkgreyBorder;
 			content:" ";
@@ -147,7 +147,7 @@
 	}
 }
 
-.leaderboard-block {
+.leaderboard.container {
 	.wrapper {
 		.ad {
 			width:300px;
@@ -157,7 +157,7 @@
 }
 
 .full-width-cover-image {
-	display: block;
+	display:block;
 	position: relative;
 	overflow: hidden;
 	background-position: 50%;
@@ -168,7 +168,7 @@
 	max-height: 600px;
 	&:before {
 		content: "";
-		display: block;
+		display:block;
 		width: 100%;
 	}
 	&.pos-bottom {
@@ -184,7 +184,7 @@
 
 @media (min-width: 760px) {
 
-	.column-block .column-block-article {
+	.column.container .column.container-article {
 	
 		width:flex(240,760);
 		float:left;
@@ -218,7 +218,7 @@
 		}
 		.author-link {
 			position:relative;
-			display: block;
+			display:block;
 			left:0;
 			margin-bottom:12px;
 			text-align:center;
@@ -229,7 +229,7 @@
 		}
 	}
 
-	.leaderboard-block {
+	.leaderboard.container {
 		.wrapper {
 			.ad {
 				width:100%;
@@ -240,7 +240,7 @@
 
 @media (min-width: 1160px) {
 
-	.column-block .column-block-article {
+	.column.container .column.container-article {
 	
 		width:140px;
 		float:left;
@@ -274,7 +274,7 @@
 		}
 		.author-link {
 			position:relative;
-			display: block;
+			display:block;
 			left:0;
 			margin-bottom:12px;
 			text-align:center;
@@ -286,10 +286,10 @@
 	}
 
 
-	.cover-2-column-block {
+	.cover-2-column.container {
 		.wrapper {
 			@include clearfix();
-			.cover-block {
+			.cover.container {
 				width: 500px;
 				float: left;
 				&:first-child {
@@ -301,8 +301,8 @@
 }
 
 @include breakpoint(xl) {
-	.cover-2-column-block .wrapper {
-		.cover-block {
+	.cover-2-column.container .wrapper {
+		.cover.container {
 			width: 580px;
 		}
 	}

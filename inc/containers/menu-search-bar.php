@@ -1,17 +1,17 @@
 <?php
 /**
- * Block: menu search bar block
- * Description: Things my block does.
+ * container: menu search bar container
+ * Description: Things my container does.
  *
  */
 
-global $block;
+global $container;
 
-if(!$block) {
-	$block = new Block('menu-search-bar');
+if(!$container) {
+	$container = new container('menu-search-bar');
 }
 
-$block->default_args(
+$container->default_args(
 	array(
 		'background' => 'grey',
 		'breakpoint' => array()
@@ -20,7 +20,7 @@ $block->default_args(
 
 ?>
 
-<div class="<?php echo $block->classes(); echo " " . $block->args['background']; ?>">
+<div class="<?php echo $container->classes(); echo " " . $container->args['background']; ?>">
     <div class="wrapper">
 		<?php 
 			if ( has_nav_menu( 'header-primary' ) ) {

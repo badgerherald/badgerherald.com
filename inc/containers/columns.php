@@ -10,16 +10,16 @@
  */
 
 global $homepage; 
-global $block;
-if(!$block) {
-	$block = new Block('column-block');
+global $container;
+if(!$container) {
+	$container = new container('column-container');
 }
 ?>
 
-<div class="<?php echo $block->classes(); ?>">
+<div class="<?php echo $container->classes(); ?>">
 	<div class="wrapper">
 
-	<header class="column-block-header">
+	<header class="column-container-header">
 		<h2>Columnists</h2>
 	</header>
 
@@ -32,7 +32,7 @@ if(!$block) {
 	
 			<?php
 			
-			$classes = "column-block-article";
+			$classes = "column-container-article";
 			$classes .= $i%2 == 0 ? " even" : " odd"; 
 			$classes .= " article-" . $i++;
 
@@ -43,7 +43,7 @@ if(!$block) {
 					<?php the_author(); ?>
 				</a>
 
-				<a href="<?php the_permalink(); ?>" class="article-link column-block-article-link">
+				<a href="<?php the_permalink(); ?>" class="article-link column-container-article-link">
 					<?php exa_round_mug( get_the_author_meta('ID') ); ?>
 					<h2><?php the_title(); ?></h2>
 					<span class="read">Read</span>
