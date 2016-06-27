@@ -36,12 +36,7 @@ get_header(); ?>
 ?>
 <div class="author-info <?php if($img_src_id === '') echo 'no-banner'; ?>">
 	<a class="author-avatar" title="<?php echo exa_properize($author->display_name); ?> Profile" href="<?php echo get_bloginfo('url'); ?>/author/<?php echo $author->user_login; ?>">
-        <?php 
-            $avatar_src = get_wp_user_avatar_src(get_the_author_meta('ID', get_query_var('author')), 'original');
-            $avatar_crop = hrld_resize(null, $avatar_src, 200, 200, true);
-        ?>
-        <img src="<?php echo $avatar_crop['url']; ?>" alt="<?php echo $author->display_name;?>" width="<?php echo $avatar_crop['width'];?>" height="<?php echo $avatar_crop['height'];?>" />
-        <?php //echo get_wp_user_avatar($author->ID, 'small-thumbnail')?>
+        <?php exa_mug(get_the_author_meta('ID')) ?>
     </a>
     <h1 class="author-title"><?php printf( __( '%s', 'twentythirteen' ), $author->display_name ); ?></h1>
     <h3 class="author-position"><?php echo (hrld_author_has('hrld_current_position', $author->ID) ? get_hrld_author('hrld_current_position', $author->ID):'The Badger Herald'); ?></h3>
@@ -76,7 +71,7 @@ get_header(); ?>
 <?php
 if ($is_Photographer) {
     ?>
-    <div class="block author-media-block showcase-block">
+    <div class="container author-media showcase-block">
         <div class="wrapper">
             <div class="media-list">
             <?php
@@ -95,7 +90,7 @@ if ($is_Photographer) {
 }
 if ($post_count != 0) {
 ?>
-<div class="author-posts-block<?php if ($is_Photographer) echo ' hidden'; ?>">
+<div class="author-posts<?php if ($is_Photographer) echo ' hidden'; ?>">
     <?php
         if (!is_paged()) :
             $best_posts = get_the_author_meta( '_hrld_staff_best_posts', get_the_author_meta('ID', get_query_var('author')) );
@@ -107,7 +102,7 @@ if ($post_count != 0) {
                     'posts_per_page' => 2,
                 );
                 $query = new WP_Query( $args );
-                exa_block('cover-2-column');
+                exa_container('cover-2-column');
             else:
                 $best_posts = array();
             endif; 

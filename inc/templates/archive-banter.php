@@ -15,9 +15,9 @@ global $post;
 
 get_header();
 
-exa_block('leaderboard');
-exa_block('menu-search-bar');
-exa_block('header');
-exa_block('banter');
+exa_container('leaderboard');
+exa_container('menu-search-bar');
+exa_container('header');
+exa_container('banter');
 
 get_template_part('footer');

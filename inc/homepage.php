@@ -9,10 +9,10 @@
 $homepage = new Homepage();
 
 /**
- * Global block class that contains
- * args for the currently displayed block. 
+ * Global container class that contains
+ * args for the currently displayed container. 
  */
-$block;
+$container;
 
 /**
  * Class to deal with laying the river
@@ -27,11 +27,11 @@ Class Homepage {
 
 	private $query;
 
-	private $blocks;
+	private $containers;
 
 	public function __construct() {
 
-		global $block;
+		global $container;
 
 		$args = array(
 			'post_type' => 'post',
@@ -46,7 +46,7 @@ Class Homepage {
 		$cover = array();
 		$stream = array();
 
-		$blockCount = 0;
+		$containerCount = 0;
 
 		if ( $this->query->have_posts() ) : while ( $this->query->have_posts() ) : $post = $this->query->the_post();
 
@@ -63,43 +63,43 @@ Class Homepage {
 			}
 
 
-			// Display the top most block,
-			// always a cover block with either one cover
+			// Display the top most container,
+			// always a cover container with either one cover
 			// or two feature objects next to it.
-			if( ($blockCount == 0) && ( sizeof($cover) == 1 || sizeof($features) == 3 ) ) {
+			if( ($containerCount == 0) && ( sizeof($cover) == 1 || sizeof($features) == 3 ) ) {
 
-				$newBlock = new Block();
-				$newBlock->identifier = 'most-recent';
-				$newBlock->query = new WP_Query();
+				$newcontainer = new container();
+				$newcontainer->identifier = 'most-recent';
+				$newcontainer->query = new WP_Query();
 
 				if( sizeof($cover) == 1 ) {
-					$newBlock->query->posts = $cover;
+					$newcontainer->query->posts = $cover;
 					$cover = array();
-					$newBlock->query->post_count = 1; 
-					$newBlock->args['display'] = 'cover';
+					$newcontainer->query->post_count = 1; 
+					$newcontainer->args['display'] = 'cover';
 				} else {
-					$newBlock->query->posts = $features;
+					$newcontainer->query->posts = $features;
 					$features = array();
-					$newBlock->query->post_count = 3; 
-					$newBlock->args['display'] = 'feature';
+					$newcontainer->query->post_count = 3; 
+					$newcontainer->args['display'] = 'feature';
 				}
 
-				// Add the block
+				// Add the container
 
-				$this->blocks[] = $newBlock;
-				$blockCount = $blockCount + 1;
+				$this->containers[] = $newcontainer;
+				$containerCount = $containerCount + 1;
 
 			} 
 
-			// Add a billboard block after the second 
-			// block.
-			else if ($blockCount == 2) {
+			// Add a billboard container after the second 
+			// container.
+			else if ($containerCount == 2) {
 
-				$newBlock = new Block();
-				$newBlock->identifier = 'billboard';
+				$newcontainer = new container();
+				$newcontainer->identifier = 'billboard';
 
-				$this->blocks[] = $newBlock;
-				$blockCount = $blockCount + 1;
+				$this->containers[] = $newcontainer;
+				$containerCount = $containerCount + 1;
 
 			}
 
@@ -111,9 +111,9 @@ Class Homepage {
 
 		echo "</pre>";
 
-		// Display the blocks;
-		foreach($this->blocks as $b) {
-			exa_block($b->identifier);
+		// Display the containers;
+		foreach($this->containers as $b) {
+			exa_container($b->identifier);
 		}
 
 		

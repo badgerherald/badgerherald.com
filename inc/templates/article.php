@@ -16,13 +16,13 @@ global $post;
 
 get_header();
 
-exa_block('leaderboard');
-exa_block('menu-search-bar');
-exa_block('header');
+exa_container('leaderboard');
+exa_container('menu-search-bar');
+exa_container('header');
 
 if ( have_posts() ) : 
 	while ( have_posts() ) : the_post();
-		exa_block('content-two-column',array('layout' => exa_layout()));
+		exa_container('content-two-column',array('layout' => exa_layout()));
 	endwhile; 
 else :
 	_e( '<p>Something went wrong.</p>' );

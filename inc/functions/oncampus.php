@@ -68,6 +68,7 @@ Class OnCampus {
 		add_action('wp_print_footer_scripts', array($this, 'footer'));
 		
 		$this->register_breakpoint('__all',-1);
+		$this->displayads = array();
 
 	}
 

@@ -1,0 +1,38 @@
+.container.interstellar {
+	display: none;
+}
+
+@include breakpoint(desktop) {
+	.container.interstellar {
+		display: block;
+		.creative {
+			height: 470px;
+			overflow: hidden;
+			img {
+				margin-top: -110px;
+			}
+		}
+		margin: 0;
+		a, img {
+			padding:0;
+			margin:0;
+			width: 100%;
+			height: auto;
+		}
+		.dismiss {
+			background: $black;
+			font-family: $headline;
+			color: $truewhite;
+			text-align: center;
+			padding: 6px 0;
+			&:after {
+				content: 'v';
+				font-family: $icon;
+				height:16px;
+				width: 16px;
+				padding-left: 3px;
+				font-size: 12px;
+			}
+		}
+	}
+}

@@ -11,7 +11,7 @@
  */
 ?>
 
-<?php exa_block('colophon'); ?>
+<?php exa_container('colophon'); ?>
 
 </div><!-- END div#page -->
 

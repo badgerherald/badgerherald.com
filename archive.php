@@ -18,8 +18,8 @@
  */
 
 get_header();
-exa_block('menu-search-bar');
-exa_block('header');
+exa_container('menu-search-bar');
+exa_container('header');
 
 ?>
 	

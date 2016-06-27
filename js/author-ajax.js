@@ -6,11 +6,11 @@ jQuery(document).ready(function($) {
      */
     $(".author-info a.switch-view-link").click(function(event) {
         event.preventDefault();
-        if ($(".author-media-block").length === 0) {
+        if ($(".author-media-container").length === 0) {
             loadMedia();
         } else {
-            $(".author-posts-block").toggleClass("hidden");
-            $(".author-media-block").toggleClass("hidden");
+            $(".author-posts-container").toggleClass("hidden");
+            $(".author-media-container").toggleClass("hidden");
             $(".author-media-link").toggleClass("hidden");
             $(".author-posts-link").toggleClass("hidden");
         }
@@ -22,7 +22,7 @@ jQuery(document).ready(function($) {
      * @since  v0.2
      */
     var loadMedia = function() {
-        $("body").append($('<div class="loading-block"><div class="loader"><div class="bounce1"></div><div class="bounce2"></div><div class="bounce3"></div></div></div>'));
+        $("body").append($('<div class="loading-container"><div class="loader"><div class="bounce1"></div><div class="bounce2"></div><div class="bounce3"></div></div></div>'));
         var media_data = {
             'action': 'hrld_media_credit_query',
             'posts_per': -1,
@@ -31,15 +31,15 @@ jQuery(document).ready(function($) {
         }
         $.post(hrld_author.ajaxurl, media_data)
             .done(function(response) {
-                $(".author-posts-block").addClass("hidden");
+                $(".author-posts-container").addClass("hidden");
                 $(".author-media-link").addClass("hidden");
                 $(".author-posts-link").removeClass("hidden");
-                $(".loading-block").remove();
-                var media_block = '<div class="block author-media-block showcase-block">';
-                media_block += '<div class="wrapper">';
-                media_block += '<div class="media-list">';
-                media_block += '</div></div></div>';
-                $(".author-info").after($(media_block));
+                $(".loading-container").remove();
+                var media_container = '<div class="container author-media-container showcase-container">';
+                media_container += '<div class="wrapper">';
+                media_container += '<div class="media-list">';
+                media_container += '</div></div></div>';
+                $(".author-info").after($(media_container));
                 var media_thumbs = '';
                 for (var i in response) {
                     if(response.hasOwnProperty(i)) {
@@ -48,7 +48,7 @@ jQuery(document).ready(function($) {
                         media_thumbs += '</div> ';
                     }
                 }
-                $(".author-media-block .wrapper .media-list").append($(media_thumbs));
+                $(".author-media-container .wrapper .media-list").append($(media_thumbs));
                 $($.fn.showcase.defaults.container).showcase({
                     slideHtml: function(img) {
                         var html = '';

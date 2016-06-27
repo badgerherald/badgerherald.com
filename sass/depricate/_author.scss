@@ -65,7 +65,7 @@ body.author {
     }
 }
 
-.author-media-block {
+.author-media {
     .media-list {
         text-align: justify;
         font-size: 0.1px;
@@ -132,7 +132,7 @@ body.author {
         }
     }
 
-    .author-media-block {
+    .author-media {
         .media-list {
             line-height: 15px;
             .media-thumbnail {
@@ -149,7 +149,7 @@ body.author {
         width: 100%;
     }
 
-    .author-media-block {
+    .author-media {
         .media-list {
             .media-thumbnail {
                 //width: 188px;
@@ -158,7 +158,7 @@ body.author {
     }
 }
 @include breakpoint(xl) {
-    .author-media-block {
+    .author-media {
         .media-list {
             .media-thumbnail {
                 //width: 220px;

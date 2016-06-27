@@ -6,20 +6,20 @@
 jQuery(document).ready(function($) {
 
 
-	// Remove the preflight block until its loaded.
-	jQuery(".preflight-block .dfw-unit").on("dfw:beforeAdLoaded", function() {
-		// add the class loaded to the preflight block.
-		var preflightBlock = $(this).closest(".preflight-block");
-		preflightBlock.hide();
+	// Remove the preflight container until its loaded.
+	jQuery(".preflight-container .dfw-unit").on("dfw:beforeAdLoaded", function() {
+		// add the class loaded to the preflight container.
+		var preflightcontainer = $(this).closest(".preflight-container");
+		preflightcontainer.hide();
 	});
 
 	// Decorate the preflight once its loaded on the page: 
-	// Adds a didLoad class to the preflight block.
-	jQuery(".preflight-block .dfw-unit").on("dfw:afterAdLoaded", function() {
-		// add the class loaded to the preflight block.
-		var preflightBlock = $(this).closest(".preflight-block");
-		preflightBlock.addClass("loaded");
-		preflightBlock.show();
+	// Adds a didLoad class to the preflight container.
+	jQuery(".preflight-container .dfw-unit").on("dfw:afterAdLoaded", function() {
+		// add the class loaded to the preflight container.
+		var preflightcontainer = $(this).closest(".preflight-container");
+		preflightcontainer.addClass("loaded");
+		preflightcontainer.show();
 	});
 
 
@@ -208,7 +208,7 @@ jQuery(document).ready(function($) {
     }
 	
 	window.setTimeout(function() {
-		$(".add-so-button").css({'top':'-30px','display':'block'}).animate({'top':'43px','display':'block'},200);
+		$(".add-so-button").css({'top':'-30px','display':'container'}).animate({'top':'43px','display':'container'},200);
 	}, 400 /* but after 2000 ms */);
 	$('#shoutoutText').focus();
 
@@ -233,21 +233,6 @@ jQuery(document).ready(function($) {
 		});
 		return vars;
 	}
-
-    /**
-     * Handles the width calculations of the article progress bar
-     *
-     * @since  v0.2
-
-    if ($(".progress").length !== 0) {
-        $(window).scroll(function() {
-            var scrollTop = $(window).scrollTop();
-            var scrollH = ($(".article-display-block").height() + $(".article-display-block").offset().top) - $(window).height();
-            var progress = Math.max(0, Math.min(1, scrollTop/scrollH)) * 100;
-            $(".progress .progress-bar").attr("aria-valuenow", Math.floor(progress)).css("width", progress+"%");
-        });
-    }
-    */
 
 	//Smooth scrolling to anchors from anchor links on same page.
 	$(function() {

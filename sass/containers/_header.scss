@@ -1,0 +1,63 @@
+/**
+ * Header Container
+ * ---------------------------------------------------------
+ * php: ./inc/containers/header.php
+ * since: 0.3
+ * -----------------------------------------------------------------------------
+ */
+
+.container.header {
+	margin: 12px 0;
+	.wrapper {
+		border-top: 5px solid $blue;
+		border-bottom: 1px solid $greyBorder;
+		padding: 18px 0;
+		a img {
+		    width:flex(160,300);
+		    height: auto;
+		}
+		.social-buttons {
+			display: none;
+		}
+	}
+}
+
+@include breakpoint("tablet") {
+	.container.header {
+		.wrapper {
+			a img {
+				width: flex(220,600);
+			}
+			.social-buttons {
+				display: block;
+                text-align: right;
+                position: absolute;
+                bottom: 24px;
+                width: 300px;
+                right: 0;
+                h3 {
+                    font-size: 13px;
+                    font-style: italic;
+                    margin-bottom: 6px;
+                }
+                .twitter {
+                    .twitter-follow-button { vertical-align: bottom !important; }
+                }
+                .facebook {
+                    margin-bottom: 5px;
+                }
+            }
+		}
+	}
+}
+@include breakpoint("desktop") {
+
+	.container.header {
+		.wrapper {
+			a img {
+				width: 220px;
+			}
+		}
+	}
+
+}

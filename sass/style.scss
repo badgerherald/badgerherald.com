@@ -20,35 +20,35 @@ Text Domain: exa
 @import "foundations/page.scss";
 
 /** 
- * Base Page Syles
+ * § 1.0 Containers
  * 
  */
-@import "blocks.scss";					// blocks coded before they got their own styles.
-@import "blocks/colophon.scss";
-@import "blocks/article-display.scss";
-@import "blocks/hero.scss";
-@import "blocks/interstellar.scss";
-@import "blocks/feature-widget.scss";
-@import "blocks/list-and-banter.scss";
-@import "depricate/asides.scss"; 		// asides are probably a thing we should have, but lets model its implementation off of blocks.
-@import "blocks/latest-videos-block.scss";
-@import "blocks/hero-video.scss";
-@import "blocks/hero-image.scss";
-@import "blocks/preflight.scss";
-@import "blocks/search.scss";
-@import "blocks/cover-hero.scss";
-@import "blocks/banter-header.scss";
-@import "blocks/headline.scss";
-@import "blocks/footnotes.scss";
+@import "containers.scss";					// containers coded before they got their own styles.
+@import "containers/colophon.scss";
+@import "containers/article-display.scss";
+@import "containers/hero.scss";
+@import "containers/interstellar.scss";
+@import "containers/feature-widget.scss";
+@import "containers/list-and-banter.scss";
+@import "depricate/asides.scss";
+@import "containers/latest-videos.scss";
+@import "containers/hero-video.scss";
+@import "containers/hero-image.scss";
+@import "containers/preflight.scss";
+@import "containers/search.scss";
+@import "containers/cover-hero.scss";
+@import "containers/banter-header.scss";
+@import "containers/headline.scss";
+@import "containers/footnotes.scss";
 
 /** 
  * Masthead Styles
  * 
  */
-@import "blocks/header.scss";
-@import "blocks/menu-search-bar.scss";
-@import "blocks/ad-and-two-dominant.scss";
-@import "blocks/breaking-news.scss";
+@import "containers/header.scss";
+@import "containers/menu-search-bar.scss";
+@import "containers/ad-and-two-dominant.scss";
+@import "containers/breaking-news.scss";
 @import "depricate/homepage.scss";
 
 /** 
