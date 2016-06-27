@@ -57,8 +57,8 @@ if(!$container) {
 	
 					<div class="title-container">
 						
-						<div class="container-headline-container">
-							<h2 class="container-headline"><span><?php the_title(); ?></span></h2>
+						<div class="block-headline-container">
+							<h2 class="block-headline"><span><?php the_title(); ?></span></h2>
 						</div>
 	
 						<div class="byline">

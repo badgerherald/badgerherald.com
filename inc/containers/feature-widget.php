@@ -39,8 +39,8 @@ if(!$container) {
 
 					<div class="title-container">
 						
-						<div class="container-headline-container">
-							<h1 class="container-headline"><span><?php the_title(); ?></span></h1>
+						<div class="block-headline-container">
+							<h1 class="block-headline"><span><?php the_title(); ?></span></h1>
 						</div>
 
 						<div class="byline">
