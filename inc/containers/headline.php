@@ -27,8 +27,8 @@ $container->default_args(array('center'=>false));
 				
 			<h1 class="title"><?php the_title() ?></h1>
 			
-			<?php if( hrld_has_subhead(get_the_ID()) ) : ?>
-				<h2 class="subhead"><?php hrld_the_subhead(); ?></h2>
+			<?php if( exa_has_subhead(get_the_ID()) ) : ?>
+				<h2 class="subhead"><?php exa_subhead(); ?></h2>
 			<?php endif; ?>
 	
 	</div>
