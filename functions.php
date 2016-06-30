@@ -896,17 +896,12 @@ add_action('wp_head','exa_twitter_card_tags');
 /**
  * The excerpt to serve to facebook, twitter, google, &c.
  *
- * TODO: Add _hrld_subhead support. These are often more appropriate for the space than
- * 		 the lede.
- *
  * @since 0.1
  * 
  * @see http://wordpress.stackexchange.com/questions/26729/get-excerpt-using-get-the-excerpt-outside-a-loop
- * @author Will Haynes
  */
 function exa_get_meta_excerpt($post_id = null) {
 
-	// Gets post ID
     $the_post = get_post($post_id);
 
     if(!$the_post) {
@@ -915,11 +910,8 @@ function exa_get_meta_excerpt($post_id = null) {
 
     $post_id = $the_post->ID;
 
-    // check if the hrld-setup plugin is active, and use subhead here instead.
-    if( function_exists('hrld_has_subhead') && hrld_has_subhead($post_id) ) {
-    	$the_excerpt = hrld_get_subhead($post_id);
-    	// Make sure it ends in a period, or it looks weird on facebook.
-    	$the_excerpt = rtrim($the_excerpt, '.') . '.';
+    if( exa_has_subhead($post_id) ) {
+    	$the_excerpt = exa_subhead($post_id);
     } else {
     	$the_excerpt = $the_post->post_content; // Gets post_content to be used as a basis for the excerpt
     	$excerpt_length = 35; // Sets excerpt length by word count

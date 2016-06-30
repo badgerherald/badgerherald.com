@@ -38,9 +38,9 @@ exa_container('hero');
 					<h1 class="article-title"><?php the_title() ?></h1>
 					
 				
-				<?php if( hrld_has_subhead(get_the_ID()) ) : ?>
+				<?php if( exa_has_subhead(get_the_ID()) ) : ?>
 				
-					<h2 class="article-subhead"><?php hrld_the_subhead(); ?></h2>
+					<h2 class="article-subhead"><?php exa_subhead(); ?></h2>
 				
 				<?php endif; ?>
 

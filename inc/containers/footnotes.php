@@ -89,8 +89,8 @@ if(!$container) {
 
 						<h2 class="headline"><?php the_title(); ?></h2>
 
-						<?php if( hrld_has_subhead(get_the_ID()) ) : ?>
-							<h3 class="subhead"><?php hrld_the_subhead(); ?></h3>
+						<?php if( exa_has_subhead(get_the_ID()) ) : ?>
+							<h3 class="subhead"><?php exa_subhead(); ?></h3>
 						<?php else: ?>
 							<h3 class="subhead"><?php the_excerpt(); ?></h3>
 						<?php endif; ?>
