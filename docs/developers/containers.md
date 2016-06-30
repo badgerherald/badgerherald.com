@@ -1,12 +1,10 @@
 # Containers
 
-Containers make up the basic structure of **exa**, keeping its pieces modular and making changes safe and quick.
+Containers make up the basic structure of **Exa**, keeping its pieces modular and making changes safe and quick.
 
 ## What are Containers?
 
 A container is a _full width_ template element with its own set of sass (css) rules. Containers are tiled down the page, and will eventually support lazy loading to allow additional content to flow down the page.
-
-	todo: add screenshot of Containers highlighted on homepage
 
 ## Organization of Container files.
 
