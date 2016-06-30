@@ -22,6 +22,7 @@ include_once('inc/functions/pullquotes.php');
 include_once('inc/functions/social.php');
 include_once('inc/functions/ajax.php');
 include_once('inc/functions/services.php');
+include_once('inc/functions/sections.php');
 if( class_exists('Popular_Post_Widget') ) {
 	include_once('inc/functions/popular-post-widget.php');
 }
@@ -667,40 +668,7 @@ add_filter( 'wp_title', 'exa_filter_wp_title' );
 
 
 
-/**
- * Returns a string with the section.
- * 
- * @since v0.2
- * @return string section.
- */
-function exa_section($post = null) {
-	
-	$post = get_post($post);
 
-	$section = get_the_category();
-	if( $section ) {
-		$section = $section[0]->name;
-		$section = $section == 'oped' ? $section = 'opinion' : $section;
-	}
-	return $section;
-}
-
-/**
- * Returns a url for the section.
- * 
- * @since v0.4
- * @return string section.
- */
-function exa_section_permalink($post = null) {
-
-	$post = get_post($post);
-
-	$section = get_the_category();
-	if( $section ) {
-		return get_term_link($section[0]->term_id,"category");
-	}
-	return "";
-}
 
 /**
  * Prints open graph tags to the head of wordpress pages.
