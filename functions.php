@@ -911,7 +911,7 @@ function exa_get_meta_excerpt($post_id = null) {
     $post_id = $the_post->ID;
 
     if( exa_has_subhead($post_id) ) {
-    	$the_excerpt = exa_subhead($post_id);
+    	$the_excerpt = exa_get_subhead($post_id);
     } else {
     	$the_excerpt = $the_post->post_content; // Gets post_content to be used as a basis for the excerpt
     	$excerpt_length = 35; // Sets excerpt length by word count
