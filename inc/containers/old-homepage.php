@@ -101,7 +101,7 @@ if(!$container) {
 						echo exa_topic( $post->ID );
 						hrld_html_tag_open("span","",array("summary-time-stamp"));
 							echo " &middot; ";
-							echo exa_human_time_diff(get_the_time('U'));
+							exa_time();
 						hrld_html_tag_close("span");
 					hrld_html_tag_close("span");
 					hrld_html_tag_open("h4");

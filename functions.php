@@ -10,6 +10,7 @@ include_once('inc/functions/importance.php');
 
 /** Other stuff */
 include_once('inc/functions/dev.php');
+include_once('inc/functions/dates-and-times.php');
 include_once('inc/functions/oncampus.php');
 include_once('inc/functions/html-tags.php');
 include_once('inc/functions/analytic-dashboard.php');
@@ -316,50 +317,6 @@ function exa_custom_excerpt_length( $length ) {
 	return 24;
 }
 add_filter( 'excerpt_length', 'exa_custom_excerpt_length', 999 );
-
-
-/**
- * Filters the excerpt length to 24 words. 
- * 
- * TODO: this function could use work.
- * 
- * @uses current_time
- * @since 0.1
- * @param int $from Start time in seconds since Jan 1, 1970.
- * @param int $to (optional) End time in seconds since Jan 1, 1970.
- * @return string A readable representation of the time interval.
- */
-function exa_human_time_diff( $from, $to = '' ) {
-	$since = '';
-	if ( empty( $to ) )
-		$to = current_time( "timestamp" );
-	$diff = (int) abs( $to - $from );
-	if ( $diff <= HOUR_IN_SECONDS ) {
-		$mins = round( $diff / MINUTE_IN_SECONDS );
-		if ( $mins <= 1 ) {
-			$mins = 1;
-		}
-		/* translators: min=minute */
-		$since = sprintf( _n( '%s min ago', '%s mins ago', $mins ), $mins );
-	} elseif ( ( $diff <= DAY_IN_SECONDS ) && ( $diff > HOUR_IN_SECONDS ) ) {
-		$hours = round( $diff / HOUR_IN_SECONDS );
-		if ( $hours <= 1 ) {
-			$hours = 1;
-		}
-		$since = sprintf( _n( '%s hour ago', '%s hours ago', $hours ), $hours );
-	} elseif ( $diff >= DAY_IN_SECONDS && $diff < DAY_IN_SECONDS * 7) {
-		$days = round( $diff / DAY_IN_SECONDS );
-		if ( $days <= 1 ) {
-			$days = 1;
-		}
-		$since = sprintf( _n( '%s day ago', '%s days ago', $days ), $days );
-	} elseif ( $diff >= DAY_IN_SECONDS * 7) {
-		$since = gmdate("M d, Y D", $from);
-	}
-
-	return $since;
-}
-
 
 /**
  * Filters query_vars to register shoutout parameters

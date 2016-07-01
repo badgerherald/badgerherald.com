@@ -191,7 +191,7 @@ function hrld_user_custom_fields( $user ){ ?>
 										echo '</optgroup>';
 									echo '<optgroup label='.ucfirst(get_post_type()).'>';
 								endif;
-								echo '<option value='.get_the_ID().'>'.exa_human_time_diff(get_the_time('U')).' - '.get_the_title().'</option>';
+								echo '<option value='.get_the_ID().'>'.exa_get_time().' - '.get_the_title().'</option>';
 								$firstpost = false;
 							endwhile;
 
