@@ -10,7 +10,7 @@ function exa_section($post = null) {
 	$post = get_post($post);
 	
 	$section = get_the_category($post);
-	apply_filter('exa_section',$section,$post);
+	$section = apply_filters('exa_section',$section,$post);
 
 	return $section;
 }

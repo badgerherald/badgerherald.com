@@ -48,13 +48,10 @@ function exa_get_time( $post = null ) {
 	else if( exa_is_published_yesterday( $post ) ) {
 		$since = "Yesterday";
 	}
-	else if( exa_is_published_this_year( $post ) ) {
-		$since = get_the_time("d/m/Y t:m",$post);
-	}
 	else {
-		$since = get_the_time("d/m/Y",$post);
+		$since = get_the_time("M j, Y h:i A",$post);
 	}
-
+	
 	return $since;
 }
 
