@@ -21,9 +21,10 @@ include_once('inc/functions/authors.php');
 include_once('inc/functions/popular-post-widget.php');
 include_once('inc/functions/pullquotes.php');
 include_once('inc/functions/social.php');
-include_once('inc/functions/ajax.php');
+include_once('inc/functions/admin.php');
 include_once('inc/functions/services.php');
 include_once('inc/functions/sections.php');
+include_once('inc/functions/staff.php');
 if( class_exists('Popular_Post_Widget') ) {
 	include_once('inc/functions/popular-post-widget.php');
 }

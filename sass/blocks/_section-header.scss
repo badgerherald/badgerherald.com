@@ -1,0 +1,26 @@
+.block.section-header {
+	background: #fff;
+	font-family: $headline;
+	display: inline-block;
+	padding: 9px 10px 9px;
+	h1 {
+		font-weight: bold;
+		font-size: 24px;
+		margin: 0;
+		line-height: inherit;
+		display: inline;
+		float: left;
+	}
+	h3 {
+		display: inline;
+		padding-left: 20px;
+		float: left;
+		&, p {
+			font-size: 16px;
+			font-family: $headline;
+			color: $greyText;
+			font-weight: normal;
+			margin: 0;
+		}
+	}
+}

@@ -22,7 +22,6 @@ Class Popular_Post_Widget extends AnalyticBridgePopularPostWidget {
 			<h3>Popular Posts</h3>
 
 			<?php
-
 			$popPosts = new AnayticBridgePopularPosts();
 			$popPosts->size = 7;
 			$outof = 0;
@@ -39,17 +38,18 @@ Class Popular_Post_Widget extends AnalyticBridgePopularPostWidget {
 				)
 			);
 
-		foreach($popPosts as $r) { ?>
-			<a href="<?php echo get_the_permalink($r->post_id) ?>">
+			foreach($popPosts as $r) { 
+			?>
+				<a href="<?php echo get_the_permalink($r->post_id) ?>">
 				<?php get_the_post_thumbnail($r->post_id,'post-thumbnail'); ?>
-					<span class="topic"><?php echo exa_topic($r->post_id); ?></span>
+					<span class="topic"><?php exa_topic($r->post_id); ?></span>
 					<h2><span><?php echo get_the_title($r->post_id); ?></span></h2>
 					<div class="clearfix"></div>
 					<div class="graph-bar" style="width:<?php echo ((double)$r->weighted_pageviews/(double)$outof)*100; ?>%"></div>				
 				</a>
-		<?php
-		}
-		?> 
+			<?php
+			}
+			?> 
 		</div>
 
 	<?php
@@ -57,7 +57,7 @@ Class Popular_Post_Widget extends AnalyticBridgePopularPostWidget {
 
 }
 
-add_action( 'widgets_init', function(){
+add_action( 'widgets_init', function() {
      register_widget( 'Popular_Post_Widget' );
 });
 

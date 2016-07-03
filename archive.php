@@ -56,7 +56,7 @@ exa_container('header');
 			<?php if(exa_is_featured()) : ?>
 				<?php get_template_part( 'content', 'summary-featured' ); ?>
 				<hr />
-			<?php else : //if(exa_is_instream()) : ?>
+			<?php else : if(exa_is_featured()) : ?>
 				<?php get_template_part( 'content', 'summary-instream' ); ?>
 				<hr />
 			<?php endif; ?>

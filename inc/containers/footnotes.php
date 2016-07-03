@@ -46,7 +46,7 @@ if(!$container) {
 
 
 		<div class="more">
-			<h1>Next in <a href="<?php echo exa_section_permalink() ?>" class="section"><?php echo exa_section(); ?></a></h1>
+			<h1>Next in <a href="<?php exa_section_permalink() ?>" class="section"><?php exa_section(); ?></a></h1>
 
 			<?php
 

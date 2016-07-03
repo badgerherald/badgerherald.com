@@ -1,12 +1,21 @@
 <?php
 
 /**
- * Returns a string with the section.
+ * Echos the section
  * 
  * @since v0.2
- * @return string section.
  */
 function exa_section($post = null) {
+	echo exa_get_section($post);
+}
+
+/**
+ * Returns the corresponding exa section
+ * 
+ * @since v0.5
+ * @return string section.
+ */
+function exa_get_section($post = null) {
 	$post = get_post($post);
 	
 	$section = get_the_category($post);
@@ -22,6 +31,16 @@ function exa_section($post = null) {
  * @return string section.
  */
 function exa_section_permalink($post = null) {
+	echo exa_get_section_permalink($post);
+}
+
+/**
+ * Returns a url for the section.
+ * 
+ * @since v0.4
+ * @return string section.
+ */
+function exa_get_section_permalink($post = null) {
 	$post = get_post($post);
 	
 	$section = get_the_category($post);
@@ -32,5 +51,3 @@ function exa_section_permalink($post = null) {
 
 	return "";
 }
-
-// todo: is_exa_section('name')

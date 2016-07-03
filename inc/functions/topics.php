@@ -23,26 +23,24 @@ function exa_register_topic_taxonomy() {
 add_action( 'init', 'exa_register_topic_taxonomy');
 
 /**
- * Get the list of beats (topic taxonomy) for a post.
- * 
- * @since v0.1
- * @return Array List of beats.
- */
-function exa_get_beats() {
-
-	global $post;
-	return wp_get_post_terms(get_the_ID(),"topic");
-
-}
-
-/**
- * Returns the "topic" or top category of the post.
+ * Echos the topic
  *
  * @since v0.1
  * @param int|WP_Post $post post id or post object
  * @return string Top post cateogry or "Herald" if no category is set.
  */
 function exa_topic($post = null) {
+	echo exa_get_topic($post);
+}
+
+/**
+ * Returns the "topic" of the post.
+ *
+ * @since v0.5
+ * @param int|WP_Post $post post id or post object
+ * @return string Top post cateogry or "Herald" if no category is set.
+ */
+function exa_get_topic($post = null) {
 
 	$post = get_post($post);
 

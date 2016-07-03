@@ -1,0 +1,23 @@
+.container.stream {
+	.stream {
+		.teaser-brief,.teaser-feature {
+			border-bottom : 1px solid $greyBorder;
+		}
+	}
+}
+
+@include breakpoint('desktop') {
+	.container.stream {
+		.stream {
+			width: 660px;
+		}
+	}
+}
+
+@include breakpoint('xl') {
+	.container.stream {
+		.stream {
+			width: 840px;
+		}
+	}
+}

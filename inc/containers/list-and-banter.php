@@ -38,7 +38,7 @@ if(!$container) {
 			?>
 
 			<a href="<?php the_permalink(); ?>" class="story">
-				<span class="topic"><?php echo exa_topic(); ?></span>
+				<span class="topic"><?php exa_topic(); ?></span>
 				
 				<?php the_post_thumbnail('post-thumbnail'); ?>
 
@@ -93,7 +93,7 @@ if(!$container) {
 				?>
 				<a href="<?php the_permalink(); ?>" class="banter-link">
 				<?php the_post_thumbnail('post-thumbnail'); ?>
-				<span class="topic"><?php echo exa_topic(); ?></span>
+				<span class="topic"><?php exa_topic(); ?></span>
 				<span class="title"><?php the_title(); ?></span>
 				</a>
 	

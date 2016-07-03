@@ -49,7 +49,7 @@ function exa_get_time( $post = null ) {
 		$since = "Yesterday";
 	}
 	else {
-		$since = get_the_time("M j, Y h:i A",$post);
+		$since = get_the_time("M j, Y",$post);
 	}
 	
 	return $since;

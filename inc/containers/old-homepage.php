@@ -98,7 +98,7 @@ if(!$container) {
 
 				hrld_html_tag_open("li");
 					hrld_html_tag_open("span","",array("topic"));
-						echo exa_topic( $post->ID );
+						exa_topic( $post->ID );
 						hrld_html_tag_open("span","",array("summary-time-stamp"));
 							echo " &middot; ";
 							exa_time();

@@ -1,0 +1,186 @@
+/**
+ * § 1.0 Brief teasers
+ */
+
+a.block.teaser-brief {
+	color : $black;
+	padding: 24px 0;
+	margin: 0;
+	display: block;
+	.thumbnail {
+		float: left;
+		float: right;
+		margin-left: 20px;
+		margin-bottom: 20px;
+	}
+	img {
+		width: 120px;
+		height: auto;
+	}
+	header {
+		position: relative;
+		h2 {
+			font-size: 24px;
+			line-height: 27px;
+			margin-top: 9px;
+		}
+		h3 {
+			font-size: 21px;
+			line-height: 27px;
+			font-weight: normal;
+			font-family: $headline;
+			margin-bottom: 0;
+			margin-top: 12px;
+		}
+		p {
+			font-size: 16px;
+			margin-top: 12px;
+			padding-left: 20px;
+			border-left: 3px solid $greyBorder;
+			color: $greyText;
+		}
+		.meta {
+			padding-top: 6px;
+			position: relative;
+			
+			time {
+				margin-left: 10px;
+				font-family: $headline;
+				color: $greyText;
+			}
+		}
+		.topic-banner {
+			float: left;
+			top: 0;
+			left: 0;
+		}
+		&:hover {
+			h2 {
+				color: $blue;
+			}
+		}
+	}
+}
+
+@include breakpoint('tablet') {
+	a.block.teaser-brief {
+		.thumbnail {
+			float: left;
+			margin-right: 20px;
+			margin-left: 0px;
+			margin-bottom: 0px;
+		}
+		img {
+			width: 140px;
+		}
+	}
+}
+
+@include breakpoint('xl') {
+	a.block.teaser-brief {
+		.thumbnail {
+			margin-right: 20px;
+		}
+		img {
+			width: 240px;
+		}
+		header {
+			overflow: hidden;
+		}
+	}
+}
+
+/**
+ * § 1.0 Feature teasers
+ */
+
+a.block.teaser-feature {
+	color : $black;
+	padding: 24px 0;
+	margin: 0;
+	display: block;
+	.thumbnail {
+		float: right;
+		margin-left: 20px;
+		margin-bottom: 20px;
+	}
+	img {
+		width: 180px;
+		height: auto;
+	}
+	header {
+		position: relative;
+		h2 {
+			font-size: 20px;
+			line-height: 24px;
+			margin-top: 9px;
+		}
+		h3 {
+			font-size: 21px;
+			font-weight: normal;
+			font-family: $headline;
+			margin-bottom: 0;
+			margin-top: 12px;
+		}
+		p {
+			font-size: 16px;
+			margin-top: 12px;
+			padding-left: 20px;
+			border-left: 3px solid $greyBorder;
+			color: $greyText;
+			//font-style: italic;
+		}
+		.meta {
+			padding-top: 6px;
+			position: relative;
+			time {
+				font-family: $headline;
+				color: $greyText;
+			}
+		}
+	}
+	&:hover {
+		color: $blue;
+	}
+}
+
+@include breakpoint('tablet') {
+	a.block.teaser-feature {
+		.thumbnail {
+			float: none;		
+			margin-left: 0px;
+			margin-bottom: 0px;
+		}
+		img {
+			width: 100%;
+		}
+		header {
+			padding-top: 18px;
+			overflow: hidden;
+			h2 {
+				font-size: 32px;
+				margin-left: 160px;
+				margin-right: 20px;
+				margin-top: 0px;
+				line-height: 42px;
+			}
+			h3 {
+				margin-left: 160px;				
+			}
+			p {
+				margin-left: 160px;	
+			}
+			.meta {
+				float: left;
+				padding-right: 20px; 
+				padding-top: 6px;
+				position: relative;
+				time {
+					position: absolute;
+					left: 0;
+					top: 36px;
+				}
+			}
+		}
+	}
+}
