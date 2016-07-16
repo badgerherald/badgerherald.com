@@ -1,0 +1,15 @@
+.exa-staff-assignment-box {
+	width: 240px;
+	float: left;
+	margin-right: 20px;
+}
+
+.exa-staff-assignment-box label {
+	padding-top: 4px;
+	display: block;
+}
+
+.exa-staff-assignment-box input, label {
+	width: 100%;
+	margin-bottom: 6px;
+}

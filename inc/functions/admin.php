@@ -12,23 +12,59 @@
  */ 
 
 /**
- * Registers the script that does the ajax calls on pageload.
- * @see /js/ajax.js
+ * @see /js/admin/user-select.js
  * @since v0.2
  */
-function exa_admin_author_select_script() {
+function exa_admin_user_select_script( $hook ) {
 
-	global $post;
+	wp_enqueue_script('exa-admin-user-select', get_template_directory_uri().'/js/admin/user-select.js', array('jquery','jquery-ui-autocomplete'));
 
-    if (is_author()) {
-        $author = get_user_by('id', get_query_var('author'));
-        wp_enqueue_script('exa_author_ajax', get_template_directory_uri().'/js/author-select.js', array('jquery', 'hrld-showcase-script-class'));
-        wp_localize_script('exa_author_ajax', 'hrld_author', array(
-            'ajaxurl' => admin_url('admin-ajax.php'),
-            'user_nicename' => $author->user_login
-        ));
-    }
+	$userObjects = get_users( array( 
+							'role__in' => array('editor','administrator'),
+							'fields' => array('ID','display_name'),
+							// todo: job title meta.
+						)
+					);
 
+	$users;
+
+	foreach ($userObjects as $u) {
+		$users[] = array(
+			'label' => $u->display_name,
+			'value' => $u->ID
+			);
+	}
+	wp_localize_script('exa-admin-user-select', 'exa_user_select', array('users' => $users));
 } 
-add_action( 'wp_enqueue_scripts', 'exa_admin_author_select_script' );
+add_action( 'admin_enqueue_scripts', 'exa_admin_user_select_script' );
 
+/**
+ * Prints a user select box
+ * 
+ * @since v0.5
+ */
+
+function exa_admin_user_select_dropdown( $id, $inputName, $userid = null ) {
+	$user = get_userdata( $userid );
+	$username = $user ? $user->display_name: '';
+	echo "<input id='exa-user-select-{$id}-input' name='$inputName' type='hidden' value='$userid' />";
+	echo "<input id='exa-user-select-{$id}' class='exa-user-select' value='{$username}'>";
+}
+
+/**
+ * Prints several user select boxes
+ * 
+ * @since v0.5
+ */
+function exa_admin_user_select_multi_dropdown( $id, $inputName, $userids = null, $args = null ) {
+	$defaults = array(
+		'number' => 4,
+	);
+
+	$args = wp_parse_args( $args, $defaults );
+
+	for( $i = 0; $i < $args['number']; $i++ ) {
+		$userid = ( $userids && array_key_exists($i,$userids) ) ? $userids[$i] : null;
+		exa_admin_user_select_dropdown("$id-$i","{$inputName}[]",$userid);
+	}
+}

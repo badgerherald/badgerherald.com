@@ -10,6 +10,7 @@ include_once('inc/functions/importance.php');
 
 /** Other stuff */
 include_once('inc/functions/dev.php');
+include_once('inc/functions/options.php');
 include_once('inc/functions/dates-and-times.php');
 include_once('inc/functions/oncampus.php');
 include_once('inc/functions/html-tags.php');

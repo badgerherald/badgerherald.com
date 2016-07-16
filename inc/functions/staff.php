@@ -1,86 +1,168 @@
 <?php
 
-/**
- */
-function exa_staff_admin_init() {
+class ExaStaff {
 
-	/* Register our script. */
-	// wp_register_script( 'exa-staff-plugin-script', plugins_url( 'js/logic.js', __FILE__ ), array( 'jquery' ), 1, false );
-	// wp_register_style( 'exa-staff-plugin-style' , plugins_url( 'css/css.css', __FILE__ ) );
+    /**
+     * Holds the values to be used in the fields callbacks
+     */
+    private $options;
 
-}
-add_action( 'admin_init', 'exa_staff_admin_init' );
+    private $callback;
 
-/**
- * Registers 'Find staff' (Writer API) admin page.
- *
- * This adds a menu item under 'users' for users who have permissions to edit_users.
- * It also registers the function 'exa_staff_admin_options()' as the source for this content.
- *
- * @since v0.5
- */
-function exa_staff_admin_menu() {
-	$page_hook_suffix = add_submenu_page( 'users.php', 'Staff', 'Staff', 'edit_users', 'staff', 'exa_staff_admin_options_page' );
+    /**
+     * Start up
+     */
+    public function __construct()
+    {
+    	$this->options = get_option( 'exa_staff_assignments' );
+        add_action( 'admin_menu', array( $this, 'add_staff_admin_page' ) );
+        add_action( 'admin_init', array( $this, 'page_init' ) );
 
-	/* Creates a new action that calls a function to enqueue scripts if this page is loaded */
-	add_action('admin_print_scripts-' . $page_hook_suffix, 'exa_staff_plugin_enqueue');
+        $callback = function() {
+    		return function() { echo __FUNCTION__; };
+    	};
 
-}
-add_action( 'admin_menu', 'exa_staff_admin_menu' );
+    }
 
-/**
- * Part 3: Enqueues the previously registered scripts and styles for 'Find staff' admin page.
- *
- * This function is called by the hook previously attached in exa_staff_admin_menu(), and enqueues
- * the script and style previously registered in exa_staff_admin_init().
- *
- * @author Will Haynes
- */
-function exa_staff_plugin_enqueue() {
-	wp_enqueue_script( 'exa-staff-plugin-script' );
-	wp_enqueue_style( 'exa-staff-plugin-style' );
-}
-/**
- * Part 4: Prints content for 'Find staff' admin page.
- * 
- * Called by Wordpress when the admin page is loaded.
- *
- * @author Will Haynes
- */
-function exa_staff_admin_options_page() {
-	if ( !current_user_can( 'edit_posts' ) )  {
-		wp_die( __( 'You do not have sufficient permissions to access this page.' ) );
+	/**
+	 * Registers 'Staff' admin page and adds javascript to load for the page
+	 *
+	 * This adds a menu item under 'Users' for users who have permissions to edit_users.
+	 * It also registers the function 'exa_staff_admin_options()' as the source for this content.
+	 *
+	 * @since v0.5
+	 */
+    public function add_staff_admin_page() {
+
+    	// 1: add the page
+        $menu_title = "Staff";
+        $page_title = "Staff";
+        $capability = "edit_users";
+        $menu_slug = 'staff';
+        $function = array( $this, 'create_staff_admin_page' );
+        $page_hook_suffix = add_submenu_page( 	
+        							'users.php', 
+        							$menu_title , 
+        							$page_title, 
+        							$capability, 
+        							$menu_slug, 
+        							$function );
+
+        // 2: register javascript for the page
+        add_action('admin_print_scripts-' . $page_hook_suffix, array( $this, 'staff_admin_page_enqueue'));
+    }
+
+    /**
+     * Options page callback
+     */
+    public function create_staff_admin_page()
+    {
+
+        ?>
+        <div class="wrap">
+            <h2>Staff</h2>           
+            <form method="post" action="options.php">
+            <?php
+                // This prints out all hidden setting fields
+                settings_fields( 'exa_staff_assignments' );   
+                do_settings_sections( 'staff' );
+                submit_button(); 
+            ?>
+            </form>
+        </div>
+        <?php
+    }
+
+	/**
+	 * Enqueues style for 'staff' admin page.
+	 */
+	function staff_admin_page_enqueue() {
+		wp_register_style( 'exa-staff-assignments-style', get_template_directory_uri() . '/css/admin/staff-assignments.css', false, '1.0.0' );
+		wp_enqueue_style( 'exa-staff-assignments-style' );
 	}
-	?>
-	<div class='wrap'>
-	<h2>Staff</h2>
-		<?php
-			exa_staff_admin_options_page_section_editors_form_section();
-		?>
-	</div>
-	</div>
-	<?php
-}
 
-function exa_staff_admin_options_page_section_editors_form_section() {
-	$categories = get_terms(
+    /**
+     * Register and add settings
+     */
+    public function page_init()
+    {        
+        register_setting(
+            'exa_staff_assignments', // Option group
+            'exa_staff_assignments', // Option name
+            array( $this, 'sanitize' ) // Sanitize
+        );
+
+        add_settings_section(
+            'setting_section_id', // ID
+            'Staff Assignments', // Title
+            array( $this, 'print_section_info' ), // Callback
+            'staff' // Page
+        );  
+
+		$categories = get_terms(
 				array(
-    				'taxonomy' => 'category',
-    				'hide_empty' => true,
-    				'parent' => 0
-					));
-	?>
-	<hr />
-	<h3>Section Staff</h3>
- 	<?php
-	foreach($categories as $category) :
-	?>
-		<h4><?php echo $category->name ?></h4>
-		<pre><?php print_r($category); ?></pre>
+					'taxonomy' => 'category',
+					'hide_empty' => true,
+					'parent' => 0
+					)
+				);
 
-	<?php
-	endforeach;
+		$options = $this->options;
+		
+		foreach($categories as $category) :
+			add_settings_field(
+				'exa_staff_assignments__' . $category->slug, // ID
+				$category->name, // Title 
+				function() use ($category,$options) {
+					$categorySlug = $category->slug;
+					$editors = null;
+					$associates = null;
+					if ( array_key_exists('editorial', $options) && array_key_exists($categorySlug, $options['editorial']) ) {
+						$editors = array_key_exists('editors',$options['editorial'][$categorySlug]) ? $options['editorial'][$categorySlug]['editors'] : null;
+						$associates = array_key_exists('associates',$options['editorial'][$categorySlug]) ? $options['editorial'][$categorySlug]['associates'] : null;
+					}
+					echo '<div class="exa-staff-assignment-box">';
+					echo '<label>Editors:</label> ';
+					exa_admin_user_select_multi_dropdown( "editorial-$categorySlug", "exa_staff_assignments[editorial][$categorySlug][editors]", $editors, array('number' => 5)  );
+					echo '</div>';
+					echo '<div class="exa-staff-assignment-box">';
+					echo '<label>Associates:</label> ';
+					exa_admin_user_select_multi_dropdown( "editorial-$categorySlug", "exa_staff_assignments[editorial][$categorySlug][editors]", $associates, array('number' => 7) );
+					echo '</div>';
+				},
+				'staff', // Page
+				'setting_section_id' // Section
+			);     
+		endforeach;
+ 
+
+    }
+
+    /**
+     * Sanitize each setting field as needed
+     *
+     * @param array $input Contains all settings fields as array keys
+     */
+    public function sanitize( $input )
+    {
+    	// todo: loop through, if not valid user id, then don't save.
+        return $input;
+    }
+
+    /** 
+     * Print the Section text
+     */
+    public function print_section_info()
+    {
+        print 'Use these settings to specify editors for section pages and other staff roles';
+    }
+
 }
+
+if( is_admin() )
+	$ExaStaff = new ExaStaff();
+
+
 
 class exa_get_staff {
 
@@ -146,15 +228,6 @@ class exa_get_staff {
 
 		$this->queried = false;
 
-		/*
-		echo "<pre>";
-
-		$result = $wpdb->get_results($query);
-
-		print_r($result);
-
-		echo "</pre>";
-		*/
 
 	}
 
