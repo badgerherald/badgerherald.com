@@ -1,5 +1,60 @@
 <?php
 
+
+/**
+ * Returns an array of user ids corresponding to the defined editors for 
+ * a category
+ * 
+ * @since v0.5
+ * 
+ * @param $category category id or category object 
+ * @return array of editors defined for the section
+ */
+function exa_staff_editors_for_category($category = null) {
+	global $post;
+
+	if($category) {
+		$category = get_category($category);
+	} else if($post) {
+		$category = get_the_category($post);
+	}
+
+	$slug = $category->slug;
+	$staff = get_option( 'exa_staff_assignments' );
+
+	if( array_key_exists('editorial',$staff) && array_key_exists($slug,$staff['editorial']) ) {
+		return array_key_exists('editors',$staff['editorial'][$slug]) ? $staff['editorial'][$slug]['editors'] : array() ;
+	}
+
+}
+
+/**
+ * Returns an array of user ids corresponding to the defined associates for 
+ * a category
+ * 
+ * @since v0.5
+ * 
+ * @param $category category id or category object 
+ * @return array of editors defined for the section
+ */
+function exa_staff_associates_for_category($category = null) {
+	global $post;
+
+	if($category) {
+		$category = get_category($category);
+	} else if($post) {
+		$category = get_the_category($post);
+	}
+
+	$slug = $category->slug;
+	$staff = get_option( 'exa_staff_assignments' );
+
+	if( array_key_exists('editorial',$staff) && array_key_exists($slug,$staff['editorial']) ) {
+		return array_key_exists('associates',$staff['editorial'][$slug]) ? $staff['editorial'][$slug]['associates'] : array() ;
+	}
+
+}
+
 class ExaStaff {
 
     /**
@@ -123,11 +178,11 @@ class ExaStaff {
 					}
 					echo '<div class="exa-staff-assignment-box">';
 					echo '<label>Editors:</label> ';
-					exa_admin_user_select_multi_dropdown( "editorial-$categorySlug", "exa_staff_assignments[editorial][$categorySlug][editors]", $editors, array('number' => 5)  );
+					exa_admin_user_select_multi_dropdown( "editorial-$categorySlug-editors", "exa_staff_assignments[editorial][$categorySlug][editors]", $editors, array('number' => 5)  );
 					echo '</div>';
 					echo '<div class="exa-staff-assignment-box">';
 					echo '<label>Associates:</label> ';
-					exa_admin_user_select_multi_dropdown( "editorial-$categorySlug", "exa_staff_assignments[editorial][$categorySlug][editors]", $associates, array('number' => 7) );
+					exa_admin_user_select_multi_dropdown( "editorial-$categorySlug-associates", "exa_staff_assignments[editorial][$categorySlug][associates]", $associates, array('number' => 7) );
 					echo '</div>';
 				},
 				'staff', // Page
@@ -146,7 +201,7 @@ class ExaStaff {
     public function sanitize( $input )
     {
     	// todo: loop through, if not valid user id, then don't save.
-        return $input;
+        return _exa_recursive_array_filter($input);
     }
 
     /** 
@@ -162,6 +217,15 @@ class ExaStaff {
 if( is_admin() )
 	$ExaStaff = new ExaStaff();
 
+
+function _exa_recursive_array_filter(&$array) {
+    foreach( $array as $key => $item ) {
+        is_array( $item ) && $array[$key] = _exa_recursive_array_filter( $item );
+        if ( empty( $array[$key] ) )
+            unset( $array[$key] );
+    }
+    return $array;
+}
 
 
 class exa_get_staff {

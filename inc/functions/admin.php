@@ -43,7 +43,6 @@ add_action( 'admin_enqueue_scripts', 'exa_admin_user_select_script' );
  * 
  * @since v0.5
  */
-
 function exa_admin_user_select_dropdown( $id, $inputName, $userid = null ) {
 	$user = get_userdata( $userid );
 	$username = $user ? $user->display_name: '';
