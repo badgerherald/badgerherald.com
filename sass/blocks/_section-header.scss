@@ -2,25 +2,93 @@
 	background: #fff;
 	font-family: $headline;
 	display: inline-block;
-	padding: 9px 10px 9px;
+	padding: 24px 20px;
+	width: 100%;
+	border-left: 5px solid $blue;
+	border-radius: 2px;
+	.author-mug {
+		width: 120px;
+		border-radius: 2px;
+		img {
+			width: 100%;
+			height: auto;
+			margin-bottom: 18px;
+
+		}
+	}
+	.bottom-divider {
+		position: relative;
+		display: block;
+		margin-bottom: 18px;
+		padding-bottom: 18px;
+		&:after {
+			content: " ";
+			position: absolute;
+			height: 1px;
+			bottom: 1px;
+			width: 180px;
+			background: $greyBorder;
+			left: 0;
+		}
+	}
 	h1 {
-		font-weight: bold;
-		font-size: 24px;
+		font-size: 33px;
+		font-family: $headline;
+		position: relative;
+		text-transform: uppercase;
+		display: inline-block;
+		padding-right: 20px;
+		line-height: 30px;
+		width: 100%;
+
+	}
+	p {
+		font-size: 16px;
+		font-family: $body;
+		color: $greyText;
+		font-weight: normal;
+		font-family: $headline;
 		margin: 0;
-		line-height: inherit;
-		display: inline;
-		float: left;
 	}
 	h3 {
-		display: inline;
-		padding-left: 20px;
-		float: left;
-		&, p {
+		margin-top: 0px;
+		position: relative;
+		color: $blue;
+		margin-bottom: 6px;
+		text-transform: uppercase;
+	}
+	a.editor {
+		color: $black;
+		clear: both;
+		margin-top: 6px;
+		display: block;
+		.mug {
+			float: left;
+			img {
+				width: 60px;
+				margin-right: 10px;
+				height: auto;
+			}
+		}
+		.name {
+			display: block;
+			font-weight: bold;
+			text-transform: uppercase;
 			font-size: 16px;
-			font-family: $headline;
+			padding-top: 6px;
+			line-height: 12px;
+		}
+		.position {
 			color: $greyText;
-			font-weight: normal;
-			margin: 0;
+			font-size: 14px;
+		}
+		&:hover {
+			.name {
+				color: $blue;
+			}
+			.position {
+				color: $greyTextHover;
+			}
 		}
 	}
 }

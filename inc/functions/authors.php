@@ -20,51 +20,12 @@ $extra_fields[] = array(
 
 $extra_fields[] = array(
 	"title" => "Position",
-	"key"	=> "_hrld_current_position",
-	"name"	=> "hrld_current_position",
+	"key"	=> "_exa_current_position",
+	"name"	=> "exa_current_position",
 	"description" => "Your current role at the Herald",
 	"type"	=> "text"
 	);
 
-$extra_fields[] = array(
-	"title" => "Description",
-	"key"	=> "_hrld_staff_description",
-	"name"	=> "hrld_staff_description",
-	"description" => "For consistency, please stay close to the following format: 'Third year journalism and political science student.'",
-	"type"	=> "text"
-	);
-
-$extra_fields[] = array(
-	"title" => "Extension",
-	"key"	=> "_hrld_staff_extension",
-	"name"	=> "hrld_staff_extension",
-	"description" => "If you have an extension, in the format x101'",
-	"type"	=> "text"
-	);
-
-$extra_fields[] = array(
-	"title" => "Semesters",
-	"key"	=> "_hrld_staff_semesters",
-	"name"	=> "hrld_staff_semesters",
-	"description" => "Semesters at the Herald (e.g. '4')",
-	"type"	=> "text"
-	);
-$extra_fields[] = array(
-	"title" => "Semesters",
-	"key"	=> "_hrld_staff_semesters",
-	"name"	=> "hrld_staff_semesters",
-	"description" => "Semesters at the Herald (e.g. '4')",
-	"type"	=> "text"
-	);
-
-$extra_fields[] = array(
-	"title" => "Best Posts",
-	"key"	=> "_hrld_staff_best_posts",
-	"name"	=> "hrld_staff_best_posts",
-	"description" => "Select posts you would like to pin on the top of your author profile page. (multi-select by click and pressing Mac - &#8984;, Win - Ctrl)",
-	"type"	=> "multi-select"
-	);
-	
 $extra_fields[] = array(
 	"title" => "Author Page Banner Image",
 	"key"	=> "_hrld_staff_banner",
@@ -72,7 +33,6 @@ $extra_fields[] = array(
 	"description" => "Select a banner image for your author page",
 	"type"	=> "image"
 	);
-
 
 /**
  * Add extra custom fields to user profiles
@@ -90,9 +50,9 @@ function hrld_user_custom_fields_image( $hook){
 }
 add_action( 'admin_enqueue_scripts', 'hrld_user_custom_fields_image' );
 
-function hrld_user_custom_fields( $user ){ ?>
+function hrld_user_custom_fields( $user ){
+	?>
 	
-	/* Javascript for image library */
 	<script language="JavaScript">
 		var file_frame;
 		jQuery(document).ready(function() {
@@ -131,6 +91,7 @@ function hrld_user_custom_fields( $user ){ ?>
 			});
 		});
 	</script>
+
 	<h3>Extra Information</h3>
 
 	<table class="form-table">
@@ -216,10 +177,7 @@ add_action('edit_user_profile', 'hrld_user_custom_fields');
 /**
  * Save the extra user custom fields
  *
- *
- * @author Matt Neil
- * @since Oct 2013
- * @return void
+ * @since v0.5
  */
 function hrld_save_user_custom_fields( $user_id ){
 
@@ -260,14 +218,13 @@ add_action('edit_user_profile_update', 'hrld_save_user_custom_fields');
 
 
 /**
- * TODO: finish methods
- * 
+ * @deprecated
  */
 function hrld_author_has($key, $author_id = null) {
 
 	global $post;
 
-	if($author_id==null) {
+	if($author_id == null) {
 		$author_id = $post->post_author;
 	}
 
@@ -276,10 +233,16 @@ function hrld_author_has($key, $author_id = null) {
 	return $val != '';
 }
 
+/**
+ * @deprecated
+ */
 function hrld_author($key, $author_id = null) {
 	echo get_hrld_author($key, $author_id);
 }
 
+/**
+ * @deprecated
+ */
 function get_hrld_author($key, $author_id = null) {
 	
 	global $post;
@@ -292,4 +255,74 @@ function get_hrld_author($key, $author_id = null) {
 
 }
 
+/**
+ * Returns the authors current role.
+ * 
+ * @since v0.5
+ */
+function exa_author_current_role($author_id = null) {
+	global $post;
+	$author_id = $author_id ? $author_id : $post->post_author;
+	$val = get_the_author_meta("_exa_current_position",$author_id);
+	return $val != '' ? $val : null;
+}
 
+/**
+ * Outputs <img> tag mug for a user.
+ * 
+ * ex.
+ *   <img src="http://.../upload/..." classes=" $classes" />
+ * 
+ * @since v0.2
+ * 
+ * @param int $author_id the user id to print a mug for.
+ * @param string $classes class string to be added to the <img> tag.
+ */
+function exa_mug($author_id = null, $size = 'square', $classes = '') {
+
+	global $wpua_functions;
+
+	if( !$author_id ) {
+		$author_id = is_author() ? get_query_var('author') : $GLOBAL['post']->post_author;
+	}
+
+	if(!function_exists('has_wp_user_avatar')) {
+		echo "<img src='http://placekitten.com/345/225' classes='mug $classes' />";
+		return;
+	}
+	
+	if(!has_wp_user_avatar($author_id)) {
+		$src = $wpua_functions->wpua_default_image($size);
+		$src = $src['src'];
+	} else {
+		$src = get_wp_user_avatar_src($author_id, $size);
+	}
+	echo "<img src='$src' classes='mug $classes' />";
+
+}
+
+
+/**
+ * Returns the attachment id for the author's banner, if one
+ * exists. Otherwise, returns nil.
+ */
+function exa_author_banner_attachment_id($author_id = null) {
+	if(!$author_id) {
+		$author_id = is_author() ? get_query_var('author') : $GLOBAL['post']->post_author;
+	}
+	$attachment_id = get_the_author_meta( '_hrld_staff_banner', get_query_var('author') );
+	return $attachment_id != '' ? $attachment_id : null;
+}
+
+function exa_author_bio($author_id = null) {
+	if( !$author_id ) {
+		$author_id = is_author() ? get_query_var('author') : $GLOBAL['post']->post_author;
+	}
+	if( get_the_author_meta('description') != "" ) {
+		return get_the_author_meta('description');
+	}
+	else if( get_the_author_meta('_hrld_staff_description',$author_id) != null ) {
+		return get_the_author_meta('_hrld_staff_description',$author_id);
+	}
+	return null;
+}

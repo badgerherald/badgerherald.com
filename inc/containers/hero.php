@@ -5,10 +5,8 @@
  */
 
 global $post;
-global $container;
-if(!$container) {
-	$container = new container('hero');
-}
+$container = $GLOBALS['container'] ?: new container('hero');
+
 
 if (exa_hero_style() == "standard") :
 ?>
@@ -18,6 +16,7 @@ if (exa_hero_style() == "standard") :
 	
 	<?php
 	$hide_feature = get_post_meta( get_the_ID(), '_exa_hide_featured_image', true);
+	echo $hide_feature;
 	if ( has_post_thumbnail() && !($hide_feature == "true")) : ?>
 			
 		<div class="hero">

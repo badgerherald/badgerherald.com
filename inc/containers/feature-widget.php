@@ -1,9 +1,6 @@
 <?php  
 
-global $container;
-if(!$container) {
-	$container = new container('feature-widget');
-}
+$container = $GLOBALS['container'] ?: new container('feature-widget');
 
 ?>
 

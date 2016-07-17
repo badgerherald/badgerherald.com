@@ -1,9 +1,6 @@
 <?php 
 
-global $container;
-if(!$container) {
-    $container = new container('lastest-videos');
-}
+$container = $GLOBALS['container'] ?: new container('lastest-videos');
 
 ?>
 

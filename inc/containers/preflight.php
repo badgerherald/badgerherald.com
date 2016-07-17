@@ -1,10 +1,7 @@
 <?php 
 
 global $OnCampus;
-global $container;
-if(!$container) {
-	$container = new container('preflight');
-}
+$container = $GLOBALS['container'] ?: new container('preflight');
 
 ?>
 

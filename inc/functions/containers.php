@@ -5,8 +5,6 @@
  * @since v0.2
  */
 
-global $container;
-
 /**
  * Includes the requested container template.
  * 
@@ -18,7 +16,7 @@ global $container;
 function exa_container($name, $args = null) {
 
     // store current container
-    $curContainer = $GLOBALS['container'];
+    $curContainer = array_key_exists('container', $GLOBALS) ? $GLOBALS['container'] : null;
 
     $container = new Container($name,$args);
     $GLOBALS['container'] = $container;

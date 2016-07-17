@@ -1,11 +1,7 @@
 <?php 
 
-global $container;
 global $OnCampus;
-global $container;
-if(!$container) {
-	$container = new container('footnotes');
-}
+$container = $GLOBALS['container'] ?: new container('footnotes');
 
 ?>
 

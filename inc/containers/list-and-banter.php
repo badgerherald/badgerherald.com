@@ -6,10 +6,7 @@
  *
  */
 
-global $container;
-if(!$container) {
-	$container = new container('list-and-banter');
-}
+$container = $GLOBALS['container'] ?: new container('list-and-banter');
 
 ?>
 

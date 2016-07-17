@@ -1,4 +1,7 @@
 .container.stream {
+	.sidebar {
+		width: 100%;
+	}
 	.stream {
 		.teaser-brief,.teaser-feature {
 			border-bottom : 1px solid $greyBorder;
@@ -8,8 +11,17 @@
 
 @include breakpoint('desktop') {
 	.container.stream {
+		.sidebar {
+			width: 300px;
+			float: left;
+			margin-right: 40px;
+		}
 		.stream {
 			width: 660px;
+			float: left;
+			a:first-child {
+				padding-top: 0;
+			}
 		}
 	}
 }

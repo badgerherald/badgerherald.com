@@ -1,20 +1,10 @@
 <?php 
-
-
-
 /**
- * container documentation:
  * 
- * $args: 	array (
- * 				"breakpoint" => array() of breakpoints to show container for.
- * 		  	)
  */
 
 global $wp_query;
-global $container;
-if(!$container) {
-	$container = new container('header');
-}
+$container = $GLOBALS['container'] ?: new container('header');
 
 ?>
 

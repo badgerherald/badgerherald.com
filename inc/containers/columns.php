@@ -10,10 +10,7 @@
  */
 
 global $homepage; 
-global $container;
-if(!$container) {
-	$container = new container('column-container');
-}
+$container = $GLOBALS['container'] ?: new container('column-container');
 ?>
 
 <div class="<?php echo $container->classes(); ?>">

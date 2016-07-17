@@ -1,11 +1,6 @@
 <?php 
 
-global $container;
-
-if(!$container) {
-	$container = new container('header');
-}
-
+$container = $GLOBALS['container'] ?: new container('header');
 $container->default_args(
 	array(
 		'background' => 'grey',

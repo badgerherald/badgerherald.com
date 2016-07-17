@@ -3,10 +3,8 @@
  * Header
  */ 
 
-global $container;
-if(!$container) {
-	$container = new container('headline');
-}
+$container = $GLOBALS['container'] ?: new container('headline');
+
 
 $container->default_args(array('center'=>false));
 ?>

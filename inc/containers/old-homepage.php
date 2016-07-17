@@ -1,10 +1,7 @@
 <?php 
 
 
-global $container;
-if(!$container) {
-	$container = new container('old-homepage');
-}
+$container = $GLOBALS['container'] ?: new container('old-homepage');
 
 ?>
 
