@@ -1,6 +1,6 @@
 <?php 
 
-$container = $GLOBALS['container'] ?: new Container('stream');
+$container = $GLOBALS['container'] ?: new Container('banner-title');
 
 ?>
 
@@ -11,7 +11,7 @@ $container = $GLOBALS['container'] ?: new Container('stream');
 			<?php get_template_part('inc/blocks/section-header'); ?>
 		</div>	
 
-		<div class="stream">
+		<div class="feature">
 		
 			<?php 
 			if ( have_posts() ) :

@@ -15,22 +15,8 @@
  */
 function exa_container($name, $args = null) {
 
-    // store current container
-    $curContainer = array_key_exists('container', $GLOBALS) ? $GLOBALS['container'] : null;
-
-    $container = new Container($name,$args);
-    $GLOBALS['container'] = $container;
-
-    if(!locate_template('./inc/containers/' . $name)) {
-        get_template_part('./inc/containers/' . $name);
-    } else {
-        echo "<div class='container'><div class='wrapper'>";
-        echo "<p>Container $name not found</p>";
-        echo "</div></div>";
-    }
-
-    // restore current container;
-    $GLOBALS['container'] = $curContainer;
+	$container = new Container($name,$args);
+	$container->output();
 
 }
 
@@ -38,73 +24,121 @@ function exa_container($name, $args = null) {
  * Filter banter container classes
  */
 function exa_banter_container_classes($classes,$container) {
-    global $post;
-    if($container->name == "headline" && hexa_is_banter()) {
-        $classes .= " banter";
-    }
-    return $classes;
+	global $post;
+	if($container->name == "headline" && hexa_is_banter()) {
+		$classes .= " banter";
+	}
+	return $classes;
 }
 add_filter("exa_container_classes","exa_banter_container_classes",10,2);
 
 function hexa_is_banter($post = null) {
-    $post = get_post($post);
-    return in_category("banter",$post);
+	$post = get_post($post);
+	return in_category("banter",$post);
 }
 
 Class Container {
 
-    public $name;
+	
+	public static $container;
+	public $name;
+	public $identifier;
+	public $query;
+	public $args;
+	
+	private $output;
+	private static $prevContainer;
 
-    public $identifier;
-    public $query;
-    public $args;
+	private $error;
 
-    public function __construct($name,$args = null) {
-        $this->name = $name;
-        $this->args = is_array($args) ? $args : array();
-    }
+	public function __construct($name,$args = null) {
+		$this->name = $name;
+		$this->args = is_array($args) ? $args : array();
+		$this->executeTemplate();
+	}
 
-    public function __toString() {
+	public function __toString() {
+		$s = "## " . $this->identifier . " container.\n";
 
-        $s = "## " . $this->identifier . " container.\n";
+		$s .= "  \$args = " . print_r($this->args,true) . "";
 
-        $s .= "  \$args = " . print_r($this->args,true) . "";
+		foreach($this->query->posts as $p) {
+			$s .= "  - " . $p->post_title . "\n";
+		}
 
-        foreach($this->query->posts as $p) {
-            $s .= "  - " . $p->post_title . "\n";
-        }
+		return $s . "\n\n";
+	}
 
-        return $s . "\n\n";
-    }
+	public function classes($classes = null) {
+		$classes = "container " . $this->nameClass() . " " . $this->breakpointClasses() . " " . $this->backgroundClass();
+		$classes = apply_filters("exa_container_classes",$classes,$this);
+		return $classes;
+	}
 
-    public function classes($classes = null) {
-        
-        $str = "container";
+	/**
+	 * Returns the container's class name.
+	 */
+	private function nameClass() {
+		return empty($this->type) ? "{$this->name}" : " {$this->name}-{$this->type}";
+	}
 
-        if(empty($this->type)) {
-            $str .= " {$this->name}";
-        } else {
-            $str .= " {$this->name}-{$this->type}";
-        }
-        if(array_key_exists('breakpoints',$this->args)) {
-            foreach($this->args['breakpoints'] as $breakpoint ) {
-                $str .= " $breakpoint";
-            }
-        }
-        
-        $str = apply_filters("exa_container_classes",$str,$this);
+	/**
+	 * Returns a string of classes used to selectively hide the container
+	 * on certian css breakpoints
+	 */
+	private function breakpointClasses() {
+		$classes = "";
+		if(array_key_exists('breakpoints',$this->args)) {
+			foreach($this->args['breakpoints'] as $breakpoint ) {
+				$classes .= " $breakpoint";
+			}
+		}
+		return $classes;
+	}
 
-        return $str;
+	/**
+	 * Returns a class to convert the background
+	 */
+	private function backgroundClass() {
+		return array_key_exists('background',$this->args) ? $this->args['background'] : "";
+	}
 
-    }
+	public function default_args($args) {
+		$this->args = array_merge($args,$this->args);
+	}
 
-    public function default_args($args) {
-        $this->args = array_merge($args,$this->args);
-    }
+	public function option($option) {
+		return array_key_exists($option,$this->args) ? $this->args[$option] : false;
+	}
 
-    public function option($option) {
-        return array_key_exists($option,$this->args) ? $this->args[$option] : false;
-    }
+	public function output() {
+		if( $this->error ) {
+			echo "<div class='block error'><div class='wrapper' style='text-align:center;'>{$this->error}</div></div>\n";
+		} else {
+			echo $this->output;
+		}
+	}
+
+	public function executeTemplate() {
+
+		$this->error = null;
+
+		if( locate_template( './inc/containers/' . $this->name . '.php' ) == '' ) {
+			$this->error = "Template file <tt>{$this->name}.php</tt> not found";
+		}
+		else {
+			$curContainer = array_key_exists('container', $GLOBALS) ? $GLOBALS['container'] : null;
+			$GLOBALS['container'] = $this;
+
+			ob_start();
+			get_template_part('./inc/containers/' . $this->name);
+			$this->output = ob_get_contents();
+			ob_end_clean();
+			
+			$GLOBALS['container'] = $curContainer;
+		}
+
+	}
 
 }
 
