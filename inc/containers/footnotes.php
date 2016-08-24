@@ -7,6 +7,8 @@ if(!$container) {
 	$container = new container('footnotes');
 }
 
+// 'Pages' don't need footnote
+if( !is_page()):
 ?>
 
 <div class="<?php echo $container->classes(); ?>">
@@ -112,5 +114,5 @@ if(!$container) {
 		<div class="clearfix"></div>
 	</div>
 </div>
-
+<?php endif; ?>
 <?php wp_reset_postdata() ?>
