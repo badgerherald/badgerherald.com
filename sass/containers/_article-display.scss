@@ -548,7 +548,7 @@ q.pullquote {
 	float: left;
 	font-weight: bolder;
 	color: $black ;
-	font-size: 30px;
+	font-size: 24px;
 	line-height: 36px;
 	margin: 18px 0 60px;
 	padding: 18px 0px 18px;
@@ -586,8 +586,8 @@ q.pullquote {
 			padding-left: 60px;
 		}
 		&.aligncenter {
-			font-size: 42px;
-			line-height: 48px;
+			font-size: 28px;
+			line-height: 36px;
 			margin: 78px 0 96px;
 			cite {
 				font-size: 24px;
