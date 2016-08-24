@@ -2,10 +2,12 @@ style.css
 .sass-cache
 cache
 
-*..DS_Store
+*.DS_Store
 
 *.sublime-*
 *.css.map
+
+package.json
 
 node_modules
 
