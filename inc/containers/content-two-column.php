@@ -99,4 +99,6 @@ exa_container('headline',$args);
 
 <?php 
 
-exa_container('footnotes');
+if( !is_page()) {
+	exa_container('footnotes');
+}
