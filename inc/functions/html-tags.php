@@ -162,7 +162,7 @@ function exa_tweet_link($post = null) {
 
 	$intent = "https://twitter.com/intent/tweet";
 	$intent .= "?text=" . urlencode(html_entity_decode(get_the_title($post->ID), ENT_COMPAT, 'UTF-8'));
-	$intent .= "&url=" . urlencode(html_entity_decode(get_the_permalink($post->ID), ENT_COMPAT, 'UTF-8'));
+	$intent .= "&url=" . urlencode(html_entity_decode(get_permalink($post->ID), ENT_COMPAT, 'UTF-8'));
 	$intent .= "&via=badgerherald";
 	$intent .= "&related=badgerherald";
 	
@@ -180,7 +180,7 @@ function exa_facebook_link($post = null) {
 	$post = get_post($post);
 
 	$sharer = "http://www.facebook.com/sharer/sharer.php";
-	$sharer .= "?u=" . urlencode(html_entity_decode(get_the_permalink($post->ID), ENT_COMPAT, 'UTF-8'));
+	$sharer .= "?u=" . urlencode(html_entity_decode(get_permalink($post->ID), ENT_COMPAT, 'UTF-8'));
 
 	return $sharer;
 
