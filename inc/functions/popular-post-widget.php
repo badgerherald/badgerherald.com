@@ -40,7 +40,7 @@ Class Popular_Post_Widget extends AnalyticBridgePopularPostWidget {
 
 			foreach($popPosts as $r) { 
 			?>
-				<a href="<?php echo get_the_permalink($r->post_id) ?>">
+				<a href="<?php echo get_permalink($r->post_id) ?>">
 				<?php get_the_post_thumbnail($r->post_id,'post-thumbnail'); ?>
 					<span class="topic"><?php exa_topic($r->post_id); ?></span>
 					<h2><span><?php echo get_the_title($r->post_id); ?></span></h2>
