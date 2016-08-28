@@ -33,13 +33,6 @@ $query_args = array(
 );
 $featuredQuery = new WP_Query( $query_args );
 
-exa_container(
-	'banner-title', 
-	array(
-		'background' => 'black',
-		'query' => $featuredQuery 
-	)
-);
 exa_container('stream', array('background' => 'black'));
 get_footer(); 
 
