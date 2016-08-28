@@ -5,10 +5,7 @@
  *
  */
 
-global $container;
-if(!$container) {
-	$container = new container('search');
-}
+$container = $GLOBALS['container'] ?: new container('search');
 
 ?>
 <div class="<?php echo $container->classes(); ?>">

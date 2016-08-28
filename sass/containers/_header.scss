@@ -7,7 +7,7 @@
  */
 
 .container.header {
-	margin: 12px 0;
+	padding-top: 0px;
 	.wrapper {
 		border-top: 5px solid $blue;
 		border-bottom: 1px solid $greyBorder;
@@ -47,6 +47,13 @@
                     margin-bottom: 5px;
                 }
             }
+		}
+	}
+	.container.header {
+		.wrapper {
+			.social-buttons {
+				color: $white;
+			}
 		}
 	}
 }

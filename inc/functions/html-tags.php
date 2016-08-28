@@ -75,35 +75,7 @@ function exa_hero_caption() {
 	}
 }
 
-/**
- * Outputs <img> tag mug for a user.
- * 
- * ex.
- *   <img src="http://.../upload/..." classes=" $classes" />
- * 
- * @since 0.2
- * 
- * @param int $user_id the user id to print a mug for.
- * @param string $classes class string to be added to the <img> tag.
- */
-function exa_mug($user_id, $size = 'square', $classes = '') {
 
-	global $wpua_functions;
-
-	if(!function_exists('has_wp_user_avatar')) {
-		echo "<img src='http://placekitten.com/200/100' classes='mug $classes' />";
-		return;
-	}
-	
-	if(!has_wp_user_avatar($user_id)) {
-		$src = $wpua_functions->wpua_default_image($size);
-		$src = $src['src'];
-	} else {
-		$src = get_wp_user_avatar_src($user_id, $size);
-	}
-	echo "<img src='$src' classes='mug $classes' />";
-
-}
 
 /**
  * Outputs <div><img></div> tag mug for a user.

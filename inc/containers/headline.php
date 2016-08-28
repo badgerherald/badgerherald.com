@@ -3,10 +3,8 @@
  * Header
  */ 
 
-global $container;
-if(!$container) {
-	$container = new container('headline');
-}
+$container = $GLOBALS['container'] ?: new container('headline');
+
 
 $container->default_args(array('center'=>false));
 ?>
@@ -16,11 +14,11 @@ $container->default_args(array('center'=>false));
 		
 			<ul class="topics">
 				<li>
-					<a href="<?php echo exa_section_permalink() ?>" class="section">
-					<?php echo exa_section(); ?>
+					<a href="<?php exa_section_permalink() ?>" class="section">
+					<?php exa_section(); ?>
 					</a>
 				</li>
-				<li><span><?php echo exa_topic(); ?></span></li>
+				<li><span><?php exa_topic(); ?></span></li>
 			</ul>
 		
 			<div class="clearfix"></div>

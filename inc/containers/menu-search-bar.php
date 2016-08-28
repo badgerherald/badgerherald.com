@@ -5,11 +5,8 @@
  *
  */
 
-global $container;
+$container = $GLOBALS['container'] ?: new container('menu-search-bar');
 
-if(!$container) {
-	$container = new container('menu-search-bar');
-}
 
 $container->default_args(
 	array(

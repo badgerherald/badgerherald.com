@@ -32,8 +32,6 @@ exa_container('hero');
 				 */ 
 				?>
 				<header class="article-header">
-
-					<!-- <a class="article-section"><?php echo exa_section(); ?></a> -->
 					
 					<h1 class="article-title"><?php the_title() ?></h1>
 					

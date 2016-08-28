@@ -4,10 +4,7 @@
  * 
  */
 
-global $container;
-if(!$container) {
-	$container = new container('hero-video');
-}
+$container = $GLOBALS['container'] ?: new container('hero-video');
 
 ?>
 <div class="<?php echo $container->classes(); ?>">

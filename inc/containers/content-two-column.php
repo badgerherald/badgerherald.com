@@ -1,14 +1,10 @@
 <?php 
 
-
 global $OnCampus;
-global $container;
-if(!$container) {
-	$container = new container('article-display');
-	$container->default_args(
-		array('layout' => 'standard')
-		);
-}
+$container = $GLOBALS['container'] ?: new container('article-display');
+$container->default_args(
+	array('layout' => 'standard')
+	);
 
 ?>
 

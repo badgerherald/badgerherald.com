@@ -8,10 +8,7 @@ global $post;
 
 if (exa_hero_style() == "standard") :
 
-global $container;
-if(!$container) {
-	$container = new container('hero-image');
-}
+$container = $GLOBALS['container'] ?: new container('hero-image');
 	
 ?>
 

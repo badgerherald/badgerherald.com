@@ -4,8 +4,14 @@
  * ----------------------------------------
  */
 
+.container {
+	padding: 24px 0px;
+	margin: 0;
+}
+
 .container.mobile, .container.tablet, .container.desktop, .container.xl {
 	display: none;
+
 }
 
 .container.mobile {

@@ -16,10 +16,7 @@ $query_args = array(
     )
 );
 $my_query = new WP_Query( $query_args );
-global $container;
-if(!$container) {
-    $container = new container('breaking-news');
-}
+$container = $GLOBALS['container'] ?: new container('breaking-news');
 
 if ($my_query->have_posts()) :
     while ( $my_query->have_posts() ) : $my_query->the_post();  ?>

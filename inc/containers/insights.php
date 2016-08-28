@@ -6,11 +6,7 @@
  */
 
 if (is_single()) :
-	
-global $container;
-if(!$container) {
-	$container = new container('insights');
-}
+$container = $GLOBALS['container'] ?: new container('insights');
 
 ?>
 

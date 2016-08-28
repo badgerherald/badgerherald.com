@@ -1,36 +1,31 @@
 /*  
-Theme Name: exa
+Theme Name: Exa
 Theme URI: http://badgerherald.com/exa
 Author: The Badger Herald
 Author URI: http://badgerherald.com/
 Description: The Badger Herald's college media platform.
 Version: 0.2
-License: GLPv3
-Tags: College Media, Editorial, Newspaper.
+Tags: College Media
 Text Domain: exa
 */
 
 /**
  * § 1.0 Foundations
- *
- * Styles common to all blocks, including css resets, font definitions,
- * variable definitions, common mixins, &c.
  */
 @import "foundations.scss";
 @import "foundations/page.scss";
-
+@import "charms.scss";
 /** 
- * § 1.0 Containers
- * 
+ * § 2.0 Containers
  */
-@import "containers.scss";					// containers coded before they got their own styles.
+@import "containers.scss";
 @import "containers/colophon.scss";
 @import "containers/article-display.scss";
 @import "containers/hero.scss";
 @import "containers/interstellar.scss";
 @import "containers/feature-widget.scss";
 @import "containers/list-and-banter.scss";
-@import "depricate/asides.scss";
+@import "containers/banner-title.scss";
 @import "containers/latest-videos.scss";
 @import "containers/hero-video.scss";
 @import "containers/hero-image.scss";
@@ -40,41 +35,26 @@ Text Domain: exa
 @import "containers/banter-header.scss";
 @import "containers/headline.scss";
 @import "containers/footnotes.scss";
-
-/** 
- * Masthead Styles
- * 
- */
 @import "containers/header.scss";
 @import "containers/menu-search-bar.scss";
 @import "containers/ad-and-two-dominant.scss";
 @import "containers/breaking-news.scss";
+@import "containers/stream.scss";
+
+/** 
+ * § 3.0 Blocks
+ */
+@import "blocks/section-header.scss";
+@import "blocks/teaser.scss";
+
+
+/** 
+ * § 4.0 Depricated
+ */
 @import "depricate/homepage.scss";
-
-/** 
- * Stream page styling.
- * Homepage, categories, beats, search, &c.
- */
-@import "depricate/stream.scss";
-
-/** 
- * Sidebar & Widget stylings
- */
-@import "depricate/sidebar.scss";
-
-// should probably moved to hexa.
-@import "depricate/about-page.scss";
 @import "depricate/author.scss";
 @import "depricate/4-doge-4.scss";
-
-/**
- * Shoutout page styling
- *
- */
-@import "depricate/shoutouts.scss";
-
 /** 
- * HTML5 Boilerplate helper classes.
- * 
+ * § 5.0 Foundation overrides
  */
 @import "foundations/helperclasses.scss";

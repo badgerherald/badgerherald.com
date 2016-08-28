@@ -1,9 +1,6 @@
 <?php  
 
-global $container;
-if(!$container) {
-	$container = new container('feature-widget');
-}
+$container = $GLOBALS['container'] ?: new container('feature-widget');
 
 ?>
 
@@ -92,7 +89,7 @@ if(!$container) {
         			<?php endif; ?>
         			
         			<div class="title">
-						<?php the_title(); ?><time><?php echo exa_human_time_diff(get_the_time('U')) ?></time>
+						<?php the_title(); ?><time><?php exa_time() ?></time>
 					</div>
 					<div class="clearfix"></div>
 				</a>

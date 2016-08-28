@@ -1,0 +1,25 @@
+.container.banner-title {
+
+}
+
+@include breakpoint('desktop') {
+	.container.banner-title {
+		.sidebar {
+			width: 300px;
+			float: left;
+			margin-right: 40px;
+		}
+		.feature {
+			float: left;
+			width: 660px;
+		}
+	}
+}
+
+@include breakpoint('xl') {
+	.container.banner-title{
+		.feature {
+			width: 840px;
+		}
+	}
+}

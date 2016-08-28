@@ -1,20 +1,10 @@
 <?php 
-
-
-
 /**
- * container documentation:
  * 
- * $args: 	array (
- * 				"breakpoint" => array() of breakpoints to show container for.
- * 		  	)
  */
 
 global $wp_query;
-global $container;
-if(!$container) {
-	$container = new container('header');
-}
+$container = $GLOBALS['container'] ?: new container('header');
 
 ?>
 
@@ -41,7 +31,7 @@ if(!$container) {
  				?>
 				<a href="<?php the_permalink(); ?>" class="banter-link post-<?php $wp_query; echo $wp_query->current_post + 1; echo $float_classes; ?>">
 					<?php the_post_thumbnail('post-thumbnail'); ?>
-					<span class="topic"><?php echo exa_topic(); ?></span>
+					<span class="topic"><?php exa_topic(); ?></span>
 					<span class="title"><?php the_title(); ?></span>
 				</a>
 

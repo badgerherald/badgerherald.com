@@ -1,4 +1,44 @@
-// Mixin: animate things.
+/**
+ * Charms
+ *
+ * Charms are small snippets of style for common elements
+ * such as buttons are special links.
+ *
+ */
+
+
+/**
+ * § 1.0 Charms
+ */
+
+.charm.topic-banner {
+	font-size: 13px;
+	background: $blue;
+	font-family: $headline;
+	color: $white;
+	padding: 5px 10px 2px;
+	line-height: 13px;
+	margin: 0;
+	text-transform: uppercase;
+	display: inline-block;
+}
+
+/**
+ * § 2.0 Depricated
+ * 			Former contents of the object.scss file,
+ *			which we renamed charms.
+ *
+ * 			HTML Markup for these needs to be updated
+ *			to include class="charm"			
+ */
+
+/**
+ * Memes logo
+ * ---------------------------------------------------------
+ * include in a square &:before or &:after element
+ * ----------------------------------------------------------------------------
+ */
+
 @mixin animate() {
 	transition: all .25s ease;
 }
@@ -147,4 +187,5 @@ a:hover .dotted-overlay-container .dotted-overlay {
 	background-image: url('./img/svg/uwbanter.svg');
 	background-size: cover;
 }
+
 

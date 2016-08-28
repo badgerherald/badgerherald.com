@@ -1,10 +1,7 @@
 <?php 
 
 
-global $container;
-if(!$container) {
-	$container = new container('old-homepage');
-}
+$container = $GLOBALS['container'] ?: new container('old-homepage');
 
 ?>
 
@@ -98,10 +95,10 @@ if(!$container) {
 
 				hrld_html_tag_open("li");
 					hrld_html_tag_open("span","",array("topic"));
-						echo exa_topic( $post->ID );
+						exa_topic( $post->ID );
 						hrld_html_tag_open("span","",array("summary-time-stamp"));
 							echo " &middot; ";
-							echo exa_human_time_diff(get_the_time('U'));
+							exa_time();
 						hrld_html_tag_close("span");
 					hrld_html_tag_close("span");
 					hrld_html_tag_open("h4");

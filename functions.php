@@ -10,6 +10,7 @@ include_once('inc/functions/importance.php');
 
 /** Other stuff */
 include_once('inc/functions/dev.php');
+include_once('inc/functions/dates-and-times.php');
 include_once('inc/functions/oncampus.php');
 include_once('inc/functions/html-tags.php');
 include_once('inc/functions/analytic-dashboard.php');
@@ -20,8 +21,10 @@ include_once('inc/functions/authors.php');
 include_once('inc/functions/popular-post-widget.php');
 include_once('inc/functions/pullquotes.php');
 include_once('inc/functions/social.php');
-include_once('inc/functions/ajax.php');
+include_once('inc/functions/admin.php');
 include_once('inc/functions/services.php');
+include_once('inc/functions/sections.php');
+include_once('inc/functions/staff.php');
 if( class_exists('Popular_Post_Widget') ) {
 	include_once('inc/functions/popular-post-widget.php');
 }
@@ -315,50 +318,6 @@ function exa_custom_excerpt_length( $length ) {
 	return 24;
 }
 add_filter( 'excerpt_length', 'exa_custom_excerpt_length', 999 );
-
-
-/**
- * Filters the excerpt length to 24 words. 
- * 
- * TODO: this function could use work.
- * 
- * @uses current_time
- * @since 0.1
- * @param int $from Start time in seconds since Jan 1, 1970.
- * @param int $to (optional) End time in seconds since Jan 1, 1970.
- * @return string A readable representation of the time interval.
- */
-function exa_human_time_diff( $from, $to = '' ) {
-	$since = '';
-	if ( empty( $to ) )
-		$to = current_time( "timestamp" );
-	$diff = (int) abs( $to - $from );
-	if ( $diff <= HOUR_IN_SECONDS ) {
-		$mins = round( $diff / MINUTE_IN_SECONDS );
-		if ( $mins <= 1 ) {
-			$mins = 1;
-		}
-		/* translators: min=minute */
-		$since = sprintf( _n( '%s min ago', '%s mins ago', $mins ), $mins );
-	} elseif ( ( $diff <= DAY_IN_SECONDS ) && ( $diff > HOUR_IN_SECONDS ) ) {
-		$hours = round( $diff / HOUR_IN_SECONDS );
-		if ( $hours <= 1 ) {
-			$hours = 1;
-		}
-		$since = sprintf( _n( '%s hour ago', '%s hours ago', $hours ), $hours );
-	} elseif ( $diff >= DAY_IN_SECONDS && $diff < DAY_IN_SECONDS * 7) {
-		$days = round( $diff / DAY_IN_SECONDS );
-		if ( $days <= 1 ) {
-			$days = 1;
-		}
-		$since = sprintf( _n( '%s day ago', '%s days ago', $days ), $days );
-	} elseif ( $diff >= DAY_IN_SECONDS * 7) {
-		$since = gmdate("M d, Y D", $from);
-	}
-
-	return $since;
-}
-
 
 /**
  * Filters query_vars to register shoutout parameters
@@ -667,40 +626,7 @@ add_filter( 'wp_title', 'exa_filter_wp_title' );
 
 
 
-/**
- * Returns a string with the section.
- * 
- * @since v0.2
- * @return string section.
- */
-function exa_section($post = null) {
-	
-	$post = get_post($post);
 
-	$section = get_the_category();
-	if( $section ) {
-		$section = $section[0]->name;
-		$section = $section == 'oped' ? $section = 'opinion' : $section;
-	}
-	return $section;
-}
-
-/**
- * Returns a url for the section.
- * 
- * @since v0.4
- * @return string section.
- */
-function exa_section_permalink($post = null) {
-
-	$post = get_post($post);
-
-	$section = get_the_category();
-	if( $section ) {
-		return get_term_link($section[0]->term_id,"category");
-	}
-	return "";
-}
 
 /**
  * Prints open graph tags to the head of wordpress pages.
