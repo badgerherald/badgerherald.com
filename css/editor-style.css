@@ -108,6 +108,8 @@ blockquote p {
 	font-family: 'pt sans';
 	font-size: 18px;
 }
+
+
 .pullquote {
   display: block;
   float: left;
@@ -160,6 +162,7 @@ blockquote p {
       left: 1rem; }
     .pullquote.aligncenter {
       margin-right: none; } }
+
 /** Lists */
 
 ul {
