@@ -290,7 +290,7 @@ function exa_mug_src($author_id = null, $size = 'square') {
 	if( !$author_id ) {
 		$author_id = is_author() ? get_query_var('author') : $post->post_author;
 	}
-	if(function_exists('has_wp_user_avatar') && !has_wp_user_avatar($author_id)) {
+	if(function_exists('has_wp_user_avatar') && has_wp_user_avatar($author_id)) {
 		$src = $wpua_functions->wpua_default_image($size);
 		$src = $src['src'];
 	} else {
