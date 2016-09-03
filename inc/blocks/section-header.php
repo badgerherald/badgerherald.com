@@ -81,7 +81,7 @@ global $OnCampus;
 		array(
 			'taxonomy' => 'topic',
 			'field' => 'slug',
-			'terms' => array('explainers','WSUM'),
+			'terms' => array('explainers'),
 			'operator' => 'IN'
 			)
 		);
