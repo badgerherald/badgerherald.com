@@ -291,7 +291,7 @@ function exa_mug_src($author_id = null, $size = 'square') {
 		$author_id = is_author() ? get_query_var('author') : $post->post_author;
 	}
 	if(function_exists('has_wp_user_avatar')) {
-		$src = $wpua_functions->wpua_default_image($size);
+		$src = get_wp_user_avatar_src($author_id, $size);
 	} else {
 		$src = 'http://placekitten.com/345/225';
 	}
