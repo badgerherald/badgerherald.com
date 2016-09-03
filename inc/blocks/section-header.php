@@ -1,3 +1,9 @@
+<?php 
+
+global $OnCampus;
+
+?>
+
 <header class="block section-header">
 	<?php
 	if(is_author()) :
@@ -21,9 +27,10 @@
 	<?php 
 	if(is_author() && exa_author_current_role()) {
 		echo "<h3 class='role'>" . exa_author_current_role() . "</h3>";
+	} else {
+		do_action('exa_after_category_title');
 	}
 	?>
-
 	</div>
 
 	<?php 
@@ -59,4 +66,48 @@
 		}
 	}
 	?>
+
 </header>
+
+<div class="ad sidebar-thing" style="background:white">
+	<?php $OnCampus->place_ad(array('desktop'=>'upper-sidekick')); ?>
+</div>
+
+<div class="block section-footer">
+
+	<?php 
+	$args = array();
+	$args['tax_query'] = array(
+		array(
+			'taxonomy' => 'topic',
+			'field' => 'slug',
+			'terms' => array('explainers','WSUM'),
+			'operator' => 'IN'
+			)
+		);
+	$args['posts_per_page'] = 5;
+	$query = new WP_Query( $args );
+	?>
+
+
+	<?php if ( $query->have_posts($query) ) : ?>
+	
+	<div class="explainers">	
+
+		<h4>Explainers</h4>
+		<ol>
+		<?php while ( $query->have_posts() ) : $query->the_post(); ?>
+		<li><a href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>"><?php the_title(); ?></a></li>
+		<?php endwhile; ?>
+		</ol>
+	
+	</div>
+	<?php endif; ?>
+
+
+</div>
+
+<div class="ad sidebar-thing" style="background:white;padding-top:24px">
+	<?php $OnCampus->place_ad(array('desktop'=>'lower-sidekick')); ?>
+</div>
+

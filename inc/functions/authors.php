@@ -279,26 +279,23 @@ function exa_author_current_role($author_id = null) {
  * @param string $classes class string to be added to the <img> tag.
  */
 function exa_mug($author_id = null, $size = 'square', $classes = '') {
-
 	global $wpua_functions;
+	$src = exa_mug_src($author_id, $size);
+	echo "<img src='$src' classes='mug $classes' />";
+}
 
+function exa_mug_src($author_id = null, $size = 'square') {
+	global $post;
 	if( !$author_id ) {
-		$author_id = is_author() ? get_query_var('author') : $GLOBAL['post']->post_author;
+		$author_id = is_author() ? get_query_var('author') : $post->post_author;
 	}
-
-	if(!function_exists('has_wp_user_avatar')) {
-		echo "<img src='http://placekitten.com/345/225' classes='mug $classes' />";
-		return;
-	}
-	
-	if(!has_wp_user_avatar($author_id)) {
+	if(function_exists('has_wp_user_avatar') && !has_wp_user_avatar($author_id)) {
 		$src = $wpua_functions->wpua_default_image($size);
 		$src = $src['src'];
 	} else {
-		$src = get_wp_user_avatar_src($author_id, $size);
+		$src = 'http://placekitten.com/345/225';
 	}
-	echo "<img src='$src' classes='mug $classes' />";
-
+	return $src;
 }
 
 
