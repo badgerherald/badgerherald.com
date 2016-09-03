@@ -286,6 +286,7 @@ function exa_mug($author_id = null, $size = 'square', $classes = '') {
 
 function exa_mug_src($author_id = null, $size = 'square') {
 	global $post;
+	global $wpua_functions;
 	if( !$author_id ) {
 		$author_id = is_author() ? get_query_var('author') : $post->post_author;
 	}
