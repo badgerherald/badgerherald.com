@@ -4,8 +4,7 @@
 	display: inline-block;
 	padding: 24px 20px;
 	width: 100%;
-	border-left: 5px solid $blue;
-	border-radius: 2px;
+	border-top: 5px solid $blue;
 	.author-mug {
 		width: 120px;
 		border-radius: 2px;
@@ -89,6 +88,41 @@
 			.position {
 				color: $greyTextHover;
 			}
+		}
+	}
+}
+
+.block.section-footer {
+	background: #fff;
+	padding: 18px 20px;
+	.explainers {
+		display: none;
+		h4 {
+			background: $blue;
+			color:#fff;
+			display: inline-block;
+			padding: 2px 4px;
+			font-style: italic;
+		}
+		ol {
+			font-style: italic;
+			font-weight: bold;
+			color: $blue;
+			margin: 0;
+			margin-top: -6px;
+			padding: 0;
+			padding-left: 24px;
+			li {
+				margin-bottom: 9px;
+			}
+		}
+	}
+}
+
+@include breakpoint('desktop') {
+	.block.section-footer {
+		.explainers {
+			display: block;
 		}
 	}
 }
