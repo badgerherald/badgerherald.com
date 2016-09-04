@@ -23,9 +23,12 @@ function exa_get_section($post = null) {
 	$post = get_post($post);
 	
 	$section = get_the_category($post);
-	$section = apply_filters('exa_section',$section,$post);
-
-	return $section;
+	//$section = apply_filters('exa_section',$section,$post);
+	
+	if( !empty($section) && sizeof( $section) == 1)
+		return $section[0]->name;
+	else
+		return "Badger Herald";
 }
 
 /**
