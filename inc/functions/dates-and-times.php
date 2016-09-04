@@ -41,7 +41,7 @@ function exa_get_time( $post = null ) {
 			$mins = round( $diff / MINUTE_IN_SECONDS ) ?: 1;
 			$since = _n('%s minute ago', sprintf( '%s minutes ago', $mins), $mins, "exa" );
 		} else {
-			$hours = round( $diff / HOURS_IN_SECONDS );
+			$hours = round( $diff / HOUR_IN_SECONDS );
 			$since = _n('%s hour ago', sprintf( '%s hours ago', $mins), $mins, "exa" );
 		}
 	}
