@@ -11,16 +11,14 @@ $container = $GLOBALS['container'] ?: new container('colophon');
 		</div>
 		<div class="middle-rail rail">
 			<?php
-			if ( has_nav_menu( 'footer-primary' ) ) {
-				wp_nav_menu( array(
-					'theme_location' => 'footer-primary'
-					)
-				);
-			} else {
-				echo "No footer-primary menu defined. Please define a menu for this location.";
-			}
-
-			?>
+				if ( has_nav_menu( 'footer-primary' ) ) {
+					wp_nav_menu( array(
+						'theme_location' => 'footer-primary'
+						)
+					);
+				} else {
+					echo "No footer-primary menu defined. Please define a menu for this location.";
+				}
 			?>
 		</div>
 		<div class="right-rail rail">
