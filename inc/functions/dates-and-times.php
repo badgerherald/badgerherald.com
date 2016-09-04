@@ -37,13 +37,15 @@ function exa_get_time( $post = null ) {
 	$secondsSincePublishing = (int) abs( $to - $from );
 
 	if( exa_is_published_today( $post ) ) {
-		
+
 		if ( $secondsSincePublishing <= HOUR_IN_SECONDS ) {
-			$mins = round( $secondsSincePublishing / MINUTE_IN_SECONDS ) ?: 2;
-			$since = _n('%s minute ago', sprintf( '%s minutes ago', $mins), $mins, "exa" );
+			$mins = round( $secondsSincePublishing / MINUTE_IN_SECONDS );
+			if( $mins < 1)
+				$mins = 1;
+			$since = sprintf( _n('%s minute ago', '%s minutes ago', $mins, 'exa'), $mins);
 		} else {
 			$hours = round( $secondsSincePublishing / HOUR_IN_SECONDS );
-			$since = _n('%s hour ago', sprintf( '%s hours ago', $hours), $hours, "exa" );
+			$since = sprintf( _n('%s hour ago', '%s hours ago', $hours, 'exa'), $hours);
 		}
 	}
 	else if( exa_is_published_yesterday( $post ) ) {
