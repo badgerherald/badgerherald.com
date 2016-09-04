@@ -37,15 +37,13 @@ $container = $GLOBALS['container'] ?: new container('old-homepage');
 	                ), array(
 	                    'taxonomy' => 'importance',
 	                    'field' => 'slug',
-	                    'terms' => array('featured'),
+	                    'terms' => array('featured','dominant'),
 	                    'operator' => 'IN'
 	                )
 	            );
 			$args['posts_per_page'] = 4;
 
 			$featured = new WP_Query( $args );
-			$exclude = array();
-
 
 			//loop_featured
 			//also records which posts to exclude in following steps
@@ -57,11 +55,11 @@ $container = $GLOBALS['container'] ?: new container('old-homepage');
 				}else{
 
 					if($featured->current_post == 1 && !is_paged()){
-						hrld_html_tag_open("ul","",array("featured-stream-list"));
+						get_template_part( 'inc/blocks/teaser', 'feature' );
 					}
-					hrld_html_tag_open("li");
-						get_template_part( 'content', 'summary-instream' );
-					hrld_html_tag_close("li");
+		
+						get_template_part( 'inc/blocks/teaser', 'brief' );
+			
 				}
 				$exclude[] = $post->ID;
 			endwhile;
@@ -70,7 +68,7 @@ $container = $GLOBALS['container'] ?: new container('old-homepage');
 			wp_reset_postdata();
 			wp_reset_query();
 
-			hrld_html_tag_close("ul");
+
 
 			//close class="featured-container"
 			hrld_html_tag_close("div");
