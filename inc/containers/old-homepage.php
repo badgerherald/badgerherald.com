@@ -37,7 +37,7 @@ $container = $GLOBALS['container'] ?: new container('old-homepage');
 	                ), array(
 	                    'taxonomy' => 'importance',
 	                    'field' => 'slug',
-	                    'terms' => array('featured','dominant'),
+	                    'terms' => array('featured','cover'),
 	                    'operator' => 'IN'
 	                )
 	            );
@@ -57,9 +57,9 @@ $container = $GLOBALS['container'] ?: new container('old-homepage');
 					if($featured->current_post == 1 && !is_paged()){
 						get_template_part( 'inc/blocks/teaser', 'feature' );
 					}
-		
+					hrld_html_tag_open("li");
 						get_template_part( 'inc/blocks/teaser', 'brief' );
-			
+					hrld_html_tag_close("li");
 				}
 				$exclude[] = $post->ID;
 			endwhile;

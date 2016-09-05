@@ -55,7 +55,7 @@ $container = $GLOBALS['container'] ?: new container('footnotes');
 					array(
 					    'taxonomy' => 'importance',
 					    'field' => 'slug',
-					    'terms' => array('dominant','hard')
+					    'terms' => array('featured','cover')
 					),
 					array(
 					    'taxonomy' => 'category',

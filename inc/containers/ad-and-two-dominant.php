@@ -35,7 +35,7 @@ $container = $GLOBALS['container'] ?: new container('header');
 				array(
 				    'taxonomy' => 'importance',
 				    'field' => 'slug',
-				    'terms' => array('dominant','hard')
+				    'terms' => array('featured','cover')
 				)
 			)
 		);

@@ -19,7 +19,7 @@ $container = $GLOBALS['container'] ?: new container('feature-widget');
 					array(
 					    'taxonomy' => 'importance',
 					    'field' => 'slug',
-					    'terms' => 'dominant'
+					    'terms' => 'featured'
 					)
 				)
 			);

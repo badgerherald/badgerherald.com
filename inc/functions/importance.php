@@ -49,9 +49,7 @@ function exa_is_standard($post = null) {
  */
 function exa_is_featured($post = null) {
 	$post = get_post($post);
-	$dominant = has_term('dominant','importance',$post);
 	$featured = has_term('featured','importance',$post);
-	// $hard = has_term('hard','importance',$post);
 	return ($dominant || $featured || exa_is_cover($post));
 }
 

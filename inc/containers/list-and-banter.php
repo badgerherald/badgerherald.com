@@ -24,7 +24,7 @@ $container = $GLOBALS['container'] ?: new container('list-and-banter');
 				array(
 				    'taxonomy' => 'importance',
 				    'field' => 'slug',
-				    'terms' => array('dominant','hard')
+				    'terms' => array('featured','cover')
 				)
 			)
 		);

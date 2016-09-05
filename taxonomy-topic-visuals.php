@@ -22,7 +22,7 @@ $query_args = array(
 		array(
 		    'taxonomy' => 'importance',
 		    'field' => 'slug',
-		    'terms' => array('dominant','featured')
+		    'terms' => array('featured','cover')
 		),
 		array(
 			'taxonomy' => 'topic',
