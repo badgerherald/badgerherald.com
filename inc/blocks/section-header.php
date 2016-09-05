@@ -73,18 +73,38 @@ global $OnCampus;
 	<?php $OnCampus->place_ad(array('desktop'=>'upper-sidekick')); ?>
 </div>
 
+<?php if (is_category() || is_tax('topic') ) : ?>
+
 <div class="block section-footer">
 
 	<?php 
 	$args = array();
-	$args['tax_query'] = array(
+	
+	if( is_tax('topic') ) {
+		$args['tax_query'] = array(
+		array(
+			'taxonomy' => 'topic',
+			'field' => 'slug',
+			'terms' => array('explainers',get_query_var( 'topic' )),
+			'operator' => 'IN'
+			),
+		);
+	} else {
+		$args['tax_query'] = array(
 		array(
 			'taxonomy' => 'topic',
 			'field' => 'slug',
 			'terms' => array('explainers'),
 			'operator' => 'IN'
-			)
+			),
+		array(
+			'taxonomy' => 'category',
+			'field' => 'id',
+			'terms' => get_query_var('cat'),
+			'operator' => 'IN'
+			),
 		);
+	}
 	$args['posts_per_page'] = 5;
 	$query = new WP_Query( $args );
 	?>
@@ -104,8 +124,9 @@ global $OnCampus;
 	</div>
 	<?php endif; ?>
 
-
 </div>
+
+<?php endif; ?>
 
 <div class="ad sidebar-thing" style="background:white;padding-top:24px">
 	<?php $OnCampus->place_ad(array('desktop'=>'lower-sidekick')); ?>
