@@ -20,17 +20,7 @@ function exa_container($name, $args = null) {
 
 }
 
-/**
- * Filter banter container classes
- */
-function exa_banter_container_classes($classes,$container) {
-	global $post;
-	if($container->name == "headline" && hexa_is_banter()) {
-		$classes .= " banter";
-	}
-	return $classes;
-}
-add_filter("exa_container_classes","exa_banter_container_classes",10,2);
+
 
 function hexa_is_banter($post = null) {
 	$post = get_post($post);

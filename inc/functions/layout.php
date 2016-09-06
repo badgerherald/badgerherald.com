@@ -18,8 +18,8 @@
 function _exa_register_layout_taxonomy() {
 
 	$labels = array(
-		'name'                       => _x( 'Layout', 'Taxonomy General Name', 'exa' ),
-		'singular_name'              => _x( 'Layout', 'Taxonomy Singular Name', 'exa' ),
+		'name'                       => _x( 'Layout', 'Layout General Name', 'Exa' ),
+		'singular_name'              => _x( 'Layout', 'Layout Singular Name', 'xa' ),
 	);
 	$args = array(
 		'labels'                     => $labels,
