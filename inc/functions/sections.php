@@ -14,15 +14,6 @@ function exa_section($post = null) {
 }
 
 /**
- * Getter for the section
- * 
- * @since v0.6
- */
-function get_exa_section($post = null) {
-	return exa_get_section($post);
-}
-
-/**
  * Returns the corresponding exa section
  * 
  * @since v0.5
