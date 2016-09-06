@@ -31,7 +31,14 @@ $container = $GLOBALS['container'] ?: new container('feature-widget');
 				<a href="<?php the_permalink(); ?>" class="story">
 				
 					<div class="dotted-overlay-container">
-						<?php the_post_thumbnail('post-thumbnail'); ?>
+					<?php
+						if( has_post_thumbnail()){
+								the_post_thumbnail('post-thumbnail');
+						}else{
+							echo "<img " . 'class="attachment-post-thumbnail size-post-thumbnail wp-post-image" '.
+									'style="height: 562px; background-color: #666;" />';
+						}
+					?>
 					</div>
 
 					<div class="title-container">
