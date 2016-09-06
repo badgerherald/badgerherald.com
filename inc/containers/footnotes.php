@@ -42,7 +42,7 @@ $container = $GLOBALS['container'] ?: new container('footnotes');
 
 
 		<div class="more">
-			<h1>Next in <a href="<?php exa_section_permalink() ?>" class="section"><?php exa_section(); ?></a></h1>
+			<h1>Next in <a href="<?php exa_section_permalink() ?>" class="section"><?php echo ucfirst( get_exa_section()); ?></a></h1>
 
 			<?php
 
