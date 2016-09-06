@@ -14,6 +14,15 @@ function exa_section($post = null) {
 }
 
 /**
+ * Getter for the section
+ * 
+ * @since v0.6
+ */
+function get_exa_section($post = null) {
+	return exa_get_section($post);
+}
+
+/**
  * Returns the corresponding exa section
  * 
  * @since v0.5
@@ -25,7 +34,7 @@ function exa_get_section($post = null) {
 	$section = get_the_category($post);
 	
 	if( !empty($section) && sizeof( $section) == 1)
-		return $section[0]->name;
+		return $section[0]->slug;
 	else
 		return "Herald";
 }

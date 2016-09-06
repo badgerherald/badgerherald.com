@@ -15,7 +15,7 @@ $container->default_args(array('center'=>false));
 			<ul class="topics">
 				<li>
 					<a href="<?php exa_section_permalink() ?>" class="section">
-					<?php exa_section(); ?>
+					<?php echo ucfirst(get_exa_section()); ?>
 					</a>
 				</li>
 				<li><span><?php exa_topic(); ?></span></li>
