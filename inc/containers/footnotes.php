@@ -25,7 +25,7 @@ $container = $GLOBALS['container'] ?: new container('footnotes');
 	
 			<div class="fine-print">
 				<?php if( get_the_author() == "Letter to the Editor" ) : ?>
-				<p class="letter-to-editor-disclaimer"><em><strong>Letters to the editor</strong> are 	published on the discretion of the opinion desk and editor. They may not reflect the views of 	the Herald. Email your own letters to the editor to oped@badgerherald.com</em></p>
+				<p class="letter-to-editor-disclaimer"><em><strong>Letters to the editor</strong> are published on the discretion of the opinion desk and editor. They may not reflect the views of the Herald. Email your own letters to the editor to oped@badgerherald.com</em></p>
 				<?php endif; ?>
 		
 				<p>This article was published <?php the_time("M j, Y") ?> at <?php the_time("g:i a"); ?> and 	last updated <?php the_modified_time("M j, Y") ?> at <?php the_modified_time("g:i a"); ?><p>
@@ -60,7 +60,7 @@ $container = $GLOBALS['container'] ?: new container('footnotes');
 					array(
 					    'taxonomy' => 'category',
 					    'field' => 'slug',
-					    'terms' => exa_section()
+					    'terms' => get_exa_section()
 					),
 				)
 			);
