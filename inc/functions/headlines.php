@@ -38,7 +38,7 @@ function exa_subhead($post = null) {
  */
 function exa_get_subhead($post = null) {
 	$post = get_post($post);
-	return apply_filters('exa_subhead', get_post_meta($post->ID, '_exa_subhead', TRUE));
+	return apply_filters('exa_subhead', get_post_meta($post->ID, '_hrld_subhead', TRUE));
 }
 
 if (is_admin()) :
@@ -47,14 +47,14 @@ if (is_admin()) :
 	 * Prints aftertitlediv content that inclues the "alternate headlines" and
 	 * subhead input
 	 */
-	function exa_extra_headlines($post) {
+	function hrld_extra_headlines($post) {
 	
 		$post_types = array("post","page");
 		if (!in_array($post->post_type, $post_types)) {
 			return;
 		}
 	
-		$subhead = get_post_meta($post->ID, '_exa_subhead', true);
+		$subhead = get_post_meta($post->ID, '_hrld_subhead', true);
 		
 		$althead_array = get_post_meta($post->ID, '_exa_altheads', true) ?: array();
 		$altheads = "";
@@ -64,7 +64,7 @@ if (is_admin()) :
 			$altheads .= $head . "\n";
 		}
 	
-		wp_nonce_field(basename(__FILE__),'_exa_subhead_meta_box');
+		wp_nonce_field(basename(__FILE__),'_hrld_subhead_meta_box');
 	
 		/* Form field to display */
 		?>
@@ -78,33 +78,33 @@ if (is_admin()) :
 				<textarea name="_exa_altheads"><?php echo $altheads;?></textarea>
 			</div>
 			<hr/>
-			<label for="_exa_subhead">Subheading: </label>
-			<input id="subhead" class="exa-subhead" type="text" autocomplete="off" value="<?php echo 	esc_attr($subhead); ?>" name="_exa_subhead" placeholder="Optional">
+			<label for="_hrld_subhead">Subheading: </label>
+			<input id="subhead" class="exa-subhead" type="text" autocomplete="off" value="<?php echo 	esc_attr($subhead); ?>" name="_hrld_subhead" placeholder="Optional">
 		</div>
 	
 		<?php
 		
 	}
-	add_action('edit_form_after_title', 'exa_extra_headlines');
+	add_action('edit_form_after_title', 'hrld_extra_headlines');
 	
 	/** 
 	 * Save our custom data when the post is saved
 	 */
-	function exa_subhead_save_postdata($post_id) {
+	function hrld_subhead_save_postdata($post_id) {
 	
 		// 1: Verify nonce
 
-		if(!wp_verify_nonce($_POST['_exa_subhead_meta_box'], basename(__FILE__)))
+		if(!wp_verify_nonce($_POST['_hrld_subhead_meta_box'], basename(__FILE__)))
 			return;
 	
 		// 2: Save new subhead
 
-		$new_subhead = sanitize_text_field( $_POST['_exa_subhead'] );
+		$new_subhead = sanitize_text_field( $_POST['_hrld_subhead'] );
 	
 		if($new_subhead == '') {
-			delete_post_meta($post_id, '_exa_subhead');
+			delete_post_meta($post_id, '_hrld_subhead');
 		} else {
-			update_post_meta($post_id, '_exa_subhead', $new_subhead);
+			update_post_meta($post_id, '_hrld_subhead', $new_subhead);
 		}
 	
 		// 3: Save new alt heads
@@ -122,7 +122,7 @@ if (is_admin()) :
 		}
 	
 	}
-	add_action('save_post', 'exa_subhead_save_postdata');
+	add_action('save_post', 'hrld_subhead_save_postdata');
 	
 
 	/**
@@ -146,7 +146,7 @@ if (is_admin()) :
 	 *
 	 * @since v0.1
 	 */
-	function exa_remove_meta_boxes() {
+	function hrld_remove_meta_boxes() {
 	
 		// Post Types
 		$sections = array("news","opinion","sports","artsetc","blog","multimedia","post");
@@ -172,6 +172,6 @@ if (is_admin()) :
 	
 	}
 	
-	add_action( 'admin_menu', 'exa_remove_meta_boxes' );
+	add_action( 'admin_menu', 'hrld_remove_meta_boxes' );
 
 endif;
