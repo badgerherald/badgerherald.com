@@ -32,6 +32,7 @@ function _exa_register_layout_taxonomy() {
 		'query_var'                  => 'exa_layout',
 	);
 	register_taxonomy( 'exa_layout', array( 'post','page' ), $args );
+
 }
 add_action( 'init', '_exa_register_layout_taxonomy', 0 );
 
@@ -39,7 +40,7 @@ add_action( 'init', '_exa_register_layout_taxonomy', 0 );
  * 
  */
 function exa_toggle_feature_boxes(){
-	add_meta_box( '_exa_hide_featured_image', __('Layout'), 'exa_toggle_feature_box', array('post','page'), 'side', 'default');
+	add_meta_box( '_exa_hide_featured_image', __('Layout'), 'exa_toggle_feature_box', 'post', 'side', 'default');
 }
 
 function exa_toggle_feature_box($post) {
