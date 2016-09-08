@@ -108,6 +108,7 @@
 			&.menu-secondary {
 				float: right;
 				right: 0;
+				cursor: pointer;
 				li a {
 					color: $blue;
 					&:hover {
