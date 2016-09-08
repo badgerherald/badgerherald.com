@@ -47,9 +47,10 @@ exa_container('headline',$args);
 			if (exa_hero_style() == "standard" && exa_hero_media() != "none") :		
 			?>				
 			<div class="hero">
-			
+				<?php if( has_post_thumbnail()) : ?>
 				<?php the_post_thumbnail('image-post-size'); ?>
 				<?php exa_hero_caption(); ?>
+			    <?php endif; ?>
 	
 				<div class="clearfix"></div>
 				
