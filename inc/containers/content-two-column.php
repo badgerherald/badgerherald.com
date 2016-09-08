@@ -22,17 +22,19 @@ exa_container('headline',$args);
 		<main class="article-content">
 			<div class="meta">
 
-				<?php /* Mug: */ ?>
-				<div class="mug-box">
-					<?php exa_mug(get_the_author_meta('ID'),'small-thumbnail') ?>
-				</div>
-				
-				<?php /* Byline: */ ?>
-				<span class="byline">
-					by <a class="author-link" href="<?php exa_the_author_link() ?>" title="<?php echo exa_properize(get_the_author()); ?> Profile">
-						   <?php the_author() ?>
-					   </a>
-				</span> &middot; <span class="meta-time"><?php the_time("M j, Y") ?></span>
+				<?php if( !is_page()): // display byline and date on if it's not a page.?>
+					<?php /* Mug: */ ?>
+					<div class="mug-box">
+						<?php exa_mug(get_the_author_meta('ID'),'small-thumbnail') ?>
+					</div>
+					
+					<?php /* Byline: */ ?>
+					<span class="byline">
+						by <a class="author-link" href="<?php exa_the_author_link() ?>" title="<?php echo exa_properize(get_the_author()); ?> Profile">
+							   <?php the_author() ?>
+						   </a>
+					</span> &middot; <span class="meta-time"><?php the_time("M j, Y") ?></span>
+				<?php endif; ?>
 
 				<a class="facebook-button" target="_blank" href="<?php echo exa_facebook_link(); ?>">Share</a>
 				<a class="tweet-button" target="_blank" href="<?php echo exa_tweet_link(); ?>">Tweet</a>
