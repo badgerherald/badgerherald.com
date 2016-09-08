@@ -267,15 +267,6 @@ jQuery(document).ready(function($) {
 
 	});
 
-	/**
-	 * Make pagination buttons white when on black background pages
-	 *
-	 * @since v0.6
-	 */
-	 if( $('div.container.stream.black').length == 1){
-	 	$('div.all-link a').css('color', 'white');
-	 }
-
 	
 
 });
