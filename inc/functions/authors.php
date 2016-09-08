@@ -281,7 +281,8 @@ function exa_author_current_role($author_id = null) {
 function exa_mug($author_id = null, $size = 'square', $classes = '') {
 	global $wpua_functions;
 	$src = exa_mug_src($author_id, $size);
-	echo "<img src='$src' classes='mug $classes' />";
+	if( $src)
+		echo "<img src='$src' classes='mug $classes' />";
 }
 
 function exa_mug_src($author_id = null, $size = 'square') {
@@ -293,7 +294,7 @@ function exa_mug_src($author_id = null, $size = 'square') {
 	if(function_exists('has_wp_user_avatar')) {
 		$src = get_wp_user_avatar_src($author_id, $size);
 	} else {
-		$src = 'http://placekitten.com/345/225';
+		$src = false;
 	}
 	return $src;
 }
