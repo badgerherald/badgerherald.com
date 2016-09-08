@@ -2,23 +2,26 @@
  * Menu & Search bar
  * ---------------------------------------------------------
  * php: ./inc/containers/menu-search-bar.php
- * since: 0.3
+ * since: v0.3
  * -----------------------------------------------------------------------------
  */
 
  .container.menu-search-bar {
  	padding: 12px 0px;
  	clear: both;
+ 	z-index: 10;
  	.wrapper {
  		height:30px;
 		.search {
-		    width: 300px;
-		    position: absolute;
+		    float: right;
+		    position: relative;
+		    padding-left: 10px;
+		    margin-right: 45px;
 		    right: 0;
 		    input[type=text] {      // the input field.
 		        @include animate;
 		        display: block;
-		        padding: 5px 12px 6px;
+		        padding: 7px 12px 5px;
 		        outline: none;
 		        color: $black;
 		        border: none;
@@ -58,63 +61,78 @@
 		        pointer: cursor;
 		    }
 		}
- 		.menu {
- 			margin: 0; padding:0;
- 			list-style-type: none;
- 			color: $black;
- 			font-family: $headline;
- 			font-size: 15px; 	
- 			display: table-cell;
- 			position: absolute;
- 			z-index: 9990;
- 			li {
- 				text-align: left;
- 				display: none;
- 				margin:0;
- 				float:left;
- 				clear:left;
- 				width:100%;
- 				a {
- 					padding: 8px 120px 6px 9px;
- 					background: white;
- 					width:100%;
- 					display: block;
- 					color: $black;
- 					&:hover {
- 						color: $blue;
- 					}
- 				}
- 			}
-
- 			&:hover {
- 				li {
- 					display: block;
- 				}
- 			}
- 			&:before {
- 				content: "Sections";
- 				padding: 8px 60px 6px 9px;
- 				line-height: 16px;
- 				background: $white;
- 				color:$greyText;
- 				display: table-cell;
- 				background-image: url('data:image/svg+xml;utf8, \a'
-					'<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="18" height="11"> \a'
-					'	<polygon points="0,0 3,0 9,5 15,0 18,0 18,1 11,8 7,8, 0,1" style="fill:#{$greyText}" > \a'
-					'</svg> \a'
-					);
- 				background-repeat: no-repeat;
- 				background-position: right 9px center;
- 			}
- 			&:hover:before {
-  				background-image: url('data:image/svg+xml;utf8,\a'
-					'<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="18" height="11">\a'
-						'<polygon points="0,0 3,0 9,5 15,0 18,0 18,1 11,8 7,8, 0,1" style="fill:#{$black}" />\a'
-					'</svg>\a'
-					);		
-				color:$black;
- 			}
- 		}
+		.menu {
+			margin: 0; padding:0;
+			list-style-type: none;
+			color: $black;
+			font-family: $headline;
+			font-size: 15px; 	
+			display: table-cell;
+			position:absolute;
+			li {
+				text-align: left;
+				display: none;
+				margin:0;
+				float:left;
+				clear:left;
+				width:100%;
+				a {
+					padding: 8px 90px 6px 9px;
+					background: white;
+					width:100%;
+					display: block;
+					color: $black;
+					&:hover {
+						color: $blue;
+					}
+				}
+			}
+			&:hover li {
+				display: block;
+			}
+			&.menu-primary {
+				float: left;
+				&:before {
+					content: "Sections";
+					padding: 8px 45px 6px 10px;
+					width:100px;
+					line-height: 16px;
+					background: $white;
+					color:$greyText;
+					display: table-cell;
+					background-image: url('img/svg/downarrow-grey.svg');
+					background-repeat: no-repeat;
+					background-position: right 9px center;
+				}
+			}
+			&.menu-secondary {
+				float: right;
+				right: 0;
+				li a {
+					color: $blue;
+					&:hover {
+						color: $black;
+					}
+				}
+				&:before {
+					content: "m";
+					font-family: $icon;
+					padding: 8px 10px 6px 10px;
+					display: table-cell;
+					line-height: 16px;
+					background-repeat: no-repeat;
+					background-position: right 9px center;
+					position:absolute;
+					top:0;
+					right:0;
+					background-color: #fff;
+				}
+			}
+			&.menu-primary {
+				
+				z-index: 9990;
+			}			
+		}
  	}
 }
 
@@ -131,7 +149,7 @@
 
 @include breakpoint("tablet") {
 	.container.menu-search-bar {
-		.wrapper .menu {
+		.wrapper .menu.menu-primary {
  			background: transparent; // *	
  			display: block; // *
  			margin-left: -10px;
@@ -140,16 +158,42 @@
  				clear:none; //*
  				width:inherit; // *
  				a {
- 					padding: 8px 10px 6px 10px; //*
+ 					padding: 7px 10px 6px 10px; //*
  					background: transparent; //*
  					font-weight: bold; //*
  					text-transform: uppercase;
- 					&:hover {
- 					}
  				}
  			}
  			&:before {
- 				display: none; // *
+ 				display: none;
+ 			}
+ 		}
+ 	}
+}
+
+@include breakpoint("desktop") {
+	.container.menu-search-bar {
+		.wrapper .search {
+			margin-right: 0;
+		}
+		.wrapper .menu.menu-secondary {
+ 			background: transparent; // *	
+ 			display: block; // *
+ 			margin-left: -10px;
+ 			position: initial;
+ 			li {
+ 				display: inline; // *
+ 				clear:none; //*
+ 				width:inherit; // *
+ 				a {
+ 					padding: 7px 10px 6px 10px; //*
+ 					background: transparent; //*
+ 					font-weight: bold; //*
+ 					text-transform: uppercase;
+ 				}
+ 			}
+ 			&:before {
+ 				display: none;
  			}
  		}
  	}

@@ -174,7 +174,7 @@ function exa_setup() {
 
 	// header
 	register_nav_menu( 'header-primary', __("Header Primary") );
-	//register_nav_menu( 'header-secondary', __("Secondary nav items next to the search bar.") );
+	register_nav_menu( 'header-secondary', __("Header Secondary") );
 	register_nav_menu( 'footer-primary', __("Footer Primary") );
 	register_nav_menu( 'footer-secondary', __("Footer Secondary") );
 	/* This theme uses its own gallery styles. 
@@ -208,13 +208,13 @@ function exa_scripts_styles() {
 		 * Load fontastic font.
 		 * @see ./css/fontastic/icon-reference.html 
 		 */
-		wp_enqueue_style( 'exa-icons', get_template_directory_uri() . '/css/fontastic/styles.css?v=4' );
+		wp_enqueue_style( 'exa-icons', get_template_directory_uri() . '/css/fontastic/styles.css?v=5' );
 
 		/* Load google font. */
 		wp_enqueue_style( 'exa-fonts', 'https://fonts.googleapis.com/css?family=Noto+Serif:400,700,400italic,700italic|Yanone+Kaffeesatz:400,300,700|Open+Sans|PT+Sans+Narrow:400,700');
 
-		$mtime = filemtime(dirname(__FILE__) . '/style.css');
 		/* Load main stylesheet. */
+		$mtime = filemtime(dirname(__FILE__) . '/style.css');
 		wp_enqueue_style( 'exa-style', get_template_directory_uri() . '/style.css', array(),$mtime );
 
 		/* Load fastclick library */

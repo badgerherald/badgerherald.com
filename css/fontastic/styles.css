@@ -38,9 +38,6 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-.icon-new-window:before {
-  content: "\77";
-}
 .icon-arrow-down:before {
   content: "\76";
 }
@@ -65,9 +62,12 @@
 .icon-video:before {
   content: "\70";
 }
-.icon-angle-down:before {
-  content: "\64";
-}
 .icon-facebook:before {
   content: "\66";
+}
+.icon-bars:before {
+  content: "\6d";
+}
+.icon-new-window:before {
+  content: "\77";
 }
