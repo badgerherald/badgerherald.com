@@ -22,20 +22,36 @@ $container->default_args(
 		<?php 
 			if ( has_nav_menu( 'header-primary' ) ) {
 				wp_nav_menu( array(
-					'theme_location' => 'header-primary'
+					'theme_location' => 'header-primary',
+					'menu_class' => 'menu menu-primary'
 					)
 				);
 			} else {
-				echo "No header-primary menu defined. Please define a menu for this location.";
+				echo "No 'Header Primary' menu defined. Please define a menu for this location.";
 			}
 		?>
-		<div style="clear:both"></div>
+
 		
-		<form class="search" action="/" method="get">
-			<?php $query = get_search_query(); ?>
-			<input type="text" name="s" placeholder="Search..." value="<?php echo $query ?>"></input>
-			<input type="submit" value="Submit"></input>
-		</form>
+		
+
+	
+			<form class="search" action="/" method="get">
+				<?php $query = get_search_query(); ?>
+				<input type="text" name="s" placeholder="Search..." value="<?php echo $query ?>"></input>
+				<input type="submit" value="Submit"></input>
+			</form>
+
+			<?php 
+				if ( has_nav_menu( 'header-secondary' ) ) {
+					wp_nav_menu( array(
+						'theme_location' => 'header-secondary',
+						'menu_class' => 'menu menu-secondary'
+						)
+					);
+				}
+			?>
+
+		<div style="clear:both"></div>
 		
     </div>
 </div>
