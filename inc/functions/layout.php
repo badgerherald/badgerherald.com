@@ -40,7 +40,7 @@ add_action( 'init', '_exa_register_layout_taxonomy', 0 );
  * 
  */
 function exa_toggle_feature_boxes(){
-	add_meta_box( '_exa_hide_featured_image', __('Layout'), 'exa_toggle_feature_box', 'post', 'side', 'default');
+	add_meta_box( '_exa_hide_featured_image', __('Layout'), 'exa_toggle_feature_box', array('post','page'), 'side', 'default');
 }
 
 function exa_toggle_feature_box($post) {
