@@ -7,166 +7,6 @@
 .old-homepage {
 	margin-top:0;
 }
-#above-fold {
-	@include clearfix();
-	margin-top:12px;
-	#slider {
-		@include clearfix();
-		width: 100%;
-		background: $black;
-		color: $lightgrey;
-		margin-bottom: 12px;
-		a {
-			color: $truewhite;
-		}
-		.slider-content {
-			float: left;
-		}
-		img {
-			float: left;
-			height: auto;
-		}
-		h2,p,ul {
-			padding: 0px 20px;
-		}
-		h2 {
-			margin-top: 12px;
-		}
-		.slider-related-title {
-			font-weight: 700;
-			font-family: $headline;
-			margin-top: 18px;
-			margin-bottom:6px;
-
-			/* not until iPad */
-			display: none;
-		}
-		ul.slider-related {
-			font-family: $headline;
-			list-style: none;
-			margin:0;
-
-			/* not until iPad */
-			display: none;
-
-			li {
-				line-height: 18px;
-				margin-bottom: 6px;
-				a {
-					color: $darkgrey;
-					font-weight: bold;
-					&:hover {
-						color: $truewhite;
-					}
-				}
-			}
-		}
-		ul.slider-nav {
-			list-style: none;
-			margin: 0;
-			padding:0;
-			li {
-				display: block;
-				width: flex(74,300);
-				margin-left: flex(1,300);
-				background: #2b2b2b;
-				height: 12px;
-				float: left;
-				&.active {
-					background: $blue;
-				}
-				&:first-child {
-					width: flex(75,300);
-					margin-left: 0;
-				}
-				span {
-					display: none;
-				}
-			}
-		}
-	}
-
-	#middle-column {
-		.hp-square-ad {
-			width: 300px;
-			height: 250px;
-			margin-bottom: 12px;
-			display: none;
-		}
-		.todays-shoutout {
-			margin: 0;
-			padding: 0;
-			padding-bottom: 24px;
-			position: relative;
-			.bubble-box {
-				background: $black;
-				margin-bottom: 78px;
-				color: $lightgrey;
-				font-family: 'PT Sans';
-				position: relative;
-				h3 {
-					margin: 0;
-					padding:24px 20px 0px;
-					font-size: 17px;
-					text-transform: uppercase;
-				} p {
-					padding:6px 20px 24px;
-					margin: 0;
-					color: $darkgrey;
-					font-family: $headline;
-					font-style: italic;
-					font-size: 17px;
-					line-height: 24px;
-				} &:after {
-					content: "";
-					display: block;
-					width: 0; height: 0; 
-					border-right: 30px solid transparent;
-					border-bottom: 30px solid transparent;
-					border-top: 30px solid $black;
-					border-left: 30px solid $black;
-					position: absolute;
-					bottom:-60px;
-					margin-left: 80px;
-				}
-			} .hp-so-avatar {
-				position: absolute;
-				margin-top:-60px;
-			} .link-box { /* The box with "More Shoutouts", and "Add a Shoutout" links */
-				position: absolute;
-				width: 100%;
-				height: 60px;
-				text-align: right;
-				bottom: 24px;
-				a {
-					font-family: $headline;
-					font-size: 14px;
-					text-transform: uppercase;
-					line-height: 18px;
-					font-weight: 700;
-					&.more {
-						/* TODO: Add Icon */
-						color: $black;
-						&:hover {
-							color: $blue;
-						}
-					} &.submit {
-						/* TODO: Add Icon */
-						color: $darkgrey;
-						&:hover {
-							color: $darkgreyHover;
-						}
-					}
-				}
-			}
-		} /* .todays-shoutout */
-	} #top-posts {
-		display:none;
-	} #most-recent {
-		display:none;
-	}
-
-}
 
 /* Banners on the homepage */
 
@@ -239,17 +79,19 @@ ul.list-stories {
 	width:100%;
 	font-family: $headline;
 	list-style: none;
-	font-size: 17px;
+	font-size: 20px;
 	.topic {
 		text-transform: uppercase;
-		color: $darkgrey;
+		color:$blue;
 		font-size: 14px;
+		font-weight: bold;
 	}
 	.summary-time-stamp{
 		text-transform: none;
+		color: grey;
 	}
 	h4 {
-		margin:3px 0 9px 0;
+		margin:6px 0 24px 0;
 		padding:0;
 		a {
 			color: $black;
@@ -262,6 +104,7 @@ ul.list-stories {
 
 .featured-container{
 	margin-top: 30px;
+	padding-right:20px;top:-24px;position:relative;
 }
 .stream-post.featured-stream-post{
 	margin-top:0;

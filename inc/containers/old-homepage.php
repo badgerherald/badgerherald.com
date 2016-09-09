@@ -41,7 +41,7 @@ $container = $GLOBALS['container'] ?: new container('old-homepage');
 	                    'operator' => 'IN'
 	                )
 	            );
-			$args['posts_per_page'] = 4;
+			$args['posts_per_page'] = 3;
 
 			$featured = new WP_Query( $args );
 
@@ -51,16 +51,11 @@ $container = $GLOBALS['container'] ?: new container('old-homepage');
 
 
 				if($featured->current_post == 0 && !is_paged()){
-					get_template_part( 'content', 'summary-featured' );
-				}else{
-
-					if($featured->current_post == 1 && !is_paged()){
-						get_template_part( 'inc/blocks/teaser', 'feature' );
-					}
-					hrld_html_tag_open("li");
-						get_template_part( 'inc/blocks/teaser', 'brief' );
-					hrld_html_tag_close("li");
+					get_template_part( 'inc/blocks/teaser', 'feature' );
+				} else {
+					get_template_part( 'inc/blocks/teaser', 'brief' );
 				}
+				
 				$exclude[] = $post->ID;
 			endwhile;
 			
@@ -97,12 +92,14 @@ $container = $GLOBALS['container'] ?: new container('old-homepage');
 						hrld_html_tag_open("span","",array("summary-time-stamp"));
 							echo " &middot; ";
 							exa_time();
+
 						hrld_html_tag_close("span");
 					hrld_html_tag_close("span");
 					hrld_html_tag_open("h4");
 						hrld_html_tag_open("a","",array(""),get_the_title( $post->ID ),true, array( "href" => get_permalink( $post->ID )));
 					hrld_html_tag_close("h4");
 				hrld_html_tag_close("li");
+
 
 			endwhile;
 
