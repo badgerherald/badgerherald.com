@@ -7,6 +7,17 @@
 			border-bottom : 1px solid $greyBorder;
 		}
 	}
+
+	&.black{
+		.all-link.pagination-link {
+			a {
+				color: white;
+			}
+			a:hover{
+				color: gray;
+			}
+		}
+	}
 }
 
 @include breakpoint('desktop') {
