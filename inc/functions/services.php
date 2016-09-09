@@ -51,7 +51,7 @@ CHARTBEAT;
 	echo $js;
 
 }
-if ( hrld_is_production()) 
+if ( !exa_dev()) 
 	add_action('wp_footer','exa_register_chartbeat');
 
 /**
@@ -99,7 +99,7 @@ GAB;
 	echo $js;
 
 }
-if ( hrld_is_production()) 
+if ( !exa_dev()) 
 	add_action('wp_footer','exa_register_google_analytics');
 
 /**
@@ -126,5 +126,5 @@ function exa_twitter_conversion_tracker() {
 			</noscript>';
 
 }
-if ( hrld_is_production()) 
+if ( !exa_dev()) 
 	add_action('wp_footer','exa_twitter_conversion_tracker');

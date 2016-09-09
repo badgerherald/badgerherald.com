@@ -58,6 +58,9 @@ if ( ! defined( 'EXA_DEV' ) )
  * as defined (currently) in the WP_CONFIG file.
  *
  * @since v0.2
+ * 
+ * DEPRACATED. this function should not be used anymore.
+ * Keeping it around for now, in case it's still used somewhere...
  */
 function hrld_is_production() {
 	return HRLD_PRODUCTION;

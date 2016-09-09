@@ -8,6 +8,25 @@
 
 
 /**
+ * if EXA_DEV defined, return that,
+ * else if WP_DEBUG defined, return that,
+ * else return false.
+ * 
+ *
+ * @since v0.6
+ */
+function exa_dev() {
+	if( defined( EXA_DEV))
+		return EXA_DEV;
+	else if( defined(WP_DEBUG))
+		return WP_DEBUG;
+	else
+		return false;
+   
+}
+
+
+/**
  * @internal 
  * 
  * If EXA_DEV is set, replaces whatever (local)host an attachment_url
@@ -18,7 +37,7 @@
 function _exa_dev_attachment_url( $link ) {
 
 	$url = parse_url( $link );
-	if( EXA_DEV && !strpos( $url['host'], 'badgerherald.com') ) {
+	if( exa_dev() && !strpos( $url['host'], 'badgerherald.com') ) {
 		$link = preg_replace('/.*uploads/', 'http://badgerherald.com/media', $link); 
 	}
 	return $link;
