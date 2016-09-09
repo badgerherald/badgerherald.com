@@ -51,7 +51,7 @@ CHARTBEAT;
 	echo $js;
 
 }
-add_action('wp_footer','exa_register_chartbeat');
+
 
 /**
  * Outputs javascript code for Google Analytics tracking in the footer.
@@ -98,7 +98,6 @@ GAB;
 	echo $js;
 
 }
-add_action('wp_footer','exa_register_google_analytics');
 
 /**
  * Prints twitter conversion tracking ad code.
@@ -124,4 +123,14 @@ function exa_twitter_conversion_tracker() {
 			</noscript>';
 
 }
-add_action('wp_footer','exa_twitter_conversion_tracker');
+
+/**
+ *
+ * Analytics shouldn't be tracked on dev sites.
+ *
+ */
+if ( !exa_dev() ){
+	add_action('wp_footer','exa_twitter_conversion_tracker');
+	add_action('wp_footer','exa_register_chartbeat');
+	add_action('wp_footer','exa_register_google_analytics');
+}
