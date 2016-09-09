@@ -43,6 +43,7 @@
 	
 	main.article-content {
 		.meta {
+			min-height: 10px;
 			font-family: $headline;
 			color: $darkgrey;
 			margin-bottom: 24px;
@@ -223,6 +224,9 @@
 			position: relative;
 			float:left;
 			padding-right: 20px;
+			.meta {
+				min-height: 18px;
+			}
 			.hero {
 				img {
 					// width: 100%;

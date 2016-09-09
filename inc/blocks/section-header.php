@@ -86,7 +86,7 @@ global $OnCampus;
 			'taxonomy' => 'topic',
 			'field' => 'slug',
 			'terms' => array('explainers',get_query_var( 'topic' )),
-			'operator' => 'IN'
+			'operator' => 'AND'
 			),
 		);
 	} else {
