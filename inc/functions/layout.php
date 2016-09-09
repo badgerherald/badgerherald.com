@@ -95,7 +95,7 @@ function exa_toggle_feature_box($post) {
 function exa_toggle_feature_save($post_id, $post){
 
 	$hero_style = isset($_POST['layout-hero']) ? $_POST['layout-hero'] : 'hero-standard';
-	$hero_media = isset($_POST['layout-media']) ? $_POST['layout-media'] : 'media-image'; 
+	$hero_media = isset($_POST['layout-media']) ? $_POST['layout-media'] : 'media-none'; 
 	$layout = isset($_POST['layout-layout']) ? $_POST['layout-layout'] : 'layout-standard'; 
 
 	wp_set_object_terms($post_id,array($hero_style,$hero_media,$layout),'exa_layout');
@@ -229,12 +229,14 @@ function exa_hero_style($post = null) {
 function exa_hero_media($post = null) {
 
 	$post = get_post($post);
-
-	if(has_term('media-video','exa_layout',$post)) {
-		return 'video';
-	} else {
+	if( has_term('media-image','exa_layout',$post)) {
 		return 'image';
+	} else if( has_term('media-video','exa_layout',$post)) {
+		return 'video';
 	}
+	
+	return 'none';
+	
 
 }
 
