@@ -51,7 +51,8 @@ CHARTBEAT;
 	echo $js;
 
 }
-add_action('wp_footer','exa_register_chartbeat');
+if ( hrld_is_production()) 
+	add_action('wp_footer','exa_register_chartbeat');
 
 /**
  * Outputs javascript code for Google Analytics tracking in the footer.
@@ -98,7 +99,8 @@ GAB;
 	echo $js;
 
 }
-add_action('wp_footer','exa_register_google_analytics');
+if ( hrld_is_production()) 
+	add_action('wp_footer','exa_register_google_analytics');
 
 /**
  * Prints twitter conversion tracking ad code.
@@ -124,4 +126,5 @@ function exa_twitter_conversion_tracker() {
 			</noscript>';
 
 }
-add_action('wp_footer','exa_twitter_conversion_tracker');
+if ( hrld_is_production()) 
+	add_action('wp_footer','exa_twitter_conversion_tracker');
