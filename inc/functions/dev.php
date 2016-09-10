@@ -16,9 +16,9 @@
  * @since v0.6
  */
 function exa_dev() {
-	if( defined( EXA_DEV))
+	if( defined( 'EXA_DEV') )
 		return EXA_DEV;
-	else if( defined(WP_DEBUG))
+	else if( defined('WP_DEBUG') )
 		return WP_DEBUG;
 	else
 		return false;
