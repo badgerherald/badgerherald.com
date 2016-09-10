@@ -34,7 +34,8 @@ Class Popular_Post_Widget extends AnalyticBridgePopularPostWidget {
 
 			$query = new WP_Query( array(
 					"post__in" => $popPosts->ids,
-					"posts_per_page" => $popPosts->size
+					"posts_per_page" => $popPosts->size,
+					"post_status " => 'publish'
 				)
 			);
 
