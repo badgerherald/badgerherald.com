@@ -61,7 +61,10 @@ if ( ! defined( 'EXA_DEV' ) )
  * @deprecated v0.6 this function should not be used anymore. Keeping it around for now, in case it's still used somewhere...
  */
 function hrld_is_production() {
-	return HRLD_PRODUCTION;
+	if( defined('HRLD_PRODUCTION'))
+		return HRLD_PRODUCTION;
+	else
+		return false;
 }
 
 /**
