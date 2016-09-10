@@ -20,7 +20,7 @@ function exa_staff_editors_for_category($category = null) {
 	}
 
 	$slug = $category->slug;
-	$staff = get_option( 'exa_staff_assignments' );
+	$staff = get_option( 'exa_staff_assignments', array() );
 
 	if( array_key_exists('editorial',$staff) && array_key_exists($slug,$staff['editorial']) ) {
 		return array_key_exists('editors',$staff['editorial'][$slug]) ? $staff['editorial'][$slug]['editors'] : array() ;
