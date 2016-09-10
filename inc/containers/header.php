@@ -4,14 +4,16 @@ $container = $GLOBALS['container'] ?: new container('header');
 $container->default_args(
 	array(
 		'background' => 'grey',
-		'breakpoint' => array()
+		'breakpoint' => array(),
+		'flex' => true
 	)
 );
 
 ?>
 
 <div class="<?php echo $container->classes(); ?>">
-	<div class="wrapper">
+	<div class="wrapper <?php echo $container->args['flex'] ? "flex": ""; ?>">
+
 		<a id="logo" href="<?php bloginfo('url'); ?>">
 			<?php if($container->args['background'] == 'black') : ?>
 				<img src="<?php bloginfo('template_url') ?>/img/logo/header-horizontal-white.png" />

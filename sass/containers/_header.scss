@@ -14,6 +14,7 @@
 		padding: 18px 0;
 		a img {
 		    width:flex(160,300);
+		    max-width: 220px;
 		    height: auto;
 		}
 		.social-buttons {
@@ -26,7 +27,7 @@
 	.container.header {
 		.wrapper {
 			a img {
-				width: flex(220,600);
+				width: 220px;
 			}
 			.social-buttons {
 				display: block;

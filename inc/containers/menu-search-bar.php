@@ -11,14 +11,15 @@ $container = $GLOBALS['container'] ?: new container('menu-search-bar');
 $container->default_args(
 	array(
 		'background' => 'grey',
-		'breakpoint' => array()
+		'breakpoint' => array(),
+		'flex' => true
 	)
 );
 
 ?>
 
 <div class="<?php echo $container->classes(); echo " " . $container->args['background']; ?>">
-    <div class="wrapper">
+	<div class="wrapper <?php echo $container->args['flex'] ? "flex": ""; ?>">
 		<?php 
 			if ( has_nav_menu( 'header-primary' ) ) {
 				wp_nav_menu( array(
