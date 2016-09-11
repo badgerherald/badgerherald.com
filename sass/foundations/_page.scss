@@ -13,15 +13,7 @@ body {
 }
 
 
-.wrapper {
-	margin: 0 auto;
-	max-width: 540px;
-	width: flex(300,320);
-	position: relative;
-}
-.wrapper.colophon{
-	clear: both;
-}
+
 
 /* Page surrounds everything inside of body */
 
@@ -60,26 +52,10 @@ body {
 	background: $black;
 }
 
-@media (min-width: 600px) {
+@include breakpoint(tablet) {
 	body.admin-bar {
 		#pullout, .fixed-bar-block {
-//			top: 46px !important;
 		}
-	}
-
-}
-
-@media (min-width: 760px) {
-	body.admin-bar {
-		#pullout, .fixed-bar-block {
-//			top: 32px !important;
-		}
-	}
-	/** _page.scss overrides */
-
-	/* Wrapper */
-	.wrapper {
-		max-width: 740px;
 	}
 	#primary {
 		margin-top: 0;
@@ -93,26 +69,11 @@ body {
 }
 
 @include breakpoint(desktop) {
-
 	#primary {
 		padding: 0;
 	}
-
-	.wrapper {
-		max-width: 1020px;
-		width: 1020px;
-	}
-
 }
 
-@include breakpoint(xl) {
-
-	.wrapper {
-		max-width: 1180px;
-		width: 1180px;
-	}
-
-} 
 
 
 
