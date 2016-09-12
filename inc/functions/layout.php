@@ -229,10 +229,12 @@ function exa_hero_style($post = null) {
 function exa_hero_media($post = null) {
 
 	$post = get_post($post);
-	if( has_term('media-image','exa_layout',$post)) {
+	if( has_term('media-image','exa_layout',$post) && has_post_thumbnail( $post )) {
 		return 'image';
 	} else if( has_term('media-video','exa_layout',$post)) {
 		return 'video';
+	} else if( has_post_thumbnail( $post )){
+		return 'image';
 	}
 	
 	return 'none';
