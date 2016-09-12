@@ -1,9 +1,7 @@
 /**
  * Header Container
- * ---------------------------------------------------------
- * php: ./inc/containers/header.php
- * since: 0.3
- * -----------------------------------------------------------------------------
+ * @since: v0.3
+ * 
  */
 
 .container.header {
@@ -12,12 +10,9 @@
 		border-top: 5px solid $blue;
 		border-bottom: 1px solid $greyBorder;
 		padding: 18px 0;
-		a img {
-		    width:flex(160,300);
-		    height: auto;
-		}
-		.social-buttons {
-			display: none;
+		a#logo img {
+			width:flex(160,300);
+			height: auto;
 		}
 	}
 }
@@ -25,46 +20,26 @@
 @include breakpoint("tablet") {
 	.container.header {
 		.wrapper {
-			a img {
+			a#logo img {
 				width: flex(220,600);
 			}
-			.social-buttons {
-				display: block;
-                text-align: right;
-                position: absolute;
-                bottom: 24px;
-                width: 300px;
-                right: 0;
-                h3 {
-                    font-size: 13px;
-                    font-style: italic;
-                    margin-bottom: 6px;
-                }
-                .twitter {
-                    .twitter-follow-button { vertical-align: bottom !important; }
-                }
-                .facebook {
-                    margin-bottom: 5px;
-                }
-            }
 		}
-	}
-	.container.header.black {
-		.wrapper {
-			.social-buttons {
-				color: $white;
-			}
+		.header-charm {
+			float: right;
+			width: flex(480,600);
 		}
 	}
 }
 @include breakpoint("desktop") {
-
 	.container.header {
 		.wrapper {
-			a img {
+			a#logo img {
 				width: 220px;
 			}
 		}
+		.header-charm {
+			float: right;
+			width: 600px;
+		}
 	}
-
 }
