@@ -12,7 +12,7 @@ global $post;
 
 get_template_part('header'); 
 
-if(exa_hero_media_type() == 'video') : 
+if(exa_hero_media() == 'video') : 
 ?>
 
 	<div class="black" style="padding-top:18px;">
