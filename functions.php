@@ -877,7 +877,12 @@ function exa_interactive_single_template($single_template) {
 }
 add_filter('single_template', 'exa_interactive_single_template');
 
-	
+/**
+ *
+ *
+ *
+ * @deprecated v0.6 this whole hrld_html_tag thing is silly.
+ */	
 function hrld_html_tag_open($tag = "",$id = "",$class = array(''),$content = "",$close = false, $misc = array()){
 	$result = "";
 	if( $tag != ""){
@@ -909,6 +914,13 @@ function hrld_html_tag_open($tag = "",$id = "",$class = array(''),$content = "",
 	return;
 
 }
+
+/**
+ *
+ *
+ *
+ * @deprecated v0.6 this whole hrld_html_tag thing is silly.
+ */
 function hrld_html_tag_close($tag = ""){
 	$result = "";
 	if( $tag != ""){
@@ -918,6 +930,13 @@ function hrld_html_tag_close($tag = ""){
 	echo $result;
 	return;
 }
+
+/**
+ *
+ *
+ *
+ * @deprecated v0.6 this whole hrld_html_tag thing is silly.
+ */
 function get_hrld_html_tag_close($tag = ""){
 	$result = "";
 	if( $tag != ""){
