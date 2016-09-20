@@ -30,7 +30,29 @@ $container = $GLOBALS['container'] ?: new container('footnotes');
 		
 				<p>This article was published <?php the_time("M j, Y") ?> at <?php the_time("g:i a"); ?> and 	last updated <?php the_modified_time("M j, Y") ?> at <?php the_modified_time("g:i a"); ?><p>
 			</div>
-	
+			
+			<?php
+				$post_tags = get_the_tags();
+				if( $post_tags) :
+			?>
+					<div class="post-tags">
+						<span>Tags: </span>
+						<?php
+								foreach ($post_tags as $post_tag_key => $post_tag):
+
+									$comma = ' ';
+									if( $post_tag_key + 1 < sizeof( $post_tags ) ){
+										$comma = ', ';
+									}
+									?>
+									<a target="_blank" href="<?php echo get_tag_link( $post_tag->term_id); ?>"><?php echo ucfirst( $post_tag->name); ?></a><?php echo $comma; ?>
+									
+								<?php
+								endforeach;
+						?>
+					</div>
+				<?php endif; ?>
+
 			<a class="comment-button" href="#">Comments</a>
 			<aside class="comments" style="display:none"><?php comments_template(); ?></aside>
 

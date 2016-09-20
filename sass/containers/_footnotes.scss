@@ -68,6 +68,9 @@
 					color: $greyText;
 				}
 			}
+			.post-tags{
+				font-family: $headline;
+			}
 			.comment-button {
 				padding: 6px 9px;
 				color: #fff;
@@ -220,6 +223,9 @@
 				ul li {
 					width: 300px;
 				}
+			}
+			.post-tags{
+				width: 75%;
 			}
 		}
 	}
