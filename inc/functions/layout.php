@@ -92,7 +92,7 @@ function exa_toggle_feature_box($post) {
 
 }
 
-function exa_toggle_feature_save($post_id, $post){
+function exa_toggle_feature_save($post_id, $post=null){
 
 	$hero_style = isset($_POST['layout-hero']) ? $_POST['layout-hero'] : 'hero-standard';
 	$hero_media = isset($_POST['layout-media']) ? $_POST['layout-media'] : 'media-none'; 
