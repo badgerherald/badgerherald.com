@@ -1,12 +1,19 @@
 <?php  
 
 $container = $GLOBALS['container'] ?: new container('feature-widget');
+$container->default_args(
+	array(
+		'background' => 'grey',
+		'breakpoint' => array(),
+		'flex' => false
+	)
+);
 
 ?>
 
 <div class="<?php echo $container->classes(); ?>">
 	
-	<div class="wrapper">
+	<div class="wrapper <?php echo $container->args['flex'] ? "flex": ""; ?>">
 
 		<div class="feature">
 
@@ -32,9 +39,9 @@ $container = $GLOBALS['container'] ?: new container('feature-widget');
 				
 					<div class="dotted-overlay-container">
 					<?php
-						if( has_post_thumbnail()){
+						if( has_post_thumbnail()) {
 								the_post_thumbnail('post-thumbnail');
-						}else{
+						} else {
 							echo "<img " . 'class="attachment-post-thumbnail size-post-thumbnail wp-post-image" '.
 									'style="height: 562px; background-color: #666;" />';
 						}
@@ -43,9 +50,9 @@ $container = $GLOBALS['container'] ?: new container('feature-widget');
 
 					<div class="title-container">
 						
-						<div class="block-headline-container">
-							<h1 class="block-headline"><span><?php the_title(); ?></span></h1>
-						</div>
+							<h1 class="headline"><span><?php the_title(); ?></span></h1>
+
+						<div class="lede"><?php the_excerpt(); ?></div>
 
 						<div class="byline">
 							
@@ -60,7 +67,7 @@ $container = $GLOBALS['container'] ?: new container('feature-widget');
 
 						</div>
 
-						<div class="lede"><?php the_excerpt(); ?></div>
+						
 
 					</div>
 

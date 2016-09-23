@@ -6,6 +6,10 @@
  * -----------------------------------------------------------------------------
  */
 
+
+
+
+
 .container.feature-widget {
 	.widget {
 		display: none;
@@ -17,14 +21,55 @@
 			width:100%;
 			height:auto;
 		}
+
+		.headline a, 
+		.headline span {
+			color: $truewhite;
+			display: inline;
+			text-transform: none;
+			font-style: normal;
+			border: 0;
+			font-weight: 700;
+			-webkit-font-smoothing: antialiased;
+			-moz-osx-font-smoothing: grayscale;
+			text-rendering: optimizeLegibility;
+			background-color: $black;
+			-webkit-box-shadow: -10px 0 0 $black,10px 0 0 $black;
+			-moz-box-shadow: -10px 0 0 $black,10px 0 0 $black;
+			box-shadow: -10px 0 0 $black,10px 0 0 $black;
+			padding: 2px 0 1px;
+		}
+
+		.headline {
+			margin-left: 10px;
+			margin-right: 10px;
+			line-height: 24px;
+			font-size: 20px;
+			margin-bottom: 0;
+		}
+		
+		.headline:hover a,
+		a:hover .headline span {
+			transition: all 1s ease;
+			transition: color 0.25s ease;
+			color: $black;
+			background-color: $truewhite;
+			-webkit-box-shadow: -10px 0 0 $truewhite,10px 0 0 $truewhite;
+			-moz-box-shadow: -10px 0 0 $truewhite,10px 0 0 $truewhite;
+			box-shadow: -10px 0 0 $truewhite,10px 0 0 $truewhite;
+		}
+
 		.byline {
-			padding: 12px 0;
+			padding: 3px 0 6px;
+			background:$black;
+			display: inline-block;
+			padding-right:10px;
 			.mug {
 				width: 45px;
 				height: auto;
 				img {
-					width: 100%;
-					height: auto;
+					width: auto;
+					height: 100%;
 					float: left;
 				}
 			}
@@ -43,10 +88,9 @@
 			}
 		}
 		.title-container {
-			width:flex(240,300);
-			margin-left: flex(10,300);
-			position: absolute;
-			bottom: 24px;
+			width:flex(290,300);
+			position: relative;
+			margin-top:-46px;
 			z-index: 2;
 			div.lede {
 				visibility: hidden;	// these two lines are the same
@@ -63,24 +107,17 @@
 	.container.feature-widget {
 		a.story {
 			.title-container {
-				width: flex(600,760);
-				margin-left:80px;
-				bottom: 60px;
+				position:absolute;
+				bottom: 0px;
 			}
-			&:hover {
-				.title-container {
-					transition: all 0.5s linear;
-					div.lede {
-						display: block;
-						width: flex(460,760);
-						font-size: 16px;
-						line-height: 24px;
-						position: relative;
-						visibility: visible;
-						height: auto;
-					}
-				}
+			h1.headline a, 
+			h1.headline span
+			 {
+				font-size: 50px;
+				line-height: 60px;
+				padding: 4px 0 2px;
 			}
+
 		}
 	}
 }
@@ -88,16 +125,16 @@
 @include breakpoint('desktop') {
 	.container.feature-widget {
 		.feature {
-			width: 700px;
+			width: flex(720,1040);
 			position: relative;
 			float: left;
 		}
 		.widget {
 			display: block;
-			width: 300px;
+			width: flex(300,1040);
 			background: $white;
 			float: left;
-			margin-left: 20px;
+			margin-left: flex(20,1040);
 			position: relative;
 			text-align: center;
 			padding-top: 36px;
@@ -158,11 +195,13 @@
 
 @include breakpoint('xl') {
 	.container.feature-widget {
+		overflow:hidden;
 		.feature {
-			width: 860px;
+			width: flex(860,1180);
 		}
 		.widget {
-			width: 300px;
+			width: flex(300,1180);
+			margin-left: flex(20,1180);
 		}
 	}
 }

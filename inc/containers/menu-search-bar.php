@@ -12,7 +12,7 @@ $container->default_args(
 	array(
 		'background' => 'grey',
 		'breakpoint' => array(),
-		'flex' => true
+		'flex' => false
 	)
 );
 

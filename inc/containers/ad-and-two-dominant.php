@@ -6,11 +6,19 @@
 
 global $OnCampus;
 $container = $GLOBALS['container'] ?: new container('header');
+$container->default_args(
+	array(
+		'background' => 'grey',
+		'breakpoint' => array(),
+		'flex' => false
+	)
+);
 
 ?>
 
+
 <div class="<?php echo $container->classes(); ?>">
-	<div class="wrapper">
+	<div class="wrapper <?php echo $container->args['flex'] ? "flex": ""; ?>">
 		<div class="sidekick-ad">
 		<?php 
 			$OnCampus->place_ad(
@@ -62,9 +70,7 @@ $container = $GLOBALS['container'] ?: new container('header');
 	
 					<div class="title-container">
 						
-						<div class="block-headline-container">
-							<h2 class="block-headline"><span><?php the_title(); ?></span></h2>
-						</div>
+						<h2 class="headline"><span><?php the_title(); ?></span></h2>
 	
 						<div class="byline">
 							

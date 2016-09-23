@@ -21,7 +21,7 @@
 	position: relative;
 }
 
-@include breakpoint('tablet') {
+@include breakpoint('tablet') { // FLEX BOX WIDTH: 740
 	.container.mobile, .container.desktop, .container.xl {
 		display: none;
 	}
@@ -38,7 +38,7 @@
 	}
 }
 
-@include breakpoint('desktop') {
+@include breakpoint('desktop') { // FLEX BOX WIDTH: 1020
 	.container.mobile, .container.tablet, .container.xl {
 		display: none;
 	}
@@ -49,14 +49,14 @@
 		max-width: 1020px;
 		width: 1020px;
 		&.flex {
-			width: flex(950,1000);
 			min-width: 1020px;
+			width: flex(950,1000);
 			max-width: flex(950,1000);
 		}
 	}
 }
 
-@include breakpoint('xl') {
+@include breakpoint('xl') { // FLEX BOX WIDTH: 1180
 	.container.mobile, .container.tablet, .container.desktop {
 		display: none;
 	}
