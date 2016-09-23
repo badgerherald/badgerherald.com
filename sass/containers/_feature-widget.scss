@@ -60,16 +60,17 @@
 		}
 
 		.byline {
-			padding: 3px 0 6px;
 			background:$black;
 			display: inline-block;
 			padding-right:10px;
+			top: -1px;
+    		position: relative;
 			.mug {
 				width: 45px;
-				height: auto;
+				float:left;
 				img {
 					width: auto;
-					height: 100%;
+					height: auto;
 					float: left;
 				}
 			}

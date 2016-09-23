@@ -72,7 +72,7 @@ $container->default_args(
 						
 						<h2 class="headline"><span><?php the_title(); ?></span></h2>
 	
-						<div class="byline">
+						<span class="byline">
 							
 							<div class="mug">
 								<?php exa_mug(get_the_author_meta('ID'),'small-thumbnail') ?>
@@ -83,7 +83,7 @@ $container->default_args(
 								<span class="author-name"><?php the_author() ?></span>
 							</span>
 	
-						</div>
+						</span>
 	
 					</div>
 	

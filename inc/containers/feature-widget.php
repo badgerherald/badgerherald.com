@@ -54,7 +54,7 @@ $container->default_args(
 
 						<div class="lede"><?php the_excerpt(); ?></div>
 
-						<div class="byline">
+						<span class="byline">
 							
 							<div class="mug">
 								<?php exa_mug(get_the_author_meta('ID'),'small-thumbnail') ?>
@@ -65,7 +65,7 @@ $container->default_args(
 								<span class="author-name"><?php the_author() ?></span>
 							</span>
 
-						</div>
+						</span>
 
 						
 
