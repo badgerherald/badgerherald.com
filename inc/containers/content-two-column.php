@@ -73,7 +73,7 @@ exa_container('headline',$args);
 			</div>
 
 			<div class="popular-posts sidebar-thing">
-				<?php the_widget( "Popular_Post_Widget"); ?>
+				<?php is_active_widget('Popular_Post_Widget') ? the_widget( "Popular_Post_Widget") :0; ?>
 			</div>
 	
 			<div class="ad sidebar-thing">
