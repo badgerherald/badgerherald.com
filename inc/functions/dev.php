@@ -38,7 +38,7 @@ function _exa_dev_attachment_url( $link ) {
 
 	$url = parse_url( $link );
 	if( exa_dev() && !strpos( $url['host'], 'badgerherald.com') ) {
-		$link = preg_replace('/.*uploads/', 'http://badgerherald.com/media', $link); 
+		$link = preg_replace('/.*uploads/', 'https://badgerherald.com/media', $link);
 	}
 	return $link;
 
