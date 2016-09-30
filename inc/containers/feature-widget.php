@@ -21,7 +21,8 @@ $container = $GLOBALS['container'] ?: new container('feature-widget');
 					    'field' => 'slug',
 					    'terms' => 'featured'
 					)
-				)
+				),
+				'no_found_rows' => true
 			);
 			$my_query = new WP_Query( $query_args );
 

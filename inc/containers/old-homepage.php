@@ -42,6 +42,7 @@ $container = $GLOBALS['container'] ?: new container('old-homepage');
 	                )
 	            );
 			$args['posts_per_page'] = 3;
+			$args['no_found_rows'] = true;
 
 			$featured = new WP_Query( $args );
 
@@ -80,6 +81,7 @@ $container = $GLOBALS['container'] ?: new container('old-homepage');
 		            'operator' => 'IN'
 		        )
 		    );
+		    $args['no_found_rows'] = true;
 			$featured = new WP_Query( $args );
 
 			hrld_html_tag_open("ul","",array("list-stories", "homepage-$beat-recent"));

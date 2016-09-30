@@ -37,7 +37,8 @@ $container = $GLOBALS['container'] ?: new container('header');
 				    'field' => 'slug',
 				    'terms' => array('featured','cover')
 				)
-			)
+			),
+			'no_found_rows' => true
 		);
 		$my_query = new WP_Query( $query_args );
 
