@@ -59,8 +59,11 @@ Class Container {
 		return $s . "\n\n";
 	}
 
+	/**
+	 * Returns a string of the containers classes
+	 */
 	public function classes($classes = null) {
-		$classes = "container " . $this->nameClass() . " " . $this->breakpointClasses() . " " . $this->backgroundClass();
+		$classes = "container " . $this->nameClass() . " " . $this->breakpointClasses() . " " . $this->backgroundClass() . " " . $classes;
 		$classes = apply_filters("exa_container_classes",$classes,$this);
 		return $classes;
 	}
