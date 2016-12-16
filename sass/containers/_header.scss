@@ -15,6 +15,9 @@
 			height: auto;
 		}
 	}
+	.header-charm {
+		display: none;
+	}
 }
 
 @include breakpoint("tablet") {
