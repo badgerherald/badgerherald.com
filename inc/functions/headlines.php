@@ -92,10 +92,13 @@ if (is_admin()) :
 	 */
 	function exa_subhead_save_postdata($post_id) {
 	
-		// 1: Verify nonce
-
-		if(!wp_verify_nonce($_POST['_exa_subhead_meta_box'], basename(__FILE__)))
+		if(!array_key_exists("_exa_subhead",$_POST)) {
 			return;
+		}
+
+		if(array_key_exists("_exa_subhead_meta_box",$_POST) && !wp_verify_nonce($_POST['_exa_subhead_meta_box'], basename(__FILE__))) {
+			return;
+		}
 	
 		// 2: Save new subhead
 
