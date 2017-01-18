@@ -134,12 +134,16 @@ if (is_admin()) :
  	 * @since v0.5
  	 */
 	function exa_headline_admin_script($hook) {
+		global $post;
 
-		if ( !('post.php' == $hook) ) return;
-
-		wp_enqueue_style('exa-admin-style', get_template_directory_uri() . '/css/admin/headlines.css');
-    	wp_enqueue_script( 'exa-headline-script', get_template_directory_uri() . '/js/admin/headlines.js' );
-
+		if ( !('post.php' == $hook) ) { 
+			return;
+		}
+		    
+        if ( 'post' === $post->post_type ) {    
+			wp_enqueue_style('exa-admin-style', get_template_directory_uri() . '/css/admin/headlines.css');
+    		wp_enqueue_script( 'exa-headline-script', get_template_directory_uri() . '/js/admin/headlines.js' );
+    	}
 	}
 	add_action('admin_enqueue_scripts', 'exa_headline_admin_script');
 
