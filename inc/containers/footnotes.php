@@ -1,6 +1,6 @@
 <?php 
 
-global $OnCampus;
+global $DoubleClick;
 $container = $GLOBALS['container'] ?: new container('footnotes');
 
 ?>
@@ -59,7 +59,15 @@ $container = $GLOBALS['container'] ?: new container('footnotes');
 		</div>
 
 		<div class="tall-ad">
-			<?php $OnCampus->place_ad(array("desktop" => "article-bottom")); ?>
+			<?php 
+			$DoubleClick->place_ad(
+							'bhrld.dev-footnote-sidekick',
+							array(
+								'phone'=>'',
+								'desktop'=>'300x600,300x250'
+								)
+							);
+			?>
 		</div>
 
 

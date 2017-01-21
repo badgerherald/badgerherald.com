@@ -4,7 +4,7 @@
  * 
  */
 
-global $OnCampus;
+global $DoubleClick;
 $container = $GLOBALS['container'] ?: new container('header');
 
 ?>
@@ -12,15 +12,16 @@ $container = $GLOBALS['container'] ?: new container('header');
 <div class="<?php echo $container->classes(); ?>">
 	<div class="wrapper">
 		<div class="sidekick-ad">
-		<?php 
-			$OnCampus->place_ad(
-				array(
-					'mobile'=>'homepage-sidekick',
-					'tablet'=>'',
-					'desktop'=>'homepage-sidekick',
-					)
-				); 
-		?>
+			<?php 
+			$DoubleClick->place_ad(
+							'bhrld.dev-upper-sidekick',
+							array(
+								'phone'=>'300x250',
+								'tablet'=>'728x90',
+								'desktop'=>'300x250'
+								)
+							);
+			?>
     	</div>
 
     	<div class="feature">

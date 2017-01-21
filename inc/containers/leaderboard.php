@@ -1,6 +1,6 @@
 <?php 
 
-global $OnCampus;
+global $DoubleClick;
 $container = $GLOBALS['container'] ?: new container('leaderboard');
 
 ?>
@@ -11,12 +11,18 @@ $container = $GLOBALS['container'] ?: new container('leaderboard');
 	
 			<?php 
 
-			$OnCampus->place_ad(array(
-								'mobile' => 'mobile-leaderboard',
-								'tablet' => 'leaderboard'
-								)); 
-
-			?>
+			$DoubleClick->place_ad(
+				'bhrld.dev-leaderboard',
+				array(
+					'phone' => '300x50',
+					'tablet' => '728x90,970x300',
+					'desktop' => '',
+					),
+				array (
+					'lazyLoad' => false
+					)
+				); 
+			?> 
 			 
 		</div>
 	</div>
