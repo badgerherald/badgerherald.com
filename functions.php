@@ -24,7 +24,7 @@ include_once('inc/functions/admin.php');
 include_once('inc/functions/services.php');
 include_once('inc/functions/sections.php');
 include_once('inc/functions/staff.php');
-include_once('inc/functions/snippets.php');
+/* include_once('inc/functions/snippets.php'); */
 
 if( class_exists('Popular_Post_Widget') ) {
 	include_once('inc/functions/popular-post-widget.php');
