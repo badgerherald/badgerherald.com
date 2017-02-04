@@ -95,14 +95,20 @@ add_action( 'wp_ajax_nopriv_ajax-hrld_inline_click_script', 'hrld_inline_click_s
  * 
  * @return embed code.
  */
-function exa_inline_link_embed( $matches, $attr, $url, $rawattr ) {
-
+function exa_inline_embed( $matches, $attr, $url, $rawattr ) {
 	global $post;
 
 	$inline_post = _exa_inline_post_from_url( $url );
+
+	return _exa_inline_embed_article( $inline_post );
+}
+wp_embed_register_handler( 'exa-inline-link', '*(?:http|https)://badgerherald.com/*', 'exa_inline_embed' );
+
+function _exa_inline_embed_article( $post ) {
+	$post = get_post($post);
+
 	$thumb_src = _exa_inline_post_thumbnail_src( $inline_post, 'small-thumbnail' );
 	$excerpt = _exa_inline_link_embed_excerpt( $inline_post );
-	
 
 	$ret = "<a target='_BLANK' class='snippet inline' href='$url'>";
 
@@ -121,7 +127,6 @@ function exa_inline_link_embed( $matches, $attr, $url, $rawattr ) {
 
 	return $ret;
 }
-wp_embed_register_handler( 'exa-inline-link', '*(?:http|https)://badgerherald.com/*', 'exa_inline_link_embed' );
 
 function _exa_inline_link_embed_excerpt( $post ) {
 	$post = get_post($post);
