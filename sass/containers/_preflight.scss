@@ -1,9 +1,21 @@
 .container.preflight {
-	// loaded gets added as a class if/when dfw fills the spot.
-	iframe {
-		margin-left: 50px
+	/* loaded gets added as a class if/when dfw fills the spot. */
+	display: none;
+	.scroll-view {
+		display: none;
 	}
 	&.loaded {
+		display: block;
+	}
+	&.decorated {
+		background: $truewhite;
+		margin-bottom: 32px;
+		margin-top: 0px;
+		padding: 24px 0;
+		text-align:center;
+		.preflight-ad .dfw-unit {
+			margin: 0 auto;
+		}
 		.scroll-view {
 			margin-top: 12px;
 			display: block;
@@ -20,14 +32,6 @@
 				text-align: center;
 				display: block;
 			}
-		}
-		background: $truewhite;
-		margin-bottom: 32px;
-		margin-top: 0px;
-		padding: 24px 0;
-		text-align:center;
-		.preflight-ad .dfw-unit {
-			margin: 0 auto;
 		}
 	}
 }

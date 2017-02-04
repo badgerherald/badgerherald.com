@@ -16,7 +16,6 @@ $container = $GLOBALS['container'] ?: new container('leaderboard');
 				array(
 					'phone' => '300x50',
 					'tablet' => '728x90,970x300',
-					'desktop' => '',
 					),
 				array (
 					'lazyLoad' => false
