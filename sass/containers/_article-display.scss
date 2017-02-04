@@ -409,69 +409,6 @@
 				line-height: 14px;
 			}
 		}
-		a.hrld-inline-link {
-			cursor: pointer;
-			margin: 0px 0 12px;
-			font-family: $headline;
-			font-size: 15px;
-			line-height: 18px;
-			color: $black;
-			position: relative;
-			padding:9px 10px;
-			display: block;
-			background: $truewhite;
-			.hrld-inline-thumbnail {
-				width: 120px;
-				min-width: 120px;
-				max-width: 120px;
-				margin-top: 3px;
-				float:right;
-				clear:left;
-				padding: 0px 0px 6px 10px;
-			}
-			.hrld-inline-link-title {
-				display: block;
-				font-weight: 700;
-				font-size: 18px;
-				line-height: 21px;
-				&:before {
-					/* new window icon */
-					font-family: $icon;
-					content: ' w';
-					float:right;
-					width:32px;
-					height: 32px;
-					display: block;
-					text-align: right;
-					visibility: hidden;
-					color: $black;
-					// text-shadow: none;
-				}
-			}
-			.hrld-inline-link-excerpt {
-				color: $darkgrey;
-				display: block;
-				margin-top: 6px;
-				&:after {
-					content: " ";
-					clear: left;
-					display: block;
-				}
-			}
-			.hrld-inline-link-excerpt-small {
-
-			}
-
-			&:hover {
-				background: $truewhite;
-				.hrld-inline-link-title {
-					color: $blue;
-					&:before {
-						visibility: visible;
-					}
-				}
-			}
-		}
 		.wp-caption {
 			max-width: 100% !important; // wordpress adds an element style for width;
 			font-size: 16px;
