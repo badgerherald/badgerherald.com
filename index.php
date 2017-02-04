@@ -1,6 +1,6 @@
 <?php
 /**
- * Template: Homepage
+ * This template is called when the homepage is loaded
  * 
  * @since v0.1
  */

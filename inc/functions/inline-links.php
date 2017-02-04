@@ -1,19 +1,7 @@
 <?php
-/*
-Plugin Name: 	Hrld Inline Links
-Description: 	Makes URLs pasted on their own line inline links that can be styled as desired.
-Author: 		Will Haynes
-Author URI: 	http://badgerherald.com
-License: 		Copyright (c) 2013 The Badger Herald
 
 
-TODO:
-
- - This plugin should be extended to also include links to any other article on the web, using
-   embed.ly's embedding service.
-
-*/
-
+define('EXA_INLINE_CLICKS_KEY', '_exa-inline-clicks');
 
 /**
  * Enqueue's scripts and styles for plugin operation.
@@ -50,35 +38,43 @@ add_action( 'wp_enqueue_scripts', 'exa_inline_link_embed_enqueue' );
  * 
  * @since v0.6
  */
-function hrld_inline_click_submit_handler() {
-	
+function exa_inline_click_submit_handler() {
 	global $wpdb;
 
-	$nonce = $_POST['nonce']; 	
-	if ( ! wp_verify_nonce( $nonce, 'hrld-count-click' ) )
-		die ( 'Nice Try' );
+	$nonce = array_key_exists('nonce',$_POST) ? $_POST['nonce'] : ""; 	
+	if ( ! wp_verify_nonce( $nonce, 'exa-count-click' ) ) {
+		die ( '' );
+	}
 
-	$pid = $_POST["hrld_inline_id"];
+	$post_id = $_POST["exa_inline_id"];
 
-	// Only count clicks from users who can't edit the post.
 	if( ! current_user_can('edit_post',$pid) ) {
-	
-		$key = "_hrld-inline-click-" . $_POST["hrld_inline_url"];
-	
-		$curClicks = get_post_meta($pid,$key,true);
-
-		if($curClicks == "" ) {
-			add_post_meta($pid,$key,1,true);
-		} else {
-			update_post_meta($pid,$key,$curClicks+1);
-		}
+		$url = $_POST["exa_inline_url"];
+		exa_inline_increase_clicks($post_id,$url);
 	}
 
 	return;
-
 }
-add_action( 'wp_ajax_ajax-hrld_inline_click_script', 'hrld_inline_click_submit_handler' );
-add_action( 'wp_ajax_nopriv_ajax-hrld_inline_click_script', 'hrld_inline_click_submit_handler' );
+add_action( 'wp_ajax_ajax-exa_inline_click_script', 'exa_inline_click_submit_handler' );
+add_action( 'wp_ajax_nopriv_ajax-exa_inline_click_script', 'exa_inline_click_submit_handler' );
+
+
+function exa_inline_clicks($post,$url) {
+	$post = get_post($post);
+	$allClicks = get_post_meta($post,EXA_INLINE_CLICKS_KEY,true);
+	return $allClicks[$url];
+}
+
+function exa_inline_increase_clicks($post,$url) {
+	$post = get_post($post);
+
+	$allClicks = get_post_meta($post,EXA_INLINE_CLICKS_KEY,true);
+	$allClicks[$url] =  array_key_exists($url,$allClicks) ? $allClicks[$url] + 1 : 1;
+
+	update_post_meta($post,$key,$allClicks);
+}
+
+
 
 /**
  * Parses the passed in http://badgerherald.com url and returns output 'embed' code.
@@ -100,15 +96,15 @@ function exa_inline_embed( $matches, $attr, $url, $rawattr ) {
 
 	$inline_post = _exa_inline_post_from_url( $url );
 
-	return _exa_inline_embed_article( $inline_post );
+	return _exa_inline_embed_article( $inline_post, $url );
 }
 wp_embed_register_handler( 'exa-inline-link', '*(?:http|https)://badgerherald.com/*', 'exa_inline_embed' );
 
-function _exa_inline_embed_article( $post ) {
+function _exa_inline_embed_article( $post, $url ) {
 	$post = get_post($post);
 
-	$thumb_src = _exa_inline_post_thumbnail_src( $inline_post, 'small-thumbnail' );
-	$excerpt = _exa_inline_link_embed_excerpt( $inline_post );
+	$thumb_src = _exa_inline_embed_thumbnail_src( $post, 'small-thumbnail' );
+	$excerpt = _exa_inline_embed_excerpt( $post );
 
 	$ret = "<a target='_BLANK' class='snippet inline' href='$url'>";
 
@@ -118,7 +114,7 @@ function _exa_inline_embed_article( $post ) {
 	/* Title */
 	$ret .=	"<span class='title'>";
 	$ret .= _exa_inline_embed_clicks_string( $post, $url );
-	$ret .= $inline_post->post_title . "</span>";
+	$ret .= $post->post_title . "</span>";
 
 	/* Excerpt */
 	$ret .= "<span class='excerpt'>" . $excerpt . "</span>";
@@ -128,7 +124,7 @@ function _exa_inline_embed_article( $post ) {
 	return $ret;
 }
 
-function _exa_inline_link_embed_excerpt( $post ) {
+function _exa_inline_embed_excerpt( $post ) {
 	$post = get_post($post);
 	$excerpt = $post->post_content;
 	$excerpt = strip_shortcodes( $excerpt );
@@ -148,20 +144,13 @@ function _exa_inline_embed_clicks_string( $post, $url ) {
 		$ret = "<span class='exa-inline-click-count'>" . $clicks . " Click";
 		$ret .= $clicks == 1 ? "" : "s";
 		$ret .= "</span> | ";
+		return $ret;
 	}
 
-	return $ret;
+	return;
+	
 }
 
-function exa_inline_clicks($post,$url) {
-	$post = get_post($post);
-	$key = "_exa-inline-click-" . $url;
-	return get_post_meta($post->ID,$key,true);
-}
-
-/**
- * @return WP Post | null
- */
 function _exa_inline_post_from_url($url) {
 	$post_id = url_to_postid($url);
 	return get_post($post_id);
@@ -172,7 +161,7 @@ function _exa_inline_post_from_url($url) {
  * 
  * @return string | null
  */
-function _exa_inline_post_thumbnail_src($post,$size) {
+function _exa_inline_embed_thumbnail_src($post,$size) {
 	$post = get_post($post);
 
 	$thumb_id = get_post_thumbnail_id( $post );

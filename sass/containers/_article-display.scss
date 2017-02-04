@@ -16,14 +16,6 @@
  *						div.clearfix
  *						section.article-footnotes
  *
- * ## Notes:
- *
- *	- `.lede-sidebar` is positioned absolutely. Its height and the
- * 	  positions of its contents is then decided by javascript on
- *	  pageload.
- *  - much of the style in the `.article-text` style method is duplicated
- *    in the editor styles.
- *
  * ## Contents:
  *
  *  1.0 Hero styles.
@@ -40,7 +32,6 @@
  */
 
 .container.article-display {
-	
 	main.article-content {
 		.meta {
 			min-height: 10px;
@@ -140,7 +131,6 @@
 			}
 		}
 	}
-
 	aside.sidebar {
 		width: 100%;
 		display: block;
@@ -207,18 +197,12 @@
 					color: $blue;
 				}
 			}
-			
 		}
-		
 	}
 }
 
 @include breakpoint(desktop) {
-
-	/* Header desktop styles */
-
 	.container.article-display {
-		
 		main.article-content {
 			width: 700px;
 			position: relative;
@@ -226,11 +210,6 @@
 			padding-right: 20px;
 			.meta {
 				min-height: 18px;
-			}
-			.hero {
-				img {
-					// width: 100%;
-				}
 			}
 		}
 		aside.sidebar {
@@ -243,25 +222,18 @@
 }
 
 @include breakpoint(xl) {
-
 	/* Header desktop styles */
-
 	.container.article-display {
-
 		main.article-content {
 			width: 860px;
 			.article-text {
 				padding-right: 80px;
 			}
 		}
-
 		main.article-content {
 			.hero {
 				.hero-caption {
 					padding-right: 80px;
-					&:after {
-						//left: 80px;
-					}
 				}
 			}
 		}
@@ -315,7 +287,6 @@
 			margin: 12px 0 0px;
 			font-size: 24px;
 			text-shadow: -1px 1px rgba($truewhite,.8);
-			// text-transform: uppercase;
 		}
 		h4 {
 			font-family: $body;
@@ -341,7 +312,6 @@
 		}
 
 		/** Lists */
-
 		ul {
 			list-style-type: none;
 			margin: 24px 0;
@@ -396,7 +366,6 @@
 			font-family: $headline;
 			font-size: 18px;
 		}
-
 		.ad-in-content {
 			margin: 24px 0;
 			&:before {
@@ -508,7 +477,6 @@ q.pullquote {
 }
 
 @include breakpoint(tablet) {
-	
 	.container.article-display.feature {
 		.article-content {
 			margin: 0 auto;
@@ -542,50 +510,16 @@ q.pullquote {
 	}
 }
 
-@include breakpoint(desktop){
-
-}
-
-
-
 @include breakpoint(tablet) {
-
-	/* .article-text tablet styles */
-
 	.container.article-display {
-
 		.article-text {
 			font-size: 20px;
 			line-height: 30px;
 			width:100%;
 			position: relative;
-			p,h1,h2,h3,h4,h5,h6 {
-			//	margin-left: 80px;
-			//	margin-right: 80px;
-				}
-			h4 {
-			//	margin-left: 80px;
-			}
-			.twitter-tweet {
-			//	margin-left: 80px !important;
-			}
 			blockquote, ul, ol, dl {
-			//	margin-left: 80px;
 				li {
 					padding:0;
-				}
-			}
-			a.hrld-inline-link {
-			//	margin-left: -80px;
-				padding:12px 20px;
-				overflow:auto;
-				img.hrld-inline-thumbnail {
-					float: left;
-					padding-left:0;
-					padding-right: 20px;
-					width: 140px;
-					min-width: 140px;
-					max-width: 140px;
 				}
 			}
 			.wp-caption {
@@ -632,9 +566,6 @@ q.pullquote {
 }
 
 @include breakpoint(desktop) {
-
-	/* .article-text desktop styles */
-
 	.container.article-display {
 		.article-text {
 			width:680px;
@@ -647,9 +578,6 @@ q.pullquote {
 }
 
 @include breakpoint(xl) {
-
-	/* .article-text xl styles */
-
 	.container.article-display {
 		.article-text {
 			width: 780px;
@@ -667,38 +595,25 @@ q.pullquote {
  * 5.0 Footnotes Styles.
  * ----------------------------------------------------------------------------
  */
-
 .container.article-display {
-
 	.article-footnotes {
-
 		width:100%;
 		position: relative;
-
-		/* 5.3 - Assorted */
-
 		hr {
 			border-bottom: 1px solid $darkgrey;
 			width:120px;
 			margin-left:0;
 		}
-		
 		p {
 			color: $darkgrey;
 			font-size: 14px;
 			font-family: $headline;
 		}
-
 	}
-
 }
 
-/* 5.4 - Responsive */
-
 @include breakpoint(tablet) {
-
 	.container.article-display {
-		
 		.footnote-sidebar {
 			width: 380px;
 			margin-left: 80px;
@@ -708,13 +623,10 @@ q.pullquote {
 			float:right;
 			margin-top: -436px;
 		}
-
 	}
-
 }
 
 @include breakpoint(desktop) {
-
 	.container.article-display {
 		.article-footnotes {
 			width:540px;

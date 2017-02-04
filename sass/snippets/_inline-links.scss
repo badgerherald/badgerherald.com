@@ -26,9 +26,11 @@
 		margin-top: 6px;
 		.more {
 			position: relative;
-			left: 0;
+			left: 2px;
 			font-weight: bold;
 			color: $blue;	
+			padding-right: 30px;
+			display: inline-block;
 		}
 	}
 	&:hover { 
@@ -36,7 +38,7 @@
 			color: $blue;
 		}
 		.excerpt .more {
-			left: 4px;
+			left: 6px;
 			transition: left .4s ease-in-out;
 			text-decoration: underline;
 			font-style: italic;
