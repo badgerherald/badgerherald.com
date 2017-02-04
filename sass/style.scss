@@ -1,32 +1,23 @@
-@charset "UTF-8";
-/*  
-Theme Name: Exa
-Theme URI: http://badgerherald.com/exa
-Author: The Badger Herald
-Author URI: http://badgerherald.com/
-Description: The Badger Herald's college media platform.
-Version: 0.2
-Tags: College Media
-Text Domain: exa
+/**
+ Theme Name: Exa
+ Author: The Badger Herald
+ Author URI: http://badgerherald.com/
+ Version: v0.6
+ Text Domain: Exa
 */
 
+@charset "UTF-8";
+
 /**
- * § 1.0 Foundations
+ Foundations
  */
 @import "foundations.scss";
 @import "foundations/page.scss";
 @import "charms.scss";
+
 /** 
- * § 2.0 Containers
+ Containers
  */
-
-.grid.left {
-
-}
-
-.grid.right {
-
-}
 @import "containers.scss";
 @import "containers/colophon.scss";
 @import "containers/article-display.scss";
@@ -51,19 +42,24 @@ Text Domain: exa
 @import "containers/stream.scss";
 
 /** 
- * § 3.0 Blocks
+ Blocks
  */
-@import "blocks/section-header.scss";
 @import "blocks/teaser.scss";
+@import "blocks/section-header.scss";
 
+/**
+ Snippets
+ */
+@import "snippets/snippets.scss";
+@import "snippets/inline-links.scss";
 
 /** 
- * § 4.0 Depricated
+ * Depricated
  */
 @import "depricate/homepage.scss";
-@import "depricate/author.scss";
 @import "depricate/4-doge-4.scss";
+
 /** 
- * § 5.0 Foundation overrides
+ * Foundation overrides
  */
 @import "foundations/helperclasses.scss";

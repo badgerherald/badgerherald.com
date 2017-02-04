@@ -22,6 +22,7 @@ function exa_register_topic_taxonomy() {
 } 
 add_action( 'init', 'exa_register_topic_taxonomy');
 
+
 /**
  * Echos the topic
  *
