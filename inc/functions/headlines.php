@@ -92,10 +92,13 @@ if (is_admin()) :
 	 */
 	function exa_subhead_save_postdata($post_id) {
 	
-		// 1: Verify nonce
-
-		if(!wp_verify_nonce($_POST['_exa_subhead_meta_box'], basename(__FILE__)))
+		if(!array_key_exists("_exa_subhead",$_POST)) {
 			return;
+		}
+
+		if(array_key_exists("_exa_subhead_meta_box",$_POST) && !wp_verify_nonce($_POST['_exa_subhead_meta_box'], basename(__FILE__))) {
+			return;
+		}
 	
 		// 2: Save new subhead
 
@@ -131,12 +134,16 @@ if (is_admin()) :
  	 * @since v0.5
  	 */
 	function exa_headline_admin_script($hook) {
+		global $post;
 
-		if ( !('post.php' == $hook) ) return;
-
-		wp_enqueue_style('exa-admin-style', get_template_directory_uri() . '/css/admin/headlines.css');
-    	wp_enqueue_script( 'exa-headline-script', get_template_directory_uri() . '/js/admin/headlines.js' );
-
+		if ( !('post.php' == $hook) ) { 
+			return;
+		}
+		    
+        if ( 'post' === $post->post_type ) {    
+			wp_enqueue_style('exa-admin-style', get_template_directory_uri() . '/css/admin/headlines.css');
+    		wp_enqueue_script( 'exa-headline-script', get_template_directory_uri() . '/js/admin/headlines.js' );
+    	}
 	}
 	add_action('admin_enqueue_scripts', 'exa_headline_admin_script');
 

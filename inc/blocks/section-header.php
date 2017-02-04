@@ -1,6 +1,6 @@
 <?php 
 
-global $OnCampus;
+global $DoubleClick;
 
 ?>
 
@@ -70,7 +70,15 @@ global $OnCampus;
 </header>
 
 <div class="ad sidebar-thing" style="background:white">
-	<?php $OnCampus->place_ad(array('desktop'=>'upper-sidekick')); ?>
+	<?php 
+	$DoubleClick->place_ad(
+					'badgerherald.com-upper-sidekick',
+					array(
+						'phone'=>'',
+						'desktop'=>'300x600,300x250'
+						)
+					);
+	?>
 </div>
 
 <?php if (is_category() || is_tax('topic') ) : ?>
@@ -129,6 +137,14 @@ global $OnCampus;
 <?php endif; ?>
 
 <div class="ad sidebar-thing" style="background:white;padding-top:24px">
-	<?php $OnCampus->place_ad(array('desktop'=>'lower-sidekick')); ?>
+	<?php 
+	$DoubleClick->place_ad(
+					'badgerherald.com-lower-sidekick',
+					array(
+						'phone'=>'',
+						'desktop'=>'300x600,300x250'
+						)
+					);
+	?>
 </div>
 

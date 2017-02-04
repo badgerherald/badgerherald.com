@@ -11,7 +11,6 @@ include_once('inc/functions/importance.php');
 /** Other stuff */
 include_once('inc/functions/dev.php');
 include_once('inc/functions/dates-and-times.php');
-include_once('inc/functions/oncampus.php');
 include_once('inc/functions/html-tags.php');
 include_once('inc/functions/analytic-dashboard.php');
 include_once('inc/functions/containers.php');
@@ -25,6 +24,8 @@ include_once('inc/functions/admin.php');
 include_once('inc/functions/services.php');
 include_once('inc/functions/sections.php');
 include_once('inc/functions/staff.php');
+/* include_once('inc/functions/snippets.php'); */
+
 if( class_exists('Popular_Post_Widget') ) {
 	include_once('inc/functions/popular-post-widget.php');
 }
@@ -68,13 +69,14 @@ function hrld_is_production() {
 }
 
 /**
- * Turn comments on by default
- *
- * @see http://wordpress.stackexchange.com/questions/38405/why-are-the-comments-disabled-by-default-on-my-custom-post-types
+ * Turn comments on by default for posts
  */
 function hrld_default_comments_on( $data ) {
 
-	$data['comment_status'] = 'open';
+	if( $data['post_type'] == 'post' ) {
+		$data['comment_status'] = 'open';
+	}
+
 	return $data;
 	
 }

@@ -7,8 +7,8 @@
  * @since Twenty Thirteen 1.0
  */
 
+global $DoubleClick;
 global $AnalyticBridge;
-global $OnCampus;
 global $post;
 
 ?>
@@ -100,7 +100,13 @@ exa_container('hero');
 					
 					<div class="ad sidebar-thing">
 						<?php 
-						$OnCampus->place_ad(array('tablet'=>'upper-sidekick')); 
+						$DoubleClick->place_ad(
+										'badgerherald.com-upper-sidekick',
+										array(
+											'phone'=>'',
+											'desktop'=>'300x600,300x250'
+											)
+										);
 						?>
 					</div>
 
@@ -110,7 +116,13 @@ exa_container('hero');
 
 					<div class="ad sidebar-thing">
 						<?php 
-						$OnCampus->place_ad(array('tablet'=>'lower-sidekick')); 
+						$DoubleClick->place_ad(
+										'badgerherald.com-lower-sidekick',
+										array(
+											'phone'=>'',
+											'desktop'=>'300x600,300x250'
+											)
+										);
 						?>
 					</div>
 

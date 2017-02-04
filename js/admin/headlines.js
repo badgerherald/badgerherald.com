@@ -1,7 +1,6 @@
 /**
  * UI for interacting with alternate headlines.
  */
-
 jQuery(document).ready(function($) {
 
 	if($("textarea[name='_exa_altheads']").val() != '') {

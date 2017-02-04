@@ -1,6 +1,6 @@
 <?php 
 
-global $OnCampus;
+global $DoubleClick;
 $container = $GLOBALS['container'] ?: new container('article-display');
 $container->default_args(
 	array('layout' => 'standard')
@@ -69,7 +69,15 @@ exa_container('headline',$args);
 		<aside class="sidebar">
 
 			<div class="ad sidebar-thing">
-				<?php $OnCampus->place_ad(array('desktop'=>'upper-sidekick')); ?>
+				<?php 
+				$DoubleClick->place_ad(
+								'badgerherald.com-upper-sidekick',
+								array(
+									'phone'=>'',
+									'desktop'=>'300x600,300x250'
+									)
+								);
+				?>
 			</div>
 
 			<div class="popular-posts sidebar-thing">
@@ -77,7 +85,15 @@ exa_container('headline',$args);
 			</div>
 	
 			<div class="ad sidebar-thing">
-				<?php $OnCampus->place_ad(array('desktop'=>'lower-sidekick')); ?>
+				<?php 
+				$DoubleClick->place_ad(
+								'badgerherald.com-lower-sidekick',
+								array(
+									'phone'=>'',
+									'desktop'=>'300x600,300x250'
+									)
+								);
+				?>
 			</div>
 		
 		</aside>
