@@ -71,10 +71,10 @@ exa_container('headline',$args);
 			<div class="ad sidebar-thing">
 				<?php 
 				$DoubleClick->place_ad(
-								'bhrld.dev-upper-sidekick',
+								'badgerherald.com-upper-sidekick',
 								array(
 									'phone'=>'',
-									'desktop'=>array('300x600,300x250')
+									'desktop'=>'300x600,300x250'
 									)
 								);
 				?>
@@ -87,14 +87,14 @@ exa_container('headline',$args);
 			<div class="ad sidebar-thing">
 				<?php 
 				$DoubleClick->place_ad(
-								'bhrld.dev-lower-sidekick',
+								'badgerherald.com-lower-sidekick',
 								array(
 									'phone'=>'',
-									'desktop'=>array('300x600,300x250')
+									'desktop'=>'300x600,300x250'
 									)
 								);
 				?>
-			</di
+			</div>
 		
 		</aside>
 	

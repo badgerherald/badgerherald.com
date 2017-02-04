@@ -72,7 +72,7 @@ global $DoubleClick;
 <div class="ad sidebar-thing" style="background:white">
 	<?php 
 	$DoubleClick->place_ad(
-					'bhrld.dev-upper-sidekick',
+					'badgerherald.com-upper-sidekick',
 					array(
 						'phone'=>'',
 						'desktop'=>'300x600,300x250'
@@ -139,7 +139,7 @@ global $DoubleClick;
 <div class="ad sidebar-thing" style="background:white;padding-top:24px">
 	<?php 
 	$DoubleClick->place_ad(
-					'bhrld.dev-lower-sidekick',
+					'badgerherald.com-lower-sidekick',
 					array(
 						'phone'=>'',
 						'desktop'=>'300x600,300x250'

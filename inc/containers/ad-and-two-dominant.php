@@ -14,7 +14,7 @@ $container = $GLOBALS['container'] ?: new container('header');
 		<div class="sidekick-ad">
 			<?php 
 			$DoubleClick->place_ad(
-							'bhrld.dev-upper-sidekick',
+							'badgerherald.com-upper-sidekick',
 							array(
 								'phone'=>'300x250',
 								'tablet'=>'728x90',

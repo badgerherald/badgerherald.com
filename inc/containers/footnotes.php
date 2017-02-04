@@ -61,7 +61,7 @@ $container = $GLOBALS['container'] ?: new container('footnotes');
 		<div class="tall-ad">
 			<?php 
 			$DoubleClick->place_ad(
-							'bhrld.dev-footnote-sidekick',
+							'badgerherald.com-footnote-sidekick',
 							array(
 								'phone'=>'',
 								'desktop'=>'300x600,300x250'

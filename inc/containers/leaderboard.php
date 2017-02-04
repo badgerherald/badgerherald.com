@@ -12,7 +12,7 @@ $container = $GLOBALS['container'] ?: new container('leaderboard');
 			<?php 
 
 			$DoubleClick->place_ad(
-				'bhrld.dev-leaderboard',
+				'badgerherald.com-leaderboard',
 				array(
 					'phone' => '300x50',
 					'tablet' => '728x90,970x300',
