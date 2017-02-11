@@ -79,10 +79,16 @@ exa_container('headline',$args);
 								);
 				?>
 			</div>
+	
+			
+			<?php 
 
-			<div class="popular-posts sidebar-thing">
-				<?php is_active_widget('Popular_Post_Widget') ? the_widget( "Popular_Post_Widget") :0; ?>
-			</div>
+				if ( true || is_active_widget("AnalyticBridgePopularPostWidget") ) {
+					echo "<div class='popular-posts sidebar-thing'>";
+					the_widget( "AnalyticBridgePopularPostWidget", array("num_posts" => 8, "title" => "Popular Posts"));
+					echo "</div>";
+				} 
+			?>
 	
 			<div class="ad sidebar-thing">
 				<?php 
