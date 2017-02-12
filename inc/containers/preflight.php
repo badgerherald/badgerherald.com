@@ -14,7 +14,7 @@ $container = $GLOBALS['container'] ?: new container('preflight');
 			$DoubleClick->place_ad(
 				'badgerherald.com-preflight',
 				array(
-					'phone' => '300x340,300x50',
+					'phone' => '320x50',
 					'tablet' => '760x340,970x250,728x90',
 					'desktop' => '1020x420,970x250,728x90,970x50',
 					'xl' => '1180x420,970x250,728x90',
