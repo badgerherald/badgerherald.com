@@ -1,6 +1,5 @@
 <?php
 
-
 define('EXA_INLINE_CLICKS_KEY', '_exa-inline-clicks');
 
 /**
@@ -11,20 +10,21 @@ define('EXA_INLINE_CLICKS_KEY', '_exa-inline-clicks');
 function exa_inline_link_embed_enqueue () {
 	global $post;
 
-	wp_enqueue_style( 'exa_inline_link_style', plugins_url( 'css/css.css', __FILE__ ), false, '1.0.0' );
+	if(is_single()) {
+		wp_enqueue_style( 'exa_inline_link_style', get_template_directory_uri() . '/css/inline.css', false, '1.0.0' );
 	
-	// tiny mce:
-	add_editor_style( plugins_url( 'css/css.css', __FILE__ ) );
+		// tiny mce:
+		add_editor_style( get_template_directory() . '/css/inline.css' );
 
-	wp_enqueue_script( 'exa_inline_click_script', plugins_url( 'js/count-clicks.js', __FILE__ ), array( 'jquery' ));
-    wp_localize_script( 'exa_inline_click_script', 'exa_inline_click', array(
-        'ajaxurl'       => admin_url( 'admin-ajax.php' ),
-        'id'			=> $post->ID,
-        'nonce'    	 	=> wp_create_nonce( 'exa-count-click' ))
-    );
+		wp_enqueue_script( 'exa_inline_click_script', get_template_directory_uri() . '/js/count-clicks.js', array( 'jquery' ));
+    	wp_localize_script( 'exa_inline_click_script', 'exa_inline_click', array(
+    	    'ajaxurl'       => admin_url( 'admin-ajax.php' ),
+    	    'id'			=> $post->ID,
+    	    'nonce'    	 	=> wp_create_nonce( 'exa-count-click' ))
+    	);
+	}
 } 
 add_action( 'wp_enqueue_scripts', 'exa_inline_link_embed_enqueue' );
-
 
 /**
  * Ajax handler called when the user clicks an inline herald link
