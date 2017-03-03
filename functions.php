@@ -4,32 +4,29 @@
  */
 
 /** Taxonomies */
-include_once('inc/functions/topics.php');
-include_once('inc/functions/layout.php');
-include_once('inc/functions/importance.php');
 
-/** Other stuff */
-include_once('inc/functions/dev.php');
-include_once('inc/functions/dates-and-times.php');
-include_once('inc/functions/html-tags.php');
-include_once('inc/functions/analytic-dashboard.php');
-include_once('inc/functions/containers.php');
-include_once('inc/functions/headlines.php');
-include_once('inc/functions/embeds.php');
-include_once('inc/functions/authors.php');
-include_once('inc/functions/popular-post-widget.php');
-include_once('inc/functions/pullquotes.php');
-include_once('inc/functions/social.php');
-include_once('inc/functions/admin.php');
-include_once('inc/functions/services.php');
-include_once('inc/functions/sections.php');
-include_once('inc/functions/staff.php');
-include_once('inc/functions/inline-links.php');
+
+include( dirname( __FILE__ ) . '/inc/functions/topics.php');
+include( dirname( __FILE__ ) . '/inc/functions/layout.php');
+include( dirname( __FILE__ ) . '/inc/functions/importance.php');
+include( dirname( __FILE__ ) . '/inc/functions/dev.php');
+include( dirname( __FILE__ ) . '/inc/functions/dates-and-times.php');
+include( dirname( __FILE__ ) . '/inc/functions/html-tags.php');
+include( dirname( __FILE__ ) . '/inc/functions/analytic-dashboard.php');
+include( dirname( __FILE__ ) . '/inc/functions/containers.php');
+include( dirname( __FILE__ ) . '/inc/functions/headlines.php');
+include( dirname( __FILE__ ) . '/inc/functions/embeds.php');
+include( dirname( __FILE__ ) . '/inc/functions/authors.php');
+include( dirname( __FILE__ ) . '/inc/functions/popular-post-widget.php');
+include( dirname( __FILE__ ) . '/inc/functions/pullquotes.php');
+include( dirname( __FILE__ ) . '/inc/functions/social.php');
+include( dirname( __FILE__ ) . '/inc/functions/admin.php');
+include( dirname( __FILE__ ) . '/inc/functions/services.php');
+include( dirname( __FILE__ ) . '/inc/functions/sections.php');
+include( dirname( __FILE__ ) . '/inc/functions/staff.php');
+include( dirname( __FILE__ ) . '/inc/functions/inline-links.php');
+
 /* include_once('inc/functions/snippets.php'); */
-
-if( class_exists('Popular_Post_Widget') ) {
-	include_once('inc/functions/popular-post-widget.php');
-}
 
 /** Production site ----------------------------------------------------- */
 /*                                                                        */

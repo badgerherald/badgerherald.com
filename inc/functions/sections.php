@@ -1,8 +1,8 @@
 <?php
 
 // Libraries:
-include_once('lib/class.taxonomy-single-term.php');
-include_once('lib/walker.taxonomy-single-term.php');
+include( dirname( __FILE__ ) . '/lib/class.taxonomy-single-term.php');
+include( dirname( __FILE__ ) . '/lib/walker.taxonomy-single-term.php');
 
 /**
  * Echos the section
