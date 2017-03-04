@@ -62,6 +62,7 @@ add_action( 'wp_ajax_nopriv_ajax-exa_inline_click', 'exa_inline_click_submit_han
 function exa_inline_clicks($post,$url) {
 	$post = get_post($post);
 	$allClicks = get_post_meta($post->ID,EXA_INLINE_CLICKS_KEY,true);
+	$allClicks = $allClicks ?: array();
 	return array_key_exists($url,$allClicks) ? $allClicks[$url] : null;
 }
 
