@@ -3,6 +3,28 @@
  */
 jQuery(document).ready(function($) {
 
+	jQuery(".snippet.inline").bind( "click", function(e) {
+		
+		e.preventDefault();
+
+		url = jQuery( this ).attr( 'href' );
+
+		jQuery.post(
+			exa_inline_click.ajaxurl,
+			{
+				action: "ajax-exa_inline_click",
+				nonce: exa_inline_click.nonce,
+				exa_inline_url: url,		// The clicked URL.
+				exa_inline_id: exa_inline_click.id 		// The post ID.
+			}, function( response ) { 
+				console.log(response);
+			}
+			);
+
+		window.open(url,"_blank");
+
+	}); 
+
     // Adds a dotted overlay effect to img with a container div.dotted-overlays,
     // see css for actual styling.
     //

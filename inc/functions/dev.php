@@ -6,7 +6,6 @@
  * @package exa
  */
 
-
 /**
  * if EXA_DEV defined, return that,
  * else if WP_DEBUG defined, return that,
@@ -25,6 +24,11 @@ function exa_dev() {
    
 }
 
+function exa_log($error) {
+	if( !EXA_PRODUCTION ) {
+		error_log( print_r($error,1) );
+	}
+}
 
 /**
  * @internal 

@@ -3,9 +3,6 @@
  * Exa Functions file
  */
 
-/** Taxonomies */
-
-
 include( dirname( __FILE__ ) . '/inc/functions/topics.php');
 include( dirname( __FILE__ ) . '/inc/functions/layout.php');
 include( dirname( __FILE__ ) . '/inc/functions/importance.php');

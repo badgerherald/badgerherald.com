@@ -48,30 +48,30 @@ function exa_inline_click_submit_handler() {
 
 	$post_id = $_POST["exa_inline_id"];
 
-	if( ! current_user_can('edit_post',$pid) ) {
+	if( ! current_user_can('edit_posts',$post_id) ) {
 		$url = $_POST["exa_inline_url"];
 		exa_inline_increase_clicks($post_id,$url);
 	}
 
 	return;
 }
-add_action( 'wp_ajax_ajax-exa_inline_click_script', 'exa_inline_click_submit_handler' );
-add_action( 'wp_ajax_nopriv_ajax-exa_inline_click_script', 'exa_inline_click_submit_handler' );
+add_action( 'wp_ajax_ajax-exa_inline_click', 'exa_inline_click_submit_handler' );
+add_action( 'wp_ajax_nopriv_ajax-exa_inline_click', 'exa_inline_click_submit_handler' );
 
 
 function exa_inline_clicks($post,$url) {
 	$post = get_post($post);
-	$allClicks = get_post_meta($post,EXA_INLINE_CLICKS_KEY,true);
-	return $allClicks[$url];
+	$allClicks = get_post_meta($post->ID,EXA_INLINE_CLICKS_KEY,true);
+	return array_key_exists($url,$allClicks) ? $allClicks[$url] : null;
 }
 
 function exa_inline_increase_clicks($post,$url) {
 	$post = get_post($post);
-
-	$allClicks = get_post_meta($post,EXA_INLINE_CLICKS_KEY,true);
+	error_log($post->ID);
+	$allClicks = get_post_meta($post->ID,EXA_INLINE_CLICKS_KEY,true);
+	$allClicks = $allClicks ?: array();
 	$allClicks[$url] =  array_key_exists($url,$allClicks) ? $allClicks[$url] + 1 : 1;
-
-	update_post_meta($post,$key,$allClicks);
+	update_post_meta($post->ID,EXA_INLINE_CLICKS_KEY,$allClicks);
 }
 
 
@@ -100,11 +100,13 @@ function exa_inline_embed( $matches, $attr, $url, $rawattr ) {
 }
 wp_embed_register_handler( 'exa-inline-link', '*(?:http|https)://badgerherald.com/*', 'exa_inline_embed' );
 
-function _exa_inline_embed_article( $post, $url ) {
-	$post = get_post($post);
+function _exa_inline_embed_article( $inline_post, $url ) {
+	global $post;
 
-	$thumb_src = _exa_inline_embed_thumbnail_src( $post, 'small-thumbnail' );
-	$excerpt = _exa_inline_embed_excerpt( $post );
+	$inline_post = get_post($inline_post);
+
+	$thumb_src = _exa_inline_embed_thumbnail_src( $inline_post, 'small-thumbnail' );
+	$excerpt = _exa_inline_embed_excerpt( $inline_post );
 
 	$ret = "<a target='_BLANK' class='snippet inline' href='$url'>";
 
@@ -140,7 +142,7 @@ function _exa_inline_embed_clicks_string( $post, $url ) {
 	$post = get_post($post);
 	$clicks = exa_inline_clicks($post,$url);
 
-	if( is_user_logged_in() && current_user_can('edit_post') && $clicks != "") { 
+	if( is_user_logged_in() && current_user_can('edit_posts') && $clicks != "") { 
 		$ret = "<span class='exa-inline-click-count'>" . $clicks . " Click";
 		$ret .= $clicks == 1 ? "" : "s";
 		$ret .= "</span> | ";
