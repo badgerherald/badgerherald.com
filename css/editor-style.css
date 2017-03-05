@@ -226,68 +226,56 @@ hr {
  * 2.5 inline link
  * ----------------------------------------------------------------------------
  */
-
-a.hrld-inline-link {
+.snippet.inline {
   cursor: pointer;
-  margin: 0px 0 12px;
-  font-family: "PT Sans Narrow", Helvetica, Arial, Sans-Serif;
-  font-size: 15px;
-  line-height: 18px;
-  color: #191919;
-  position: relative;
+  margin: 0 0 12px;
+  font: 15px/18px "PT Sans Narrow", Helvetica, Arial, Sans-Serif;
   padding: 9px 10px;
   display: block;
   background: #fff; }
-  a.hrld-inline-link .hrld-inline-thumbnail {
+  .snippet.inline img.thumbnail {
     width: 120px;
-    min-width: 120px;
-    max-width: 120px;
+    height: auto;
     margin-top: 3px;
     float: right;
-    clear: left;
-    padding: 0px 0px 6px 10px; }
-  a.hrld-inline-link .hrld-inline-link-title {
+    padding: 0 0 6px 10px; }
+  .snippet.inline .title {
+    color: #191919;
     display: block;
     font-weight: 700;
     font-size: 18px;
     line-height: 21px; }
-    a.hrld-inline-link .hrld-inline-link-title:before {
-      /* new window icon */
-      font-family: exa;
-      content: ' w';
-      float: right;
-      width: 32px;
-      height: 32px;
-      display: block;
-      text-align: right;
-      visibility: hidden;
-      color: #191919; }
-  a.hrld-inline-link .hrld-inline-link-excerpt {
-    color: #a6b5bd;
+  .snippet.inline .excerpt {
+    color: #2c2c2c;
     display: block;
     margin-top: 6px; }
-    a.hrld-inline-link .hrld-inline-link-excerpt:after {
-      content: " ";
-      clear: left;
-      display: block; }
-  a.hrld-inline-link:hover {
-    background: #fff; }
-    a.hrld-inline-link:hover .hrld-inline-link-title {
-      color: #2075d0; }
-      a.hrld-inline-link:hover .hrld-inline-link-title:before {
-        visibility: visible; }
+    .snippet.inline .excerpt .more {
+      position: relative;
+      left: 2px;
+      font-weight: bold;
+      color: #3c74b9;
+      padding-right: 30px;
+      display: inline-block; }
+  .snippet.inline:hover .title {
+    color: #3c74b9; }
+  .snippet.inline:hover .excerpt .more {
+    left: 6px;
+    transition: left .4s ease-in-out;
+    text-decoration: underline;
+    font-style: italic; }
 
-a.hrld-inline-link {
-  padding: 12px 20px;
-  overflow: auto; }
-  a.hrld-inline-link img.hrld-inline-thumbnail {
-    float: left;
-    padding-left: 0;
-    padding-right: 20px;
-    width: 140px;
-    min-width: 140px;
-    max-width: 140px; }
-
+@media (min-width: 760px) {
+  .snippet.inline {
+    padding: 18px 20px;
+    overflow: auto;
+    font: 18px/24px "PT Sans Narrow", Helvetica, Arial, Sans-Serif; }
+    .snippet.inline img.thumbnail {
+      float: left;
+      padding: 0 20px 0 0;
+      width: 180px; }
+    .snippet.inline .title {
+      font-size: 19px;
+      line-height: 24px; } }
 /**
  * 3.0 Text Elements
  * ----------------------------------------------------------------------------

@@ -117,7 +117,7 @@ function _exa_inline_embed_article( $inline_post, $url ) {
 	/* Title */
 	$ret .=	"<span class='title'>";
 	$ret .= _exa_inline_embed_clicks_string( $post, $url );
-	$ret .= $post->post_title . "</span>";
+	$ret .= $inline_post->post_title . "</span>";
 
 	/* Excerpt */
 	$ret .= "<span class='excerpt'>" . $excerpt . "</span>";
