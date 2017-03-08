@@ -1,11 +1,11 @@
 <?php  
-
 $container = $GLOBALS['container'] ?: new container('feature-widget');
-
 ?>
 
 <div class="<?php echo $container->classes(); ?>">
+	
 	<div class="wrapper">
+
 		<div class="feature">
 
 		<?php
@@ -23,15 +23,51 @@ $container = $GLOBALS['container'] ?: new container('feature-widget');
 				'no_found_rows' => true
 			);
 			$my_query = new WP_Query( $query_args );
-
 			if ( $my_query->have_posts() ) {
-				while ( $my_query->have_posts() ) {
-					$my_query->the_post(); 
-					Exa::addShownId(get_the_ID()); 
-					get_template_part( 'inc/blocks/teaser-feature' );
-				}
+				while ( $my_query->have_posts() ) : $my_query->the_post(); Exa::addShownId(get_the_ID()); ?>
+
+				<a href="<?php the_permalink(); ?>" class="story">
+				
+					<div class="dotted-overlay-container">
+					<?php
+						if( has_post_thumbnail()){
+								the_post_thumbnail('post-thumbnail');
+						}else{
+							echo "<img " . 'class="attachment-post-thumbnail size-post-thumbnail wp-post-image" '.
+									'style="height: 562px; background-color: #666;" />';
+						}
+					?>
+					</div>
+
+					<div class="title-container">
+						
+						<div class="block-headline-container">
+							<h1 class="block-headline"><span><?php the_title(); ?></span></h1>
+						</div>
+
+						<div class="byline">
+							
+							<div class="mug">
+								<?php exa_mug(get_the_author_meta('ID'),'small-thumbnail') ?>
+							</div>
+						
+							<span class="author">
+								by 
+								<span class="author-name"><?php the_author() ?></span>
+							</span>
+
+						</div>
+
+						<div class="lede"><?php the_excerpt(); ?></div>
+
+					</div>
+
+				</a>
+					
+		<?php	
+				endwhile;
 			} else {
-				echo "Add a featured post!";
+				echo "No Posts";
 			}
 		?>
 
@@ -42,11 +78,9 @@ $container = $GLOBALS['container'] ?: new container('feature-widget');
 			<h3 class="title">Most Recent</h3>
 
 			<?php
-
 			$args = array();
 			$args['posts_per_page'] = 4;
 			$slider_query = new WP_Query( $args ); 
-
 			while( $slider_query->have_posts() ) : $slider_query->the_post(); ?>
 
 				<a class="most-recent-post" href="<?php the_permalink(); ?>">
