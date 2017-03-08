@@ -7,6 +7,22 @@
 /*                                                                        */
 /* ---------------------------------------------------------------------- */
 
+function exa_author_email($userID) {
+
+	$user = get_userdata( $userID );
+	$user_email = $user->user_email;
+	return strpos($user_email, '@badgerherald.com') ? $user_email : "";
+
+}
+
+function exa_author_twitter($userID) {
+	return get_hrld_author("hrld_twitter_handle",$userID);
+}
+
+function exa_author_has_twitter($userID) {
+	return hrld_author_has("hrld_twitter_handle",$userID);
+}
+
 
 $extra_fields = array();
 
@@ -247,7 +263,7 @@ function get_hrld_author($key, $author_id = null) {
 	
 	global $post;
 	
-	if($author_id==null) {
+	if( $author_id == null ) {
 		$author_id = $post->post_author;
 	}
 

@@ -2,12 +2,12 @@
 
 global $DoubleClick;
 
+$author = get_user_by( 'slug', get_query_var( 'author_name' ) );
+
 ?>
 
 <header class="block section-header">
-	<?php
-	if(is_author()) :
-	?>
+	<?php if(is_author()) : ?>
 		<div class="author-mug">
 			<?php exa_mug(null, 'square'); ?>
 		</div>
@@ -40,6 +40,14 @@ global $DoubleClick;
 		echo "<span class='bottom-divider'>" . category_description() . "</span>";
 	}
 
+	if( is_author() ) {
+		echo "" . exa_author_email($author->ID) . "<br/>";
+	}
+
+	if( is_author() && exa_author_has_twitter($author->ID)) {
+		echo "Twitter: <a href='https://twitter.com/" . exa_author_twitter($author->ID) . "'>@" . exa_author_twitter($author->ID) . "</a>";
+	}
+
 	$cat = get_query_var( 'cat' );
 	$cat = $cat ? get_category( get_query_var( 'cat' ) ) : null;
 	$editors = $cat ? exa_staff_editors_for_category($cat) : null;
@@ -55,9 +63,7 @@ global $DoubleClick;
 				</div>
 			
 				<span class="name"><?php echo $user->display_name; ?></span>
-				<?php //if(exa_author_current_role() != '') : ?>
 					<span class="position"><?php echo exa_author_current_role($editor_id); ?></span>
-				<?php // endif; ?>
 
 			</a>
 			<div class="clearfix"></div>
