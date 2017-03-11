@@ -28,14 +28,9 @@ function exa_time( $post = null ) {
 function exa_get_time( $post = null ) {
 	
 	$post = get_post($post);
+	$secondsSincePublishing = _exa_seconds_since_published( $post );
 
 	$since = "";
-
-	$from = get_the_time( 'U', $post );
-	$to = current_time( "timestamp" );
-
-	$secondsSincePublishing = (int) abs( $to - $from );
-
 	if( exa_is_published_today( $post ) ) {
 
 		if ( $secondsSincePublishing <= HOUR_IN_SECONDS ) {
@@ -58,6 +53,17 @@ function exa_get_time( $post = null ) {
 	return $since;
 }
 
+function _exa_seconds_since_published( $post = null ) {
+
+	$post = get_post($post);
+
+	$from = get_the_time( 'U', $post );
+	$to = current_time( "timestamp" );
+
+	return (int) abs( $to - $from );
+
+}
+
 /**
  * Returns true if the post was published today
  * 
@@ -65,8 +71,8 @@ function exa_get_time( $post = null ) {
  */
 function exa_is_published_today( $post ) {
 	$post = get_post($post);
-	$postTime = strtotime($post->post_date);
-	$today = strToTime('today');
+	$postTime = get_post_time('U',true);
+	$today = strtotime('midnight',current_time('timestamp'));
 	return ($postTime >= $today);
 }
 
@@ -77,8 +83,8 @@ function exa_is_published_today( $post ) {
  */
 function exa_is_published_yesterday( $post ) {
 	$post = get_post($post);
-	$postTime = strtotime($post->post_date);
-	$firstDayOfYear = strtotime('yesterday');
+	$postTime = get_post_time('U',true);
+	$firstDayOfYear = strtotime('yesterday',current_time('timestamp'));
 	return ($postTime >= $firstDayOfYear);
 }
 
