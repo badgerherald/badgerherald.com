@@ -157,7 +157,7 @@ class ExaStaff {
 		$categories = get_terms(
 				array(
 					'taxonomy' => array('category', 'topic'),
-					'slug' => array('news', 'sports', 'artsetc', 'opinion','visuals'),
+					'slug' => array('news', 'sports', 'artsetc', 'opinion', 'visuals', 'features'),
 					'hide_empty' => true,
 					'parent' => 0
 					)
