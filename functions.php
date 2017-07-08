@@ -23,6 +23,8 @@ include( dirname( __FILE__ ) . '/inc/functions/sections.php');
 include( dirname( __FILE__ ) . '/inc/functions/staff.php');
 include( dirname( __FILE__ ) . '/inc/functions/inline-links.php');
 
+include( dirname( __FILE__ ) . '/inc/functions/staff/admin.php');
+
 /* include_once('inc/functions/snippets.php'); */
 
 /** Production site ----------------------------------------------------- */
