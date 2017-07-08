@@ -25,7 +25,6 @@ function exa_staff_editors_for_category($category = null) {
 	if( array_key_exists('editorial',$staff) && array_key_exists($slug,$staff['editorial']) ) {
 		return array_key_exists('editors',$staff['editorial'][$slug]) ? $staff['editorial'][$slug]['editors'] : array() ;
 	}
-
 }
 
 /**
@@ -57,27 +56,32 @@ function exa_staff_associates_for_category($category = null) {
 
 class ExaStaff {
 
-    /**
-     * Holds the values to be used in the fields callbacks
-     */
-    private $options;
+	/**
+	 * Holds the values to be used in the fields callbacks
+	 */
+	private $options;
 
-    private $callback;
+	/**
+	 * Holds the values to be used in the masthead fields callbacks
+	 */
+	private $mastheadOptions;
 
-    /**
-     * Start up
-     */
-    public function __construct()
-    {
-    	$this->options = get_option( 'exa_staff_assignments' );
-        add_action( 'admin_menu', array( $this, 'add_staff_admin_page' ) );
-        add_action( 'admin_init', array( $this, 'page_init' ) );
+	private $callback;
 
-        $callback = function() {
-    		return function() { echo __FUNCTION__; };
-    	};
+	/**
+	 * Start up
+	 */
+	public function __construct() {
+		$this->options = get_option( 'exa_staff_assignments' ) ?: array() ;
+		$this->mastheadOptions = get_option( 'exa_masthead_assignments' ) ?: array() ;
+		add_action( 'admin_menu', array( $this, 'add_staff_admin_page' ) );
+		add_action( 'admin_init', array( $this, 'page_init' ) );
 
-    }
+		$callback = function() {
+			return function() { echo __FUNCTION__; };
+		};
+
+	}
 
 	/**
 	 * Registers 'Staff' admin page and adds javascript to load for the page
@@ -87,46 +91,52 @@ class ExaStaff {
 	 *
 	 * @since v0.5
 	 */
-    public function add_staff_admin_page() {
+	public function add_staff_admin_page() {
 
-    	// 1: add the page
-        $menu_title = "Staff";
-        $page_title = "Staff";
-        $capability = "edit_users";
-        $menu_slug = 'staff';
-        $function = array( $this, 'create_staff_admin_page' );
-        $page_hook_suffix = add_submenu_page( 	
-        							'users.php', 
-        							$menu_title , 
-        							$page_title, 
-        							$capability, 
-        							$menu_slug, 
-        							$function );
+		// 1: add the page
+		$menu_title = "Staff";
+		$page_title = "Staff";
+		$capability = "edit_users";
+		$menu_slug = 'staff';
+		$function = array( $this, 'create_staff_admin_page' );
+		$page_hook_suffix = add_submenu_page( 	
+									'users.php', 
+									$menu_title , 
+									$page_title, 
+									$capability, 
+									$menu_slug, 
+									$function );
 
-        // 2: register javascript for the page
-        add_action('admin_print_scripts-' . $page_hook_suffix, array( $this, 'staff_admin_page_enqueue'));
-    }
+		// 2: register javascript for the page
+		add_action('admin_print_scripts-' . $page_hook_suffix, array( $this, 'staff_admin_page_enqueue'));
+	}
 
-    /**
-     * Options page callback
-     */
-    public function create_staff_admin_page()
-    {
+	/**
+	 * Options page callback
+	 */
+	public function create_staff_admin_page()
+	{
 
-        ?>
-        <div class="wrap">
-            <h2>Staff</h2>           
-            <form method="post" action="options.php">
-            <?php
-                // This prints out all hidden setting fields
-                settings_fields( 'exa_staff_assignments' );   
-                do_settings_sections( 'staff' );
-                submit_button(); 
-            ?>
-            </form>
-        </div>
-        <?php
-    }
+		?>
+		<div class="wrap">
+			<h2>Staff</h2>
+			<h2 class="nav-tab-wrapper">
+				<a href="#" class="nav-tab">Masthead</a>
+				<a href="#" class="nav-tab">Editors</a>
+			</h2>           
+			<form method="post" action="options.php">
+			<?php
+
+				// This prints out all hidden setting fields
+				settings_fields( 'exa_staff_assignments' );   
+				do_settings_sections( 'staff' );
+
+				submit_button(); 
+			?>
+			</form>
+		</div>
+		<?php
+	}
 
 	/**
 	 * Enqueues style for 'staff' admin page.
@@ -136,23 +146,111 @@ class ExaStaff {
 		wp_enqueue_style( 'exa-staff-assignments-style' );
 	}
 
-    /**
-     * Register and add settings
-     */
-    public function page_init()
-    {        
-        register_setting(
-            'exa_staff_assignments', // Option group
-            'exa_staff_assignments', // Option name
-            array( $this, 'sanitize' ) // Sanitize
-        );
+	/**
+	 * Register and add settings
+	 */
+	public function page_init() { 
+		$this->register_masthead_assignment_option();
+		$this->register_staff_assignment_option();
+	}
 
-        add_settings_section(
-            'setting_section_id', // ID
-            'Staff Assignments', // Title
-            array( $this, 'print_section_info' ), // Callback
-            'staff' // Page
-        );  
+	/**
+	 * Registers the staff assignment option (staff to categories)
+	 */
+	private function register_masthead_assignment_option() {        
+		register_setting(
+			'exa_masthead_assignments', // Option group
+			'exa_masthead_assignments', // Option name
+			array( $this, 'sanitize' ) // Sanitize
+		);
+
+		add_settings_section(
+			'exa_masthead_assignments_section', // ID
+			'Masthead Assignments', // Title
+			array( $this, 'print_masthead_section_info' ), // Callback
+			'staff' // Page
+		);  
+
+		$categories = get_terms(
+				array(
+					'taxonomy' => array('category', 'topic'),
+					'slug' => array('news', 'sports', 'artsetc', 'opinion', 'visuals', 'features'),
+					'hide_empty' => true,
+					'parent' => 0
+					)
+				);
+
+		$mastheadOptions = $this->mastheadOptions;
+		$mastheadSize = max( 4, sizeof( $this->mastheadOptions ) + 2 );
+
+		for( $i = 0 ; $i < $mastheadSize ; $i++ ) :
+
+			$typeInput = "<select data-masthead-index='$i' class='exa-masthead-toggle' name='exa_masthead_assignments[$i][type]''>";
+			$typeInput .= "<option value='title' selected='selected'>Department Title</option>";
+			$typeInput .= "<option value='subtitle'>Section Title</option>";
+			$typeInput .= "<option value='staff-list'>Staff List</option>";
+			$typeInput .= "</select>";
+
+			add_settings_field(
+				'exa_masthead_assignment__' . $i, // ID
+				$typeInput, // Title 
+				function() use ($i,$mastheadOptions) {
+					$staff = null;
+					if ( array_key_exists($i, $mastheadOptions) ) {
+						$staff = $mastheadOptions[$i];
+					}
+					echo "<div data-masthead-index='$i' class='exa-masthead-inputs'>";
+					echo "<input name='exa_masthead_assignments[$i][index]' type='hidden' value='$i' />";
+
+					echo '<div class="exa-staff-assignment-box" data-hide=\'["subtitle","title"]\'>';
+					echo '<label></label> ';
+					exa_admin_user_select_multi_dropdown( "masthead-$i", 
+															"exa_masthead_assignments[$i]", 
+															$staff, array('number' => 5)  
+															);
+					echo '</div>';
+
+					echo '<div class="exa-staff-assignment-box" data-hide=\'["subtitle","staff-list"]\'>';
+					echo '<label></label> ';
+					echo "<input name='exa_masthead_assignments[$i]' type='text' value='' />";
+					echo '</div>';
+
+					echo '<div class="exa-staff-assignment-box" data-hide=\'["title","staff-list"]\'>';
+					echo '<label></label> ';
+					echo "<input name='exa_masthead_assignments[$i]' type='text' value='' />";
+					echo '</div>';
+
+					echo '<div class="exa-masthead-controls ">';
+					echo '<a class="exa-masthead-up-control">up</a> ';
+					echo '<a class="exa-masthead-down-control">down</a> ';
+					echo '<a class="exa-masthead-add-control">add</a> ';
+					echo '<a class="exa-masthead-delete-control">delete</a> ';
+					echo '</div>';
+					echo '</div>';
+				},
+				'staff', // Page
+				'exa_masthead_assignments_section' // Section
+			);     
+		endfor;
+
+	}
+
+	/**
+	 * Registers the staff assignment option (staff to categories)
+	 */
+	private function register_staff_assignment_option() {        
+		register_setting(
+			'exa_staff_assignments', // Option group
+			'exa_staff_assignments', // Option name
+			array( $this, 'sanitize' ) // Sanitize
+		);
+
+		add_settings_section(
+			'exa_staff_assignments_section', // ID
+			'Staff Assignments', // Title
+			array( $this, 'print_editors_section_info' ), // Callback
+			'staff' // Page
+		);  
 
 		$categories = get_terms(
 				array(
@@ -187,31 +285,36 @@ class ExaStaff {
 					echo '</div>';
 				},
 				'staff', // Page
-				'setting_section_id' // Section
+				'exa_staff_assignments_section' // Section
 			);     
 		endforeach;
- 
 
-    }
+	}
 
-    /**
-     * Sanitize each setting field as needed
-     *
-     * @param array $input Contains all settings fields as array keys
-     */
-    public function sanitize( $input )
-    {
-    	// todo: loop through, if not valid user id, then don't save.
-        return _exa_recursive_array_filter($input);
-    }
+	/**
+	 * Sanitize each setting field as needed
+	 *
+	 * @param array $input Contains all settings fields as array keys
+	 */
+	public function sanitize( $input )
+	{
+		// todo: loop through, if not valid user id, then don't save.
+		return _exa_recursive_array_filter($input);
+	}
 
-    /** 
-     * Print the Section text
-     */
-    public function print_section_info()
-    {
-        print 'Use these settings to specify editors for section pages and other staff roles';
-    }
+	/** 
+	 * Print the Section text
+	 */
+	public function print_editors_section_info() {
+		print 'Specify editor roles for sections';
+	}
+
+	/** 
+	 * Print the Section text
+	 */
+	public function print_masthead_section_info() {
+		print 'Specify roles for masthead';
+	}
 
 }
 
@@ -220,12 +323,12 @@ if( is_admin() )
 
 
 function _exa_recursive_array_filter(&$array) {
-    foreach( $array as $key => $item ) {
-        is_array( $item ) && $array[$key] = _exa_recursive_array_filter( $item );
-        if ( empty( $array[$key] ) )
-            unset( $array[$key] );
-    }
-    return $array;
+	foreach( $array as $key => $item ) {
+		is_array( $item ) && $array[$key] = _exa_recursive_array_filter( $item );
+		if ( empty( $array[$key] ) )
+			unset( $array[$key] );
+	}
+	return $array;
 }
 
 

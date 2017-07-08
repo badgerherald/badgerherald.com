@@ -3,7 +3,6 @@
 // Constants
 define( 'EXA_MASTHEAD_POST_TYPE', 'exa_masthead' );
 
-
 /**
  * Registers the masthead post type
  */
@@ -39,25 +38,25 @@ function exa_masthead_post_type() {
 		'filter_items_list'     => __( 'Filter Masthead list', 'exa' ),
 	);
 	$rewrite = array(
-		'slug'                  => 'staff',
+		'slug'                  => 'masthead',
 		'with_front'            => true,
-		'pages'                 => false,
+		'pages'                 => true,
 		'feeds'                 => true,
 	);
 	$args = array(
 		'label'                 => __( 'Masthead', 'exa' ),
-		'description'           => __( 'A masthead of current staff members', 'exa' ),
+		'description'           => __( 'A masthead of staff members', 'exa' ),
 		'labels'                => $labels,
-		'supports'              => array( 'title', ),
+		'supports'              => array( 'title', 'thumbnail'),
 		'hierarchical'          => false,
-		'public'                => false,
+		'public'                => true,
 		'show_ui'               => true,
 		'show_in_menu'          => true,
 		'menu_position'         => 5,
-		'show_in_admin_bar'     => true,
-		'show_in_nav_menus'     => true,
+		'show_in_admin_bar'     => false,
+		'show_in_nav_menus'     => false,
 		'can_export'            => true,
-		'has_archive'           => false,		
+		'has_archive'           => true,		
 		'exclude_from_search'   => true,
 		'publicly_queryable'    => true,
 		'rewrite'               => $rewrite,
@@ -86,18 +85,13 @@ function _exa_masthead_print_form($post) {
 	if($post->post_type != EXA_MASTHEAD_POST_TYPE) {
 		return;
 	}
-
 	wp_nonce_field( basename(__FILE__), '_exa_masthead' );
-
-	$masthead = _exa_masthead_postmeta($post);
+	
+	$masthead = exa_masthead_postmeta($post);
 
 	?>
 
 	<ol class="exa_masthead_form_list">
-
-	<pre>
-	<?php print_r($masthead); ?>
-	</pre>
 
 	<?php 
 
@@ -109,7 +103,7 @@ function _exa_masthead_print_form($post) {
 
 	?>
 
-	</li>
+	</ol>
 
 	<?php
 	
@@ -119,9 +113,9 @@ add_action('edit_form_after_title', '_exa_masthead_print_form');
 
 function _exa_masthead_print_section( $section_index, $current_title = null, $staff = array() ) {
 	echo "<li class='exa_masthead_section' data-section-index='$section_index'>";
-	echo "<div class='exa_masthead_section_details'>";
+
 	_exa_masthead_section_title_field( $section_index, $current_title );
-	echo "</div>";
+	echo "<br/>";
 
 	echo "<ol class='exa_masthead_staff_list'>";
 	
@@ -136,13 +130,14 @@ function _exa_masthead_print_section( $section_index, $current_title = null, $st
 
 	_exa_masthead_assignment_row( $section_index, $lastStaffIndex + 1, "", "" );
 
-	echo "<!--<li>Add User</li>-->";
 	echo "</ol>";
+
+	echo "<div class='exa_masthead_section_details'>";
+	
+	_exa_masthead_section_toggles();
+	echo "</div>";
+
 	echo "<div class='clearfix'></div>";
-	echo "<a class='exa_masthead_section_toggle' data-masthead-assignment-action='add'>&plus; Add Section</a> ";
-	echo "<a class='exa_masthead_section_toggle' data-masthead-assignment-action='remove'>&times; Remove Section</a> ";
-	echo "<a class='exa_masthead_section_toggle' data-masthead-assignment-action='up'>&uarr; Move Section Up</a> ";
-	echo "<a class='exa_masthead_section_toggle' data-masthead-assignment-action='down'>&darr; Move Section Down</a> ";
 	echo "</li>";
 }
 
@@ -151,18 +146,30 @@ function _exa_masthead_section_title_field( $section_index, $current_title = nul
 }
 
 function _exa_masthead_assignment_row( $section_index, $staff_index, $current_user_id = null, $current_position = null, $id = null ) {
-	echo "<li data-staff-index='$staff_index'>";
+	echo "<li class='masthead-assignment-row' data-staff-index='$staff_index'>";
 	_exa_masthead_user_id_field( $section_index, $staff_index, $current_user_id, $id );
 	_exa_masthead_user_position_field( $section_index, $staff_index, $current_position );
 	_exa_masthead_assignment_toggles();
 	echo "</li>";
 }
 
+
+function _exa_masthead_section_toggles() {
+	echo "<ul class='exa-masthead-section-toggles'>";
+	echo "<li><a class='exa_masthead_section_toggle' data-masthead-assignment-action='remove'>&times; Delete Section</a></li>";
+	echo "<li><a class='exa_masthead_section_toggle' data-masthead-assignment-action='up'>&uarr; Move Up</a></li>";
+	echo "<li><a class='exa_masthead_section_toggle' data-masthead-assignment-action='down'>&darr; Move Down</a></li>";
+	echo "<li><a class='exa_masthead_section_toggle' data-masthead-assignment-action='add'>&plus; Add Section</a></li>";
+	echo "</ul>";
+}
+
 function _exa_masthead_assignment_toggles() {
-	echo "<a class='exa_masthead_assignment_toggle' data-masthead-assignment-action='add'>&plus;</a> ";
-	echo "<a class='exa_masthead_assignment_toggle' data-masthead-assignment-action='remove'>&times;</a> ";
-	echo "<a class='exa_masthead_assignment_toggle' data-masthead-assignment-action='up'>&uarr;</a> ";
-	echo "<a class='exa_masthead_assignment_toggle' data-masthead-assignment-action='down'>&darr;</a> ";
+	echo "<ul class='exa-masthead-assignment-toggles'>";
+	echo "<li><a class='exa_masthead_assignment_toggle' data-masthead-assignment-action='remove'>&times;</a></li>";
+	echo "<li><a class='exa_masthead_assignment_toggle' data-masthead-assignment-action='up'>&uarr;</a></li>";
+	echo "<li><a class='exa_masthead_assignment_toggle' data-masthead-assignment-action='down'>&darr;</a></li>";
+	echo "<li><a class='exa_masthead_assignment_toggle' data-masthead-assignment-action='add'>&plus;</a></li>";
+	echo "</ul>";
 }
 
 
@@ -255,10 +262,10 @@ add_action( 'save_post', '_exa_masthead_save' );
  * Returns the masthead postmeta field for the given post. If not defined
  * will return an empty array
  * 
- * @access private
+ * @access public
  * @since v0.6
  */
-function _exa_masthead_postmeta($post) {
+function exa_masthead_postmeta( $post = null ) {
 	$post = get_post($post);
 	$masthead = get_post_meta($post->ID, '_exa_masthead', true);
 	return $masthead ? $masthead : array();

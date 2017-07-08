@@ -46,7 +46,7 @@ jQuery(document).ready(function($) {
 	function assignment_add_toggle_clicked(addButton) {
 		var clickCount = getUpdatedButtonCount(addButton);
 
-		var listItem = addButton.parent('li');
+		var listItem = addButton.closest('li.masthead-assignment-row');
 
 		var staff_index = listItem.data('staff-index');
 		var section_index = listItem.closest('.exa_masthead_section').data('section-index');
@@ -71,24 +71,24 @@ jQuery(document).ready(function($) {
 	}
 
 	function assignment_remove_toggle_clicked(removeButton) {
-		var listItem = removeButton.parent('li');
+		var listItem = removeButton.closest('li.masthead-assignment-row');
 		listItem.remove();
 	}
 
 	function assignment_up_toggle_clicked(upButton) {
-		var listItem = upButton.parent('li');
+		var listItem = upButton.closest('li.masthead-assignment-row');
 		if( listItem.prev().length > 0 ) {
 			move_row_down(listItem.prev());
 		}
 	}
 
 	function assignment_down_toggle_clicked(downButton) {
-		var listItem = downButton.parent('li');
+		var listItem = downButton.closest('li.masthead-assignment-row');
 		move_row_down(listItem);
 	}
 
 	function move_row_down(listItem) {
-		var nextListItem = listItem.next();
+		var nextListItem = listItem.next('li.masthead-assignment-row');
 		if( nextListItem.length > 0 ) {
 			listItem.detach();
 			nextListItem.after(listItem);

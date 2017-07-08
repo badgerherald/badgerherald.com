@@ -8,39 +8,107 @@ ol.exa_masthead_form_list .clearfix {
 	clear: both;
 }
 
-/* Resets */
+/** 
+ Form
+ ----------------------------------------------------------- 
+ */
 
 ol.exa_masthead_form_list {
 	list-style-type: none;
 	margin: 0;
 }
 
-.exa_masthead_section {
-	margin-top: 12px;
-	background: white;
-	padding: 20px 15px;
-}
-
-div.exa_masthead_section_details,
 ol.exa_masthead_staff_list {
 	float: left;
 	margin: 0;
+	width: calc(100% - 140px);
 }
 
 .exa_masthead_section_details {
-	width: 50%;
-}
-
-ol.exa_masthead_staff_list {
-	width: 50%;
-	list-style-type: none;
+	width: 140px;
+	float: right;
 }
 
 
+/** 
+ Sections
+ ----------------------------------------------------------- 
+ */
+
+/* Sections (in general) */
+
+.exa_masthead_section {
+	margin-top: 12px;
+	background: white;
+	padding: 10px;
+}
 
 .exa_masthead_section_title_field {
 	font-size: 2em;
+	width: 100%;
+	margin-bottom: 20px;
 }
+
+/* Section toggles */
+
+ul.exa-masthead-section-toggles {
+	list-style-type: none;
+	width: 100%;
+	border-top: 1px solid rgba(0,0,0,.2);
+	margin-top: 12px;
+}
+
+
+ul.exa-masthead-section-toggles li {
+	display: inline-block;
+}
+
+ul.exa-masthead-section-toggles li a {
+	padding: 4px 3px;
+	display: block;
+	cursor: pointer;
+}
+
+
+/** 
+ Assignments
+ ----------------------------------------------------------- 
+ */
+
+ol.exa_masthead_staff_list {
+	list-style-type: none;
+}
+
+ol.exa_masthead_staff_list li {
+	margin: 3px 0;
+}
+
+/* Section toggles */
+
+ul.exa-masthead-assignment-toggles {
+	visibility: hidden;
+	list-style-type: none;
+	display: inline-block;
+}
+
+ol.exa_masthead_staff_list li:hover ul.exa-masthead-assignment-toggles {
+	visibility: visible;
+}
+
+ul.exa-masthead-assignment-toggles li {
+	display: inline-block;
+}
+
+ul.exa-masthead-assignment-toggles li a {
+	padding: 2px 4px;
+	display: block;
+	margin: 0;
+	margin-left: 5px;
+	border-radius: 3px;
+	cursor: pointer;
+	border: 1px solid rgba(0,0,0,.2);
+}
+
 
 .exa_masthead_add_user {
 	width: 20px;
