@@ -97,7 +97,6 @@ function _exa_galleries_bind_click_event_in_footer() { ?>
 function _exa_galleries_override_gallery_attachment_template() { ?>
 
 	<script>
-	alert('hi');
 	/* Replace the default gallery settings */
 	jQuery(document).ready( function($) {
 		if( typeof wp.media.view.Settings.Gallery != 'undefined' ){
