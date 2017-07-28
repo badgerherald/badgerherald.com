@@ -87,6 +87,12 @@
 					}
 				}
 			}
+			li > ul {
+				display: none;
+			}
+			li > ul ul {
+				display: none; /* only support one layer of dropdown */
+			}
 			&:hover li {
 				display: block;
 			}

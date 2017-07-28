@@ -1,13 +1,6 @@
 <?php 
 
-/*
-
-// TODO:
- - SVG the logo
-
-*/
-
-$container = $GLOBALS['container'] ?: new container('header');
+$container = $GLOBALS['container'] ?: new container('masthead');
 $container->default_args(
 	array(
 		'background' => 'grey',
@@ -15,14 +8,26 @@ $container->default_args(
 	)
 );
 
+if (!function_exists("printDropdownMenu")) :
+	function printDropdownMenu($menuLocation,$classes = null) {
+		if ( has_nav_menu( $menuLocation ) ) {
+			wp_nav_menu( array(
+				'theme_location' => $menuLocation,
+				'menu_class' => 'menu ' . $classes
+				)
+			);
+		} else {
+			echo "No menu found";
+		}
+	}
+endif;
+
 ?>
 
 <div class="<?php echo $container->classes(); ?>">
 	<div class="wrapper">
 		
-		<div class="header">
-		
-		<a id="home-link" class="logo" href="<?php bloginfo('url'); ?>">
+		<a id="logo" href="<?php bloginfo('url'); ?>">
 			<?php if($container->args['background'] == 'black') : ?>
 				<img src="<?php bloginfo('template_url') ?>/img/logo/header-horizontal-white.png" />
 			<?php else : ?>
@@ -38,20 +43,6 @@ $container->default_args(
 			<input type="text" name="s" placeholder="Search..." value="<?php echo $query ?>"></input>
 			<input type="submit" value="Submit"></input>
 		</form>
-
-		<?php 
-			if ( has_nav_menu( 'header-secondary' ) ) {
-				wp_nav_menu( array(
-					'theme_location' => 'header-secondary',
-					'menu_class' => 'menu menu-secondary'
-					)
-				);
-			}
-		?>
-
-
-
-		</div>
-
+		
 	</div>
 </div>

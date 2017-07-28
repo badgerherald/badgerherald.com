@@ -1,12 +1,6 @@
 <?php
-/**
- * container: menu search bar container
- * Description: Things my container does.
- *
- */
 
 $container = $GLOBALS['container'] ?: new container('menu-search-bar');
-
 
 $container->default_args(
 	array(
@@ -31,27 +25,23 @@ $container->default_args(
 			}
 		?>
 
-		
-		
+		<form class="search" action="/" method="get">
+			<?php $query = get_search_query(); ?>
+			<input type="text" name="s" placeholder="Search..." value="<?php echo $query ?>"></input>
+			<input type="submit" value="Submit"></input>
+		</form>
 
-	
-			<form class="search" action="/" method="get">
-				<?php $query = get_search_query(); ?>
-				<input type="text" name="s" placeholder="Search..." value="<?php echo $query ?>"></input>
-				<input type="submit" value="Submit"></input>
-			</form>
+		<?php 
+			if ( has_nav_menu( 'header-secondary' ) ) {
+				wp_nav_menu( array(
+					'theme_location' => 'header-secondary',
+					'menu_class' => 'menu menu-secondary'
+					)
+				);
+			}
+		?>
 
-			<?php 
-				if ( has_nav_menu( 'header-secondary' ) ) {
-					wp_nav_menu( array(
-						'theme_location' => 'header-secondary',
-						'menu_class' => 'menu menu-secondary'
-						)
-					);
-				}
-			?>
-
-		<div style="clear:both"></div>
+		<div class="clearfix"></div>
 		
     </div>
 </div>
