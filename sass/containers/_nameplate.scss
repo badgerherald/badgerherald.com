@@ -1,0 +1,343 @@
+.container.nameplate {
+	.wrapper {
+		border-bottom: 5px solid $blue;
+		padding-bottom: 12px;
+		.logo {
+			width: flex(160,300);
+			height: auto;
+			position: relative;
+			display: block;
+		}
+		a.menus-button { /* the menu icon */
+			padding: 12px flex(20,300) 18px;
+			font-size: 24px;
+			line-height: 24px;
+			color: $blue;
+			font-family: $headline;
+			position: absolute;
+			right: 0;
+			bottom: 0;
+			margin-top: -54px;
+			transition: bottom .2s;
+			cursor: pointer;
+			margin-right: flex(-5,300);
+			&.active {
+				background:white;
+				bottom: -6px;
+			}
+		}
+		.menus {
+			&.active {
+				display: block;
+			}
+			padding-top: 36px;
+			display: none;
+			background: white;
+			position: absolute;
+			top: 100%;
+			margin-left: flex(-5,300);
+			width: flex(310,300);
+			z-index: 9999;
+			.mobile-right {
+				float: right;
+				width: flex(200,300);
+			}
+			ul.menu {
+				list-style-type: none;
+				padding: 0;
+				font-family: 'pt sans narrow';
+				line-height: 36px;
+				font-size: 24px;
+				margin: 18px 0;
+				& li > ul {
+					display: none;
+				}
+				& li a {
+					display: block;
+					position: relative;
+					padding: 0 flex(10,180);
+				}
+				&.secondary-menu {
+					float: right;
+					width: flex(100,300);
+					text-align: right;
+					font-size: 16px;
+					line-height: 29px;
+					margin-top: 24px;
+					li a {
+						color: $greyText;
+						padding-right: 20px;
+					}
+				}
+				&.menu.social-menu {
+					min-height: 54px;
+					li a {
+						float: left;
+						margin-right: 10px;
+						margin-bottom: 12px;
+						width: 34px;
+						height: 34px;
+						& > span { // hide the normal text label
+							display: none;
+						}
+						&:before {
+							font-family: $icon;
+							font-size: 24px;
+							line-height: 35px;
+							color: $white;
+							text-align: center;
+							vertical-align: middle;
+							width: 100%;
+							display: block;
+							width: 34px;
+							height: 34px;
+							border-radius: 2px;
+						}
+						&.twitter:before{
+							content: "t";
+							background: #0892E3;
+						}
+						&.facebook:before{
+							content: "f";
+							background: #425F9E;
+						}
+						&.linkedin:before{
+							content: "l";
+							background: #0078b6;
+						}
+						&.instagram:before{
+							content: "i";
+							background: #cd486b;
+						}
+					}
+					li:last-child a  {
+						margin-right: 0;
+					}
+				}
+			}
+			form.search {
+
+				width: 100%;
+				input[type=text] {
+					position: absolute;
+					top: 0;
+					right:0;
+					margin-top: 12px;
+					padding: 0px flex(10,300);
+					margin-right: flex(30,300);
+					font-family: $headline;
+					outline: none;
+					width: flex(170,300);
+					transition: all .3s;
+					&::placeholder {
+						color: $black;
+					}
+					&:focus {
+						width: flex(270,300);
+						color: $blue;
+						&::placeholder {
+							color: $greyText;
+						}
+					}
+					font-size: 20px;
+				}
+				&:after {
+					pointer-events: none;
+					content: "s";
+					font-family: $icon;
+					padding: 4px 8px;
+					position: absolute;
+					top: 9px;
+					right:0;
+					width: 30px;
+					height: 30px;
+					color: $greyText;
+				}
+		  		input[type=submit] {    // the submit field.
+					display: none;
+				}
+			}
+		}
+	}
+}
+
+@include breakpoint('tablet') {
+	.container.nameplate {
+		.wrapper {
+			.logo {
+				width: flex(220,740);
+			}
+			a.menus-button { /* the menu icon */
+				display: none;
+			}
+			.menus {
+				padding-top: 0px;
+				display: block;
+				background: transparent;
+				position: absolute;
+				top: 0;
+				margin-left: 0;
+				width: 100%;
+				height: 100%;
+				z-index: 0;
+				.mobile-right {
+					float: right;
+					width: auto;
+				}
+				ul.menu {
+					list-style-type: none;
+					padding: 0;
+					font-family: 'pt sans narrow';
+					line-height: 36px;
+					margin: 0;
+					font-size: 24px;
+					& li {
+						float:left;
+					}
+					& li > ul {
+						display: none;
+					}
+					& li a {
+						display: block;
+						position: relative;
+						padding: 0 flex(10,180);
+					}
+					&.secondary-menu {
+						float: right;
+						width: auto;
+						text-align: right;
+						font-size: 14px;
+						line-height: 25px;
+						margin-top: 0px;
+						margin-right: 5px;
+						li a {
+							color: $black;
+							padding: 0 6px;
+						}
+					}
+					&.main-menu {
+						position:absolute;
+						bottom: 12px;
+						left: flex(240,740);
+						li a {
+							padding-right: 10px;
+						}
+					}
+					&.menu.social-menu {
+						min-height: 54px;
+						li a {
+							width: 25px;
+							height: 25px;
+							&:before {
+								font-size: 16px;
+								line-height: 26px;
+								width: 100%;
+								width: 25px;
+								height: 25px;
+							}
+						}
+					}
+				}
+				form.search {
+					input[type=text] {
+						position: absolute;
+						bottom: 18px;
+						right: 0;
+						top: inherit;
+						width: 30px;
+						padding: 0px 10px;
+						margin-right: 0px;
+						&::placeholder {
+							color: transparent;
+						}
+						&:focus {
+							width: flex(500,740);
+						}
+					}
+					&:after {
+						bottom: 18px;
+						right: 0;
+						top: inherit;
+					}
+				}
+			}
+		}
+	}
+}
+
+@include breakpoint('desktop') {
+	.container.nameplate {
+		.wrapper {
+			.logo {
+				width: flex(220,1020);
+			}
+			.menus {
+				ul.menu {
+					line-height: 36px;
+					font-size: 24px;
+					&.secondary-menu {
+						font-size: 16px;
+						li a {
+							color: $black;
+							padding: 0 4px;
+						}
+					}
+					&.main-menu {
+						left: flex(240,1020);
+					}
+				}
+				form.search {
+					input[type=text] {
+						position: absolute;
+						bottom: 18px;
+						right: 0;
+						top: inherit;
+						width: 180px;
+						padding: 0px 10px;
+						margin-right: 0px;
+						&::placeholder {
+							color: black;
+						}
+						&:focus {
+							width: flex(780,1020);
+							color: $blue;
+							&::placeholder {
+								color: $greyText;
+							}
+						}
+					}
+					&:after {
+						bottom: 18px;
+						right: 0;
+						top: inherit;
+					}
+				}
+			}
+		}
+	}
+}
+
+
+@include breakpoint('xl') {
+	.container.nameplate {
+		.wrapper {
+			.logo {
+				width: flex(220,1180);
+			}
+			.menus {
+				ul.menu {
+					&.main-menu {
+						left: flex(240,1180);
+					}
+				}
+				form.search {
+					input[type=text] {
+						&:focus {
+							width: flex(940,1180);
+						}
+					}
+				}
+			}
+		}
+	}
+}
