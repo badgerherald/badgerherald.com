@@ -55,10 +55,10 @@
 				}
 			}
 			.left-rail {
-				width:flex(460,760);
+				width:flex(300,760);
 			}
 			.middle-rail, .right-rail {
-				width: flex(150,760);
+				width: flex(230,760);
 			}
 			ul {
 				margin-top: 0;
@@ -75,20 +75,10 @@
 	.container.colophon {
 		.wrapper {
 			.left-rail {
-				width:720px;
+				width:flex(510,1020);
 			}
 			.middle-rail, .right-rail {
-				width: 150px;
-			}
-		}
-	}
-}
-
-@include breakpoint('xl') {
-	.container.colophon {
-		.wrapper {
-			.left-rail {
-				width:880px;
+				width:flex(255,1020);
 			}
 		}
 	}
