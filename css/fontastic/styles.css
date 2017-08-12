@@ -77,3 +77,6 @@
 .icon-instagram:before {
   content: "\69";
 }
+.icon-down-cheveron:before {
+  content: "\64";
+}

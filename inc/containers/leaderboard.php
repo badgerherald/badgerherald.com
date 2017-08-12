@@ -5,7 +5,7 @@ $container = $GLOBALS['container'] ?: new container('leaderboard');
 
 ?>
 
-<div class="<?php echo $container->classes(); ?>">
+<div class="<?php echo $container->classes(); ?> flex">
 	<div class="wrapper">
 		<div class="ad">
 	

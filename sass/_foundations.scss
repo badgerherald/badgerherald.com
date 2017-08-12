@@ -122,6 +122,22 @@ $aColor: orange !default;
 @mixin breakpointVar($var) {
   color: $var;
 }
+
+/**
+ * //todo: colors other than blue
+ * Mixin for link hover states
+ */
+@mixin linkColor($color) {
+  @if $color == $black {
+    color: $black;
+    &:hover { color: #787878; }
+  }
+  @if $color == $blue {
+    color: $blue;
+    &:hover { color: $blueLinkHover; }
+  }
+}
+
 /**
  * Mixin for breakpoints.
  */

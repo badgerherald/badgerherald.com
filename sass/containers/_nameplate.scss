@@ -1,3 +1,8 @@
+@mixin socialIcon($char,$color) {
+	content: $char;
+	background: $color;
+}
+
 .container.nameplate {
 	.wrapper {
 		border-bottom: 5px solid $blue;
@@ -9,10 +14,10 @@
 			display: block;
 		}
 		a.menus-button { /* the menu icon */
-			padding: 12px flex(20,300) 18px;
+			@include linkColor($blue);
+			padding: 12px flex(30,300) 18px flex(20,300);
 			font-size: 24px;
 			line-height: 24px;
-			color: $blue;
 			font-family: $headline;
 			position: absolute;
 			right: 0;
@@ -21,17 +26,27 @@
 			transition: bottom .2s;
 			cursor: pointer;
 			margin-right: flex(-5,300);
+			&:after {
+				content: "d";
+				font-size: 12px;
+				margin-left: 5px;
+				transition: transform .1s;
+				font-family: $icon;
+				position: absolute;
+			}
+			&.active:after {
+				margin-top: 3px;
+				transform: rotate(180deg);
+			}
 			&.active {
-				background:white;
+				background: $white;
 				bottom: -6px;
 			}
 		}
 		.menus {
-			&.active {
-				display: block;
-			}
-			padding-top: 36px;
 			display: none;
+			&.active { display: block; }
+			padding-top: 36px;
 			background: white;
 			position: absolute;
 			top: 100%;
@@ -45,88 +60,73 @@
 			ul.menu {
 				list-style-type: none;
 				padding: 0;
-				font-family: 'pt sans narrow';
+				font-family: $headline;
 				line-height: 36px;
 				font-size: 24px;
 				margin: 18px 0;
-				& li > ul {
+				& > li ul {
 					display: none;
 				}
-				& li a {
+				& > li > a {
 					display: block;
 					position: relative;
 					padding: 0 flex(10,180);
 				}
-				&.secondary-menu {
-					float: right;
-					width: flex(100,300);
-					text-align: right;
-					font-size: 16px;
-					line-height: 29px;
-					margin-top: 24px;
-					li a {
-						color: $greyText;
-						padding-right: 20px;
-					}
+			}
+			ul.menu.secondary-menu {
+				float: right;
+				width: flex(100,300);
+				text-align: right;
+				font-size: 16px;
+				line-height: 29px;
+				margin-top: 24px;
+				li a {
+					@include linkColor($black);
+					padding-right: 20px;
 				}
-				&.menu.social-menu {
-					min-height: 54px;
-					li a {
-						float: left;
-						margin-right: 10px;
-						margin-bottom: 12px;
+			}
+			ul.menu.social-menu {
+				min-height: 54px;
+				li a {
+					float: left;
+					margin-right: 10px;
+					margin-bottom: 12px;
+					width: 34px;
+					height: 34px;
+					& > span { display: none; } // hide the normal text label
+					&:before {
+						font-family: $icon;
+						font-size: 24px;
+						line-height: 35px;
+						color: $white;
+						text-align: center;
+						width: 100%;
+						display: block;
 						width: 34px;
 						height: 34px;
-						& > span { // hide the normal text label
-							display: none;
-						}
-						&:before {
-							font-family: $icon;
-							font-size: 24px;
-							line-height: 35px;
-							color: $white;
-							text-align: center;
-							vertical-align: middle;
-							width: 100%;
-							display: block;
-							width: 34px;
-							height: 34px;
-							border-radius: 2px;
-						}
-						&.twitter:before{
-							content: "t";
-							background: #0892E3;
-						}
-						&.facebook:before{
-							content: "f";
-							background: #425F9E;
-						}
-						&.linkedin:before{
-							content: "l";
-							background: #0078b6;
-						}
-						&.instagram:before{
-							content: "i";
-							background: #cd486b;
-						}
+						border-radius: 2px;
 					}
-					li:last-child a  {
-						margin-right: 0;
-					}
+					&.twitter:before { @include socialIcon("t",#0892E3); }
+					&.facebook:before { @include socialIcon("f",#425F9E); }
+					&.linkedin:before { @include socialIcon("l",#0078b6); }
+					&.instagram:before { @include socialIcon("i",#cd486b); }
+				}
+				li:last-child a  {
+					margin-right: 0;
 				}
 			}
 			form.search {
-
 				width: 100%;
 				input[type=text] {
 					position: absolute;
 					top: 0;
-					right:0;
-					margin-top: 12px;
-					padding: 0px flex(10,300);
+					right: 0;
+					margin-top: 9px;
+					padding: 3px flex(10,300);
 					margin-right: flex(30,300);
 					font-family: $headline;
 					outline: none;
+					border: none;
 					width: flex(170,300);
 					transition: all .3s;
 					&::placeholder {
@@ -148,7 +148,7 @@
 					padding: 4px 8px;
 					position: absolute;
 					top: 9px;
-					right:0;
+					right: flex(15,300);
 					width: 30px;
 					height: 30px;
 					color: $greyText;
@@ -166,6 +166,7 @@
 		.wrapper {
 			.logo {
 				width: flex(220,740);
+				z-index: 11;
 			}
 			a.menus-button { /* the menu icon */
 				display: none;
@@ -174,91 +175,105 @@
 				padding-top: 0px;
 				display: block;
 				background: transparent;
-				position: absolute;
 				top: 0;
 				margin-left: 0;
 				width: 100%;
 				height: 100%;
-				z-index: 0;
+				z-index: 10;
 				.mobile-right {
-					float: right;
 					width: auto;
 				}
 				ul.menu {
-					list-style-type: none;
-					padding: 0;
-					font-family: 'pt sans narrow';
-					line-height: 36px;
 					margin: 0;
-					font-size: 24px;
-					& li {
-						float:left;
+					& > li {
+						float: left;
 					}
-					& li > ul {
-						display: none;
+				}
+				ul.menu.secondary-menu {
+					float: right;
+					width: auto;
+					font-size: 14px;
+					margin-top: 0px;
+					margin-right: 5px;
+					li a {
+						color: $black;
+						padding: 0 8px;
 					}
-					& li a {
-						display: block;
-						position: relative;
-						padding: 0 flex(10,180);
+				}
+				ul.menu.main-menu {
+					position:absolute;
+					bottom: 12px;
+					left: flex(240,740);
+					font-size: 18px;
+					margin-left: -7px;
+					& > li > a {
+						padding: 0 7px;
 					}
-					&.secondary-menu {
-						float: right;
-						width: auto;
-						text-align: right;
-						font-size: 14px;
-						line-height: 25px;
-						margin-top: 0px;
-						margin-right: 5px;
-						li a {
-							color: $black;
-							padding: 0 6px;
+					& li.menu-item-has-children { /* dropdown items */
+						& > a {
+							padding-right: 22px;
+							&:after {
+								content: "d";
+								font-size: 12px;
+								padding-left: 2px;
+								transition: margin .1s;
+								font-family: $icon;
+								position: absolute;
+							}
+						}
+						&:hover {
+							background: white;
+							& > a:after {
+								margin-top: 3px;
+							}
+						}
+						&:hover > ul {
+							a { @include linkColor($black); }
+							display: block;
+							position: absolute;			
+							top: 100%;
+							min-width: 200px;
+							background: white;
+							list-style-type: none;
+							padding: 12px;
+							font-size: 18px;
 						}
 					}
-					&.main-menu {
-						position:absolute;
-						bottom: 12px;
-						left: flex(240,740);
-						li a {
-							padding-right: 10px;
-						}
-					}
-					&.menu.social-menu {
-						min-height: 54px;
-						li a {
+				}
+				ul.menu.social-menu {
+					li a {
+						width: 25px;
+						height: 25px;
+						&:before {
+							font-size: 16px;
+							line-height: 26px;
 							width: 25px;
 							height: 25px;
-							&:before {
-								font-size: 16px;
-								line-height: 26px;
-								width: 100%;
-								width: 25px;
-								height: 25px;
-							}
 						}
 					}
 				}
 				form.search {
 					input[type=text] {
-						position: absolute;
-						bottom: 18px;
-						right: 0;
+						bottom: 15px;
 						top: inherit;
-						width: 30px;
-						padding: 0px 10px;
+						width: 36px;
+						padding: 3px 12px 3px 9px;
 						margin-right: 0px;
 						&::placeholder {
 							color: transparent;
 						}
 						&:focus {
 							width: flex(500,740);
+							margin-top: -6px;
+							padding: 6px 12px;
+							bottom: 12px;
 						}
 					}
 					&:after {
-						bottom: 18px;
-						right: 0;
+						bottom: 16px;
+						right: 3px;
 						top: inherit;
-					}
+					}					
 				}
 			}
 		}
@@ -274,49 +289,42 @@
 			.menus {
 				ul.menu {
 					line-height: 36px;
-					font-size: 24px;
-					&.secondary-menu {
-						font-size: 16px;
-						li a {
-							color: $black;
-							padding: 0 4px;
-						}
+				}
+				ul.menu.secondary-menu {
+					font-size: 16px;
+					li a {
+						color: $black;
+						padding: 0 6px;
 					}
-					&.main-menu {
-						left: flex(240,1020);
+				}
+				ul.menu.main-menu {
+					left: flex(240,1020);
+					margin-left: -10px;
+					font-size: 24px;
+					& > li > a {
+						padding: 0 10px;
+					}
+					& li.menu-item-has-children { /* dropdown items */
+						& > a {
+							padding-right: 26px;
+						}
 					}
 				}
 				form.search {
 					input[type=text] {
-						position: absolute;
-						bottom: 18px;
-						right: 0;
-						top: inherit;
 						width: 180px;
-						padding: 0px 10px;
-						margin-right: 0px;
 						&::placeholder {
 							color: black;
 						}
 						&:focus {
 							width: flex(780,1020);
-							color: $blue;
-							&::placeholder {
-								color: $greyText;
-							}
 						}
-					}
-					&:after {
-						bottom: 18px;
-						right: 0;
-						top: inherit;
 					}
 				}
 			}
 		}
 	}
 }
-
 
 @include breakpoint('xl') {
 	.container.nameplate {
