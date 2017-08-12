@@ -18,8 +18,7 @@ if(exa_hero_media() == 'video') :
 	<div class="black" style="padding-top:18px;">
 		<?php 
 		exa_container('leaderboard');
-		exa_container('menu-search-bar',array('background'=>'black'));
-		exa_container('header',array('background'=>'black'));
+		exa_container('nameplate');
 		exa_container('hero-video');
 		?>
 	</div>

@@ -71,3 +71,12 @@
 .icon-new-window:before {
   content: "\77";
 }
+.icon-social-linkedin:before {
+  content: "\6c";
+}
+.icon-instagram:before {
+  content: "\69";
+}
+.icon-down-cheveron:before {
+  content: "\64";
+}

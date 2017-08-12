@@ -18,8 +18,7 @@ global $post;
 <div class="black" style="padding-top:18px;">
 	<?php
 		exa_container('leaderboard');
-		exa_container('menu-search-bar',array('background'=>'black'));
-		exa_container('header','black');
+		exa_container('nameplate');
 		exa_container('hero', 'image');	//main content of this page
 	?>
 </div>

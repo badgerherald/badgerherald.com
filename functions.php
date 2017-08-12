@@ -24,6 +24,7 @@ include( dirname( __FILE__ ) . '/inc/functions/staff.php');
 include( dirname( __FILE__ ) . '/inc/functions/inline-links.php');
 include( dirname( __FILE__ ) . '/inc/functions/galleries.php');
 include( dirname( __FILE__ ) . '/inc/functions/images.php');
+include( dirname( __FILE__ ) . '/inc/functions/menus.php');
 
 /* include_once('inc/functions/snippets.php'); */
 
@@ -162,17 +163,6 @@ function exa_setup() {
 
 
 
-	/* Nav menus */
-
-	//add_theme_support('menus');
-
-	// header
-	register_nav_menu( 'header-primary', __("Header Primary") );
-	register_nav_menu( 'header-secondary', __("Header Secondary") );
-	register_nav_menu( 'footer-primary', __("Footer Primary") );
-	register_nav_menu( 'footer-secondary', __("Footer Secondary") );
-	/* This theme uses its own gallery styles. 
-	add_filter( 'use_default_gallery_style', '__return_false' ); */
 
 }
 add_action( 'after_setup_theme', 'exa_setup' );
@@ -202,7 +192,7 @@ function exa_scripts_styles() {
 		 * Load fontastic font.
 		 * @see ./css/fontastic/icon-reference.html 
 		 */
-		wp_enqueue_style( 'exa-icons', get_template_directory_uri() . '/css/fontastic/styles.css?v=5' );
+		wp_enqueue_style( 'exa-icons', get_template_directory_uri() . '/css/fontastic/styles.css?v=10' );
 
 		/* Load google font. */
 		wp_enqueue_style( 'exa-fonts', 'https://fonts.googleapis.com/css?family=Noto+Serif:400,700,400italic,700italic|Yanone+Kaffeesatz:400,300,700|Open+Sans|PT+Sans+Narrow:400,700');

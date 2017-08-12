@@ -4,7 +4,7 @@
  */
 
 global $wp_query;
-$container = $GLOBALS['container'] ?: new container('header');
+$container = $GLOBALS['container'] ?: new container('banter');
 
 ?>
 
