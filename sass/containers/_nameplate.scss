@@ -93,6 +93,7 @@
 					margin-bottom: 12px;
 					width: 34px;
 					height: 34px;
+					display: inline;
 					& > span { display: none; } // hide the normal text label
 					&:before {
 						font-family: $icon;
