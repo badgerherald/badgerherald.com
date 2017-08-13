@@ -1,7 +1,7 @@
 .container.masthead {
 	text-align: center;
 	padding-bottom: 30px;
-	padding-top: 24px;
+	padding-top: 36px;
 	ol, li {
 		list-style-type: none;
 		margin: 0;
@@ -38,14 +38,19 @@
 	li a.name {
 		font-weight: bold;
 		font-family: $headline;
-		color: $black;
-		&:hover {
-			color: $blue;
-		}
+		@include linkColor($blue);
 	}
 	li .position {
 		font-family: $headline;
 		color: $greyText;
 		font-weight: normal;
+	}
+}
+
+@include breakpoint('tablet') {
+	.container.masthead {
+		text-align: center;
+		padding-bottom: 30px;
+		padding-top: 54px;
 	}
 }
