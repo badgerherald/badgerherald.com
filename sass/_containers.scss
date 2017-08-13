@@ -7,310 +7,93 @@
 .container {
 	padding: 12px 0px;
 	margin: 0;
+	&.mobile, &.tablet, &.desktop, &.xl {
+		display: none;
+	}
+	&.mobile {
+		display: block;
+	}
 }
 
-.container.mobile, .container.tablet, .container.desktop, .container.xl {
-	display: none;
-
+.wrapper {
+	margin: 0 auto;
+	max-width: 540px;
+	width: flex(300,320);
+	position: relative;
 }
 
-.container.mobile {
-	display:block;
-}
-
-@include breakpoint('tablet') {
+/**
+ * TABLETS
+ * 		- width: 740
+ *		- columns: 9
+ *		- gutter: 20
+ *		- column width: ??
+ */
+@include breakpoint('tablet') { // FLEX BOX WIDTH: 740
 	.container.mobile, .container.desktop, .container.xl {
 		display: none;
 	}
 	.container.tablet {
 		display:block;
 	}
+	.wrapper {
+		max-width: 740px;
+	}
+	.container.flex .wrapper {
+		width: flex(950,1000);
+		min-width: 740px;
+		max-width: flex(950,1000);
+	}
 }
 
+/**
+ * Desktop
+ * 		- width: 1020
+ *		- columns: ??
+ *		- gutter: 20
+ *		- column width: ??
+ */
 @include breakpoint('desktop') {
+	$gridColor: red;
 	.container.mobile, .container.tablet, .container.xl {
 		display: none;
 	}
 	.container.desktop {
 		display:block;
 	}
-}
-
-@include breakpoint('xl') {
-	.container.mobile, .container.tablet, .container.desktop {
-		display: none;
+	.wrapper {
+		max-width: 1020px;
+		width: 1020px;
 	}
-	.container.xl {
-		display:block;
+	.container.flex .wrapper {
+		min-width: 1020px;
+		width: flex(950,1000);
+		max-width: flex(950,1000);
 	}
 }
 
 /**
- * OLD, probably deletable stuff below here
- * ----------------------------------------
+ * TABLETS
+ * 		- width: 1180
+ *		- columns: ??
+ *		- gutter: 20
+ *		- column width: ??
  */
-.cover.container {
+@include breakpoint('xl') {
+	$gridColor: green;
+	.container.mobile, .container.tablet, .container.desktop {
+		display: none;
+	}
+	.container.xl {
+		display: block;
+	}
 	.wrapper {
-		background: rgba($black,.2);
-		width: 100%;
-		height: 400px;
+		max-width: 1180px;
+		width: 1180px;
+	}
+	.container.flex .wrapper {
+		width: flex(94,100);
+		min-width: 1180px;
+		max-width: flex(94,100);
 	}
 }
-
-.cover-2-column.container {
-	.wrapper {
-		width: 100%;
-	}
-	.cover.container {
-		background: rgba($black, .2);
-		width: 100%;
-		height: 400px;
-		margin-bottom: 24px;
-	}
-}
-
-.column.container .column.container-header {
-	h2 {
-		border-bottom: 2px solid $black;
-		display:block;
-		padding-bottom:12px;
-		margin-bottom: 24px;
-	}
-}
-
-.column.container .column.container-article {
-	margin-bottom:42px;
-	position: relative;
-	a:hover {
-		cursor: pointer;
-	}
-	.mug {
-		margin: 0 auto;
-		float:left;
-	}
-	.article-link {
-		h2 {
-			font-size: 18px;
-			line-height: 25px;
-			font-family: 'pt serif';
-			font-style: italic;
-			color: $trueblack;
-			font-weight:normal;
-			padding-top:30px;
-			padding-bottom:12px;
-			padding-left: 80px;
-			margin-left: 10px;
-		}
-		.read {
-			display: inline-block;
-			position:absolute;
-			left:90px;		
-			padding-right:15px;
-			font-family: $headline;
-			text-transform: uppercase;
-			color: $trueblack;
-			font-weight: 700;
-			font-size:10px;
-			line-height: 10px;
-			background: url("img/icons/arrow-right-black.png") no-repeat right top;
-			background-size: contain;
-
-		}
-		&:hover {
-			h2,.read { color: $blue; }
-			.mug img {
-				-webkit-transition: all .1s ease-in-out;
-    			-moz-transition: all .1s ease-in-out;
-    			-o-transition: all .1s ease-in-out;
-    			transition: all .1s ease-in-out;
-				width:110% !important;
-				height:110% !important;
-				max-width:110%;
-				margin-left:-5%;
-				margin-top: -5%;
-			}
-		}
-	}
-	.author-link {
-		text-transform: uppercase;
-		font-family: $headline;
-		// margin-bottom:18px;
-		position:absolute;
-		left: 90px;
-		display:block;
-		font-size:14px;
-		font-weight:700;
-		color: $trueblack;
-		&:after {
-			display:block;
-			width: 60px;
-			border-bottom:2px solid $darkgreyBorder;
-			content:" ";
-		}
-		&:hover {
-			color: $blue;
-		}
-	}
-}
-
-.leaderboard.container {
-	.wrapper {
-		.ad {
-			width:300px;
-			margin: 0 auto;
-		}
-	}
-}
-
-.full-width-cover-image {
-	display:block;
-	position: relative;
-	overflow: hidden;
-	background-position: 50%;
-	background-repeat: no-repeat;
-	background-size: cover;
-	margin: 0 auto 24px;
-	max-width: 100%;
-	max-height: 600px;
-	&:before {
-		content: "";
-		display:block;
-		width: 100%;
-	}
-	&.pos-bottom {
-		background-position: center bottom;
-	}
-}
-
-.full-width-aspect-3by1:before {
-	padding-bottom: 33.33333%;
-}
-
-
-
-@media (min-width: 760px) {
-
-	.column.container .column.container-article {
-	
-		width:flex(240,760);
-		float:left;
-		margin-right: flex(20,760);
-
-		/* Make wrapping work without clearfix */
-		&.article-3 {
-			margin-right: 0;
-		}
-
-		&.article-4 {
-			clear:left;
-		}
-
-		.mug {
-			margin: 0 auto;
-			float:none;
-		}
-		.article-link {
-			h2 {
-				padding-top:12px;
-				text-align:center;
-				padding-bottom:12px;
-				padding-left: 0;
-				margin-left: 0;
-			}
-			.read {
-				text-align:center;
-			}
-
-		}
-		.author-link {
-			position:relative;
-			display:block;
-			left:0;
-			margin-bottom:12px;
-			text-align:center;
-			&:after {
-				margin:0 auto;
-			}
-
-		}
-	}
-
-	.leaderboard.container {
-		.wrapper {
-			.ad {
-				width:100%;
-			}
-		}
-	}
-}
-
-@media (min-width: 1160px) {
-
-	.column.container .column.container-article {
-	
-		width:140px;
-		float:left;
-		margin-right: 20px;
-
-		/* Make wrapping work without clearfix */
-		&.article-3 {
-			margin-right: 20px;
-		}
-
-		&.article-4 {
-			clear:none;
-		}
-
-		.mug {
-			margin: 0 auto;
-			float:none;
-		}
-		.article-link {
-			h2 {
-				padding-top:12px;
-				text-align:center;
-				padding-bottom:12px;
-				padding-left: 0;
-				margin-left: 0;
-			}
-			.read {
-				text-align:center;
-			}
-
-		}
-		.author-link {
-			position:relative;
-			display:block;
-			left:0;
-			margin-bottom:12px;
-			text-align:center;
-			&:after {
-				margin:0 auto;
-			}
-
-		}
-	}
-
-
-	.cover-2-column.container {
-		.wrapper {
-			@include clearfix();
-			.cover.container {
-				width: 500px;
-				float: left;
-				&:first-child {
-					margin-right: 20px;
-				}
-			}
-		}
-	}
-}
-
-@include breakpoint(xl) {
-	.cover-2-column.container .wrapper {
-		.cover.container {
-			width: 580px;
-		}
-	}
-}
-

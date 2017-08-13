@@ -2,11 +2,11 @@
 
 @font-face {
   font-family: "exa";
-  src:url("fonts/exa.eot");
-  src:url("fonts/exa.eot?#iefix") format("embedded-opentype"),
-    url("fonts/exa.woff") format("woff"),
-    url("fonts/exa.ttf") format("truetype"),
-    url("fonts/exa.svg#exa") format("svg");
+  src:url("fonts/exa.eot?v=12");
+  src:url("fonts/exa.eot?v=12#iefix") format("embedded-opentype"),
+    url("fonts/exa.woff?v=12") format("woff"),
+    url("fonts/exa.ttf?v=12") format("truetype"),
+    url("fonts/exa.svg?v=12#exa") format("svg");
   font-weight: normal;
   font-style: normal;
 
@@ -70,4 +70,13 @@
 }
 .icon-new-window:before {
   content: "\77";
+}
+.icon-social-linkedin:before {
+  content: "\6c";
+}
+.icon-instagram:before {
+  content: "\69";
+}
+.icon-down-cheveron:before {
+  content: "\64";
 }

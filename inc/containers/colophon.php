@@ -11,26 +11,26 @@ $container = $GLOBALS['container'] ?: new container('colophon');
 		</div>
 		<div class="middle-rail rail">
 			<?php
-				if ( has_nav_menu( 'footer-primary' ) ) {
+				if ( has_nav_menu( 'exa_main_menu' ) ) {
 					wp_nav_menu( array(
-						'theme_location' => 'footer-primary'
+						'theme_location' => 'exa_main_menu'
 						)
 					);
 				} else {
-					echo "No footer-primary menu defined. Please define a menu for this location.";
+					echo "No main menu defined. Please define a menu for this location.";
 				}
 			?>
 		</div>
 		<div class="right-rail rail">
 			<?php 
 
-			if ( has_nav_menu( 'footer-secondary' ) ) {
+			if ( has_nav_menu( 'exa_secondary_menu' ) ) {
 				wp_nav_menu( array(
-					'theme_location' => 'footer-secondary'
+					'theme_location' => 'exa_secondary_menu'
 					)
 				);
 			} else {
-				echo "No footer-secondary menu defined. Please define a menu for this location.";
+				echo "No secondary menu defined. Please define a menu for this location.";
 			}
 
 			?>

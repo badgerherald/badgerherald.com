@@ -47,7 +47,7 @@ function exa_masthead_post_type() {
 		'label'                 => __( 'Masthead', 'exa' ),
 		'description'           => __( 'A masthead of staff members', 'exa' ),
 		'labels'                => $labels,
-		'supports'              => array( 'title', 'thumbnail'),
+		'supports'              => array( 'title', 'thumbnail' ),
 		'hierarchical'          => false,
 		'public'                => true,
 		'show_ui'               => true,

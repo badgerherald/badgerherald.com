@@ -11,8 +11,7 @@
  */
 
 get_header();
-exa_container('menu-search-bar', array('background' => 'black'));
-exa_container('header', array('background' => 'black'));
+exa_container('nameplate');
 
 $query_args = array(
 	'showposts' 	=> 1,
