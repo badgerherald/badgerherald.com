@@ -67,3 +67,26 @@ function exa_admin_user_select_multi_dropdown( $id, $inputName, $userids = null,
 		exa_admin_user_select_dropdown("$id-$i","{$inputName}[]",$userid);
 	}
 }
+
+/**
+ * Changes wordpress outbound email sender to Badger Herald Web Dept.
+ *
+ * @since v0.6
+ */
+function exa_mail_name( $email ){
+  return 'Badger Herald Web Dept.'; // new email name from sender.
+}
+add_filter( 'wp_mail_from_name', 'exa_mail_name' );
+
+/**
+ * Changes wordpress outbound email sender address to web@badgerherald.com
+ *
+ * @since v0.6
+ */
+function exa_mail_address( $email ){
+  return str_replace('wordpress','web',$email); // new email name from sender.
+}
+add_filter( 'wp_mail_from', 'exa_mail_address' );
+
+
+ 
