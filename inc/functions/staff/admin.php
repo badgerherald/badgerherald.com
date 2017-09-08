@@ -223,6 +223,9 @@ add_action( 'wp_ajax_exa_masthead_section_html', '_exa_masthead_section_ajax' );
  */
 function _exa_masthead_save($post_id) {
 
+	if( !array_key_exists('_exa_masthead',$_POST)) {
+		return;
+	}
 	if( !wp_verify_nonce( $_POST['_exa_masthead'], basename(__FILE__) ) ) {
 		return;
 	}
