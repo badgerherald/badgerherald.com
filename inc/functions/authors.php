@@ -271,17 +271,6 @@ function get_hrld_author($key, $author_id = null) {
 
 }
 
-/**
- * Returns the authors current role.
- * 
- * @since v0.5
- */
-function exa_author_current_role($author_id = null) {
-	global $post;
-	$author_id = $author_id ? $author_id : $post->post_author;
-	$val = get_the_author_meta("_exa_current_position",$author_id);
-	return $val != '' ? $val : null;
-}
 
 /**
  * Outputs <img> tag mug for a user.
