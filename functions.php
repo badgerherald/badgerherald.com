@@ -20,13 +20,12 @@ include( dirname( __FILE__ ) . '/inc/functions/social.php');
 include( dirname( __FILE__ ) . '/inc/functions/admin.php');
 include( dirname( __FILE__ ) . '/inc/functions/services.php');
 include( dirname( __FILE__ ) . '/inc/functions/sections.php');
-include( dirname( __FILE__ ) . '/inc/functions/staff.php');
+include( dirname( __FILE__ ) . '/inc/functions/mastheads.php');
 include( dirname( __FILE__ ) . '/inc/functions/inline-links.php');
 include( dirname( __FILE__ ) . '/inc/functions/galleries.php');
 include( dirname( __FILE__ ) . '/inc/functions/images.php');
 include( dirname( __FILE__ ) . '/inc/functions/menus.php');
 
-include( dirname( __FILE__ ) . '/inc/functions/staff/admin.php');
 
 /* include_once('inc/functions/snippets.php'); */
 
