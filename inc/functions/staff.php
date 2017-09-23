@@ -240,7 +240,7 @@ function _exa_masthead_save($post_id) {
 
 	$new_assignments = array_key_exists( 'exa_masthead_assignments', $_POST ) ? $_POST['exa_masthead_assignments'] : array();
 	$new_assignments = array_values( $new_assignments );
-	error_log(print_r($_POST,true));
+
 	foreach( $new_assignments as $section_index => &$section ) {
 		$section_staff = array_key_exists( 'staff', $section ) ? $section['staff'] : array();
 		foreach( $section_staff as $staff_index => &$staff ) {
@@ -283,7 +283,13 @@ function exa_masthead_current_role($user_id = null) {
  */
 function exa_masthead_role_from_masthead( $post, $user_id ) {
 	$masthead = exa_masthead_postmeta($post);
-	print_r($masthead);
+	foreach ($masthead as $section) {
+		foreach ($section['staff'] as $staffer) {
+			if( $staffer['uid'] == $user_id) {
+				return $staffer['position'];
+			}
+		}
+	}
 }
 
 /**
@@ -300,7 +306,7 @@ function exa_masthead_most_recent() {
 	);
 	
 	$recent_posts = wp_get_recent_posts( $args, ARRAY_A );
-	return $recent_posts[0];
+	return $recent_posts[0]['ID'];
 }
 
 /** 

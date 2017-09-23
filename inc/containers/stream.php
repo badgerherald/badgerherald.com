@@ -4,7 +4,7 @@ $container = $GLOBALS['container'] ?: new Container('stream');
 
 ?>
 
-<div class="<?php echo $container->classes() ?>">
+<div class="<?php echo $container->classes() ?> flex">
 	<div class="wrapper">
 		
 		<div class="sidebar">

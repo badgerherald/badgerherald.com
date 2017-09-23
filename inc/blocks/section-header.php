@@ -50,7 +50,7 @@ $author = get_user_by( 'slug', get_query_var( 'author_name' ) );
 
 	$cat = get_query_var( 'cat' );
 	$cat = $cat ? get_category( get_query_var( 'cat' ) ) : null;
-	$editors = $cat ? exa_staff_editors_for_category($cat) : null;
+	//$editors = $cat ? exa_staff_editors_for_category($cat) : null;
 
 	if(!empty($editors)) {
 		foreach ($editors as $editor_id) {
