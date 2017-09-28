@@ -223,7 +223,7 @@ add_action( 'wp_ajax_exa_masthead_section_html', '_exa_masthead_section_ajax' );
  * @access private
  * @since v0.6
  */
-function _exa_masthead_save($post_id) {
+function _exa_masthead_sanitize_and_save($post) {
 
 	if( !array_key_exists('_exa_masthead',$_POST)) {
 		return;
@@ -233,15 +233,22 @@ function _exa_masthead_save($post_id) {
 		return;
 	}
 
-	if ( !array_key_exists( "exa_masthead_assignments", $_POST ) ) {
-		delete_post_meta( $post_id, '_exa_masthead' );
-		return;
-	}
+	$post = get_post($post);
 
-	$new_assignments = array_key_exists( 'exa_masthead_assignments', $_POST ) ? $_POST['exa_masthead_assignments'] : array();
-	$new_assignments = array_values( $new_assignments );
+	$assignments = array_key_exists( 'exa_masthead_assignments', $_POST ) ? $_POST['exa_masthead_assignments'] : array();
+	$assignments = array_values( $assignments );
 
-	foreach( $new_assignments as $section_index => &$section ) {
+	$sanitized_assignments = _exa_masthead_sanitize($post,$assignments);
+	_exa_masthead_save($post,$sanitized_assignments);
+
+}
+add_action( 'save_post', '_exa_masthead_sanitize_and_save' );
+
+/**
+ * Sanitizes new masthead assignments from $_POST form
+ */
+function _exa_masthead_sanitize($post,$assignments) {
+	foreach( $assignments as $section_index => &$section ) {
 		$section_staff = array_key_exists( 'staff', $section ) ? $section['staff'] : array();
 		foreach( $section_staff as $staff_index => &$staff ) {
 			$userid = array_key_exists( 'uid',$staff ) ? $staff['uid'] : null;
@@ -251,18 +258,25 @@ function _exa_masthead_save($post_id) {
 		}
 		$section['staff'] = array_values($section_staff);
 		if( empty( $section['staff'] ) && empty( $section['title'] ) ) {
-			unset( $new_assignments[$section_index] );
+			unset( $assignments[$section_index] );
 		}
 	}
-	
-	if( $new_assignments == '' ) {
-		delete_post_meta($post_id, '_exa_masthead');
-	} else {
-		update_post_meta($post_id, '_exa_masthead', $new_assignments);
-	}
-
+	return empty($assignments) ? null : $assignments;
 }
-add_action( 'save_post', '_exa_masthead_save' );
+
+/**
+ * Saves new masthead assignments to the post_meta. Data should be sanitized 
+ * before calling thus function
+ */
+function _exa_masthead_save($post,$assignments) {
+	$post = get_post($post);
+
+	if( empty($assignments) ) {
+		delete_post_meta($post->ID, '_exa_masthead');
+	} else {
+		update_post_meta($post->ID, '_exa_masthead', $assignments);
+	}
+}
 
 /**
  * Returns a role from the most recent masthead. If the user is not included
@@ -279,7 +293,7 @@ function exa_masthead_current_role($user_id = null) {
 }
 
 /**
- * Returns the most recent role for the given masthead
+ * Returns the most recent role for the given masthead.
  */
 function exa_masthead_role_from_masthead( $post, $user_id ) {
 	$masthead = exa_masthead_postmeta($post);
