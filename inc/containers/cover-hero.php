@@ -17,14 +17,7 @@ if ( has_post_thumbnail() && !($hide_feature == "true")) : ?>
 	<div class="<?php echo $container->classes(); ?>">
 	
 		<div class="hero">
-			<div class="wrapper">
-				<div class="logo-shadow"></div>
-				<a id="logo" href="<?php bloginfo('url'); ?>">
-					<img src="<?php bloginfo('template_url') ?>/img/logo/header-horizontal-white.png" />
-				</a>
-			</div>
 			<?php echo $thumbnailHTML ?>
-
 		</div>
 
 	</div>

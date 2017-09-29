@@ -41,6 +41,12 @@ $author = get_user_by( 'slug', get_query_var( 'author_name' ) );
 	}
 
 	if( is_author() ) {
+		$post_count = count_user_posts( $author->ID );
+		if($post_count > 3) {
+			echo "<b>" . $post_count . "</b> articles <br/><br/>";
+		}
+	}
+	if( is_author() ) {
 		echo "" . exa_author_email($author->ID) . "<br/>";
 	}
 
