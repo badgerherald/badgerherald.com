@@ -25,8 +25,8 @@ $author = get_user_by( 'slug', get_query_var( 'author_name' ) );
 		?>
 	</h1> 
 	<?php 
-	if(is_author() && exa_author_current_role()) {
-		echo "<h3 class='role'>" . exa_author_current_role() . "</h3>";
+	if(is_author() && exa_masthead_current_role()) {
+		echo "<h3 class='role'>" . exa_masthead_current_role() . "</h3>";
 	} else {
 		do_action('exa_after_category_title');
 	}
@@ -56,7 +56,7 @@ $author = get_user_by( 'slug', get_query_var( 'author_name' ) );
 
 	$cat = get_query_var( 'cat' );
 	$cat = $cat ? get_category( get_query_var( 'cat' ) ) : null;
-	$editors = $cat ? exa_staff_editors_for_category($cat) : null;
+	//$editors = $cat ? exa_staff_editors_for_category($cat) : null;
 
 	if(!empty($editors)) {
 		foreach ($editors as $editor_id) {
@@ -69,7 +69,7 @@ $author = get_user_by( 'slug', get_query_var( 'author_name' ) );
 				</div>
 			
 				<span class="name"><?php echo $user->display_name; ?></span>
-					<span class="position"><?php echo exa_author_current_role($editor_id); ?></span>
+					<span class="position"><?php echo exa_masthead_current_role($editor_id); ?></span>
 
 			</a>
 			<div class="clearfix"></div>

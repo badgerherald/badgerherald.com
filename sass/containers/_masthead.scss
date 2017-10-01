@@ -1,0 +1,56 @@
+.container.masthead {
+	text-align: center;
+	padding-bottom: 30px;
+	padding-top: 36px;
+	ol, li {
+		list-style-type: none;
+		margin: 0;
+		padding: 0;
+		font-size: 18px;
+	}
+	ol.masthead > li {
+		&::before {
+			content: " ";
+			width: 120px;
+			display: block;
+			height: 4px;
+			margin: 50px auto 8px;
+			background: $greyBorder;
+		}
+	}
+	.title {
+		font-size: 40px;
+	}
+	ol.masthead > li > ol > li:first-child {
+		margin-top: 30px;
+	}
+	h2 {
+		margin-bottom: 20px;
+		display: block;
+		font-family: $body;
+		font-weight: normal;
+		font-style: italic;
+	}
+
+	ol > li > ol > li {
+		margin-bottom: 6px;
+	}
+	li a.name {
+		font-weight: bold;
+		font-family: $headline;
+		@include linkColor($blue);
+	}
+	li .position {
+		font-family: $headline;
+		color: $greyText;
+		font-weight: normal;
+	}
+}
+
+@include breakpoint('tablet') {
+	.container.masthead {
+		text-align: center;
+		padding-bottom: 30px;
+		padding-top: 54px;
+	}
+}

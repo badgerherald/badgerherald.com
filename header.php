@@ -26,6 +26,8 @@
 	<script type="text/javascript">var _sf_startpt=(new Date()).getTime()</script>
 
 	<title><?php echo wp_title("&middot;",true,"right"); ?></title>
+
+
 	
 	<link rel="profile" href="http://gmpg.org/xfn/11" />
 	<link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>" />
@@ -37,7 +39,6 @@
 </head>
 
 <body <?php body_class(); ?>>
-
 <?php /* Facebook like button javascript tag */ ?>
 <div id="fb-root"></div>
 <script>(function(d, s, id) {

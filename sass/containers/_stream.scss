@@ -23,12 +23,16 @@
 @include breakpoint('desktop') {
 	.container.stream {
 		.sidebar {
-			width: 300px;
+			width: flex(340,1020);
 			float: left;
-			margin-right: 40px;
+			margin-right: flex(40,1020);
+			.ad {
+				margin: 0 auto;
+				text-align: center;
+			}
 		}
 		.stream {
-			width: 660px;
+			width: flex(620,1020);
 			float: left;
 			a:first-child {
 				padding-top: 0;
@@ -39,8 +43,12 @@
 
 @include breakpoint('xl') {
 	.container.stream {
+		.sidebar {
+			width: flex(340,1180);
+			margin-right: flex(40,1180);
+		}
 		.stream {
-			width: 840px;
+			width: flex(800,1180);
 		}
 	}
 }

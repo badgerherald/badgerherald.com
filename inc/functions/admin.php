@@ -17,7 +17,9 @@
  */
 function exa_admin_user_select_script( $hook ) {
 
+	wp_enqueue_script('exa-admin-initailize', get_template_directory_uri().'/js/admin/initalize.js', array('jquery','jquery-ui-autocomplete'));
 	wp_enqueue_script('exa-admin-user-select', get_template_directory_uri().'/js/admin/user-select.js', array('jquery','jquery-ui-autocomplete'));
+
 
 	$userObjects = get_users( array( 
 							'role__in' => array('editor','administrator'),
@@ -43,11 +45,13 @@ add_action( 'admin_enqueue_scripts', 'exa_admin_user_select_script' );
  * 
  * @since v0.5
  */
-function exa_admin_user_select_dropdown( $id, $inputName, $userid = null ) {
+function exa_admin_user_select_dropdown( $inputName, $userid = '', $id = null ) {
 	$user = get_userdata( $userid );
-	$username = $user ? $user->display_name: '';
-	echo "<input id='exa-user-select-{$id}-input' name='$inputName' type='hidden' value='$userid' />";
-	echo "<input id='exa-user-select-{$id}' class='exa-user-select' value='{$username}'>";
+	$username = $user ? $user->display_name : '';
+	$id = $id ? $id : $inputName;
+	$id = preg_replace("/^[^a-z]+|[^\w:.-]+/i","",$id);
+	echo "<input id='exa-user-select-{$id}-input' name='{$inputName}' type='hidden' value='{$userid}' />";
+	echo "<input id='exa-user-select-{$id}' class='exa-user-select' type='text' value='{$username}' placeholder='user'>";
 }
 
 /**
