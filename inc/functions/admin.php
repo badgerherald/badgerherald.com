@@ -22,7 +22,7 @@ function exa_admin_user_select_script( $hook ) {
 
 
 	$userObjects = get_users( array( 
-							'role__in' => array('editor','administrator'),
+							'role__in' => array('editor','management','staffwriter','associates','copy','administrator'),
 							'fields' => array('ID','display_name'),
 							// todo: job title meta.
 						)
