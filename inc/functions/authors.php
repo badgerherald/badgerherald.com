@@ -1,46 +1,57 @@
-<?php 
+<?php
 
-/** Twitter Profile ----------------------------------------------------- */
-/*                                                                        */
-/* Adds an option to users to include their twitter screenname to         */
-/* include with their posts.                                              */
-/*                                                                        */
-/* ---------------------------------------------------------------------- */
+/**
+ * Removes things the kids don't even remember
+ */
+function _exa_user_profiles_contact_methods( $contactmethods ) {
+	$contactmethods['twitter'] = __( 'Twitter Username' );
+	unset($contactmethods['yim']);
+	unset($contactmethods['aim']);
+	unset($contactmethods['jabber']);
+	return $contactmethods;
+}
+add_filter('user_contactmethods','_exa_user_profiles_contact_methods',10,1);
 
+/**
+ * Hack to remove website from user profiles too. We don't use it anywhere.
+ */
+function _exa_user_profiles_remove_website() {
+    echo '<style>tr.user-url-wrap{ display: none; }</style>';
+}
+add_action( 'admin_head-user-edit.php', '_exa_user_profiles_remove_website' );
+add_action( 'admin_head-profile.php',   '_exa_user_profiles_remove_website' );
+
+/**
+ * Returns a badger herald email, if the user has one.
+ */
 function exa_author_email($userID) {
-
 	$user = get_userdata( $userID );
 	$user_email = $user->user_email;
 	return strpos($user_email, '@badgerherald.com') ? $user_email : "";
-
 }
 
-function exa_author_twitter($userID) {
-	return get_hrld_author("hrld_twitter_handle",$userID);
+/**
+ * Returns an author's current twitter handle
+ */
+function exa_author_twitter($user) {
+	$twitter = get_the_author_meta('twitter',$user);
+	return $twitter ? $twitter : get_hrld_author("hrld_twitter_handle",$user);
 }
 
-function exa_author_has_twitter($userID) {
-	return hrld_author_has("hrld_twitter_handle",$userID);
+/**
+ * Returns true if the user has a twitter handle
+ */
+function exa_author_has_twitter($user) {
+	$twitter = exa_author_twitter($user);
+	return $twitter ? true : false;
 }
 
+
+/**
+ * The stuff below works but should be refactored:
+ */
 
 $extra_fields = array();
-
-$extra_fields[] = array(
-	"title" => "Twitter Handle",
-	"key"	=> "_hrld_twitter_handle",
-	"name"	=> "hrld_twitter_handle",
-	"description" => "Enter your twitter handle",
-	"type"	=> "text"
-	);
-
-$extra_fields[] = array(
-	"title" => "Position",
-	"key"	=> "_exa_current_position",
-	"name"	=> "exa_current_position",
-	"description" => "Your current role at the Herald",
-	"type"	=> "text"
-	);
 
 $extra_fields[] = array(
 	"title" => "Author Page Banner Image",
