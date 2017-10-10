@@ -9,10 +9,6 @@ $container = $GLOBALS['container'] ?: new container('lastest-videos');
         <div class="container-title">
             <h2>Latest Videos</h2>
             <hr />
-            <div class="subscribers">
-                <script src="https://apis.google.com/js/platform.js"></script>
-                <div class="g-ytsubscribe" data-channel="badgerherald" data-layout="default" data-count="default"></div>
-            </div>
         </div>
         <div class="videos">
         <?php 

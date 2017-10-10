@@ -2,8 +2,6 @@
 /**
  * Functions to integrate outside services into exa.
  * 
- * This means setting up google analytics and chartbeat — as well as
- * facebook and twitter conversion tracking.
  *  
  * @package exa
  * @since v0.2
@@ -63,66 +61,32 @@ CHARTBEAT;
  */
 function exa_register_google_analytics() {
 
-	$js = <<<"GAA"
-	<script type='text/javascript'>
- 			/* Google Analytics */
-			var _gaq = _gaq || [];
-			_gaq.push(['_setAccount', 'UA-2337436-1']);
-GAA;
+	$js = <<<"GTAG"
 
-	
-	if(is_single()) {
-		$fiveDaysFresh = (current_time('timestamp') - get_the_time('U') > 0 && current_time('timestamp') - get_the_time('U') < 432000) ? 'Yes' : 'No';
-	
-		$js .= "       _gaq.push(['_setCustomVar',         ";
-		$js .= "			          1,                   ";
-		$js .= "                      'author',      ";
-		$js .= "                      '". get_the_author_meta('ID') ."',    ";
-		$js .= "                      ,                    ";
-		$js .= "                      2                    ";
-		$js .= "                 ]);                       ";                  
-	} 
-	
+	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-2337436-1"></script>
+	<script>
+		window.dataLayer = window.dataLayer || [];
+		function gtag(){dataLayer.push(arguments);}
+		gtag('js', new Date());
+		gtag('config', 'UA-2337436-1');
 
-	$js .= <<<"GAB"
-	
-	_gaq.push(['_trackPageview']);
-	(function() {
-		var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-		ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-		var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-	})();
-	</script>
-GAB;
+		gtag('config', 'UA-2337436-1', {
+			'custom_map': {
+				'dimension1': 'days_old',
+			}
+		});
 
+GTAG;
+
+	$days_old = ( current_time('timestamp') - get_the_time('U') ) / ( 24 * 60 * 60 );
+	$days_old = intval($days_old);
+	$js .= "\t\tgtag('event', 'load', { 'days_old': $days_old });";
+	$js .= "\t</script>";
+	
 	echo $js;
 
 }
 
-/**
- * Prints twitter conversion tracking ad code.
- *
- * This will let us track users who visit our site after being shown twitter ads.
- * Leveraged correctly, this will let us target website visitors and turn them
- * into return visitors.
- *
- * @since 0.2
- * 
- * @see https://support.twitter.com/articles/20170807-conversion-tracking-for-websites
- * @author Will Haynes
- */
-function exa_twitter_conversion_tracker() {
-
-	echo '<script src="//platform.twitter.com/oct.js" type="text/javascript"></script>
-			<script type="text/javascript">
-				twttr.conversion.trackPid(\'l4v5w\');
-			</script>
-			<noscript>
-				<img height="1" width="1" style="display:none;" alt="" src="https://analytics.twitter.com/i/adsct?txn_id=l4v5w&p_id=Twitter" />
-				<img height="1" width="1" style="display:none;" alt="" src="//t.co/i/adsct?txn_id=l4v5w&p_id=Twitter" />
-			</noscript>';
-
-}
 
 /**
  *
@@ -130,7 +94,7 @@ function exa_twitter_conversion_tracker() {
  *
  */
 if ( !exa_dev() ){
-	add_action('wp_footer','exa_twitter_conversion_tracker');
+	// add_action('wp_footer','exa_twitter_conversion_tracker'); NO.
 	add_action('wp_footer','exa_register_chartbeat');
 	add_action('wp_footer','exa_register_google_analytics');
 }
