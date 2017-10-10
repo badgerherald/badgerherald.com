@@ -68,7 +68,6 @@ $container = $GLOBALS['container'] ?: new container('list-and-banter');
     	<div class="banter-widget">
     		<div class="inner-banter">
     		<h3><a href="<?php echo get_category_link( get_cat_ID( 'banter' ) ); ?>">UW Banter</h3>
-			<div class="fb-like" data-href="https://facebook.com/uwbanter" data-layout="button_count" data-action="like" data-show-faces="false" data-share="false"></div>
 
  			<?php
 				$query_args = array(
