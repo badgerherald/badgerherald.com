@@ -64,6 +64,7 @@ function _exa_galleries_load_gallery_html($data) {
 	wp_die();
 }
 add_action( 'wp_ajax_exa-galleries-load', '_exa_galleries_load_gallery_html' );
+add_action( 'wp_ajax_nopriv_my_action_exa-galleries-load', '_exa_galleries_load_gallery_html' );
 
 
 /**
