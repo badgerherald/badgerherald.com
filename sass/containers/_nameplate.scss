@@ -27,7 +27,7 @@
 			cursor: pointer;
 			margin-right: flex(-5,300);
 			&:after {
-				content: "d";
+				content: " ";
 				font-size: 12px;
 				margin-left: 5px;
 				transition: transform .1s;
@@ -144,7 +144,7 @@
 				}
 				&:after {
 					pointer-events: none;
-					content: "s";
+					content: " ";
 					font-family: $icon;
 					padding: 4px 8px;
 					position: absolute;
@@ -214,7 +214,7 @@
 						& > a {
 							padding-right: 22px;
 							&:after {
-								content: "d";
+								content: " ";
 								font-size: 12px;
 								padding-left: 2px;
 								transition: margin .1s;
