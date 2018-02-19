@@ -289,7 +289,12 @@ add_filter('wpua_get_attachment_image_src', '_fix_wpua_src',10,4);
  * @return string a 'propertized' version of $name
  */
 function exa_properize($name) {
-	return $name.'\''.($name[strlen($name) - 1] != 's' ? 's' : '');
+	
+	if( strlen($name) == 0 )
+		return $name;
+	else {
+		return $name.'\''.($name[strlen($name) - 1] != 's' ? 's' : '');
+	}
 }
 
 /**
