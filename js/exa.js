@@ -63,10 +63,11 @@ jQuery(document).ready(function($) {
 	 * taps on mobile.
 	 *
 	 * @since v0.1
-	 */
+	
 	$(function() {
 	    FastClick.attach(document.body);
 	});
+	 */
 
 	/** 
 	 * Scrolling for banners
