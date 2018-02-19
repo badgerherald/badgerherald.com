@@ -7,6 +7,21 @@
  */
 
 /**
+ * Is this a production environment?
+ * Default: TRUE.
+ */
+if ( ! defined( 'EXA_PRODUCTION' ) )
+	define( 'EXA_PRODUCTION', TRUE );
+
+/**
+ * Is this a herald development enviornment?
+ * 
+ * Default: TRUE.
+ */
+if ( ! defined( 'EXA_DEV' ) )
+	define( 'EXA_DEV', TRUE );
+
+/**
  * if EXA_DEV defined, return that,
  * else if WP_DEBUG defined, return that,
  * else return false.
@@ -31,12 +46,8 @@ function exa_log($error) {
 }
 
 /**
- * @internal 
- * 
  * If EXA_DEV is set, replaces whatever (local)host an attachment_url
  * is using with badgerherald.com
- * 
- * @author Will Haynes
  */
 function _exa_dev_attachment_url( $link ) {
 

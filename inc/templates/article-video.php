@@ -25,7 +25,7 @@ if(exa_hero_media() == 'video') :
 
 <?php 
 else :
-	exa_container('header',array('breakpoints' => array('mobile')));
+	exa_container('header',array('breakpoints' => array('phone')));
 	exa_container('cover-hero');
 endif;
 

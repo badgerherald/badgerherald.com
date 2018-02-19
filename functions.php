@@ -3,69 +3,41 @@
  * Exa Functions file
  */
 
+/* Setup */
+include( dirname( __FILE__ ) . '/inc/functions/enqueue.php');		/* Base CSS & JS enqueues */
+include( dirname( __FILE__ ) . '/inc/functions/dev.php'); 			/* Configuration for local development */
+
+/* Taxonomies */
 include( dirname( __FILE__ ) . '/inc/functions/topics.php');
 include( dirname( __FILE__ ) . '/inc/functions/layout.php');
 include( dirname( __FILE__ ) . '/inc/functions/importance.php');
-include( dirname( __FILE__ ) . '/inc/functions/dev.php');
-include( dirname( __FILE__ ) . '/inc/functions/dates-and-times.php');
+include( dirname( __FILE__ ) . '/inc/functions/sections.php');
+
+/* Infrastructure */
 include( dirname( __FILE__ ) . '/inc/functions/html-tags.php');
-include( dirname( __FILE__ ) . '/inc/functions/analytic-dashboard.php');
 include( dirname( __FILE__ ) . '/inc/functions/containers.php');
-include( dirname( __FILE__ ) . '/inc/functions/headlines.php');
-include( dirname( __FILE__ ) . '/inc/functions/embeds.php');
+include( dirname( __FILE__ ) . '/inc/functions/menus.php');
+include( dirname( __FILE__ ) . '/inc/functions/images.php');
+include( dirname( __FILE__ ) . '/inc/functions/dates-and-times.php');
 include( dirname( __FILE__ ) . '/inc/functions/authors.php');
+include( dirname( __FILE__ ) . '/inc/functions/embeds.php');
+
+/* Features */
+include( dirname( __FILE__ ) . '/inc/functions/inline-links.php');
+include( dirname( __FILE__ ) . '/inc/functions/mastheads.php');
+include( dirname( __FILE__ ) . '/inc/functions/galleries.php');
 include( dirname( __FILE__ ) . '/inc/functions/popular-post-widget.php');
+include( dirname( __FILE__ ) . '/inc/functions/analytic-dashboard.php');
+include( dirname( __FILE__ ) . '/inc/functions/headlines.php');
 include( dirname( __FILE__ ) . '/inc/functions/pullquotes.php');
 include( dirname( __FILE__ ) . '/inc/functions/social.php');
 include( dirname( __FILE__ ) . '/inc/functions/admin.php');
 include( dirname( __FILE__ ) . '/inc/functions/services.php');
-include( dirname( __FILE__ ) . '/inc/functions/sections.php');
-include( dirname( __FILE__ ) . '/inc/functions/mastheads.php');
-include( dirname( __FILE__ ) . '/inc/functions/inline-links.php');
-include( dirname( __FILE__ ) . '/inc/functions/galleries.php');
-include( dirname( __FILE__ ) . '/inc/functions/images.php');
-include( dirname( __FILE__ ) . '/inc/functions/menus.php');
 
 
-/* include_once('inc/functions/snippets.php'); */
-
-/** Production site ----------------------------------------------------- */
-/*                                                                        */
-/* Used for development. Is this site the production site or not?         */
-/*                                                                        */
-/* ---------------------------------------------------------------------- */
-
-/**
- * Is this a production environment?
- * Default: TRUE.
- */
-if ( ! defined( 'EXA_PRODUCTION' ) )
-	define( 'EXA_PRODUCTION', TRUE );
-
-/**
- * Is this a herald development enviornment?
- * 
- * 	// todo: we should move this and the related functionality 
- * 			 (functions-dev.php) to the child theme.
- * 
- * Default: TRUE.
- */
-if ( ! defined( 'EXA_DEV' ) )
-	define( 'EXA_DEV', TRUE );
-
-/**
- * Returns whether the site is a production site or not.
- * as defined (currently) in the WP_CONFIG file.
- *
- * @since v0.2
- * @deprecated v0.6 this function should not be used anymore. Keeping it around for now, in case it's still used somewhere...
- */
-function hrld_is_production() {
-	if( defined('HRLD_PRODUCTION'))
-		return HRLD_PRODUCTION;
-	else
-		return false;
-}
+add_action( 'customize_preview_init', function() {
+die("The customizer is disabled. Please save and preview your site on the frontend.");
+}, 1);
 
 /**
  * Turn comments on by default for posts
@@ -162,71 +134,8 @@ function exa_setup() {
 	add_theme_support( 'post-thumbnails' );
 	set_post_thumbnail_size( 860, 470, true );
 
-
-
-
 }
 add_action( 'after_setup_theme', 'exa_setup' );
-
-
-
-function __depricated_image_sizes($image, $attachment_id, $size, $icon) {
-	if(!$image && $size=="cover") {
-		return wp_get_attachment_image_src('feature');
-	}
-		return $image;
-}
-apply_filters('wp_get_attachment_image_src',10,4);
-
-/**
- * Enqueues scripts and styles for front end.
- *
- * @since v0.1
- */
-function exa_scripts_styles() {
-	
-	global $wp_styles;
-
-	if( ! is_singular('interactive') ) {
-		
-		/**
-		 * Load fontastic font.
-		 * @see ./css/fontastic/icon-reference.html 
-		 */
-		wp_enqueue_style( 'exa-icons', get_template_directory_uri() . '/css/fontastic/styles.css?v=12' );
-
-		/* Load google font. */
-		wp_enqueue_style( 'exa-fonts', 'https://fonts.googleapis.com/css?family=Noto+Serif:400,700,400italic,700italic|Yanone+Kaffeesatz:400,300,700|Open+Sans|PT+Sans+Narrow:400,700');
-
-		/* Load main stylesheet. */
-		$mtime = file_exists(dirname(__FILE__) . '/style.css') ? filemtime(dirname(__FILE__) . '/style.css') : "";
-		wp_enqueue_style( 'exa-style', get_template_directory_uri() . '/style.css', array(),$mtime );
-
-		/* Load fastclick library */
-		wp_enqueue_script( 'fastclick', get_template_directory_uri() . '/js/fastclick/lib/fastclick.js', array(), '0.6.11', true );	
-		
-		$mtime = filemtime(dirname(__FILE__) . '/js/exa.js');
-		/* Load exa.js. (and jQuery, implicitly) */
-		wp_enqueue_script('exa-script', get_template_directory_uri() . '/js/exa.js',array('jquery','fastclick'),$mtime,true);
-
-		// Note that jQuery runs in no conflict mode — $ is not a valid function.
-		
-	} else {
-
-		wp_enqueue_style( '', 'http://badgerherald.com/interactive/' . get_post_meta(get_the_ID(), '_hrld_interactive_include', true) . '/css/style.css' );
-
-	}
-	
-	if (is_author() || is_single()){
-		wp_enqueue_style('hrld-showcase-style');
-		wp_enqueue_script( 'hrld-showcase-script-class');
-		wp_enqueue_script('exa-hrld-showcase-init', get_template_directory_uri().'/js/hrld-showcase-init.js', array('hrld-showcase-script-class', 'jquery'));
-	}
-	
-}
-add_action( 'wp_enqueue_scripts', 'exa_scripts_styles' );
-
-
 
 /**
  * Switches default core markup for search form to output valid HTML5.
