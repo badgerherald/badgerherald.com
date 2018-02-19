@@ -509,12 +509,12 @@ function exa_open_graph_tags() {
 
 	/* 1. Title (string) */
 
-	$title = single_post_title( null, false );
+	$title = htmlspecialchars(single_post_title( null, false ));
 	$output .= "<meta property='og:title' content='$title' />\n";
 
 	/* 2. Description (string) */
 
-	$excerpt = exa_get_meta_excerpt();
+	$excerpt = htmlspecialchars(exa_get_meta_excerpt());
 	$output .= '<meta property="og:description" content="'.$excerpt.'" />'."\n";
 
 	/* 3. Site (string) */
