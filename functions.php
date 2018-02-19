@@ -291,7 +291,7 @@ function exa_properize($name) {
 	
 	if( strlen($name) == 0 )
 		return $name;
-	else{
+	else {
 		return $name.'\''.($name[strlen($name) - 1] != 's' ? 's' : '');
 	}
 }
