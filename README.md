@@ -2,31 +2,30 @@
 
 The Badger Herald's college media WordPress platform.
 
-This theme is in active development.
-
 * * *
 
-## Contributing.
+## Contributing
 
 We'd love your contributions. If you're a University of Wisconsin student and want to get involved,
 email [web@badgerherald.com](mailto:web@badgerherald.com) — we'd love to meet you!
 
-Else, please read the (little) documentation and check out the issues for things that need doing.
+Else, please read the bit of [documentation](./docs/index.md) that exists and check out the issues for things that need doing.
 
 * * * 
 
-## Credits.
+## Credits
 
 ##### Current Developers:
 
  - Will Haynes (__[@willhaynes](http://twitter.com/willhaynes)__)
- - Matt Neil (__[@mneil18](http://twitter.com/mneil18)__)
  - Jason Jan (__[@jasonjan2005](http://twitter.com/jasonjan2005)__)
 
 ##### Previous Developers:
 
- - Zach Thomae
+ - Matt Neil (__[@mneil18](http://twitter.com/mneil18)__)
+ - Zach Thomae 
  - Charlie Gorichanaz
+
 
 ##### Open Source Projects
 
@@ -34,9 +33,9 @@ Else, please read the (little) documentation and check out the issues for things
 
 * * * 
 
-## Docs.
+## Docs
 
-Until we make this repo public, docs will need to be built and read locally. This is fairly straight forward.
+If you want to see the docs as a nice hosted localsite, you will need to be build and read them locally. This is fairly straight forward.
 
 `cd` to the folder containing exa and run:
 

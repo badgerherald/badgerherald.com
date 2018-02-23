@@ -21,7 +21,7 @@ Some additional conventions we use include:
  	- The underscore is used to indicate scope. Functions which should not be called by outside developers should always start with an underscore. This includes methods passed to filters and actions. 
  	- Think of the `*` as an internal prefix that should precede a collection of functions related to common functionality.
 
- 2. **Documentation**: Public functions (those starting with `exa_` should always have accurate documentation.
+ 2. **Documentation**: Public functions (those starting with `exa_` should have accurate documentation.
 
  2. **Readability**: Code is not complete until its been edited to remove complexity and improve clarity. _Do not_ maximize code for fewer lines if it makes the code less clear -- in fact, do the opposite.
  
@@ -43,6 +43,12 @@ We use a self hosted install of WordPress from WordPress.org.
 
 **What you need to know:** If you've never used WordPress start by signing up for an account on [WordPress.com](https://wordpress.com). Mess around with this blog to learn the vocabulary and conventions that WordPress employs. Keep in mind that this is the *commercial* side of WordPress. While we use the same software, we host and support ourselves.
 
+##### Vagrant
+
+Vagrant is not technically necessary, but makes it easy to run a local webserver with all the same software as the production server.
+
+**What you need to know:** Follow the steps to getting Vagrant up and running at [badgerherald/bhrld.dev](https://github.com/badgerherald/badgerherald.test).
+
 ##### Git
 
 Probably our most valuable tool is Git. We use Git heavily both for source control and to coordinate our development efforts.
@@ -53,10 +59,6 @@ We also use GitHub to [track issues and future development](https://github.com/b
 
 **What you need to know:** I'd recommend starting with [try.github.io](https://try.github.io/). This 15 minute tutorial should give you a good idea of how Git works without needing to install anything yourself. 
 
-##### Vagrant
 
-Vagrant is not technically necessary, but makes it easy to run a local webserver with all the same software as the production server.
-
-**What you need to know:** Follow the steps to getting Vagrant up and running at [badgerherald/bhrld.dev](https://github.com/badgerherald/bhrld.dev).
 
 
