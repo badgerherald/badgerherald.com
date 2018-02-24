@@ -11,10 +11,10 @@ function exa_inline_link_embed_enqueue () {
 	global $post;
 
 	if(is_single()) {
-		wp_enqueue_style( 'exa_inline_link_style', get_template_directory_uri() . '/css/inline.css', false, '1.0.0' );
+		wp_enqueue_style( 'exa_inline_link_style', get_template_directory_uri() . '/assets/css/inline.css', false, '1.0.0' );
 	
 		// tiny mce:
-		add_editor_style( get_template_directory() . '/css/inline.css' );
+		add_editor_style( get_template_directory() . '/assets/css/inline.css' );
 
 		wp_enqueue_script( 'exa_inline_click_script', get_template_directory_uri() . '/js/count-clicks.js', array( 'jquery' ));
     	wp_localize_script( 'exa_inline_click_script', 'exa_inline_click', array(

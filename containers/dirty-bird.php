@@ -120,10 +120,10 @@
 	<div class="wrapper">
 	
 		<a href="http://dirtybird.badgerherald.com">
-		<img src = "<?php bloginfo('template_url') ?>/img/dirty-bird/mobile.jpg" class="mobile">
-		<img src = "<?php bloginfo('template_url') ?>/img/dirty-bird/tablet.jpg" class="tablet">
-		<img src = "<?php bloginfo('template_url') ?>/img/dirty-bird/desktop.jpg" class="desktop">
-		<img src = "<?php bloginfo('template_url') ?>/img/dirty-bird/xl.png" class="xl">
+		<img src = "<?php bloginfo('template_url') ?>/assets/img/dirty-bird/mobile.jpg" class="mobile">
+		<img src = "<?php bloginfo('template_url') ?>/assets/img/dirty-bird/tablet.jpg" class="tablet">
+		<img src = "<?php bloginfo('template_url') ?>/assets/img/dirty-bird/desktop.jpg" class="desktop">
+		<img src = "<?php bloginfo('template_url') ?>/assets/img/dirty-bird/xl.png" class="xl">
 		
 		<img src = "http://www.animatedimages.org/data/media/591/animated-parrot-image-0130.gif" 
 			class='bird'>

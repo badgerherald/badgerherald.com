@@ -7,7 +7,7 @@ $container = $GLOBALS['container'] ?: new container('colophon');
 <div class="<?php echo $container->classes() ?>">
 	<div class="wrapper">
 		<div class="left-rail rail">
-			<img class="logo" src="<?php bloginfo('template_url') ?>/img/logo/header-horizontal-white.png" />
+			<img class="logo" src="<?php bloginfo('template_url') ?>/assets/img/logo/header-horizontal-white.png" />
 		</div>
 		<div class="middle-rail rail">
 			<?php

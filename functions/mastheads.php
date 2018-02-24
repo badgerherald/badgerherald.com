@@ -74,7 +74,7 @@ function _exa_masthead_enqueue_admin_scripts( $hook ) {
     if ( $hook == 'post-new.php' || $hook == 'post.php' ) {
         if ( EXA_MASTHEAD_POST_TYPE === $post->post_type ) {     
             wp_enqueue_script( 'exa_masthead_js', get_template_directory_uri().'/js/admin/masthead.js' );
-            wp_enqueue_style( 'exa_masthead_css', get_template_directory_uri().'/css/admin/masthead.css' );
+            wp_enqueue_style( 'exa_masthead_css', get_template_directory_uri().'/assets/css/admin/masthead.css' );
         }
     }
 }

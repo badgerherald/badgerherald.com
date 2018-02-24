@@ -141,7 +141,7 @@ if (is_admin()) :
 		}
 		    
         if ( 'post' === $post->post_type ) {    
-			wp_enqueue_style('exa-admin-style', get_template_directory_uri() . '/css/admin/headlines.css');
+			wp_enqueue_style('exa-admin-style', get_template_directory_uri() . '/assets/css/admin/headlines.css');
     		wp_enqueue_script( 'exa-headline-script', get_template_directory_uri() . '/js/admin/headlines.js' );
     	}
 	}

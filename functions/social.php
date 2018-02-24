@@ -123,7 +123,7 @@ function exa_social_open_graph_tags() {
 	if( $img ) {
 		$output .= "<meta property='og:image' content='$img' />\n";
 	} else {
-		$img = get_template_directory_uri() . "/img/misc/social-thumb.png";
+		$img = get_template_directory_uri() . "/assets/img/misc/social-thumb.png";
 		$output .= "<meta property='og:image' content='$img' />\n";
 	}
 

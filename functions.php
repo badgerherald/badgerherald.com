@@ -123,8 +123,8 @@ function exa_setup() {
 
 	/* Include custom editor styles, so the backend looks like
 	 * the front end. */
-	add_editor_style( 'css/fontastic/styles.css' );
-	add_editor_style( 'css/editor-style.css' );
+	add_editor_style( 'assets/css/fontastic/styles.css' );
+	add_editor_style( 'assets/css/editor-style.css' );
 
 	/* Adds RSS feed links to <head> for posts and comments. */
 	add_theme_support( 'automatic-feed-links' );
@@ -406,13 +406,13 @@ add_filter( 'wp_title', 'exa_filter_wp_title' );
  * 
  * favicon.ico can be compiled using imagemagick using:
  * 
- * 		$ cd ./img/favicons/
+ * 		$ cd ./assets/img/favicons/
  * 		$ convert -strip *.png favicon.ico
  * 
  * @since v0.2
  */
 function exa_favicon() {
-	echo "<link rel='icon' href='" . get_template_directory_uri() . "/img/favicons/favicon.ico' type='image/x-icon' />";
+	echo "<link rel='icon' href='" . get_template_directory_uri() . "/assets/img/favicons/favicon.ico' type='image/x-icon' />";
 }
 add_action('wp_head','exa_favicon');
 

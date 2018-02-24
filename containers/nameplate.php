@@ -31,9 +31,9 @@ endif;
 		
 		<a class="logo" href="<?php bloginfo('url'); ?>">
 			<?php if($container->args['background'] == 'black') : ?>
-				<img src="<?php bloginfo('template_url') ?>/img/logo/header-horizontal-white.png" />
+				<img src="<?php bloginfo('template_url') ?>/assets/img/logo/header-horizontal-white.png" />
 			<?php else : ?>
-				<img src="<?php bloginfo('template_url') ?>/img/logo/header-horizontal.png" />
+				<img src="<?php bloginfo('template_url') ?>/assets/img/logo/header-horizontal.png" />
 			<?php endif; ?>
 		</a>
 

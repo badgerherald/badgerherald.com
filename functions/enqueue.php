@@ -18,9 +18,9 @@ function _exa_enqueue_scripts_styles() {
 	
 	/**
 	 * Load fontastic font.
-	 * @see ./css/fontastic/icon-reference.html 
+	 * @see ./assets/css/fontastic/icon-reference.html 
 	 */
-	wp_enqueue_style( 'exa-icons', get_template_directory_uri() . '/css/fontastic/styles.css?v=12' );
+	wp_enqueue_style( 'exa-icons', get_template_directory_uri() . '/assets/css/fontastic/styles.css?v=12' );
 
 	/** Google Fonts */
 	wp_enqueue_style( 'exa-fonts', 'https://fonts.googleapis.com/css?family=Noto+Serif:400,700,400italic,700italic|PT+Sans+Narrow:400,700');
