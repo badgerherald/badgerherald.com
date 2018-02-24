@@ -116,7 +116,7 @@ Class Container {
 
 		$this->error = null;
 
-		if( locate_template( './inc/containers/' . $this->name . '.php' ) == '' ) {
+		if( locate_template( './containers/' . $this->name . '.php' ) == '' ) {
 			$this->error = "Template file <tt>{$this->name}.php</tt> not found";
 		}
 		else {
@@ -124,7 +124,7 @@ Class Container {
 			$GLOBALS['container'] = $this;
 
 			ob_start();
-			get_template_part('./inc/containers/' . $this->name);
+			get_template_part('./containers/' . $this->name);
 			$this->output = ob_get_contents();
 			ob_end_clean();
 			

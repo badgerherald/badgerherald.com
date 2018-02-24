@@ -4,35 +4,35 @@
  */
 
 /* Setup */
-include( dirname( __FILE__ ) . '/inc/functions/enqueue.php');		/* Base CSS & JS enqueues */
-include( dirname( __FILE__ ) . '/inc/functions/dev.php'); 			/* Configuration for local development */
+include( dirname( __FILE__ ) . '/functions/enqueue.php');		/* Base CSS & JS enqueues */
+include( dirname( __FILE__ ) . '/functions/dev.php'); 			/* Configuration for local development */
 
 /* Taxonomies */
-include( dirname( __FILE__ ) . '/inc/functions/topics.php');
-include( dirname( __FILE__ ) . '/inc/functions/layout.php');
-include( dirname( __FILE__ ) . '/inc/functions/importance.php');
-include( dirname( __FILE__ ) . '/inc/functions/sections.php');
+include( dirname( __FILE__ ) . '/functions/topics.php');
+include( dirname( __FILE__ ) . '/functions/layout.php');
+include( dirname( __FILE__ ) . '/functions/importance.php');
+include( dirname( __FILE__ ) . '/functions/sections.php');
 
 /* Infrastructure */
-include( dirname( __FILE__ ) . '/inc/functions/html-tags.php');
-include( dirname( __FILE__ ) . '/inc/functions/containers.php');
-include( dirname( __FILE__ ) . '/inc/functions/menus.php');
-include( dirname( __FILE__ ) . '/inc/functions/images.php');
-include( dirname( __FILE__ ) . '/inc/functions/dates-and-times.php');
-include( dirname( __FILE__ ) . '/inc/functions/authors.php');
-include( dirname( __FILE__ ) . '/inc/functions/embeds.php');
+include( dirname( __FILE__ ) . '/functions/html-tags.php');
+include( dirname( __FILE__ ) . '/functions/containers.php');
+include( dirname( __FILE__ ) . '/functions/menus.php');
+include( dirname( __FILE__ ) . '/functions/images.php');
+include( dirname( __FILE__ ) . '/functions/dates-and-times.php');
+include( dirname( __FILE__ ) . '/functions/authors.php');
+include( dirname( __FILE__ ) . '/functions/embeds.php');
 
 /* Features */
-include( dirname( __FILE__ ) . '/inc/functions/inline-links.php');
-include( dirname( __FILE__ ) . '/inc/functions/mastheads.php');
-include( dirname( __FILE__ ) . '/inc/functions/galleries.php');
-include( dirname( __FILE__ ) . '/inc/functions/popular-post-widget.php');
-include( dirname( __FILE__ ) . '/inc/functions/analytic-dashboard.php');
-include( dirname( __FILE__ ) . '/inc/functions/headlines.php');
-include( dirname( __FILE__ ) . '/inc/functions/pullquotes.php');
-include( dirname( __FILE__ ) . '/inc/functions/social.php');
-include( dirname( __FILE__ ) . '/inc/functions/admin.php');
-include( dirname( __FILE__ ) . '/inc/functions/services.php');
+include( dirname( __FILE__ ) . '/functions/inline-links.php');
+include( dirname( __FILE__ ) . '/functions/mastheads.php');
+include( dirname( __FILE__ ) . '/functions/galleries.php');
+include( dirname( __FILE__ ) . '/functions/popular-post-widget.php');
+include( dirname( __FILE__ ) . '/functions/analytic-dashboard.php');
+include( dirname( __FILE__ ) . '/functions/headlines.php');
+include( dirname( __FILE__ ) . '/functions/pullquotes.php');
+include( dirname( __FILE__ ) . '/functions/social.php');
+include( dirname( __FILE__ ) . '/functions/admin.php');
+include( dirname( __FILE__ ) . '/functions/services.php');
 
 
 add_action( 'customize_preview_init', function() {

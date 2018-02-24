@@ -1,2 +1,2 @@
 <?php
-	get_template_part('inc/templates/image');
+	get_template_part('templates/image');

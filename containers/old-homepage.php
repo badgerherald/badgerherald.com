@@ -52,9 +52,9 @@ $container = $GLOBALS['container'] ?: new container('old-homepage');
 
 
 				if($featured->current_post == 0 && !is_paged()){
-					get_template_part( 'inc/blocks/teaser', 'feature' );
+					get_template_part( 'blocks/teaser', 'feature' );
 				} else {
-					get_template_part( 'inc/blocks/teaser', 'brief' );
+					get_template_part( 'blocks/teaser', 'brief' );
 				}
 				
 				$exclude[] = $post->ID;

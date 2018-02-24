@@ -1,17 +1,17 @@
 <?php 
 
-$container = $GLOBALS['container'] ?: new Container('banner-title');
+$container = $GLOBALS['container'] ?: new Container('stream');
 
 ?>
 
-<div class="<?php echo $container->classes() ?>">
+<div class="<?php echo $container->classes() ?> flex">
 	<div class="wrapper">
 		
 		<div class="sidebar">
-			<?php get_template_part('inc/blocks/section-header'); ?>
+			<?php get_template_part('blocks/section-header'); ?>
 		</div>	
 
-		<div class="feature">
+		<div class="stream">
 		
 			<?php 
 			if ( have_posts() ) :
@@ -21,9 +21,9 @@ $container = $GLOBALS['container'] ?: new Container('banner-title');
 					the_post();
 		
 					if(exa_is_featured()) {
-						get_template_part( 'inc/blocks/teaser-feature' );
+						get_template_part( 'blocks/teaser-feature' );
 					} else {
-						get_template_part( 'inc/blocks/teaser-brief' );
+						get_template_part( 'blocks/teaser-brief' );
 					}
 				}
 				?>
