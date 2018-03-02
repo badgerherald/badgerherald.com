@@ -51,13 +51,19 @@ Vagrant is not technically necessary, but makes it easy to run a local webserver
 
 ##### Git
 
-Probably our most valuable tool is Git. We use Git heavily both for source control and to coordinate our development efforts.
+We use Git heavily both for source control and to coordinate our development efforts.
 
 Using Git allows us to [host our entire codebase on GitHub](https://github.com/badgerherald/exa). You can even see the files that generate these docs on GitHub [here](https://github.com/badgerherald/exa/tree/master/docs)!
 
 We also use GitHub to [track issues and future development](https://github.com/badgerherald/exa/issues). Doing this allows us to track changes to our doce and keep a record of versions.
 
-**What you need to know:** I'd recommend starting with [try.github.io](https://try.github.io/). This 15 minute tutorial should give you a good idea of how Git works without needing to install anything yourself. 
+Learning Git can be a little challenging, but it's a great skill to have!
+
+**Resources:** 
+- [Github for Journalists](https://knightlab.northwestern.edu/2013/06/13/getting-github-why-journalists-should-know-and-use-the-social-coding-site/) - A simple overview of what Git and GitHub are, geared towards journalists.
+- [Git for the Lab](http://newton.cx/%7Epeter/files/git-lab-handout.pdf) - A professors guide to Git for science students
+- [try.github.io](https://try.github.io/). Git is ultimately a command line tool. This tutorial walks you through how to create and manage a "repo" at the command line.
+- [GitHub Desktop](https://desktop.github.com/) - Don't like the command line? GitHub's desktop app will let you do everything you need to do.
 
 
 
