@@ -6,7 +6,7 @@ On wider breakpoints, more columns are added. Column width and gutter sizes rema
 
 | Breakpoint        | Assumed min width   | # of columns   | column width | gutter width |
 | ----------------- | ------------------- | -------------- | ------------ | ------------ |
-| **mobile**        | 300px               | 3              | 60px         | 20px         |
+| **mobile**        | 280px               | 3              | 60px         | 20px         |
 | **tablet**        | 740px               | 9              | 60px         | 20px         |
 | **desktop**       | 1020px              | 13             | 60px         | 20px         |
 | **xl**            | 1180px              | 15             | 60px         | 20px         |

@@ -16,11 +16,8 @@ body {
 .wrapper {
 	margin: 0 auto;
 	max-width: 540px;
-	width: flex(300,320);
+	width: flex(280,300);
 	position: relative;
-}
-.wrapper.colophon{
-	clear: both;
 }
 
 /* Page surrounds everything inside of body */
