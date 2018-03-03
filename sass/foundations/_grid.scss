@@ -29,25 +29,35 @@ $thirteenColumns:   1020px;
 $fourteenColumns:   1100px;
 $fifteenColumns:    1180px;
 
-.col-1, .col-2, .col-3, .col-4, .col-5, .col-6, .col-7, .col-8,
-    .col-9, .col-10, .col-11, .col-12, .col-13, .col-14, .col-15 {
-        width: 100%;
+
+@function flex($pixels, $base) {
+    @return percentage(($pixels / $base));
 }
 
-@media (min-width: 760px) {
-    @for $i from 1 through 9 {
-        .col-#{$i} {
-            width: (60px * $i) + (20 * ($i - 1));
-            margin-right: 20px;
-        }
+/**
+ * Mixin for breakpoints.
+ */
+@mixin breakpoint($breakpoint) {
+ 
+  @if $breakpoint == "tablet" {
+    @media (min-width: 760px) {
+      $aColor: pink !default;
+      @content;
     }
-}
+  }
+ 
+  @else if $breakpoint == "desktop" {
+    @media (min-width: 1060px) {
+      $aColor: red;
+      @content;
+    }
+  }
 
-@media (min-width: 1160px) {
-    @for $i from 10 through 14 {
-        .col-#{$i} {
-            width: (60px * $i) + (20 * ($i - 1));
-            margin-right: 20px;
-        }
+  @else if $breakpoint == "xl" {
+    @media (min-width: 1220px) {
+      $aColor: red;
+      @content;
     }
+  }
+
 }

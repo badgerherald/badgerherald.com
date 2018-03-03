@@ -1,9 +1,7 @@
 $base-font-size: 15px;
 $base-line-height: 21px;
 
-@function flex($pixels, $base) {
-    @return percentage(($pixels / $base));
-}
+
 
 @function em($px, $base: 15) {
     @return ($px / $base) * 1em;
@@ -138,33 +136,7 @@ $aColor: orange !default;
   }
 }
 
-/**
- * Mixin for breakpoints.
- */
-@mixin breakpoint($breakpoint) {
- 
-  @if $breakpoint == "tablet" {
-    @media (min-width: 760px) {
-      $aColor: pink !default;
-      @content;
-    }
-  }
- 
-  @else if $breakpoint == "desktop" {
-    @media (min-width: 1060px) {
-      $aColor: red;
-      @content;
-    }
-  }
 
-  @else if $breakpoint == "xl" {
-    @media (min-width: 1220px) {
-      $aColor: red;
-      @content;
-    }
-  }
-
-}
 
 @import "foundations/normalize.scss";
 @import "foundations/grid.scss";
