@@ -9,10 +9,7 @@
 
 /**
  * Returns true if the post has a subhead
- *
  * @since v0.5
- * 
- * @param $post (optional) if empty, the current global $post will be used.
  */
 function exa_has_subhead($post = null) {
 	return exa_get_subhead($post = null) ? true : false;
@@ -20,10 +17,7 @@ function exa_has_subhead($post = null) {
 
 /**
  * Prints the post subhead
- *
  * @since v0.5
- * 
- * @param $post (optional) if empty, the current global $post will be used.
  */
 function exa_subhead($post = null) {
 	echo exa_get_subhead($post);
@@ -31,15 +25,32 @@ function exa_subhead($post = null) {
 
 /**
  * Returns the post subhead
- *
  * @since v0.5
- * 
- * @param $post (optional) if empty, the current global $post will be used.
  */
 function exa_get_subhead($post = null) {
 	$post = get_post($post);
 	return apply_filters('exa_subhead', get_post_meta($post->ID, '_exa_subhead', TRUE));
 }
+
+ 
+function _exa_subhead_set_rest_field( $object, $field_name, $request ) {
+	return exa_get_subhead($object['id']);
+}
+
+/** 
+ * Registers a rest field 
+ * @since v0.6
+ */
+function _exa_subhead_register_rest_field() {
+ 
+    // register_rest_field ( 'name-of-post-type', 'name-of-field-to-return', array-of-callbacks-and-schema() )
+    register_rest_field( 'post', 'subhead', array(
+           'get_callback'    => '_exa_subhead_set_rest_field',
+           'schema'          => null,
+        )
+	);
+}
+add_action( 'rest_api_init', '_exa_subhead_register_rest_field' );
 
 if (is_admin()) :
 
