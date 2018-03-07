@@ -134,7 +134,7 @@ a:hover .block-headline span {
 //
 // Note: do not reset background: after using this mixin. Use background-color:
 @mixin dotted($color) {
-	background-image: url("./img/svg/dotted.svg");
+	background-image: url("./assets/img/svg/dotted.svg");
 }
 
 
@@ -184,7 +184,7 @@ a:hover .dotted-overlay-container .dotted-overlay {
  */
 
 @mixin banterlogo {
-	background-image: url('./img/svg/uwbanter.svg');
+	background-image: url('./assets/img/svg/uwbanter.svg');
 	background-size: cover;
 }
 
