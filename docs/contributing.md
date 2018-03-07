@@ -19,11 +19,11 @@ Some additional conventions we use include:
 
  1. **Prefixes**: All functions should be prefixed with either `exa_*_` or `_exa_*_`. 
  	- The underscore is used to indicate scope. Functions which should not be called by outside developers should always start with an underscore. This includes methods passed to filters and actions. 
- 	- Think of the `*` as an internal prefix that should precede a collection of functions related to common functionality.
+ 	- Think of the `*` as an internal prefix that should precede a collection of functions related to common functionality. For example, functions in `./functions/social.php` are all prefixed `_exa_social_`
 
  2. **Documentation**: Public functions (those starting with `exa_` should have accurate documentation.
 
- 2. **Readability**: Code is not complete until its been edited to remove complexity and improve clarity. _Do not_ maximize code for fewer lines if it makes the code less clear -- in fact, do the opposite.
+ 2. **Readability**: Code is not complete until its been edited to remove complexity and improve clarity. Fewer lines of code doesn't mean better code. Don't optimize for the fewest lines of code if it makes the code less clear -- in fact, do the opposite.
  
 #### Good readings:
 
@@ -51,11 +51,12 @@ Vagrant is not technically necessary, but makes it easy to run a local webserver
 
 ##### Git
 
-We use Git heavily both for source control and to coordinate our development efforts.
 
-Using Git allows us to [host our entire codebase on GitHub](https://github.com/badgerherald/exa). You can even see the files that generate these docs on GitHub [here](https://github.com/badgerherald/exa/tree/master/docs)!
+We use Git for both for source control and to coordinate our development efforts.
 
-We also use GitHub to [track issues and future development](https://github.com/badgerherald/exa/issues). Doing this allows us to track changes to our doce and keep a record of versions.
+Using Git allows us to [host our entire codebase on GitHub](https://github.com/badgerherald/exa). You can even see the files that generate these docs on GitHub [here](https://github.com/badgerherald/exa/tree/master/docs).
+
+We also use GitHub to [track issues and future enhancements](https://github.com/badgerherald/exa/issues). Doing this allows us to track changes to our doce and keep a record of versions.
 
 Learning Git can be a little challenging, but it's a great skill to have!
 

@@ -13,15 +13,15 @@
 .section-banner {
 	width: 100%;
 	&.section-banner-news {
-		background: url('img/headers/news.jpg');
+		background: url('assets/img/headers/news.jpg');
 	} &.section-banner-banter {
-		background: url('img/headers/banter.jpg');
+		background: url('assets/img/headers/banter.jpg');
 	} &.section-banner-artsetc {
-		background: url('img/headers/artsetc.jpg');
+		background: url('assets/img/headers/artsetc.jpg');
 	} &.section-banner-sports {
-		background: url('img/headers/sports.jpg');
+		background: url('assets/img/headers/sports.jpg');
 	} &.section-banner-opinion {
-		background: url('img/headers/banter.jpg');
+		background: url('assets/img/headers/banter.jpg');
 	}
 	background-size: cover;
 	background-position: 0 0px;
@@ -139,7 +139,7 @@ ul.featured-stream-list{
 	font-size: 20px;
 	a {
 		color: $darkgrey;
-		background: url("img/icons/arrow-right-blue.png") no-repeat right center;
+		background: url("assets/img/icons/arrow-right-blue.png") no-repeat right center;
 		padding-right: 16px;
 		&:hover{
 			color: $darkgreyHover;

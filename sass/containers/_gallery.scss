@@ -20,7 +20,7 @@
 		height: 40px;
 		position: fixed;
 		right: 10px;
-		background: $black url('img/svg/close.svg') center center no-repeat;
+		background: $black url('assets/img/svg/close.svg') center center no-repeat;
 		background-size: 24px 24px;
 		opacity: .4;
 		&:hover {
@@ -53,7 +53,7 @@
 			left: 1%;
 			height: 100%;
 			opacity: .4;
-			background: url('img/svg/leftarrow-white.svg') no-repeat left center;
+			background: url('assets/img/svg/leftarrow-white.svg') no-repeat left center;
 			background-size: 24px auto;
 			&:hover {
 				opacity: .8;
@@ -62,7 +62,7 @@
 		.right-toggle {
 			width: 63%;
 			left: 35%;
-			background: url('img/svg/rightarrow-white.svg') no-repeat right center;
+			background: url('assets/img/svg/rightarrow-white.svg') no-repeat right center;
 			background-size: 24px auto;
 		}
 		.close-bar {
