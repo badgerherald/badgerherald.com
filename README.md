@@ -1,4 +1,4 @@
-# Exa.
+# Exa
 
 The Badger Herald's college media WordPress platform.
 

@@ -18,7 +18,7 @@ function exa_hero_media_credit_tag() {
 
 	$thumb_image = get_post($thumb_id);
 
-	$credit = defined("get_hrld_media_credit") ? get_hrld_media_credit($thumb_id) : "";
+	$credit = function_exists("get_hrld_media_credit") ? get_hrld_media_credit($thumb_id) : "";
 	$excerpt = $thumb_image->post_excerpt;
 	$html_text = "";
 	if($credit != "") :

@@ -557,7 +557,7 @@ add_filter('the_content', 'filter_ptags_on_images');
 
 function exa_add_media_credit_showcase($attachments) {
 	foreach ($attachments as & $attachment) {
-		$credit = defined("get_hrld_media_credit") ? get_hrld_media_credit($attachment['ID']) : "";
+		$credit = function_exists("get_hrld_media_credit") ? get_hrld_media_credit($attachment['ID']) : "";
 		if ($credit == null)
 		{
 			$attachment['media_credit'] = '';
