@@ -1,0 +1,10 @@
+/*
+$base-font-size: 15px;
+$base-line-height: 21px;
+
+@function em($px, $base: 15) {
+    @return ($px / $base) * 1em;
+}
+
+$image-ratio: 690/450;
+/*  Fonts */

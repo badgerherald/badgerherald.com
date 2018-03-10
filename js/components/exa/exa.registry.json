@@ -1,0 +1,24 @@
+{
+  "namespace": "exa",
+  "fsNamespace": "exa",
+  "loader": "../exa.js",
+  "core": "exa.core.js",
+  "corePolyfilled": "exa.core.pf.js",
+  "components": {
+    "exa-footnotes": {
+      "$": "exa-footnotes"
+    },
+    "exa-next-in": {
+      "$": "exa-footnotes"
+    },
+    "exa-next-in-post": {
+      "$": "exa-next-in-post"
+    },
+    "exa-publish-time-meta": {
+      "$": "exa-publish-time-meta"
+    },
+    "exa-social-button": {
+      "$": "exa-publish-time-meta"
+    }
+  }
+}

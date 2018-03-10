@@ -3,6 +3,7 @@
 global $DoubleClick;
 $container = $GLOBALS['container'] ?: new container('footnotes');
 
+global $post;
 ?>
 
 <div class="<?php echo $container->classes(); ?>">
@@ -11,6 +12,9 @@ $container = $GLOBALS['container'] ?: new container('footnotes');
 
 
 		<div class="meta">
+
+			<exa-footnotes shareurl="http://google.com" shareheadline="asdfasdfa"></exa-footnotes>
+<?php /*
 
 			<a class="facebook-button" target="_blank" href="<?php echo exa_facebook_link(); ?>">Share</a>
 			<a class="tweet-button" target="_blank" href="<?php echo exa_tweet_link(); ?>">Tweet</a>
@@ -21,7 +25,6 @@ $container = $GLOBALS['container'] ?: new container('footnotes');
 	
 			<hr/>
 	
-			<?php /* LTE Disclaimer */ ?>
 	
 			<div class="fine-print">
 				<?php if( get_the_author() == "Letter to the Editor" ) : ?>
@@ -58,6 +61,8 @@ $container = $GLOBALS['container'] ?: new container('footnotes');
 
 		</div>
 
+*/ ?>
+
 		<div class="tall-ad">
 			<?php 
 			$DoubleClick->place_ad(
@@ -72,6 +77,10 @@ $container = $GLOBALS['container'] ?: new container('footnotes');
 
 
 		<div class="more">
+			<exa-next-in tag_id="360" title="ArtsEtc" url="http://google.com"></exa-next-in>
+		</div>
+
+		<?php /*
 			<h1>Next in <a href="<?php exa_section_permalink() ?>" class="section"><?php echo ucfirst( exa_get_section()); ?></a></h1>
 
 			<?php
@@ -131,10 +140,13 @@ $container = $GLOBALS['container'] ?: new container('footnotes');
 				// todo: test this output.
 				echo "No Posts";
 			}
-			?>
+
 
 
 		</div>
+
+					*/
+			?>
 		<div class="clearfix"></div>
 	</div>
 </div>
