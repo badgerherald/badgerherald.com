@@ -16,10 +16,10 @@ if ( ! defined( 'EXA_PRODUCTION' ) )
 /**
  * Is this a herald development enviornment?
  * 
- * Default: TRUE.
+ * Default: FALSE.
  */
 if ( ! defined( 'EXA_DEV' ) )
-	define( 'EXA_DEV', TRUE );
+	define( 'EXA_DEV', FALSE );
 
 /**
  * if EXA_DEV defined, return that,
