@@ -42,8 +42,37 @@ function _exa_menus_add_social_media_classname( $atts, $item, $args ) {
 			}
     	}
     }
-    //print_r($args);
+
     return $atts;
 }
 add_filter( 'nav_menu_link_attributes', '_exa_menus_add_social_media_classname', 10, 3 );
+
+
+/**
+ * Adds a class to menu items if the url contains a social media URL
+ * 
+ * @since v0.7
+ */
+function _exa_menus_add_social_media_classes($items,$menu,$args) {
+
+	$mapping = array(
+		'twitter.com' => 'twitter',
+		'facebook.com' => 'facebook',
+		'linkedin.com' => 'linkedin',
+		'instagram.com' => 'instagram',
+	);
+
+	foreach($items as $item) {
+    	foreach($mapping as $domain => $class) {
+    		if (strpos($item->url, $domain) !== false) {
+    			$item->classes[] = $class;
+    			print_r($item);
+			}
+    	}
+	}
+
+	return $items;
+}
+
+add_filter( 'wp_get_nav_menu_items', '_exa_menus_add_social_media_classes', 10, 3);
 

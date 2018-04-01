@@ -4,6 +4,7 @@
 }
 
 .container.nameplate {
+	z-index: 10;
 	.wrapper {
 		border-bottom: 5px solid $blue;
 		padding-bottom: 12px;
@@ -57,23 +58,15 @@
 				float: right;
 				width: flex(200,300);
 			}
-			ul.menu {
+			.menu {
 				list-style-type: none;
 				padding: 0;
 				font-family: $headline;
 				line-height: 36px;
 				font-size: 24px;
 				margin: 18px 0;
-				& > li ul {
-					display: none;
-				}
-				& > li > a {
-					display: block;
-					position: relative;
-					padding: 0 flex(10,180);
-				}
-			}
-			ul.menu.secondary-menu {
+			} 
+			.menu.secondary-menu {
 				float: right;
 				width: flex(100,300);
 				text-align: right;
@@ -167,7 +160,7 @@
 		.wrapper {
 			.logo {
 				width: flex(220,740);
-				z-index: 11;
+				z-index: 11; 
 			}
 			a.menus-button { /* the menu icon */
 				display: none;
@@ -184,13 +177,13 @@
 				.mobile-right {
 					width: auto;
 				}
-				ul.menu {
+				.menu {
 					margin: 0;
 					& > li {
 						float: left;
 					}
 				}
-				ul.menu.secondary-menu {
+				.menu.secondary-menu {
 					float: right;
 					width: auto;
 					font-size: 14px;
@@ -201,45 +194,12 @@
 						padding: 0 8px;
 					}
 				}
-				ul.menu.main-menu {
+				.menu.main-menu {
+					width: flex(500,740);
 					position:absolute;
 					bottom: 12px;
 					left: flex(240,740);
 					font-size: 18px;
-					margin-left: -7px;
-					& > li > a {
-						padding: 0 7px;
-					}
-					& li.menu-item-has-children { /* dropdown items */
-						& > a {
-							padding-right: 22px;
-							&:after {
-								content: "d";
-								font-size: 12px;
-								padding-left: 2px;
-								transition: margin .1s;
-								font-family: $icon;
-								position: absolute;
-							}
-						}
-						&:hover {
-							background: white;
-							& > a:after {
-								margin-top: 3px;
-							}
-						}
-						&:hover > ul {
-							a { @include linkColor($black); }
-							display: block;
-							position: absolute;			
-							top: 100%;
-							min-width: 200px;
-							background: white;
-							list-style-type: none;
-							padding: 12px;
-							font-size: 18px;
-						}
-					}
 				}
 				ul.menu.social-menu {
 					li a {
@@ -298,18 +258,9 @@
 						padding: 0 6px;
 					}
 				}
-				ul.menu.main-menu {
+				.menu.main-menu {
 					left: flex(240,1020);
-					margin-left: -10px;
-					font-size: 24px;
-					& > li > a {
-						padding: 0 10px;
-					}
-					& li.menu-item-has-children { /* dropdown items */
-						& > a {
-							padding-right: 26px;
-						}
-					}
+					width: flex(780,1020);
 				}
 				form.search {
 					input[type=text] {
@@ -334,9 +285,10 @@
 				width: 220px;
 			}
 			.menus {
-				ul.menu {
+				.menu {
 					&.main-menu {
 						left: flex(240,1180);
+						width: flex(940,1180);
 					}
 				}
 				form.search {

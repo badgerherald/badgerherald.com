@@ -1,2 +1,0 @@
-/*! Built with http://stenciljs.com */
-const{h:t}=window.exa;class e{render(){return t("div",null,t("h1",null,"Facebook!"))}static get is(){return"exa-social-button"}static get encapsulation(){return"shadow"}static get style(){return""}}export{e as ExaSocialButton};

@@ -8,51 +8,24 @@ $container->default_args(
 	)
 );
 
-if (!function_exists("printDropdownMenu")) :
-
-	function printDropdownMenu($menuLocation,$classes = null) {
-		if ( has_nav_menu( $menuLocation ) ) {
-			wp_nav_menu( array(
-				'theme_location' => $menuLocation,
-				'menu_class' => 'menu ' . $classes,
-				'container' => ''
-				)
-			);
-		} else {
-			echo "No menu found";
-		}
-	}
-endif;
-
 ?>
 
 <div class="<?php echo $container->classes(); ?> flex">
 	<div class="wrapper">
-		
-		<a class="logo" href="<?php bloginfo('url'); ?>">
-			<?php if($container->args['background'] == 'black') : ?>
-				<img src="<?php bloginfo('template_url') ?>/assets/img/logo/header-horizontal-white.png" />
-			<?php else : ?>
-				<img src="<?php bloginfo('template_url') ?>/assets/img/logo/header-horizontal.png" />
-			<?php endif; ?>
-		</a>
+				
+		<exa-nameplate id="nameplate" primary-menu="418" secondary-menu="1845" social-menu="8418" search-query="<?php echo $query ?>" is-mobile="true"></exa-nameplate>
 
-		<a class="menus-button">Menu</a>
-		<div class="menus">
-			<div class="mobile-right">
-				<?php printDropdownMenu('exa_main_menu','main-menu'); ?>
-				<?php printDropdownMenu('exa_social_media_menu','social-menu'); ?>
-			</div>
-			<?php printDropdownMenu('exa_secondary_menu','secondary-menu'); ?>
-			
-			<div class="clearfix"></div>
-			
-			<form class="search" action="/" method="get">
-				<?php $query = get_search_query(); ?>
-				<input type="text" name="s" placeholder="Search..." value="<?php echo $query ?>"></input>
-				<input type="submit" value="Submit"></input>
-		</form>
-		</div>
+		<script>
+			jQuery(window).resize(function() {
+				const screenWidth = jQuery(window).width();
+				const nameplate = jQuery("#nameplate");
+				if(screenWidth < 500) {
+					nameplate.attr("is-mobile","true");
+				} else {
+					nameplate.attr("is-mobile","false");
+				}
+			}).resize()
+		</script>
 
 	</div>
 </div>

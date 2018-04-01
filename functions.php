@@ -34,6 +34,9 @@ include( dirname( __FILE__ ) . '/functions/social.php');
 include( dirname( __FILE__ ) . '/functions/admin.php');
 include( dirname( __FILE__ ) . '/functions/services.php');
 
+/* Libraries */
+include( dirname( __FILE__ ) . '/functions/lib/wp-api-menus/wp-api-menus.php');
+
 
 add_action( 'customize_preview_init', function() {
 die("The customizer is disabled. Please save and preview your site on the frontend.");

@@ -8,17 +8,32 @@
     "exa-footnotes": {
       "$": "exa-footnotes"
     },
-    "exa-next-in": {
-      "$": "exa-footnotes"
+    "exa-menu": {
+      "$": "exa-menu"
     },
-    "exa-next-in-post": {
-      "$": "exa-next-in-post"
+    "exa-menu-button": {
+      "$": "exa-menu-button"
+    },
+    "exa-menu-dropdown": {
+      "$": "exa-menu-dropdown"
+    },
+    "exa-menu-item": {
+      "$": "exa-menu-dropdown"
+    },
+    "exa-nameplate": {
+      "$": "exa-menu"
+    },
+    "exa-next-in": {
+      "$": "exa-next-in"
     },
     "exa-publish-time-meta": {
       "$": "exa-publish-time-meta"
     },
     "exa-social-button": {
       "$": "exa-publish-time-meta"
+    },
+    "exa-teaser": {
+      "$": "exa-teaser"
     }
   }
 }
