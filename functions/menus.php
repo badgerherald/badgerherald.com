@@ -62,14 +62,16 @@ function _exa_menus_add_social_media_classes($items,$menu,$args) {
 		'instagram.com' => 'instagram',
 	);
 
-	foreach($items as $item) {
+	foreach($items as &$item) {
     	foreach($mapping as $domain => $class) {
     		if (strpos($item->url, $domain) !== false) {
     			$item->classes[] = $class;
-    			print_r($item);
+    			$item->classes[] = 'social';
+    			$item->title = "";
 			}
     	}
 	}
+	
 
 	return $items;
 }

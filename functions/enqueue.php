@@ -41,7 +41,8 @@ function _exa_enqueue_scripts_styles() {
 
 	wp_localize_script('exa-wpapi', 'exa', array(
 		// define EXA_REST_URL in wp-config.php to debug against any server
-		"api_url" => defined( 'EXA_REST_URL' ) ? EXA_REST_URL : rest_url()
+		"api_url" => defined( 'EXA_REST_URL' ) ? EXA_REST_URL : rest_url(),
+		"themedir" => get_template_directory_uri()
 	));
 	
 }

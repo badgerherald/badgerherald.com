@@ -2,38 +2,41 @@
   "namespace": "exa",
   "fsNamespace": "exa",
   "loader": "../exa.js",
-  "core": "exa.core.js",
-  "corePolyfilled": "exa.core.pf.js",
+  "core": "exa.ele0lcpy.js",
+  "corePolyfilled": "exa.mgmjxwjo.js",
   "components": {
     "exa-footnotes": {
-      "$": "exa-footnotes"
+      "$": "luwnfevv"
     },
     "exa-menu": {
-      "$": "exa-menu"
+      "$": "pqbfez5r"
     },
     "exa-menu-button": {
-      "$": "exa-menu-button"
+      "$": "pqbfez5r"
     },
     "exa-menu-dropdown": {
-      "$": "exa-menu-dropdown"
+      "$": "tjc3t7e1"
     },
     "exa-menu-item": {
-      "$": "exa-menu-dropdown"
+      "$": "tjc3t7e1"
     },
     "exa-nameplate": {
-      "$": "exa-menu"
+      "$": "luwnfevv"
     },
     "exa-next-in": {
-      "$": "exa-next-in"
+      "$": "g5x1csil"
     },
     "exa-publish-time-meta": {
-      "$": "exa-publish-time-meta"
+      "$": "gsme1wxw"
+    },
+    "exa-search-form": {
+      "$": "pqbfez5r"
     },
     "exa-social-button": {
-      "$": "exa-publish-time-meta"
+      "$": "gsme1wxw"
     },
     "exa-teaser": {
-      "$": "exa-teaser"
+      "$": "uwgqoosp"
     }
   }
 }

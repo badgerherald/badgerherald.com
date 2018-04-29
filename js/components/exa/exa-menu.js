@@ -1,2 +1,86 @@
 /*! Built with http://stenciljs.com */
-const{h:e}=window.exa;import{ExaMenuDirection as t,ExaMenuLinkColor as n,ExaMenuFontSize as r,ExaMenuDropdownStyle as i}from"./chunk1.js";class s{constructor(){this.imgLoaded=!1}componentDidLoad(){if(null==this.menu){var e=new WPAPI({endpoint:exa.api_url});e.menus=e.registerRoute("wp-api-menus/v2","/menus/(?P<id>)"),e.menus().id(this.menuId).then(this.loadDidFinish.bind(this)).catch(this.loadDidFail.bind(this))}}loadDidFinish(e){this.menu=e}loadDidFail(e){console.log(e)}menuStyleClass(){switch(this.menuDirection){case t.Vertical:return"vertical";case t.Horizontal:return"horizontal"}}menuFontClass(){switch(this.menuFontSize){case r.Big:return"primary";case r.Normal:return"normal"}}menuColorClass(){switch(this.menuLinkColor){case n.Black:return"black";case n.White:return"white";case n.Blue:return"blue"}}menuClasses(){return this.menuStyleClass()+" "+this.menuColorClass()+" "+this.menuFontClass()}render(){if(null!=this.menu)return e("menu",{class:this.menuClasses()},this.menu.items.map((t,n)=>e("exa-menu-item",{debug:this.debug&&0==n,url:t.url,title:t.title,childmenuitems:t.children,dropdownStyle:this.menuDropdown,category:t.object_id})))}static get is(){return"exa-menu"}static get encapsulation(){return"shadow"}static get properties(){return{debug:{type:Boolean,attr:"debug"},imgLoaded:{state:!0},menu:{state:!0},menuDirection:{type:"Any",attr:"menu-direction"},menuDropdown:{type:"Any",attr:"menu-dropdown"},menuFontSize:{type:"Any",attr:"menu-font-size"},menuId:{type:String,attr:"menu-id"},menuLinkColor:{type:"Any",attr:"menu-link-color"},tag_id:{type:String,attr:"tag_id"},title:{type:String,attr:"title"}}}static get style(){return"\@charset \"UTF-8\";menu{width:100%;list-style-type:none;font-family:\"PT Sans Narrow\",Helvetica,Arial,Sans-Serif;line-height:1.4em;padding:0;margin:0}menu.vertical exa-menu-item>li{display:block}menu.horizontal exa-menu-item>li{float:left}menu.horizontal exa-menu-item>li a{display:inline-block;padding:4px 6px;text-decoration:none}menu.big exa-menu-item>li a{font-size:24px}menu.normal exa-menu-item>li a{font-size:18px}menu.blue exa-menu-item>li a{color:#3c74b9}menu.black exa-menu-item>li a{color:#000}"}}class a{renderPrimaryMenu(){return this.isMobile?e("exa-menu",{class:"primary","menu-id":this.primaryMenu,menuDropdown:i.None,menuDirection:t.Vertical}):e("exa-menu",{class:"primary","menu-id":this.primaryMenu,menuDropdown:i.Teasers,menuDirection:t.Horizontal})}renderSecondaryMenu(){return this.isMobile?e("exa-menu",{class:"secondary","menu-id":this.secondaryMenu,menuDropdown:i.None,menuDirection:t.Vertical}):e("exa-menu",{class:"secondary","menu-id":this.secondaryMenu,menuDropdown:i.Simple,menuDirection:t.Horizontal})}renderSocialMenu(){return this.isMobile,e("exa-menu",{class:"social","menu-id":this.socialMenu,menuDropdown:i.None,menuDirection:t.Horizontal})}renderSearchForm(){return e("form",{class:"search",action:"/",method:"get"},e("input",{type:"text",name:"s",placeholder:"Search...",value:this.searchQuery}),e("input",{type:"submit",value:"Submit"}))}renderMobileMenuButton(){if(this.isMobile)return e("exa-menu-button",null)}render(){return e("div",{class:this.isMobile?"nameplate mobile":"nameplate"},e("a",{class:"logo",href:"<?php bloginfo('url'); ?>"}),this.renderMobileMenuButton(),e("div",{class:"menus"},this.renderSearchForm(),e("div",{class:"mobile-right"},this.renderPrimaryMenu(),this.renderSocialMenu()),this.renderSecondaryMenu(),e("div",{class:"clearfix"})))}static get is(){return"exa-nameplate"}static get encapsulation(){return"shadow"}static get properties(){return{isMobile:{type:Boolean,attr:"is-mobile"},primaryMenu:{type:Number,attr:"primary-menu"},searchQuery:{type:String,attr:"search-query"},secondaryMenu:{type:Number,attr:"secondary-menu"},socialMenu:{type:Number,attr:"social-menu"}}}static get style(){return"\@charset \"UTF-8\";div.nameplate{position:relative}div.nameplate.mobile div.menus{background:#fff}div.nameplate.mobile div.menus .mobile-right{float:right;background:green;width:66.66667%}div.nameplate.mobile exa-menu.primary{left:200px;width:100%}div.nameplate.mobile exa-menu.secondary{width:33.33333%;float:left;background:orange}div.nameplate.mobile exa-menu.social{background:pink;height:20px}a.logo{width:53.33333%;display:block;background:red;height:80px}exa-menu-button{float:right}.clearfix{clear:both}\@media (min-width:760px){a.logo{width:29.72973%}div.menus{width:100%;position:absolute;height:100%;top:0}div.menus .menu-right{display:inline;float:none}exa-menu.social{background:red;float:right}exa-menu.secondary{float:right}exa-menu.primary{margin-left:29.72973%;position:absolute;bottom:0}}\@media (min-width:1060px){a.logo{width:21.56863%}}\@media (min-width:1220px){a.logo{width:220px}}"}}export{s as ExaMenu,a as ExaNameplate};
+const { h } = window.exa;
+
+import { ExaMenuDirection, ExaMenuLinkColor, ExaMenuFontSize } from './chunk1.js';
+
+class ExaMenu {
+    constructor() {
+        this.imgLoaded = false;
+    }
+    componentDidLoad() {
+        if (this.menu != null) {
+            return;
+        }
+        var wp = new WPAPI({ endpoint: exa.api_url });
+        wp.menus = wp.registerRoute('wp-api-menus/v2', '/menus/(?P<id>)');
+        wp.menus().id(this.menuId).then(this.loadDidFinish.bind(this)).catch(this.loadDidFail.bind(this));
+    }
+    loadDidFinish(data) {
+        this.menu = data;
+    }
+    loadDidFail(err) {
+        console.log(err);
+    }
+    menuStyleClass() {
+        switch (this.menuDirection) {
+            case ExaMenuDirection.Vertical:
+                return "vertical";
+            case ExaMenuDirection.Horizontal:
+                return "horizontal";
+        }
+    }
+    menuFontClass() {
+        switch (this.menuFontSize) {
+            case ExaMenuFontSize.Big:
+                return "big";
+            case ExaMenuFontSize.Normal:
+                return "normal";
+        }
+    }
+    menuColorClass() {
+        switch (this.menuLinkColor) {
+            case ExaMenuLinkColor.Black:
+                return "black";
+            case ExaMenuLinkColor.White:
+                return "white";
+            case ExaMenuLinkColor.Blue:
+                return "blue";
+        }
+    }
+    menuClasses() {
+        return this.menuStyleClass() + " " + this.menuColorClass() + " " + this.menuFontClass();
+    }
+    render() {
+        if (this.menu == null) {
+            return;
+        }
+        return (h("menu", { class: this.menuClasses() }, this.menu.items.map((menuItem, i) => h("exa-menu-item", { childmenuitems: menuItem.children, debug: this.debug && i == 0, url: menuItem.url, title: menuItem.title, dropdownStyle: this.menuDropdown, category: menuItem.object_id, iconClass: menuItem.classes }))));
+    }
+    static get is() { return "exa-menu"; }
+    static get properties() { return { "debug": { "type": Boolean, "attr": "debug" }, "imgLoaded": { "state": true }, "menu": { "state": true }, "menuDirection": { "type": "Any", "attr": "menu-direction" }, "menuDropdown": { "type": "Any", "attr": "menu-dropdown" }, "menuFontSize": { "type": "Any", "attr": "menu-font-size" }, "menuId": { "type": String, "attr": "menu-id" }, "menuLinkColor": { "type": "Any", "attr": "menu-link-color" }, "tag_id": { "type": String, "attr": "tag_id" }, "title": { "type": String, "attr": "title" } }; }
+    static get style() { return "\@charset \"UTF-8\";\n*, *:before, *:after {\n  box-sizing: inherit; }\n\n/*  Fonts */\n/** v0.3.5 colors — preferred use. \n * (modifier)colorObjectOnBackgroundcolorAction \n * lightblueLinkOnBrownHover \n */\n/**\n * //todo: colors other than blue\n * Mixin for link hover states\n */\n/**\n * Definitions for vertical grid system, as applicable on different displays.\n *\n * Columns are 60 each with 20px gutters. Depending on screen size, a different number\n * of columns are available.\n *\n * Note: mobile and tablet should always be in flex() pixels. \n *\n *  - mobile: 4 Columns\n *  - tablet: 9 Columns\n *  - desktop: 13 Columns\n *  - xl: 15 Columns.\n *\n */\n/**\n * Mixin for breakpoints.\n */\nmenu {\n  width: 100%;\n  list-style-type: none;\n  font-family: \"PT Sans Narrow\", Helvetica, Arial, Sans-Serif;\n  line-height: 1.4em;\n  padding: 0;\n  margin: 0; }\n  menu.horizontal exa-menu-item > li {\n    display: inline; }\n  menu exa-menu-item > li a {\n    text-decoration: none; }\n  menu.horizontal exa-menu-item > li a {\n    display: inline-block;\n    padding-top: 6px;\n    padding-bottom: 6px; }\n  menu.vertical exa-menu-item > li a {\n    border-bottom: 1px solid #eff4f6;\n    display: block;\n    padding: 12px 0px; }\n  menu.vertical exa-menu-item:first-child > li a {\n    border-top: 1px solid #eff4f6; }\n  menu exa-menu-item > li a {\n    font-size: 15px; }\n  menu.big exa-menu-item > li a {\n    font-size: 19px; }\n  menu.blue exa-menu-item > li a {\n    color: #3c74b9; }\n    menu.blue exa-menu-item > li a:hover {\n      color: #3a97f7; }\n  menu.black exa-menu-item > li a {\n    color: #191919; }\n    menu.black exa-menu-item > li a:hover {\n      color: #3c74b9; }\n  menu li.social {\n    min-height: 54px;\n    margin-right: 10px;\n    display: block; }\n    menu li.social a {\n      margin-bottom: 12px;\n      width: 34px;\n      height: 34px;\n      display: inline;\n      position: relative; }\n      menu li.social a:before {\n        font-family: exa;\n        font-size: 24px;\n        line-height: 35px;\n        color: #ffffff;\n        text-align: center;\n        width: 100%;\n        display: block;\n        width: 34px;\n        height: 34px;\n        border-radius: 2px; }\n    menu li.social.twitter a:before {\n      content: \"t\";\n      background: #0892E3; }\n    menu li.social.facebook a:before {\n      content: \"f\";\n      background: #425F9E; }\n    menu li.social.linkedin a:before {\n      content: \"l\";\n      background: #0078b6; }\n    menu li.social.instagram a:before {\n      content: \"i\";\n      background: #cd486b; }\n\n\@media (min-width: 760px) {\n  menu li.social {\n    margin-right: 0;\n    margin-left: 10px;\n    position: relative;\n    top: -3px; }\n    menu li.social a {\n      width: 24px;\n      height: 24px; }\n    menu li.social a:before {\n      font-size: 16px;\n      line-height: 26px;\n      width: 24px;\n      height: 24px; } }\n\n\@media (min-width: 1060px) {\n  menu.big exa-menu-item > li a {\n    font-size: 24px; }\n  menu exa-menu-item > li a {\n    font-size: 18px; } }"; }
+}
+
+class ExaMenuButton {
+    constructor() {
+        this.active = false;
+    }
+    render() {
+        return (h("a", { class: this.active ? "active" : "" }, this.active ? "Close" : "Menu"));
+    }
+    static get is() { return "exa-menu-button"; }
+    static get properties() { return { "active": { "type": Boolean, "attr": "active" } }; }
+    static get style() { return "\@charset \"UTF-8\";\n*, *:before, *:after {\n  box-sizing: inherit; }\n\n/*  Fonts */\n/** v0.3.5 colors — preferred use. \n * (modifier)colorObjectOnBackgroundcolorAction \n * lightblueLinkOnBrownHover \n */\n/**\n * //todo: colors other than blue\n * Mixin for link hover states\n */\n/**\n * Definitions for vertical grid system, as applicable on different displays.\n *\n * Columns are 60 each with 20px gutters. Depending on screen size, a different number\n * of columns are available.\n *\n * Note: mobile and tablet should always be in flex() pixels. \n *\n *  - mobile: 4 Columns\n *  - tablet: 9 Columns\n *  - desktop: 13 Columns\n *  - xl: 15 Columns.\n *\n */\n/**\n * Mixin for breakpoints.\n */\nexa-menu-button a {\n  /* the menu icon */\n  color: #3c74b9;\n  padding: 12px 10% 18px 6.66667%;\n  font-size: 24px;\n  display: block;\n  line-height: 24px;\n  font-family: \"PT Sans Narrow\", Helvetica, Arial, Sans-Serif;\n  position: absolute;\n  right: 0;\n  bottom: 0;\n  transition: bottom .2s;\n  cursor: pointer;\n  margin-right: -1.66667%; }\n  exa-menu-button a:hover {\n    color: #3a97f7; }\n  exa-menu-button a:after {\n    content: \"d\";\n    font-size: 12px;\n    margin-left: 5px;\n    transition: transform .1s;\n    font-family: exa;\n    position: absolute; }\n  exa-menu-button a.active:after {\n    margin-top: 3px;\n    transform: rotate(180deg); }\n  exa-menu-button a.active {\n    background: #ffffff;\n    bottom: -6px; }"; }
+}
+
+class ExaSearchForm {
+    render() {
+        return (h("form", { class: "search", action: "/", method: "get" },
+            h("input", { type: "text", name: "s", placeholder: "Search..." }),
+            h("input", { type: "submit", value: "Submit" })));
+    }
+    static get is() { return "exa-search-form"; }
+    static get style() { return "\@charset \"UTF-8\";\n*, *:before, *:after {\n  box-sizing: inherit; }\n\n/*  Fonts */\n/** v0.3.5 colors — preferred use. \n * (modifier)colorObjectOnBackgroundcolorAction \n * lightblueLinkOnBrownHover \n */\n/**\n * //todo: colors other than blue\n * Mixin for link hover states\n */\n/**\n * Definitions for vertical grid system, as applicable on different displays.\n *\n * Columns are 60 each with 20px gutters. Depending on screen size, a different number\n * of columns are available.\n *\n * Note: mobile and tablet should always be in flex() pixels. \n *\n *  - mobile: 4 Columns\n *  - tablet: 9 Columns\n *  - desktop: 13 Columns\n *  - xl: 15 Columns.\n *\n */\n/**\n * Mixin for breakpoints.\n */\nexa-search-form form.search {\n  width: 100%;\n  position: relative;\n  background: #eff4f6;\n  padding: 20px 5%;\n  margin-top: 30px; }\n  exa-search-form form.search input[type=text] {\n    width: 100%;\n    padding: 12px 3.33333%;\n    padding-right: 40px;\n    font-family: \"PT Sans Narrow\", Helvetica, Arial, Sans-Serif;\n    font-size: 24px;\n    outline: none;\n    border: 3px solid #eff4f6;\n    transition: all .3s;\n    font-size: 20px; }\n    exa-search-form form.search input[type=text]::placeholder {\n      color: #93a2aa; }\n    exa-search-form form.search input[type=text]:focus {\n      color: #191919;\n      border: 3px solid #3c74b9; }\n  exa-search-form form.search:after {\n    pointer-events: none;\n    content: \"s\";\n    font-family: exa;\n    padding: 4px 8px;\n    position: absolute;\n    top: 32px;\n    right: 8.33333%;\n    width: 30px;\n    height: 30px;\n    color: #3c74b9; }\n  exa-search-form form.search input[type=submit] {\n    display: none; }\n\n\@media (min-width: 760px) {\n  exa-search-form form.search {\n    background: transparent;\n    padding: 0;\n    right: 0;\n    margin-top: 0px; }\n    exa-search-form form.search input[type=text] {\n      bottom: -3px;\n      top: inherit;\n      position: absolute;\n      right: 0;\n      width: 36px;\n      padding: 6px 20px 6px 20px;\n      border-radius: 2px;\n      margin-right: 0px;\n      border: none; }\n      exa-search-form form.search input[type=text]::placeholder {\n        color: transparent; }\n      exa-search-form form.search input[type=text]:focus {\n        width: 100%;\n        border: none; }\n        exa-search-form form.search input[type=text]:focus::placeholder {\n          color: #93a2aa; }\n    exa-search-form form.search:after {\n      bottom: 1px;\n      right: 7px;\n      top: inherit;\n      font-size: 18px; } }"; }
+}
+
+export { ExaMenu, ExaMenuButton, ExaSearchForm };
