@@ -52,7 +52,7 @@ function exa_log($error) {
 function _exa_dev_attachment_url( $link ) {
 
 	$url = parse_url( $link );
-	if( exa_dev() && !strpos( $url['host'], 'badgerherald.com') ) {
+	if( exa_dev() && (!strpos( $url['host'], 'badgerherald.com') || strpos( $url['host'], 'staging.badgerherald.com') ) ) {
 		$link = preg_replace('/.*uploads/', 'https://badgerherald.com/media', $link);
 	}
 	return $link;
