@@ -1,2 +1,0 @@
-/*! Built with http://stenciljs.com */
-const{h:e}=window.exa;var i,o,n,a;!function(e){e[e.Vertical=0]="Vertical",e[e.Horizontal=1]="Horizontal"}(i||(i={})),function(e){e[e.Blue=0]="Blue",e[e.Black=1]="Black",e[e.White=2]="White"}(o||(o={})),function(e){e[e.Normal=0]="Normal",e[e.Big=1]="Big"}(n||(n={})),function(e){e[e.Simple=0]="Simple",e[e.Teasers=1]="Teasers",e[e.None=2]="None"}(a||(a={}));export{n as ExaMenuFontSize,o as ExaMenuLinkColor,i as ExaMenuDirection,a as ExaMenuDropdownStyle};
