@@ -10,6 +10,11 @@
  * @since v0.1
  */
 
+
+//Store the micro time so that we know
+//when our script started to run.
+$executionStartTime = microtime(true);
+
 get_header();
 exa_container('nameplate');
 exa_container('stream');

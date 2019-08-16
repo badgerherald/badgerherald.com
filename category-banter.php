@@ -4,5 +4,3 @@
  */
 
 get_template_part('templates/archive','banter');
-
-?>

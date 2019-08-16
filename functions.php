@@ -21,6 +21,7 @@ include( dirname( __FILE__ ) . '/functions/images.php');
 include( dirname( __FILE__ ) . '/functions/dates-and-times.php');
 include( dirname( __FILE__ ) . '/functions/authors.php');
 include( dirname( __FILE__ ) . '/functions/embeds.php');
+include( dirname( __FILE__ ) . '/functions/routes.php');
 
 /* Features */
 include( dirname( __FILE__ ) . '/functions/inline-links.php');
@@ -31,7 +32,7 @@ include( dirname( __FILE__ ) . '/functions/analytic-dashboard.php');
 include( dirname( __FILE__ ) . '/functions/headlines.php');
 include( dirname( __FILE__ ) . '/functions/pullquotes.php');
 include( dirname( __FILE__ ) . '/functions/social.php');
-include( dirname( __FILE__ ) . '/functions/admin.php');
+//include( dirname( __FILE__ ) . '/functions/admin.php');
 include( dirname( __FILE__ ) . '/functions/services.php');
 
 /* Libraries */
