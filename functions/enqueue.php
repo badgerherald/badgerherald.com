@@ -39,7 +39,7 @@ add_action( 'wp_enqueue_scripts', '_exa_enqueue_scripts_styles' );
 function exa_include_components() {
 	echo '<script type="text/javascript">';
     echo 'var exa = {
-		"api_url": ' . get_home_url() . '/wp-json",
+		"api_url": "' . get_home_url() . '/wp-json",
 		"appUrl": "http:\/\/app.badgerherald.test\/",
 		"wpAjaxUrl": ' .  json_encode(admin_url('admin-ajax.php')) . ',
 		"nonce": ' . json_encode(wp_create_nonce('update-order-review')) . '
