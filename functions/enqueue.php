@@ -37,16 +37,17 @@ function _exa_enqueue_scripts_styles() {
 add_action( 'wp_enqueue_scripts', '_exa_enqueue_scripts_styles' );
 
 function exa_include_components() {
+	$apiurl = get_home_url() . "/app/";
 	echo '<script type="text/javascript">';
     echo 'var exa = {
 		"api_url": "' . get_home_url() . '/wp-json",
-		"appUrl": "http:\/\/app.badgerherald.test\/",
+		"appUrl": "' . $apiurl . '",
 		"wpAjaxUrl": ' .  json_encode(admin_url('admin-ajax.php')) . ',
 		"nonce": ' . json_encode(wp_create_nonce('update-order-review')) . '
 	}';
     echo '</script>';
-	echo '<script type="module" src="//app.badgerherald.test/build/app.esm.js"></script>';
-	echo '<script nomodule src="//app.badgerherald.test/build/app.js"></script>';
+	echo '<script type="module" src="'.$apiurl.'build/app.esm.js"></script>';
+	echo '<script nomodule src="'.$apiurl.'build/app.js"></script>';
 }
 add_action('wp_head', 'exa_include_components');
 
