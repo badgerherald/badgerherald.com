@@ -425,12 +425,13 @@
 			& > img.alignleft,& >img.alignright,&>img.alignnone,&>img.aligncenter {
 				margin: 0px 0 24px;
 			}
-			.video-container {
-				float: left;
+
+		}
+		.video-container {
+			float: left;
+			max-width: 100%;
+			iframe {
 				max-width: 100%;
-				iframe {
-					max-width: 100%;
-				}
 			}
 		}
 	}
