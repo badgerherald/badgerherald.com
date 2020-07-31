@@ -1,0 +1,32 @@
+{
+  "name": "badgerherald-com",
+  "version": "0.0.1",
+  "description": "The Badger Herald · since 1969",
+  "main": "dist/index.js",
+  "module": "dist/index.mjs",
+  "es2015": "dist/esm/index.mjs",
+  "es2017": "dist/esm/index.mjs",
+  "types": "dist/types/index.d.ts",
+  "collection": "dist/collection/collection-manifest.json",
+  "collection:main": "dist/collection/index.js",
+  "unpkg": "dist/badgerherald-com/badgerherald-com.js",
+  "files": [
+    "dist/",
+    "loader/"
+  ],
+  "scripts": {
+    "start": "stencil build --dev --watch --serve",
+    "test": "stencil test --spec --e2e",
+    "test.watch": "stencil test --spec --e2e --watchAll",
+    "generate": "stencil generate"
+  },
+  "devDependencies": {
+    "@stencil/core": "^1.13.0",
+    "@stencil/router": "^1.0.1",
+    "@stencil/sass": "^1.3.1",
+    "@webpress/router": "latest",
+    "@webpress/theme": "latest",
+    "@webpress/core": "latest"
+  },
+  "license": "MIT"
+}

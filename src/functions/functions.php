@@ -4,35 +4,35 @@
  */
 
 /* Setup */
-include( dirname( __FILE__ ) . '/functions/enqueue.php');		/* Base CSS & JS enqueues */
-include( dirname( __FILE__ ) . '/functions/dev.php'); 			/* Configuration for local development */
+include( dirname( __FILE__ ) . '/exa/enqueue.php');		/* Base CSS & JS enqueues */
+include( dirname( __FILE__ ) . '/exa/dev.php'); 			/* Configuration for local development */
 
 /* Taxonomies */
-include( dirname( __FILE__ ) . '/functions/topics.php');
-include( dirname( __FILE__ ) . '/functions/layout.php');
-include( dirname( __FILE__ ) . '/functions/importance.php');
-include( dirname( __FILE__ ) . '/functions/sections.php');
+include( dirname( __FILE__ ) . '/exa/topics.php');
+include( dirname( __FILE__ ) . '/exa/layout.php');
+include( dirname( __FILE__ ) . '/exa/importance.php');
+include( dirname( __FILE__ ) . '/exa/sections.php');
 
 /* Infrastructure */
-include( dirname( __FILE__ ) . '/functions/html-tags.php');
-include( dirname( __FILE__ ) . '/functions/containers.php');
-include( dirname( __FILE__ ) . '/functions/menus.php');
-include( dirname( __FILE__ ) . '/functions/images.php');
-include( dirname( __FILE__ ) . '/functions/dates-and-times.php');
-include( dirname( __FILE__ ) . '/functions/authors.php');
-include( dirname( __FILE__ ) . '/functions/embeds.php');
+include( dirname( __FILE__ ) . '/exa/html-tags.php');
+include( dirname( __FILE__ ) . '/exa/containers.php');
+include( dirname( __FILE__ ) . '/exa/menus.php');
+include( dirname( __FILE__ ) . '/exa/images.php');
+include( dirname( __FILE__ ) . '/exa/dates-and-times.php');
+include( dirname( __FILE__ ) . '/exa/authors.php');
+include( dirname( __FILE__ ) . '/exa/embeds.php');
 
 /* Features */
-include( dirname( __FILE__ ) . '/functions/inline-links.php');
-include( dirname( __FILE__ ) . '/functions/mastheads.php');
-include( dirname( __FILE__ ) . '/functions/galleries.php');
-include( dirname( __FILE__ ) . '/functions/popular-post-widget.php');
-include( dirname( __FILE__ ) . '/functions/analytic-dashboard.php');
-include( dirname( __FILE__ ) . '/functions/headlines.php');
-include( dirname( __FILE__ ) . '/functions/pullquotes.php');
-include( dirname( __FILE__ ) . '/functions/social.php');
-include( dirname( __FILE__ ) . '/functions/admin.php');
-include( dirname( __FILE__ ) . '/functions/services.php');
+include( dirname( __FILE__ ) . '/exa/inline-links.php');
+include( dirname( __FILE__ ) . '/exa/mastheads.php');
+include( dirname( __FILE__ ) . '/exa/galleries.php');
+include( dirname( __FILE__ ) . '/exa/popular-post-widget.php');
+include( dirname( __FILE__ ) . '/exa/analytic-dashboard.php');
+include( dirname( __FILE__ ) . '/exa/headlines.php');
+include( dirname( __FILE__ ) . '/exa/pullquotes.php');
+include( dirname( __FILE__ ) . '/exa/social.php');
+include( dirname( __FILE__ ) . '/exa/admin.php');
+include( dirname( __FILE__ ) . '/exa/services.php');
 
 
 add_action( 'customize_preview_init', function() {
