@@ -1,17 +1,5 @@
-style.css
-.sass-cache
-cache
+.vagrant
+.DS_Store
+.env
 
-*.DS_Store
-
-*.sublime-*
-*.css.map
-
-package.json
-
-node_modules
-
-style.css.map
-
-# mkdocs
-site/*
+server/wp-content

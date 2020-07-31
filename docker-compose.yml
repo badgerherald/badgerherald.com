@@ -1,0 +1,70 @@
+version: "3"
+
+services:
+  nginx:
+    image: nginx:latest
+    container_name: badgerherald.com-nginx
+    links:
+      - wordpress
+    ports:
+      - 80:80
+      - 443:443
+    volumes:
+      - badgerherald.com-wordpress:/var/www/html 
+      - ./server/nginx/badgerherald.com.conf:/etc/nginx/nginx.conf
+      - ./server/nginx/ssl/${SSL_CERTIFICATE_NAME}.crt:/etc/ssl/certs/localhost.crt
+      - ./server/nginx/ssl/${SSL_CERTIFICATE_NAME}.key:/etc/ssl/private/localhost.key
+    restart: always
+
+  mariadb:
+    container_name: badgerherald.com-mysql
+    image: mariadb
+    volumes:
+      - ./server/sql/install/:/docker-entrypoint-initdb.d
+      - badgerherald.com-mysql:/var/lib/mysql:rw
+    restart: always
+    expose:
+      - 3306
+    environment: 
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MYSQL_USER: ${MYSQL_WORDPRESS_USER}
+      MYSQL_PASSWORD: ${MYSQL_WORDPRESS_PASSWORD}
+      MYSQL_DATABASE: ${MYSQL_WORDPRESS_DATABASE}
+
+  wordpress:
+    container_name: badgerherald.com-wordpress
+    depends_on:
+      - mariadb
+    image: wordpress:latest
+    expose:
+      - 80
+    restart: always
+    volumes: 
+      - badgerherald.com-wordpress:/var/www/html
+      - ./server/wp-content:/var/www/html/wp-content/
+      - ~/badgerherald.com${WORDPRESS_UPLOADS_DIR}:/var/www/html/wp-content/uploads
+      - ./server/app:/var/www/html/app
+    environment:
+      WORDPRESS_DB_HOST: mariadb:3306
+      WORDPRESS_DB_USER: ${MYSQL_WORDPRESS_DATABASE}
+      WORDPRESS_DB_PASSWORD: ${MYSQL_WORDPRESS_PASSWORD}
+      WORDPRESS_DB_NAME: ${MYSQL_WORDPRESS_DATABASE}
+      WORDPRESS_CONFIG_EXTRA: | 
+        /* Domain */
+        define("WP_HOME","${WORDPRESS_SITE_URL}");
+        define("WP_SITEURL","${WORDPRESS_SITE_URL}");
+        define('STRIPE_SK', '${STRIPE_SECRET_KEY}');
+        define('STRIPE_MONTHLY_PLAN', '${STRIPE_MONTHLY_PLAN}');
+        define('STRIPE_SEMESTER_PLAN', '${STRIPE_SEMESTER_PLAN}');
+        define('EXA_APP_URL', '//badgerherald.com/app/');
+
+
+volumes: 
+  badgerherald.com-mysql:
+  badgerherald.com-wordpress:
+
+networks:
+  default:
+    external:
+      name: badgerherald.com-network
+    
