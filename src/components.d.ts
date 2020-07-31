@@ -6,20 +6,32 @@
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 export namespace Components {
-
+    interface WjhHome {
+    }
 }
 declare global {
+    interface HTMLWjhHomeElement extends Components.WjhHome, HTMLStencilElement {
+    }
+    var HTMLWjhHomeElement: {
+        prototype: HTMLWjhHomeElement;
+        new (): HTMLWjhHomeElement;
+    };
     interface HTMLElementTagNameMap {
+        "wjh-home": HTMLWjhHomeElement;
     }
 }
 declare namespace LocalJSX {
+    interface WjhHome {
+    }
     interface IntrinsicElements {
+        "wjh-home": WjhHome;
     }
 }
 export { LocalJSX as JSX };
 declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
+            "wjh-home": LocalJSX.WjhHome & JSXBase.HTMLAttributes<HTMLWjhHomeElement>;
         }
     }
 }

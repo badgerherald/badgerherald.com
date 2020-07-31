@@ -11,7 +11,11 @@ export const config: Config = {
       dir: 'server/wp-content/themes/badgerherald.com/',
       copy: [
         { src: 'style.css' },
+        { src: 'style.css.map' },
         { src: '**/*.php' },
+        { src: 'js/' },
+        { src: 'blocks/' },
+        { src: 'assets/' },
         { src: 'theme-definition.json' },
         { src: '../node_modules/@webpress/core/dist/collection/theme-overlay/functions.php', dest: 'functions.php'},
         { src: '../node_modules/@webpress/core/dist/collection/theme-overlay/etc', dest: 'etc'}
@@ -19,6 +23,6 @@ export const config: Config = {
     }
   ],
   plugins: [ 
-    sass({ injectGlobalPaths: ["src/assets/style.scss"] })
+    sass({ injectGlobalPaths: [] })
   ]
 };

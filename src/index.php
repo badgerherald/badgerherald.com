@@ -6,7 +6,6 @@
  */
 
 get_header();
-
 exa_container('leaderboard');
 exa_container('nameplate');
 exa_container('breaking-news');

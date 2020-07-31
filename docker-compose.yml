@@ -16,25 +16,8 @@ services:
       - ./server/nginx/ssl/${SSL_CERTIFICATE_NAME}.key:/etc/ssl/private/localhost.key
     restart: always
 
-  mariadb:
-    container_name: badgerherald.com-mysql
-    image: mariadb
-    volumes:
-      - ./server/sql/install/:/docker-entrypoint-initdb.d
-      - badgerherald.com-mysql:/var/lib/mysql:rw
-    restart: always
-    expose:
-      - 3306
-    environment: 
-      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
-      MYSQL_USER: ${MYSQL_WORDPRESS_USER}
-      MYSQL_PASSWORD: ${MYSQL_WORDPRESS_PASSWORD}
-      MYSQL_DATABASE: ${MYSQL_WORDPRESS_DATABASE}
-
   wordpress:
     container_name: badgerherald.com-wordpress
-    depends_on:
-      - mariadb
     image: wordpress:latest
     expose:
       - 80
@@ -45,8 +28,8 @@ services:
       - ~/badgerherald.com${WORDPRESS_UPLOADS_DIR}:/var/www/html/wp-content/uploads
       - ./server/app:/var/www/html/app
     environment:
-      WORDPRESS_DB_HOST: mariadb:3306
-      WORDPRESS_DB_USER: ${MYSQL_WORDPRESS_DATABASE}
+      WORDPRESS_DB_HOST: ${MYSQL_WORDPRESS_HOST}
+      WORDPRESS_DB_USER: ${MYSQL_WORDPRESS_USER}
       WORDPRESS_DB_PASSWORD: ${MYSQL_WORDPRESS_PASSWORD}
       WORDPRESS_DB_NAME: ${MYSQL_WORDPRESS_DATABASE}
       WORDPRESS_CONFIG_EXTRA: | 
@@ -56,8 +39,7 @@ services:
         define('STRIPE_SK', '${STRIPE_SECRET_KEY}');
         define('STRIPE_MONTHLY_PLAN', '${STRIPE_MONTHLY_PLAN}');
         define('STRIPE_SEMESTER_PLAN', '${STRIPE_SEMESTER_PLAN}');
-        define('EXA_APP_URL', '//badgerherald.com/app/');
-
+        define('EXA_DEV', '${EXA_DEV}');
 
 volumes: 
   badgerherald.com-mysql:
