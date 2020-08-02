@@ -17,7 +17,7 @@ $container = $GLOBALS['container'] ?: new container('old-homepage');
 					"sports" => "sports");
 
 	foreach($beats as $beat => $beat_name) {
-		
+	break;
 		hrld_html_tag_open("div", $beat, array("clearfix"));
 			hrld_html_tag_open("div","",array("section-banner", "section-banner-$beat"));
 				hrld_html_tag_open("h2","",array(),$beat_name,true);
@@ -72,7 +72,6 @@ $container = $GLOBALS['container'] ?: new container('old-homepage');
 			/* Build query for featured stories in news */
 			$args = array();
 			$args['posts_per_page'] = 10;
-			$args['post__not_in'] = $exclude;
 			$args['tax_query'] = array(
 		        array(
 		            'taxonomy' => 'category',

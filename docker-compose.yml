@@ -18,15 +18,21 @@ services:
 
   wordpress:
     container_name: badgerherald.com-wordpress
-    image: wordpress:5-php7.4-fpm
+    build: 
+      context: wordpress
+      dockerfile: dockerfile
+    links:
+      - memcached
     expose:
       - 80
     restart: always
     volumes: 
       - badgerherald.com-wordpress:/var/www/html
       - ./server/wp-content:/var/www/html/wp-content/
-      - ~/badgerherald.com${WORDPRESS_UPLOADS_DIR}:/var/www/html/wp-content/uploads
+      - ./${WORDPRESS_UPLOADS_DIR}:/var/www/html/wp-content/uploads
       - ./server/app:/var/www/html/app
+      - ./server/nginx/php.ini:/usr/local/etc/php/conf.d/extra.ini
+      - ./server/nginx/php-fpm.conf:/usr/local/etc/php-fpm.d/zzz-my-extra.conf
     environment:
       WORDPRESS_DB_HOST: ${MYSQL_WORDPRESS_HOST}
       WORDPRESS_DB_USER: ${MYSQL_WORDPRESS_USER}
@@ -40,6 +46,19 @@ services:
         define('STRIPE_MONTHLY_PLAN', '${STRIPE_MONTHLY_PLAN}');
         define('STRIPE_SEMESTER_PLAN', '${STRIPE_SEMESTER_PLAN}');
         define('EXA_DEV', '${EXA_DEV}');
+        define('WP_CACHE',true);
+        define('WP_MEMORY_LIMIT','128M');
+        $$memcached_servers = array(
+          'default' => array(
+            'memcached:11211',
+          )
+        );
+
+  memcached:
+    container_name: badgerherald.com-memcached
+    image: memcached:latest
+    ports:
+      - "11211:11211"
 
 volumes: 
   badgerherald.com-mysql:
