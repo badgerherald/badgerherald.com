@@ -18,7 +18,7 @@ services:
 
   wordpress:
     container_name: badgerherald.com-wordpress
-    image: wordpress:latest
+    image: wordpress:5-php7.4-fpm
     expose:
       - 80
     restart: always
