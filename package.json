@@ -24,9 +24,9 @@
     "@stencil/core": "^1.13.0",
     "@stencil/router": "^1.0.1",
     "@stencil/sass": "^1.3.1",
+    "@webpress/core": "0.0.4",
     "@webpress/router": "latest",
-    "@webpress/theme": "latest",
-    "@webpress/core": "latest"
+    "@webpress/theme": "0.0.4"
   },
   "license": "MIT"
 }
