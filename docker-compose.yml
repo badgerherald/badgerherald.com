@@ -11,6 +11,8 @@ services:
       - 443:443
     volumes:
       - badgerherald.com-wordpress:/var/www/html 
+      - ./server/wp-content:/var/www/html/wp-content/
+      - ./${WORDPRESS_UPLOADS_DIR}:/var/www/html/wp-content/uploads
       - ./server/nginx/badgerherald.com.conf:/etc/nginx/nginx.conf
       - ./server/nginx/ssl/${SSL_CERTIFICATE_NAME}.crt:/etc/ssl/certs/localhost.crt
       - ./server/nginx/ssl/${SSL_CERTIFICATE_NAME}.key:/etc/ssl/private/localhost.key
@@ -28,9 +30,8 @@ services:
     restart: always
     volumes: 
       - badgerherald.com-wordpress:/var/www/html
-      - ./server/wp-content:/var/www/html/wp-content/
       - ./${WORDPRESS_UPLOADS_DIR}:/var/www/html/wp-content/uploads
-      - ./server/app:/var/www/html/app
+      - ./server/wp-content:/var/www/html/wp-content/
       - ./server/nginx/php.ini:/usr/local/etc/php/conf.d/extra.ini
       - ./server/nginx/php-fpm.conf:/usr/local/etc/php-fpm.d/zzz-my-extra.conf
     environment:
