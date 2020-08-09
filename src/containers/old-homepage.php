@@ -17,7 +17,6 @@ $container = $GLOBALS['container'] ?: new container('old-homepage');
 					"sports" => "sports");
 
 	foreach($beats as $beat => $beat_name) {
-	break;
 		hrld_html_tag_open("div", $beat, array("clearfix"));
 			hrld_html_tag_open("div","",array("section-banner", "section-banner-$beat"));
 				hrld_html_tag_open("h2","",array(),$beat_name,true);

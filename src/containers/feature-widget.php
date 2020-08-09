@@ -10,9 +10,7 @@ $container = $GLOBALS['container'] ?: new container('feature-widget');
 
 		<?php
 			$query_args = array(
-				'showposts' 	=> 1,
 				'post_status'	=> 'publish',
-				'post__not_in'	=> Exa::shownIds(),
 				'tax_query' => array(
 					array(
 					    'taxonomy' => 'importance',
@@ -20,11 +18,24 @@ $container = $GLOBALS['container'] ?: new container('feature-widget');
 					    'terms' => 'featured'
 					)
 				),
-				'no_found_rows' => true
 			);
 			$my_query = new WP_Query( $query_args );
+			$count = 0;
 			if ( $my_query->have_posts() ) {
-				while ( $my_query->have_posts() ) : $my_query->the_post(); Exa::addShownId(get_the_ID()); ?>
+				while ( $my_query->have_posts() ) : $my_query->the_post(); 	
+				if(Exa::postHasBeenSeen(get_the_ID())) {
+					continue;
+				}
+				$count++;
+				if($count > 1) {
+					break;
+				}
+
+				
+				Exa::addShownId(get_the_ID()); 
+				
+				
+				?>
 
 				<a href="<?php the_permalink(); ?>" class="story">
 				

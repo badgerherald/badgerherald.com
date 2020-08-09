@@ -29,9 +29,7 @@ $container = $GLOBALS['container'] ?: new container('header');
 		<?php
 
 		$query_args = array(
-			'showposts' 	=> 2,
 			'post_status'	=> 'publish',
-			'post__not_in'	=> Exa::shownIds(),
 			'tax_query' => array(
 				array(
 				    'taxonomy' => 'importance',
@@ -43,18 +41,27 @@ $container = $GLOBALS['container'] ?: new container('header');
 		);
 		$my_query = new WP_Query( $query_args );
 
+		$count = 0;
 		if ( $my_query->have_posts() ) {
-			while ( $my_query->have_posts() ) : $my_query->the_post(); Exa::addShownId(get_the_ID()); ?>
-
-			
-	
+			while ( $my_query->have_posts() ) : $my_query->the_post(); 
+				if(Exa::postHasBeenSeen(get_the_ID())) {
+					continue;
+				}
+				
+				$count++;
+				if($count > 2) {
+					continue;
+				}
+				Exa::addShownId(get_the_ID()); 
+			?>
+				
 				<a href="<?php the_permalink(); ?>" class="story">
 				
 					<div class="dotted-overlay-container">
 					<?php
 						if( has_post_thumbnail()){
 							the_post_thumbnail('post-thumbnail');
-						}else{
+						} else{
 							echo "<img " . 'class="attachment-post-thumbnail size-post-thumbnail wp-post-image" '.
 									'style="height: 250px; background-color: #666;" />';
 						}

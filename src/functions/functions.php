@@ -100,6 +100,10 @@ class Exa {
 		}
 	}
 
+	public static function postHasBeenSeen($postID) {
+		return in_array($postID, Exa::shownIds());
+	}
+
 	/**
 	 * Returns an array of WordPress ids already loaded on
 	 * the page.
