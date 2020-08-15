@@ -47,7 +47,8 @@ include( dirname( __FILE__ ) . '/hexa/admin.php');
 include( dirname( __FILE__ ) . '/hexa/wiki.php');
 include( dirname( __FILE__ ) . '/hexa/user-management.php');
 include( dirname( __FILE__ ) . '/hexa/dirty-bird.php');
-include( dirname( __FILE__ ) . '/hexa/donate.php');
+
+include( dirname( __FILE__ ) . '/donate.php');
 
 add_action( 'customize_preview_init', function() {
 die("The customizer is disabled. Please save and preview your site on the frontend.");

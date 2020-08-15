@@ -6,7 +6,7 @@ export const config: Config = {
   outputTargets: [
     {
       type: 'www',
-      serviceWorker: null, // disable service workers,
+      serviceWorker: null,
       buildDir: 'app',
       dir: 'server/wp-content/themes/badgerherald.com/',
       copy: [
@@ -18,7 +18,9 @@ export const config: Config = {
         { src: 'assets/' },
         { src: 'theme-definition.json' },
         { src: '../node_modules/@webpress/core/dist/collection/theme-overlay/functions.php', dest: 'functions.php'},
-        { src: '../node_modules/@webpress/core/dist/collection/theme-overlay/etc', dest: 'etc'}
+        { src: '../node_modules/@webpress/core/dist/collection/theme-overlay/etc', dest: 'etc'},
+        { src: '../node_modules/@badgerherald/donate/dist/collection/functions.php', dest: 'functions/donate.php'},
+        { src: '../node_modules/@badgerherald/donate/dist/collection/lib/', dest: 'functions/lib'}
       ]
     }
   ],
