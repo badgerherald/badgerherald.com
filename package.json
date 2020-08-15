@@ -15,7 +15,8 @@
     "loader/"
   ],
   "scripts": {
-    "start": "stencil build --dev --watch --serve",
+    "start": "stencil build --dev --watch",
+    "build": "stencil build --dev",
     "test": "stencil test --spec --e2e",
     "test.watch": "stencil test --spec --e2e --watchAll",
     "generate": "stencil generate"
@@ -26,7 +27,9 @@
     "@stencil/sass": "^1.3.2",
     "@webpress/core": "0.0.6",
     "@webpress/router": "0.0.6",
-    "@webpress/theme": "0.0.6"
+    "@webpress/theme": "0.0.6",
+    "@types/stripe-v3": "^3.1.7",
+    "stripe": "^7.9.1"
   },
   "license": "MIT"
 }

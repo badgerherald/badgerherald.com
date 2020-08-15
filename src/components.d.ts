@@ -6,32 +6,100 @@
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 export namespace Components {
-    interface WjhHome {
+    interface ExaDonateAmount {
+        "reoccuring": number;
+    }
+    interface ExaDonateCheckout {
+        "amount": number;
+        "reoccuring": number;
+        "serverError": any;
+    }
+    interface ExaDonateNav {
+        "amount": number;
+        "isCheckout": boolean;
+    }
+    interface ExaDonateSpinner {
+    }
+    interface ExaStripe {
     }
 }
 declare global {
-    interface HTMLWjhHomeElement extends Components.WjhHome, HTMLStencilElement {
+    interface HTMLExaDonateAmountElement extends Components.ExaDonateAmount, HTMLStencilElement {
     }
-    var HTMLWjhHomeElement: {
-        prototype: HTMLWjhHomeElement;
-        new (): HTMLWjhHomeElement;
+    var HTMLExaDonateAmountElement: {
+        prototype: HTMLExaDonateAmountElement;
+        new (): HTMLExaDonateAmountElement;
+    };
+    interface HTMLExaDonateCheckoutElement extends Components.ExaDonateCheckout, HTMLStencilElement {
+    }
+    var HTMLExaDonateCheckoutElement: {
+        prototype: HTMLExaDonateCheckoutElement;
+        new (): HTMLExaDonateCheckoutElement;
+    };
+    interface HTMLExaDonateNavElement extends Components.ExaDonateNav, HTMLStencilElement {
+    }
+    var HTMLExaDonateNavElement: {
+        prototype: HTMLExaDonateNavElement;
+        new (): HTMLExaDonateNavElement;
+    };
+    interface HTMLExaDonateSpinnerElement extends Components.ExaDonateSpinner, HTMLStencilElement {
+    }
+    var HTMLExaDonateSpinnerElement: {
+        prototype: HTMLExaDonateSpinnerElement;
+        new (): HTMLExaDonateSpinnerElement;
+    };
+    interface HTMLExaStripeElement extends Components.ExaStripe, HTMLStencilElement {
+    }
+    var HTMLExaStripeElement: {
+        prototype: HTMLExaStripeElement;
+        new (): HTMLExaStripeElement;
     };
     interface HTMLElementTagNameMap {
-        "wjh-home": HTMLWjhHomeElement;
+        "exa-donate-amount": HTMLExaDonateAmountElement;
+        "exa-donate-checkout": HTMLExaDonateCheckoutElement;
+        "exa-donate-nav": HTMLExaDonateNavElement;
+        "exa-donate-spinner": HTMLExaDonateSpinnerElement;
+        "exa-stripe": HTMLExaStripeElement;
     }
 }
 declare namespace LocalJSX {
-    interface WjhHome {
+    interface ExaDonateAmount {
+        "onAmountChanged"?: (event: CustomEvent<number>) => void;
+        "onReoccuringChanged"?: (event: CustomEvent<number>) => void;
+        "reoccuring"?: number;
+    }
+    interface ExaDonateCheckout {
+        "amount"?: number;
+        "onChangeAmount"?: (event: CustomEvent<any>) => void;
+        "onCheckoutFinished"?: (event: CustomEvent<any>) => void;
+        "reoccuring"?: number;
+        "serverError"?: any;
+    }
+    interface ExaDonateNav {
+        "amount"?: number;
+        "isCheckout"?: boolean;
+    }
+    interface ExaDonateSpinner {
+    }
+    interface ExaStripe {
     }
     interface IntrinsicElements {
-        "wjh-home": WjhHome;
+        "exa-donate-amount": ExaDonateAmount;
+        "exa-donate-checkout": ExaDonateCheckout;
+        "exa-donate-nav": ExaDonateNav;
+        "exa-donate-spinner": ExaDonateSpinner;
+        "exa-stripe": ExaStripe;
     }
 }
 export { LocalJSX as JSX };
 declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
-            "wjh-home": LocalJSX.WjhHome & JSXBase.HTMLAttributes<HTMLWjhHomeElement>;
+            "exa-donate-amount": LocalJSX.ExaDonateAmount & JSXBase.HTMLAttributes<HTMLExaDonateAmountElement>;
+            "exa-donate-checkout": LocalJSX.ExaDonateCheckout & JSXBase.HTMLAttributes<HTMLExaDonateCheckoutElement>;
+            "exa-donate-nav": LocalJSX.ExaDonateNav & JSXBase.HTMLAttributes<HTMLExaDonateNavElement>;
+            "exa-donate-spinner": LocalJSX.ExaDonateSpinner & JSXBase.HTMLAttributes<HTMLExaDonateSpinnerElement>;
+            "exa-stripe": LocalJSX.ExaStripe & JSXBase.HTMLAttributes<HTMLExaStripeElement>;
         }
     }
 }

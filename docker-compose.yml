@@ -21,8 +21,8 @@ services:
   wordpress:
     container_name: badgerherald.com-wordpress
     build: 
-      context: wordpress
-      dockerfile: dockerfile
+      context: .
+      dockerfile: server/wordpress.Dockerfile
     links:
       - memcached
     expose:
@@ -61,8 +61,27 @@ services:
     ports:
       - "11211:11211"
 
+  ## This sql db should only ever be used for local dev.
+  ## It is unnecessary to run this container in production
+  mariadb:
+    container_name: badgerherald.com-mariadb
+    image: mariadb
+    volumes:
+      - ./server/sql/install/:/docker-entrypoint-initdb.d
+      - badgerherald.com-mariadb:/var/lib/mysql:rw
+      - ./server/MySQLTuner-perl/:/MySQLTuner-perl/
+    restart: always
+    command: mysqld --innodb-buffer-pool-size=512M
+    expose:
+      - 3306
+    environment: 
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_USER: ${MYSQL_WORDPRESS_USER}
+      MYSQL_PASSWORD: ${MYSQL_WORDPRESS_PASSWORD}
+      MYSQL_DATABASE: ${MYSQL_WORDPRESS_DATABASE}
+    
 volumes: 
-  badgerherald.com-mysql:
+  badgerherald.com-mariadb:
   badgerherald.com-wordpress:
 
 networks:

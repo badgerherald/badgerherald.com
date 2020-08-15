@@ -1,5 +1,5 @@
 <?php
-/*
+
 
 require_once('lib/stripe-php-7.0.2/init.php');
 \Stripe\Stripe::setApiKey(STRIPE_SK);
@@ -260,8 +260,3 @@ function hexa_stripe_print_stripe_total( $atts ) {
 	$ret .= "!!</div>";
 	return $ret;
 } add_shortcode( 'stripe_campaign_total', 'hexa_stripe_print_stripe_total' );
-
-
-
-
-*/

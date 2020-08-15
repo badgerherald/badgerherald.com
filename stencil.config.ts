@@ -23,6 +23,6 @@ export const config: Config = {
     }
   ],
   plugins: [ 
-    sass({ injectGlobalPaths: [] })
+    sass({ injectGlobalPaths: ["src/global/sass/foundations.scss"] })
   ]
 };

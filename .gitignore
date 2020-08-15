@@ -2,5 +2,4 @@
 .DS_Store
 .env
 
-server/wp-content
 node_modules/
