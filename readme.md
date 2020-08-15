@@ -54,7 +54,7 @@ If you don't see the exa theme, make sure you compiled it (instructions above).
 
 ## Repository Structure 
 
-All source code is contained in the `/src` directory. `/src` is also the root of the theme directory that is compiled.
+All source code is contained in the `/src` directory. Once compiled, the root of the `/src` becomes the root of the theme directory that is compiled.
 
 The `/server` directory contains both server configuration files as well as the `wp-content` folder (created when the WordPress Docker container is first created). `/server/wp-content` is basically the web root of the server.
 
