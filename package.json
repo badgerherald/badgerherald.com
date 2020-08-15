@@ -29,7 +29,7 @@
     "@webpress/router": "0.0.6",
     "@webpress/theme": "0.0.6",
     "@types/stripe-v3": "^3.1.7",
-    "@badgerherald/donate": "../donation-stack"
+    "@badgerherald/donate": "0.0.1"
   },
   "license": "MIT"
 }
