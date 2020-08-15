@@ -28,6 +28,7 @@ $container = $GLOBALS['container'] ?: new container('header');
     	
 		<?php
 
+
 		$query_args = array(
 			'post_status'	=> 'publish',
 			'tax_query' => array(
@@ -39,7 +40,11 @@ $container = $GLOBALS['container'] ?: new container('header');
 			),
 			'no_found_rows' => true,
 		);
-		$my_query = new WP_Query( $query_args );
+
+		if ( ! $my_query = wp_cache_get("exa_ad-two-dominant") ) {
+			$my_query = new WP_Query( $query_args );
+			wp_cache_set("exa_ad-two-dominant",$my_query,'',0);
+		}
 
 		$count = 0;
 		if ( $my_query->have_posts() ) {

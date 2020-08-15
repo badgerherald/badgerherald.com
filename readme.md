@@ -32,17 +32,19 @@ To watch for changes (during development) instead run:
 npm run watch
 ```
 
-## Running a local development server at https://192.169.19.69
+## Running a local development server at https://192.168.19.69
 
 To run a development WordPress server locally:
 
 1. Install [VirtualBox](https://www.virtualbox.org/wiki/Downloads) and [Vagrant](https://www.vagrantup.com/downloads.html), then:
 2. Run
 ```
-`vagrant up`
+vagrant up
 ```
 
-In a few minutes a WordPress instance will be available at **[http://192.168.19.69/](http://192.168.19.69/)**
+In a few minutes a WordPress instance will be available at **[http://192.168.19.69/](https://192.168.19.69/)**
+
+You'll have to click through the browser's self-signed ssl certificate warning the first time you visit the page
 
 #### Configuring WordPress
 

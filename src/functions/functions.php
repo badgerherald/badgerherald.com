@@ -69,6 +69,31 @@ function hrld_default_comments_on( $data ) {
 add_filter( 'wp_insert_post_data', 'hrld_default_comments_on' );
 
 
+function post_status( $new_status, $old_status, $post )
+{
+	global $custom_post_types, $max_archive_pages;
+
+	if ( ( $new_status === "publish" || $old_status === "publish" ) )
+	{
+		wp_cache_delete( "exa_ad-two-dominant",'' );
+		wp_cache_delete( "exa_feature-widget-query",'' );
+		
+		wp_cache_delete( "exa_list-and-banter",'' );
+		wp_cache_delete( "exa_list-and-banter-banter",'' );
+
+		wp_cache_delete( "exa_old-homepage-featured-sports",'' );
+		wp_cache_delete( "exa_old-homepage-featured-news",'' );
+		wp_cache_delete( "exa_old-homepage-featured-artsetc",'' );
+		wp_cache_delete( "exa_old-homepage-featured-sports",'' );
+
+		wp_cache_delete( "exa_old-homepage-sidebar-sports",'' );
+		wp_cache_delete( "exa_old-homepage-sidebar-news",'' );
+		wp_cache_delete( "exa_old-homepage-sidebar-artsetc",'' );
+		wp_cache_delete( "exa_old-homepage-sidebar-sports",'' );
+	}
+}
+add_action(  'transition_post_status',  'post_status', 10, 3 );
+
 /**
  * Holds static global information about the theme and page loading.
  *

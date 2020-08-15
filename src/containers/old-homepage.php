@@ -43,7 +43,10 @@ $container = $GLOBALS['container'] ?: new container('old-homepage');
 			$args['posts_per_page'] = 3;
 			$args['no_found_rows'] = true;
 
-			$featured = new WP_Query( $args );
+			if ( ! $featured = wp_cache_get("exa_old-homepage-featured-" . $beat) ) {
+				$featured = new WP_Query( $args );
+				wp_cache_set("exa_old-homepage-featured-" . $beat ,$featured,'',0);
+			}
 
 			//loop_featured
 			//also records which posts to exclude in following steps
@@ -79,8 +82,12 @@ $container = $GLOBALS['container'] ?: new container('old-homepage');
 		            'operator' => 'IN'
 		        )
 		    );
-		    $args['no_found_rows'] = true;
-			$featured = new WP_Query( $args );
+			$args['no_found_rows'] = true;
+			
+			if ( ! $featured = wp_cache_get("exa_old-homepage-sidebar-" . $beat) ) {
+				$featured = new WP_Query( $args );
+				wp_cache_set("exa_old-homepage-sidebar-" . $beat ,$featured,'',0);
+			}
 
 			hrld_html_tag_open("ul","",array("list-stories", "homepage-$beat-recent"));
 

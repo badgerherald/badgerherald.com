@@ -27,7 +27,12 @@ $container = $GLOBALS['container'] ?: new container('list-and-banter');
 				)
 			)
 		);
-		$my_query = new WP_Query( $query_args );
+
+		if ( ! $my_query = wp_cache_get("exa_list-and-banter") ) {
+			$my_query = new WP_Query( $query_args );
+			wp_cache_set("exa_list-and-banter",$my_query,'',0);
+		}
+
 		$count = 0;
 		if ( $my_query->have_posts() ) :
 			while ( $my_query->have_posts() ) : $my_query->the_post(); 
@@ -87,7 +92,10 @@ $container = $GLOBALS['container'] ?: new container('list-and-banter');
 						)
 					)
 				);
-				$my_query = new WP_Query( $query_args );
+				if ( ! $my_query = wp_cache_get("exa_list-and-banter-banter") ) {
+					$my_query = new WP_Query( $query_args );
+					wp_cache_set("exa_list-and-banter-banter",$my_query,'',0);
+				}
 				$count = 0;
 				if ( $my_query->have_posts() ) :
 					while ( $my_query->have_posts() ) : $my_query->the_post(); 
