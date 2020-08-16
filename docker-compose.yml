@@ -20,7 +20,7 @@ services:
 
   wordpress:
     container_name: badgerherald.com-wordpress
-    build: 
+    build:
       context: .
       dockerfile: server/docker/wordpress.Dockerfile
     links:
@@ -28,7 +28,7 @@ services:
     expose:
       - 80
     restart: always
-    volumes: 
+    volumes:
       - badgerherald.com-wordpress:/var/www/html
       - ./${WORDPRESS_UPLOADS_DIR}:/var/www/html/wp-content/uploads
       - ./server/wp-content:/var/www/html/wp-content/
@@ -39,7 +39,7 @@ services:
       WORDPRESS_DB_USER: ${MYSQL_WORDPRESS_USER}
       WORDPRESS_DB_PASSWORD: ${MYSQL_WORDPRESS_PASSWORD}
       WORDPRESS_DB_NAME: ${MYSQL_WORDPRESS_DATABASE}
-      WORDPRESS_CONFIG_EXTRA: | 
+      WORDPRESS_CONFIG_EXTRA: |
         /* Domain */
         define("WP_HOME","${WORDPRESS_SITE_URL}");
         define("WP_SITEURL","${WORDPRESS_SITE_URL}");
@@ -74,9 +74,7 @@ services:
       - ./src:/usr/src/app/src
       - ./server/wp-content/themes/badgerherald.com:/usr/src/app/server/wp-content/themes/badgerherald.com
     command: "npm run build"
-    
-  ## This sql db should only ever be used for local dev.
-  ## It is unnecessary to run this container in production
+
   mariadb:
     container_name: badgerherald.com-mariadb
     image: mariadb
@@ -88,13 +86,13 @@ services:
     command: mysqld --innodb-buffer-pool-size=512M
     expose:
       - 3306
-    environment: 
+    environment:
       MYSQL_ROOT_PASSWORD: root
       MYSQL_USER: ${MYSQL_WORDPRESS_USER}
       MYSQL_PASSWORD: ${MYSQL_WORDPRESS_PASSWORD}
       MYSQL_DATABASE: ${MYSQL_WORDPRESS_DATABASE}
-    
-volumes: 
+
+volumes:
   badgerherald.com-mariadb:
   badgerherald.com-wordpress:
 
