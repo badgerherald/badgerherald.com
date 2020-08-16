@@ -1,2 +1,8 @@
 server
-src
+.github
+.vagrant
+.gitattributes
+.gitignore
+LICENSE
+Vagrantfile
+node_modules

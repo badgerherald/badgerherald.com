@@ -2,7 +2,8 @@ version: "3"
 
 services:
   nginx:
-    image: nginx:latest
+    build:
+      context: server/nginx
     container_name: badgerherald.com-nginx
     links:
       - wordpress
@@ -11,18 +12,17 @@ services:
       - 443:443
     volumes:
       - badgerherald.com-wordpress:/var/www/html 
-      - ./server/wp-content:/var/www/html/wp-content/
+      - ./server/wp-content/themes/badgerherald.com:/var/www/html/wp-content/themes/badgerherald.com
+      - ./server/wp-content/plugins:/var/www/html/wp-content/plugins
       - ./${WORDPRESS_UPLOADS_DIR}:/var/www/html/wp-content/uploads
-      - ./server/nginx/badgerherald.com.conf:/etc/nginx/nginx.conf
-      - ./server/nginx/ssl/${SSL_CERTIFICATE_NAME}.crt:/etc/ssl/certs/localhost.crt
-      - ./server/nginx/ssl/${SSL_CERTIFICATE_NAME}.key:/etc/ssl/private/localhost.key
     restart: always
+    environment: 
+      DOMAIN: ${SSL_CERTIFICATE_NAME}
 
   wordpress:
     container_name: badgerherald.com-wordpress
     build:
       context: .
-      dockerfile: server/docker/wordpress.Dockerfile
     links:
       - memcached
     expose:
@@ -60,20 +60,6 @@ services:
     image: memcached:latest
     ports:
       - "11211:11211"
-
-  stencil:
-    container_name: badgerherald.com-stencil
-    build:
-      context: .
-      dockerfile: server/docker/stencil.Dockerfile
-    working_dir: /usr/src/app/
-    volumes:
-      - ./package.json:/usr/src/app/package.json
-      - ./tsconfig.json:/usr/src/app/tsconfig.json
-      - ./stencil.config.ts:/usr/src/app/stencil.config.ts
-      - ./src:/usr/src/app/src
-      - ./server/wp-content/themes/badgerherald.com:/usr/src/app/server/wp-content/themes/badgerherald.com
-    command: "npm run build"
 
   mariadb:
     container_name: badgerherald.com-mariadb

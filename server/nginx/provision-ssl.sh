@@ -3,11 +3,16 @@
 # Shell script for generating self-signed cert for Vagrant
 #
 
-cd ~/badgerherald.com/server/nginx/
-mkdir ssl
-cd ~/badgerherald.com/server/nginx/ssl
+FILE=/etc/ssl/private/localhost.key
+if [ -f "$FILE" ]; then
+    echo "$FILE exists."
+    exit
+fi
 
-DOMAIN="$1"
+cd tmp/
+
+DOMAIN=${DOMAIN}
+
 if [ -z "$DOMAIN" ]; then
   echo "Usage: $(basename $0) <domain>"
   exit 11
@@ -46,12 +51,12 @@ openssl req \
     -key $DOMAIN.key \
     -out $DOMAIN.csr \
     -passin env:PASSPHRASE
-fail_if_error $?
-cp $DOMAIN.key $DOMAIN.key.org
-fail_if_error $?
-
+    
 # Strip the password so we don't have to type it every time we restart Apache
-openssl rsa -in $DOMAIN.key.org -out $DOMAIN.key -passin env:PASSPHRASE
+openssl rsa -in $DOMAIN.key -out $DOMAIN.key -passin env:PASSPHRASE
 
 # Generate the cert (good for 10 years)
 openssl x509 -req -days 3650 -in $DOMAIN.csr -signkey $DOMAIN.key -out $DOMAIN.crt
+
+mv $DOMAIN.key /etc/ssl/private/localhost.key
+mv $DOMAIN.crt /etc/ssl/certs/localhost.crt
