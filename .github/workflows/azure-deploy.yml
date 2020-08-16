@@ -1,0 +1,23 @@
+name: Build & Deploy to Azure
+
+# Trigger the build on commits into the master branch
+on:
+  push:
+    branches:
+      - master
+
+# Starts jobs and sets the type of runner (Windows) they will run on
+jobs:
+  build-and-deploy-to-azure:
+    runs-on: ubuntu-latest
+
+    steps:
+
+    # Authenticate a Service Principal to deploy to your Web App
+    - name: Azure Service Principal Authentication
+      uses: azure/login@v1
+      with:
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
+
+    # Checks out repository so your workflow can access it
+    - uses: actions/checkout@v1
