@@ -29,5 +29,5 @@ jobs:
         azcliversion: latest
         inlineScript: |
           az account show
-          az webapp create --resource-group ${{ secrets.AZURE_RESOURCE_GROUP }} --plan ${{ secrets.AZURE_APP_PLAN }} --name ${{ secrets.AZURE_WEBAPP_NAME }}  -i nginx
+          az webapp create --resource-group badgerherald --plan badgerherald --name badgerherald-app --multicontainer-config-type compose --multicontainer-config-file docker-compose.yml
           
