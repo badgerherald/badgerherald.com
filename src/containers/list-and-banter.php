@@ -17,9 +17,8 @@ $container = $GLOBALS['container'] ?: new container('list-and-banter');
 
 		<?php
 		$query_args = array(
-			'showposts' 	=> 4,
+			'posts_per_page' => 10,
 			'post_status'	=> 'publish',
-			'post__not_in'	=> Exa::shownIds(),
 			'tax_query' => array(
 				array(
 				    'taxonomy' => 'importance',
@@ -28,10 +27,23 @@ $container = $GLOBALS['container'] ?: new container('list-and-banter');
 				)
 			)
 		);
-		$my_query = new WP_Query( $query_args );
 
+		if ( ! $my_query = wp_cache_get("exa_list-and-banter") ) {
+			$my_query = new WP_Query( $query_args );
+			wp_cache_set("exa_list-and-banter",$my_query,'',0);
+		}
+
+		$count = 0;
 		if ( $my_query->have_posts() ) :
-			while ( $my_query->have_posts() ) : $my_query->the_post(); Exa::addShownId(get_the_ID()); 
+			while ( $my_query->have_posts() ) : $my_query->the_post(); 
+			if(Exa::postHasBeenSeen(get_the_ID())) {
+				continue;
+			}
+			$count++;
+			if($count > 4) {
+				continue;
+			}
+			Exa::addShownId(get_the_ID()); 
 			?>
 
 			<a href="<?php the_permalink(); ?>" class="story">
@@ -71,9 +83,7 @@ $container = $GLOBALS['container'] ?: new container('list-and-banter');
 
  			<?php
 				$query_args = array(
-					'showposts' 	=> 12,
 					'post_status'	=> 'publish',
-					'post__not_in'	=> Exa::shownIds(),
 					'tax_query' => array(
 						array(
 						    'taxonomy' => 'category',
@@ -82,10 +92,21 @@ $container = $GLOBALS['container'] ?: new container('list-and-banter');
 						)
 					)
 				);
-				$my_query = new WP_Query( $query_args );
-	
+				if ( ! $my_query = wp_cache_get("exa_list-and-banter-banter") ) {
+					$my_query = new WP_Query( $query_args );
+					wp_cache_set("exa_list-and-banter-banter",$my_query,'',0);
+				}
+				$count = 0;
 				if ( $my_query->have_posts() ) :
-					while ( $my_query->have_posts() ) : $my_query->the_post(); Exa::addShownId(get_the_ID	());    	
+					while ( $my_query->have_posts() ) : $my_query->the_post(); 
+					if(Exa::postHasBeenSeen(get_the_ID())) {
+						continue;
+					}
+					Exa::addShownId(get_the_ID()); 
+					$count++;
+					if($count > 12) {
+						continue;
+					}
 				?>
 				<a href="<?php the_permalink(); ?>" class="banter-link">
 				<?php the_post_thumbnail('post-thumbnail'); ?>

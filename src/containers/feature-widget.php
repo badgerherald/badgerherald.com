@@ -9,22 +9,41 @@ $container = $GLOBALS['container'] ?: new container('feature-widget');
 		<div class="feature">
 
 		<?php
-			$query_args = array(
-				'showposts' 	=> 1,
-				'post_status'	=> 'publish',
-				'post__not_in'	=> Exa::shownIds(),
-				'tax_query' => array(
-					array(
-					    'taxonomy' => 'importance',
-					    'field' => 'slug',
-					    'terms' => 'featured'
-					)
-				),
-				'no_found_rows' => true
-			);
+
+		$key = serialize($roles);
+
+		$query_args = array(
+			'post_status'	=> 'publish',
+			'tax_query' => array(
+				array(
+					'taxonomy' => 'importance',
+					'field' => 'slug',
+					'terms' => 'featured'
+				)
+			),
+			'no_found_rows' => true,
+		);
+
+		if ( ! $my_query = wp_cache_get("exa_feature-widget-query") ) {
 			$my_query = new WP_Query( $query_args );
+			wp_cache_set("exa_feature-widget-query",$my_query,'',0);
+		}
+			$count = 0;
 			if ( $my_query->have_posts() ) {
-				while ( $my_query->have_posts() ) : $my_query->the_post(); Exa::addShownId(get_the_ID()); ?>
+				while ( $my_query->have_posts() ) : $my_query->the_post(); 	
+				if(Exa::postHasBeenSeen(get_the_ID())) {
+					continue;
+				}
+				$count++;
+				if($count > 1) {
+					break;
+				}
+
+				
+				Exa::addShownId(get_the_ID()); 
+				
+				
+				?>
 
 				<a href="<?php the_permalink(); ?>" class="story">
 				
@@ -78,11 +97,15 @@ $container = $GLOBALS['container'] ?: new container('feature-widget');
 			<h3 class="title">Most Recent</h3>
 
 			<?php
-			$args = array();
-			$args['posts_per_page'] = 4;
-			$slider_query = new WP_Query( $args ); 
-			while( $slider_query->have_posts() ) : $slider_query->the_post(); ?>
-
+			$count = 0;
+			while( have_posts() ) : 
+				$count++;
+				if($count>4) {
+				break;
+				}
+				the_post(); 
+				?>
+		
 				<a class="most-recent-post" href="<?php the_permalink(); ?>">
         			
         			<?php if(has_post_thumbnail()) : ?>

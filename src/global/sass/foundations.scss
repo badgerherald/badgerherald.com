@@ -1,0 +1,137 @@
+$base-font-size: 15px;
+$base-line-height: 21px;
+
+@function em($px, $base: 15) {
+    @return ($px / $base) * 1em;
+}
+
+/*  Fonts */
+$headline: 	'PT Sans', Helvetica, Arial, Sans-Serif;
+$body:		  'Noto Serif', Oalatino, Georgia, Serif;
+$caption: 	open sans, helvetica, arial, sans-serif;
+$icon:      exa;
+
+/** v0.3.5 colors — preferred use. 
+ * (modifier)colorObjectOnBackgroundcolorAction 
+ * lightblueLinkOnBrownHover 
+ */
+
+//true colors
+$trueblack: #000;
+$truewhite: #fff;
+$trueblue: #0000ff;
+$truered: #ff0000;
+$truegreen:  #00ff00;
+$debug: rgba(0,0,0,.1);
+
+//blues
+$blue: #3c74b9;
+$blueLinkHover: #3a97f7;
+$darkblue: #195ea6;
+
+//greys
+$grey: #eff4f6;
+$greyBorder: #c7d0d5;
+$greyText: #93a2aa;
+$greyTextHover: #626d72;
+$greyBorderOnBlack: #262626;
+$greyTextOnBlack: #5c5c5c;
+$lightgrey: #f5f2f2;
+$lightgreyOnWhite: #ededed;
+$darkgrey: #2c2c2c;
+$darkgreyBorder: #e0eaee;
+$darkgreyHover: #7e8c93;
+
+$black: #191919;
+$white: #ffffff;
+$red: #c81212;
+
+@import "foundations/grid.scss";
+
+/**
+ * //todo: colors other than blue
+ * Mixin for link hover states
+ */
+ @mixin linkColor($color) {
+  @if $color == $black {
+    color: $black;
+    &:hover { color: #787878; }
+  }
+  @if $color == $blue {
+    color: $blue;
+    &:hover { color: $blueLinkHover; }
+  }
+}
+
+wp-permalink {
+  a {
+    color: $blue;
+    text-decoration: none;
+  }
+}
+
+// Global/Base styles
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+
+/**
+ * BASE FONTS
+ * ------------------------------------------------------------------------- 
+ */
+
+ body {
+	font-family: 	$body; 
+	font-size: 		$base-font-size;
+	line-height: 	$base-line-height;
+}
+
+a {
+	text-decoration: 	none;
+	color:				$blue;
+	&:hover {
+		color: $blueLinkHover;
+	}
+}
+
+/**
+ * HEADER FONTS
+ * ------------------------------------------------------------------------- 
+ */
+
+wp-teaser {
+h1 {
+	font-family: 	$headline;
+  font-size: 2em;
+	a {
+		color: $black;
+	}
+}
+
+h2 {
+	font-family: 	$headline;
+  font-size: 1.5em;
+	a {
+		color: $black;
+	}
+	&.author-title{
+		padding-top: 6px;
+	}
+}
+
+h3 {
+  font-family: 	$headline;
+  font-size: 1.17em;
+}
+
+p {
+  margin-top: .4em;
+  margin-bottom: .5em;
+}
+
+}
+
+.clearfix {
+  clear: both;
+}

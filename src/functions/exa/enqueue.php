@@ -36,17 +36,4 @@ function _exa_enqueue_scripts_styles() {
 }
 add_action( 'wp_enqueue_scripts', '_exa_enqueue_scripts_styles' );
 
-function exa_include_components() {
-	echo '<script type="text/javascript">';
-    echo 'var exa = {
-		"api_url": "' . get_home_url() . '/wp-json",
-		"appUrl": "' . EXA_APP_URL . '",
-		"wpAjaxUrl": ' .  json_encode(admin_url('admin-ajax.php')) . ',
-		"nonce": ' . json_encode(wp_create_nonce('update-order-review')) . '
-	}';
-    echo '</script>';
-	echo '<script type="module" src="'.EXA_APP_URL.'build/app.esm.js"></script>';
-	echo '<script nomodule src="'.EXA_APP_URL.'build/app.js"></script>';
-}
-add_action('wp_head', 'exa_include_components');
 

@@ -1,0 +1,97 @@
+/***
+ * Legacy
+ */
+@function flex($pixels, $base) {
+  @return percentage(($pixels / $base));
+}
+
+$colWidth: 80;
+$gutterWidth: 20px;
+
+@function pageWidth($cols:1) {
+  @return ((80 * $cols) + (20 * ($cols - 1)));
+}
+
+/***
+ * Grid Values
+ */
+@function columnWidths($count) {
+	@return '\(var(--columnWidth) * #{$count}\)';
+}
+
+@function gutterWidths($count) {
+	@return '\(var(--gutterWidth) * #{$count}\)';
+}
+
+@function containerWidth($cols, $additionalGutter: 0) {
+  $gutter: '\(#{$cols} - 1 + #{$additionalGutter}\)';
+	@return '\(#{columnWidths($cols)} + #{gutterWidths(#{$gutter})}\)';
+}
+
+@function colRatio($cols) {
+	@return '\(\(#{containerWidth($cols)}\) / \(#{containerWidth(var(--breakpointColumns),var(--additionalGutter))}\)\)';
+}
+
+@function gutterRatio($count) {
+	@return '\(\(#{gutterWidths($count)}\) / \(#{containerWidth(var(--breakpointColumns),var(--additionalGutter))}\)\)';
+}
+
+@function col($col, $additionalGutter: 0) { 
+	@return calc(100% * (#{colRatio($col)  + ' + ' + gutterRatio($additionalGutter)}));
+}
+  
+@function gutter($count: 1) {
+	@return calc(100% * #{(gutterRatio($count))});
+} 
+  
+@mixin setCol($col, $additionalGutter: 0, $absolute: false) {
+  & *, &:after, &:before {
+    --breakpointColumns: #{$col};
+    --additionalGutter: #{$additionalGutter};
+  }
+  width: col($col, $additionalGutter);
+  @if $absolute {
+    position: absolute;
+  } 
+  @else {
+    position: relative;
+  }
+  
+}
+
+@mixin setGrid($columnCount, $columnWidth, $gutterWidth, $additionalGutter: 0) {
+  &, * {
+    --breakpointColumns: #{$columnCount};
+    --additionalGutter: #{$additionalGutter};
+    --gutterWidth: #{$gutterWidth};
+    --columnWidth: #{$columnWidth};
+  }
+  @include setCol($columnCount, $additionalGutter);
+}
+
+/***
+ * Grid Mixins
+ */
+@mixin breakpoint($breakpoint) {
+  @if $breakpoint == "tablet" {
+    @media (min-width: pageWidth(6) + "px") {
+      @content;
+    }
+  }
+  @else if $breakpoint == "tabletxl" {
+    @media (min-width: pageWidth(9) + "px") {
+      @content;
+    }
+  }
+  @else if $breakpoint == "desktop" {
+    @media (min-width: pageWidth(12) + "px") {
+      @content;
+    }
+  }
+  @else if $breakpoint == "xl" {
+    @media (min-width: pageWidth(15) + "px") {
+      @content;
+    }
+  }
+}
+

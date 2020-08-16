@@ -45,21 +45,6 @@ function exa_log($error) {
 	}
 }
 
-/**
- * If EXA_DEV is set, replaces whatever (local)host an attachment_url
- * is using with badgerherald.com
- */
-function _exa_dev_attachment_url( $link ) {
-
-	$url = parse_url( $link );
-	if( exa_dev() && !strpos( $url['host'], 'badgerherald.com') ) {
-		$link = preg_replace('/.*uploads/', 'https://badgerherald.com/media', $link);
-	}
-	return $link;
-
-}
-add_filter('wp_get_attachment_url', '_exa_dev_attachment_url');
-
 function _exa_dev_calculate_image_srcset($sources) {
 
 	// YOU WIN. TURN IMAGE SRCSET OFF FOR NOW.

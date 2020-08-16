@@ -2,7 +2,7 @@
 /**
  * The Header for our theme.
  */
-
+define('WEBPRESS_STENCIL_NAMESPACE', 'badgerherald');
 ?><!DOCTYPE html>
 <!--[if IE 7]>
 <html class="ie ie7" <?php language_attributes(); ?>>
@@ -42,4 +42,5 @@
 <?php /* Facebook like button javascript tag */ ?>
 
 <?php /* #page opened here, closed in footer.php */ ?>
+
 <div id="page">

@@ -17,7 +17,6 @@ $container = $GLOBALS['container'] ?: new container('old-homepage');
 					"sports" => "sports");
 
 	foreach($beats as $beat => $beat_name) {
-		
 		hrld_html_tag_open("div", $beat, array("clearfix"));
 			hrld_html_tag_open("div","",array("section-banner", "section-banner-$beat"));
 				hrld_html_tag_open("h2","",array(),$beat_name,true);
@@ -44,7 +43,10 @@ $container = $GLOBALS['container'] ?: new container('old-homepage');
 			$args['posts_per_page'] = 3;
 			$args['no_found_rows'] = true;
 
-			$featured = new WP_Query( $args );
+			if ( ! $featured = wp_cache_get("exa_old-homepage-featured-" . $beat) ) {
+				$featured = new WP_Query( $args );
+				wp_cache_set("exa_old-homepage-featured-" . $beat ,$featured,'',0);
+			}
 
 			//loop_featured
 			//also records which posts to exclude in following steps
@@ -72,7 +74,6 @@ $container = $GLOBALS['container'] ?: new container('old-homepage');
 			/* Build query for featured stories in news */
 			$args = array();
 			$args['posts_per_page'] = 10;
-			$args['post__not_in'] = $exclude;
 			$args['tax_query'] = array(
 		        array(
 		            'taxonomy' => 'category',
@@ -81,8 +82,12 @@ $container = $GLOBALS['container'] ?: new container('old-homepage');
 		            'operator' => 'IN'
 		        )
 		    );
-		    $args['no_found_rows'] = true;
-			$featured = new WP_Query( $args );
+			$args['no_found_rows'] = true;
+			
+			if ( ! $featured = wp_cache_get("exa_old-homepage-sidebar-" . $beat) ) {
+				$featured = new WP_Query( $args );
+				wp_cache_set("exa_old-homepage-sidebar-" . $beat ,$featured,'',0);
+			}
 
 			hrld_html_tag_open("ul","",array("list-stories", "homepage-$beat-recent"));
 
