@@ -29,5 +29,5 @@ jobs:
         azcliversion: latest
         inlineScript: |
           az account show
-          az webapp create --resource-group ${{ env.AZURE_RESOURCE_GROUP }} --plan ${{ env.AZURE_APP_PLAN }} --name ${{ env.AZURE_WEBAPP_NAME }}  -i nginx
+          az webapp create --resource-group ${{ secrets.AZURE_RESOURCE_GROUP }} --plan ${{ secrets.AZURE_APP_PLAN }} --name ${{ secrets.AZURE_WEBAPP_NAME }}  -i nginx
           
