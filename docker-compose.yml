@@ -11,13 +11,11 @@ services:
       - 80:80
       - 443:443
     volumes:
-      - badgerherald.com-wordpress:/var/www/html 
-      - ./server/wp-content/themes/badgerherald.com:/var/www/html/wp-content/themes/badgerherald.com
-      - ./server/wp-content/plugins:/var/www/html/wp-content/plugins
+      - badgerherald.com-wordpress:/var/www/html
       - ./${WORDPRESS_UPLOADS_DIR}:/var/www/html/wp-content/uploads
     restart: always
     environment: 
-      DOMAIN: ${SSL_CERTIFICATE_NAME}
+      DOMAIN: ${SITE_URL}
 
   wordpress:
     container_name: badgerherald.com-wordpress
@@ -31,22 +29,20 @@ services:
     volumes:
       - badgerherald.com-wordpress:/var/www/html
       - ./${WORDPRESS_UPLOADS_DIR}:/var/www/html/wp-content/uploads
-      - ./server/wp-content:/var/www/html/wp-content/
-      - ./server/nginx/php.ini:/usr/local/etc/php/conf.d/extra.ini
-      - ./server/nginx/php-fpm.conf:/usr/local/etc/php-fpm.d/zzz-my-extra.conf
+      - ./wp-content/plugins:/var/www/html/wp-content/plugins
+      - ./wp-content/themes/badgerherald.com:/var/www/html/wp-content/themes/badgerherald.com
+      - ./server/wordpress/php.ini:/usr/local/etc/php/conf.d/extra.ini
+      - ./server/wordpress/php-fpm.conf:/usr/local/etc/php-fpm.d/zzz-my-extra.conf
     environment:
-      WORDPRESS_DB_HOST: ${MYSQL_WORDPRESS_HOST}
-      WORDPRESS_DB_USER: ${MYSQL_WORDPRESS_USER}
-      WORDPRESS_DB_PASSWORD: ${MYSQL_WORDPRESS_PASSWORD}
-      WORDPRESS_DB_NAME: ${MYSQL_WORDPRESS_DATABASE}
+      WORDPRESS_DB_HOST: ${WORDPRESS_DB_HOST}
+      WORDPRESS_DB_USER: ${WORDPRESS_DB_USER}
+      WORDPRESS_DB_PASSWORD: ${WORDPRESS_DB_PASSWORD}
+      WORDPRESS_DB_NAME: ${WORDPRESS_DB_NAME}
       WORDPRESS_CONFIG_EXTRA: |
         /* Domain */
-        define("WP_HOME","${WORDPRESS_SITE_URL}");
-        define("WP_SITEURL","${WORDPRESS_SITE_URL}");
-        define('STRIPE_SK', '${STRIPE_SECRET_KEY}');
-        define('STRIPE_MONTHLY_PLAN', '${STRIPE_MONTHLY_PLAN}');
-        define('STRIPE_SEMESTER_PLAN', '${STRIPE_SEMESTER_PLAN}');
-        define('EXA_DEV', '${EXA_DEV}');
+        define('WP_HOME','https://${SITE_URL}');
+        define('WP_SITEURL','https://${SITE_URL}');
+        define('EXA_DEV','false');
         define('WP_CACHE',true);
         define('WP_MEMORY_LIMIT','128M');
         $$memcached_servers = array(
@@ -54,6 +50,7 @@ services:
             'memcached:11211',
           )
         );
+        include(wp-config-2.php);
 
   memcached:
     container_name: badgerherald.com-memcached
@@ -74,9 +71,9 @@ services:
       - 3306
     environment:
       MYSQL_ROOT_PASSWORD: root
-      MYSQL_USER: ${MYSQL_WORDPRESS_USER}
-      MYSQL_PASSWORD: ${MYSQL_WORDPRESS_PASSWORD}
-      MYSQL_DATABASE: ${MYSQL_WORDPRESS_DATABASE}
+      MYSQL_USER: ${WORDPRESS_DB_USER}
+      MYSQL_PASSWORD: ${WORDPRESS_DB_PASSWORD}
+      MYSQL_DATABASE: ${WORDPRESS_DB_NAME}
 
 volumes:
   badgerherald.com-mariadb:
