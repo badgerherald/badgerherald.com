@@ -3,8 +3,8 @@ version: "3"
 services:
   nginx:
     build:
-      context: server/nginx
-    container_name: badgerherald.com-nginx
+      context: docker/nginx
+    container_name: badgerherald-nginx
     links:
       - wordpress
     ports:
@@ -18,7 +18,7 @@ services:
       DOMAIN: ${SITE_URL}
 
   wordpress:
-    container_name: badgerherald.com-wordpress
+    container_name: badgerherald-wordpress
     build:
       context: .
     links:
@@ -29,10 +29,9 @@ services:
     volumes:
       - badgerherald.com-wordpress:/var/www/html
       - ./${WORDPRESS_UPLOADS_DIR}:/var/www/html/wp-content/uploads
-      - ./wp-content/plugins:/var/www/html/wp-content/plugins
-      - ./wp-content/themes/badgerherald.com:/var/www/html/wp-content/themes/badgerherald.com
-      - ./server/wordpress/php.ini:/usr/local/etc/php/conf.d/extra.ini
-      - ./server/wordpress/php-fpm.conf:/usr/local/etc/php-fpm.d/zzz-my-extra.conf
+      - ./wp-content:/var/www/html/wp-content/
+      - ./docker/wordpress/php.ini:/usr/local/etc/php/conf.d/extra.ini
+      - ./docker/wordpress/php-fpm.conf:/usr/local/etc/php-fpm.d/zzz-my-extra.conf
     environment:
       WORDPRESS_DB_HOST: ${WORDPRESS_DB_HOST}
       WORDPRESS_DB_USER: ${WORDPRESS_DB_USER}
@@ -50,21 +49,19 @@ services:
             'memcached:11211',
           )
         );
-        include(wp-config-2.php);
 
   memcached:
-    container_name: badgerherald.com-memcached
+    container_name: badgerherald-memcached
     image: memcached:latest
     ports:
       - "11211:11211"
 
   mariadb:
-    container_name: badgerherald.com-mariadb
+    container_name: badgerherald-mariadb
     image: mariadb
     volumes:
-      - ./server/sql/install/:/docker-entrypoint-initdb.d
+      - ./docker/mariadb/install/:/docker-entrypoint-initdb.d
       - badgerherald.com-mariadb:/var/lib/mysql:rw
-      - ./server/MySQLTuner-perl/:/MySQLTuner-perl/
     restart: always
     command: mysqld --innodb-buffer-pool-size=512M
     expose:

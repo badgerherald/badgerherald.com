@@ -39,11 +39,6 @@ sudo apt-get update -y
 sudo apt-get install docker-ce docker-ce-cli -y
 sudo apt-get install docker-compose -y
 
-# 3. SSL
-#
-echo '👉 provisioning ssl...'
-sh ~/badgerherald.com/server/provision-ssl.sh $DOMAIN
-
 # 4. Run
 #
 echo '👉 starting docker...'

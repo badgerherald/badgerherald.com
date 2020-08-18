@@ -16,7 +16,7 @@ Vagrant.configure("2") do |config|
   SHELL
 
   ## Provision
-  config.vm.provision :shell, path: "server/provision.sh", args: "badgerherald.test", privileged: false
+  config.vm.provision :shell, path: "docker/vagrant/provision.sh", privileged: false
 
   # Hostname
   config.vm.network :private_network, :ip => "192.168.19.69"

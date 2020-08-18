@@ -8,7 +8,7 @@ export const config: Config = {
       type: 'www',
       serviceWorker: null,
       buildDir: 'app',
-      dir: 'server/wp-content/themes/badgerherald.com/',
+      dir:'wp-content/themes/badgerherald.com/',
       copy: [
         { src: 'style.css' },
         { src: 'style.css.map' },
