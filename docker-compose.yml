@@ -11,6 +11,7 @@ services:
       - 80:80
       - 443:443
     volumes:
+      - ./wp-content:/var/www/html/wp-content/
       - badgerherald.com-wordpress:/var/www/html
       - ./${WORDPRESS_UPLOADS_DIR}:/var/www/html/wp-content/uploads
     restart: always

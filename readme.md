@@ -36,8 +36,10 @@ npm run watch
 
 To run a development WordPress server locally:
 
-1. Install [VirtualBox](https://www.virtualbox.org/wiki/Downloads) and [Vagrant](https://www.vagrantup.com/downloads.html), then:
-2. Run
+1. Copy `dev.env` to `.env`
+2. (optional) If you have a development database, copy it to `/docker/mariadb/install/*.sql
+3. Install [VirtualBox](https://www.virtualbox.org/wiki/Downloads) and [Vagrant](https://www.vagrantup.com/downloads.html), then:
+4. Run
 ```
 vagrant up
 ```
@@ -48,15 +50,17 @@ You'll have to click through the browser's self-signed ssl certificate warning t
 
 #### Configuring WordPress
 
-If you followed the above steps, you'll have a fresh WordPress instances asking you to install WordPress. You'll need to create a new WordPress install and enable the "exa" theme. 
+If you installed with a development database, you're done!
 
-If you don't see the exa theme, make sure you compiled it (instructions above).
+If you didn't, you'll need to continue to install WordPress install and enable the "exa" theme.
 
 ## Repository Structure 
 
-All source code is contained in the `/src` directory. Once compiled, the root of the `/src` becomes the root of the theme directory that is compiled.
+The `/src` directory contained all source code. Once compiled, the root of the `/src` becomes the root of the WordPress theme directory created.
 
-The `/server` directory contains both server configuration files as well as the `wp-content` folder (created when the WordPress Docker container is first created). `/server/wp-content` is basically the web root of the server.
+The `/docker` directory contains both server configuration files used by docker and vagrant. 
+
+The `/wp-content` folder is mapped to docker's WordPress drive. Stencil compiles the theme directly to `/wp-content/themes/badgerherald.com`.
 
 ## webpress
 

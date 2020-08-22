@@ -644,9 +644,7 @@ add_filter('template_directory_uri','_hexa_enforce_https_in_template_urls');
  */
 function hexa_scripts() {
     wp_enqueue_script('hexa-script', get_stylesheet_directory_uri() . '/js/hexa.js',array('jquery'),"",true);
-    
-    wp_enqueue_script('', 'https://js.stripe.com/v3/',null,null,false);
-    
+        
     wp_enqueue_style('hexa-style', get_stylesheet_directory_uri().'/style.css', array('exa-style'),"");
 }
 add_action('wp_enqueue_scripts', 'hexa_scripts');
