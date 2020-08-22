@@ -37,7 +37,7 @@ npm run watch
 To run a development WordPress server locally:
 
 1. Copy `dev.env` to `.env`
-2. (optional) If you have a development database, copy it to `/docker/mariadb/install/*.sql
+2. (optional) If you have a development database, copy it to `/docker/mariadb/install/*.sql`
 3. Install [VirtualBox](https://www.virtualbox.org/wiki/Downloads) and [Vagrant](https://www.vagrantup.com/downloads.html), then:
 4. Run
 ```
