@@ -45,6 +45,10 @@ services:
         define('EXA_DEV','false');
         define('WP_CACHE',true);
         define('WP_MEMORY_LIMIT','128M');
+        define('STRIPE_PUBLISHABLE_KEY', '${STRIPE_PUBLISHABLE_KEY}');
+        define('STRIPE_SECRET_KEY', '${STRIPE_SECRET_KEY}');
+        define('STRIPE_MONTHLY_PLAN', '${STRIPE_MONTHLY_PLAN}');
+        define('STRIPE_SEMESTERLY_PLAN', '${STRIPE_SEMESTERLY_PLAN}');
         $$memcached_servers = array(
           'default' => array(
             'memcached:11211',
