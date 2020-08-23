@@ -47,8 +47,8 @@ services:
         define('WP_MEMORY_LIMIT','128M');
         define('STRIPE_PUBLISHABLE_KEY', '${STRIPE_PUBLISHABLE_KEY}');
         define('STRIPE_SECRET_KEY', '${STRIPE_SECRET_KEY}');
-        define('STRIPE_MONTHLY_PLAN', '${STRIPE_MONTHLY_PLAN}');
-        define('STRIPE_SEMESTERLY_PLAN', '${STRIPE_SEMESTERLY_PLAN}');
+        define('STRIPE_MONTHLY_PROD', '${STRIPE_MONTHLY_PROD}');
+        define('STRIPE_SEMESTERLY_PROD', '${STRIPE_SEMESTERLY_PROD}');
         $$memcached_servers = array(
           'default' => array(
             'memcached:11211',
