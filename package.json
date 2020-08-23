@@ -1,6 +1,6 @@
 {
   "name": "@badgerherald/site",
-  "version": "0.02",
+  "version": "0.0.2",
   "description": "The Badger Herald · since 1969",
   "main": "dist/index.js",
   "module": "dist/index.mjs",
