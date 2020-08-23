@@ -49,6 +49,9 @@ services:
         define('STRIPE_SECRET_KEY', '${STRIPE_SECRET_KEY}');
         define('STRIPE_MONTHLY_PROD', '${STRIPE_MONTHLY_PROD}');
         define('STRIPE_SEMESTERLY_PROD', '${STRIPE_SEMESTERLY_PROD}');
+        define('BHRLD_WEBMASTER_EMAIL', '${BHRLD_WEBMASTER_EMAIL}');
+        define('BHRLD_SENDFROM_EMAIL', '${BHRLD_SENDFROM_EMAIL}');
+        define('BHRLD_REPLYTO_EMAIL', '${BHRLD_REPLYTO_EMAIL}');
         $$memcached_servers = array(
           'default' => array(
             'memcached:11211',
