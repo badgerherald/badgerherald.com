@@ -1,6 +1,6 @@
 # badgerherald.com
 
-Continuous deployment for The Badger Herald's WordPress website.
+Continuous deployment for The Badger Herald's WordPress website. This repo contains both theme files and server configuration to deploy badgerherald.com as a standalone web app.
 
 **Overview of components:**
 
@@ -53,6 +53,38 @@ You'll have to click through the browser's self-signed ssl certificate warning t
 If you installed with a development database, you're done!
 
 If you didn't, you'll need to continue to install WordPress install and enable the "exa" theme.
+
+#### SSH into the virtual machine created by Vagrant
+
+If you followed the above steps, vagrant will have created a virtual machine running Docker.
+
+You can access the virtual machine with ssh:
+
+```
+vagrant ssh
+```
+
+You can destroy the virtual machine: `vagrant destroy`. Warning: any changes you made to the WordPress install/database will also be destroyed with the virtual machine. To recreate, just run `vagrant up` again.
+
+#### Interacting with Docker
+
+Docker runs on the virtual machine. The first time you `vagrant up` Docker should also start. If you need to restart Docker, first:
+
+1. SSH into the virtual machine (see above)
+2. Navigate to the repo directory: `cd ~/badgerherald.com`
+3. Run*:
+
+```
+docker-compose up
+```
+
+Or, to run in detached mode run:
+
+```
+docker-compose up -d
+```
+
+_*Because of a bug in provisioning of the virtual machine, You may have to use `sudo` to execute these commands._
 
 ## Repository Structure 
 
