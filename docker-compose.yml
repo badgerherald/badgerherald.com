@@ -45,6 +45,7 @@ services:
         define('EXA_DEV','false');
         define('WP_CACHE',true);
         define('WP_MEMORY_LIMIT','128M');
+        define('BHRLD_DEBUG', ${STRIPE_PUBLISHABLE_KEY});
         define('STRIPE_PUBLISHABLE_KEY', '${STRIPE_PUBLISHABLE_KEY}');
         define('STRIPE_SECRET_KEY', '${STRIPE_SECRET_KEY}');
         define('STRIPE_MONTHLY_PROD', '${STRIPE_MONTHLY_PROD}');
