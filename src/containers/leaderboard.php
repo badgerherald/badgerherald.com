@@ -15,7 +15,7 @@ $container = $GLOBALS['container'] ?: new container('leaderboard');
 				'badgerherald.com-leaderboard',
 				array(
 					'phone' => '320x250',
-					'tablet' => '728x90,970x300',
+					'tablet' => '728x90,970x250',
 					),
 				array (
 					'lazyLoad' => false
