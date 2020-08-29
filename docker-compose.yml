@@ -45,14 +45,16 @@ services:
         define('EXA_DEV','false');
         define('WP_CACHE',true);
         define('WP_MEMORY_LIMIT','128M');
-        define('BHRLD_DEBUG', ${STRIPE_PUBLISHABLE_KEY});
+        define('BHRLD_DEBUG', ${BHRLD_DEBUG});
+        define('BHRLD_WEBMASTER_EMAIL', '${BHRLD_WEBMASTER_EMAIL}');
+        define('BHRLD_SENDFROM_EMAIL', '${BHRLD_SENDFROM_EMAIL}');
+        define('BHRLD_REPLYTO_EMAIL', '${BHRLD_REPLYTO_EMAIL}');
         define('STRIPE_PUBLISHABLE_KEY', '${STRIPE_PUBLISHABLE_KEY}');
         define('STRIPE_SECRET_KEY', '${STRIPE_SECRET_KEY}');
         define('STRIPE_MONTHLY_PROD', '${STRIPE_MONTHLY_PROD}');
         define('STRIPE_SEMESTERLY_PROD', '${STRIPE_SEMESTERLY_PROD}');
-        define('BHRLD_WEBMASTER_EMAIL', '${BHRLD_WEBMASTER_EMAIL}');
-        define('BHRLD_SENDFROM_EMAIL', '${BHRLD_SENDFROM_EMAIL}');
-        define('BHRLD_REPLYTO_EMAIL', '${BHRLD_REPLYTO_EMAIL}');
+        define('RECAPTCHA_SITE_KEY', '${RECAPTCHA_SITE_KEY}');
+        define('RECAPTCHA_SECRET_KEY', '${RECAPTCHA_SECRET_KEY}');
         $$memcached_servers = array(
           'default' => array(
             'memcached:11211',
