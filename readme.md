@@ -54,6 +54,25 @@ If you installed with a development database, you're done!
 
 If you didn't, you'll need to continue to install WordPress install and enable the "exa" theme.
 
+#### Setting up badgerherald.test
+
+If you'd like an actual domain name to test with locally, you can map one in your local dns hosts file.
+
+On mac:
+
+```
+sudo nano /etc/hosts
+```
+You will be prompted to enter your password. Add a new line to the end of this file to map badgerherald.test to the IP of the vagrant virtual machine:
+
+```
+192.168.19.69  badgerherald.test
+```
+
+Save this file by hitting `control + o`. Exit by hitting `control + c`
+
+Then, make sure the URL in `.env` is set to badgerherald.test and reprovision the setup.
+
 #### SSH into the virtual machine created by Vagrant
 
 If you followed the above steps, vagrant will have created a virtual machine running Docker.
