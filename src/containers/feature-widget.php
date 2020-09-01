@@ -82,6 +82,8 @@ $container = $GLOBALS['container'] ?: new container('feature-widget');
 					</div>
 
 				</a>
+
+				
 					
 		<?php	
 				endwhile;
@@ -90,6 +92,25 @@ $container = $GLOBALS['container'] ?: new container('feature-widget');
 			}
 		?>
 
+		<div class="ad" style="margin-top: 24px;">
+	
+			<?php 
+			global $DoubleClick;
+
+			$DoubleClick->place_ad(
+				'badgerherald.com-leaderboard',
+				array(
+					'mobile' => '300x50',
+					'tablet' => '728x90',
+					),
+				array (
+					'lazyLoad' => false
+					)
+				); 
+			?> 
+
+
+		</div>
 		</div>
 
 		<div class="widget">
