@@ -11,18 +11,7 @@ $container = $GLOBALS['container'] ?: new container('header');
 
 <div class="<?php echo $container->classes(); ?>">
 	<div class="wrapper">
-		<div class="sidekick-ad">
-			<?php 
-			$DoubleClick->place_ad(
-							'badgerherald.com-upper-sidekick',
-							array(
-								'phone'=>'300x250',
-								'tablet'=>'728x90',
-								'desktop'=>'300x250'
-								)
-							);
-			?>
-    	</div>
+	
 
     	<div class="feature">
     	
@@ -107,5 +96,27 @@ $container = $GLOBALS['container'] ?: new container('header');
 	
 		</div>
 		<div class="clearfix"></div>
-   	</div>
+		<div class="ad">
+	
+	<?php 
+	global $DoubleClick;
+
+	$DoubleClick->place_ad(
+		'badgerherald.com-leaderboard',
+		array(
+			'mobile' => '300x50',
+			'tablet' => '728x90',
+			),
+		array (
+			'lazyLoad' => false
+			)
+		); 
+	?> 
+
+
+</div>
+	   
+	   </div>
+
+	   
 </div>
