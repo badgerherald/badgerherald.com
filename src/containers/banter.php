@@ -7,7 +7,18 @@ global $wp_query;
 $container = $GLOBALS['container'] ?: new container('banter');
 
 ?>
-
+<div class="sidekick-ad" style = "float:right;">
+			<?php 
+			$DoubleClick->place_ad(
+							'badgerherald.com-upper-sidekick',
+							array(
+								'phone'=>'300x250',
+								'tablet'=>'728x90',
+								'desktop'=>'300x250'
+								)
+							);
+			?>
+    	</div>	
 <div class="<?php echo $container->classes(); ?>">
 	<div class="wrapper">
 
