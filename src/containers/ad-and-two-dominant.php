@@ -10,10 +10,23 @@ $container = $GLOBALS['container'] ?: new container('header');
 ?>
 
 <div class="<?php echo $container->classes(); ?>">
+	<div class="sidekick-ad" style = "float:right;">
+				<?php 
+				$DoubleClick->place_ad(
+								'badgerherald.com-upper-sidekick',
+								array(
+									'phone'=>'300x250',
+									'tablet'=>'728x90',
+									'desktop'=>'300x250'
+									)
+								);
+				?>
+			</div>
 	<div class="wrapper">
-	
+		
 
     	<div class="feature">
+		
     	
 			<?php
 
