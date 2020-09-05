@@ -8,9 +8,9 @@ global $DoubleClick;
 $container = $GLOBALS['container'] ?: new container('header');
 
 ?>
-
 <div class="<?php echo $container->classes(); ?>">
-	<div class="sidekick-ad" style = "float:right;">
+	<div class="wrapper">
+		<div class="sidekick-ad" style="">
 				<?php 
 				$DoubleClick->place_ad(
 								'badgerherald.com-upper-sidekick',
@@ -21,16 +21,10 @@ $container = $GLOBALS['container'] ?: new container('header');
 									)
 								);
 				?>
-			</div>
-	<div class="wrapper">
+		</div>
 		
-
     	<div class="feature">
-		
-    	
 			<?php
-
-
 				$query_args = array(
 					'post_status'	=> 'publish',
 					'tax_query' => array(
@@ -73,7 +67,6 @@ $container = $GLOBALS['container'] ?: new container('header');
 								'style="height: 250px; background-color: #666;" />';
 					}
 				?>
-
 				</div>
 
 				<div class="title-container">
@@ -92,11 +85,8 @@ $container = $GLOBALS['container'] ?: new container('header');
 							by 
 							<span class="author-name"><?php the_author() ?></span>
 						</span>
-
 					</div>
-
 				</div>
-
 			</a>
 
 					
@@ -107,28 +97,34 @@ $container = $GLOBALS['container'] ?: new container('header');
 			}
 			?>
 	
-		</div>
-	<div class="clearfix"></div>
-	<div class="ad">
-	
-		<?php 
-			global $DoubleClick;
+	</div>
 
-			$DoubleClick->place_ad(
-				'badgerherald.com-leaderboard',
-				array(
-					'mobile' => '300x50',
-					'tablet' => '728x90',
-					),
-				array (
-					'lazyLoad' => false
-					)
-				); 
-		?> 
+	<div class="clearfix"></div>
+	</div>
+
+	<div class="wrapper" style="padding-bottom; 36px;">
+	<div class="ad" style="float:right;">
+	
+	<?php 
+		global $DoubleClick;
+
+		$DoubleClick->place_ad(
+			'badgerherald.com-leaderboard',
+			array(
+				'mobile' => '300x50,300x250',
+				'tablet' => '728x90',
+			),
+			array (
+				'lazyLoad' => false
+				)
+			); 
+	?> 
 
 
 	</div>
-	   
+	<div class="clearfix"></div>
+	</div>
+
 </div>
 
 	   

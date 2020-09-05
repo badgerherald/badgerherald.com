@@ -27,6 +27,12 @@ define('WEBPRESS_STENCIL_NAMESPACE', 'badgerherald');
 
 	<title><?php echo wp_title("&middot;",true,"right"); ?></title>
 
+	<style>
+	.grecaptcha-badge {
+		opacity: 0;
+	}
+	</style>
+
 
 	
 	<link rel="profile" href="http://gmpg.org/xfn/11" />

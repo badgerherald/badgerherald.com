@@ -30,23 +30,21 @@ $container = $GLOBALS['container'] ?: new container('feature-widget');
 		}
 			$count = 0;
 			if ( $my_query->have_posts() ) {
+				
 				while ( $my_query->have_posts() ) : $my_query->the_post(); 	
-				if(Exa::postHasBeenSeen(get_the_ID())) {
+				if (Exa::postHasBeenSeen(get_the_ID())) {
 					continue;
 				}
+
 				$count++;
-				if($count > 1) {
+				if ($count > 1) {
 					break;
 				}
 
-				
 				Exa::addShownId(get_the_ID()); 
-				
-				
 				?>
 
 				<a href="<?php the_permalink(); ?>" class="story">
-				
 					<div class="dotted-overlay-container">
 					<?php
 						if( has_post_thumbnail()){
@@ -57,7 +55,6 @@ $container = $GLOBALS['container'] ?: new container('feature-widget');
 						}
 					?>
 					</div>
-
 					<div class="title-container">
 						
 						<div class="block-headline-container">
@@ -65,26 +62,19 @@ $container = $GLOBALS['container'] ?: new container('feature-widget');
 						</div>
 
 						<div class="byline">
-							
 							<div class="mug">
 								<?php exa_mug(get_the_author_meta('ID'),'small-thumbnail') ?>
 							</div>
-						
 							<span class="author">
 								by 
 								<span class="author-name"><?php the_author() ?></span>
 							</span>
-
 						</div>
-
 						<div class="lede"><?php the_excerpt(); ?></div>
-
 					</div>
 
 				</a>
 
-				
-					
 		<?php	
 				endwhile;
 			} else {
@@ -92,7 +82,6 @@ $container = $GLOBALS['container'] ?: new container('feature-widget');
 			}
 		?>
 
-		
 		</div>
 
 		<div class="widget">

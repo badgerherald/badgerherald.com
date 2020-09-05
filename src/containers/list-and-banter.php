@@ -36,11 +36,11 @@ $container = $GLOBALS['container'] ?: new container('list-and-banter');
 		$count = 0;
 		if ( $my_query->have_posts() ) :
 			while ( $my_query->have_posts() ) : $my_query->the_post(); 
-			if(Exa::postHasBeenSeen(get_the_ID())) {
+			if (Exa::postHasBeenSeen(get_the_ID())) {
 				continue;
 			}
 			$count++;
-			if($count > 4) {
+			if ($count > 4) {
 				continue;
 			}
 			Exa::addShownId(get_the_ID()); 
