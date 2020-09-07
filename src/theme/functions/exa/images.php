@@ -20,13 +20,12 @@ function _exa_images_register_sizes() {
 add_action( 'after_setup_theme', '_exa_images_register_sizes' );
 add_action( 'init', '_exa_images_register_sizes' );
 
-
 if ( defined( 'BHRLD_DEBUG' ) && BHRLD_DEBUG ) {
     // Replace src paths
     add_filter('wp_get_attachment_url', function ($url) {
         if(file_exists($url)) {
 			return $url;
-		}
+        }
         return str_replace('://badgerherald.test', '://badgerherald.com/wordpress/', $url);
     });
 

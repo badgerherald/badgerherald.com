@@ -1,6 +1,6 @@
 @charset "UTF-8";
 /**
- Theme Name: badgerherald.com
+ Theme Name: Exa
  Author: The Badger Herald
  Author URI: http://badgerherald.com/
  Version: v0.6
@@ -9,453 +9,19 @@
 /**
  Foundations
  */
-/*  Fonts */
-/** v0.3.5 colors — preferred use. 
- * (modifier)colorObjectOnBackgroundcolorAction 
- * lightblueLinkOnBrownHover 
- */
 /**
- * //todo: colors other than blue
- * Mixin for link hover states
- */
-/*! normalize.css v2.1.2 | MIT License | git.io/normalize */
-/* ==========================================================================
-   HTML5 display definitions
-   ========================================================================== */
-/**
- * apply a natural box layout model to all elements, but allowing components to change
- *  makes padding and borders not increase width
- */
-html {
-  box-sizing: border-box;
-}
-
-*, *:before, *:after {
-  box-sizing: inherit;
-}
-
-/**
- * Correct `block` display not defined in IE 8/9.
- */
-article,
-aside,
-details,
-figcaption,
-figure,
-footer,
-header,
-hgroup,
-main,
-nav,
-section,
-summary {
-  display: block;
-}
-
-/**
- * Correct `inline-block` display not defined in IE 8/9.
- */
-audio,
-canvas,
-video {
-  display: inline-block;
-}
-
-/**
- * Prevent modern browsers from displaying `audio` without controls.
- * Remove excess height in iOS 5 devices.
- */
-audio:not([controls]) {
-  display: none;
-  height: 0;
-}
-
-/**
- * Address styling not present in IE 8/9.
- */
-[hidden] {
-  display: none;
-}
-
-/* ==========================================================================
-   Base
-   ========================================================================== */
-/**
- * 1. Set default font family to sans-serif.
- * 2. Prevent iOS text size adjust after orientation change, without disabling
- *    user zoom.
- */
-html {
-  font-family: sans-serif;
-  /* 1 */
-  -ms-text-size-adjust: 100%;
-  /* 2 */
-  -webkit-text-size-adjust: 100%;
-  /* 2 */
-}
-
-/**
- * Remove default margin.
- */
-body {
-  margin: 0;
-}
-
-/* ==========================================================================
-   Links
-   ========================================================================== */
-/**
- * Address `outline` inconsistency between Chrome and other browsers.
- */
-a:focus {
-  outline: thin dotted;
-}
-
-/**
- * Improve readability when focused and also mouse hovered in all browsers.
- */
-a:active,
-a:hover {
-  outline: 0;
-}
-
-/* ==========================================================================
-   Typography
-   ========================================================================== */
-/**
- * Use ligatures and kerning in paragraphs.
- */
-* {
-  text-rendering: optimizeLegibility;
-  font-variant-ligatures: common-ligatures;
-  -webkit-font-variant-ligatures: common-ligatures;
-  font-variant-ligatures: common-ligatures;
-  -moz-font-feature-settings: "kern=1";
-  -webkit-font-feature-settings: "kern";
-  -moz-font-feature-settings: "kern";
-  font-feature-settings: "kern";
-  font-kerning: normal;
-}
-
-/**
- * Address variable `h1` font-size and margin within `section` and `article`
- * contexts in Firefox 4+, Safari 5, and Chrome.
- */
-h1 {
-  font-size: 2em;
-  margin: 0.67em 0;
-}
-
-/**
- * Address styling not present in IE 8/9, Safari 5, and Chrome.
- */
-abbr[title] {
-  border-bottom: 1px dotted;
-}
-
-/**
- * Address style set to `bolder` in Firefox 4+, Safari 5, and Chrome.
- */
-b,
-strong {
-  font-weight: bold;
-}
-
-/**
- * Address styling not present in Safari 5 and Chrome.
- */
-dfn {
-  font-style: italic;
-}
-
-/**
- * Address differences between Firefox and other browsers.
- */
-hr {
-  -moz-box-sizing: content-box;
-  box-sizing: content-box;
-  height: 0;
-}
-
-/**
- * Address styling not present in IE 8/9.
- */
-mark {
-  background: #ff0;
-  color: #000;
-}
-
-/**
- * Correct font family set oddly in Safari 5 and Chrome.
- */
-code,
-kbd,
-pre,
-samp {
-  font-family: monospace, serif;
-  font-size: 1em;
-}
-
-/**
- * Improve readability of pre-formatted text in all browsers.
- */
-pre {
-  white-space: pre-wrap;
-}
-
-/**
- * Set consistent quote types.
- */
-q {
-  quotes: "“" "”" "‘" "’";
-}
-
-/**
- * Address inconsistent and variable font size in all browsers.
- */
-small {
-  font-size: 80%;
-}
-
-/**
- * Prevent `sub` and `sup` affecting `line-height` in all browsers.
- */
-sub,
-sup {
-  font-size: 75%;
-  line-height: 0;
-  position: relative;
-  vertical-align: baseline;
-}
-
-sup {
-  top: -0.5em;
-}
-
-sub {
-  bottom: -0.25em;
-}
-
-/* ==========================================================================
-   Embedded content
-   ========================================================================== */
-/**
- * Remove border when inside `a` element in IE 8/9.
- */
-img {
-  border: 0;
-  max-width: 100%;
-}
-
-/**
- * Correct overflow displayed oddly in IE 9.
- */
-svg:not(:root) {
-  overflow: hidden;
-}
-
-/* ==========================================================================
-   Figures
-   ========================================================================== */
-/**
- * Address margin not present in IE 8/9 and Safari 5.
- */
-figure {
-  margin: 0;
-}
-
-/* ==========================================================================
-   Forms
-   ========================================================================== */
-/**
- * Define consistent border, margin, and padding.
- */
-fieldset {
-  border: 1px solid #c0c0c0;
-  margin: 0 2px;
-  padding: 0.35em 0.625em 0.75em;
-}
-
-/**
- * 1. Correct `color` not being inherited in IE 8/9.
- * 2. Remove padding so people aren't caught out if they zero out fieldsets.
- */
-legend {
-  border: 0;
-  /* 1 */
-  padding: 0;
-  /* 2 */
-}
-
-/**
- * 1. Correct font family not being inherited in all browsers.
- * 2. Correct font size not being inherited in all browsers.
- * 3. Address margins set differently in Firefox 4+, Safari 5, and Chrome.
- */
-button,
-input,
-select,
-textarea {
-  font-family: inherit;
-  /* 1 */
-  font-size: 100%;
-  /* 2 */
-  margin: 0;
-  /* 3 */
-}
-
-/**
- * Address Firefox 4+ setting `line-height` on `input` using `!important` in
- * the UA stylesheet.
- */
-button,
-input {
-  line-height: normal;
-}
-
-/**
- * Address inconsistent `text-transform` inheritance for `button` and `select`.
- * All other form control elements do not inherit `text-transform` values.
- * Correct `button` style inheritance in Chrome, Safari 5+, and IE 8+.
- * Correct `select` style inheritance in Firefox 4+ and Opera.
- */
-button,
-select {
-  text-transform: none;
-}
-
-/**
- * 1. Avoid the WebKit bug in Android 4.0.* where (2) destroys native `audio`
- *    and `video` controls.
- * 2. Correct inability to style clickable `input` types in iOS.
- * 3. Improve usability and consistency of cursor style between image-type
- *    `input` and others.
- */
-button,
-html input[type=button],
-input[type=reset],
-input[type=submit] {
-  -webkit-appearance: button;
-  /* 2 */
-  cursor: pointer;
-  /* 3 */
-}
-
-/**
- * Re-set default cursor for disabled elements.
- */
-button[disabled],
-html input[disabled] {
-  cursor: default;
-}
-
-/**
- * 1. Address box sizing set to `content-box` in IE 8/9.
- * 2. Remove excess padding in IE 8/9.
- */
-input[type=checkbox],
-input[type=radio] {
-  box-sizing: border-box;
-  /* 1 */
-  padding: 0;
-  /* 2 */
-}
-
-/**
- * 1. Address `appearance` set to `searchfield` in Safari 5 and Chrome.
- * 2. Address `box-sizing` set to `border-box` in Safari 5 and Chrome
- *    (include `-moz` to future-proof).
- */
-input[type=search] {
-  -webkit-appearance: textfield;
-  /* 1 */
-  -moz-box-sizing: content-box;
-  -webkit-box-sizing: content-box;
-  /* 2 */
-  box-sizing: content-box;
-}
-
-/**
- * Remove inner padding and search cancel button in Safari 5 and Chrome
- * on OS X.
- */
-input[type=search]::-webkit-search-cancel-button,
-input[type=search]::-webkit-search-decoration {
-  -webkit-appearance: none;
-}
-
-/**
- * Remove inner padding and border in Firefox 4+.
- */
-button::-moz-focus-inner,
-input::-moz-focus-inner {
-  border: 0;
-  padding: 0;
-}
-
-/**
- * 1. Remove default vertical scrollbar in IE 8/9.
- * 2. Improve readability and alignment in all browsers.
- */
-textarea {
-  overflow: auto;
-  /* 1 */
-  vertical-align: top;
-  /* 2 */
-}
-
-/* ==========================================================================
-   Tables
-   ========================================================================== */
-/**
- * Remove most spacing between table cells.
- */
-table {
-  border-collapse: collapse;
-  border-spacing: 0;
-}
-
-/* ==========================================================================
-   Herald Additions
-   ========================================================================== */
-/**
- * Set the highlight color to a nice Badger inspired red.
- */
-::selection {
-  background: #ff5f5f;
-  /* Safari */
-  color: #000;
-  text-shadow: 0.1em 0.1em rgba(255, 255, 255, 0.4);
-}
-
-::-moz-selection {
-  background: #ff5f5f;
-  /* Firefox */
-  color: #000;
-  text-shadow: 0.1em 0.1em rgba(0, 0, 0, 0.4);
-}
-
-/**
- * Definitions for vertical grid system, as applicable on different displays.
  *
- * Columns are 60 each with 20px gutters. Depending on screen size, a different number
- * of columns are available.
+ * Style Foundations
+ * 
+ * This set of style (mostly definitions) is shared between theme code
+ * and is global to web components.
  *
- * Note: mobile and tablet should always be in flex() pixels. 
- *
- *  - mobile: 4 Columns
- *  - tablet: 9 Columns
- *  - desktop: 13 Columns
- *  - xl: 15 Columns.
- *
- */
-/**
- * Mixin for breakpoints.
  */
 /**
  * BASE FONTS
  * ------------------------------------------------------------------------- 
  */
+/*  Fonts */
 body {
   /* TODO: Determine whether Georgia, or Palatino is the best match; */
   font-family: "Noto Serif", Oalatino, Georgia, Serif;
@@ -481,7 +47,7 @@ a:hover {
  * ------------------------------------------------------------------------- 
  */
 h1 {
-  font-family: "PT Sans Narrow", Helvetica, Arial, Sans-Serif;
+  font-family: "PT Sans", Helvetica, Arial, Sans-Serif;
   font-size: 30px;
   line-height: 30px;
   margin: 0 0 6px 0;
@@ -492,7 +58,7 @@ h1 a {
 }
 
 h2 {
-  font-family: "PT Sans Narrow", Helvetica, Arial, Sans-Serif;
+  font-family: "PT Sans", Helvetica, Arial, Sans-Serif;
   font-size: 22px;
   line-height: 27px;
   margin: 0 0 -6px 0;
@@ -503,6 +69,183 @@ h2 a {
 }
 h2.author-title {
   padding-top: 6px;
+}
+
+/***
+ * Legacy
+ */
+/***
+ * Grid Values
+ */
+/***
+ * Grid Mixins
+ */
+/* ==========================================================================
+   Helper classes
+   ========================================================================== */
+/*
+ * Image replacement
+ */
+.ir {
+  background-color: transparent;
+  border: 0;
+  overflow: hidden;
+}
+
+.ir:before {
+  content: "";
+  display: block;
+  width: 0;
+  height: 150%;
+}
+
+/*
+ * Hide from both screenreaders and browsers: h5bp.com/u
+ */
+.hidden {
+  display: none !important;
+  visibility: hidden;
+}
+
+/*
+ * Hide only visually, but have it available for screenreaders: h5bp.com/v
+ */
+.visuallyhidden {
+  border: 0;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+}
+
+/*
+ * Extends the .visuallyhidden class to allow the element to be focusable
+ * when navigated to via the keyboard: h5bp.com/p
+ */
+.visuallyhidden.focusable:active,
+.visuallyhidden.focusable:focus {
+  clip: auto;
+  height: auto;
+  margin: 0;
+  overflow: visible;
+  position: static;
+  width: auto;
+}
+
+/*
+ * Hide visually and from screenreaders, but maintain layout
+ */
+.invisible {
+  visibility: hidden;
+}
+
+/*
+ * Clearfix: contain floats
+ *
+ * For modern browsers
+ * 1. The space content is one way to avoid an Opera bug when the
+ *    `contenteditable` attribute is included anywhere else in the document.
+ *    Otherwise it causes space to appear at the top and bottom of elements
+ *    that receive the `clearfix` class.
+ * 2. The use of `table` rather than `block` is only necessary if using
+ *    `:before` to contain the top-margins of child elements.
+ */
+.clearfix:before,
+.clearfix:after {
+  content: " ";
+  /* 1 */
+  display: table;
+  /* 2 */
+}
+
+.clearfix:after {
+  clear: both;
+}
+
+@-webkit-keyframes bouncedelay {
+  0%, 80%, 100% {
+    -webkit-transform: scale(0);
+  }
+  40% {
+    -webkit-transform: scale(1);
+  }
+}
+@keyframes bouncedelay {
+  0%, 80%, 100% {
+    transform: scale(0);
+    -webkit-transform: scale(0);
+  }
+  40% {
+    transform: scale(1);
+    -webkit-transform: scale(1);
+  }
+}
+/**
+ *
+ *
+ */
+wp-permalink a {
+  color: #3c74b9;
+  text-decoration: none;
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+/**
+ * BASE FONTS
+ * ------------------------------------------------------------------------- 
+ */
+body {
+  font-family: "Noto Serif", Oalatino, Georgia, Serif;
+  font-size: 15px;
+  line-height: 21px;
+}
+
+a {
+  text-decoration: none;
+  color: #3c74b9;
+}
+a:hover {
+  color: #3a97f7;
+}
+
+/**
+ * HEADER FONTS
+ * ------------------------------------------------------------------------- 
+ */
+wp-teaser h1 {
+  font-family: "PT Sans", Helvetica, Arial, Sans-Serif;
+  font-size: 2em;
+}
+wp-teaser h1 a {
+  color: #191919;
+}
+wp-teaser h2 {
+  font-family: "PT Sans", Helvetica, Arial, Sans-Serif;
+  font-size: 1.5em;
+}
+wp-teaser h2 a {
+  color: #191919;
+}
+wp-teaser h2.author-title {
+  padding-top: 6px;
+}
+wp-teaser h3 {
+  font-family: "PT Sans", Helvetica, Arial, Sans-Serif;
+  font-size: 1.17em;
+}
+wp-teaser p {
+  margin-top: 0.4em;
+  margin-bottom: 0.5em;
+}
+
+.clearfix {
+  clear: both;
 }
 
 html {
@@ -516,16 +259,6 @@ body {
   height: 100%;
   min-height: 100%;
   overflow-x: hidden;
-}
-body {
-  *zoom: 1;
-}
-body:before, body:after {
-  content: "";
-  display: table;
-}
-body:after {
-  clear: both;
 }
 
 .wrapper {
@@ -590,7 +323,7 @@ body:after {
     left: 681px;
   }
 }
-@media (min-width: 1060px) {
+@media (min-width: 1180px) {
   #primary {
     padding: 0;
   }
@@ -600,7 +333,7 @@ body:after {
     width: 1020px;
   }
 }
-@media (min-width: 1220px) {
+@media (min-width: 1480px) {
   .wrapper {
     max-width: 1180px;
     width: 1180px;
@@ -619,7 +352,7 @@ body:after {
 .charm.topic-banner {
   font-size: 13px;
   background: #3c74b9;
-  font-family: "PT Sans Narrow", Helvetica, Arial, Sans-Serif;
+  font-family: "PT Sans", Helvetica, Arial, Sans-Serif;
   color: #ffffff;
   padding: 5px 10px 2px;
   line-height: 13px;
@@ -685,7 +418,7 @@ body:after {
   padding: 2px 0 1px;
 }
 
-@media (min-width: 760px) {
+@media (min-width: 580px) {
   h1.block-headline a,
 h1.block-headline span {
     font-size: 36px;
@@ -762,9 +495,6 @@ a:hover .dotted-overlay-container .dotted-overlay {
  * include in a square &:before or &:after element
  * ----------------------------------------------------------------------------
  */
-/** 
- Containers
- */
 /**
  * .container foundations:
  * ----------------------------------------
@@ -794,7 +524,7 @@ a:hover .dotted-overlay-container .dotted-overlay {
  *		- gutter: 20
  *		- column width: ??
  */
-@media (min-width: 760px) {
+@media (min-width: 580px) {
   .container.mobile, .container.desktop, .container.xl {
     display: none;
   }
@@ -820,7 +550,7 @@ a:hover .dotted-overlay-container .dotted-overlay {
  *		- gutter: 20
  *		- column width: ??
  */
-@media (min-width: 1060px) {
+@media (min-width: 1180px) {
   .container.mobile, .container.tablet, .container.xl {
     display: none;
   }
@@ -847,7 +577,7 @@ a:hover .dotted-overlay-container .dotted-overlay {
  *		- gutter: 20
  *		- column width: ??
  */
-@media (min-width: 1220px) {
+@media (min-width: 1480px) {
   .container.mobile, .container.tablet, .container.desktop {
     display: none;
   }
@@ -867,6 +597,9 @@ a:hover .dotted-overlay-container .dotted-overlay {
     max-width: 94%;
   }
 }
+/** 
+ Containers
+ */
 .container.colophon {
   background: #191919;
   margin-bottom: 0px;
@@ -877,7 +610,7 @@ a:hover .dotted-overlay-container .dotted-overlay {
   color: #fff;
 }
 .container.colophon .wrapper, .container.colophon .wrapper p {
-  font-family: "PT Sans Narrow", Helvetica, Arial, Sans-Serif;
+  font-family: "PT Sans", Helvetica, Arial, Sans-Serif;
   color: #c7d0d5;
 }
 .container.colophon .wrapper ul {
@@ -909,7 +642,7 @@ a:hover .dotted-overlay-container .dotted-overlay {
   border-bottom: 1px solid #262626;
 }
 
-@media (min-width: 760px) {
+@media (min-width: 580px) {
   .container.colophon .wrapper {
     text-align: left;
   }
@@ -935,7 +668,7 @@ a:hover .dotted-overlay-container .dotted-overlay {
     border-top: 1px solid #262626;
   }
 }
-@media (min-width: 1060px) {
+@media (min-width: 1180px) {
   .container.colophon .wrapper .left-rail {
     width: 50%;
   }
@@ -976,7 +709,7 @@ a:hover .dotted-overlay-container .dotted-overlay {
  */
 .container.article-display main.article-content .meta {
   min-height: 10px;
-  font-family: "PT Sans Narrow", Helvetica, Arial, Sans-Serif;
+  font-family: "PT Sans", Helvetica, Arial, Sans-Serif;
   color: #2c2c2c;
   margin-bottom: 24px;
 }
@@ -1040,7 +773,7 @@ a:hover .dotted-overlay-container .dotted-overlay {
 }
 .container.article-display main.article-content .hero .hero-caption {
   margin-top: 0px;
-  font-family: "PT Sans Narrow", Helvetica, Arial, Sans-Serif;
+  font-family: "PT Sans", Helvetica, Arial, Sans-Serif;
   color: #2c2c2c;
   padding-bottom: 12px;
   position: relative;
@@ -1084,7 +817,7 @@ a:hover .dotted-overlay-container .dotted-overlay {
 }
 .container.article-display aside.sidebar .popular-post-widget h3 {
   background: #191919;
-  font-family: "PT Sans Narrow", Helvetica, Arial, Sans-Serif;
+  font-family: "PT Sans", Helvetica, Arial, Sans-Serif;
   text-transform: uppercase;
   color: #fff;
   margin: 0;
@@ -1100,7 +833,7 @@ a:hover .dotted-overlay-container .dotted-overlay {
   background: white;
   padding: 0px 10px;
   display: block;
-  font-family: "PT Sans Narrow", Helvetica, Arial, Sans-Serif;
+  font-family: "PT Sans", Helvetica, Arial, Sans-Serif;
   color: #000;
   font-weight: 700;
 }
@@ -1136,7 +869,7 @@ a:hover .dotted-overlay-container .dotted-overlay {
   color: #3c74b9;
 }
 
-@media (min-width: 1060px) {
+@media (min-width: 1180px) {
   .container.article-display main.article-content {
     width: 700px;
     position: relative;
@@ -1156,7 +889,7 @@ a:hover .dotted-overlay-container .dotted-overlay {
     margin-bottom: 54px;
   }
 }
-@media (min-width: 1220px) {
+@media (min-width: 1480px) {
   /* Header desktop styles */
   .container.article-display main.article-content {
     width: 860px;
@@ -1196,16 +929,16 @@ a:hover .dotted-overlay-container .dotted-overlay {
   color: #3c74b9;
 }
 .container.article-display .article-text > :not(.shadow) h1, .container.article-display .article-text > p > :not(.shadow) h1 {
-  font-family: "PT Sans Narrow", Helvetica, Arial, Sans-Serif;
+  font-family: "PT Sans", Helvetica, Arial, Sans-Serif;
   margin: 18px 0;
 }
 .container.article-display .article-text > :not(.shadow) h2, .container.article-display .article-text > p > :not(.shadow) h2 {
-  font-family: "PT Sans Narrow", Helvetica, Arial, Sans-Serif;
+  font-family: "PT Sans", Helvetica, Arial, Sans-Serif;
   font-size: 30px;
   margin: 24px 0px 12px;
 }
 .container.article-display .article-text > :not(.shadow) h3, .container.article-display .article-text > p > :not(.shadow) h3 {
-  font-family: "PT Sans Narrow", Helvetica, Arial, Sans-Serif;
+  font-family: "PT Sans", Helvetica, Arial, Sans-Serif;
   color: #2c2c2c;
   font-weight: bold;
   margin: 12px 0 0px;
@@ -1262,7 +995,7 @@ a:hover .dotted-overlay-container .dotted-overlay {
 .container.article-display .article-text > :not(.shadow) ol li:before, .container.article-display .article-text > p > :not(.shadow) ol li:before {
   content: counter(li-counter);
   counter-increment: li-counter;
-  font-family: "PT Sans Narrow", Helvetica, Arial, Sans-Serif;
+  font-family: "PT Sans", Helvetica, Arial, Sans-Serif;
   font-weight: bold;
   position: absolute;
   margin-left: -40px;
@@ -1277,7 +1010,7 @@ a:hover .dotted-overlay-container .dotted-overlay {
   line-height: 20px;
 }
 .container.article-display .article-text > :not(.shadow) blockquote, .container.article-display .article-text > p > :not(.shadow) blockquote {
-  font-family: "PT Sans Narrow", Helvetica, Arial, Sans-Serif;
+  font-family: "PT Sans", Helvetica, Arial, Sans-Serif;
   background: #fff;
   margin-left: 0;
   border-left: 2px solid #3c74b9;
@@ -1285,7 +1018,7 @@ a:hover .dotted-overlay-container .dotted-overlay {
 .container.article-display .article-text > :not(.shadow) blockquote p, .container.article-display .article-text > p > :not(.shadow) blockquote p {
   margin-left: 0;
   padding: 12px 20px;
-  font-family: "PT Sans Narrow", Helvetica, Arial, Sans-Serif;
+  font-family: "PT Sans", Helvetica, Arial, Sans-Serif;
   font-size: 18px;
 }
 .container.article-display .article-text > :not(.shadow) .ad-in-content, .container.article-display .article-text > p > :not(.shadow) .ad-in-content {
@@ -1294,7 +1027,7 @@ a:hover .dotted-overlay-container .dotted-overlay {
 .container.article-display .article-text > :not(.shadow) .ad-in-content:before, .container.article-display .article-text > p > :not(.shadow) .ad-in-content:before {
   content: "Article continues after advertisement";
   text-align: center;
-  font-family: "PT Sans Narrow", Helvetica, Arial, Sans-Serif;
+  font-family: "PT Sans", Helvetica, Arial, Sans-Serif;
   text-transform: uppercase;
   color: #2c2c2c;
   font-size: 12px;
@@ -1331,7 +1064,7 @@ a:hover .dotted-overlay-container .dotted-overlay {
   margin-bottom: 0;
 }
 .container.article-display .article-text > :not(.shadow) .wp-caption *, .container.article-display .article-text > p > :not(.shadow) .wp-caption * {
-  font-family: "PT Sans Narrow", Helvetica, Arial, Sans-Serif !important;
+  font-family: "PT Sans", Helvetica, Arial, Sans-Serif !important;
 }
 .container.article-display .article-text > :not(.shadow) .wp-caption .wp-caption-text, .container.article-display .article-text > p > :not(.shadow) .wp-caption .wp-caption-text {
   max-width: 700px;
@@ -1399,7 +1132,7 @@ q.pullquote cite {
   font-size: 18px;
 }
 
-@media (min-width: 760px) {
+@media (min-width: 580px) {
   .container.article-display.feature .article-content {
     margin: 0 auto;
     float: none;
@@ -1429,7 +1162,7 @@ q.pullquote cite {
     top: 6px;
   }
 }
-@media (min-width: 760px) {
+@media (min-width: 580px) {
   .container.article-display .article-text > :not(.shadow), .container.article-display .article-text > p > :not(.shadow) {
     font-size: 20px;
     line-height: 30px;
@@ -1477,7 +1210,7 @@ q.pullquote cite {
     margin: 24px 0;
   }
 }
-@media (min-width: 1060px) {
+@media (min-width: 1180px) {
   .container.article-display .article-text {
     width: 680px;
   }
@@ -1486,7 +1219,7 @@ q.pullquote cite {
     float: left;
   }
 }
-@media (min-width: 1220px) {
+@media (min-width: 1480px) {
   .container.article-display .article-text {
     width: 780px;
   }
@@ -1510,10 +1243,10 @@ q.pullquote cite {
 .container.article-display .article-footnotes p {
   color: #2c2c2c;
   font-size: 14px;
-  font-family: "PT Sans Narrow", Helvetica, Arial, Sans-Serif;
+  font-family: "PT Sans", Helvetica, Arial, Sans-Serif;
 }
 
-@media (min-width: 760px) {
+@media (min-width: 580px) {
   .container.article-display .footnote-sidebar {
     width: 380px;
     margin-left: 80px;
@@ -1524,7 +1257,7 @@ q.pullquote cite {
     margin-top: -436px;
   }
 }
-@media (min-width: 1060px) {
+@media (min-width: 1180px) {
   .container.article-display .article-footnotes {
     width: 540px;
   }
@@ -1544,7 +1277,7 @@ q.pullquote cite {
   display: none;
 }
 .container.hero .hero .hero-aside .hero-caption {
-  font-family: "PT Sans Narrow", Helvetica, Arial, Sans-Serif;
+  font-family: "PT Sans", Helvetica, Arial, Sans-Serif;
   margin-top: 0px;
   color: #2c2c2c;
 }
@@ -1562,7 +1295,7 @@ q.pullquote cite {
   height: auto;
 }
 
-@media (min-width: 1060px) {
+@media (min-width: 1180px) {
   .container.hero .hero img {
     max-width: 700px;
     width: 700px;
@@ -1596,7 +1329,7 @@ q.pullquote cite {
     margin-top: 6px;
   }
 }
-@media (min-width: 1220px) {
+@media (min-width: 1480px) {
   .container.hero .hero img {
     max-width: 860px;
     width: 860px;
@@ -1608,7 +1341,7 @@ q.pullquote cite {
   display: none;
 }
 
-@media (min-width: 1060px) {
+@media (min-width: 1180px) {
   .container.interstellar {
     display: block;
     margin: 0;
@@ -1628,7 +1361,7 @@ q.pullquote cite {
   }
   .container.interstellar .dismiss {
     background: #191919;
-    font-family: "PT Sans Narrow", Helvetica, Arial, Sans-Serif;
+    font-family: "PT Sans", Helvetica, Arial, Sans-Serif;
     color: #fff;
     text-align: center;
     padding: 6px 0;
@@ -1662,7 +1395,7 @@ q.pullquote cite {
 }
 .container.feature-widget a.story .byline {
   padding: 12px 0;
-  font-family: "PT Sans Narrow", Helvetica, Arial, Sans-Serif;
+  font-family: "PT Sans", Helvetica, Arial, Sans-Serif;
   font-style: italic;
 }
 .container.feature-widget a.story .byline .mug {
@@ -1700,7 +1433,7 @@ q.pullquote cite {
   height: 0;
 }
 
-@media (min-width: 760px) {
+@media (min-width: 580px) {
   .container.feature-widget a.story .title-container {
     width: 78.9473684211%;
     margin-left: 80px;
@@ -1719,7 +1452,7 @@ q.pullquote cite {
     height: auto;
   }
 }
-@media (min-width: 1060px) {
+@media (min-width: 1180px) {
   .container.feature-widget .feature {
     width: 700px;
     position: relative;
@@ -1768,11 +1501,11 @@ q.pullquote cite {
     font-size: 18px;
     font-weight: bold;
     line-height: 21px;
-    font-family: "PT Sans Narrow", Helvetica, Arial, Sans-Serif;
+    font-family: "PT Sans", Helvetica, Arial, Sans-Serif;
     overflow: hidden;
   }
   .container.feature-widget .widget a.most-recent-post .title time {
-    font-family: "PT Sans Narrow", Helvetica, Arial, Sans-Serif;
+    font-family: "PT Sans", Helvetica, Arial, Sans-Serif;
     color: #3c74b9;
     font-size: 12px;
     line-height: 18px;
@@ -1785,7 +1518,7 @@ q.pullquote cite {
     color: #3c74b9;
   }
 }
-@media (min-width: 1220px) {
+@media (min-width: 1480px) {
   .container.feature-widget .feature {
     width: 860px;
   }
@@ -1799,7 +1532,7 @@ q.pullquote cite {
   margin-bottom: 24px;
   padding: 18px 3.3333333333%;
   color: #191919;
-  font-family: "PT Sans Narrow", Helvetica, Arial, Sans-Serif;
+  font-family: "PT Sans", Helvetica, Arial, Sans-Serif;
 }
 .container.list-and-banter .story .topic {
   color: #93a2aa;
@@ -1829,7 +1562,7 @@ q.pullquote cite {
 }
 .container.list-and-banter .story .byline {
   padding: 18px 0 12px;
-  font-family: "PT Sans Narrow", Helvetica, Arial, Sans-Serif;
+  font-family: "PT Sans", Helvetica, Arial, Sans-Serif;
   font-style: italic;
 }
 .container.list-and-banter .story .byline .mug {
@@ -1947,7 +1680,7 @@ q.pullquote cite {
   border-bottom: 6px solid #c81212;
 }
 
-@media (min-width: 760px) {
+@media (min-width: 580px) {
   .container.list-and-banter .story {
     padding: 18px 20px;
   }
@@ -1962,7 +1695,7 @@ q.pullquote cite {
     padding-bottom: 24px;
   }
 }
-@media (min-width: 1060px) {
+@media (min-width: 1180px) {
   .list {
     width: 620px;
     float: left;
@@ -1974,7 +1707,7 @@ q.pullquote cite {
     float: left;
   }
 }
-@media (min-width: 1220px) {
+@media (min-width: 1480px) {
   .list {
     width: 620px;
     float: left;
@@ -1986,7 +1719,7 @@ q.pullquote cite {
     float: left;
   }
 }
-@media (min-width: 1060px) {
+@media (min-width: 1180px) {
   .container.banner-title .sidebar {
     width: 300px;
     float: left;
@@ -1997,7 +1730,7 @@ q.pullquote cite {
     width: 660px;
   }
 }
-@media (min-width: 1220px) {
+@media (min-width: 1480px) {
   .container.banner-title .feature {
     width: 840px;
   }
@@ -2039,7 +1772,7 @@ q.pullquote cite {
 }
 .container.latest-videos .video-post {
   color: #ffffff;
-  font-family: "PT Sans Narrow", Helvetica, Arial, Sans-Serif;
+  font-family: "PT Sans", Helvetica, Arial, Sans-Serif;
   font-size: 16px;
   padding-bottom: 32px;
 }
@@ -2069,7 +1802,7 @@ q.pullquote cite {
   padding-left: 10px;
 }
 
-@media (min-width: 760px) {
+@media (min-width: 580px) {
   .container.latest-videos .videos a {
     width: 48.6486486486%;
     float: left;
@@ -2078,7 +1811,7 @@ q.pullquote cite {
     margin-right: 2.7027027027%;
   }
 }
-@media (min-width: 1060px) {
+@media (min-width: 1180px) {
   .container.latest-videos .videos a {
     width: 188px;
     margin-right: 20px;
@@ -2093,7 +1826,7 @@ q.pullquote cite {
     margin-right: 0;
   }
 }
-@media (min-width: 1220px) {
+@media (min-width: 1480px) {
   .container.latest-videos .videos a {
     width: 220px;
   }
@@ -2117,7 +1850,7 @@ q.pullquote cite {
   height: 100%;
 }
 
-@media (min-width: 1220px) {
+@media (min-width: 1480px) {
   .container.hero-video .wrapper {
     width: 1020px;
   }
@@ -2154,7 +1887,7 @@ q.pullquote cite {
   color: #aaa;
 }
 
-@media (min-width: 1220px) {
+@media (min-width: 1480px) {
   .container.hero-image .wrapper {
     width: 1020px;
   }
@@ -2233,7 +1966,7 @@ q.pullquote cite {
 .container.standalone-caption .hero-caption {
   max-width: 400px;
   text-align: right;
-  font-family: "PT Sans Narrow", Helvetica, Arial, Sans-Serif;
+  font-family: "PT Sans", Helvetica, Arial, Sans-Serif;
   color: #2c2c2c;
   padding-bottom: 12px;
   position: relative;
@@ -2261,7 +1994,7 @@ q.pullquote cite {
   height: 1px;
 }
 
-@media (min-width: 760px) {
+@media (min-width: 580px) {
   body.author .container.cover-hero {
     max-height: 400px;
     overflow: hidden;
@@ -2384,7 +2117,7 @@ q.pullquote cite {
   float: right;
 }
 
-@media (min-width: 760px) {
+@media (min-width: 580px) {
   .container.banter .inner-banter .fb-like {
     display: block;
   }
@@ -2402,7 +2135,7 @@ q.pullquote cite {
     padding: 20px;
   }
 }
-@media (min-width: 1060px) {
+@media (min-width: 1180px) {
   .container.banter .inner-banter .banter-link {
     width: 310px;
   }
@@ -2413,7 +2146,7 @@ q.pullquote cite {
     clear: left;
   }
 }
-@media (min-width: 1220px) {
+@media (min-width: 1480px) {
   .container.banter .inner-banter .banter-link {
     width: 362px;
   }
@@ -2424,7 +2157,7 @@ header.container.headline {
 header.container.headline .topics {
   margin: 0;
   padding: 0;
-  font-family: "PT Sans Narrow", Helvetica, Arial, Sans-Serif;
+  font-family: "PT Sans", Helvetica, Arial, Sans-Serif;
   clear: both;
 }
 header.container.headline .topics li {
@@ -2457,7 +2190,7 @@ header.container.headline .subhead {
   font-weight: 400;
 }
 
-@media (min-width: 760px) {
+@media (min-width: 580px) {
   header.container.headline .title, header.container.headline .title h1 {
     font-size: 42px;
     line-height: 52px;
@@ -2477,7 +2210,7 @@ header.container.headline .subhead {
     display: none;
   }
 }
-@media (min-width: 1060px) {
+@media (min-width: 1180px) {
   header.article-header {
     width: 860px;
   }
@@ -2551,11 +2284,11 @@ header.container.headline .subhead {
 }
 .container.footnotes .wrapper .meta .fine-print p {
   font-size: 16px;
-  font-family: "PT Sans Narrow", Helvetica, Arial, Sans-Serif;
+  font-family: "PT Sans", Helvetica, Arial, Sans-Serif;
   color: #93a2aa;
 }
 .container.footnotes .wrapper .meta .post-tags {
-  font-family: "PT Sans Narrow", Helvetica, Arial, Sans-Serif;
+  font-family: "PT Sans", Helvetica, Arial, Sans-Serif;
 }
 .container.footnotes .wrapper .meta .comment-button {
   padding: 6px 9px;
@@ -2622,7 +2355,7 @@ header.container.headline .subhead {
 .container.footnotes .wrapper .more ul li a {
   color: #191919;
   font-size: 16px;
-  font-family: "PT Sans Narrow", Helvetica, Arial, Sans-Serif;
+  font-family: "PT Sans", Helvetica, Arial, Sans-Serif;
 }
 .container.footnotes .wrapper .more ul li a:hover {
   color: #3c74b9;
@@ -2637,7 +2370,7 @@ header.container.headline .subhead {
   padding-bottom: 12px;
 }
 
-@media (min-width: 760px) {
+@media (min-width: 580px) {
   .container.footnotes .wrapper .meta .tweet-button, .container.footnotes .wrapper .meta .facebook-button, .container.footnotes .wrapper .meta .share-url {
     font-size: 16px;
     padding: 6px 15px;
@@ -2677,7 +2410,7 @@ header.container.headline .subhead {
     width: 300px;
   }
 }
-@media (min-width: 1060px) {
+@media (min-width: 1180px) {
   .container.footnotes .wrapper .meta {
     width: 680px;
   }
@@ -2698,7 +2431,7 @@ header.container.headline .subhead {
     width: 75%;
   }
 }
-@media (min-width: 1220px) {
+@media (min-width: 1480px) {
   .container.footnotes .wrapper .meta {
     width: 780px;
   }
@@ -2725,7 +2458,7 @@ header.container.headline .subhead {
   padding: 12px 10% 18px 6.6666666667%;
   font-size: 24px;
   line-height: 24px;
-  font-family: "PT Sans Narrow", Helvetica, Arial, Sans-Serif;
+  font-family: "PT Sans", Helvetica, Arial, Sans-Serif;
   position: absolute;
   right: 0;
   bottom: 0;
@@ -2773,7 +2506,7 @@ header.container.headline .subhead {
 .container.nameplate .wrapper .menus ul.menu {
   list-style-type: none;
   padding: 0;
-  font-family: "PT Sans Narrow", Helvetica, Arial, Sans-Serif;
+  font-family: "PT Sans", Helvetica, Arial, Sans-Serif;
   line-height: 36px;
   font-size: 24px;
   margin: 18px 0;
@@ -2856,7 +2589,7 @@ header.container.headline .subhead {
   margin-top: 9px;
   padding: 3px 3.3333333333%;
   margin-right: 10%;
-  font-family: "PT Sans Narrow", Helvetica, Arial, Sans-Serif;
+  font-family: "PT Sans", Helvetica, Arial, Sans-Serif;
   outline: none;
   border: none;
   width: 56.6666666667%;
@@ -2889,7 +2622,7 @@ header.container.headline .subhead {
   display: none;
 }
 
-@media (min-width: 760px) {
+@media (min-width: 580px) {
   .container.nameplate .wrapper .logo {
     width: 29.7297297297%;
     z-index: 11;
@@ -3006,7 +2739,7 @@ header.container.headline .subhead {
     top: inherit;
   }
 }
-@media (min-width: 1060px) {
+@media (min-width: 1180px) {
   .container.nameplate .wrapper .logo {
     width: 21.568627451%;
   }
@@ -3044,7 +2777,7 @@ header.container.headline .subhead {
     width: 76.4705882353%;
   }
 }
-@media (min-width: 1220px) {
+@media (min-width: 1480px) {
   .container.nameplate .wrapper .logo {
     width: 220px;
   }
@@ -3070,7 +2803,7 @@ header.container.headline .subhead {
 }
 .container.ad-and-two-dominant a.story .byline {
   padding: 12px 0;
-  font-family: "PT Sans Narrow", Helvetica, Arial, Sans-Serif;
+  font-family: "PT Sans", Helvetica, Arial, Sans-Serif;
   font-style: italic;
 }
 .container.ad-and-two-dominant a.story .byline .mug {
@@ -3108,7 +2841,7 @@ header.container.headline .subhead {
   height: 0;
 }
 
-@media (min-width: 760px) {
+@media (min-width: 580px) {
   .container.ad-and-two-dominant a.story {
     width: 48.6842105263%;
     float: left;
@@ -3117,7 +2850,7 @@ header.container.headline .subhead {
     margin-left: 2.6315789474%;
   }
 }
-@media (min-width: 1060px) {
+@media (min-width: 1180px) {
   .container.ad-and-two-dominant .sidekick-ad {
     float: left;
     margin-right: 100px;
@@ -3130,7 +2863,7 @@ header.container.headline .subhead {
     margin-left: 20px;
   }
 }
-@media (min-width: 1220px) {
+@media (min-width: 1480px) {
   .container.ad-and-two-dominant .sidekick-ad {
     margin-right: 100px;
   }
@@ -3150,7 +2883,7 @@ header.container.headline .subhead {
   text-decoration: none;
   color: #ffffff;
   background: #c81212;
-  font-family: "PT Sans Narrow", Helvetica, Arial, Sans-Serif;
+  font-family: "PT Sans", Helvetica, Arial, Sans-Serif;
   padding-top: 12px;
   padding-bottom: 12px;
   padding-left: 20px;
@@ -3170,12 +2903,12 @@ header.container.headline .subhead {
   background: #a10e0e;
 }
 
-@media (min-width: 760px) {
+@media (min-width: 580px) {
   .container.breaking-news {
     /* tablet and up style */
   }
 }
-@media (min-width: 1060px) {
+@media (min-width: 1180px) {
   .container.breaking-news {
     /* desktop and up style */
   }
@@ -3192,7 +2925,7 @@ header.container.headline .subhead {
     top: 0;
   }
 }
-@media (min-width: 1220px) {
+@media (min-width: 1480px) {
   .container.breaking-news {
     /* xl desktop and up style */
   }
@@ -3210,7 +2943,7 @@ header.container.headline .subhead {
   color: gray;
 }
 
-@media (min-width: 1060px) {
+@media (min-width: 1180px) {
   .container.stream .sidebar {
     width: 33.3333333333%;
     float: left;
@@ -3228,7 +2961,7 @@ header.container.headline .subhead {
     padding-top: 0;
   }
 }
-@media (min-width: 1220px) {
+@media (min-width: 1480px) {
   .container.stream .sidebar {
     width: 28.813559322%;
     margin-right: 3.3898305085%;
@@ -3274,19 +3007,19 @@ header.container.headline .subhead {
 }
 .container.masthead li a.name {
   font-weight: bold;
-  font-family: "PT Sans Narrow", Helvetica, Arial, Sans-Serif;
+  font-family: "PT Sans", Helvetica, Arial, Sans-Serif;
   color: #3c74b9;
 }
 .container.masthead li a.name:hover {
   color: #3a97f7;
 }
 .container.masthead li .position {
-  font-family: "PT Sans Narrow", Helvetica, Arial, Sans-Serif;
+  font-family: "PT Sans", Helvetica, Arial, Sans-Serif;
   color: #93a2aa;
   font-weight: normal;
 }
 
-@media (min-width: 760px) {
+@media (min-width: 580px) {
   .container.masthead {
     text-align: center;
     padding-bottom: 30px;
@@ -3309,7 +3042,7 @@ header.container.headline .subhead {
   padding: 12px 10% 18px 6.6666666667%;
   font-size: 24px;
   line-height: 24px;
-  font-family: "PT Sans Narrow", Helvetica, Arial, Sans-Serif;
+  font-family: "PT Sans", Helvetica, Arial, Sans-Serif;
   position: absolute;
   right: 0;
   bottom: 0;
@@ -3357,7 +3090,7 @@ header.container.headline .subhead {
 .container.nameplate .wrapper .menus ul.menu {
   list-style-type: none;
   padding: 0;
-  font-family: "PT Sans Narrow", Helvetica, Arial, Sans-Serif;
+  font-family: "PT Sans", Helvetica, Arial, Sans-Serif;
   line-height: 36px;
   font-size: 24px;
   margin: 18px 0;
@@ -3440,7 +3173,7 @@ header.container.headline .subhead {
   margin-top: 9px;
   padding: 3px 3.3333333333%;
   margin-right: 10%;
-  font-family: "PT Sans Narrow", Helvetica, Arial, Sans-Serif;
+  font-family: "PT Sans", Helvetica, Arial, Sans-Serif;
   outline: none;
   border: none;
   width: 56.6666666667%;
@@ -3473,7 +3206,7 @@ header.container.headline .subhead {
   display: none;
 }
 
-@media (min-width: 760px) {
+@media (min-width: 580px) {
   .container.nameplate .wrapper .logo {
     width: 29.7297297297%;
     z-index: 11;
@@ -3590,7 +3323,7 @@ header.container.headline .subhead {
     top: inherit;
   }
 }
-@media (min-width: 1060px) {
+@media (min-width: 1180px) {
   .container.nameplate .wrapper .logo {
     width: 21.568627451%;
   }
@@ -3628,7 +3361,7 @@ header.container.headline .subhead {
     width: 76.4705882353%;
   }
 }
-@media (min-width: 1220px) {
+@media (min-width: 1480px) {
   .container.nameplate .wrapper .logo {
     width: 220px;
   }
@@ -3670,7 +3403,7 @@ header.container.headline .subhead {
   opacity: 0.65;
 }
 .container.gallery .image-slide {
-  font-family: "PT Sans Narrow", Helvetica, Arial, Sans-Serif;
+  font-family: "PT Sans", Helvetica, Arial, Sans-Serif;
   color: #ffffff;
   font-size: 15px;
   margin-top: 44px;
@@ -3684,7 +3417,7 @@ header.container.headline .subhead {
   margin-bottom: 36px;
 }
 
-@media (min-width: 760px) {
+@media (min-width: 580px) {
   .container.gallery .left-toggle, .container.gallery .right-toggle {
     display: block;
     position: fixed;
@@ -3795,7 +3528,7 @@ a.block.teaser-brief header h3 {
   font-size: 21px;
   line-height: 27px;
   font-weight: normal;
-  font-family: "PT Sans Narrow", Helvetica, Arial, Sans-Serif;
+  font-family: "PT Sans", Helvetica, Arial, Sans-Serif;
   margin-bottom: 0;
   margin-top: 12px;
 }
@@ -3812,7 +3545,7 @@ a.block.teaser-brief header .meta {
 }
 a.block.teaser-brief header .meta time {
   margin-left: 10px;
-  font-family: "PT Sans Narrow", Helvetica, Arial, Sans-Serif;
+  font-family: "PT Sans", Helvetica, Arial, Sans-Serif;
   color: #93a2aa;
 }
 a.block.teaser-brief header .topic-banner {
@@ -3828,7 +3561,7 @@ a.block.teaser-brief header:hover h2 {
   color: #ffffff;
 }
 
-@media (min-width: 760px) {
+@media (min-width: 580px) {
   a.block.teaser-brief .thumbnail {
     float: left;
     margin-right: 20px;
@@ -3839,7 +3572,7 @@ a.block.teaser-brief header:hover h2 {
     width: 140px;
   }
 }
-@media (min-width: 1220px) {
+@media (min-width: 1480px) {
   a.block.teaser-brief .thumbnail {
     margin-right: 20px;
   }
@@ -3879,7 +3612,7 @@ a.block.teaser-feature header h2 {
 a.block.teaser-feature header h3 {
   font-size: 21px;
   font-weight: normal;
-  font-family: "PT Sans Narrow", Helvetica, Arial, Sans-Serif;
+  font-family: "PT Sans", Helvetica, Arial, Sans-Serif;
   margin-bottom: 0;
   margin-top: 12px;
 }
@@ -3895,7 +3628,7 @@ a.block.teaser-feature header .meta {
   position: relative;
 }
 a.block.teaser-feature header .meta time {
-  font-family: "PT Sans Narrow", Helvetica, Arial, Sans-Serif;
+  font-family: "PT Sans", Helvetica, Arial, Sans-Serif;
   color: #93a2aa;
 }
 a.block.teaser-feature:hover {
@@ -3906,7 +3639,7 @@ a.block.teaser-feature:hover {
   color: #ffffff;
 }
 
-@media (min-width: 760px) {
+@media (min-width: 580px) {
   a.block.teaser-feature .thumbnail {
     float: none;
     margin-left: 0px;
@@ -3946,7 +3679,7 @@ a.block.teaser-feature:hover {
 }
 .block.section-header {
   background: #fff;
-  font-family: "PT Sans Narrow", Helvetica, Arial, Sans-Serif;
+  font-family: "PT Sans", Helvetica, Arial, Sans-Serif;
   display: inline-block;
   padding: 24px 20px;
   width: 100%;
@@ -3977,7 +3710,7 @@ a.block.teaser-feature:hover {
 }
 .block.section-header h1 {
   font-size: 33px;
-  font-family: "PT Sans Narrow", Helvetica, Arial, Sans-Serif;
+  font-family: "PT Sans", Helvetica, Arial, Sans-Serif;
   position: relative;
   text-transform: uppercase;
   display: inline-block;
@@ -3990,7 +3723,7 @@ a.block.teaser-feature:hover {
   font-family: "Noto Serif", Oalatino, Georgia, Serif;
   color: #93a2aa;
   font-weight: normal;
-  font-family: "PT Sans Narrow", Helvetica, Arial, Sans-Serif;
+  font-family: "PT Sans", Helvetica, Arial, Sans-Serif;
   margin: 0;
 }
 .block.section-header h3 {
@@ -4060,7 +3793,7 @@ a.block.teaser-feature:hover {
   margin-bottom: 9px;
 }
 
-@media (min-width: 1060px) {
+@media (min-width: 1180px) {
   .block.section-footer .explainers {
     display: block;
   }
@@ -4075,7 +3808,7 @@ a.block.teaser-feature:hover {
 .snippet.inline {
   cursor: pointer;
   margin: 0 0 12px;
-  font: 15px/18px "PT Sans Narrow", Helvetica, Arial, Sans-Serif;
+  font: 15px/18px "PT Sans", Helvetica, Arial, Sans-Serif;
   padding: 9px 10px;
   display: block;
   background: #fff;
@@ -4117,11 +3850,11 @@ a.block.teaser-feature:hover {
   font-style: italic;
 }
 
-@media (min-width: 760px) {
+@media (min-width: 580px) {
   .snippet.inline {
     padding: 18px 20px;
     overflow: auto;
-    font: 18px/24px "PT Sans Narrow", Helvetica, Arial, Sans-Serif;
+    font: 18px/24px "PT Sans", Helvetica, Arial, Sans-Serif;
   }
   .snippet.inline img.thumbnail {
     float: left;
@@ -4216,7 +3949,7 @@ ul.list-stories {
   margin-top: 30px;
   padding: 0;
   width: 100%;
-  font-family: "PT Sans Narrow", Helvetica, Arial, Sans-Serif;
+  font-family: "PT Sans", Helvetica, Arial, Sans-Serif;
   list-style: none;
   font-size: 20px;
 }
@@ -4271,7 +4004,7 @@ ul.featured-stream-list {
   border-top: 1px solid #e0eaee;
   text-align: center;
   margin-bottom: 48px;
-  font-family: "PT Sans Narrow", Helvetica, Arial, Sans-Serif;
+  font-family: "PT Sans", Helvetica, Arial, Sans-Serif;
   font-weight: bold;
   text-transform: uppercase;
   font-size: 20px;
@@ -4289,7 +4022,7 @@ ul.featured-stream-list {
   overflow: hidden;
 }
 
-@media (min-width: 760px) {
+@media (min-width: 580px) {
   #above-fold {
     margin-top: 0;
   }
@@ -4368,7 +4101,7 @@ ul.featured-stream-list {
     margin-bottom: 0;
   }
 }
-@media (min-width: 1060px) {
+@media (min-width: 1180px) {
   #above-fold {
     margin-bottom: 30px;
   }
@@ -4418,11 +4151,11 @@ ul.featured-stream-list {
   #above-fold #top-posts h3 {
     margin-top: 6px;
     text-transform: uppercase;
-    font-family: "PT Sans Narrow", Helvetica, Arial, Sans-Serif;
+    font-family: "PT Sans", Helvetica, Arial, Sans-Serif;
   }
   #above-fold #top-posts ul {
     list-style: none;
-    font-family: "PT Sans Narrow", Helvetica, Arial, Sans-Serif;
+    font-family: "PT Sans", Helvetica, Arial, Sans-Serif;
     margin-top: 12px;
   }
   #above-fold #top-posts ul li {
@@ -4451,14 +4184,14 @@ ul.featured-stream-list {
     background: #191919;
     color: #fff;
     text-align: center;
-    font-family: "PT Sans Narrow", Helvetica, Arial, Sans-Serif;
+    font-family: "PT Sans", Helvetica, Arial, Sans-Serif;
     text-transform: uppercase;
   }
   #above-fold #most-recent a.hp-most-recent {
     color: #000;
     display: block;
     padding: 12px 20px 12px;
-    font-family: "PT Sans Narrow", Helvetica, Arial, Sans-Serif;
+    font-family: "PT Sans", Helvetica, Arial, Sans-Serif;
     font-weight: bold;
     border-bottom: 1px solid #2c2c2c;
   }
@@ -4513,7 +4246,7 @@ ul.featured-stream-list {
     margin-top: 0;
   }
 }
-@media (min-width: 1220px) {
+@media (min-width: 1480px) {
   #above-fold {
     margin-bottom: 30px;
   }
@@ -4586,181 +4319,6 @@ ul.featured-stream-list {
   line-height: 30px;
   font-style: italic;
   color: #2c2c2c;
-}
-
-/** 
- * Foundation overrides
- */
-/* ==========================================================================
-   Helper classes
-   ========================================================================== */
-/*
- * Image replacement
- */
-.ir {
-  background-color: transparent;
-  border: 0;
-  overflow: hidden;
-  /* IE 6/7 fallback */
-  *text-indent: -9999px;
-}
-
-.ir:before {
-  content: "";
-  display: block;
-  width: 0;
-  height: 150%;
-}
-
-/*
- * Hide from both screenreaders and browsers: h5bp.com/u
- */
-.hidden {
-  display: none !important;
-  visibility: hidden;
-}
-
-/*
- * Hide only visually, but have it available for screenreaders: h5bp.com/v
- */
-.visuallyhidden {
-  border: 0;
-  clip: rect(0 0 0 0);
-  height: 1px;
-  margin: -1px;
-  overflow: hidden;
-  padding: 0;
-  position: absolute;
-  width: 1px;
-}
-
-/*
- * Extends the .visuallyhidden class to allow the element to be focusable
- * when navigated to via the keyboard: h5bp.com/p
- */
-.visuallyhidden.focusable:active,
-.visuallyhidden.focusable:focus {
-  clip: auto;
-  height: auto;
-  margin: 0;
-  overflow: visible;
-  position: static;
-  width: auto;
-}
-
-/*
- * Hide visually and from screenreaders, but maintain layout
- */
-.invisible {
-  visibility: hidden;
-}
-
-/*
- * Clearfix: contain floats
- *
- * For modern browsers
- * 1. The space content is one way to avoid an Opera bug when the
- *    `contenteditable` attribute is included anywhere else in the document.
- *    Otherwise it causes space to appear at the top and bottom of elements
- *    that receive the `clearfix` class.
- * 2. The use of `table` rather than `block` is only necessary if using
- *    `:before` to contain the top-margins of child elements.
- */
-.clearfix:before,
-.clearfix:after {
-  content: " ";
-  /* 1 */
-  display: table;
-  /* 2 */
-}
-
-.clearfix:after {
-  clear: both;
-}
-
-/*
- * For IE 6/7 only
- * Include this rule to trigger hasLayout and contain floats.
- */
-.clearfix {
-  *zoom: 1;
-}
-
-.transparent {
-  zoom: 1;
-  filter: alpha(opacity=80);
-  opacity: 0.8;
-}
-
-.shadow {
-  -moz-box-shadow: 3px 3px 5px 0 #000;
-  -webkit-box-shadow: 3px 3px 5px 0 #000;
-  box-shadow: 3px 3px 5px 0 #000;
-}
-
-.loading {
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: 9999;
-  background: rgba(255, 255, 255, 0.8);
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
-}
-.loading .loader {
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-}
-
-.loader {
-  margin: 100px auto 0;
-  width: 70px;
-  text-align: center;
-}
-
-.loader > div {
-  width: 18px;
-  height: 18px;
-  background-color: #333;
-  border-radius: 100%;
-  display: inline-block;
-  -webkit-animation: bouncedelay 1.4s infinite ease-in-out;
-  animation: bouncedelay 1.4s infinite ease-in-out;
-  /* Prevent first frame from flickering when animation starts */
-  -webkit-animation-fill-mode: both;
-  animation-fill-mode: both;
-}
-
-.loader .bounce1 {
-  -webkit-animation-delay: -0.32s;
-  animation-delay: -0.32s;
-}
-
-.loader .bounce2 {
-  -webkit-animation-delay: -0.16s;
-  animation-delay: -0.16s;
-}
-
-@-webkit-keyframes bouncedelay {
-  0%, 80%, 100% {
-    -webkit-transform: scale(0);
-  }
-  40% {
-    -webkit-transform: scale(1);
-  }
-}
-@keyframes bouncedelay {
-  0%, 80%, 100% {
-    transform: scale(0);
-    -webkit-transform: scale(0);
-  }
-  40% {
-    transform: scale(1);
-    -webkit-transform: scale(1);
-  }
 }
 
 /*# sourceMappingURL=style.css.map */

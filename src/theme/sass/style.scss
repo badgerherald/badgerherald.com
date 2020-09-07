@@ -11,14 +11,14 @@
 /**
  Foundations
  */
-@import "foundations.scss";
-@import "foundations/page.scss";
-@import "charms.scss";
+@import "../../global/sass/foundations.scss";
+@import "theme/page.scss";
+@import "theme/charms.scss";
+@import "theme/containers.scss";
 
 /** 
  Containers
  */
-@import "containers.scss";
 @import "containers/colophon.scss";
 @import "containers/article-display.scss";
 @import "containers/hero.scss";
@@ -60,8 +60,3 @@
  */
 @import "depricate/homepage.scss";
 @import "depricate/4-doge-4.scss";
-
-/** 
- * Foundation overrides
- */
-@import "foundations/helperclasses.scss";
