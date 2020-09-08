@@ -49,4 +49,4 @@ define('WEBPRESS_STENCIL_NAMESPACE', 'badgerherald');
 
 <?php /* #page opened here, closed in footer.php */ ?>
 
-<div id="page">
+<webpress-theme id="page">

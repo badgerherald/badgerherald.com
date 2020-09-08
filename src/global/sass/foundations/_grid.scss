@@ -6,10 +6,10 @@
 }
 
 $colWidth: 80;
-$gutterWidth: 20px;
+$gutterWidth: 20;
 
 @function pageWidth($cols:1) {
-  @return ((80 * $cols) + (20 * ($cols - 1)));
+  @return (($colWidth * $cols) + ($gutterWidth * ($cols - 1)));
 }
 
 /***
@@ -56,7 +56,7 @@ $gutterWidth: 20px;
   @else {
     position: relative;
   }
-  
+
 }
 
 @mixin setGrid($columnCount, $columnWidth, $gutterWidth, $additionalGutter: 0) {
@@ -70,7 +70,7 @@ $gutterWidth: 20px;
 }
 
 /***
- * Grid Mixins
+ * Breakpoint
  */
 @mixin breakpoint($breakpoint) {
   @if $breakpoint == "tablet" {
@@ -78,18 +78,13 @@ $gutterWidth: 20px;
       @content;
     }
   }
-  @else if $breakpoint == "tabletxl" {
+  @else if $breakpoint == "desktop" {
     @media (min-width: pageWidth(9) + "px") {
       @content;
     }
   }
-  @else if $breakpoint == "desktop" {
-    @media (min-width: pageWidth(12) + "px") {
-      @content;
-    }
-  }
   @else if $breakpoint == "xl" {
-    @media (min-width: pageWidth(15) + "px") {
+    @media (min-width: pageWidth(12) + "px") {
       @content;
     }
   }

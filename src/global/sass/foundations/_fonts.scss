@@ -11,7 +11,7 @@ $base-font-size: 15px;
 $base-line-height: 21px;
 
 /*  Fonts */
-$headline: 	'PT Sans', Helvetica, Arial, Sans-Serif;
+$headline: 	'PT Sans Narrow', Helvetica, Arial, Sans-Serif;
 $body:		  'Noto Serif', Oalatino, Georgia, Serif;
 $caption: 	open sans, helvetica, arial, sans-serif;
 $icon:      exa;
@@ -64,8 +64,4 @@ h2 {
 	&.author-title{
 		padding-top: 6px;
 	}
-}
-
-h3 {
-	// margin: 0 0 0 0;
 }

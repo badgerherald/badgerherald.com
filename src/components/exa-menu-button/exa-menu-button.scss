@@ -1,0 +1,35 @@
+
+exa-menu-button a {
+	@include linkColor($blue);
+	padding: 12px gutter(1.5) 18px gutter();
+	font-size: 24px;
+	display: block;
+	line-height: 24px;
+	font-family: $headline;
+	position: absolute;
+	right: 0;
+	bottom: 0;
+	transition: bottom .2s;
+	cursor: pointer;
+	margin-right: gutter(-.25);
+	&:after {
+		content: "d";
+		font-size: 12px;
+		margin-left: 5px;
+		transition: transform .1s;
+		font-family: $icon;
+		position: absolute;
+	}
+	&.active:after {
+		margin-top: 3px;
+		transform: rotate(180deg);
+	}
+	&.active {
+		background: $white;
+		z-index: 9999;
+		bottom: -6px;
+		border-radius: 4px;
+		box-shadow: 0 1px 2px 0 rgba(1,38,94,0.1);
+	}
+}
+

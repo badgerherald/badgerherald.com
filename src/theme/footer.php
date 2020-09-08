@@ -13,9 +13,13 @@
 
 <?php exa_container('colophon'); ?>
 
-</div><!-- END div#page -->
+</wp-theme><!-- END wp-theme#page -->
 
 <?php wp_footer(); ?>
 
+<script>
+  var element = document.getElementById('page')
+  element.context = webpress
+</script>
 </body>
 </html>

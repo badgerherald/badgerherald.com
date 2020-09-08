@@ -1,0 +1,202 @@
+
+@mixin socialIcon($char,$color) {
+	content: $char;
+	background: $color;
+}
+
+/**
+ * Nameplate styles
+ */ 
+exa-nameplate {
+	display: block;
+	width: 100%;
+	border-bottom: 5px solid $blue;
+	padding-bottom: 12px;
+    a.logo {
+		width: col(2);
+		max-width: 280px;
+	    display: block;
+		img {
+			height: auto;
+			width: 100%;
+		}
+	}
+    div.menus {
+    	display: none;
+		position: absolute;
+		width: col(3,.5);
+		right: gutter(-0.25);
+        background: white;
+        margin-top: 6px;
+		z-index: 9999;
+		box-shadow: 0 1px 2px 0 rgba(1,38,94,0.1);
+        &.active {
+        	display: block;
+		}
+		wp-menu	menu {
+			display: block;
+			padding: gutter(1) gutter(1) 0 gutter(1);
+			width: 100%;
+			list-style-type: none;
+			font-family: $headline;
+			line-height: 1.4em;
+			margin: 0;
+			font-size: 15px;
+		}
+		wp-menu.primary menu {
+			font-size: 19px;
+		}
+		wp-menu	menu > li {
+			display: inline;
+		}
+
+		// Link styles
+		wp-menu	menu > li a {
+			text-decoration: none;
+			border-bottom: 1px solid $grey;
+			display: block;
+			padding: 12px 0px;
+			color: $blue;
+			&:hover {
+				color: $blueLinkHover;
+			}
+		}
+		wp-menu.secondary menu > li a {
+			color: $black;
+			&:hover {
+				color: $blue;
+			}
+		}
+
+		exa-search-form {
+			margin-top: 30px;
+			padding-top: flex(25,300);
+		}
+		wp-menu.social {
+			clear: right;
+			li.social {
+				min-height: 54px;
+				margin-right: 10px;
+				display: inline-block;
+				a {
+					display: inline;
+					position: relative;
+					&:before {
+						font-family: $icon;
+						font-size: 24px;
+						line-height: 35px;
+						color: $white;
+						text-align: center;
+						width: 100%;
+						display: block;
+						width: 34px;
+						height: 34px;
+						border-radius: 2px;
+					}
+				}
+				&.twitter a:before { @include socialIcon("t",#0892E3); }
+				&.facebook a:before { @include socialIcon("f",#425F9E); }
+				&.linkedin a:before { @include socialIcon("l",#0078b6); }
+				&.instagram a:before { @include socialIcon("i",#cd486b); }
+			}
+    	}
+	}
+}
+
+@include breakpoint("desktop") {
+	exa-nameplate {
+		exa-menu-button {
+			display: none;
+		}
+		div.menus {
+			background: transparent;
+	    	display: block;
+			top: 0px;
+			position: absolute;
+			height: 100%;
+			padding: 0;
+			left: col(2,1);
+			margin-top: 0px;
+			bottom: 20px;
+			margin-top: -12px;
+			width: col(7);
+			box-shadow: none;
+			right: 0px;
+			// Reposition for desktop:
+			wp-menu.primary menu {
+				padding: 0;
+				position: absolute;
+				bottom: 0;
+				width: col(6);
+				margin-right: 60px;
+				z-index: 5;
+			}
+			wp-menu.social {
+	    		float: right;
+	    	    height: 20px;
+			}
+			wp-menu.secondary {
+	    	    float: right;
+			}
+			
+			// Restyle for desktop:
+			wp-menu menu {
+				padding: 0;
+				display: inline;
+				font-size: 18px;
+				
+			}
+			wp-menu.primary menu {
+				font-size: 24px;
+				z-index: 5;
+				
+			}
+			wp-menu menu > li a {
+				display: inline-block;
+				padding-top: 6px;
+				padding-bottom: 6px;
+				padding-right: 18px;
+			}
+			exa-search-form {
+				position: absolute;
+				width:100%;
+				display: block;
+				height: 44px;
+				padding: 0;
+				margin-top: 0px;
+	    		right: 0;
+				bottom: 9px;
+				z-index: 0;
+			}
+			exa-search-form.focused {
+				z-index: 10;
+			}
+			wp-menu.social {
+				menu li.social {
+					margin-right: 0;
+					margin-left: 10px;
+					position:relative;
+					top: 6px;
+					a {
+						width:24px;
+						height:24px;
+					}
+					a:before {
+						font-size: 16px;
+						line-height: 26px;
+						width: 24px;
+						height: 24px;
+					}
+				}
+			}
+		}
+	}
+}
+
+@include breakpoint("xl") {
+	exa-nameplate {
+		div.menus {
+			width: col(10);
+		}
+	}
+}

@@ -26,6 +26,12 @@ endif;
 
 ?>
 
+<div class="container">
+	<div class="wrapper">
+		<exa-nameplate> </exa-nameplate>
+	</div>
+</div>
+
 <div class="<?php echo $container->classes(); ?> flex">
 	<div class="wrapper">
 		

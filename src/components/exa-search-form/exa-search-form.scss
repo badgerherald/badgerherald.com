@@ -1,0 +1,77 @@
+exa-search-form {
+	form.search {
+		width: 100%;
+		position: relative;
+		background: $grey;
+		padding: 20px flex(15,300);
+		input[type=text] {
+			width: 100%;
+			padding: 12px flex(10,300);
+			padding-right: 40px;
+			font-family: $headline;
+			font-size: 24px;
+			outline: none;
+			border: 3px solid $grey;
+			transition: all .3s;
+			&::placeholder {
+				color: $greyText;
+			}
+			&:focus {
+				color: $black;
+				border: 3px solid $blue;
+				z-index: 10;
+			}
+			font-size: 20px;
+		}
+		&:after {
+			pointer-events: none;
+			content: "s";
+			font-family: $icon;
+			padding: 4px 8px;
+			position: absolute;
+			top: 32px;
+			right: flex(25,300);
+			width: 30px;
+			height: 30px;
+			color: $blue;
+		}
+		input[type=submit] {    // the submit field.
+			display: none;
+		}
+	}
+}
+
+@include breakpoint("desktop") {
+	exa-search-form form.search {
+		background: transparent;
+		position: relative;
+		padding: 0;
+		right: 0;
+		input[type=text] {
+			bottom: -3px;
+			position: absolute;
+			right: 0;
+			width: 36px;
+			padding: 6px 20px 6px 20px;
+			border-radius: 3px;
+			margin-right: 0px;
+			border: none;
+			&::placeholder {
+				color: transparent;
+			}
+			&:focus {
+				&::placeholder {
+					color: $greyText;
+				}
+				width: 100%;
+				border: none;
+			}
+		}
+		&:after {
+			bottom: 1px;
+			right: 7px;
+			top: inherit;
+			font-size: 18px;
+		}					
+	}
+}

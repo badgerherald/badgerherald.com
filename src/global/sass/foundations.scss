@@ -10,15 +10,10 @@
 @import "foundations/colors.scss";
 @import "foundations/fonts.scss";
 @import "foundations/grid.scss";
+@import "foundations/normalize.scss";
 @import "foundations/helperclasses.scss";
 
-
-
-/**
- *
- *
- */
- @mixin linkColor($color) {
+@mixin linkColor($color) {
   @if $color == $black {
     color: $black;
     &:hover { color: #787878; }
@@ -96,8 +91,4 @@ p {
   margin-bottom: .5em;
 }
 
-}
-
-.clearfix {
-  clear: both;
 }
