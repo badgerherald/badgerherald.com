@@ -56,7 +56,13 @@ $gutterWidth: 20;
   @else {
     position: relative;
   }
+}
 
+@mixin resetCol() {
+  & *, &:after, &:before {
+    --breakpointColumns: unset;
+    --additionalGutter: unset;
+  } 
 }
 
 @mixin setGrid($columnCount, $columnWidth, $gutterWidth, $additionalGutter: 0) {

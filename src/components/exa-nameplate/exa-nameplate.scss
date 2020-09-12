@@ -12,20 +12,23 @@ exa-nameplate {
 	width: 100%;
 	border-bottom: 5px solid $blue;
 	padding-bottom: 12px;
-    a.logo {
-		width: col(2);
-		max-width: 280px;
-	    display: block;
-		img {
-			height: auto;
-			width: 100%;
-		}
+}
+
+exa-nameplate a.logo {
+	width: col(2);
+	max-width: 280px;
+	display: block;
+	img {
+		height: auto;
+		width: 100%;
 	}
-    div.menus {
+}
+
+exa-nameplate div.menus {
     	display: none;
 		position: absolute;
-		width: col(3,.5);
 		right: gutter(-0.25);
+		@include setCol(3,.5,true);
         background: white;
         margin-top: 6px;
 		z-index: 9999;
@@ -33,18 +36,35 @@ exa-nameplate {
         &.active {
         	display: block;
 		}
+
+		exa-search-form {
+			width: 100%;
+			display: block;
+			padding: 20px gutter(.5);
+		}
+
 		wp-menu	menu {
 			display: block;
-			padding: gutter(1) gutter(1) 0 gutter(1);
 			width: 100%;
 			list-style-type: none;
 			font-family: $headline;
 			line-height: 1.4em;
 			margin: 0;
+			padding: 0;
 			font-size: 15px;
+			float: right;
 		}
 		wp-menu.primary menu {
+			margin-right: gutter(.5);
 			font-size: 19px;
+			width: col(1.75,-.25);
+		}
+		wp-menu.secondary menu {
+			margin-right: gutter(.5);
+			width: col(1.25,-.25);
+		}
+		wp-menu.social menu {
+			padding: gutter(.5);
 		}
 		wp-menu	menu > li {
 			display: inline;
@@ -53,53 +73,29 @@ exa-nameplate {
 		// Link styles
 		wp-menu	menu > li a {
 			text-decoration: none;
-			border-bottom: 1px solid $grey;
 			display: block;
-			padding: 12px 0px;
+			padding: 12px 0 12px 0px;
 			color: $blue;
 			&:hover {
 				color: $blueLinkHover;
 			}
 		}
+		wp-menu.primary {
+			border-left: 1px solid $grey;
+		}
+		wp-menu.primary menu > li a {
+			border-bottom: 1px solid $grey;
+		}
+		wp-menu.primary menu > li:last-child a {
+			border-bottom: none;
+		}
 		wp-menu.secondary menu > li a {
+			//padding: 6px inherit;
 			color: $black;
 			&:hover {
 				color: $blue;
 			}
 		}
-
-		exa-search-form {
-			margin-top: 30px;
-			padding-top: flex(25,300);
-		}
-		wp-menu.social {
-			clear: right;
-			li.social {
-				min-height: 54px;
-				margin-right: 10px;
-				display: inline-block;
-				a {
-					display: inline;
-					position: relative;
-					&:before {
-						font-family: $icon;
-						font-size: 24px;
-						line-height: 35px;
-						color: $white;
-						text-align: center;
-						width: 100%;
-						display: block;
-						width: 34px;
-						height: 34px;
-						border-radius: 2px;
-					}
-				}
-				&.twitter a:before { @include socialIcon("t",#0892E3); }
-				&.facebook a:before { @include socialIcon("f",#425F9E); }
-				&.linkedin a:before { @include socialIcon("l",#0078b6); }
-				&.instagram a:before { @include socialIcon("i",#cd486b); }
-			}
-    	}
 	}
 }
 
@@ -109,10 +105,11 @@ exa-nameplate {
 			display: none;
 		}
 		div.menus {
+			@include resetCol();
+			box-shadow: none;
 			background: transparent;
 	    	display: block;
 			top: 0px;
-			position: absolute;
 			height: 100%;
 			padding: 0;
 			left: col(2,1);
@@ -122,21 +119,26 @@ exa-nameplate {
 			width: col(7);
 			box-shadow: none;
 			right: 0px;
+			z-index: inherit;
+
 			// Reposition for desktop:
 			wp-menu.primary menu {
 				padding: 0;
+				background: red;
 				position: absolute;
 				bottom: 0;
-				width: col(6);
+				width: 100%;
 				margin-right: 60px;
 				z-index: 5;
 			}
-			wp-menu.social {
+			wp-menu.social menu {
 	    		float: right;
 	    	    height: 20px;
 			}
-			wp-menu.secondary {
-	    	    float: right;
+			wp-menu.secondary menu {
+				background: green;
+				float: right;
+				width: inherit;
 			}
 			
 			// Restyle for desktop:
@@ -149,13 +151,15 @@ exa-nameplate {
 			wp-menu.primary menu {
 				font-size: 24px;
 				z-index: 5;
-				
 			}
 			wp-menu menu > li a {
 				display: inline-block;
+				padding: 6px 18px;
+				/*
 				padding-top: 6px;
 				padding-bottom: 6px;
 				padding-right: 18px;
+				*/
 			}
 			exa-search-form {
 				position: absolute;
@@ -166,10 +170,6 @@ exa-nameplate {
 				margin-top: 0px;
 	    		right: 0;
 				bottom: 9px;
-				z-index: 0;
-			}
-			exa-search-form.focused {
-				z-index: 10;
 			}
 			wp-menu.social {
 				menu li.social {
@@ -200,3 +200,42 @@ exa-nameplate {
 		}
 	}
 }
+
+
+
+
+/**
+ * Some extra style for the .social menu
+ * Adds icons for twitter, facebook, linkedin and instragram
+ */
+ exa-nameplate {
+	wp-menu.social {
+		clear: right;
+		li.social {
+			min-height: 54px;
+			margin-right: 10px;
+			display: inline-block;
+			a {
+				display: inline;
+				position: relative;
+				&:before {
+					font-family: $icon;
+					font-size: 24px;
+					line-height: 35px;
+					color: $white;
+					text-align: center;
+					width: 100%;
+					display: block;
+					width: 34px;
+					height: 34px;
+					border-radius: 2px;
+				}
+			}
+			&.twitter a:before { @include socialIcon("t",#0892E3); }
+			&.facebook a:before { @include socialIcon("f",#425F9E); }
+			&.linkedin a:before { @include socialIcon("l",#0078b6); }
+			&.instagram a:before { @include socialIcon("i",#cd486b); }
+		}
+    }
+}
+

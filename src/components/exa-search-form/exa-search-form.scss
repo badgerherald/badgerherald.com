@@ -2,8 +2,6 @@ exa-search-form {
 	form.search {
 		width: 100%;
 		position: relative;
-		background: $grey;
-		padding: 20px flex(15,300);
 		input[type=text] {
 			width: 100%;
 			padding: 12px flex(10,300);
@@ -29,8 +27,8 @@ exa-search-form {
 			font-family: $icon;
 			padding: 4px 8px;
 			position: absolute;
-			top: 32px;
-			right: flex(25,300);
+			top: 13px;
+			right: gutter(.4);
 			width: 30px;
 			height: 30px;
 			color: $blue;

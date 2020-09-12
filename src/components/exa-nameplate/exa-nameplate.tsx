@@ -38,10 +38,11 @@ export class ExaNameplate {
         </a>,
         <exa-menu-button active={this.menuOpen} onClick={() => this.toggleMenu()} />,
         <div class={this.menuOpen ? "menus active" : "menus"}>
-          <wp-menu class="primary" menu={this.mainMenu} />  
           <exa-search-form />
-          <wp-menu class="social" menu={this.socialMenu} options={ { classForMenuItem: item => "social " + item.slug, domForItem: item => <span class="hidden">{item.title}</span> }}/>  
+          <wp-menu class="primary" menu={this.mainMenu} />  
+           
           <wp-menu class="secondary black" menu={this.secondaryMenu} />  
+          <wp-menu class="social" menu={this.socialMenu} options={ { classForMenuItem: item => "social " + item.slug, domForItem: item => <span class="hidden">{item.title}</span> }}/> 
         </div>,
         <div class="clearfix"></div>
     ]
