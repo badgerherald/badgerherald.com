@@ -44,6 +44,7 @@ exa-nameplate {
         background: white;
         margin-top: 6px;
 		z-index: 9999;
+		font-size: 18px;
 		box-shadow: 0 1px 2px 0 rgba(1,38,94,0.1);
 
 		&.active {
@@ -96,13 +97,13 @@ exa-nameplate {
 		}
 
 		/// Positioning the menu containers
-		wp-menu	menu {
+		wp-menu	> menu {
 			display: block;
 			margin: 0;
 			padding: 0;
 			float: right;
 		}
-		wp-menu.primary menu {
+		wp-menu.primary > menu {
 			margin-right: gutter(.5);
 			width: col(1.75,-.25);
 			@include breakpoint("tablet") {
@@ -116,7 +117,7 @@ exa-nameplate {
 				margin-right: 60px;
 			}
 		}
-		wp-menu.secondary menu {
+		wp-menu.secondary > menu {
 			margin-right: gutter(.5);
 			width: col(1.25,-.25);
 			@include breakpoint('desktop') {
@@ -125,7 +126,7 @@ exa-nameplate {
 			}
 			
 		}
-		wp-menu.social menu {
+		wp-menu.social > menu {
 			position: absolute;
 			bottom: 0;
 			padding: 24px gutter(1);
@@ -140,13 +141,62 @@ exa-nameplate {
 			}
 		}
 
+		/// Positioning & styling dropdowns
+		wp-menu {
+			menu menu {
+				display: none;
+			}
+			@include breakpoint('desktop') {
+				& > menu li:hover > menu {
+					display: block;
+					z-index: 20;
+					position: absolute;
+				}
+				& > menu > li.hasChildren {
+					position: relative;
+					& > wp-link > a {
+						padding-right: 22px !important;
+						&:after {
+							content: "d";
+							font-size: 12px;
+							padding-left: 2px;
+							transition: margin .1s;
+							font-family: $icon;
+							position: absolute;
+						}
+					}
+					&:hover {
+						background: white;
+						& > wp-link a:after {
+							margin-top: 3px;
+						}
+					}
+					&:hover > menu {
+						& > li a { 
+							@include linkColor($black); 
+							padding: 3px 0;
+							width: 100%;
+						}
+						display: block;
+						position: absolute;			
+						top: 100%;
+						min-width: 200px;
+						background: white;
+						list-style-type: none;
+						padding: 12px;
+						font-size: 18px;
+					}
+				}
+			}
+		}
+
 		/// Styling the list & links:
 		wp-menu	menu {
 			list-style-type: none;
+		}
+		wp-menu > menu > li {
 			@include breakpoint('desktop') {
-				li { 
-					display: inline; 
-				}
+				display: inline-block; 
 			}
 		}
 		wp-menu	menu > li a {
@@ -154,11 +204,14 @@ exa-nameplate {
 			text-decoration: none;
 			line-height: 1.4em;
 			display: block;
+			&:hover {
+				text-decoration:underline;
+			}
 			@include breakpoint('desktop') {
 				display: inline-block;
 			}
 		}
-		wp-menu.primary menu > li a {
+		wp-menu.primary > menu > li > wp-link > a {
 			color: $blue;
 			&:hover {
 				color: $blueLinkHover;
@@ -168,17 +221,20 @@ exa-nameplate {
 			border-left: 1px solid $grey;
 			padding: 12px 0 12px gutter(1.25);
 			@include breakpoint('desktop') {
-				font-size: 24px;
+				font-size: 22px;
 				border-left: 0;
 				border-bottom: 0;
-				padding: 6px;
+				padding: 6px 9px;
+			}
+			@include breakpoint('xl') {
+				font-size: 26px;
 			}
 			
 		}
-		wp-menu.primary menu > li:last-child a {
+		wp-menu.primary > menu > li:last-child > wp-link > a {
 			border-bottom: none;
 		}
-		wp-menu.secondary menu > li a {
+		wp-menu.secondary > menu > li > wp-link > a {
 			padding: 12px 0 12px 0px;
 			color: $black;
 			&:hover {
@@ -186,11 +242,11 @@ exa-nameplate {
 			}
 			font-size: 16px;
 			@include breakpoint('desktop') {
-				padding: 6px;
+				padding: 6px 9px;
 				font-size: 18px;
 			}
 		}
-		wp-menu.social menu > li.social {
+		wp-menu.social > menu > li.social {
 			display: inline-block;
 			margin-right: 10px;
 			@include breakpoint('desktop') {
@@ -200,10 +256,9 @@ exa-nameplate {
 				}
 			}
 		}
-		wp-menu.social menu > li.social a {
+		wp-menu.social > menu > li.social a {
 			display: inline;
 			position: relative;
-			
 			&:before {
 				font-family: $icon;
 				color: $white;
