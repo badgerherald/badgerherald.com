@@ -1,0 +1,134 @@
+.container.gallery {
+	width: 100%;
+	margin: 0;
+	padding: 0;
+	position: fixed;
+	z-index: 99998;
+	overflow-y: scroll;
+	.left-toggle, .right-toggle {
+		display: none;
+	}
+	.close-bar {
+		background: black;
+		width: 100%;
+		height: 40px;
+		position: fixed;
+		z-index: 99998;
+	}
+	.close {
+		width: 40px;
+		height: 40px;
+		position: fixed;
+		right: 10px;
+		background: $black url('assets/img/svg/close.svg') center center no-repeat;
+		background-size: 24px 24px;
+		opacity: .4;
+		&:hover {
+			opacity: .65;
+		}
+	}
+	.image-slide {
+		font-family: $headline;
+		color: $white;
+		font-size: 15px;
+		margin-top: 44px;
+		
+		img {
+			width: 100%;
+			height: auto;
+		}
+		.caption {
+			padding: 0px 10px;
+			margin-bottom: 36px;
+		}
+	}
+}
+
+@include breakpoint(tablet) {
+	.container.gallery {
+		.left-toggle,.right-toggle {
+			display: block;
+			position: fixed;
+			width: 35%;
+			left: 1%;
+			height: 100%;
+			opacity: .4;
+			background: url('assets/img/svg/leftarrow-white.svg') no-repeat left center;
+			background-size: 24px auto;
+			&:hover {
+				opacity: .8;
+			}
+		}
+		.right-toggle {
+			width: 63%;
+			left: 35%;
+			background: url('assets/img/svg/rightarrow-white.svg') no-repeat right center;
+			background-size: 24px auto;
+		}
+		.close-bar {
+			background: transparent;
+		}
+
+		.close {
+			right: 20px;
+			margin-top: 10px;
+		}
+
+		.image-slide {
+			width: 85%;
+			margin-left: auto;
+			margin-right: auto;
+			position: relative;
+			img {
+				max-width: 100%;
+				height: auto;
+				margin: 0 auto;
+			}
+		}
+		.image-slide:not(.active) {
+			display: none;
+		}
+	}
+}
+
+
+/*
+ * Old stuff to deal with some day:
+ */
+
+.gallery-block {
+    width: 100%;
+    display: block;
+    position: relative;
+    img {
+        width: 100%;
+    }
+    .open-gallery {
+        position: absolute;
+        background: #000;
+        display: inline-block;
+        bottom: 20px;
+        right: 20px;
+        font-size: 16px;
+        text-transform: uppercase;
+        font-weight: bold;
+        font-family: "PT Sans Narrow", Helvetica, Arial, Sans-Serif;
+        padding: 10px;
+        color: #fff;
+        opacity: .9;
+        &:hover {
+            text-decoration: underline;
+            color: #fff;
+        }
+    }
+}
+@include breakpoint('tablet') {
+    .gallery-block {
+        width: 100%;
+    }
+}
+
+
+
+
+

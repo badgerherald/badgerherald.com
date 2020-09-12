@@ -1,0 +1,67 @@
+/**
+ * BASE FONTS
+ * ------------------------------------------------------------------------- 
+ */
+
+@function em($px, $base: 15) {
+	@return ($px / $base) * 1em;
+}
+
+$base-font-size: 15px;
+$base-line-height: 21px;
+
+/*  Fonts */
+$headline: 	'PT Sans Narrow', Helvetica, Arial, Sans-Serif;
+$body:		  'Noto Serif', Oalatino, Georgia, Serif;
+$caption: 	open sans, helvetica, arial, sans-serif;
+$icon:      exa;
+
+body {
+	/* TODO: Determine whether Georgia, or Palatino is the best match; */
+	font-family: 	$body; 
+	font-size: 		$base-font-size;
+	line-height: 	$base-line-height;
+}
+
+p {
+	font-family: $body;
+	margin: 12px 0;
+}
+
+a {
+	text-decoration: 	none;
+	color:				$blue;
+	&:hover {
+		color: $blueLinkHover;
+	}
+}
+
+/**
+ * HEADER FONTS
+ * ------------------------------------------------------------------------- 
+ */
+
+h1 {
+	font-family: 	$headline;
+	font-size:		30px;
+	line-height: 	30px;
+	margin: 0 0 6px 0;
+	padding: 0;
+	a {
+		color: $black;
+	}
+}
+
+h2 {
+	font-family: 	$headline;
+	font-size:		22px;
+	line-height: 	27px;
+	margin: 0 0 -6px 0;
+	padding:0;
+	a {
+		color: $black;
+	}
+	&.author-title{
+		padding-top: 6px;
+	}
+}

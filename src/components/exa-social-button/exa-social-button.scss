@@ -1,0 +1,45 @@
+
+exa-social-button {
+	a {
+		font-size: 16px;
+		padding: 6px 12px;
+		font-family: $headline;
+		color: #fff;
+		text-decoration: none;
+		position: relative;
+		&:before {
+			font-family: $icon;
+			font-size: 14px;
+			padding-right: 4px;
+			top: 5px;
+			position: absolute;
+			left: 9px;			
+		}
+		&.twitter {
+			background: #059FF5;
+			padding-left:28px;
+			&:before {
+				content: 't';
+				padding-right: 6px;
+			}
+			&:hover {
+				background: $black;
+			}
+		}
+		&.facebook {
+			background: #4965A2;
+			padding-left: 25px;
+			&:before {
+				content: 'f';
+				top: 4px;
+				left: 7px;
+			}
+			&:hover {
+				background: $black;
+			}
+		}
+		&:hover {
+			color: white;
+		}
+	} 
+}

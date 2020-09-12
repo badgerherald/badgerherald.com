@@ -1,0 +1,122 @@
+
+/* Banners on the homepage */
+
+.section-banner {
+	width: 100%;
+	&.section-banner-news {
+		background: url('assets/img/headers/news.jpg');
+	} &.section-banner-banter {
+		background: url('assets/img/headers/banter.jpg');
+	} &.section-banner-artsetc {
+		background: url('assets/img/headers/artsetc.jpg');
+	} &.section-banner-sports {
+		background: url('assets/img/headers/sports.jpg');
+	} &.section-banner-opinion {
+		background: url('assets/img/headers/banter.jpg');
+	}
+	background-size: cover;
+	background-position: 0 0px;
+	height: 120px;
+	position: relative;
+	h2 {
+		position: absolute;
+		bottom:0;
+		background: $black;
+		color: $truewhite;
+		font-size: 24px;
+		text-transform: uppercase;
+		padding: 12px 20px;
+		line-height: 24px;
+		margin:0px;
+		display: inline;
+	}
+}
+
+ul.list-stories {
+	margin: 0;
+	margin-top: 30px;
+	padding: 0;
+	width: 100%;
+	font-family: $headline;
+	list-style: none;
+	font-size: 20px;
+	@include breakpoint("tablet") {
+		padding-left: gutter();
+		width: col(3);
+		float: left;
+		padding-bottom: 9999px;
+		margin-bottom: -9999px;
+	}
+	@include breakpoint("xl") {
+		width: col(4);
+		
+	}
+	.topic {
+		text-transform: uppercase;
+		color:$blue;
+		font-size: 14px;
+		font-weight: bold;
+	}
+	.summary-time-stamp {
+		text-transform: none;
+		color: grey;
+	}
+	h4 {
+		margin:6px 0 24px 0;
+		padding:0;
+		a {
+			color: $black;
+			&:hover {
+				color: $blue;
+			}
+		}
+	}
+}
+
+.featured-container {
+	@include breakpoint("tablet") {
+		padding-right: gutter();
+		border-right: 1px solid #e0eaee;
+		float: left;
+		width: col(6);
+		padding-bottom: 9999px;
+		margin-bottom: -9999px;
+	}
+	@include breakpoint("desktop") {
+		width: col(9);
+	}
+	@include breakpoint("xl") {
+		width: col(10);
+		padding-right: col(1,1);
+	}
+}
+
+
+ul.featured-stream-list {
+	list-style-type: none;
+}
+
+.all-link {
+	width: 100%;
+	clear: both;
+	padding-top: 18px;
+	border-top: 1px solid #e0eaee;
+	text-align: center;
+	margin-bottom: 48px;
+	font-family: $headline;
+	font-weight: bold;
+	text-transform: uppercase;
+	font-size: 20px;
+	a {
+		color: $darkgrey;
+		background: url("assets/img/icons/arrow-right-blue.png") no-repeat right center;
+		padding-right: 16px;
+		&:hover{
+			color: $darkgreyHover;
+		}
+	}
+}
+
+.col-container {
+	overflow: hidden;
+}

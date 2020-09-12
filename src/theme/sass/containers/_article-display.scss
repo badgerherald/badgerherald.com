@@ -1,0 +1,650 @@
+/**
+ * Article Display Container
+ *
+ * This container shows the main contents on single.php.
+ *
+ * ## Basic DOM Structure:
+ *
+ * 		.container.article-display
+ *			div.wrapper
+ *				article#post-xx.post-classes
+ *					div.clearfix
+ *					main
+ *						header.article-header (h1, h2, author, time &c.)
+ *						section.lede-sidebar (post sidebar content)
+ *						section.article-text
+ *						div.clearfix
+ *						section.article-footnotes
+ *
+ * ## Contents:
+ *
+ *  1.0 Hero styles.
+ *  2.0 Article header styles.
+ *  3.0 Lede sidebar styles.
+ *  4.0 Article text styles.
+ *  5.0 Footnotes style.
+ *
+ */
+
+/**
+ * 2.0  Article header styles.
+ * ----------------------------------------------------------------------------
+ */
+
+ .container.article-display {
+	main.article-content {
+		.meta {
+			min-height: 10px;
+			font-family: $headline;
+			color: $darkgrey;
+			margin-bottom: 24px;
+			.byline a {
+				color: $darkgrey;
+				font-weight: bold;
+				text-transform: uppercase;
+				&:hover {
+					color: $black;
+				}
+			}
+			.mug-box {
+				width: 40px;
+				margin-right: 10px;
+				margin-top: -3px;
+				position: relative;
+				float: left;
+				img {
+					width: 100%;
+				}
+			}
+			.tweet-button, .facebook-button{
+				font-size: 14px;
+				padding:3px 9px;
+				font-family: 'pt sans';
+				color: #fff;
+				margin-left: 6px;
+				float:right;
+				position: relative;
+				&:hover {
+					background: $black;
+				}
+			} 
+			.tweet-button {
+				background: #059FF5;
+				padding-left:27px;
+				&:before {
+					content: 't';
+					font-family: $icon;
+					padding-right: 5px;
+					font-size: 12px;
+					position:absolute;
+					left: 9px;
+				}
+			}
+			.facebook-button {
+				background: #4965A2;
+				padding-left:27px;
+				&:before {
+					content: 'f';
+					font-family: $icon;
+					padding-right: 5px;
+					font-size: 12px;
+					position:absolute;
+					left: 9px;
+				}
+			}
+		}
+		.hero {
+			img {
+				width: 100%;
+				height: auto;
+			}
+			.hero-caption {
+				margin-top: 0px;
+				font-family: $headline;
+				color: $darkgrey;
+				padding-bottom: 12px;
+				position: relative;
+				.hrld-media-credit {
+					display: inline-block;
+					line-height: 36px;
+				}
+				a {
+					color: $darkgrey;
+					font-weight: bold;
+					text-transform: uppercase;
+					&:hover {
+						color: $black;
+					}
+				}
+				&:after {
+					content: " ";
+					border-bottom: 1px solid $darkgrey;
+					width: 120px;
+					display: block;
+					position: absolute;
+					left:0;
+					bottom:0;
+					height: 1px;
+				}
+			}
+		}
+	}
+	aside.sidebar {
+		width: 100%;
+		display: block;
+		top: 0;
+		right: 0;
+		margin-bottom: 24px;
+		.ad {
+			padding: 0 0 24px;
+		}
+		.popular-post-widget {
+			margin: 18px 0;
+			position: relative;
+			width: 100%;
+			h3 {
+				background: $black;
+				font-family: $headline;
+				text-transform: uppercase;
+				color: $truewhite;
+				margin: 0;
+				text-align: center;
+				font-size: 14px;
+				padding: 3px 20px 3px 20px;
+				display: inline;
+			}
+			a {
+				position: relative;
+				border-bottom: 1px solid $greyBorder;
+				background: white;
+				padding: 0px 10px;
+				display: block;
+				font-family: $headline;
+				color: $trueblack;
+				font-weight:700;
+				.graph-bar {
+					background: $blue;
+					height: 2px;
+					position:absolute;
+					bottom:-1px;
+					left: 0;
+				}
+				img {
+					height: 80px;
+					display: block;
+					width: auto;
+					margin-top: 20px;
+					padding: 0px 0 20px 15px;
+					float: right;
+				}
+				h2 {
+					font-size: 16px;
+					line-height: 21px;
+					margin-bottom: 20px;
+					font-weight: bold;
+					color: $black;
+				}
+				.topic {
+					color: $darkgrey;
+					padding-top: 20px;
+					display: block;
+					font-weight: normal;
+				}
+				&:hover {
+					color: $blue;
+				}
+			}
+		}
+	}
+}
+
+@include breakpoint("tablet") {
+	.container.article-display {
+		main.article-content {
+			.article-text {
+				width: col(7);
+			}
+		}
+	}
+}
+
+@include breakpoint("desktop") {
+	.container.article-display {
+		main.article-content {
+			@include setCol(9,-2);
+			float: left;
+			.article-text {
+				width: col(7);
+			}
+			.meta {
+				min-height: 18px;
+			}
+		}
+		aside.sidebar {
+			margin-left: gutter(2);
+			width: col(3,1);
+			float: left;
+			.sidebar-thing {
+				margin-bottom: 54px;
+			}
+		}
+	}
+}
+
+@include breakpoint(xl) {
+	.container.article-display {
+		main.article-content {
+			@include setCol(10,-1);
+			.article-text {
+				width: col(8);
+			}
+		}
+		main.article-content {
+			.hero {
+				.hero-caption {
+					padding-right: 80px;
+				}
+			}
+		}
+		aside.sidebar {
+			margin-left: col(1,2);
+		}
+	}
+	.container.article-display.feature {
+		main.article-content {
+			.article-text, .meta {
+				padding-right: 0;
+				width: 780px;
+				margin: 0 auto;
+				margin-bottom: 24px;
+				margin-top: 54px;
+			}
+		}
+	}
+}
+
+
+/**
+ * 4.0 Article Text Styles.
+ * ----------------------------------------------------------------------------
+ */
+
+.container.article-display {
+	.article-text {
+		& > :not(.shadow), & > p > :not(.shadow) { // .shadow is ignored
+			font-size: 16px;
+			line-height: 24px;
+			p {
+				margin-bottom: 24px;
+			}
+			a {
+				border-radius: 2px;
+				color: $darkblue;
+				&:hover {
+					color: $blue;
+				}
+			}
+			h1 {
+				font-family: $headline;
+				margin: 18px 0;
+			}
+			h2 {
+				font-family: $headline;
+				font-size: 30px;
+				margin: 24px 0px 12px;
+			}
+			h3 {
+				font-family: $headline;
+				color: $darkgrey;
+				font-weight: bold;
+				margin: 12px 0 0px;
+				font-size: 24px;
+				text-shadow: -1px 1px rgba($truewhite,.8);
+			}
+			h4 {
+				font-family: $body;
+				color: $black;
+				font-weight: bold;
+				font-size: 18px;
+				margin: 12px 0 12px;
+				margin-left: 15px;
+				&:before {
+					content: "*";
+					font-family: $icon;
+					position: absolute;
+					margin-left: -15px;
+					margin-top:-15px;
+				}
+			}
+			h5,h6 {
+				color: $darkgrey;
+				font-weight: normal;
+				font-size: 21px;
+				font-size: 18px;
+				margin: 18px 0 12px;
+			}
+
+			/** Lists */
+			ul {
+				list-style-type: none;
+				margin: 24px 0;
+				li {
+					margin: 12px 0;
+					padding-left: 20px;
+					&:before {
+						content: '>';
+						font-family: $icon;
+						font-size: .6em;
+						position: absolute;
+						margin-left: -30px;
+					}
+				}
+			}
+			ol {
+				list-style-type: none;
+				margin: 0;
+				counter-reset:li-counter;
+				margin: 24px 0;
+				li {
+					margin: 12px 0;
+					padding-left: 20px;
+					&:before {
+						content: counter(li-counter);
+						counter-increment: li-counter;
+						font-family: $headline;
+						font-weight: bold;
+						position: absolute;
+						margin-left: -40px;
+						margin-top: 5px;
+						background: $truewhite;
+						font-size: .8em;
+						padding: 0px 3px;
+						display: block;
+						min-width: 20px;
+						height: 20px;
+						text-align: center;
+						line-height: 20px;
+					}
+				}
+			}
+			blockquote {
+				font-family: $headline;
+				background: $truewhite;
+				margin-left: 0;
+				border-left: 2px solid $blue;
+			}
+			blockquote p {
+				margin-left: 0;
+				padding: 12px 20px;
+				font-family: $headline;
+				font-size: 18px;
+			}
+			.ad-in-content {
+				margin: 24px 0;
+				&:before {
+					content : "Article continues after advertisement";
+					text-align: center;
+					font-family: $headline;
+					text-transform: uppercase;
+					color: $darkgrey;
+					font-size: 12px;
+					line-height: 14px;
+				}
+			}
+			.wp-caption {
+				max-width: 100% !important; // wordpress adds an element style for width;
+				font-size: 16px;
+				line-height: 18px;
+				color: $darkgrey;
+				margin: 24px 0;
+				.hrld-media-credit-name a {
+					padding-right: 3px;
+					color: $black;
+					font-weight: bold;
+					text-shadow: none;
+					// font-weight: 800;
+					text-transform: uppercase;
+					&:hover {
+						color: $blue;
+					}
+				}
+				dd {
+					margin-left:0;
+				} img {
+					width:100%;
+					height:auto;
+				}
+				p, dd {
+					margin: 6px 0px 12px;
+					&:last-child {
+						margin-bottom: 0;
+					}
+				} * {
+					font-family: $headline !important;
+				} .wp-caption-text {
+					max-width:700px;
+				} .hrld-media-credit {
+					margin-top: 6px;
+					display: block;
+				}
+			}
+			img {
+				height: auto;
+			}
+			& > img.alignleft,& >img.alignright,&>img.alignnone,&>img.aligncenter {
+				margin: 0px 0 24px;
+			}
+
+		}
+		.video-container {
+			float: left;
+			max-width: 100%;
+			iframe {
+				max-width: 100%;
+			}
+		}
+	}
+}
+
+q.pullquote {
+	quotes: "“" "”";
+	&:before {
+		display: none;
+	}
+	&.quotemarks:before { 
+		font-size: 66px; 
+		float: left;
+		padding-right: 6px;
+		display: block;
+		position: relative;
+		top: 0px;
+	}	
+	&:after { 
+		content: "";
+		width: 80px;
+		height: 3px;
+		background: $greyText;
+		display: block;
+		position: absolute;
+		bottom: 0;
+	}
+	display: block;
+	width: 100%;
+	float: left;
+	font-weight: bolder;
+	color: $black ;
+	font-size: 24px;
+	line-height: 36px;
+	margin: 18px 0 48px;
+	padding: 18px 0px 18px;
+	position: relative;
+	font-style: italic;
+	cite {
+		display: block;
+		position: relative;
+		left: 0;
+		margin-top: 18px;
+		margin-bottom: -18px;
+		color: $greyText;
+		font-weight: normal;
+		font-size: 18px;
+	}
+}
+
+@include breakpoint(tablet) {
+	.container.article-display.feature {
+		.article-content {
+			margin: 0 auto;
+			float: none;
+		}
+	}
+	q.pullquote{
+		&.alignleft {
+			width: 360px;
+			float: left;
+			padding-right: 60px;
+		}
+		&.alignright {
+			width: 360px;
+			float: right;
+			padding-left: 60px;
+		}
+		&.aligncenter {
+			font-size: 28px;
+			line-height: 36px;
+			margin: 48px 0 48px;
+			cite {
+				font-size: 24px;
+			}
+			&.quotemarks:before { 
+				font-size: 100px; 
+				padding-right: 12px;
+				top: 6px;
+			}	
+		}
+	}
+}
+
+@include breakpoint(tablet) {
+	.container.article-display {
+		.article-text {
+			& > :not(.shadow), & > p > :not(.shadow) {
+				font-size: 20px;
+				line-height: 30px;
+				width:100%;
+				position: relative;
+				blockquote, ul, ol, dl {
+					li {
+						padding:0;
+					}
+				}
+				.wp-caption {
+					position: relative;
+					font-size: 16px;
+					line-height: 24px;
+					margin: 12px 0 24px;
+					img {
+						width: 100%;
+						height: auto;
+					}
+				}
+				img.alignleft {
+					float: left;
+					// margin-left: -80px !important;
+					padding-right: 20px;
+					width: 300px !important;
+					height: auto;
+				}
+				img.alignright {
+					float: right;
+					padding-left: 20px;
+					width: 300px !important;
+					height: auto;
+				}
+				img.alignnone, img.aligncenter {
+					width:100%;
+					float:left;
+				}
+				.video-container {
+					float: left;
+					max-width: 100%;
+					margin-bottom: 24px;
+					iframe {
+						max-width: 100%;
+						//width: 100%;
+					}
+				}
+				.ad-in-content {
+					margin: 24px 0;
+				}
+			}
+		}
+	}
+}
+
+@include breakpoint(desktop) {
+	.container.article-display {
+		.article-text {
+			& > :not(.shadow), & > p > :not(.shadow) {
+				img.alignnone, img.aligncenter, & > img.alignnone, & > img.aligncenter {
+					width:100% !important;
+					float: left;
+				}
+			}
+		}
+	}
+}
+
+@include breakpoint(xl) {
+	.container.article-display {
+		.wp-caption {
+			&.alignnone, &.aligncenter {
+				width:780px !important;
+			}
+		}
+	}
+}
+
+
+/**
+ * 5.0 Footnotes Styles.
+ * ----------------------------------------------------------------------------
+ */
+.container.article-display {
+	.article-footnotes {
+		width:100%;
+		position: relative;
+		hr {
+			border-bottom: 1px solid $darkgrey;
+			width:120px;
+			margin-left:0;
+		}
+		p {
+			color: $darkgrey;
+			font-size: 14px;
+			font-family: $headline;
+		}
+	}
+}
+
+@include breakpoint(tablet) {
+	.container.article-display {
+		.footnote-sidebar {
+			width: 380px;
+			margin-left: 80px;
+			height: 400px;
+			display: block;
+			background: red;
+			float:right;
+			margin-top: -436px;
+		}
+	}
+}
+
+@include breakpoint(desktop) {
+	.container.article-display {
+		.article-footnotes {
+			width:540px;
+		}
+	}
+}

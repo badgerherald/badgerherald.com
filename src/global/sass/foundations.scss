@@ -1,58 +1,19 @@
-$base-font-size: 15px;
-$base-line-height: 21px;
-
-@function em($px, $base: 15) {
-    @return ($px / $base) * 1em;
-}
-
-/*  Fonts */
-$headline: 	'PT Sans', Helvetica, Arial, Sans-Serif;
-$body:		  'Noto Serif', Oalatino, Georgia, Serif;
-$caption: 	open sans, helvetica, arial, sans-serif;
-$icon:      exa;
-
-/** v0.3.5 colors — preferred use. 
- * (modifier)colorObjectOnBackgroundcolorAction 
- * lightblueLinkOnBrownHover 
- */
-
-//true colors
-$trueblack: #000;
-$truewhite: #fff;
-$trueblue: #0000ff;
-$truered: #ff0000;
-$truegreen:  #00ff00;
-$debug: rgba(0,0,0,.1);
-
-//blues
-$blue: #3c74b9;
-$blueLinkHover: #3a97f7;
-$darkblue: #195ea6;
-
-//greys
-$grey: #eff4f6;
-$greyBorder: #c7d0d5;
-$greyText: #93a2aa;
-$greyTextHover: #626d72;
-$greyBorderOnBlack: #262626;
-$greyTextOnBlack: #5c5c5c;
-$lightgrey: #f5f2f2;
-$lightgreyOnWhite: #ededed;
-$darkgrey: #2c2c2c;
-$darkgreyBorder: #e0eaee;
-$darkgreyHover: #7e8c93;
-
-$black: #191919;
-$white: #ffffff;
-$red: #c81212;
-
-@import "foundations/grid.scss";
-
 /**
- * //todo: colors other than blue
- * Mixin for link hover states
+ *
+ * Style Foundations
+ * 
+ * This set of style (mostly definitions) is shared between theme code
+ * and is global to web components.
+ *
  */
- @mixin linkColor($color) {
+
+@import "foundations/colors.scss";
+@import "foundations/fonts.scss";
+@import "foundations/grid.scss";
+@import "foundations/normalize.scss";
+@import "foundations/helperclasses.scss";
+
+@mixin linkColor($color) {
   @if $color == $black {
     color: $black;
     &:hover { color: #787878; }
@@ -130,8 +91,4 @@ p {
   margin-bottom: .5em;
 }
 
-}
-
-.clearfix {
-  clear: both;
 }
