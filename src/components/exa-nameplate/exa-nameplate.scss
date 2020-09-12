@@ -2,6 +2,7 @@
 @mixin socialIcon($char,$color) {
 	content: $char;
 	background: $color;
+	
 }
 
 /**
@@ -22,6 +23,10 @@ exa-nameplate {
 		img {
 			height: auto;
 			width: 100%;
+		}
+		transition: all .1s;
+		&:hover {
+			transform: scale(1.03,1.03);
 		}
 		@include breakpoint('xl') {
 			width: col(3);
@@ -50,7 +55,7 @@ exa-nameplate {
 		&.active {
         	display: block;
 		}
-		padding-bottom: 66px; // make room for the social menu, which is absolutely positioned
+		padding-bottom: 80px; // make room for the social menu, which is absolutely positioned
 		@include breakpoint("tablet") {
 			@include setCol(4,.5,true);
 		}
@@ -205,7 +210,7 @@ exa-nameplate {
 			line-height: 1.4em;
 			display: block;
 			&:hover {
-				text-decoration:underline;
+				text-decoration: underline;
 			}
 			@include breakpoint('desktop') {
 				display: inline-block;
@@ -235,13 +240,15 @@ exa-nameplate {
 			border-bottom: none;
 		}
 		wp-menu.secondary > menu > li > wp-link > a {
-			padding: 12px 0 12px 0px;
+			padding: 3px 0;
+			margin-top: 12px;
 			color: $black;
 			&:hover {
 				color: $blue;
 			}
 			font-size: 16px;
 			@include breakpoint('desktop') {
+				margin-top: 0;
 				padding: 6px 9px;
 				font-size: 18px;
 			}
@@ -256,10 +263,13 @@ exa-nameplate {
 				}
 			}
 		}
-		wp-menu.social > menu > li.social a {
+		wp-menu.social > menu > li.social > wp-link > a {
 			display: inline;
 			position: relative;
-			&:before {
+			&:hover {
+				text-decoration: none;
+			}
+			&::before {
 				font-family: $icon;
 				color: $white;
 				text-align: center;
@@ -270,12 +280,16 @@ exa-nameplate {
 				line-height: 35px;
 				width: 34px;
 				height: 34px;
+				transition: all .1s;
 				@include breakpoint('desktop') {
 					font-size: 16px;
 					line-height: 26px;
 					width: 24px;
 					height: 24px;
 				}
+			}
+			&:hover::before {
+				transform: scale(1.1,1.1); 
 			}
 		}
 		wp-menu {

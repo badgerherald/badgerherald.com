@@ -12,6 +12,9 @@ exa-search-form {
 			border: 3px solid $grey;
 			transition: all .3s;
 			border-radius: 3px;
+			&:hover {
+				cursor: pointer;
+			}
 			&::placeholder {
 				color: $greyText;
 				@include breakpoint('desktop') {
@@ -22,12 +25,14 @@ exa-search-form {
 				color: $black;
 				border: 3px solid $blue;
 			}
+			&:focus:hover {
+				cursor: inherit;
+			}
 			@include breakpoint('desktop') {
 				bottom: -3px;
 				float: right;
 				width: 36px;
 				padding: 6px 20px 6px 20px;
-				
 				margin-right: 0px;
 				border: none;
 				&::placeholder {
@@ -53,11 +58,18 @@ exa-search-form {
 			width: 30px;
 			height: 30px;
 			color: $blue;
+			transition: all .1s;
+			cursor: pointer;
 			@include breakpoint('desktop') {
-				bottom: 3px;
+				bottom: 4px;
+				right: 7px;
 				top: inherit;
 				font-size: 18px;
 			}
+		}
+		&:hover::after {
+			transform: scale(1.1,1.1); 
+			
 		}
 		input[type=submit] {    // the submit field.
 			display: none;
