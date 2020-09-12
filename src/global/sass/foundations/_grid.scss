@@ -80,22 +80,22 @@ $gutterWidth: 20;
  */
 @mixin breakpoint($breakpoint) {
   @if $breakpoint == "mobilexl" {
-    @media (min-width: pageWidth(6) + "px") {
+    @media (min-width: (pageWidth(6) + 40) + "px") {
       @content;
     }
   }
   @if $breakpoint == "tablet" {
-    @media (min-width: pageWidth(9) + "px") {
+    @media (min-width: (pageWidth(9) + 50) + "px") {
       @content;
     }
   }
   @else if $breakpoint == "desktop" {
-    @media (min-width: pageWidth(12) + "px") {
+    @media (min-width: (pageWidth(12) + 60) + "px") {
       @content;
     }
   }
   @else if $breakpoint == "xl" {
-    @media (min-width: pageWidth(12) + "px") {
+    @media (min-width: (pageWidth(15) + 100) + "px") {
       @content;
     }
   }

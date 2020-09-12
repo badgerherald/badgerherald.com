@@ -10,7 +10,7 @@ $container = $GLOBALS['container'] ?: new container('header');
 ?>
 <div class="<?php echo $container->classes(); ?>">
 	<div class="wrapper">
-		<div class="sidekick-ad" style="">
+		<div class="sidekick-ad">
 				<?php 
 				$DoubleClick->place_ad(
 								'badgerherald.com-upper-sidekick',
@@ -102,8 +102,8 @@ $container = $GLOBALS['container'] ?: new container('header');
 	<div class="clearfix"></div>
 	</div>
 
-	<div class="wrapper" style="padding-bottom; 36px;">
-	<div class="ad" style="float:right;">
+	<div class="wrapper">
+	<div class="ad">
 	
 	<?php 
 		global $DoubleClick;

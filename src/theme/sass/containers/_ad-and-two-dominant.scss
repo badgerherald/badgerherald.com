@@ -2,7 +2,7 @@
 
 .container.ad-and-two-dominant {
 	.sidekick-ad {
-		margin-bottom: 12px;
+		margin-bottom: 24px;
 	}
 	a.story {
 		position: relative;
@@ -53,43 +53,28 @@
 			}
 		}
 	}
-}
-
-@include breakpoint('tablet') {
-	.container.ad-and-two-dominant {
+	@include breakpoint('mobilexl') {
 		a.story {
-			width: flex(370,760);
-			float:left;
-			&:last-child {
-				margin-left: flex(20,760);
+			width: col(3);
+			float: left;
+			&:first-child {
+				margin-right: gutter();
 			}
 		}
 	}
-}
-
-@include breakpoint('desktop') {
-	.container.ad-and-two-dominant {
+	@include breakpoint('tablet') {
 		.sidekick-ad {
-			float: left;
-			margin-right: 100px;
-		}
-		a.story {
-			width: 300px;
-			float: left;
-			&:last-child {
-				margin-left: 20px;
-			}
+			float: right;
 		}
 	}
-}
-
-@include breakpoint('xl') {
-	.container.ad-and-two-dominant {
-		.sidekick-ad {
-			margin-right: 100px;
-		}
+	@include breakpoint('desktop') {
 		a.story {
-			width: 380px;
+			width: col(4);
+		}
+	}
+	@include breakpoint('xl') {
+		a.story {
+			width: col(5);
 		}
 	}
 }

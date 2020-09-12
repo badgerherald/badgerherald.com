@@ -116,8 +116,6 @@
 						color: $black;
 					}
 				}
-				br {
-				}
 				&:after {
 					content: " ";
 					border-bottom: 1px solid $darkgrey;
@@ -152,7 +150,6 @@
 				margin: 0;
 				text-align: center;
 				font-size: 14px;
-				margin-bottom: 12px;
 				padding: 3px 20px 3px 20px;
 				display: inline;
 			}
@@ -201,22 +198,32 @@
 	}
 }
 
-@include breakpoint(desktop) {
+@include breakpoint("tablet") {
 	.container.article-display {
 		main.article-content {
-			width: col(9,-1);
-			position: relative;
-			float:left;
-			padding-right: 20px;
+			.article-text {
+				width: col(7);
+			}
+		}
+	}
+}
+
+@include breakpoint("desktop") {
+	.container.article-display {
+		main.article-content {
+			@include setCol(9,-2);
+			float: left;
+			.article-text {
+				width: col(7);
+			}
 			.meta {
 				min-height: 18px;
 			}
 		}
 		aside.sidebar {
-			width: 320px;
-			padding-left: 20px;
-			border-left: 1px solid $greyBorder;
-			float:left;
+			margin-left: gutter(2);
+			width: col(3,1);
+			float: left;
 			.sidebar-thing {
 				margin-bottom: 54px;
 			}
@@ -227,8 +234,9 @@
 @include breakpoint(xl) {
 	.container.article-display {
 		main.article-content {
+			@include setCol(10,-1);
 			.article-text {
-				padding-right: 80px;
+				width: col(8);
 			}
 		}
 		main.article-content {
@@ -237,6 +245,9 @@
 					padding-right: 80px;
 				}
 			}
+		}
+		aside.sidebar {
+			margin-left: col(1,2);
 		}
 	}
 	.container.article-display.feature {
@@ -574,7 +585,6 @@ q.pullquote {
 @include breakpoint(desktop) {
 	.container.article-display {
 		.article-text {
-			width:680px;
 			& > :not(.shadow), & > p > :not(.shadow) {
 				img.alignnone, img.aligncenter, & > img.alignnone, & > img.aligncenter {
 					width:100% !important;
@@ -587,9 +597,6 @@ q.pullquote {
 
 @include breakpoint(xl) {
 	.container.article-display {
-		.article-text {
-			width: 780px;
-		}
 		.wp-caption {
 			&.alignnone, &.aligncenter {
 				width:780px !important;

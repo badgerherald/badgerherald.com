@@ -14,7 +14,6 @@ exa_container('feature-widget');
 exa_container('ad-and-two-dominant');
 exa_container('leaderboard');
 exa_container('list-and-banter');
-exa_container('latest-videos');
 exa_container('old-homepage');
 
 get_footer();

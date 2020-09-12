@@ -1,72 +1,95 @@
-@mixin transition($prop, $time, $fn, $delay:0ms) {
-    -webkit-transition: $prop $time $fn $delay;
-    -moz-transition: $prop $time $fn $delay;
-    -o-transition: $prop $time $fn $delay;
-    transition: $prop $time $fn $delay;
-}
-
-html {
-	height: 100%;
-}
 
 body {
-	width: 100%;
 	background: $grey;
-    height:100%;
-    min-height:100%;
-    overflow-x: hidden;
-}
-
-.wrapper {
-	margin: 0 auto;
-	max-width: 540px;
-	width: flex(280,300);
-	position: relative;
-}
-
-/* Page surrounds everything inside of body */
-
-#page {
-	width: 100%;
-	position: absolute;
-	height: 100%;
-	margin: 0;
-	padding: 0;
-	left: 0;
-	@include transition(all, 250ms, linear);
-	&.pullout-active {
-		left: 260px;
-		position: fixed;
-	}
 }
 
 .container {
 	@include setGrid(3, 80, 20);
 	.wrapper {
-		max-width: 100%;
+		min-width: pageWidth(3) + px;
+		max-width: 92%;
+		margin: 0 auto;
+		position: relative;
 	}
 }
 
 @include breakpoint("mobilexl") {
 	.container {
+		.wrapper {
+			min-width: pageWidth(6) + px;
+			max-width: 95%;
+		}
 		@include setGrid(6, 80, 20);
 	}
 }
 @include breakpoint("tablet") {
 	.container {
+		.wrapper {
+			min-width: pageWidth(9) + px;
+		}
 		@include setGrid(9, 80, 20);
 	}
 }
 
 @include breakpoint("desktop") {
 	.container {
+		.wrapper {
+			min-width: pageWidth(12) + px;
+			max-width: 90%;
+		}
 		@include setGrid(12, 80, 20);
 	}
 }
 
 @include breakpoint("xl") {
 	.container {
+		.wrapper {
+			min-width: pageWidth(15) + px;
+			max-width: 80%;
+		}
 		@include setGrid(15, 80, 20);
 	}
 } 
 
+.container {
+	margin: 24px 0;
+	width: 100%;
+	position: relative;
+	&.mobile, &.tablet, &.desktop, &.xl {
+		display: none;
+	}
+	&.mobile {
+		display: block;
+	}
+}
+
+.container.black {
+	background: $black;
+}
+
+@include breakpoint('tablet') {
+	.container.mobile, .container.desktop, .container.xl {
+		display: none;
+	}
+	.container.tablet {
+		display: block;
+	}
+}
+
+@include breakpoint('desktop') {
+	.container.mobile, .container.tablet, .container.xl {
+		display: none;
+	}
+	.container.desktop {
+		display: block;
+	}
+}
+
+@include breakpoint('xl') {
+	.container.mobile, .container.tablet, .container.desktop {
+		display: none;
+	}
+	.container.xl {
+		display: block;
+	}
+}

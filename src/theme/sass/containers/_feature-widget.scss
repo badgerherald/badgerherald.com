@@ -88,21 +88,28 @@
 @include breakpoint('desktop') {
 	.container.feature-widget {
 		.feature {
-			width: 700px;
+			width: col(9);
 			position: relative;
 			float: left;
+			@include breakpoint('xl') {
+				width: col(10);
+			}
 		}
 		.widget {
 			display: block;
-			width: 300px;
+			width: col(3);
 			background: $white;
 			float: left;
-			margin-left: 20px;
+			margin-left: gutter(1);
 			position: relative;
 			text-align: center;
 			padding-top: 36px;
 			display: block;
 			padding-bottom: 36px;
+			@include breakpoint('xl') {
+				width: col(4);
+				margin-left: col(1,2);
+			}
 			h3.title {
 				background: $blue;
 				margin:0;
@@ -156,13 +163,3 @@
 	}
 }
 
-@include breakpoint('xl') {
-	.container.feature-widget {
-		.feature {
-			width: 860px;
-		}
-		.widget {
-			width: 300px;
-		}
-	}
-}

@@ -13,7 +13,8 @@ $container = $GLOBALS['container'] ?: new container('colophon');
 			<?php
 				if ( has_nav_menu( 'exa_main_menu' ) ) {
 					wp_nav_menu( array(
-						'theme_location' => 'exa_main_menu'
+						'theme_location' => 'exa_main_menu',
+						'depth' => 1
 						)
 					);
 				} else {
@@ -26,7 +27,8 @@ $container = $GLOBALS['container'] ?: new container('colophon');
 
 			if ( has_nav_menu( 'exa_secondary_menu' ) ) {
 				wp_nav_menu( array(
-					'theme_location' => 'exa_secondary_menu'
+					'theme_location' => 'exa_secondary_menu',
+					'depth' => 1
 					)
 				);
 			} else {

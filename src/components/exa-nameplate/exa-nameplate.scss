@@ -61,7 +61,7 @@ exa-nameplate {
 		@include breakpoint("tablet") {
 			// resets for desktop:
 			display: block;
-			@include resetCol();
+			@include setCol(9,"",true);
 			box-shadow: none;
 			background: transparent;
 			margin-top: -12px;
@@ -77,10 +77,12 @@ exa-nameplate {
 			width: col(7);
 		}
 		@include breakpoint("desktop") {
+			@include setCol(12,0,true);
 			left: col(3,1);
-			width: col(10);
+			width: col(9);
 		}
 		@include breakpoint("xl") {
+			@include setCol(15,0,true);
 			width: col(12); // bump 2 columns
 		}
 
@@ -104,7 +106,7 @@ exa-nameplate {
 		}
 
 		/// Positioning the menu containers
-		wp-menu	> menu {
+		wp-menu	menu {
 			display: block;
 			margin: 0;
 			padding: 0;

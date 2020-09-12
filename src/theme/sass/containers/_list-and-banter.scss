@@ -153,7 +153,7 @@
 	}
 }
 
-@include breakpoint(tablet) {
+@include breakpoint(mobilexl) {
 	.container.list-and-banter {
 		.story {
 			padding: 18px 20px;
@@ -171,26 +171,32 @@
 	}
 }
 
-@include breakpoint(desktop) {
+@include breakpoint(tablet) {
 	.list {
-		width: 620px;
+		width: col(5);
 		float: left;
 		margin-right: 20px;
 	}
 	.banter-widget {
-		width: 380px;
-		float: left;
+		width: col(4);
+		float: right;
+	}
+}
+
+@include breakpoint(desktop) {
+	.list {
+		width: col(7);
+	}
+	.banter-widget {
+		width: col(4);
 	}
 }
 
 @include breakpoint(xl) {
 	.list {
-		width: 620px;
-		float: left;
-		margin-right: 100px;
+		width: col(8);
 	}
 	.banter-widget {
-		width: 460px;
-		float: left;
+		width: col(5);
 	}
 }

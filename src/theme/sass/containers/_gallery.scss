@@ -122,7 +122,7 @@
         }
     }
 }
-@media(min-width: 760px) {
+@include breakpoint('tablet') {
     .gallery-block {
         width: 100%;
     }
