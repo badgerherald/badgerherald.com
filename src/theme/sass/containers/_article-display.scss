@@ -204,7 +204,7 @@
 @include breakpoint(desktop) {
 	.container.article-display {
 		main.article-content {
-			width: 700px;
+			width: col(9,-1);
 			position: relative;
 			float:left;
 			padding-right: 20px;
@@ -225,10 +225,8 @@
 }
 
 @include breakpoint(xl) {
-	/* Header desktop styles */
 	.container.article-display {
 		main.article-content {
-			width: 860px;
 			.article-text {
 				padding-right: 80px;
 			}

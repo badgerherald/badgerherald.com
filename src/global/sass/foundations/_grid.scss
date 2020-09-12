@@ -79,13 +79,18 @@ $gutterWidth: 20;
  * Breakpoint
  */
 @mixin breakpoint($breakpoint) {
-  @if $breakpoint == "tablet" {
+  @if $breakpoint == "mobilexl" {
     @media (min-width: pageWidth(6) + "px") {
       @content;
     }
   }
-  @else if $breakpoint == "desktop" {
+  @if $breakpoint == "tablet" {
     @media (min-width: pageWidth(9) + "px") {
+      @content;
+    }
+  }
+  @else if $breakpoint == "desktop" {
+    @media (min-width: pageWidth(12) + "px") {
       @content;
     }
   }

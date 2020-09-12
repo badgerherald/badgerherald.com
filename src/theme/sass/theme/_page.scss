@@ -47,21 +47,26 @@ body {
 	}
 }
 
-@include breakpoint(tablet) {
+@include breakpoint("mobilexl") {
 	.container {
 		@include setGrid(6, 80, 20);
 	}
 }
-
-@include breakpoint("desktop") {
+@include breakpoint("tablet") {
 	.container {
 		@include setGrid(9, 80, 20);
 	}
 }
 
-@include breakpoint("xl") {
+@include breakpoint("desktop") {
 	.container {
 		@include setGrid(12, 80, 20);
+	}
+}
+
+@include breakpoint("xl") {
+	.container {
+		@include setGrid(15, 80, 20);
 	}
 } 
 

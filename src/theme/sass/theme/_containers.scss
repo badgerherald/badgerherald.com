@@ -32,7 +32,6 @@
 }
 
 @include breakpoint('desktop') {
-	$gridColor: red;
 	.container.mobile, .container.tablet, .container.xl {
 		display: none;
 	}
@@ -42,7 +41,6 @@
 }
 
 @include breakpoint('xl') {
-	$gridColor: green;
 	.container.mobile, .container.tablet, .container.desktop {
 		display: none;
 	}

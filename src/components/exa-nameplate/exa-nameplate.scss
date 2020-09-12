@@ -28,7 +28,7 @@ exa-nameplate {
 		&:hover {
 			transform: scale(1.03,1.03);
 		}
-		@include breakpoint('xl') {
+		@include breakpoint('desktop') {
 			width: col(3);
 		}
 	}
@@ -37,14 +37,13 @@ exa-nameplate {
 	 * On mobile, .menu is the dropdown container when you tap the 
 	 * expand button. 
 	 *
-	 * On desktop, it's a transparent container to the left of
+	 * On tablet+, it's a transparent container to the left of
 	 * the logo.
 	 *
 	 */
     div.menus {
 		display: none;
 		@include setCol(3,.5,true);
-		position: absolute;
 		right: gutter(-0.25);
         background: white;
         margin-top: 6px;
@@ -56,10 +55,10 @@ exa-nameplate {
         	display: block;
 		}
 		padding-bottom: 80px; // make room for the social menu, which is absolutely positioned
-		@include breakpoint("tablet") {
+		@include breakpoint("mobilexl") {
 			@include setCol(4,.5,true);
 		}
-		@include breakpoint("desktop") {
+		@include breakpoint("tablet") {
 			// resets for desktop:
 			display: block;
 			@include resetCol();
@@ -77,9 +76,12 @@ exa-nameplate {
 			top: 0px;
 			width: col(7);
 		}
-		@include breakpoint("xl") {
+		@include breakpoint("desktop") {
 			left: col(3,1);
-			width: col(9); // bump 2 columns
+			width: col(10);
+		}
+		@include breakpoint("xl") {
+			width: col(12); // bump 2 columns
 		}
 
 		/// Positioning the search form
@@ -88,7 +90,7 @@ exa-nameplate {
 			display: block;
 			margin-top: 0px;
 			padding: 18px gutter(.5);
-			@include breakpoint('desktop') {
+			@include breakpoint('tablet') {
 				position: absolute;
 				width: 100%;
 				display: block;
@@ -111,10 +113,10 @@ exa-nameplate {
 		wp-menu.primary > menu {
 			margin-right: gutter(.5);
 			width: col(1.75,-.25);
-			@include breakpoint("tablet") {
+			@include breakpoint("mobilexl") {
 				width: col(2.75,-.25);
 			}
-			@include breakpoint('desktop') {
+			@include breakpoint('tablet') {
 				padding: 0;
 				position: absolute;
 				bottom: 0;
@@ -125,7 +127,7 @@ exa-nameplate {
 		wp-menu.secondary > menu {
 			margin-right: gutter(.5);
 			width: col(1.25,-.25);
-			@include breakpoint('desktop') {
+			@include breakpoint('tablet') {
 				float: right;
 				width: inherit;
 			}
@@ -136,7 +138,7 @@ exa-nameplate {
 			bottom: 0;
 			padding: 24px gutter(1);
 			width: 100%;
-			@include breakpoint('desktop') {
+			@include breakpoint('tablet') {
 				float: right;
 				height: 20px;
 				padding: 0;
@@ -151,7 +153,7 @@ exa-nameplate {
 			menu menu {
 				display: none;
 			}
-			@include breakpoint('desktop') {
+			@include breakpoint('tablet') {
 				& > menu li:hover > menu {
 					display: block;
 					z-index: 20;
@@ -200,7 +202,7 @@ exa-nameplate {
 			list-style-type: none;
 		}
 		wp-menu > menu > li {
-			@include breakpoint('desktop') {
+			@include breakpoint('tablet') {
 				display: inline-block; 
 			}
 		}
@@ -212,7 +214,7 @@ exa-nameplate {
 			&:hover {
 				text-decoration: underline;
 			}
-			@include breakpoint('desktop') {
+			@include breakpoint('tablet') {
 				display: inline-block;
 			}
 		}
@@ -225,7 +227,7 @@ exa-nameplate {
 			border-bottom: 1px solid $grey;
 			border-left: 1px solid $grey;
 			padding: 12px 0 12px gutter(1.25);
-			@include breakpoint('desktop') {
+			@include breakpoint('tablet') {
 				font-size: 22px;
 				border-left: 0;
 				border-bottom: 0;
@@ -247,7 +249,7 @@ exa-nameplate {
 				color: $blue;
 			}
 			font-size: 16px;
-			@include breakpoint('desktop') {
+			@include breakpoint('tablet') {
 				margin-top: 0;
 				padding: 6px 9px;
 				font-size: 18px;
@@ -256,7 +258,7 @@ exa-nameplate {
 		wp-menu.social > menu > li.social {
 			display: inline-block;
 			margin-right: 10px;
-			@include breakpoint('desktop') {
+			@include breakpoint('tablet') {
 				&:last-child {
 					margin-top: 6px;
 					margin-right: 0px;
@@ -281,7 +283,7 @@ exa-nameplate {
 				width: 34px;
 				height: 34px;
 				transition: all .1s;
-				@include breakpoint('desktop') {
+				@include breakpoint('tablet') {
 					font-size: 16px;
 					line-height: 26px;
 					width: 24px;
@@ -302,7 +304,7 @@ exa-nameplate {
 
 	/// Hide the mobile "expand" button on desktop
 	exa-menu-button {
-		@include breakpoint("desktop") {
+		@include breakpoint("tablet") {
 			display: none;
 		}
 	}

@@ -17,7 +17,7 @@ exa-search-form {
 			}
 			&::placeholder {
 				color: $greyText;
-				@include breakpoint('desktop') {
+				@include breakpoint('tablet') {
 					color: transparent;
 				}
 			}
@@ -28,7 +28,7 @@ exa-search-form {
 			&:focus:hover {
 				cursor: inherit;
 			}
-			@include breakpoint('desktop') {
+			@include breakpoint('tablet') {
 				bottom: -3px;
 				float: right;
 				width: 36px;
@@ -60,7 +60,7 @@ exa-search-form {
 			color: $blue;
 			transition: all .1s;
 			cursor: pointer;
-			@include breakpoint('desktop') {
+			@include breakpoint('tablet') {
 				bottom: 4px;
 				right: 7px;
 				top: inherit;
@@ -69,7 +69,6 @@ exa-search-form {
 		}
 		&:hover::after {
 			transform: scale(1.1,1.1); 
-			
 		}
 		input[type=submit] {    // the submit field.
 			display: none;
