@@ -40,9 +40,8 @@ export class ExaNameplate {
         <div class={this.menuOpen ? "menus active" : "menus"}>
           <exa-search-form />
           <wp-menu class="primary" menu={this.mainMenu} />  
-           
-          <wp-menu class="secondary black" menu={this.secondaryMenu} />  
           <wp-menu class="social" menu={this.socialMenu} options={ { classForMenuItem: item => "social " + item.slug, domForItem: item => <span class="hidden">{item.title}</span> }}/> 
+          <wp-menu class="secondary black" menu={this.secondaryMenu} />  
         </div>,
         <div class="clearfix"></div>
     ]

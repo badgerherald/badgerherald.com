@@ -6,236 +6,235 @@
 
 /**
  * Nameplate styles
+ *
  */ 
 exa-nameplate {
 	display: block;
 	width: 100%;
 	border-bottom: 5px solid $blue;
 	padding-bottom: 12px;
-}
 
-exa-nameplate a.logo {
-	width: col(2);
-	max-width: 280px;
-	display: block;
-	img {
-		height: auto;
-		width: 100%;
+	// let the logo flex some, but never get too big.
+    a.logo {
+		width: col(2);
+		max-width: 220px;
+	    display: block;
+		img {
+			height: auto;
+			width: 100%;
+		}
+		@include breakpoint('xl') {
+			width: col(3);
+		}
 	}
-}
 
-exa-nameplate div.menus {
-    	display: none;
+	/**
+	 * On mobile, .menu is the dropdown container when you tap the 
+	 * expand button. 
+	 *
+	 * On desktop, it's a transparent container to the left of
+	 * the logo.
+	 *
+	 */
+    div.menus {
+		display: none;
+		@include setCol(3,.5,true);
 		position: absolute;
 		right: gutter(-0.25);
-		@include setCol(3,.5,true);
         background: white;
         margin-top: 6px;
 		z-index: 9999;
 		box-shadow: 0 1px 2px 0 rgba(1,38,94,0.1);
-        &.active {
+
+		&.active {
         	display: block;
 		}
+		padding-bottom: 66px; // make room for the social menu, which is absolutely positioned
+		@include breakpoint("tablet") {
+			@include setCol(4,.5,true);
+		}
+		@include breakpoint("desktop") {
+			// resets for desktop:
+			display: block;
+			@include resetCol();
+			box-shadow: none;
+			background: transparent;
+			margin-top: -12px;
+			z-index: inherit;
+			padding: 0;
 
+			// new desktop styles:
+			height: 100%;
+			left: col(2,1);
+			bottom: 20px;
+			right: 0px;
+			top: 0px;
+			width: col(7);
+		}
+		@include breakpoint("xl") {
+			left: col(3,1);
+			width: col(9); // bump 2 columns
+		}
+
+		/// Positioning the search form
 		exa-search-form {
 			width: 100%;
 			display: block;
-			padding: 20px gutter(.5);
+			margin-top: 0px;
+			padding: 18px gutter(.5);
+			@include breakpoint('desktop') {
+				position: absolute;
+				width: 100%;
+				display: block;
+				padding: 0;
+	    		right: 0;
+				bottom: 3px;
+			}
+			&.focused {
+				z-index: 10;
+			}
 		}
 
+		/// Positioning the menu containers
 		wp-menu	menu {
 			display: block;
-			width: 100%;
-			list-style-type: none;
-			font-family: $headline;
-			line-height: 1.4em;
 			margin: 0;
 			padding: 0;
-			font-size: 15px;
 			float: right;
 		}
 		wp-menu.primary menu {
 			margin-right: gutter(.5);
-			font-size: 19px;
 			width: col(1.75,-.25);
+			@include breakpoint("tablet") {
+				width: col(2.75,-.25);
+			}
+			@include breakpoint('desktop') {
+				padding: 0;
+				position: absolute;
+				bottom: 0;
+				width: inherit;
+				margin-right: 60px;
+			}
 		}
 		wp-menu.secondary menu {
 			margin-right: gutter(.5);
 			width: col(1.25,-.25);
+			@include breakpoint('desktop') {
+				float: right;
+				width: inherit;
+			}
+			
 		}
 		wp-menu.social menu {
-			padding: gutter(.5);
-		}
-		wp-menu	menu > li {
-			display: inline;
+			position: absolute;
+			bottom: 0;
+			padding: 24px gutter(1);
+			width: 100%;
+			@include breakpoint('desktop') {
+				float: right;
+				height: 20px;
+				padding: 0;
+				margin: 0;
+				position: static;
+				width: inherit;
+			}
 		}
 
-		// Link styles
+		/// Styling the list & links:
+		wp-menu	menu {
+			list-style-type: none;
+			@include breakpoint('desktop') {
+				li { 
+					display: inline; 
+				}
+			}
+		}
 		wp-menu	menu > li a {
+			font-family: $headline;
 			text-decoration: none;
+			line-height: 1.4em;
 			display: block;
-			padding: 12px 0 12px 0px;
+			@include breakpoint('desktop') {
+				display: inline-block;
+			}
+		}
+		wp-menu.primary menu > li a {
 			color: $blue;
 			&:hover {
 				color: $blueLinkHover;
 			}
-		}
-		wp-menu.primary {
-			border-left: 1px solid $grey;
-		}
-		wp-menu.primary menu > li a {
+			font-size: 19px;
 			border-bottom: 1px solid $grey;
+			border-left: 1px solid $grey;
+			padding: 12px 0 12px gutter(1.25);
+			@include breakpoint('desktop') {
+				font-size: 24px;
+				border-left: 0;
+				border-bottom: 0;
+				padding: 6px;
+			}
+			
 		}
 		wp-menu.primary menu > li:last-child a {
 			border-bottom: none;
 		}
 		wp-menu.secondary menu > li a {
-			//padding: 6px inherit;
+			padding: 12px 0 12px 0px;
 			color: $black;
 			&:hover {
 				color: $blue;
 			}
+			font-size: 16px;
+			@include breakpoint('desktop') {
+				padding: 6px;
+				font-size: 18px;
+			}
+		}
+		wp-menu.social menu > li.social {
+			display: inline-block;
+			margin-right: 10px;
+			@include breakpoint('desktop') {
+				&:last-child {
+					margin-top: 6px;
+					margin-right: 0px;
+				}
+			}
+		}
+		wp-menu.social menu > li.social a {
+			display: inline;
+			position: relative;
+			
+			&:before {
+				font-family: $icon;
+				color: $white;
+				text-align: center;
+				width: 100%;
+				display: block;
+				border-radius: 2px;
+				font-size: 24px;
+				line-height: 35px;
+				width: 34px;
+				height: 34px;
+				@include breakpoint('desktop') {
+					font-size: 16px;
+					line-height: 26px;
+					width: 24px;
+					height: 24px;
+				}
+			}
+		}
+		wp-menu {
+			li.twitter a:before { @include socialIcon("t",#0892E3); }
+			li.facebook a:before { @include socialIcon("f",#425F9E); }
+			li.linkedin a:before { @include socialIcon("l",#0078b6); }
+			li.instagram a:before { @include socialIcon("i",#cd486b); }
 		}
 	}
-}
 
-@include breakpoint("desktop") {
-	exa-nameplate {
-		exa-menu-button {
+	/// Hide the mobile "expand" button on desktop
+	exa-menu-button {
+		@include breakpoint("desktop") {
 			display: none;
 		}
-		div.menus {
-			@include resetCol();
-			box-shadow: none;
-			background: transparent;
-	    	display: block;
-			top: 0px;
-			height: 100%;
-			padding: 0;
-			left: col(2,1);
-			margin-top: 0px;
-			bottom: 20px;
-			margin-top: -12px;
-			width: col(7);
-			box-shadow: none;
-			right: 0px;
-			z-index: inherit;
-
-			// Reposition for desktop:
-			wp-menu.primary menu {
-				padding: 0;
-				background: red;
-				position: absolute;
-				bottom: 0;
-				width: 100%;
-				margin-right: 60px;
-				z-index: 5;
-			}
-			wp-menu.social menu {
-	    		float: right;
-	    	    height: 20px;
-			}
-			wp-menu.secondary menu {
-				background: green;
-				float: right;
-				width: inherit;
-			}
-			
-			// Restyle for desktop:
-			wp-menu menu {
-				padding: 0;
-				display: inline;
-				font-size: 18px;
-				
-			}
-			wp-menu.primary menu {
-				font-size: 24px;
-				z-index: 5;
-			}
-			wp-menu menu > li a {
-				display: inline-block;
-				padding: 6px 18px;
-				/*
-				padding-top: 6px;
-				padding-bottom: 6px;
-				padding-right: 18px;
-				*/
-			}
-			exa-search-form {
-				position: absolute;
-				width:100%;
-				display: block;
-				height: 44px;
-				padding: 0;
-				margin-top: 0px;
-	    		right: 0;
-				bottom: 9px;
-			}
-			wp-menu.social {
-				menu li.social {
-					margin-right: 0;
-					margin-left: 10px;
-					position:relative;
-					top: 6px;
-					a {
-						width:24px;
-						height:24px;
-					}
-					a:before {
-						font-size: 16px;
-						line-height: 26px;
-						width: 24px;
-						height: 24px;
-					}
-				}
-			}
-		}
 	}
 }
-
-@include breakpoint("xl") {
-	exa-nameplate {
-		div.menus {
-			width: col(10);
-		}
-	}
-}
-
-
-
-
-/**
- * Some extra style for the .social menu
- * Adds icons for twitter, facebook, linkedin and instragram
- */
- exa-nameplate {
-	wp-menu.social {
-		clear: right;
-		li.social {
-			min-height: 54px;
-			margin-right: 10px;
-			display: inline-block;
-			a {
-				display: inline;
-				position: relative;
-				&:before {
-					font-family: $icon;
-					font-size: 24px;
-					line-height: 35px;
-					color: $white;
-					text-align: center;
-					width: 100%;
-					display: block;
-					width: 34px;
-					height: 34px;
-					border-radius: 2px;
-				}
-			}
-			&.twitter a:before { @include socialIcon("t",#0892E3); }
-			&.facebook a:before { @include socialIcon("f",#425F9E); }
-			&.linkedin a:before { @include socialIcon("l",#0078b6); }
-			&.instagram a:before { @include socialIcon("i",#cd486b); }
-		}
-    }
-}
-

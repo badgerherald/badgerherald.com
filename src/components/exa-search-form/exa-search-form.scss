@@ -7,19 +7,40 @@ exa-search-form {
 			padding: 12px flex(10,300);
 			padding-right: 40px;
 			font-family: $headline;
-			font-size: 24px;
+			font-size: 20px;
 			outline: none;
 			border: 3px solid $grey;
 			transition: all .3s;
+			border-radius: 3px;
 			&::placeholder {
 				color: $greyText;
+				@include breakpoint('desktop') {
+					color: transparent;
+				}
 			}
 			&:focus {
 				color: $black;
 				border: 3px solid $blue;
-				z-index: 10;
 			}
-			font-size: 20px;
+			@include breakpoint('desktop') {
+				bottom: -3px;
+				float: right;
+				width: 36px;
+				padding: 6px 20px 6px 20px;
+				
+				margin-right: 0px;
+				border: none;
+				&::placeholder {
+					color: transparent;
+				}
+				&:focus {
+					&::placeholder {
+						color: $greyText;
+					}
+					width: 100%;
+					border: none;
+				}
+			}
 		}
 		&:after {
 			pointer-events: none;
@@ -32,44 +53,14 @@ exa-search-form {
 			width: 30px;
 			height: 30px;
 			color: $blue;
+			@include breakpoint('desktop') {
+				bottom: 3px;
+				top: inherit;
+				font-size: 18px;
+			}
 		}
 		input[type=submit] {    // the submit field.
 			display: none;
 		}
-	}
-}
-
-@include breakpoint("desktop") {
-	exa-search-form form.search {
-		background: transparent;
-		position: relative;
-		padding: 0;
-		right: 0;
-		input[type=text] {
-			bottom: -3px;
-			position: absolute;
-			right: 0;
-			width: 36px;
-			padding: 6px 20px 6px 20px;
-			border-radius: 3px;
-			margin-right: 0px;
-			border: none;
-			&::placeholder {
-				color: transparent;
-			}
-			&:focus {
-				&::placeholder {
-					color: $greyText;
-				}
-				width: 100%;
-				border: none;
-			}
-		}
-		&:after {
-			bottom: 1px;
-			right: 7px;
-			top: inherit;
-			font-size: 18px;
-		}					
 	}
 }

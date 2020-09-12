@@ -15,6 +15,7 @@ export class ExaSearchForm {
 	    <form class={this.focused ? "search focused" : "search"} action="/" method="get">
 	      <input type="text" name="s" placeholder="Search..."  onFocus={_ => this.el.classList.add('focused')} onBlur={_ => this.el.classList.remove('focused')}></input>
 	      <input type="submit" value="Submit"></input>
+		  <div class="clearfix" />
 	    </form> 
 	  );
 	}
