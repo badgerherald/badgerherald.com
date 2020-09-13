@@ -26,6 +26,16 @@
  *
  */
 
+ .container.article-display .wrapper .donate-form {
+	@include setCol(3, 2);
+	width: col(3);
+	@include breakpoint("mobilexl") {
+		@include setCol(6, 2);
+		width: col(6);
+	}
+}
+
+
 /**
  * 2.0  Article header styles.
  * ----------------------------------------------------------------------------

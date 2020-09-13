@@ -1063,6 +1063,27 @@ a:hover .dotted-overlay-container .dotted-overlay {
  *  5.0 Footnotes style.
  *
  */
+.container.article-display .wrapper .donate-form {
+  width: calc(100% * (((((var(--columnWidth) * 3) + (var(--gutterWidth) * (3 - 1 + 0)))) / (((var(--columnWidth) * var(--breakpointColumns)) + (var(--gutterWidth) * (var(--breakpointColumns) - 1 + var(--additionalGutter)))))) + (((var(--gutterWidth) * 2)) / (((var(--columnWidth) * var(--breakpointColumns)) + (var(--gutterWidth) * (var(--breakpointColumns) - 1 + var(--additionalGutter))))))));
+  position: relative;
+  width: calc(100% * (((((var(--columnWidth) * 3) + (var(--gutterWidth) * (3 - 1 + 0)))) / (((var(--columnWidth) * var(--breakpointColumns)) + (var(--gutterWidth) * (var(--breakpointColumns) - 1 + var(--additionalGutter)))))) + (((var(--gutterWidth) * 0)) / (((var(--columnWidth) * var(--breakpointColumns)) + (var(--gutterWidth) * (var(--breakpointColumns) - 1 + var(--additionalGutter))))))));
+}
+.container.article-display .wrapper .donate-form *, .container.article-display .wrapper .donate-form:after, .container.article-display .wrapper .donate-form:before {
+  --breakpointColumns: 3;
+  --additionalGutter: 2;
+}
+@media (min-width: 620px) {
+  .container.article-display .wrapper .donate-form {
+    width: calc(100% * (((((var(--columnWidth) * 6) + (var(--gutterWidth) * (6 - 1 + 0)))) / (((var(--columnWidth) * var(--breakpointColumns)) + (var(--gutterWidth) * (var(--breakpointColumns) - 1 + var(--additionalGutter)))))) + (((var(--gutterWidth) * 2)) / (((var(--columnWidth) * var(--breakpointColumns)) + (var(--gutterWidth) * (var(--breakpointColumns) - 1 + var(--additionalGutter))))))));
+    position: relative;
+    width: calc(100% * (((((var(--columnWidth) * 6) + (var(--gutterWidth) * (6 - 1 + 0)))) / (((var(--columnWidth) * var(--breakpointColumns)) + (var(--gutterWidth) * (var(--breakpointColumns) - 1 + var(--additionalGutter)))))) + (((var(--gutterWidth) * 0)) / (((var(--columnWidth) * var(--breakpointColumns)) + (var(--gutterWidth) * (var(--breakpointColumns) - 1 + var(--additionalGutter))))))));
+  }
+  .container.article-display .wrapper .donate-form *, .container.article-display .wrapper .donate-form:after, .container.article-display .wrapper .donate-form:before {
+    --breakpointColumns: 6;
+    --additionalGutter: 2;
+  }
+}
+
 /**
  * 2.0  Article header styles.
  * ----------------------------------------------------------------------------
