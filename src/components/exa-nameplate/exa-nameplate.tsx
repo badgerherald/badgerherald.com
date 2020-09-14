@@ -10,13 +10,13 @@ declare var exa:any; // Magic
 export class ExaNameplate {  
   @Prop() query: Query
 
-  @State() mainMenu: Menu;
-  @State() secondaryMenu: Menu;
-  @State() socialMenu: Menu;
+  @State() mainMenu: Menu
+  @State() secondaryMenu: Menu
+  @State() socialMenu: Menu
 
-  @Prop() searchQuery: string;
+  @Prop() searchQuery: string
 
-  @State() menuOpen: boolean = false;
+  @State() menuOpen: boolean
 
   async componentDidRender() {
     if(!this.mainMenu && this.query) {
@@ -32,18 +32,19 @@ export class ExaNameplate {
   }
 
   render() {
-    return [
+    return <bh-grid>
         <a class="logo" href="https://badgerherald.com/">
           <img src={"/wp-content/themes/badgerherald.com/assets/img/logo/header-horizontal.png" } />
-        </a>,
-        <exa-menu-button active={this.menuOpen} onClick={() => this.toggleMenu()} />,
-        <div class={this.menuOpen ? "menus active" : "menus"}>
+        </a>
+        <exa-menu-button active={this.menuOpen} onClick={() => this.toggleMenu()} />
+        <bh-grid class={this.menuOpen ? "menus active" : "menus"}>
           <exa-search-form />
           <wp-menu class="primary" menu={this.mainMenu} />  
           <wp-menu class="social" menu={this.socialMenu} options={ { classForMenuItem: item => "social " + item.slug, domForItem: item => <span class="hidden">{item.title}</span> }}/> 
           <wp-menu class="secondary black" menu={this.secondaryMenu} />  
-        </div>,
+        </bh-grid>
         <div class="clearfix"></div>
-    ]
+      </bh-grid>
+    
   } 
 }

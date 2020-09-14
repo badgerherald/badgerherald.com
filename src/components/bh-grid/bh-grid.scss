@@ -1,0 +1,225 @@
+$gridWidth4: 60;
+$gridWidth3: 86;
+$gutter: 18;
+
+bh-grid {
+   position: relative;
+   display: grid;
+   width: 100%;
+   grid-template-columns:  
+      [page-start]
+      4fr
+      [leading]
+      4fr
+      [grid-start col4-1-start] 
+      #{$gridWidth4 + "fr" }
+      [col4-1-end]
+      #{$gutter + "fr" }
+      [col4-2-start]
+      #{($gridWidth3 - $gutter - $gridWidth4) + "fr" }
+      [col3-1-end]
+      #{$gutter + "fr" }
+      [col3-2-start]
+      #{($gridWidth4 + $gridWidth4 - $gridWidth3) + "fr" }
+      [col4-2-end]
+      #{$gutter + "fr" }
+      [col4-3-start]
+      #{($gridWidth3 + $gridWidth3 - $gutter - $gridWidth4 - $gridWidth4) + "fr" }
+      [col3-2-end]
+      #{$gutter + "fr" }
+      [col3-3-start]
+      #{($gridWidth4 + $gridWidth4 + $gridWidth4 - $gridWidth3 - $gridWidth3) + "fr" }
+      [col4-3-end]
+      #{$gutter + "fr" }
+      [col4-4-start]
+      #{$gridWidth4 + "fr" }
+      [col4-4-start grid-end col4-4-end col3-3-end] 
+      6fr
+      [tail]
+      4fr
+      [trailing]
+      4fr
+      [page-end]
+      ;
+}
+
+@media (min-width: 800px) {
+   bh-grid {
+      grid-template-columns:  
+         [page-start]
+         25fr
+         [grid-start col8-1-start col6-1-start col3-1-start col4-1-start] 
+
+         #{$gridWidth4 + "fr" }
+         [col8-1-end]
+         #{$gutter + "fr" }
+         [col8-2-start]
+         #{($gridWidth3 - $gutter - $gridWidth4) + "fr" }
+         [col6-1-end]
+         #{$gutter + "fr" }
+         [col6-2-start]
+         #{($gridWidth4 + $gridWidth4 - $gridWidth3) + "fr" }
+         [col8-2-end col4-1-end]
+         #{$gutter + "fr" }
+         [col8-3-start col4-2-start]
+         #{($gridWidth3 + $gridWidth3 - $gutter - $gridWidth4 - $gridWidth4) + "fr" }
+         [col6-2-end col3-1-end]
+         #{$gutter + "fr" }
+         [col6-3-start col3-2-start]
+         #{($gridWidth4 + $gridWidth4 + $gridWidth4 - $gridWidth3 - $gridWidth3) + "fr" }
+         [col8-3-end]
+         #{$gutter + "fr" }
+         [col8-4-start]
+         #{$gridWidth4 + "fr" }
+         [col8-4-end col6-3-end col4-2-end]
+
+         #{$gutter + "fr" }
+
+         [col8-5-start col6-4-start col4-3-start]
+         #{$gridWidth4 + "fr" }
+         [col8-5-end]
+         #{$gutter + "fr" }
+         [col8-6-start]
+         #{($gridWidth3 - $gutter - $gridWidth4) + "fr" }
+         [col6-4-end col3-2-end]
+         #{$gutter + "fr" }
+         [col6-5-start col3-3-start]
+         #{($gridWidth4 + $gridWidth4 - $gridWidth3) + "fr" }
+         [col8-6-end col4-3-end]
+         #{$gutter + "fr" }
+         [col8-7-start col4-4-start]
+         #{($gridWidth3 + $gridWidth3 - $gutter - $gridWidth4 - $gridWidth4) + "fr" }
+         [col6-5-end]
+         #{$gutter + "fr" }
+         [col6-6-start]
+         #{($gridWidth4 + $gridWidth4 + $gridWidth4 - $gridWidth3 - $gridWidth3) + "fr" }
+         [col8-7-end]
+         #{$gutter + "fr" }
+         [col8-8-start]
+         #{$gridWidth4 + "fr" }
+         [col8-8-end col6-6-end col3-3-end col4-4-end grid-end]
+
+         15fr
+         [tail]
+         40fr
+         [page-end];
+   }
+}
+@mixin setCols($cols) {
+   
+}
+
+@media (min-width: 1280px) {
+   bh-grid {
+      grid-template-columns:  
+         [page-start]
+         50fr
+         [grid-start col16-1-start col12-1-start col4-1-start col3-1-start col6-1-start col8-1-start] 
+
+         #{$gridWidth4 + "fr" }
+         [col16-1-end]
+         #{$gutter + "fr" }
+         [col16-2-start]
+         #{($gridWidth3 - $gutter - $gridWidth4) + "fr" }
+         [col12-1-end]
+         #{$gutter + "fr" }
+         [col12-2-start]
+         #{($gridWidth4 + $gridWidth4 - $gridWidth3) + "fr" }
+         [col16-2-end col8-1-end]
+         #{$gutter + "fr" }
+         [col16-3-start col8-2-start]
+         #{($gridWidth3 + $gridWidth3 - $gutter - $gridWidth4 - $gridWidth4) + "fr" }
+         [col12-2-end col6-1-end]
+         #{$gutter + "fr" }
+         [col12-3-start col6-2-start]
+         #{($gridWidth4 + $gridWidth4 + $gridWidth4 - $gridWidth3 - $gridWidth3) + "fr" }
+         [col16-3-end]
+         #{$gutter + "fr" }
+         [col16-4-start]
+         #{$gridWidth4 + "fr" }
+         [col16-4-end col12-3-end col4-1-end col8-2-end]
+
+         #{$gutter + "fr" }
+
+         [col16-5-start col12-4 col4-2-start  col8-3-start]
+         #{$gridWidth4 + "fr" }
+         [col16-5-end]
+         #{$gutter + "fr" }
+         [col16-6-start]
+         #{($gridWidth3 - $gutter - $gridWidth4) + "fr" }
+         [col12-4-end col3-1-end col6-2-end]
+         #{$gutter + "fr" }
+         [col12-5-start col3-2-start col6-3-start]
+         #{($gridWidth4 + $gridWidth4 - $gridWidth3) + "fr" }
+         [col16-6-end col8-3-end]
+         #{$gutter + "fr" }
+         [col16-7-start col8-4-start]
+         #{($gridWidth3 + $gridWidth3 - $gutter - $gridWidth4 - $gridWidth4) + "fr" }
+         [col12-5-end]
+         #{$gutter + "fr" }
+         [col12-6-start]
+         #{($gridWidth4 + $gridWidth4 + $gridWidth4 - $gridWidth3 - $gridWidth3) + "fr" }
+         [col16-7-end]
+         #{$gutter + "fr" }
+         [col16-8-start]
+         #{$gridWidth4 + "fr" }
+         [col16-8-end col12-6-end col4-2-end col6-3-end col8-4-end]
+
+         #{$gutter + "fr" }
+
+         [col16-9-start col12-7-start col4-3-start col6-4-start col8-5-start]
+         #{$gridWidth4 + "fr" }
+         [col16-9-end]
+         #{$gutter + "fr" }
+         [col16-10-start]
+         #{($gridWidth3 - $gutter - $gridWidth4) + "fr" }
+         [col12-7-end]
+         #{$gutter + "fr" }
+         [col12-8-start]
+         #{($gridWidth4 + $gridWidth4 - $gridWidth3) + "fr" }
+         [col16-10-end col8-5-end]
+         #{$gutter + "fr" }
+         [col16-11-start col8-6-start]
+         #{($gridWidth3 + $gridWidth3 - $gutter - $gridWidth4 - $gridWidth4) + "fr" }
+         [col12-8-end col3-2-end col6-4-end]
+         #{$gutter + "fr" }
+         [col12-9-start col3-3-start col6-5-start]
+         #{($gridWidth4 + $gridWidth4 + $gridWidth4 - $gridWidth3 - $gridWidth3) + "fr" }
+         [col16-11-end]
+         #{$gutter + "fr" }
+         [col16-12-start]
+         #{$gridWidth4 + "fr" }
+         [col16-12-end col12-9-end col4-3-end col8-6-end]
+
+         #{$gutter + "fr" }
+
+         [col16-13-start col12-10-start col4-4-start col8-7-start]
+         #{$gridWidth4 + "fr" }
+         [col16-13-end]
+         #{$gutter + "fr" }
+         [col16-14-start]
+         #{($gridWidth3 - $gutter - $gridWidth4) + "fr" }
+         [col12-10-end col6-5-end]
+         #{$gutter + "fr" }
+         [col12-11-start col6-6-start]
+         #{($gridWidth4 + $gridWidth4 - $gridWidth3) + "fr" }
+         [col16-14-end col8-7-end]
+         #{$gutter + "fr" }
+         [col16-15-start col8-8-start]
+         #{($gridWidth3 + $gridWidth3 - $gutter - $gridWidth4 - $gridWidth4) + "fr" }
+         [col12-11-end]
+         #{$gutter + "fr" }
+         [col12-12-start]
+         #{($gridWidth4 + $gridWidth4 + $gridWidth4 - $gridWidth3 - $gridWidth3) + "fr" }
+         [col16-15-end]
+         #{$gutter + "fr" }
+         [col16-16-start]
+         #{$gridWidth4 + "fr" }
+         [col16-16-end col12-12-end col4-4-end col3-3-end col6-6-end col8-8-end grid-end]
+         30fr
+         [tail]
+         50fr
+         [page-end]
+         ;
+   }
+}

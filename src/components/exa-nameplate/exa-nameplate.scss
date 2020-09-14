@@ -10,26 +10,37 @@
  *
  */ 
 exa-nameplate {
-	display: block;
 	width: 100%;
-	border-bottom: 5px solid $blue;
-	padding-bottom: 12px;
+	position: relative;
+	
+	& > bh-grid {
+		&::after { // the blue line after the header is this pseudo element
+			content:"";
+			height: 5px;
+			background: $blue;
+			border-radius: 1px;
+			display: block;
+			grid-column: grid-start / tail;
+			bottom: 0px;
+		}
+	}
 
-	// let the logo flex some, but never get too big.
-    a.logo {
-		width: col(2);
+    a.logo { // let the logo flex some, but never get too big.
+		margin-bottom: 12px;
+		margin-top: 12px;
+		grid-column: grid-start / col3-2-end;
 		max-width: 220px;
-	    display: block;
+		display: block;
+		grid-row: 1;
 		img {
 			height: auto;
 			width: 100%;
 		}
-		transition: all .1s;
 		&:hover {
-			transform: scale(1.03,1.03);
+			transform: scale(1.02,1.02);
 		}
 		@include breakpoint('desktop') {
-			width: col(3);
+			grid-column: grid-start / col4-1-end;
 		}
 	}
 
@@ -41,64 +52,45 @@ exa-nameplate {
 	 * the logo.
 	 *
 	 */
-    div.menus {
+    .menus {
+		position: absolute;
 		display: none;
-		@include setCol(3,.5,true);
-		right: gutter(-0.25);
-        background: white;
-        margin-top: 6px;
+		margin-top: -9px;
+		width: 100%;
 		z-index: 9999;
 		font-size: 18px;
 		box-shadow: 0 1px 2px 0 rgba(1,38,94,0.1);
-
-		&.active {
-        	display: block;
+		grid-row-start: 3;
+		grid-column: page-start / page-end;
+		&:before {
+			// the actual dropdown is a pseudo element
+			// to not inturrupt the grid
+			display: block;
+			background: white;
+			grid-column: leading / trailing;
+			content: "";
+			grid-row: 1 / 4;
 		}
-		padding-bottom: 80px; // make room for the social menu, which is absolutely positioned
-		@include breakpoint("mobilexl") {
-			@include setCol(4,.5,true);
+		&.active {
+        	display: grid;
 		}
 		@include breakpoint("tablet") {
+			display: grid;
 			// resets for desktop:
-			display: block;
-			@include setCol(9,"",true);
 			box-shadow: none;
+			position: relative;
 			background: transparent;
-			margin-top: -12px;
 			z-index: inherit;
-			padding: 0;
-
-			// new desktop styles:
-			height: 100%;
-			left: col(2,1);
-			bottom: 20px;
-			right: 0px;
-			top: 0px;
-			width: col(7);
+			grid-row-start: 1;
 		}
-		@include breakpoint("desktop") {
-			@include setCol(12,0,true);
-			left: col(3,1);
-			width: col(9);
-		}
-		@include breakpoint("xl") {
-			@include setCol(15,0,true);
-			width: col(12); // bump 2 columns
-		}
-
 		/// Positioning the search form
 		exa-search-form {
-			width: 100%;
-			display: block;
-			margin-top: 0px;
-			padding: 18px gutter(.5);
+			grid-column: grid-start / grid-end;
+			grid-row: 1;
 			@include breakpoint('tablet') {
-				position: absolute;
-				width: 100%;
-				display: block;
-				padding: 0;
-	    		right: 0;
-				bottom: 3px;
+				grid-column: col4-2-start / grid-end;
+				grid-row: 2;
+				align-self: end;
 			}
 			&.focused {
 				z-index: 10;
@@ -107,46 +99,43 @@ exa-nameplate {
 
 		/// Positioning the menu containers
 		wp-menu	menu {
-			display: block;
 			margin: 0;
 			padding: 0;
-			float: right;
+			float: left;
 		}
-		wp-menu.primary > menu {
-			margin-right: gutter(.5);
-			width: col(1.75,-.25);
-			@include breakpoint("mobilexl") {
-				width: col(2.75,-.25);
-			}
+		wp-menu.primary {
+			grid-row: 2;
+			grid-column: col3-2-start / grid-end;
 			@include breakpoint('tablet') {
-				padding: 0;
-				position: absolute;
-				bottom: 0;
-				width: inherit;
-				margin-right: 60px;
+				margin-bottom: -9px;
+				grid-column: col4-2-start / grid-end;
+				grid-row: 2;
+				align-self: end;
 			}
 		}
-		wp-menu.secondary > menu {
-			margin-right: gutter(.5);
-			width: col(1.25,-.25);
+		wp-menu.secondary  {
+			grid-row: 2;
+			grid-column: grid-start / col3-1-end;
 			@include breakpoint('tablet') {
+				grid-row: 1;
+				grid-column: col4-2-start / grid-end;
+				margin-right: 100px; /// magic number, width of the (3) social icons
+				menu {
+					float: right;
+				}
+			}
+		}
+		wp-menu.social {
+			grid-row: 3;
+			grid-column: grid-start / grid-end;
+			margin: 24px 0px;
+			@include breakpoint('tablet') {
+				margin: 0px;
+				grid-row: 1;
+				grid-column: col4-2-start / tail;
+				menu {
 				float: right;
-				width: inherit;
-			}
-			
-		}
-		wp-menu.social > menu {
-			position: absolute;
-			bottom: 0;
-			padding: 24px gutter(1);
-			width: 100%;
-			@include breakpoint('tablet') {
-				float: right;
-				height: 20px;
-				padding: 0;
-				margin: 0;
-				position: static;
-				width: inherit;
+				}
 			}
 		}
 
@@ -228,7 +217,7 @@ exa-nameplate {
 			font-size: 19px;
 			border-bottom: 1px solid $grey;
 			border-left: 1px solid $grey;
-			padding: 12px 0 12px gutter(1.25);
+			padding: 12px 0 12px 20px;
 			@include breakpoint('tablet') {
 				font-size: 22px;
 				border-left: 0;
@@ -244,7 +233,7 @@ exa-nameplate {
 			border-bottom: none;
 		}
 		wp-menu.secondary > menu > li > wp-link > a {
-			padding: 3px 0;
+			padding: 3px 0 3px 20px;
 			margin-top: 12px;
 			color: $black;
 			&:hover {
@@ -306,6 +295,10 @@ exa-nameplate {
 
 	/// Hide the mobile "expand" button on desktop
 	exa-menu-button {
+		grid-column-start: col4-4-start;
+		grid-column-end: trailing;
+		grid-row: 1;
+		align-self: end;
 		@include breakpoint("tablet") {
 			display: none;
 		}

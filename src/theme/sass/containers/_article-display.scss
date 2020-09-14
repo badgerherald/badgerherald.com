@@ -26,11 +26,11 @@
  *
  */
 
- .container.article-display .wrapper .donate-form {
-	@include setCol(3, 2);
+ .container.article-display .wrapper bhrld-donation-form {
+	@include setCol(3);
 	width: col(3);
 	@include breakpoint("mobilexl") {
-		@include setCol(6, 2);
+	@include setCol(6);
 		width: col(6);
 	}
 }

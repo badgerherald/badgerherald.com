@@ -1,6 +1,5 @@
 
-<div class="container">
-	<div class="wrapper">
-		<exa-nameplate> </exa-nameplate>
-	</div>
-</div>
+
+<exa-nameplate> </exa-nameplate>
+
+

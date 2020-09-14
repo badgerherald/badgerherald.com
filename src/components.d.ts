@@ -7,6 +7,8 @@
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { Query } from "@webpress/core";
 export namespace Components {
+    interface BhGrid {
+    }
     interface BhImports {
     }
     interface ExaMenuButton {
@@ -27,6 +29,12 @@ export namespace Components {
     }
 }
 declare global {
+    interface HTMLBhGridElement extends Components.BhGrid, HTMLStencilElement {
+    }
+    var HTMLBhGridElement: {
+        prototype: HTMLBhGridElement;
+        new (): HTMLBhGridElement;
+    };
     interface HTMLBhImportsElement extends Components.BhImports, HTMLStencilElement {
     }
     var HTMLBhImportsElement: {
@@ -58,6 +66,7 @@ declare global {
         new (): HTMLExaSocialButtonElement;
     };
     interface HTMLElementTagNameMap {
+        "bh-grid": HTMLBhGridElement;
         "bh-imports": HTMLBhImportsElement;
         "exa-menu-button": HTMLExaMenuButtonElement;
         "exa-nameplate": HTMLExaNameplateElement;
@@ -66,6 +75,8 @@ declare global {
     }
 }
 declare namespace LocalJSX {
+    interface BhGrid {
+    }
     interface BhImports {
     }
     interface ExaMenuButton {
@@ -85,6 +96,7 @@ declare namespace LocalJSX {
         "title"?: string;
     }
     interface IntrinsicElements {
+        "bh-grid": BhGrid;
         "bh-imports": BhImports;
         "exa-menu-button": ExaMenuButton;
         "exa-nameplate": ExaNameplate;
@@ -96,6 +108,7 @@ export { LocalJSX as JSX };
 declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
+            "bh-grid": LocalJSX.BhGrid & JSXBase.HTMLAttributes<HTMLBhGridElement>;
             "bh-imports": LocalJSX.BhImports & JSXBase.HTMLAttributes<HTMLBhImportsElement>;
             "exa-menu-button": LocalJSX.ExaMenuButton & JSXBase.HTMLAttributes<HTMLExaMenuButtonElement>;
             "exa-nameplate": LocalJSX.ExaNameplate & JSXBase.HTMLAttributes<HTMLExaNameplateElement>;

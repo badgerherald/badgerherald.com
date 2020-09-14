@@ -9,9 +9,9 @@ exa-search-form {
 			font-family: $headline;
 			font-size: 20px;
 			outline: none;
-			border: 3px solid $grey;
+			border: none;
+			border-bottom: 3px solid $grey;
 			transition: all .3s;
-			border-radius: 3px;
 			&:hover {
 				cursor: pointer;
 			}
@@ -23,7 +23,7 @@ exa-search-form {
 			}
 			&:focus {
 				color: $black;
-				border: 3px solid $blue;
+				border-bottom: 3px solid $blue;
 			}
 			&:focus:hover {
 				cursor: inherit;
