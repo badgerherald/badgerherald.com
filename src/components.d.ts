@@ -7,9 +7,32 @@
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { Query } from "@webpress/core";
 export namespace Components {
+    interface BhAdUnit {
+    }
+    interface BhArchiveGroupingHeader {
+        "headerText": string;
+    }
     interface BhGrid {
     }
+    interface BhHeadlineUnit {
+        "category": string;
+        "hard": Boolean | "true" | "false";
+        "headerTag": "h1" | "h2" | "h3" | "h4";
+        "headline": string;
+        "imageSrc": string;
+        "subhead": string;
+        "subheadTag": "h1" | "h2" | "h3" | "h4";
+        "time": string;
+        "topic": string;
+        "url": string;
+    }
     interface BhImports {
+    }
+    interface BhStickyContainer {
+    }
+    interface BhUxGuide {
+    }
+    interface BhUxguideColors {
     }
     interface ExaMenuButton {
         "active": boolean;
@@ -29,17 +52,53 @@ export namespace Components {
     }
 }
 declare global {
+    interface HTMLBhAdUnitElement extends Components.BhAdUnit, HTMLStencilElement {
+    }
+    var HTMLBhAdUnitElement: {
+        prototype: HTMLBhAdUnitElement;
+        new (): HTMLBhAdUnitElement;
+    };
+    interface HTMLBhArchiveGroupingHeaderElement extends Components.BhArchiveGroupingHeader, HTMLStencilElement {
+    }
+    var HTMLBhArchiveGroupingHeaderElement: {
+        prototype: HTMLBhArchiveGroupingHeaderElement;
+        new (): HTMLBhArchiveGroupingHeaderElement;
+    };
     interface HTMLBhGridElement extends Components.BhGrid, HTMLStencilElement {
     }
     var HTMLBhGridElement: {
         prototype: HTMLBhGridElement;
         new (): HTMLBhGridElement;
     };
+    interface HTMLBhHeadlineUnitElement extends Components.BhHeadlineUnit, HTMLStencilElement {
+    }
+    var HTMLBhHeadlineUnitElement: {
+        prototype: HTMLBhHeadlineUnitElement;
+        new (): HTMLBhHeadlineUnitElement;
+    };
     interface HTMLBhImportsElement extends Components.BhImports, HTMLStencilElement {
     }
     var HTMLBhImportsElement: {
         prototype: HTMLBhImportsElement;
         new (): HTMLBhImportsElement;
+    };
+    interface HTMLBhStickyContainerElement extends Components.BhStickyContainer, HTMLStencilElement {
+    }
+    var HTMLBhStickyContainerElement: {
+        prototype: HTMLBhStickyContainerElement;
+        new (): HTMLBhStickyContainerElement;
+    };
+    interface HTMLBhUxGuideElement extends Components.BhUxGuide, HTMLStencilElement {
+    }
+    var HTMLBhUxGuideElement: {
+        prototype: HTMLBhUxGuideElement;
+        new (): HTMLBhUxGuideElement;
+    };
+    interface HTMLBhUxguideColorsElement extends Components.BhUxguideColors, HTMLStencilElement {
+    }
+    var HTMLBhUxguideColorsElement: {
+        prototype: HTMLBhUxguideColorsElement;
+        new (): HTMLBhUxguideColorsElement;
     };
     interface HTMLExaMenuButtonElement extends Components.ExaMenuButton, HTMLStencilElement {
     }
@@ -66,8 +125,14 @@ declare global {
         new (): HTMLExaSocialButtonElement;
     };
     interface HTMLElementTagNameMap {
+        "bh-ad-unit": HTMLBhAdUnitElement;
+        "bh-archive-grouping-header": HTMLBhArchiveGroupingHeaderElement;
         "bh-grid": HTMLBhGridElement;
+        "bh-headline-unit": HTMLBhHeadlineUnitElement;
         "bh-imports": HTMLBhImportsElement;
+        "bh-sticky-container": HTMLBhStickyContainerElement;
+        "bh-ux-guide": HTMLBhUxGuideElement;
+        "bh-uxguide-colors": HTMLBhUxguideColorsElement;
         "exa-menu-button": HTMLExaMenuButtonElement;
         "exa-nameplate": HTMLExaNameplateElement;
         "exa-search-form": HTMLExaSearchFormElement;
@@ -75,9 +140,32 @@ declare global {
     }
 }
 declare namespace LocalJSX {
+    interface BhAdUnit {
+    }
+    interface BhArchiveGroupingHeader {
+        "headerText"?: string;
+    }
     interface BhGrid {
     }
+    interface BhHeadlineUnit {
+        "category"?: string;
+        "hard"?: Boolean | "true" | "false";
+        "headerTag"?: "h1" | "h2" | "h3" | "h4";
+        "headline"?: string;
+        "imageSrc"?: string;
+        "subhead"?: string;
+        "subheadTag"?: "h1" | "h2" | "h3" | "h4";
+        "time"?: string;
+        "topic"?: string;
+        "url"?: string;
+    }
     interface BhImports {
+    }
+    interface BhStickyContainer {
+    }
+    interface BhUxGuide {
+    }
+    interface BhUxguideColors {
     }
     interface ExaMenuButton {
         "active"?: boolean;
@@ -96,8 +184,14 @@ declare namespace LocalJSX {
         "title"?: string;
     }
     interface IntrinsicElements {
+        "bh-ad-unit": BhAdUnit;
+        "bh-archive-grouping-header": BhArchiveGroupingHeader;
         "bh-grid": BhGrid;
+        "bh-headline-unit": BhHeadlineUnit;
         "bh-imports": BhImports;
+        "bh-sticky-container": BhStickyContainer;
+        "bh-ux-guide": BhUxGuide;
+        "bh-uxguide-colors": BhUxguideColors;
         "exa-menu-button": ExaMenuButton;
         "exa-nameplate": ExaNameplate;
         "exa-search-form": ExaSearchForm;
@@ -108,8 +202,14 @@ export { LocalJSX as JSX };
 declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
+            "bh-ad-unit": LocalJSX.BhAdUnit & JSXBase.HTMLAttributes<HTMLBhAdUnitElement>;
+            "bh-archive-grouping-header": LocalJSX.BhArchiveGroupingHeader & JSXBase.HTMLAttributes<HTMLBhArchiveGroupingHeaderElement>;
             "bh-grid": LocalJSX.BhGrid & JSXBase.HTMLAttributes<HTMLBhGridElement>;
+            "bh-headline-unit": LocalJSX.BhHeadlineUnit & JSXBase.HTMLAttributes<HTMLBhHeadlineUnitElement>;
             "bh-imports": LocalJSX.BhImports & JSXBase.HTMLAttributes<HTMLBhImportsElement>;
+            "bh-sticky-container": LocalJSX.BhStickyContainer & JSXBase.HTMLAttributes<HTMLBhStickyContainerElement>;
+            "bh-ux-guide": LocalJSX.BhUxGuide & JSXBase.HTMLAttributes<HTMLBhUxGuideElement>;
+            "bh-uxguide-colors": LocalJSX.BhUxguideColors & JSXBase.HTMLAttributes<HTMLBhUxguideColorsElement>;
             "exa-menu-button": LocalJSX.ExaMenuButton & JSXBase.HTMLAttributes<HTMLExaMenuButtonElement>;
             "exa-nameplate": LocalJSX.ExaNameplate & JSXBase.HTMLAttributes<HTMLExaNameplateElement>;
             "exa-search-form": LocalJSX.ExaSearchForm & JSXBase.HTMLAttributes<HTMLExaSearchFormElement>;

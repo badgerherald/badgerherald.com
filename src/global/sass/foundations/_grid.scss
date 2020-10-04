@@ -8,8 +8,36 @@
 $colWidth: 80;
 $gutterWidth: 20;
 
+$gridWidth4: 60;
+$gridWidth3: 86;
+$gutter: 18;
+
 @function pageWidth($cols:1) {
   @return (($colWidth * $cols) + ($gutterWidth * ($cols - 1)));
+}
+
+@function gridDefinition() {
+
+}
+
+@function colDefinition($cols) {
+  $toRet: "[grid-start]";
+  @for $i from 1 through $cols {
+     $toRet: $toRet + " " + 3fr + " " + "[grid-col-" + $i;
+     @if( $i == $cols ) {
+      $toRet: $toRet + " grid-end"
+     }
+     $toRet: $toRet + "]"
+  }
+  @return unquote($toRet);
+}
+
+@mixin setCols($cols) {
+  display: grid;
+  grid-template-columns: colDefinition($cols);
+  & > * {
+    grid-column: grid-start / grid-end;
+  }
 }
 
 /***

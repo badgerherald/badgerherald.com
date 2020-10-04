@@ -4,7 +4,7 @@ exa-search-form {
 		position: relative;
 		input[type=text] {
 			width: 100%;
-			padding: 12px flex(10,300);
+			padding: 12px 36px;
 			padding-right: 40px;
 			font-family: $headline;
 			font-size: 20px;
@@ -53,7 +53,7 @@ exa-search-form {
 			font-family: $icon;
 			padding: 4px 8px;
 			position: absolute;
-			top: 13px;
+			top: 10px;
 			right: gutter(.4);
 			width: 30px;
 			height: 30px;

@@ -1,0 +1,19 @@
+
+
+@include breakpoint('desktop') {
+	bh-grid {
+		bh-headline-unit {
+			padding: 24px 0;
+			display: block;
+			grid-column: grid-start / base16-col11-end;
+		}
+	
+		bh-headline-unit {
+			grid-column: grid-start / base16-col7-end;
+		}
+	
+		bh-headline-unit {
+		grid-column: grid-start / base16-col7-end;
+	}
+}
+}

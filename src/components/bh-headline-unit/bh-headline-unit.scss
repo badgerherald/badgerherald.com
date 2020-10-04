@@ -1,0 +1,61 @@
+bh-headline-unit {
+    display: block;
+    .meta {
+        font-family: $headline;
+        color: $greyText;
+        font-weight: normal;
+        &.h1 {
+            font-size: 24px;
+            line-height: 36px;
+        }
+        &.h2 {
+            font-size: 18px;
+            line-height: 24px;
+        }
+        &.h3 {
+            font-size: 18px;
+            line-height: 12px;            
+        }
+        &.h4 {
+            font-size: 16px;
+            line-height: 12px;            
+        }
+        .topic {
+            color: $blue;
+            font-weight: bold;
+        }
+        .head {
+            margin: 0;
+            margin-top: 9px;
+            color: black;
+        }
+        .img {
+            margin-bottom: 12px;
+            border-radius: 2px;
+            overflow: hidden;
+            display: block;
+            line-height: 0;
+        }
+    }
+    a.meta {
+        display: inline-block;
+        .head, .head a {
+            color: black;
+        }
+    }
+    a.meta:hover {
+        color: $blackHover;
+        .topic {
+            color: $blackHover;
+            border-bottom: 3px solid $blackHover;
+            font-weight: bold;
+        }
+        .head {
+            color: $blackHover;
+        }
+        .img {
+            transition: transform .2s;
+            transform: scale(1.01);
+        }
+    }
+}

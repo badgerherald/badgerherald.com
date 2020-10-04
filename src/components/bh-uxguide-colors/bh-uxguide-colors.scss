@@ -1,0 +1,45 @@
+
+bh-uxguide-colors {
+	padding: 0px 30px;
+	.swatch {
+		margin-top: 24px;
+		&:before {
+			content: " ";
+			display: block;
+			background: $blue;
+			width: 60px;
+			height: 60px;
+			float: left;
+			border-radius: 2px;
+		}
+		&.banter-red:before {
+			background: $red;
+		}
+		&.support-blue:before {
+			background: $supportBlue;
+		}
+		.caption {
+			&:first-child {
+				margin-top: 6px;
+				color: black;
+			}
+			padding-left: 70px;
+			display: block;
+		}
+	}
+}
+@include breakpoint('desktop') {
+	bh-grid {
+		bh-headline-unit {
+			grid-column: grid-start / base16-col11-end;
+		}
+	
+		bh-headline-unit {
+			grid-column: grid-start / base16-col7-end;
+		}
+	
+		bh-headline-unit {
+		grid-column: grid-start / base16-col7-end;
+	}
+}
+}

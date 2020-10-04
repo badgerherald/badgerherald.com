@@ -42,53 +42,9 @@ wp-permalink {
  * ------------------------------------------------------------------------- 
  */
 
- body {
-	font-family: 	$body; 
-	font-size: 		$base-font-size;
-	line-height: 	$base-line-height;
-}
-
 a {
-	text-decoration: 	none;
-	color:				$blue;
+	color: $blue;
 	&:hover {
 		color: $blueLinkHover;
 	}
-}
-
-/**
- * HEADER FONTS
- * ------------------------------------------------------------------------- 
- */
-
-wp-teaser {
-h1 {
-	font-family: 	$headline;
-  font-size: 2em;
-	a {
-		color: $black;
-	}
-}
-
-h2 {
-	font-family: 	$headline;
-  font-size: 1.5em;
-	a {
-		color: $black;
-	}
-	&.author-title{
-		padding-top: 6px;
-	}
-}
-
-h3 {
-  font-family: 	$headline;
-  font-size: 1.17em;
-}
-
-p {
-  margin-top: .4em;
-  margin-bottom: .5em;
-}
-
 }

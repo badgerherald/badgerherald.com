@@ -17,35 +17,6 @@ html {
 }
 
 /**
- * Correct `block` display not defined in IE 8/9.
- */
-
-article,
-aside,
-details,
-figcaption,
-figure,
-footer,
-header,
-hgroup,
-main,
-nav,
-section,
-summary {
-    display: block;
-}
-
-/**
- * Correct `inline-block` display not defined in IE 8/9.
- */
-
-audio,
-canvas,
-video {
-    display: inline-block;
-}
-
-/**
  * Prevent modern browsers from displaying `audio` without controls.
  * Remove excess height in iOS 5 devices.
  */
@@ -128,43 +99,8 @@ a:hover {
 }
 
 /**
- * Address variable `h1` font-size and margin within `section` and `article`
- * contexts in Firefox 4+, Safari 5, and Chrome.
- */
-h1 {
-    font-size: 2em;
-    margin: 0.67em 0;
-}
-
-/**
- * Address styling not present in IE 8/9, Safari 5, and Chrome.
- */
-
-abbr[title] {
-    border-bottom: 1px dotted;
-}
-
-/**
- * Address style set to `bolder` in Firefox 4+, Safari 5, and Chrome.
- */
-
-b,
-strong {
-    font-weight: bold;
-}
-
-/**
- * Address styling not present in Safari 5 and Chrome.
- */
-
-dfn {
-    font-style: italic;
-}
-
-/**
  * Address differences between Firefox and other browsers.
  */
-
 hr {
     -moz-box-sizing: content-box;
     box-sizing: content-box;
@@ -172,30 +108,18 @@ hr {
 }
 
 /**
- * Address styling not present in IE 8/9.
- */
-
-mark {
-    background: #ff0;
-    color: $trueblack;
-}
-
-/**
  * Correct font family set oddly in Safari 5 and Chrome.
  */
-
 code,
 kbd,
 pre,
 samp {
     font-family: monospace, serif;
-    font-size: 1em;
 }
 
 /**
  * Improve readability of pre-formatted text in all browsers.
  */
-
 pre {
     white-space: pre-wrap;
 }
@@ -203,7 +127,6 @@ pre {
 /**
  * Set consistent quote types.
  */
-
 q {
     quotes: "\201C" "\201D" "\2018" "\2019";
 }
@@ -211,29 +134,8 @@ q {
 /**
  * Address inconsistent and variable font size in all browsers.
  */
-
 small {
     font-size: 80%;
-}
-
-/**
- * Prevent `sub` and `sup` affecting `line-height` in all browsers.
- */
-
-sub,
-sup {
-    font-size: 75%;
-    line-height: 0;
-    position: relative;
-    vertical-align: baseline;
-}
-
-sup {
-    top: -0.5em;
-}
-
-sub {
-    bottom: -0.25em;
 }
 
 /* ==========================================================================
@@ -243,7 +145,6 @@ sub {
 /**
  * Remove border when inside `a` element in IE 8/9.
  */
-
 img {
     border: 0;
 	max-width: 100%;
@@ -252,7 +153,6 @@ img {
 /**
  * Correct overflow displayed oddly in IE 9.
  */
-
 svg:not(:root) {
     overflow: hidden;
 }
@@ -273,15 +173,6 @@ figure {
    Forms
    ========================================================================== */
 
-/**
- * Define consistent border, margin, and padding.
- */
-
-fieldset {
-    border: 1px solid #c0c0c0;
-    margin: 0 2px;
-    padding: 0.35em 0.625em 0.75em;
-}
 
 /**
  * 1. Correct `color` not being inherited in IE 8/9.
@@ -298,7 +189,6 @@ legend {
  * 2. Correct font size not being inherited in all browsers.
  * 3. Address margins set differently in Firefox 4+, Safari 5, and Chrome.
  */
-
 button,
 input,
 select,
@@ -312,7 +202,6 @@ textarea {
  * Address Firefox 4+ setting `line-height` on `input` using `!important` in
  * the UA stylesheet.
  */
-
 button,
 input {
     line-height: normal;
@@ -324,7 +213,6 @@ input {
  * Correct `button` style inheritance in Chrome, Safari 5+, and IE 8+.
  * Correct `select` style inheritance in Firefox 4+ and Opera.
  */
-
 button,
 select {
     text-transform: none;
@@ -337,7 +225,6 @@ select {
  * 3. Improve usability and consistency of cursor style between image-type
  *    `input` and others.
  */
-
 button,
 html input[type="button"], /* 1 */
 input[type="reset"],
@@ -349,50 +236,14 @@ input[type="submit"] {
 /**
  * Re-set default cursor for disabled elements.
  */
-
 button[disabled],
 html input[disabled] {
     cursor: default;
 }
 
 /**
- * 1. Address box sizing set to `content-box` in IE 8/9.
- * 2. Remove excess padding in IE 8/9.
- */
-
-input[type="checkbox"],
-input[type="radio"] {
-    box-sizing: border-box; /* 1 */
-    padding: 0; /* 2 */
-}
-
-/**
- * 1. Address `appearance` set to `searchfield` in Safari 5 and Chrome.
- * 2. Address `box-sizing` set to `border-box` in Safari 5 and Chrome
- *    (include `-moz` to future-proof).
- */
-
-input[type="search"] {
-    -webkit-appearance: textfield; /* 1 */
-    -moz-box-sizing: content-box;
-    -webkit-box-sizing: content-box; /* 2 */
-    box-sizing: content-box;
-}
-
-/**
- * Remove inner padding and search cancel button in Safari 5 and Chrome
- * on OS X.
- */
-
-input[type="search"]::-webkit-search-cancel-button,
-input[type="search"]::-webkit-search-decoration {
-    -webkit-appearance: none;
-}
-
-/**
  * Remove inner padding and border in Firefox 4+.
  */
-
 button::-moz-focus-inner,
 input::-moz-focus-inner {
     border: 0;
@@ -403,7 +254,6 @@ input::-moz-focus-inner {
  * 1. Remove default vertical scrollbar in IE 8/9.
  * 2. Improve readability and alignment in all browsers.
  */
-
 textarea {
     overflow: auto; /* 1 */
     vertical-align: top; /* 2 */
@@ -416,7 +266,6 @@ textarea {
 /**
  * Remove most spacing between table cells.
  */
-
 table {
     border-collapse: collapse;
     border-spacing: 0;
@@ -428,10 +277,8 @@ table {
 ::selection {
   background: #ff5f5f; /* Safari */
   color: $trueblack;
-  text-shadow: 0.1em 0.1em rgba(255,255,255,.4);
   }
 ::-moz-selection {
   background: #ff5f5f; /* Firefox */
   color: $trueblack;
-  text-shadow: 0.1em 0.1em rgba(0,0,0,.4);
 }

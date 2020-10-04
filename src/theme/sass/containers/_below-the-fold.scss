@@ -1,3 +1,146 @@
+
+.below-the-fold {
+	.list {
+		grid-column: grid-start / base8-col4-end;
+		.img {
+			overflow: hidden;
+			float: right;
+			padding-left: 20px;
+			width: 50%;
+		}
+		bh-headline-unit {
+			display: block;
+			padding: 48px 0;
+			border-bottom: 2px solid $borderGrey;
+			&:first-child {
+				padding-top: 12px;
+			}
+			&:last-child {
+				padding-bottom: 12px;
+				border-bottom: none;
+			}
+		}
+	}
+	.banter {
+		grid-column: base8-col6-start / grid-end;
+		position: relative;
+		font-style: italic;
+		font-weight: bold;
+		align-self: start;
+		div[slot="header"], div[slot="content"] {
+			@include dotted(rgba(black,.2));
+		}
+		div[slot="header"] {
+			padding-top: 12px;
+			&:before {
+				content: " ";
+				position: absolute;
+				top: 12px;
+				
+				margin-left: -6px;
+				width: calc(100% + 12px);
+				display: block;
+				height: 18px;
+				border-left: 6px solid $red;
+				border-right: 6px solid $red;
+				border-top: 6px solid $red;
+				z-index: 2;
+			}
+			&:after {
+				content: " ";
+				position: absolute;
+				top: 0px;
+				width: calc(100%);
+				display: block;
+				height: 12px;
+				background: $grey;
+				z-index: 2;
+			}
+		}
+		text-align: center;
+		h3 {
+			a {
+				color: $black;
+				&:hover {
+					color: $red;
+				}
+			}
+			display: block;
+			text-transform: uppercase;
+			display: inline-block;
+			font-style: italic;
+			font-weight: bold;
+			font-size: 21px;
+			margin-left: 10px;
+			line-height: 24px;
+			padding: 18px 0;
+			margin-bottom: 0;
+			margin-top: 12px;
+			padding-left: 30px;
+			margin: 0 auto;
+			@include banterlogo;
+			background-size: 24px 24px;
+			background-repeat: no-repeat;
+			background-position: left center; 
+		}
+		bh-headline-unit a {
+			text-align: left;
+			margin: 0px 10px;
+			display: block;
+			border-top: 1px solid $greyBorder;
+			padding: 12px 0;
+			overflow: hidden;
+			color: $black;
+			line-height: 21px;
+			@include setCols(3);
+			align-self: start;
+			&:hover {
+				color: $red;
+			}
+			.img {
+				height: auto;
+				float: left;
+				overflow: hidden;
+				grid-row: 3;
+				margin-top: 12px;
+				grid-column: grid-start / grid-col-1;
+			}
+			.head {
+				grid-column: grid-start / grid-end;
+				overflow: hidden;
+				display: block;
+			}
+			.head.sub {
+				margin-left: 20px;
+				grid-row: 3;
+				grid-column: grid-col-1 / grid-end;
+			}
+			.metadata {
+				grid-column: grid-start / grid-end;
+				grid-row: 1;
+				align-self: start;
+				.topic {
+					color: $red;
+				}
+				text-transform: uppercase;
+			}
+		}
+		
+		&:after {
+			content: " ";
+			position: absolute;
+			bottom: 0px;
+			width: calc(100% + 12px);
+			margin-left: -6px;
+			display: block;
+			height: 18px;
+			border-left: 6px solid $red;
+			border-right: 6px solid $red;
+			border-bottom: 6px solid $red;
+		}
+	}
+}
+
 .container.list-and-banter {
 	.story {
 		background: $white;
@@ -58,11 +201,11 @@
 			}
 		}
 	}
-	.banter-widget {
+	.banter {
 		position: relative;
 		font-style: italic;
 		font-weight: bold;
-		.inner-banter {
+		.content, .header {
 			@include dotted(rgba(black,.2));
 			margin-left: 6px;
 			margin-right: 6px;
@@ -128,28 +271,7 @@
 				text-transform: uppercase;
 			}
 		}
-		&:before {
-			content: " ";
-			position: absolute;
-			top: 0px;
-			width: 100%;
-			display: block;
-			height: 18px;
-			border-left: 6px solid $red;
-			border-right: 6px solid $red;
-			border-top: 6px solid $red;
-		}
-		&:after {
-			content: " ";
-			position: absolute;
-			bottom: 0px;
-			width: 100%;
-			display: block;
-			height: 18px;
-			border-left: 6px solid $red;
-			border-right: 6px solid $red;
-			border-bottom: 6px solid $red;
-		}
+		
 	}
 }
 

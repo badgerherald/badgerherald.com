@@ -1,0 +1,18 @@
+
+bh-sticky-container.sticky {
+      position: relative;
+      [slot="header"] {
+         position: fixed;
+         width: inherit;
+         top: 32px;
+      }
+}
+
+bh-sticky-container.stuck {
+   position: relative;
+   [slot="header"] {
+      position: absolute;
+      width: inherit;
+      bottom: 0px;
+   }
+}

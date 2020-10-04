@@ -19,7 +19,7 @@ exa_container('hero');
 
 ?>
 <div class="container article-display showcase-block">
-	
+
 	<div class="wrapper">
 	
 		<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>

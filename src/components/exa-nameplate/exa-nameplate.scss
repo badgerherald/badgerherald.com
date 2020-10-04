@@ -18,9 +18,9 @@ exa-nameplate {
 			content:"";
 			height: 5px;
 			background: $blue;
-			border-radius: 1px;
+			border-radius: 1.5px;
 			display: block;
-			grid-column: grid-start / tail;
+			grid-column: leading / tail;
 			bottom: 0px;
 		}
 	}
@@ -28,10 +28,11 @@ exa-nameplate {
     a.logo { // let the logo flex some, but never get too big.
 		margin-bottom: 12px;
 		margin-top: 12px;
-		grid-column: grid-start / col3-2-end;
+		grid-column: grid-start / base3-col2-end;
 		max-width: 220px;
 		display: block;
 		grid-row: 1;
+		z-index: 5; // bring in front of the absolutely positioned menu grid
 		img {
 			height: auto;
 			width: 100%;
@@ -39,18 +40,17 @@ exa-nameplate {
 		&:hover {
 			transform: scale(1.02,1.02);
 		}
-		@include breakpoint('desktop') {
-			grid-column: grid-start / col4-1-end;
+		@include breakpoint('tablet') {
+			grid-column: grid-start / base4-col1-end;
 		}
 	}
 
 	/**
-	 * On mobile, .menu is the dropdown container when you tap the 
+	 * On mobile, .menus is the dropdown container when you tap the 
 	 * expand button. 
 	 *
 	 * On tablet+, it's a transparent container to the left of
 	 * the logo.
-	 *
 	 */
     .menus {
 		position: absolute;
@@ -59,7 +59,6 @@ exa-nameplate {
 		width: 100%;
 		z-index: 9999;
 		font-size: 18px;
-		box-shadow: 0 1px 2px 0 rgba(1,38,94,0.1);
 		grid-row-start: 3;
 		grid-column: page-start / page-end;
 		&:before {
@@ -68,30 +67,42 @@ exa-nameplate {
 			display: block;
 			background: white;
 			grid-column: leading / trailing;
+			box-shadow: 0 2px 3px 0 rgba(1,38,94,0.2);
+			border-radius: 3px;
 			content: "";
 			grid-row: 1 / 4;
+			@include breakpoint("mobilexl") {
+				grid-column: base3-col1-end / trailing;
+			}
+			@include breakpoint("tablet") {
+				display: none;
+			}
 		}
 		&.active {
         	display: grid;
 		}
 		@include breakpoint("tablet") {
 			display: grid;
-			// resets for desktop:
-			box-shadow: none;
 			position: relative;
-			background: transparent;
 			z-index: inherit;
-			grid-row-start: 1;
+			grid-row: 1;
 		}
 		/// Positioning the search form
 		exa-search-form {
+			margin-top:18px;
 			grid-column: grid-start / grid-end;
 			grid-row: 1;
+			@include breakpoint("mobilexl") {
+				grid-column: base3-col2-start / grid-end;
+			}
 			@include breakpoint('tablet') {
-				grid-column: col4-2-start / grid-end;
+				margin-top: 0;
+				margin-bottom: 12px;
+				grid-column: base4-col2-start / grid-end;
 				grid-row: 2;
 				align-self: end;
 			}
+			
 			&.focused {
 				z-index: 10;
 			}
@@ -105,22 +116,37 @@ exa-nameplate {
 		}
 		wp-menu.primary {
 			grid-row: 2;
-			grid-column: col3-2-start / grid-end;
+			grid-column: base3-col2-start / grid-end;
+			width: 100%;
+			menu {
+				width: 100%;
+			}
+			@include breakpoint("mobilexl") {
+				grid-column: base4-col3-start / grid-end;
+			}
 			@include breakpoint('tablet') {
-				margin-bottom: -9px;
-				grid-column: col4-2-start / grid-end;
+				margin-bottom: 9px;
+				grid-column: base4-col2-start / grid-end;
 				grid-row: 2;
 				align-self: end;
 			}
+			
 		}
 		wp-menu.secondary  {
 			grid-row: 2;
-			grid-column: grid-start / col3-1-end;
+			grid-column: grid-start / base3-col1-end;
+			menu {
+				width: 100%;
+			}
+			@include breakpoint("mobilexl") {
+				grid-column: base3-col2-start / base4-col3-start;
+			}
 			@include breakpoint('tablet') {
 				grid-row: 1;
-				grid-column: col4-2-start / grid-end;
+				grid-column: base4-col2-start / grid-end;
 				margin-right: 100px; /// magic number, width of the (3) social icons
 				menu {
+					width: inherit;
 					float: right;
 				}
 			}
@@ -129,12 +155,18 @@ exa-nameplate {
 			grid-row: 3;
 			grid-column: grid-start / grid-end;
 			margin: 24px 0px;
+			menu {
+				padding-left: 20px;
+			}
+			@include breakpoint("mobilexl") {
+				grid-column: base3-col2-start / grid-end;
+			}
 			@include breakpoint('tablet') {
 				margin: 0px;
 				grid-row: 1;
-				grid-column: col4-2-start / tail;
+				grid-column: base4-col2-start / grid-end;
 				menu {
-				float: right;
+					float: right;
 				}
 			}
 		}
@@ -295,7 +327,7 @@ exa-nameplate {
 
 	/// Hide the mobile "expand" button on desktop
 	exa-menu-button {
-		grid-column-start: col4-4-start;
+		grid-column-start: base4-col4-start;
 		grid-column-end: trailing;
 		grid-row: 1;
 		align-self: end;

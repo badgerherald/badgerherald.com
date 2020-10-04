@@ -43,89 +43,6 @@
 	transition: all .25s ease;
 }
 
-/**
- * Container Headline styles.
- * ---------------------------------------------------------
- *
- * supports the style:
- *
- * 		<a><div.block-headline-container>
- *			<h2.block-headline><span>Title</span></h2>
- *		 </div></a>
- *
- *  And
- *
- * 		<div.block-headline-container>
- *			<h2.block-headline><a>Title</a></h2>
- *		 </div>
- * ----------------------------------------------------------------------------
- */
-
-.block-headline a, 
-.block-headline span {
-	color: $truewhite;
-	font-size: 36px;
-	line-height:60px;
-	display: inline;
-	text-transform: none;
-	font-style: normal;
-	border: 0;
-	font-weight: 700;
-	-webkit-font-smoothing: antialiased;
-	-moz-osx-font-smoothing: grayscale;
-	text-rendering: optimizeLegibility;
-	background-color: $black;
-	-webkit-box-shadow: -10px 0 0 $black,10px 0 0 $black;
-	-moz-box-shadow: -10px 0 0 $black,10px 0 0 $black;
-	box-shadow: -10px 0 0 $black,10px 0 0 $black;
-}
-
-.block-headline a, 
-.block-headline span {
-	font-size: 20px;
-	line-height: 30px;
-	padding: 2px 0 1px;
-}
-
-@include breakpoint('tablet') {
-	h1.block-headline a, 
-	h1.block-headline span
-	 {
-		font-size: 36px;
-		line-height: 60px;
-		padding: 4px 0 2px;
-	}
-}
-
-.block-headline {
-	margin-left: 10px;
-	margin-right: 10px;
-}
-
-.block-headline:hover a,
-a:hover .block-headline span {
-	transition: all 1s ease;
-	transition: color 0.25s ease;
-	color: $black;
-	background-color: $truewhite;
-	-webkit-box-shadow: -10px 0 0 $truewhite,10px 0 0 $truewhite;
-	-moz-box-shadow: -10px 0 0 $truewhite,10px 0 0 $truewhite;
-	box-shadow: -10px 0 0 $truewhite,10px 0 0 $truewhite;
-}
-
-
-/**
- * Dotted image overlays.
- * ---------------------------------------------------------
- * supports the style:
- *
- * 		<a><div.dotted-overlay>
- *			<div></div>			
- *			<img />
- *		</div></a>
- * ----------------------------------------------------------------------------
- */
-
 // Mixin: An inline svg. Allows color to be set dynamically. 
 // 
 // ex.
@@ -134,9 +51,9 @@ a:hover .block-headline span {
 //
 // Note: do not reset background: after using this mixin. Use background-color:
 @mixin dotted($color) {
+	background-color: $grey;
 	background-image: url("./assets/img/svg/dotted.svg");
 }
-
 
 
 .dotted-overlay-container {
