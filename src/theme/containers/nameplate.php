@@ -1,6 +1,8 @@
 
-<div class="container">
-	<div class="wrapper">
-		<exa-nameplate> </exa-nameplate>
+<webpress-theme id="page">
+	<div class="container">
+		<div class="wrapper">
+			<exa-nameplate> </exa-nameplate>
+		</div>
 	</div>
-</div>
+</webpress-theme>
