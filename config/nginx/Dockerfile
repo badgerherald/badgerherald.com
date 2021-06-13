@@ -2,7 +2,7 @@ FROM nginx:latest
 
 WORKDIR /usr/bin/
 
-COPY host.conf /etc/nginx/nginx.conf
+COPY apphost.conf /etc/nginx/nginx.conf
 COPY provision-ssl.sh /usr/src/provision-ssl.sh
 
 RUN chmod +x /usr/src/provision-ssl.sh

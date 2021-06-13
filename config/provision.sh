@@ -39,6 +39,13 @@ sudo apt-get update -y
 sudo apt-get install docker-ce docker-ce-cli -y
 sudo apt-get install docker-compose -y
 
+# 3. Install npm + node + sass
+#
+curl -sL https://deb.nodesource.com/setup_14.x | sudo bash -
+sudo apt-get update -y
+sudo apt-get install -y nodejs
+sudo npm install -g sass
+
 # 4. Run
 #
 echo '👉 starting docker...'
