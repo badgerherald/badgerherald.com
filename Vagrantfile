@@ -5,25 +5,15 @@ Vagrant.configure("2") do |config|
 
   config.vm.box = "debian/contrib-buster64"
 
-  ## Forward ssh config
-  config.ssh.forward_agent = true
-  config.vm.provision "shell", inline: <<-SHELL
-    sudo apt-get update
-    sudo apt-get install -y git
-    mkdir -p ~/.ssh
-    chmod 700 ~/.ssh
-    ssh-keyscan -H github.com >> ~/.ssh/known_hosts    
-  SHELL
-
   ## Provision
-  config.vm.provision :shell, path: "docker/vagrant/provision.sh", privileged: false
+  config.vm.provision :shell, path: "config/provision.sh", privileged: false
 
   # Hostname
   config.vm.network :private_network, :ip => "192.168.19.69"
   config.vm.network "private_network", type: "dhcp"
 
   # Mount vagrant 
-  config.vm.synced_folder ".", "/home/vagrant/badgerherald.com", :group => "www-data", :mount_options => ['dmode=775','fmode=664']
+  config.vm.synced_folder ".", "/home/vagrant/app", :group => "www-data", :mount_options => ['dmode=775','fmode=664']
   
   # Performance improvements
   #  1. Assign a quarter of host memory and all available CPU's to VM

@@ -3,36 +3,37 @@ version: "3"
 services:
   nginx:
     build:
-      context: docker/nginx
-    container_name: badgerherald-nginx
+      context: config/nginx
+    container_name: badgerherald.com-nginx
     links:
       - wordpress
     ports:
       - 80:80
       - 443:443
     volumes:
-      - ./wp-content:/var/www/html/wp-content/
       - badgerherald.com-wordpress:/var/www/html
       - ./${WORDPRESS_UPLOADS_DIR}:/var/www/html/wp-content/uploads
     restart: always
-    environment: 
+    environment:
       DOMAIN: ${SITE_URL}
 
   wordpress:
-    container_name: badgerherald-wordpress
-    build:
-      context: .
+    container_name: badgerherald.com-wordpress
+    image: wordpress:5-php7.4-fpm
     links:
       - memcached
+    depends_on:
+      - mariadb
     expose:
       - 80
     restart: always
     volumes:
       - badgerherald.com-wordpress:/var/www/html
       - ./${WORDPRESS_UPLOADS_DIR}:/var/www/html/wp-content/uploads
-      - ./wp-content:/var/www/html/wp-content/
-      - ./docker/wordpress/php.ini:/usr/local/etc/php/conf.d/extra.ini
-      - ./docker/wordpress/php-fpm.conf:/usr/local/etc/php-fpm.d/zzz-my-extra.conf
+      - ./bin/wp-content/themes:/var/www/html/wp-content/themes/
+      - ./bin/wp-content/plugins:/var/www/html/wp-content/plugins/
+      - ./config/wordpress/php.ini:/usr/local/etc/php/conf.d/extra.ini
+      - ./config/wordpress/php-fpm.conf:/usr/local/etc/php-fpm.d/zzz-my-extra.conf
     environment:
       WORDPRESS_DB_HOST: ${WORDPRESS_DB_HOST}
       WORDPRESS_DB_USER: ${WORDPRESS_DB_USER}
@@ -62,16 +63,16 @@ services:
         );
 
   memcached:
-    container_name: badgerherald-memcached
+    container_name: badgerherald.com-memcached
     image: memcached:latest
     ports:
       - "11211:11211"
 
   mariadb:
-    container_name: badgerherald-mariadb
+    container_name: badgerherald.com-mariadb
     image: mariadb
     volumes:
-      - ./docker/mariadb/install/:/docker-entrypoint-initdb.d
+      - ./config/mariadb/install/:/docker-entrypoint-initdb.d
       - badgerherald.com-mariadb:/var/lib/mysql:rw
     restart: always
     command: mysqld --innodb-buffer-pool-size=512M
@@ -91,4 +92,3 @@ networks:
   default:
     external:
       name: badgerherald.com-network
-    

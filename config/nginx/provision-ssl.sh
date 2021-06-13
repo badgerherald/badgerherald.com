@@ -4,6 +4,7 @@
 #
 
 FILE=/etc/ssl/private/localhost.key
+
 if [ -f "$FILE" ]; then
     echo "$FILE exists."
     exit
@@ -36,7 +37,7 @@ O=localhost
 localityName=Madison
 commonName=$DOMAIN
 organizationalUnitName=The Badger Herald
-emailAddress=web@badgerherald.com
+emailAddress=wjh@wjh.dev
 "
 
 # Generate the server private key
@@ -52,7 +53,7 @@ openssl req \
     -out $DOMAIN.csr \
     -passin env:PASSPHRASE
     
-# Strip the password so we don't have to type it every time we restart Apache
+# Strip the password so we don't have to type it every time we restart nginx
 openssl rsa -in $DOMAIN.key -out $DOMAIN.key -passin env:PASSPHRASE
 
 # Generate the cert (good for 10 years)

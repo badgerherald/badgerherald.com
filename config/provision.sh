@@ -42,9 +42,7 @@ sudo apt-get install docker-compose -y
 # 4. Run
 #
 echo '👉 starting docker...'
-cd ~/badgerherald.com
 sudo service docker start
 sudo docker network create badgerherald.com-network
-sudo docker-compose up -d
 
 echo '✅ finished provision.sh'

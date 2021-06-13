@@ -8,7 +8,7 @@ export const config: Config = {
       type: 'www',
       serviceWorker: null,
       buildDir: 'app',
-      dir:'wp-content/themes/badgerherald.com/',
+      dir:'bin/wp-content/themes/badgerherald.com/',
       copy: [
         { src: 'theme/', dest: '' },
         { src: '../node_modules/@webpress/core/dist/collection/theme-overlay/functions.php', dest: 'functions.php'},

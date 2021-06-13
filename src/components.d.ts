@@ -5,7 +5,7 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
-import { Query } from "@webpress/core";
+import { Template, Theme } from "@webpress/core";
 export namespace Components {
     interface BhImports {
     }
@@ -13,8 +13,9 @@ export namespace Components {
         "active": boolean;
     }
     interface ExaNameplate {
-        "query": Query;
+        "query": Template.Query;
         "searchQuery": string;
+        "theme": Theme;
     }
     interface ExaSearchForm {
         "focused": boolean;
@@ -72,8 +73,9 @@ declare namespace LocalJSX {
         "active"?: boolean;
     }
     interface ExaNameplate {
-        "query"?: Query;
+        "query"?: Template.Query;
         "searchQuery"?: string;
+        "theme"?: Theme;
     }
     interface ExaSearchForm {
         "focused"?: boolean;
