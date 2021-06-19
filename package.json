@@ -15,11 +15,8 @@
     "loader/"
   ],
   "scripts": {
-    "watch": "stencil build --dev --watch",
-    "build": "stencil build",
-    "test": "stencil test --spec --e2e",
-    "test.watch": "stencil test --spec --e2e --watchAll",
-    "generate": "stencil generate"
+    "start": "stencil build --dev --watch",
+    "build": "stencil build"
   },
   "devDependencies": {
     "@badgerherald/donate": "0.1.4",

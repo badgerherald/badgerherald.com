@@ -7,9 +7,14 @@ wp_footer();
 
 <script>
   /// Inject webpress context into theme components
+  var elements = document.querySelectorAll('.webpress-contextual')
+  elements.forEach(el => {
+    el.global = webpress
+  });
+
   var elements = document.querySelectorAll('webpress-theme')
   elements.forEach(el => {
-    el.context = webpress
+    el.global = webpress
   });
 </script>
 

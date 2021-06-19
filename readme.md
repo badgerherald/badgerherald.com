@@ -4,11 +4,11 @@ Continuous deployment for The Badger Herald's WordPress website. This repo conta
 
 **Overview of components:**
 
- - **Vagrant**. Vagrant is a wrapper around VirtualBox and allows quick provisioning of virtual machines. The included Vagrantfile will provision a Debian VM for local development mirroring the same configuration as the production website. After being provisioned, Vagrant will install Docker and run the defined containers.
+- **Vagrant**. Vagrant is a wrapper around VirtualBox and allows quick provisioning of virtual machines. The included Vagrantfile will provision a Debian VM for local development mirroring the same configuration as the production website. After being provisioned, Vagrant will install Docker and run the defined containers.
 
- - **Docker**. Docker is used to "containerize" the various components that go into hosting the production website. WordPress runs in one container while an Nginx proxy container serves pages from it. A third container includes WordPress memcache support and a MariaDB container can be used to host a database for local development.
+- **Docker**. Docker is used to "containerize" the various components that go into hosting the production website. WordPress runs in one container while an Nginx proxy container serves pages from it. A third container includes WordPress memcache support and a MariaDB container can be used to host a database for local development.
 
- - **Node.js & Stencil**. Stencil is a compiler for generating Web Components. With Stencil it's possible to use more modern development tools like TypeScript and JSX. Stencil will compile web components in `src/components` and copy the results along with other theme code in `src/` to the server's `server/wp-content/theme` directory.
+- **Node.js & Stencil**. Stencil is a compiler for generating Web Components. With Stencil it's possible to use more modern development tools like TypeScript and JSX. Stencil will compile web components in `src/components` and copy the results along with other theme code in `src/` to the server's `server/wp-content/theme` directory.
 
 ## Contributing
 
@@ -40,6 +40,7 @@ To run a development WordPress server locally:
 2. (optional) If you have a development database, copy it to `/docker/mariadb/install/*.sql`
 3. Install [VirtualBox](https://www.virtualbox.org/wiki/Downloads) and [Vagrant](https://www.vagrantup.com/downloads.html), then:
 4. Run
+
 ```
 vagrant up
 ```
@@ -63,6 +64,7 @@ On mac:
 ```
 sudo nano /etc/hosts
 ```
+
 You will be prompted to enter your password. Add a new line to the end of this file to map badgerherald.test to the IP of the vagrant virtual machine:
 
 ```
@@ -87,11 +89,11 @@ You can destroy the virtual machine: `vagrant destroy`. Warning: any changes you
 
 #### Interacting with Docker
 
-Docker runs on the virtual machine. The first time you `vagrant up` Docker should also start. If you need to restart Docker, first:
+Docker runs on the virtual machine. The first time you `vagrant up` Docker _should_ also start. If you need to restart Docker, first:
 
-1. SSH into the virtual machine (see above)
+1. SSH into the virtual machine (`vagrant ssh`)
 2. Navigate to the repo directory: `cd ~/badgerherald.com`
-3. Run*:
+3. Run:
 
 ```
 docker-compose up
@@ -100,21 +102,50 @@ docker-compose up
 Or, to run in detached mode run:
 
 ```
-docker-compose up -d
+sudo docker-compose up -d
 ```
 
-_*Because of a bug in provisioning of the virtual machine, You may have to use `sudo` to execute these commands._
+You may also hit `cmd + z` to detach without stopping the docker containers.
 
-## Repository Structure 
+## Repository Structure
 
 The `/src` directory contained all source code. Once compiled, the root of the `/src` becomes the root of the WordPress theme directory created.
 
-The `/docker` directory contains both server configuration files used by docker and vagrant. 
+The `/docker` directory contains both server configuration files used by docker and vagrant.
 
 The `/wp-content` folder is mapped to docker's WordPress drive. Stencil compiles the theme directly to `/wp-content/themes/badgerherald.com`.
 
 ## webpress
 
-As part of Stencil compile webpress adds to functions.php the necessary logic to enqueue scripts and enable some additional WordPress API routes. 
+As part of Stencil compile webpress adds to functions.php the necessary logic to enqueue scripts and enable some additional WordPress API routes.
 
 webpress provides a typed javascript API for loading data from WordPress allowing you to write Web Components with no php!
+
+## Compiling legacy sass:
+
+```
+sass src/theme/sass/style.scss:bin/wp-content/themes/badgerherald.com/style.css
+```
+
+## Deploying
+
+Deploying to a new server is almost entirely within the repo. On a Debian 10 box:
+
+```bash
+apt update
+apt install git
+git clone https://github.com/badgerherald/badgerherald.com
+bash badgerherald.com/config/provision.sh
+```
+
+Create a .env file at: `~/badgerherald.com/.env` with database and domain details, then:
+
+```bash
+cd ~/badgerherald.com
+npm install
+npm run build
+docker-compose build
+docker-compose up
+```
+
+To re-deploy changes, run the above again

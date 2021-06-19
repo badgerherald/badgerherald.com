@@ -5,7 +5,7 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
-import { Template, Theme } from "@webpress/core";
+import { Connection, Template, Theme } from "@webpress/core";
 export namespace Components {
     interface BhImports {
     }
@@ -13,6 +13,11 @@ export namespace Components {
         "active": boolean;
     }
     interface ExaNameplate {
+        "global": {
+    // json set externally by index.php
+    context: Connection.Context;
+    theme: Theme.Definition;
+  };
         "query": Template.Query;
         "searchQuery": string;
         "theme": Theme;
@@ -73,6 +78,11 @@ declare namespace LocalJSX {
         "active"?: boolean;
     }
     interface ExaNameplate {
+        "global"?: {
+    // json set externally by index.php
+    context: Connection.Context;
+    theme: Theme.Definition;
+  };
         "query"?: Template.Query;
         "searchQuery"?: string;
         "theme"?: Theme;

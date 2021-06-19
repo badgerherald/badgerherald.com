@@ -24,7 +24,7 @@ chmod +x /etc/cron.daily/ntpdate
 #
 echo '👉 apt update & install docker...'
 apt update -y
-sudo apt-get install \
+sudo apt-get install -y \
     apt-transport-https \
     ca-certificates \
     curl \
