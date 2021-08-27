@@ -25,12 +25,6 @@ export namespace Components {
     interface ExaSearchForm {
         "focused": boolean;
     }
-    interface ExaSocialButton {
-        "classname": string;
-        "description": string;
-        "shareurl": string;
-        "title": string;
-    }
 }
 declare global {
     interface HTMLBhImportsElement extends Components.BhImports, HTMLStencilElement {
@@ -57,18 +51,11 @@ declare global {
         prototype: HTMLExaSearchFormElement;
         new (): HTMLExaSearchFormElement;
     };
-    interface HTMLExaSocialButtonElement extends Components.ExaSocialButton, HTMLStencilElement {
-    }
-    var HTMLExaSocialButtonElement: {
-        prototype: HTMLExaSocialButtonElement;
-        new (): HTMLExaSocialButtonElement;
-    };
     interface HTMLElementTagNameMap {
         "bh-imports": HTMLBhImportsElement;
         "exa-menu-button": HTMLExaMenuButtonElement;
         "exa-nameplate": HTMLExaNameplateElement;
         "exa-search-form": HTMLExaSearchFormElement;
-        "exa-social-button": HTMLExaSocialButtonElement;
     }
 }
 declare namespace LocalJSX {
@@ -90,18 +77,11 @@ declare namespace LocalJSX {
     interface ExaSearchForm {
         "focused"?: boolean;
     }
-    interface ExaSocialButton {
-        "classname"?: string;
-        "description"?: string;
-        "shareurl"?: string;
-        "title"?: string;
-    }
     interface IntrinsicElements {
         "bh-imports": BhImports;
         "exa-menu-button": ExaMenuButton;
         "exa-nameplate": ExaNameplate;
         "exa-search-form": ExaSearchForm;
-        "exa-social-button": ExaSocialButton;
     }
 }
 export { LocalJSX as JSX };
@@ -112,7 +92,6 @@ declare module "@stencil/core" {
             "exa-menu-button": LocalJSX.ExaMenuButton & JSXBase.HTMLAttributes<HTMLExaMenuButtonElement>;
             "exa-nameplate": LocalJSX.ExaNameplate & JSXBase.HTMLAttributes<HTMLExaNameplateElement>;
             "exa-search-form": LocalJSX.ExaSearchForm & JSXBase.HTMLAttributes<HTMLExaSearchFormElement>;
-            "exa-social-button": LocalJSX.ExaSocialButton & JSXBase.HTMLAttributes<HTMLExaSocialButtonElement>;
         }
     }
 }

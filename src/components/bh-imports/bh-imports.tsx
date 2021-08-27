@@ -1,6 +1,7 @@
 import { Component } from "@stencil/core"
 
-// import external component packages
+// Import external component packages in an empty component
+// in order to get Stencil to roll 'em up
 import '@badgerherald/donate'
 import '@webpress/theme'
 
