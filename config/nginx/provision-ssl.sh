@@ -10,7 +10,7 @@ if [ -f "$FILE" ]; then
     exit
 fi
 
-cd tmp/
+cd /tmp
 
 DOMAIN=${DOMAIN}
 

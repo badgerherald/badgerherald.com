@@ -20,10 +20,11 @@ services:
       DOMAIN: ${SITE_URL}
 
   wordpress:
+    build:
+      context: config/wordpress
     container_name: badgerherald.com-wordpress
-    image: wordpress:5-php7.4-fpm
     links:
-      - memcached
+      - redis
     depends_on:
       - mariadb
     expose:
@@ -34,6 +35,8 @@ services:
       - ./${WORDPRESS_UPLOADS_DIR}:/var/www/html/wp-content/uploads
       - ./bin/wp-content/themes:/var/www/html/wp-content/themes/
       - ./bin/wp-content/plugins:/var/www/html/wp-content/plugins/
+      - ./bin/wp-content/mu-plugins:/var/www/html/wp-content/mu-plugins/
+      - ./config/wordpress/wp-content/object-cache.php:/var/www/html/wp-content/object-cache.php
       - ./config/wordpress/php.ini:/usr/local/etc/php/conf.d/extra.ini
       - ./config/wordpress/php-fpm.conf:/usr/local/etc/php-fpm.d/zzz-my-extra.conf
     environment:
@@ -58,26 +61,28 @@ services:
         define('STRIPE_SEMESTERLY_PROD', '${STRIPE_SEMESTERLY_PROD}');
         define('RECAPTCHA_SITE_KEY', '${RECAPTCHA_SITE_KEY}');
         define('RECAPTCHA_SECRET_KEY', '${RECAPTCHA_SECRET_KEY}');
-        $$memcached_servers = array(
-          'default' => array(
-            'memcached:11211',
-          )
-        );
+        define('WP_REDIS_HOST', 'redis');
+        define('WP_CACHE_KEY_SALT', '${SITE_URL}');
 
-  memcached:
-    container_name: badgerherald.com-memcached
-    image: memcached:latest
+  redis:
+    image: redis:6
+    restart: always
+    logging:
+      options:
+        max-size: "10m"
+        max-file: "3"
     ports:
-      - "11211:11211"
+      - "6379:6379"
 
   mariadb:
     container_name: badgerherald.com-mariadb
     image: mariadb
     volumes:
       - ./config/mariadb/install/:/docker-entrypoint-initdb.d
+      - ./config/mariadb/my.cnf:/etc/mysql/conf.d/my.cnf
       - badgerherald.com-mariadb:/var/lib/mysql:rw
     restart: always
-    command: mysqld --innodb-buffer-pool-size=512M
+    command: mysqld
     expose:
       - 3306
     environment:
