@@ -20,22 +20,6 @@ function _exa_images_register_sizes() {
 add_action( 'after_setup_theme', '_exa_images_register_sizes' );
 add_action( 'init', '_exa_images_register_sizes' );
 
-if ( defined( 'BHRLD_DEBUG' ) && BHRLD_DEBUG ) {
-    // Replace src paths
-    add_filter('wp_get_attachment_url', function ($url) {
-        if(file_exists($url)) {
-			return $url;
-        }
-        return str_replace('://badgerherald.test', '://badgerherald.com/wordpress/', $url);
-    });
-
-    // Replace srcset paths
-    add_filter('wp_calculate_image_srcset', function($sources) {
-        foreach($sources as &$source) {
-            if(!file_exists($source['url'])) {
-                $source['url'] = str_replace('://badgerherald.test/', '://badgerherald.com/wordpress/', $source['url']);
-            }
-        }
-        return $sources;
-    });
-}
+add_filter( 'the_content', function( $the_content ) {
+    return str_replace( '/wordpress/wp-content/uploads', '/wp-content/uploads', $the_content );
+});
