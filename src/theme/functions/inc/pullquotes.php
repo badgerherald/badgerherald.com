@@ -39,14 +39,14 @@ function _exa_pullquote_shortcode( $atts, $quote = "" ) {
     $classes = $a['quotemarks']==1 ? "pullquote quotemarks {$a['align']}" : "pullquote {$a['align']}";
 
 
-    $quoteDOM = "<q class='$classes'>";
+    $quoteDOM = "<p><q class='$classes'>";
     $quoteDOM .= $quote;
 
     if($a["cite"]) {
     	$quoteDOM .= "<cite>" . $a["cite"] . "</cite>";
     }
 
-    $quoteDOM .= "</q>";
+    $quoteDOM .= "</q></p>";
 
     return $quoteDOM;
 }
