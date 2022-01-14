@@ -953,31 +953,33 @@ a:hover .dotted-overlay-container .dotted-overlay {
     float: left; }
     .container.article-display main.article-content .meta .mug-box img {
       width: 100%; }
-  .container.article-display main.article-content .meta .tweet-button, .container.article-display main.article-content .meta .facebook-button {
+  .container.article-display main.article-content .meta .tweet-button,
+  .container.article-display main.article-content .meta .facebook-button {
     font-size: 14px;
     padding: 3px 9px;
-    font-family: 'pt sans';
+    font-family: "pt sans";
     color: #fff;
     margin-left: 6px;
     float: right;
     position: relative; }
-    .container.article-display main.article-content .meta .tweet-button:hover, .container.article-display main.article-content .meta .facebook-button:hover {
+    .container.article-display main.article-content .meta .tweet-button:hover,
+    .container.article-display main.article-content .meta .facebook-button:hover {
       background: #191919; }
   .container.article-display main.article-content .meta .tweet-button {
-    background: #059FF5;
+    background: #059ff5;
     padding-left: 27px; }
     .container.article-display main.article-content .meta .tweet-button:before {
-      content: 't';
+      content: "t";
       font-family: exa;
       padding-right: 5px;
       font-size: 12px;
       position: absolute;
       left: 9px; }
   .container.article-display main.article-content .meta .facebook-button {
-    background: #4965A2;
+    background: #4965a2;
     padding-left: 27px; }
     .container.article-display main.article-content .meta .facebook-button:before {
-      content: 'f';
+      content: "f";
       font-family: exa;
       padding-right: 5px;
       font-size: 12px;
@@ -1103,7 +1105,8 @@ a:hover .dotted-overlay-container .dotted-overlay {
   .container.article-display aside.sidebar {
     margin-left: calc(100% * (((((var(--columnWidth) * 1) + (var(--gutterWidth) * (1 - 1 + 0)))) / (((var(--columnWidth) * var(--breakpointColumns)) + (var(--gutterWidth) * (var(--breakpointColumns) - 1 + var(--additionalGutter)))))) + (((var(--gutterWidth) * 2)) / (((var(--columnWidth) * var(--breakpointColumns)) + (var(--gutterWidth) * (var(--breakpointColumns) - 1 + var(--additionalGutter)))))))); }
 
-  .container.article-display.feature main.article-content .article-text, .container.article-display.feature main.article-content .meta {
+  .container.article-display.feature main.article-content .article-text,
+  .container.article-display.feature main.article-content .meta {
     padding-right: 0;
     width: 780px;
     margin: 0 auto;
@@ -1151,7 +1154,9 @@ a:hover .dotted-overlay-container .dotted-overlay {
       position: absolute;
       margin-left: -15px;
       margin-top: -15px; }
-  .container.article-display .article-text > :not(.shadow) h5, .container.article-display .article-text > :not(.shadow) h6, .container.article-display .article-text > p > :not(.shadow) h5, .container.article-display .article-text > p > :not(.shadow) h6 {
+  .container.article-display .article-text > :not(.shadow) h5,
+  .container.article-display .article-text > :not(.shadow) h6, .container.article-display .article-text > p > :not(.shadow) h5,
+  .container.article-display .article-text > p > :not(.shadow) h6 {
     color: #2c2c2c;
     font-weight: normal;
     font-size: 21px;
@@ -1164,9 +1169,9 @@ a:hover .dotted-overlay-container .dotted-overlay {
       margin: 12px 0;
       padding-left: 20px; }
       .container.article-display .article-text > :not(.shadow) ul li:before, .container.article-display .article-text > p > :not(.shadow) ul li:before {
-        content: '>';
+        content: ">";
         font-family: exa;
-        font-size: .6em;
+        font-size: 0.6em;
         position: absolute;
         margin-left: -30px; }
   .container.article-display .article-text > :not(.shadow) ol, .container.article-display .article-text > p > :not(.shadow) ol {
@@ -1186,7 +1191,7 @@ a:hover .dotted-overlay-container .dotted-overlay {
         margin-left: -40px;
         margin-top: 5px;
         background: #fff;
-        font-size: .8em;
+        font-size: 0.8em;
         padding: 0px 3px;
         display: block;
         min-width: 20px;
@@ -1232,9 +1237,13 @@ a:hover .dotted-overlay-container .dotted-overlay {
     .container.article-display .article-text > :not(.shadow) .wp-caption img, .container.article-display .article-text > p > :not(.shadow) .wp-caption img {
       width: 100%;
       height: auto; }
-    .container.article-display .article-text > :not(.shadow) .wp-caption p, .container.article-display .article-text > :not(.shadow) .wp-caption dd, .container.article-display .article-text > p > :not(.shadow) .wp-caption p, .container.article-display .article-text > p > :not(.shadow) .wp-caption dd {
+    .container.article-display .article-text > :not(.shadow) .wp-caption p,
+    .container.article-display .article-text > :not(.shadow) .wp-caption dd, .container.article-display .article-text > p > :not(.shadow) .wp-caption p,
+    .container.article-display .article-text > p > :not(.shadow) .wp-caption dd {
       margin: 6px 0px 12px; }
-      .container.article-display .article-text > :not(.shadow) .wp-caption p:last-child, .container.article-display .article-text > :not(.shadow) .wp-caption dd:last-child, .container.article-display .article-text > p > :not(.shadow) .wp-caption p:last-child, .container.article-display .article-text > p > :not(.shadow) .wp-caption dd:last-child {
+      .container.article-display .article-text > :not(.shadow) .wp-caption p:last-child,
+      .container.article-display .article-text > :not(.shadow) .wp-caption dd:last-child, .container.article-display .article-text > p > :not(.shadow) .wp-caption p:last-child,
+      .container.article-display .article-text > p > :not(.shadow) .wp-caption dd:last-child {
         margin-bottom: 0; }
     .container.article-display .article-text > :not(.shadow) .wp-caption *, .container.article-display .article-text > p > :not(.shadow) .wp-caption * {
       font-family: "PT Sans Narrow", Helvetica, Arial, Sans-Serif !important; }
@@ -1253,10 +1262,54 @@ a:hover .dotted-overlay-container .dotted-overlay {
   .container.article-display .article-text .video-container iframe {
     max-width: 100%; }
 
+@media (min-width: 930px) {
+  .container.article-display .article-text > :not(.shadow), .container.article-display .article-text > p > :not(.shadow) {
+    font-size: 20px;
+    line-height: 30px;
+    position: relative; }
+    .container.article-display .article-text > :not(.shadow) blockquote li,
+    .container.article-display .article-text > :not(.shadow) ul li,
+    .container.article-display .article-text > :not(.shadow) ol li,
+    .container.article-display .article-text > :not(.shadow) dl li, .container.article-display .article-text > p > :not(.shadow) blockquote li,
+    .container.article-display .article-text > p > :not(.shadow) ul li,
+    .container.article-display .article-text > p > :not(.shadow) ol li,
+    .container.article-display .article-text > p > :not(.shadow) dl li {
+      padding: 0; }
+    .container.article-display .article-text > :not(.shadow) .wp-caption, .container.article-display .article-text > p > :not(.shadow) .wp-caption {
+      position: relative;
+      font-size: 16px;
+      line-height: 24px;
+      margin: 12px 0 24px; }
+      .container.article-display .article-text > :not(.shadow) .wp-caption img, .container.article-display .article-text > p > :not(.shadow) .wp-caption img {
+        width: 100%;
+        height: auto; }
+    .container.article-display .article-text > :not(.shadow) img.alignleft, .container.article-display .article-text > p > :not(.shadow) img.alignleft {
+      float: left;
+      padding-right: 20px;
+      width: 300px !important;
+      height: auto; }
+    .container.article-display .article-text > :not(.shadow) img.alignright, .container.article-display .article-text > p > :not(.shadow) img.alignright {
+      float: right;
+      padding-left: 20px;
+      width: 300px !important;
+      height: auto; }
+    .container.article-display .article-text > :not(.shadow) img.alignnone,
+    .container.article-display .article-text > :not(.shadow) img.aligncenter, .container.article-display .article-text > p > :not(.shadow) img.alignnone,
+    .container.article-display .article-text > p > :not(.shadow) img.aligncenter {
+      width: 100%;
+      float: left; }
+    .container.article-display .article-text > :not(.shadow) .video-container, .container.article-display .article-text > p > :not(.shadow) .video-container {
+      float: left;
+      max-width: 100%;
+      margin-bottom: 24px; }
+      .container.article-display .article-text > :not(.shadow) .video-container iframe, .container.article-display .article-text > p > :not(.shadow) .video-container iframe {
+        max-width: 100%; }
+    .container.article-display .article-text > :not(.shadow) .ad-in-content, .container.article-display .article-text > p > :not(.shadow) .ad-in-content {
+      margin: 24px 0; } }
 q.pullquote {
   quotes: "“" "”";
-  display: block;
   width: 100%;
+  display: block;
   float: left;
   font-weight: bolder;
   color: #191919;
@@ -1298,6 +1351,9 @@ q.pullquote {
     margin: 0 auto;
     float: none; }
 
+  q.pullquote cite {
+    font-size: 16px;
+    font-family: open sans, helvetica, arial, sans-serif; }
   q.pullquote.alignleft {
     width: 360px;
     float: left;
@@ -1307,54 +1363,17 @@ q.pullquote {
     float: right;
     padding-left: 60px; }
   q.pullquote.aligncenter {
-    font-size: 28px;
-    line-height: 36px;
-    margin: 48px 0 48px; }
-    q.pullquote.aligncenter cite {
-      font-size: 24px; }
+    width: 100%;
+    font-size: 36px;
+    line-height: 36px; }
     q.pullquote.aligncenter.quotemarks:before {
       font-size: 100px;
       padding-right: 12px;
       top: 6px; } }
-@media (min-width: 930px) {
-  .container.article-display .article-text > :not(.shadow), .container.article-display .article-text > p > :not(.shadow) {
-    font-size: 20px;
-    line-height: 30px;
-    width: 100%;
-    position: relative; }
-    .container.article-display .article-text > :not(.shadow) blockquote li, .container.article-display .article-text > :not(.shadow) ul li, .container.article-display .article-text > :not(.shadow) ol li, .container.article-display .article-text > :not(.shadow) dl li, .container.article-display .article-text > p > :not(.shadow) blockquote li, .container.article-display .article-text > p > :not(.shadow) ul li, .container.article-display .article-text > p > :not(.shadow) ol li, .container.article-display .article-text > p > :not(.shadow) dl li {
-      padding: 0; }
-    .container.article-display .article-text > :not(.shadow) .wp-caption, .container.article-display .article-text > p > :not(.shadow) .wp-caption {
-      position: relative;
-      font-size: 16px;
-      line-height: 24px;
-      margin: 12px 0 24px; }
-      .container.article-display .article-text > :not(.shadow) .wp-caption img, .container.article-display .article-text > p > :not(.shadow) .wp-caption img {
-        width: 100%;
-        height: auto; }
-    .container.article-display .article-text > :not(.shadow) img.alignleft, .container.article-display .article-text > p > :not(.shadow) img.alignleft {
-      float: left;
-      padding-right: 20px;
-      width: 300px !important;
-      height: auto; }
-    .container.article-display .article-text > :not(.shadow) img.alignright, .container.article-display .article-text > p > :not(.shadow) img.alignright {
-      float: right;
-      padding-left: 20px;
-      width: 300px !important;
-      height: auto; }
-    .container.article-display .article-text > :not(.shadow) img.alignnone, .container.article-display .article-text > :not(.shadow) img.aligncenter, .container.article-display .article-text > p > :not(.shadow) img.alignnone, .container.article-display .article-text > p > :not(.shadow) img.aligncenter {
-      width: 100%;
-      float: left; }
-    .container.article-display .article-text > :not(.shadow) .video-container, .container.article-display .article-text > p > :not(.shadow) .video-container {
-      float: left;
-      max-width: 100%;
-      margin-bottom: 24px; }
-      .container.article-display .article-text > :not(.shadow) .video-container iframe, .container.article-display .article-text > p > :not(.shadow) .video-container iframe {
-        max-width: 100%; }
-    .container.article-display .article-text > :not(.shadow) .ad-in-content, .container.article-display .article-text > p > :not(.shadow) .ad-in-content {
-      margin: 24px 0; } }
 @media (min-width: 1240px) {
-  .container.article-display .article-text > :not(.shadow) img.alignnone, .container.article-display .article-text > :not(.shadow) img.aligncenter, .container.article-display .article-text > :not(.shadow) > img.alignnone, .container.article-display .article-text > :not(.shadow) > img.aligncenter, .container.article-display .article-text > p > :not(.shadow) img.alignnone, .container.article-display .article-text > p > :not(.shadow) img.aligncenter, .container.article-display .article-text > p > :not(.shadow) > img.alignnone, .container.article-display .article-text > p > :not(.shadow) > img.aligncenter {
+  .container.article-display .article-text > :not(.shadow) img.alignnone,
+  .container.article-display .article-text > :not(.shadow) img.aligncenter, .container.article-display .article-text > :not(.shadow) > img.alignnone, .container.article-display .article-text > :not(.shadow) > img.aligncenter, .container.article-display .article-text > p > :not(.shadow) img.alignnone,
+  .container.article-display .article-text > p > :not(.shadow) img.aligncenter, .container.article-display .article-text > p > :not(.shadow) > img.alignnone, .container.article-display .article-text > p > :not(.shadow) > img.aligncenter {
     width: 100% !important;
     float: left; } }
 @media (min-width: 1580px) {
