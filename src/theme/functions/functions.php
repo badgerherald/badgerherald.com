@@ -38,7 +38,6 @@ include( dirname( __FILE__ ) . '/inc/ads.php');
 include( dirname( __FILE__ ) . '/inc/redirects.php');
 include( dirname( __FILE__ ) . '/inc/header-charm.php');
 include( dirname( __FILE__ ) . '/inc/plugin-wp_nav_menu_extended.php');
-include( dirname( __FILE__ ) . '/inc/wiki.php');
 include( dirname( __FILE__ ) . '/inc/user-management.php');
 include( dirname( __FILE__ ) . '/inc/dirty-bird.php');
 include( dirname( __FILE__ ) . '/inc/donate.php');
