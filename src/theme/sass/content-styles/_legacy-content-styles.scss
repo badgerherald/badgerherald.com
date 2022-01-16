@@ -161,7 +161,7 @@
   .wp-caption {
     width: auto !important;
   }
-  img {
+  img[class*="wp-image-"] {
     width: auto !important;
     max-width: 100%;
     overflow: hidden;
@@ -181,7 +181,7 @@
 
   // Target the image directly to make images scale with later
   // width targeting.
-  img,
+  img[class*="wp-image-"],
   .wp-caption > img + p {
     width: 100% !important;
     height: auto;
@@ -194,7 +194,7 @@
   }
 
   // MEDIUM IMAGE SIZE (and their sibling caption):
-  img.size-medium,
+  img[class*="wp-image-"].size-medium,
   .wp-caption > img.size-medium + p {
     max-width: 100%;
     width: 420px !important;
@@ -204,7 +204,7 @@
   }
 
   // TINY IMAGE SIZE (and their sibling caption):
-  img.size-small,
+  img[class*="wp-image-"].size-small,
   .wp-caption > img.size-small + p {
     width: 220px !important;
   }
