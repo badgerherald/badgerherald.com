@@ -1357,10 +1357,54 @@ a:hover .dotted-overlay-container .dotted-overlay {
   .container.article-display .video-container iframe {
     max-width: 100%; }
 
+@media (min-width: 930px) {
+  .container.article-display .article-text > :not(.shadow), .container.article-display .article-text > p > :not(.shadow) {
+    font-size: 20px;
+    line-height: 30px;
+    position: relative; }
+    .container.article-display .article-text > :not(.shadow) blockquote li,
+    .container.article-display .article-text > :not(.shadow) ul li,
+    .container.article-display .article-text > :not(.shadow) ol li,
+    .container.article-display .article-text > :not(.shadow) dl li, .container.article-display .article-text > p > :not(.shadow) blockquote li,
+    .container.article-display .article-text > p > :not(.shadow) ul li,
+    .container.article-display .article-text > p > :not(.shadow) ol li,
+    .container.article-display .article-text > p > :not(.shadow) dl li {
+      padding: 0; }
+    .container.article-display .article-text > :not(.shadow) .wp-caption, .container.article-display .article-text > p > :not(.shadow) .wp-caption {
+      position: relative;
+      font-size: 16px;
+      line-height: 24px;
+      margin: 12px 0 24px; }
+      .container.article-display .article-text > :not(.shadow) .wp-caption img, .container.article-display .article-text > p > :not(.shadow) .wp-caption img {
+        width: 100%;
+        height: auto; }
+    .container.article-display .article-text > :not(.shadow) img.alignleft, .container.article-display .article-text > p > :not(.shadow) img.alignleft {
+      float: left;
+      padding-right: 20px;
+      width: 300px !important;
+      height: auto; }
+    .container.article-display .article-text > :not(.shadow) img.alignright, .container.article-display .article-text > p > :not(.shadow) img.alignright {
+      float: right;
+      padding-left: 20px;
+      width: 300px !important;
+      height: auto; }
+    .container.article-display .article-text > :not(.shadow) img.alignnone,
+    .container.article-display .article-text > :not(.shadow) img.aligncenter, .container.article-display .article-text > p > :not(.shadow) img.alignnone,
+    .container.article-display .article-text > p > :not(.shadow) img.aligncenter {
+      width: 100%;
+      float: left; }
+    .container.article-display .article-text > :not(.shadow) .video-container, .container.article-display .article-text > p > :not(.shadow) .video-container {
+      float: left;
+      max-width: 100%;
+      margin-bottom: 24px; }
+      .container.article-display .article-text > :not(.shadow) .video-container iframe, .container.article-display .article-text > p > :not(.shadow) .video-container iframe {
+        max-width: 100%; }
+    .container.article-display .article-text > :not(.shadow) .ad-in-content, .container.article-display .article-text > p > :not(.shadow) .ad-in-content {
+      margin: 24px 0; } }
 q.pullquote {
   quotes: "“" "”";
-  display: block;
   width: 100%;
+  display: block;
   float: left;
   font-weight: bolder;
   color: #191919;
@@ -1410,16 +1454,13 @@ q.pullquote {
     float: right;
     padding-left: 60px; }
   q.pullquote.aligncenter {
-    font-size: 28px;
-    line-height: 36px;
-    margin: 48px 0 48px; }
-    q.pullquote.aligncenter cite {
-      font-size: 24px; }
+    width: 100%;
+    font-size: 36px;
+    line-height: 36px; }
     q.pullquote.aligncenter.quotemarks:before {
       font-size: 100px;
       padding-right: 12px;
       top: 6px; } }
-
 /**
  * 5.0 Footnotes Styles.
  * ----------------------------------------------------------------------------

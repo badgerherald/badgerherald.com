@@ -5,5 +5,4 @@
 .sass-cache
 node_modules/
 bin
-
-*.map
+*.css.map
