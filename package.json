@@ -16,17 +16,22 @@
   ],
   "scripts": {
     "start": "stencil build --dev --watch",
-    "build": "stencil build"
+    "sass": "node-sass ./src/theme/sass editor-style.css -o ./src/theme/ --watch",
+    "sass-build": "node-sass ./src/theme/sass editor-style.css -o ./src/theme/",
+    "build": "npm run sass-build; stencil build"
   },
   "devDependencies": {
-    "@badgerherald/donate": "0.1.4",
-    "@stencil/core": "^2.6.0",
+    "@badgerherald/donate": "0.1.5",
+    "@stencil/core": "^2.12.1",
     "@stencil/router": "^1.0.1",
-    "@stencil/sass": "^1.4.1",
+    "@stencil/sass": "^1.5.2",
     "@types/stripe-v3": "^3.1.7",
-    "@webpress/core": "0.0.14",
-    "@webpress/router": "0.0.14",
-    "@webpress/theme": "0.0.14"
+    "@webpress/core": "0.0.17",
+    "@webpress/router": "0.0.17",
+    "@webpress/theme": "0.0.17"
   },
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "node-sass": "^7.0.1"
+  }
 }

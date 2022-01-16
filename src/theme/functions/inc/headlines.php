@@ -75,6 +75,7 @@ if (is_admin()) :
 			<div id="altheads" class="altheads">
 				<label for="_exa_altheads">Alternate Headlines: </label>
 				<a class="edit" href="#">Edit</a>
+				<p class="headline-instructions">Brainstorm alternate headlines here. Place one per line in the edit box:</p>
 				<textarea name="_exa_altheads"><?php echo $altheads;?></textarea>
 			</div>
 			<hr/>

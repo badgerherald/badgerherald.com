@@ -2,12 +2,6 @@
  * UI for interacting with alternate headlines.
  */
 jQuery(document).ready(function($) {
-
-	if($("textarea[name='_exa_altheads']").val() != '') {
-		toggle_edit_on();
-	} else {
-		toggle_edit_off();
-	}
 	
 	$(".altheads .edit").on("click",function() {
 		var textarea = $("textarea[name='_exa_altheads']");
@@ -59,12 +53,17 @@ jQuery(document).ready(function($) {
 
 		textarea.after(ul);
 		textarea.hide();
+		$("p.headline-instructions").hide();
 
 	}
 
 	function toggle_edit_off() {
 		$("ol.exa-althead-list").remove();
 		$("textarea[name='_exa_altheads']").show();
+		$("p.headline-instructions").show();
 	}
+
+	console.log("TOGGLE OFF");
+	toggle_edit_on();
 
 });
