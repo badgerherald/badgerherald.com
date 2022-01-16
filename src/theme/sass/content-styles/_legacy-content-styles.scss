@@ -1,0 +1,297 @@
+@mixin printLegacyContentStyles {
+  position: relative;
+  width: 100%;
+
+  font-size: 16px;
+  line-height: 24px;
+  @include breakpoint(mobilexl) {
+    font-size: 18px;
+    line-height: 27px;
+  }
+  @include breakpoint(tablet) {
+    font-size: 19px;
+    line-height: 30px;
+  }
+  /*
+    .article-text {
+      .ad-in-content {
+        margin: 24px 0;
+      }
+    }
+    */
+  p {
+    margin-bottom: 24px;
+  }
+  a {
+    border-radius: 2px;
+    color: $darkblue;
+    &:hover {
+      color: $blue;
+    }
+  }
+  h1 {
+    font-family: $headline;
+    margin: 18px 0;
+  }
+  h2 {
+    font-family: $headline;
+    font-size: 30px;
+    margin: 24px 0px 12px;
+  }
+  h3 {
+    font-family: $headline;
+    color: $darkgrey;
+    font-weight: bold;
+    margin: 12px 0 12px;
+    font-size: 24px;
+    text-shadow: -1px 1px rgba($truewhite, 0.8);
+  }
+  h4 {
+    font-family: $body;
+    color: $black;
+    font-weight: bold;
+    font-size: 18px;
+    margin: 12px 0 12px;
+    margin-left: 15px;
+    &:before {
+      content: "*";
+      font-family: $icon;
+      position: absolute;
+      margin-left: -15px;
+      margin-top: -15px;
+    }
+  }
+  h5,
+  h6 {
+    color: $darkgrey;
+    font-weight: normal;
+    font-size: 21px;
+    font-size: 18px;
+    margin: 18px 0 12px;
+  }
+
+  /** Lists */
+  ul {
+    list-style-type: none;
+    margin: 24px 0;
+    li {
+      margin: 12px 0;
+      padding-left: 20px;
+      &:before {
+        content: ">";
+        font-family: $icon;
+        font-size: 0.6em;
+        position: absolute;
+        margin-left: -30px;
+      }
+    }
+  }
+  ol {
+    list-style-type: none;
+    margin: 0;
+    counter-reset: li-counter;
+    margin: 24px 0;
+    li {
+      margin: 12px 0;
+      padding-left: 20px;
+      &:before {
+        content: counter(li-counter);
+        counter-increment: li-counter;
+        font-family: $headline;
+        font-weight: bold;
+        position: absolute;
+        margin-left: -40px;
+        margin-top: 5px;
+        background: $truewhite;
+        font-size: 0.8em;
+        padding: 0px 3px;
+        display: block;
+        min-width: 20px;
+        height: 20px;
+        text-align: center;
+        line-height: 20px;
+      }
+    }
+  }
+  blockquote {
+    font-family: $headline;
+    background: $truewhite;
+    margin-left: 0;
+    border-left: 2px solid $blue;
+  }
+  blockquote p {
+    margin-left: 0;
+    padding: 12px 20px;
+    font-family: $headline;
+    font-size: 18px;
+  }
+  .ad-in-content {
+    margin: 24px 0;
+    &:before {
+      content: "Article continues after advertisement";
+      text-align: center;
+      font-family: $headline;
+      text-transform: uppercase;
+      color: $darkgrey;
+      font-size: 12px;
+      line-height: 14px;
+    }
+  }
+
+  /**
+   * Images
+   */
+
+  // This rule which is necessary to override inline style
+  // in the post content makes everything else hard; as
+  // we can no longer use .wp-caption as the outer box to
+  // size and therefore float the image.
+  .wp-caption {
+    //width: inherit !important;
+    &.size-large,
+    &.size-full,
+    img.size-large,
+    img.size-full {
+      width: 100% !important;
+    }
+  }
+
+  // We still use the outer box to set standard margins for
+  // all image sizes
+  .wp-caption {
+    width: auto !important;
+  }
+  img {
+    width: auto !important;
+    max-width: 100%;
+    overflow: hidden;
+    position: relative;
+    margin: 24px 0;
+  }
+
+  dl.alignleft,
+  dl.alignright {
+    &.alignleft img:not(.size-large):not(.size-full) {
+      float: left;
+    }
+    &.alignright img:not(.size-large):not(.size-full) {
+      float: right;
+    }
+  }
+
+  // Target the image directly to make images scale with later
+  // width targeting.
+  img,
+  .wp-caption > img + p {
+    width: 100% !important;
+    height: auto;
+  }
+
+  // the wordpress editor dom messes with our + p sibling selector
+  // below, so this rule just sets captions to wrap all the time.
+  .wp-caption > dd {
+    width: 300px !important;
+  }
+
+  // MEDIUM IMAGE SIZE (and their sibling caption):
+  img.size-medium,
+  .wp-caption > img.size-medium + p {
+    max-width: 100%;
+    width: 420px !important;
+    &:is(p) {
+      padding-right: 60px;
+    }
+  }
+
+  // TINY IMAGE SIZE (and their sibling caption):
+  img.size-small,
+  .wp-caption > img.size-small + p {
+    width: 220px !important;
+  }
+
+  @include breakpoint(mobilexl) {
+    // Float left images
+    img.alignleft:not(.size-medium):not(.size-large):not(.size-full),
+    .wp-caption.alignleft:not(.size-medium):not(.size-large):not(.size-full) {
+      padding-right: 30px;
+      float: left;
+      clear: left;
+      overflow: hidden;
+    }
+
+    // Float right images
+    img.alignright:not(.size-medium):not(.size-large):not(.size-full),
+    .wp-caption.alignright:not(.size-medium):not(.size-large):not(.size-full) {
+      padding-left: 30px;
+      float: right;
+      clear: right;
+      overflow: hidden;
+    }
+
+    // This rule is for large or full images that are floated.
+    // we can't force them to be large, so simply embrace this behavior
+    // and float them; but make sure they can't be so large that they
+    // cant show text next to them.
+    .wp-caption.alignleft,
+    .wp-caption.alignright,
+    .wp-caption.alignleft,
+    .wp-caption.alignright {
+      max-width: 78%;
+    }
+  }
+
+  @include breakpoint(tablet) {
+    // Float left images
+    img.alignleft:not(.size-large):not(.size-full),
+    .wp-caption.alignleft {
+      padding-right: 30px;
+      float: left;
+      clear: left;
+      overflow: hidden;
+    }
+
+    // Float right images
+    img.alignright:not(.size-large):not(.size-full),
+    .wp-caption.alignright {
+      padding-left: 30px;
+      float: right;
+      clear: right;
+      overflow: hidden;
+    }
+  }
+
+  .wp-caption img {
+    margin: 0 !important;
+    vertical-align: bottom;
+    padding-bottom: 12px;
+  }
+
+  .wp-caption {
+    // Text/Caption styles:
+    .wp-caption-dd,
+    p.wp-caption-text {
+      clear: both;
+      font-size: 16px;
+      line-height: 18px;
+      color: $darkgrey;
+      font-family: $caption;
+      padding-top: 0; // override wordpress editor
+      margin: 0px 0px 12px;
+      .hrld-media-credit {
+        margin-top: 6px;
+        display: block;
+        font-family: $headline !important;
+        .hrld-media-credit-name a {
+          padding-right: 3px;
+          color: $black;
+          font-weight: bold;
+          text-shadow: none;
+          text-transform: uppercase;
+          &:hover {
+            color: $blue;
+          }
+        }
+      }
+    }
+  }
+}

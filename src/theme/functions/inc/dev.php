@@ -44,19 +44,3 @@ function exa_log($error) {
 		error_log( print_r($error,1) );
 	}
 }
-
-function _exa_dev_calculate_image_srcset($sources) {
-
-	// YOU WIN. TURN IMAGE SRCSET OFF FOR NOW.
-	return;
-
-	foreach($sources as $source) {
-		print_r($source['url']);
-		$source['url'] = _exa_dev_attachment_url( $source['url'] );
-		print_r($source['url']);
-	}
-
-	return $sources;
-
-}
-add_filter('wp_calculate_image_srcset','_exa_dev_calculate_image_srcset',1);

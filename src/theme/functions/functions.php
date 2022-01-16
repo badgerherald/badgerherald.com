@@ -41,6 +41,7 @@ include( dirname( __FILE__ ) . '/inc/plugin-wp_nav_menu_extended.php');
 include( dirname( __FILE__ ) . '/inc/wiki.php');
 include( dirname( __FILE__ ) . '/inc/user-management.php');
 include( dirname( __FILE__ ) . '/inc/dirty-bird.php');
+include( dirname( __FILE__ ) . '/inc/donate.php');
 
 // Include plugin 
 include( dirname( __FILE__ ) . '/donate.php');
@@ -159,11 +160,12 @@ function exa_setup() {
 
 	/* Register different size thumbnail images */	
 	add_theme_support('post-thumbnails');
+	add_theme_support('editor-styles');
 
 	/* Include custom editor styles, so the backend looks like
 	 * the front end. */
 	add_editor_style( 'assets/css/fontastic/styles.css' );
-	add_editor_style( 'assets/css/editor-style.css' );
+	add_editor_style( 'legacy-editor-style.css' );
 
 	/* Adds RSS feed links to <head> for posts and comments. */
 	add_theme_support( 'automatic-feed-links' );
@@ -175,7 +177,8 @@ function exa_setup() {
 
 }
 add_action( 'after_setup_theme', 'exa_setup' );
-
+add_action( 'init', 'exa_setup' );
+add_action( 'admin_init', 'exa_setup' );
 /**
  * Switches default core markup for search form to output valid HTML5.
  *

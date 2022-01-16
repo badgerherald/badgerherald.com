@@ -2,5 +2,8 @@
 .DS_Store
 .env
 
+.sass-cache
 node_modules/
 bin
+
+*.map

@@ -16,10 +16,11 @@
   ],
   "scripts": {
     "start": "stencil build --dev --watch",
+    "sass": "node-sass ./src/theme/sass editor-style.css -o ./src/theme/ --watch",
     "build": "stencil build"
   },
   "devDependencies": {
-    "@badgerherald/donate": "0.1.4",
+    "@badgerherald/donate": "0.1.5",
     "@stencil/core": "^2.6.0",
     "@stencil/router": "^1.0.1",
     "@stencil/sass": "^1.4.1",
@@ -28,5 +29,8 @@
     "@webpress/router": "0.0.14",
     "@webpress/theme": "0.0.14"
   },
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "node-sass": "^7.0.1"
+  }
 }
