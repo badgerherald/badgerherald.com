@@ -43,18 +43,8 @@ export class ExaNameplate {
         onClick={() => this.toggleMenu()}
       />,
       <div class={this.menuOpen ? "menus active" : "menus"}>
-        <exa-search-form />
-        <wp-menu
-          class="primary"
-          query={
-            new Query<Menu>(
-              this.query.connection,
-              Menu.QueryArgs({
-                location: "exa_main_menu",
-              })
-            )
-          }
-        />
+        <bh-search-form />
+        <wp-menu class="primary" query={this.theme.getMenu("exa_main_menu")} />
         <wp-menu
           class="social"
           query={

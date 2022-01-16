@@ -1,0 +1,12 @@
+bh-search-result-occurances {
+  p {
+    margin-bottom: 12px;
+    .match {
+      background-color: #eeed92;
+      font-style: italic;
+      padding: 0 2px;
+      margin: 0 -2px;
+      display: inline-block;
+    }
+  }
+}

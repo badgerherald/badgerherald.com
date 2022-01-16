@@ -5,39 +5,43 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
-import { AdMapping } from "./components/model/AdMapping";
-import { Connection, Template, Theme } from "@webpress/core";
+import { Connection, Post, Template, Theme } from "@webpress/core";
 export namespace Components {
     interface BhImports {
     }
-    interface BstAdSlot {
-        "adUnitPath": string;
-        "sizeMap": AdMapping;
-        "slotRenderEnded": (
-    event: googletag.events.SlotRenderEndedEvent
-  ) => any;
+    interface BhSearchForm {
+        "focused": boolean;
+    }
+    interface BhSearchResultOccurances {
+        "result": Post;
+        "searchQuery": String;
+    }
+    interface BhSearchResultTitle {
+        "result": Post;
+        "searchQuery": String;
+    }
+    interface BhSearchResults {
+        "connection": Connection;
+    }
+    interface BhSearchResultsPage {
+        "global": {
+    // json set externally by index.php
+    context: Connection.Context;
+    theme: Theme.Definition;
+  };
     }
     interface ExaMenuButton {
         "active": boolean;
     }
-    interface ExaNameplateMenus {
-        "global": Connection.Context;
+    interface ExaNameplate {
+        "global": {
+    // json set externally by index.php
+    context: Connection.Context;
+    theme: Theme.Definition;
+  };
         "query": Template.Query;
         "searchQuery": string;
         "theme": Theme;
-    }
-    interface ExaSearchForm {
-        "focused": boolean;
-    }
-    interface HrldArticleSidebar {
-    }
-    interface HrldHomepageLeaderboard {
-    }
-    interface HrldHomepageSidekick {
-    }
-    interface HrldPreflight {
-    }
-    interface HrldTallAd {
     }
 }
 declare global {
@@ -47,11 +51,35 @@ declare global {
         prototype: HTMLBhImportsElement;
         new (): HTMLBhImportsElement;
     };
-    interface HTMLBstAdSlotElement extends Components.BstAdSlot, HTMLStencilElement {
+    interface HTMLBhSearchFormElement extends Components.BhSearchForm, HTMLStencilElement {
     }
-    var HTMLBstAdSlotElement: {
-        prototype: HTMLBstAdSlotElement;
-        new (): HTMLBstAdSlotElement;
+    var HTMLBhSearchFormElement: {
+        prototype: HTMLBhSearchFormElement;
+        new (): HTMLBhSearchFormElement;
+    };
+    interface HTMLBhSearchResultOccurancesElement extends Components.BhSearchResultOccurances, HTMLStencilElement {
+    }
+    var HTMLBhSearchResultOccurancesElement: {
+        prototype: HTMLBhSearchResultOccurancesElement;
+        new (): HTMLBhSearchResultOccurancesElement;
+    };
+    interface HTMLBhSearchResultTitleElement extends Components.BhSearchResultTitle, HTMLStencilElement {
+    }
+    var HTMLBhSearchResultTitleElement: {
+        prototype: HTMLBhSearchResultTitleElement;
+        new (): HTMLBhSearchResultTitleElement;
+    };
+    interface HTMLBhSearchResultsElement extends Components.BhSearchResults, HTMLStencilElement {
+    }
+    var HTMLBhSearchResultsElement: {
+        prototype: HTMLBhSearchResultsElement;
+        new (): HTMLBhSearchResultsElement;
+    };
+    interface HTMLBhSearchResultsPageElement extends Components.BhSearchResultsPage, HTMLStencilElement {
+    }
+    var HTMLBhSearchResultsPageElement: {
+        prototype: HTMLBhSearchResultsPageElement;
+        new (): HTMLBhSearchResultsPageElement;
     };
     interface HTMLExaMenuButtonElement extends Components.ExaMenuButton, HTMLStencilElement {
     }
@@ -59,104 +87,69 @@ declare global {
         prototype: HTMLExaMenuButtonElement;
         new (): HTMLExaMenuButtonElement;
     };
-    interface HTMLExaNameplateMenusElement extends Components.ExaNameplateMenus, HTMLStencilElement {
+    interface HTMLExaNameplateElement extends Components.ExaNameplate, HTMLStencilElement {
     }
-    var HTMLExaNameplateMenusElement: {
-        prototype: HTMLExaNameplateMenusElement;
-        new (): HTMLExaNameplateMenusElement;
-    };
-    interface HTMLExaSearchFormElement extends Components.ExaSearchForm, HTMLStencilElement {
-    }
-    var HTMLExaSearchFormElement: {
-        prototype: HTMLExaSearchFormElement;
-        new (): HTMLExaSearchFormElement;
-    };
-    interface HTMLHrldArticleSidebarElement extends Components.HrldArticleSidebar, HTMLStencilElement {
-    }
-    var HTMLHrldArticleSidebarElement: {
-        prototype: HTMLHrldArticleSidebarElement;
-        new (): HTMLHrldArticleSidebarElement;
-    };
-    interface HTMLHrldHomepageLeaderboardElement extends Components.HrldHomepageLeaderboard, HTMLStencilElement {
-    }
-    var HTMLHrldHomepageLeaderboardElement: {
-        prototype: HTMLHrldHomepageLeaderboardElement;
-        new (): HTMLHrldHomepageLeaderboardElement;
-    };
-    interface HTMLHrldHomepageSidekickElement extends Components.HrldHomepageSidekick, HTMLStencilElement {
-    }
-    var HTMLHrldHomepageSidekickElement: {
-        prototype: HTMLHrldHomepageSidekickElement;
-        new (): HTMLHrldHomepageSidekickElement;
-    };
-    interface HTMLHrldPreflightElement extends Components.HrldPreflight, HTMLStencilElement {
-    }
-    var HTMLHrldPreflightElement: {
-        prototype: HTMLHrldPreflightElement;
-        new (): HTMLHrldPreflightElement;
-    };
-    interface HTMLHrldTallAdElement extends Components.HrldTallAd, HTMLStencilElement {
-    }
-    var HTMLHrldTallAdElement: {
-        prototype: HTMLHrldTallAdElement;
-        new (): HTMLHrldTallAdElement;
+    var HTMLExaNameplateElement: {
+        prototype: HTMLExaNameplateElement;
+        new (): HTMLExaNameplateElement;
     };
     interface HTMLElementTagNameMap {
         "bh-imports": HTMLBhImportsElement;
-        "bst-ad-slot": HTMLBstAdSlotElement;
+        "bh-search-form": HTMLBhSearchFormElement;
+        "bh-search-result-occurances": HTMLBhSearchResultOccurancesElement;
+        "bh-search-result-title": HTMLBhSearchResultTitleElement;
+        "bh-search-results": HTMLBhSearchResultsElement;
+        "bh-search-results-page": HTMLBhSearchResultsPageElement;
         "exa-menu-button": HTMLExaMenuButtonElement;
-        "exa-nameplate-menus": HTMLExaNameplateMenusElement;
-        "exa-search-form": HTMLExaSearchFormElement;
-        "hrld-article-sidebar": HTMLHrldArticleSidebarElement;
-        "hrld-homepage-leaderboard": HTMLHrldHomepageLeaderboardElement;
-        "hrld-homepage-sidekick": HTMLHrldHomepageSidekickElement;
-        "hrld-preflight": HTMLHrldPreflightElement;
-        "hrld-tall-ad": HTMLHrldTallAdElement;
+        "exa-nameplate": HTMLExaNameplateElement;
     }
 }
 declare namespace LocalJSX {
     interface BhImports {
     }
-    interface BstAdSlot {
-        "adUnitPath": string;
-        "sizeMap": AdMapping;
-        "slotRenderEnded"?: (
-    event: googletag.events.SlotRenderEndedEvent
-  ) => any;
+    interface BhSearchForm {
+        "focused"?: boolean;
+    }
+    interface BhSearchResultOccurances {
+        "result"?: Post;
+        "searchQuery"?: String;
+    }
+    interface BhSearchResultTitle {
+        "result"?: Post;
+        "searchQuery"?: String;
+    }
+    interface BhSearchResults {
+        "connection"?: Connection;
+    }
+    interface BhSearchResultsPage {
+        "global"?: {
+    // json set externally by index.php
+    context: Connection.Context;
+    theme: Theme.Definition;
+  };
     }
     interface ExaMenuButton {
         "active"?: boolean;
     }
-    interface ExaNameplateMenus {
-        "global"?: Connection.Context;
+    interface ExaNameplate {
+        "global"?: {
+    // json set externally by index.php
+    context: Connection.Context;
+    theme: Theme.Definition;
+  };
         "query"?: Template.Query;
         "searchQuery"?: string;
         "theme"?: Theme;
     }
-    interface ExaSearchForm {
-        "focused"?: boolean;
-    }
-    interface HrldArticleSidebar {
-    }
-    interface HrldHomepageLeaderboard {
-    }
-    interface HrldHomepageSidekick {
-    }
-    interface HrldPreflight {
-    }
-    interface HrldTallAd {
-    }
     interface IntrinsicElements {
         "bh-imports": BhImports;
-        "bst-ad-slot": BstAdSlot;
+        "bh-search-form": BhSearchForm;
+        "bh-search-result-occurances": BhSearchResultOccurances;
+        "bh-search-result-title": BhSearchResultTitle;
+        "bh-search-results": BhSearchResults;
+        "bh-search-results-page": BhSearchResultsPage;
         "exa-menu-button": ExaMenuButton;
-        "exa-nameplate-menus": ExaNameplateMenus;
-        "exa-search-form": ExaSearchForm;
-        "hrld-article-sidebar": HrldArticleSidebar;
-        "hrld-homepage-leaderboard": HrldHomepageLeaderboard;
-        "hrld-homepage-sidekick": HrldHomepageSidekick;
-        "hrld-preflight": HrldPreflight;
-        "hrld-tall-ad": HrldTallAd;
+        "exa-nameplate": ExaNameplate;
     }
 }
 export { LocalJSX as JSX };
@@ -164,15 +157,13 @@ declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
             "bh-imports": LocalJSX.BhImports & JSXBase.HTMLAttributes<HTMLBhImportsElement>;
-            "bst-ad-slot": LocalJSX.BstAdSlot & JSXBase.HTMLAttributes<HTMLBstAdSlotElement>;
+            "bh-search-form": LocalJSX.BhSearchForm & JSXBase.HTMLAttributes<HTMLBhSearchFormElement>;
+            "bh-search-result-occurances": LocalJSX.BhSearchResultOccurances & JSXBase.HTMLAttributes<HTMLBhSearchResultOccurancesElement>;
+            "bh-search-result-title": LocalJSX.BhSearchResultTitle & JSXBase.HTMLAttributes<HTMLBhSearchResultTitleElement>;
+            "bh-search-results": LocalJSX.BhSearchResults & JSXBase.HTMLAttributes<HTMLBhSearchResultsElement>;
+            "bh-search-results-page": LocalJSX.BhSearchResultsPage & JSXBase.HTMLAttributes<HTMLBhSearchResultsPageElement>;
             "exa-menu-button": LocalJSX.ExaMenuButton & JSXBase.HTMLAttributes<HTMLExaMenuButtonElement>;
-            "exa-nameplate-menus": LocalJSX.ExaNameplateMenus & JSXBase.HTMLAttributes<HTMLExaNameplateMenusElement>;
-            "exa-search-form": LocalJSX.ExaSearchForm & JSXBase.HTMLAttributes<HTMLExaSearchFormElement>;
-            "hrld-article-sidebar": LocalJSX.HrldArticleSidebar & JSXBase.HTMLAttributes<HTMLHrldArticleSidebarElement>;
-            "hrld-homepage-leaderboard": LocalJSX.HrldHomepageLeaderboard & JSXBase.HTMLAttributes<HTMLHrldHomepageLeaderboardElement>;
-            "hrld-homepage-sidekick": LocalJSX.HrldHomepageSidekick & JSXBase.HTMLAttributes<HTMLHrldHomepageSidekickElement>;
-            "hrld-preflight": LocalJSX.HrldPreflight & JSXBase.HTMLAttributes<HTMLHrldPreflightElement>;
-            "hrld-tall-ad": LocalJSX.HrldTallAd & JSXBase.HTMLAttributes<HTMLHrldTallAdElement>;
+            "exa-nameplate": LocalJSX.ExaNameplate & JSXBase.HTMLAttributes<HTMLExaNameplateElement>;
         }
     }
 }
