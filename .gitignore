@@ -6,3 +6,6 @@
 node_modules/
 bin
 *.css.map
+
+/src/theme/style.css 
+/src/theme/legacy-editor-style.css

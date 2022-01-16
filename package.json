@@ -17,7 +17,8 @@
   "scripts": {
     "start": "stencil build --dev --watch",
     "sass": "node-sass ./src/theme/sass editor-style.css -o ./src/theme/ --watch",
-    "build": "stencil build"
+    "sass-build": "node-sass ./src/theme/sass editor-style.css -o ./src/theme/",
+    "build": "npm run sass-build; stencil build"
   },
   "devDependencies": {
     "@badgerherald/donate": "0.1.5",

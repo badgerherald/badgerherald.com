@@ -26,7 +26,6 @@
  *
  */
 
-
 @import "../content-styles/_legacy-content-styles.scss";
 
 .container.article-display .wrapper .donate-form {
@@ -38,7 +37,7 @@
   }
 }
 
-
+/*
  * 2.0  Article header styles.
  * ----------------------------------------------------------------------------
  */
@@ -284,7 +283,6 @@
 
 .container.article-display {
   .article-text {
-
     @include printLegacyContentStyles();
   }
 
@@ -302,48 +300,52 @@
 }
 
 q.pullquote {
-	quotes: "“" "”";
-	&:before {
-		display: none;
-	}
-	&.quotemarks:before { 
-		font-size: 66px; 
-		float: left;
-		padding-right: 6px;
-		display: block;
-		position: relative;
-		top: 0px;
-	}	
-	&:after { 
-		content: "";
-		width: 80px;
-		height: 3px;
-		background: $greyText;
-		display: block;
-		position: absolute;
-		bottom: 0;
-	}
-	display: block;
-	width: 100%;
-	float: left;
-	font-weight: bolder;
-	color: $black ;
-	font-size: 24px;
-	line-height: 36px;
-	margin: 18px 0 48px;
-	padding: 18px 0px 18px;
-	position: relative;
-	font-style: italic;
-	cite {
-		display: block;
-		position: relative;
-		left: 0;
-		margin-top: 18px;
-		margin-bottom: -18px;
-		color: $greyText;
-		font-weight: normal;
-		font-size: 18px;
-	}
+  quotes: "“" "”";
+  cite {
+    font-size: 16px;
+    font-family: $caption;
+  }
+  &:before {
+    display: none;
+  }
+  &.quotemarks:before {
+    font-size: 66px;
+    float: left;
+    padding-right: 6px;
+    display: block;
+    position: relative;
+    top: 0px;
+  }
+  &:before {
+    content: "";
+    width: 80px;
+    height: 2px;
+    background: $greyText;
+    display: block;
+    position: absolute;
+    bottom: -6px;
+  }
+  display: block;
+  width: 100%;
+  float: left;
+  font-weight: bolder;
+  color: $black;
+  font-size: 24px;
+  line-height: 36px;
+  margin: 18px 0 48px;
+  padding: 18px 0px 18px;
+  position: relative;
+  font-style: italic;
+  cite {
+    display: block;
+    position: relative;
+    left: 0;
+    margin-top: 18px;
+    margin-bottom: -18px;
+    color: $greyText;
+    font-weight: normal;
+    font-size: 18px;
+  }
 }
 
 @include breakpoint(tablet) {
@@ -353,30 +355,30 @@ q.pullquote {
       float: none;
     }
   }
-  q.pullquote{
-		&.alignleft {
-			width: 360px;
-			float: left;
-			padding-right: 60px;
-		}
-		&.alignright {
-			width: 360px;
-			float: right;
-			padding-left: 60px;
-		}
-		&.aligncenter {
-			font-size: 28px;
-			line-height: 36px;
-			margin: 48px 0 48px;
-			cite {
-				font-size: 24px;
-			}
-			&.quotemarks:before { 
-				font-size: 100px; 
-				padding-right: 12px;
-				top: 6px;
-			}	
-		}
+  q.pullquote {
+    &.alignleft {
+      width: 360px;
+      float: left;
+      padding-right: 60px;
+    }
+    &.alignright {
+      width: 360px;
+      float: right;
+      padding-left: 60px;
+    }
+    &.aligncenter {
+      font-size: 28px;
+      line-height: 36px;
+      margin: 48px 0 48px;
+      cite {
+        font-size: 24px;
+      }
+      &.quotemarks:before {
+        font-size: 100px;
+        padding-right: 12px;
+        top: 6px;
+      }
+    }
   }
 }
 
