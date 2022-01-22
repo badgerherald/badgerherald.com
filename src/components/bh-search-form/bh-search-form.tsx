@@ -6,6 +6,7 @@ import { Component, h, Prop, Element } from "@stencil/core";
 })
 export class BhrldSearchForm {
   @Prop() focused: boolean;
+  @Prop() term: string;
 
   @Element() el;
 
@@ -21,6 +22,7 @@ export class BhrldSearchForm {
           name="s"
           placeholder="Search..."
           class={this.focused ? "focused" : ""}
+          value={this.term}
           onFocus={(_) => this.el.classList.add("focused")}
           onBlur={(_) => this.focused || this.el.classList.remove("focused")}
         ></input>

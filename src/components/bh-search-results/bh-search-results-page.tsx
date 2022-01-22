@@ -17,9 +17,8 @@ export class BhrldSearchResults {
     return (
       <div>
         <h1>Results for: {this.searchQuery}</h1>
-        <bh-search-form focused={true} />
+        <bh-search-form focused={true} term={this.searchQuery} />
         <br />
-        <hr />
         <bh-search-results connection={new Connection(this.global.context)} />
       </div>
     );

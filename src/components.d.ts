@@ -11,6 +11,7 @@ export namespace Components {
     }
     interface BhSearchForm {
         "focused": boolean;
+        "term": string;
     }
     interface BhSearchResultOccurances {
         "result": Post;
@@ -109,6 +110,7 @@ declare namespace LocalJSX {
     }
     interface BhSearchForm {
         "focused"?: boolean;
+        "term"?: string;
     }
     interface BhSearchResultOccurances {
         "result"?: Post;

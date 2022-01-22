@@ -14,6 +14,10 @@ export class BhrldSearchResults {
     if (!this.results) {
       return "Loading...";
     }
+
+    if (this.results.length == 0) {
+      return <p>No results found</p>;
+    }
     return this.results.map((result) => (
       <div>
         <bh-search-result-title

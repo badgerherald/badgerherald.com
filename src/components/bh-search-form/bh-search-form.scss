@@ -6,8 +6,8 @@ bh-search-form {
       width: 100%;
       padding: 12px flex(10, 300);
       padding-right: 40px;
-      font-family: $headline;
-      font-size: 20px;
+      font-family: $caption;
+      font-size: 18px;
       outline: none;
       border: 3px solid $grey;
       transition: all 0.3s;
@@ -16,7 +16,8 @@ bh-search-form {
         cursor: pointer;
       }
       &::placeholder {
-        color: $greyText;
+        color: rgba(black, 0.6);
+
         @include breakpoint("tablet") {
           color: transparent;
         }
@@ -32,7 +33,7 @@ bh-search-form {
         bottom: -3px;
         float: right;
         width: 36px;
-        padding: 6px 20px 6px 20px;
+        padding: 12px 20px 12px 20px;
         margin-right: 0px;
         border: none;
         &::placeholder {
@@ -64,7 +65,7 @@ bh-search-form {
       @include breakpoint("tablet") {
         bottom: 4px;
         right: 7px;
-        top: inherit;
+        top: 6px;
         font-size: 18px;
       }
     }

@@ -1,7 +1,9 @@
 bh-search-result-title {
+  a {
+    color: $black;
+  }
   h4 {
     font-family: $headline;
-    color: $black;
     font-size: 22px;
     margin-bottom: 12px;
   }

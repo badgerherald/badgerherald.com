@@ -1,4 +1,17 @@
 bh-search-results-page {
-  max-width: 600px;
-  display: block;
+  h1 {
+    font-family: $body;
+    font-style: italic;
+  }
+  bh-search-form {
+    max-width: 800px;
+    display: block;
+    border-bottom: 1px solid grey;
+    padding-bottom: 36px;
+    padding-top: 18px;
+  }
+  bh-search-results {
+    display: block;
+    max-width: 600px;
+  }
 }
