@@ -5,7 +5,7 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
-import { Connection, Post, Template, Theme } from "@webpress/core";
+import { Connection, Query, SearchResult, Template, Theme } from "@webpress/core";
 export namespace Components {
     interface BhImports {
     }
@@ -13,12 +13,15 @@ export namespace Components {
         "focused": boolean;
         "term": string;
     }
+    interface BhSearchPagination {
+        "pagination": Query.Pagination<SearchResult>;
+    }
     interface BhSearchResultOccurances {
-        "result": Post;
+        "result": SearchResult;
         "searchQuery": String;
     }
     interface BhSearchResultTitle {
-        "result": Post;
+        "result": SearchResult;
         "searchQuery": String;
     }
     interface BhSearchResults {
@@ -57,6 +60,12 @@ declare global {
     var HTMLBhSearchFormElement: {
         prototype: HTMLBhSearchFormElement;
         new (): HTMLBhSearchFormElement;
+    };
+    interface HTMLBhSearchPaginationElement extends Components.BhSearchPagination, HTMLStencilElement {
+    }
+    var HTMLBhSearchPaginationElement: {
+        prototype: HTMLBhSearchPaginationElement;
+        new (): HTMLBhSearchPaginationElement;
     };
     interface HTMLBhSearchResultOccurancesElement extends Components.BhSearchResultOccurances, HTMLStencilElement {
     }
@@ -97,6 +106,7 @@ declare global {
     interface HTMLElementTagNameMap {
         "bh-imports": HTMLBhImportsElement;
         "bh-search-form": HTMLBhSearchFormElement;
+        "bh-search-pagination": HTMLBhSearchPaginationElement;
         "bh-search-result-occurances": HTMLBhSearchResultOccurancesElement;
         "bh-search-result-title": HTMLBhSearchResultTitleElement;
         "bh-search-results": HTMLBhSearchResultsElement;
@@ -112,12 +122,15 @@ declare namespace LocalJSX {
         "focused"?: boolean;
         "term"?: string;
     }
+    interface BhSearchPagination {
+        "pagination"?: Query.Pagination<SearchResult>;
+    }
     interface BhSearchResultOccurances {
-        "result"?: Post;
+        "result"?: SearchResult;
         "searchQuery"?: String;
     }
     interface BhSearchResultTitle {
-        "result"?: Post;
+        "result"?: SearchResult;
         "searchQuery"?: String;
     }
     interface BhSearchResults {
@@ -146,6 +159,7 @@ declare namespace LocalJSX {
     interface IntrinsicElements {
         "bh-imports": BhImports;
         "bh-search-form": BhSearchForm;
+        "bh-search-pagination": BhSearchPagination;
         "bh-search-result-occurances": BhSearchResultOccurances;
         "bh-search-result-title": BhSearchResultTitle;
         "bh-search-results": BhSearchResults;
@@ -160,6 +174,7 @@ declare module "@stencil/core" {
         interface IntrinsicElements {
             "bh-imports": LocalJSX.BhImports & JSXBase.HTMLAttributes<HTMLBhImportsElement>;
             "bh-search-form": LocalJSX.BhSearchForm & JSXBase.HTMLAttributes<HTMLBhSearchFormElement>;
+            "bh-search-pagination": LocalJSX.BhSearchPagination & JSXBase.HTMLAttributes<HTMLBhSearchPaginationElement>;
             "bh-search-result-occurances": LocalJSX.BhSearchResultOccurances & JSXBase.HTMLAttributes<HTMLBhSearchResultOccurancesElement>;
             "bh-search-result-title": LocalJSX.BhSearchResultTitle & JSXBase.HTMLAttributes<HTMLBhSearchResultTitleElement>;
             "bh-search-results": LocalJSX.BhSearchResults & JSXBase.HTMLAttributes<HTMLBhSearchResultsElement>;

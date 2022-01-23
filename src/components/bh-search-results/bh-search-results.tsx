@@ -1,12 +1,13 @@
 import { Component, State, h, Prop } from "@stencil/core";
-import { Connection, Post, Query } from "@webpress/core";
+import { Connection, Search, SearchResult, Query } from "@webpress/core";
 import "@webpress/theme";
 
 @Component({
   tag: "bh-search-results",
 })
 export class BhrldSearchResults {
-  @State() results: Post[];
+  @State() results: SearchResult[];
+  @State() pagination: Query.Pagination<SearchResult>;
 
   @Prop() connection: Connection;
 
@@ -18,23 +19,33 @@ export class BhrldSearchResults {
     if (this.results.length == 0) {
       return <p>No results found</p>;
     }
-    return this.results.map((result) => (
-      <div>
-        <bh-search-result-title
-          result={result}
-          searchQuery={this.searchQuery}
-        />
-        <bh-search-result-occurances
-          result={result}
-          searchQuery={this.searchQuery}
-        />
-      </div>
-    ));
+    return [
+      <bh-search-pagination pagination={this.pagination} />,
+      this.results.map((result) => (
+        <div>
+          <bh-search-result-title
+            result={result}
+            searchQuery={this.searchQuery}
+          />
+          <bh-search-result-occurances
+            result={result}
+            searchQuery={this.searchQuery}
+          />
+        </div>
+      )),
+      <br />,
+      <bh-search-pagination pagination={this.pagination} />,
+    ];
   }
 
   private get searchQuery() {
     let params = new URL(document.URL).searchParams;
     return params.get("s");
+  }
+
+  private get searchPage() {
+    let params = new URL(document.URL).searchParams;
+    return params.get("page") || "1";
   }
 
   async componentDidRender() {
@@ -44,11 +55,13 @@ export class BhrldSearchResults {
 
     let query = new Query(
       this.connection,
-      Post.QueryArgs({
+      Search.QueryArgs({
         search: this.searchQuery,
-      } as Post.QueryParams)
+        page: parseInt(this.searchPage, 10),
+      })
     );
 
+    this.pagination = await query.paging;
     this.results = await query.results;
   }
 }

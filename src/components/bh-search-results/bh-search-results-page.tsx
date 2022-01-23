@@ -1,5 +1,5 @@
 import { Component, Prop, h, State } from "@stencil/core";
-import { Connection, Post, Query, Theme } from "@webpress/core";
+import { Connection, Theme } from "@webpress/core";
 import "@webpress/theme";
 
 @Component({
