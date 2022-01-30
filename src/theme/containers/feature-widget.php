@@ -3,10 +3,16 @@ $container = $GLOBALS['container'] ?: new container('feature-widget');
 ?>
 
 <div class="<?php echo $container->classes(); ?>">
+
     <div class="wrapper">
+
+        <ab-dash-widget class="webpress-contextual"></ab-dash-widget>
+
         <div class="feature">
 
             <?php
+
+		$key = serialize($roles);
 
 		$query_args = array(
 			'post_status'	=> 'publish',

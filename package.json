@@ -22,6 +22,7 @@
   },
   "devDependencies": {
     "@badgerherald/donate": "0.1.6",
+    "@broadsheet.technology/analytics-bridge": "file:../../wjhdev/analytics-bridge",
     "@stencil/core": "^2.12.1",
     "@stencil/router": "^1.0.1",
     "@stencil/sass": "^1.5.2",

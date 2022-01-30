@@ -1,4 +1,10 @@
+FROM composer:1.9 AS composer
+COPY composer.json /app/composer.json
+WORKDIR /app/
+RUN composer install
+
 FROM wordpress:5.9.1-php8.1-fpm
+COPY --from=composer /app/vendor /srv/vendor
 
 # 1/ Install programs
 RUN pecl install redis && docker-php-ext-enable redis

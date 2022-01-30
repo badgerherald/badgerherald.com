@@ -20,6 +20,7 @@ export class ExaNameplate {
     if (!this.global || this.query) {
       return;
     }
+    console.log(this.global);
 
     let connection = new Connection(
       this.global.serverInfo,

@@ -1,5 +1,5 @@
-import { Component, Prop, h, State } from "@stencil/core";
-import { Connection, Theme } from "@webpress/core";
+import { Component, Prop, h } from "@stencil/core";
+import { Connection } from "@webpress/core";
 import "@webpress/theme";
 
 @Component({
@@ -7,11 +7,7 @@ import "@webpress/theme";
   styleUrl: "bh-search-results-page.scss",
 })
 export class BhrldSearchResults {
-  @Prop() global: {
-    // json set externally by index.php
-    context: Connection.Context;
-    theme: Theme.Definition;
-  };
+  @Prop() global: Connection.Context;
 
   render() {
     return (
@@ -19,7 +15,12 @@ export class BhrldSearchResults {
         <h1>Results for: {this.searchQuery}</h1>
         <bh-search-form focused={true} term={this.searchQuery} />
         <br />
-        <bh-search-results connection={new Connection(this.global.context)} />
+        <bh-search-results
+          connection={new Connection(this.global.serverInfo)}
+        />
+        <div class="sidebar">
+          <ab-popular-posts global={this.global} />
+        </div>
       </div>
     );
   }

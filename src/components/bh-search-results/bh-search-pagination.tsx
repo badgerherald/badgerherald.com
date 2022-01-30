@@ -1,4 +1,4 @@
-import { Component, Prop, h, State } from "@stencil/core";
+import { Component, Prop, h } from "@stencil/core";
 import { Query, SearchResult } from "@webpress/core";
 import "@webpress/theme";
 

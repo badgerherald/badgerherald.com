@@ -28,21 +28,13 @@ export namespace Components {
         "connection": Connection;
     }
     interface BhSearchResultsPage {
-        "global": {
-    // json set externally by index.php
-    context: Connection.Context;
-    theme: Theme.Definition;
-  };
+        "global": Connection.Context;
     }
     interface ExaMenuButton {
         "active": boolean;
     }
     interface ExaNameplate {
-        "global": {
-    // json set externally by index.php
-    context: Connection.Context;
-    theme: Theme.Definition;
-  };
+        "global": Connection.Context;
         "query": Template.Query;
         "searchQuery": string;
         "theme": Theme;
@@ -137,21 +129,13 @@ declare namespace LocalJSX {
         "connection"?: Connection;
     }
     interface BhSearchResultsPage {
-        "global"?: {
-    // json set externally by index.php
-    context: Connection.Context;
-    theme: Theme.Definition;
-  };
+        "global"?: Connection.Context;
     }
     interface ExaMenuButton {
         "active"?: boolean;
     }
     interface ExaNameplate {
-        "global"?: {
-    // json set externally by index.php
-    context: Connection.Context;
-    theme: Theme.Definition;
-  };
+        "global"?: Connection.Context;
         "query"?: Template.Query;
         "searchQuery"?: string;
         "theme"?: Theme;
