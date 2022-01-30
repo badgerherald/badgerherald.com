@@ -70,15 +70,39 @@ export class BhrldSearchPagination {
   renderNextLi() {
     return (
       <li class="next">
-        <a href="#next">Next</a>
+        <a
+          href="#next"
+          data-page={this.pagination.page + 1}
+          onClick={(event) => this.pageClicked(event)}
+        >
+          Next
+        </a>
       </li>
     );
+  }
+
+  pageClicked(event: MouseEvent) {
+    event.preventDefault();
+
+    // Build new URL
+    let page = (event.target as HTMLAnchorElement).getAttribute("data-page");
+    var queryParams = new URLSearchParams(window.location.search);
+    queryParams.set("page", page);
+
+    // Replace current querystring with the new one.
+    history.pushState(null, null, "?" + queryParams.toString());
+    window.location = window.location;
   }
 
   renderPageLi(index) {
     return (
       <li class={index == this.pagination.page ? "link current" : "link"}>
-        <a href="#1" title={"Page " + index}>
+        <a
+          href={"#" + index}
+          data-page={index}
+          onClick={(event) => this.pageClicked(event)}
+          title={"Page " + index}
+        >
           {index}
         </a>
       </li>
