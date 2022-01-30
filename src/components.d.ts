@@ -9,6 +9,9 @@ import { Connection, Query, SearchResult, Template, Theme } from "@webpress/core
 export namespace Components {
     interface BhImports {
     }
+    interface BhPopularPosts {
+        "global": Connection.Context;
+    }
     interface BhSearchForm {
         "focused": boolean;
         "term": string;
@@ -46,6 +49,12 @@ declare global {
     var HTMLBhImportsElement: {
         prototype: HTMLBhImportsElement;
         new (): HTMLBhImportsElement;
+    };
+    interface HTMLBhPopularPostsElement extends Components.BhPopularPosts, HTMLStencilElement {
+    }
+    var HTMLBhPopularPostsElement: {
+        prototype: HTMLBhPopularPostsElement;
+        new (): HTMLBhPopularPostsElement;
     };
     interface HTMLBhSearchFormElement extends Components.BhSearchForm, HTMLStencilElement {
     }
@@ -97,6 +106,7 @@ declare global {
     };
     interface HTMLElementTagNameMap {
         "bh-imports": HTMLBhImportsElement;
+        "bh-popular-posts": HTMLBhPopularPostsElement;
         "bh-search-form": HTMLBhSearchFormElement;
         "bh-search-pagination": HTMLBhSearchPaginationElement;
         "bh-search-result-occurances": HTMLBhSearchResultOccurancesElement;
@@ -109,6 +119,9 @@ declare global {
 }
 declare namespace LocalJSX {
     interface BhImports {
+    }
+    interface BhPopularPosts {
+        "global"?: Connection.Context;
     }
     interface BhSearchForm {
         "focused"?: boolean;
@@ -142,6 +155,7 @@ declare namespace LocalJSX {
     }
     interface IntrinsicElements {
         "bh-imports": BhImports;
+        "bh-popular-posts": BhPopularPosts;
         "bh-search-form": BhSearchForm;
         "bh-search-pagination": BhSearchPagination;
         "bh-search-result-occurances": BhSearchResultOccurances;
@@ -157,6 +171,7 @@ declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
             "bh-imports": LocalJSX.BhImports & JSXBase.HTMLAttributes<HTMLBhImportsElement>;
+            "bh-popular-posts": LocalJSX.BhPopularPosts & JSXBase.HTMLAttributes<HTMLBhPopularPostsElement>;
             "bh-search-form": LocalJSX.BhSearchForm & JSXBase.HTMLAttributes<HTMLBhSearchFormElement>;
             "bh-search-pagination": LocalJSX.BhSearchPagination & JSXBase.HTMLAttributes<HTMLBhSearchPaginationElement>;
             "bh-search-result-occurances": LocalJSX.BhSearchResultOccurances & JSXBase.HTMLAttributes<HTMLBhSearchResultOccurancesElement>;

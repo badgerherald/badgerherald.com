@@ -1,7 +1,7 @@
 import { Component, Prop, h } from "@stencil/core";
 import { SearchResult } from "@webpress/core";
 import "@webpress/theme";
-import { approxOccurances, annotatedOccurances } from "./bh-search-functions";
+import { approxOccurances, annotatedOccurances } from "./../util";
 
 @Component({
   tag: "bh-search-result-title",

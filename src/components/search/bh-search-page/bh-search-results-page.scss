@@ -3,6 +3,7 @@ bh-search-results-page {
     font-family: $body;
     font-style: italic;
   }
+
   bh-search-form {
     max-width: 800px;
     display: block;
@@ -13,5 +14,7 @@ bh-search-results-page {
   bh-search-results {
     display: block;
     max-width: 600px;
+  }
+  bh-popular-posts {
   }
 }

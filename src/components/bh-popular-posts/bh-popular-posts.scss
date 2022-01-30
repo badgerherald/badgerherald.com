@@ -1,0 +1,36 @@
+bh-popular-posts {
+  h2 {
+    background: $black;
+    color: white;
+    font-style: italic;
+    margin: 0;
+    padding: 12px 20px;
+  }
+  ol.pop-posts {
+    max-width: 400px;
+    margin: 0;
+    padding: 0;
+    li {
+      width: 100%;
+      display: block;
+      background: white;
+      margin: 2px;
+      padding: 0;
+      margin-bottom: 2px;
+      a {
+        padding: 18px 20px;
+        display: inline-block;
+        font-family: $headline;
+        color: $blue;
+        font-size: 20px;
+        &:hover {
+          color: $blueLinkHover;
+        }
+        h4 {
+          padding: 0;
+          margin: 0;
+        }
+      }
+    }
+  }
+}

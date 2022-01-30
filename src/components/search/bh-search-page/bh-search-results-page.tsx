@@ -12,14 +12,15 @@ export class BhrldSearchResults {
   render() {
     return (
       <div>
-        <h1>Results for: {this.searchQuery}</h1>
-        <bh-search-form focused={true} term={this.searchQuery} />
-        <br />
-        <bh-search-results
-          connection={new Connection(this.global.serverInfo)}
-        />
+        <header>
+          <h1>Results for: {this.searchQuery}</h1>
+          <bh-search-form focused={true} term={this.searchQuery} />
+          <bh-search-results
+            connection={new Connection(this.global.serverInfo)}
+          />
+        </header>
         <div class="sidebar">
-          <ab-popular-posts global={this.global} />
+          <bh-popular-posts global={this.global} />
         </div>
       </div>
     );
