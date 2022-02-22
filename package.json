@@ -15,25 +15,24 @@
     "loader/"
   ],
   "scripts": {
-    "start": "stencil build --dev --watch --stats",
+    "start": "stencil build --dev --watch",
     "sass": "node-sass ./src/theme/sass editor-style.css -o ./src/theme/ --watch",
     "sass-build": "node-sass ./src/theme/sass editor-style.css -o ./src/theme/",
-    "build": "npm run sass-build; stencil build --stats"
+    "build": "npm run sass-build; stencil build --prod --stats"
   },
   "devDependencies": {
-    "@badgerherald/donate": "0.1.6",
+    "@badgerherald/donate": "0.1.5",
     "@broadsheet.technology/analytics-bridge": "file:../../wjhdev/analytics-bridge",
     "@stencil/core": "^2.12.1",
     "@stencil/router": "^1.0.1",
     "@stencil/sass": "^1.5.2",
     "@types/stripe-v3": "^3.1.7",
-    "@webpress/core": "^0.0.29",
-    "@webpress/router": "^0.0.29",
-    "@webpress/theme": "^0.0.29"
+    "@webpress/core": "file:../../wjhdev/webpress/src/packages/core",
+    "@webpress/router": "file:../../wjhdev/webpress/src/packages/router",
+    "@webpress/theme": "file:../../wjhdev/webpress/src/packages/theme"
   },
   "license": "MIT",
   "dependencies": {
-    "@types/doubleclick-gpt": "^2019111201.0.2",
     "node-sass": "^7.0.1"
   }
 }

@@ -42,6 +42,7 @@ services:
         max-size: 10m
         max-file: 10
     volumes:
+      - ./bin/stencil-stats.json:/srv/stencil-stats.json
       - badgerherald.com-wordpress:/var/www/html
       - ./${WORDPRESS_UPLOADS_DIR}:/var/www/html/wp-content/uploads
       - ./bin/media-kit:/var/www/html/media-kit

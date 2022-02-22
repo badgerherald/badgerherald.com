@@ -1,4 +1,4 @@
-import { Component, h, Prop, Element } from "@stencil/core";
+import { Component, h, Prop } from "@stencil/core";
 import { Connection } from "@webpress/core";
 
 @Component({
