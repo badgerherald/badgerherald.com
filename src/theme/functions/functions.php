@@ -347,16 +347,16 @@ add_filter('tiny_mce_before_init', 'exa_TinyMCE_customformat' );
  */
 function exa_remove_media_link_to() {
     ?>
-    <script type="text/javascript">
-    jQuery(document).ready( function($) {
-        $( 'li.attachment' ).live( 'click', function( event ) {
-            $( ".link-to > [value='none']").attr( "selected", true ); // selected none in select field
-            $( ".link-to-custom" ).val( '' ); // clear input field for target of link
-            $( '.media-sidebar div.setting' ).remove(); // remove link field
-        });
-    } );
-    </script>
-    <?php
+<script type="text/javascript">
+jQuery(document).ready(function($) {
+    $('li.attachment').live('click', function(event) {
+        $(".link-to > [value='none']").attr("selected", true); // selected none in select field
+        $(".link-to-custom").val(''); // clear input field for target of link
+        $('.media-sidebar div.setting').remove(); // remove link field
+    });
+});
+</script>
+<?php
 }
 add_action( 'admin_footer-post-new.php', 'exa_remove_media_link_to' );
 add_action( 'admin_footer-post.php', 'exa_remove_media_link_to' );
