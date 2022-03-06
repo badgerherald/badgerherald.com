@@ -99,4 +99,5 @@ volumes:
 
 networks:
   default:
-    name: badgerherald.com-network
+    external:
+      name: badgerherald.com-network
