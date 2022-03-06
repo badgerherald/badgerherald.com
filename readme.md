@@ -4,8 +4,6 @@ Continuous deployment for The Badger Herald's WordPress website. This repo conta
 
 **Overview of components:**
 
-- **Vagrant**. Vagrant is a wrapper around VirtualBox and allows quick provisioning of virtual machines. The included Vagrantfile will provision a Debian VM for local development mirroring the same configuration as the production website. After being provisioned, Vagrant will install Docker and run the defined containers.
-
 - **Docker**. Docker is used to "containerize" the various components that go into hosting the production website. WordPress runs in one container while an Nginx proxy container serves pages from it. A third container includes WordPress memcache support and a MariaDB container can be used to host a database for local development.
 
 - **Node.js & Stencil**. Stencil is a compiler for generating Web Components. With Stencil it's possible to use more modern development tools like TypeScript and JSX. Stencil will compile web components in `src/components` and copy the results along with other theme code in `src/` to the server's `server/wp-content/theme` directory.
@@ -37,12 +35,12 @@ npm run watch
 To run a development WordPress server locally:
 
 1. Copy `dev.env` to `.env`
-2. (optional) If you have a development database, copy it to `/docker/mariadb/install/*.sql`
-3. Install [VirtualBox](https://www.virtualbox.org/wiki/Downloads) and [Vagrant](https://www.vagrantup.com/downloads.html), then:
+2. Install docker
+3. (optional) If you have a development database, copy it to `/config/mariadb/install/*.sql`
 4. Run
 
 ```
-vagrant up
+docker-compose up -d
 ```
 
 In a few minutes a WordPress instance will be available at **[http://192.168.19.69/](https://192.168.19.69/)**
@@ -75,25 +73,9 @@ Save this file by hitting `control + o`. Exit by hitting `control + c`
 
 Then, make sure the URL in `.env` is set to badgerherald.test and reprovision the setup.
 
-#### SSH into the virtual machine created by Vagrant
-
-If you followed the above steps, vagrant will have created a virtual machine running Docker.
-
-You can access the virtual machine with ssh:
-
-```
-vagrant ssh
-```
-
-You can destroy the virtual machine: `vagrant destroy`. Warning: any changes you made to the WordPress install/database will also be destroyed with the virtual machine. To recreate, just run `vagrant up` again.
-
 #### Interacting with Docker
 
-Docker runs on the virtual machine. The first time you `vagrant up` Docker _should_ also start. If you need to restart Docker, first:
-
-1. SSH into the virtual machine (`vagrant ssh`)
-2. Navigate to the repo directory: `cd ~/badgerherald.com`
-3. Run:
+Run:
 
 ```
 docker-compose up
@@ -109,11 +91,11 @@ You may also hit `cmd + z` to detach without stopping the docker containers.
 
 ## Repository Structure
 
-The `/src` directory contained all source code. Once compiled, the root of the `/src` becomes the root of the WordPress theme directory created.
+The `./src` directory contained all source code. Once compiled, the root of the `./src` becomes the root of the WordPress theme directory created.
 
-The `/docker` directory contains both server configuration files used by docker and vagrant.
+The `./config` directory contains both server configuration files used by docker.
 
-The `/wp-content` folder is mapped to docker's WordPress drive. Stencil compiles the theme directly to `/wp-content/themes/badgerherald.com`.
+The `./bin/wp-content` folder is mapped to docker's WordPress drive. Stencil compiles the theme directly to `./bin/wp-content/themes/badgerherald.com`.
 
 ## webpress
 

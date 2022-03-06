@@ -1,24 +1,38 @@
-import { Config } from '@stencil/core'
-import { sass } from '@stencil/sass'
+import { Config } from "@stencil/core";
+import { sass } from "@stencil/sass";
 
 export const config: Config = {
-  namespace: 'badgerherald',
+  namespace: "badgerherald",
   outputTargets: [
     {
-      type: 'www',
+      type: "www",
       serviceWorker: null,
-      buildDir: 'app',
-      dir:'bin/wp-content/themes/badgerherald.com/',
+      buildDir: "app",
+      dir: "bin/wp-content/themes/badgerherald.com/",
       copy: [
-        { src: 'theme/', dest: '' },
-        { src: '../node_modules/@webpress/core/dist/collection/theme-overlay/functions.php', dest: 'functions.php'},
-        { src: '../node_modules/@webpress/core/dist/collection/theme-overlay/etc', dest: 'etc'},
-        { src: '../node_modules/@badgerherald/donate/dist/collection/functions.php', dest: 'functions/donate.php'},
-        { src: '../node_modules/@badgerherald/donate/dist/collection/lib/', dest: 'functions/lib'}
-      ]
-    }
+        { src: "theme/", dest: "" },
+        {
+          src: "../node_modules/@webpress/core/dist/collection/theme-overlay/functions.php",
+          dest: "functions.php",
+        },
+        {
+          src: "../node_modules/@webpress/core/dist/collection/theme-overlay/etc",
+          dest: "etc",
+        },
+        {
+          src: "../node_modules/@badgerherald/donate/dist/collection/functions.php",
+          dest: "functions/donate.php",
+        },
+        {
+          src: "../node_modules/@badgerherald/donate/dist/collection/lib/",
+          dest: "functions/lib",
+        },
+      ],
+    },
+    {
+      type: "stats",
+      file: "bin/stencil-stats.json",
+    },
   ],
-  plugins: [ 
-    sass({ injectGlobalPaths: ["src/global/sass/foundations.scss"] })
-  ]
+  plugins: [sass({ injectGlobalPaths: ["src/global/sass/foundations.scss"] })],
 };

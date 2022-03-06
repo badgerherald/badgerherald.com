@@ -13,11 +13,7 @@ export namespace Components {
         "active": boolean;
     }
     interface ExaNameplate {
-        "global": {
-    // json set externally by index.php
-    context: Connection.Context;
-    theme: Theme.Definition;
-  };
+        "global": Connection.Context;
         "query": Template.Query;
         "searchQuery": string;
         "theme": Theme;
@@ -65,11 +61,7 @@ declare namespace LocalJSX {
         "active"?: boolean;
     }
     interface ExaNameplate {
-        "global"?: {
-    // json set externally by index.php
-    context: Connection.Context;
-    theme: Theme.Definition;
-  };
+        "global"?: Connection.Context;
         "query"?: Template.Query;
         "searchQuery"?: string;
         "theme"?: Theme;

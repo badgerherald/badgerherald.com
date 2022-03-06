@@ -7,11 +7,7 @@ import "@webpress/theme";
   styleUrl: "exa-nameplate.scss",
 })
 export class ExaNameplate {
-  @Prop() global: {
-    // json set externally by index.php
-    context: Connection.Context;
-    theme: Theme.Definition;
-  };
+  @Prop() global: Connection.Context;
 
   @Prop() query: Template.Query;
   @Prop() theme: Theme;
@@ -25,7 +21,7 @@ export class ExaNameplate {
       return;
     }
 
-    let connection = new Connection(this.global.context);
+    let connection = new Connection(this.global.serverInfo);
 
     this.theme = new Theme(connection, this.global.theme);
     this.query = new Template.Query(connection, {
