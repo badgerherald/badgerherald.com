@@ -9,6 +9,6 @@ ADD docker-entrypoint.sh /usr/local/bin/local-docker-entrypoint.sh
 RUN chmod 0644 /usr/local/bin/local-docker-entrypoint.sh
 
 # 3/ Install crontab
-RUN crontab -l | { cat; echo "*/5 * * * * /usr/local/bin/php -q /var/www/html/wp-cron.php > /tmp/stuff"; } | crontab -
+RUN crontab -u www-data -l | { cat; echo "*/5 * * * * /usr/local/bin/php -q /var/www/html/wp-cron.php > /tmp/stuff"; } | crontab -u www-data -
 
 CMD bash /usr/local/bin/local-docker-entrypoint.sh && bash /usr/local/bin/docker-entrypoint.sh php-fpm
