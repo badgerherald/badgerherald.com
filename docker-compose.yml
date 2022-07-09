@@ -4,7 +4,7 @@ services:
   nginx:
     build:
       context: config/nginx
-    container_name: badgerherald.com-nginx
+    container_name: ${COMPOSE_PROJECT_NAME}-nginx
     links:
       - wordpress
     ports:
@@ -22,7 +22,7 @@ services:
   wordpress:
     build:
       context: config/wordpress
-    container_name: badgerherald.com-wordpress
+    container_name: ${COMPOSE_PROJECT_NAME}-wordpress
     links:
       - redis
     depends_on:
@@ -67,6 +67,7 @@ services:
         define('DISABLE_WP_CRON', true);
 
   redis:
+    container_name: ${COMPOSE_PROJECT_NAME}-redis
     image: redis:6
     restart: always
     logging:
@@ -77,7 +78,7 @@ services:
       - "6379:6379"
 
   mariadb:
-    container_name: badgerherald.com-mariadb
+    container_name: ${COMPOSE_PROJECT_NAME}-mariadb
     image: mariadb
     volumes:
       - ./config/mariadb/install/:/docker-entrypoint-initdb.d
@@ -92,6 +93,21 @@ services:
       MYSQL_USER: ${WORDPRESS_DB_USER}
       MYSQL_PASSWORD: ${WORDPRESS_DB_PASSWORD}
       MYSQL_DATABASE: ${WORDPRESS_DB_NAME}
+
+  agent:
+    container_name: ${COMPOSE_PROJECT_NAME}-agent
+    image: newrelic/infrastructure
+    cap_add:
+      - SYS_PTRACE
+    network_mode: host
+    pid: host
+    privileged: true
+    volumes:
+      - "/:/host:ro"
+      - "/var/run/docker.sock:/var/run/docker.sock"
+    restart: unless-stopped
+    environment:
+      - NRIA_LICENSE_KEY=${NRIA_LICENSE_KEY}
 
 volumes:
   badgerherald.com-mariadb:
