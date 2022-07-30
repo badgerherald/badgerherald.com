@@ -36,8 +36,7 @@ sudo add-apt-repository \
    $(lsb_release -cs) \
    stable"
 sudo apt-get update -y
-sudo apt-get install docker-ce docker-ce-cli -y
-sudo apt-get install docker-compose -y
+sudo apt-get install docker-ce docker-ce-cli docker-compose-plugin -y
 
 # 3. Install npm + node + sass
 #

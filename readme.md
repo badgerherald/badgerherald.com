@@ -111,7 +111,11 @@ sass src/theme/sass/style.scss:bin/wp-content/themes/badgerherald.com/style.css
 
 ## Deploying
 
-Deploying to a new server is almost entirely within the repo. On a Debian 10 box:
+Deploying to a new server is almost entirely within the repo.
+
+#1, Deploy a Debian 11 box—and mount in relevant volumes.
+
+#2, SSH into the box and:
 
 ```bash
 apt update
@@ -120,7 +124,9 @@ git clone https://github.com/badgerherald/badgerherald.com
 bash badgerherald.com/config/provision.sh
 ```
 
-Create a .env file at: `~/badgerherald.com/.env` with database and domain details, then:
+#3, Mount uploads & plugins block storage and symlink them to `/bin/wp-content/[uploads,plugins]`
+
+#4, Create a .env file at: `~/badgerherald.com/.env` with database and domain details, then:
 
 ```bash
 cd ~/badgerherald.com
