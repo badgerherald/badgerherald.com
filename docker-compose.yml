@@ -16,6 +16,10 @@ services:
       - ./bin/wp-content/plugins:/var/www/html/wp-content/plugins/
       - ./${WORDPRESS_UPLOADS_DIR}:/var/www/html/wp-content/uploads
     restart: always
+    logging:
+      options:
+        max-size: 10m
+        max-file: 10
     environment:
       DOMAIN: ${SITE_URL}
 
@@ -30,6 +34,10 @@ services:
     expose:
       - 80
     restart: always
+    logging:
+      options:
+        max-size: 10m
+        max-file: 10
     volumes:
       - badgerherald.com-wordpress:/var/www/html
       - ./${WORDPRESS_UPLOADS_DIR}:/var/www/html/wp-content/uploads
@@ -72,8 +80,8 @@ services:
     restart: always
     logging:
       options:
-        max-size: "10m"
-        max-file: "3"
+        max-size: 10m
+        max-file: 10
     ports:
       - "6379:6379"
 
@@ -86,6 +94,10 @@ services:
       - badgerherald.com-mariadb:/var/lib/mysql:rw
     restart: always
     command: mysqld
+    logging:
+      options:
+        max-size: 10m
+        max-file: 10
     expose:
       - 3306
     environment:
