@@ -113,7 +113,10 @@ sass src/theme/sass/style.scss:bin/wp-content/themes/badgerherald.com/style.css
 
 Deploying to a new server is almost entirely within the repo.
 
-#1, Deploy a Debian 11 box—and mount in relevant volumes.
+#1, Deploy a Debian 11 droplet in digital ocean. Remember to:
+
+- Mount in relevant block storage (uploads & plugins dir)
+- Allow-list the droplets access to its managed database
 
 #2, SSH into the box and:
 
@@ -132,8 +135,8 @@ bash badgerherald.com/config/provision.sh
 cd ~/badgerherald.com
 npm install
 npm run build
-docker-compose build
-docker-compose up
+docker compose build
+docker compose up
 ```
 
 To re-deploy changes, run the above again
