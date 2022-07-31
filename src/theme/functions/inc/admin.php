@@ -130,8 +130,3 @@ function _hexa_admin_reorder_move_page_to_top($slug, $page) {
 		}
 	}
 }
-
-
-
-
-

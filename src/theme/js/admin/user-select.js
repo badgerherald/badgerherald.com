@@ -1,8 +1,6 @@
 jQuery(document).ready(function($) {
 
-	$(".exa-user-select").initialize( function() {
-
-		$(this).autocomplete({
+		$(".exa-user-select").autocomplete({
 			minLength: 0,
 			source: exa_user_select.users,
 			autofocus: true,
@@ -12,14 +10,16 @@ jQuery(document).ready(function($) {
 			},
 			select: function (event, ui) {
 				var id = $(event.target).attr("id");
-				$(event.target).attr("value", ui.item.label);
-				$('#' + id + '-input').attr("value", ui.item.value);
+				event.target.value = ui.item.label;
+				console.log($('#' + id + '-input'), ui.item.value, $(event.target), ui.item.label);
+				console.log($('#' + id + '-input'),ui.item.value)
+				$('#' + id + '-input').val(ui.item.value)
 				return false;
 			},
 			close: function (event, ui) {
 				var id = $(event.target).attr("id");
-				if($(event.target).attr("value") == "") {
-					$('#' + id + '-input').attr("value", "");
+				if($(event.target).value == "") {
+					$('#' + id + '-input').value = ""
 				}
 			}
 		}).autocomplete( "instance" )._renderItem = function( ul, item ) {
@@ -28,6 +28,6 @@ jQuery(document).ready(function($) {
 				.appendTo( ul );
 		};
 		
-	});
+	
 
 });
