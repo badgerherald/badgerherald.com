@@ -6,6 +6,9 @@ RUN composer install
 FROM wordpress:5.9.1-php8.1-fpm
 COPY --from=composer /app/vendor /srv/vendor
 
+# 1/ Copy composer installed php libs
+COPY --from=composer /app/vendor /srv/vendor
+
 # 1/ Install programs
 RUN pecl install redis && docker-php-ext-enable redis
 RUN apt-get update && apt-get -y install cron wget gnupg2
