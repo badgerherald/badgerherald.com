@@ -5,10 +5,8 @@
  * @since v0.2
  */
 function exa_admin_user_select_script( $hook ) {
-
-	wp_enqueue_script('exa-admin-initailize', get_template_directory_uri().'/js/admin/initalize.js', array('jquery','jquery-ui-autocomplete'));
-	wp_enqueue_script('exa-admin-user-select', get_template_directory_uri().'/js/admin/user-select.js?v=1', array('jquery','jquery-ui-autocomplete'));
-
+	wp_enqueue_script('exa-admin-initailize', get_template_directory_uri().'/js/admin/initalize.js', array('jquery','jquery-ui-autocomplete'), exa_version());
+	wp_enqueue_script('exa-admin-user-select', get_template_directory_uri().'/js/admin/user-select.js', array('jquery','jquery-ui-autocomplete'), exa_version());
 
 	$userObjects = get_users( array( 
 							'role__in' => array('editor','management','staffwriter','associates','copy','administrator'),

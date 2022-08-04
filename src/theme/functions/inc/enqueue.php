@@ -10,6 +10,19 @@
  */
 
 
+function exa_version() {
+    $json = file_get_contents( "/srv/stencil-stats.json");
+    $version;
+    if ($json) {
+        $decoded = json_decode($json);
+        $version = substr(md5($decoded->timestamp),0,8);
+    } else {
+        $version = "";
+    }
+
+    return $version;
+}
+
 /**
  * Enqueues scripts and styles for front end.
  * @since v0.1
@@ -19,7 +32,7 @@ function _exa_enqueue_scripts_styles() {
     $version;
     if ($json) {
         $decoded = json_decode($json);
-        $version = "?v=" . substr(md5($decoded->timestamp),0,8);
+        $version = substr(md5($decoded->timestamp),0,8);
     } else {
         $version = "";
     }
