@@ -1,0 +1,93 @@
+$base-font-size: 15px;
+$base-line-height: 21px;
+
+@function flex($pixels, $base) {
+    @return percentage(($pixels / $base));
+}
+
+@function em($px, $base: 15) {
+    @return ($px / $base) * 1em;
+}
+
+/*
+ * Style placeholder text with the given content.
+ */
+@mixin optional-at-root($sel) {
+  @at-root #{if(not &, $sel, selector-append(&, $sel))} {
+    @content;
+  }
+}
+
+@mixin placeholder {
+  @include optional-at-root('::-webkit-input-placeholder') {
+    @content;
+  }
+
+  @include optional-at-root(':-moz-placeholder') {
+    @content;
+  }
+
+  @include optional-at-root('::-moz-placeholder') {
+    @content;
+  }
+
+  @include optional-at-root(':-ms-input-placeholder') {
+    @content;
+  }
+}
+
+/*  Fonts */
+$headline: 	'PT Sans Narrow', Helvetica, Arial, Sans-Serif;
+$body:		'Noto Serif', Oalatino, Georgia, Serif;
+$caption: 	open sans, helvetica, arial, sans-serif;
+
+/*  Colors */
+$heraldblue:				#3c74b9;
+$heraldbluehover:			#3a97f7;
+$heraldlightgrey:			#f5f2f2;
+$heraldlightgreyonwhite:	#ededed;
+$heralddarkgrey: 			#2c2c2c;
+$heraldblack:				#191919;
+
+
+
+
+/* logo blue */
+$hrld-blue:					#3c74b9;
+$hrld-blue-hover:			#3a97f7;
+/* this is the grey of the background */
+$hrld-light-grey:			#eff4f6;
+
+/* grey for text */
+$hrld-dark-grey: 			#a6b5bd;
+
+/* hover color for hrld-dark-grey */
+$hrld-dark-grey-hover:		#7e8c93;
+
+$hrld-black:				#191919;
+
+/* this is dark grey on a black background */
+$hrld-black-dark-grey:		#414141;
+
+
+
+
+$gutter: 20px;
+
+/*  Column Widths for Full Width 1180px */
+$oneColumns:		60px;
+$twoColumns:		140px;
+$threeColumns:		220px;
+$fourColumns:		300px;
+$fiveColumns:		380px;
+$sixColumns:		460px;
+$sevenColumns:		540px;
+$eightColumns:		620px;
+$nineColumns:		700px;
+$tenColumns:		780px;
+$elevenColumns:		860px;
+$twelveColumns:		940px;
+$thirteenColumns:	1020px;
+$fourteenColumns:	1100px;
+$fifteenColumns:	1180px;
+

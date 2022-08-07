@@ -1,0 +1,43 @@
+.rates {
+	width: 100%;
+	border-spacing: 0;
+	border-collapse: separate;
+	border-top : 2px solid rgba(#fff,.2);
+	tbody {
+		& tr:first-child td {
+			padding-top: 12px;
+		}
+		& tr:last-child td {
+			padding-bottom: 12px;
+			border-bottom : 2px solid rgba(#fff,.2);
+		}
+		tr td:last-child {
+			width: auto ;
+		}
+		.explainer, .top-explainer {
+			font-style: italic;
+			font-size: 13px;
+			color: rgba(#fff,.6);
+			position: relative;
+
+		}
+		.explainer {
+			top: -3px;
+		}
+		.top-explainer {
+			top: 3px;
+		}
+		.price {
+			text-align: right;
+		}
+	}
+}
+
+.digital-slide {
+	background: #000;	
+	a {
+		color: $hrld-blue;
+		text-decoration: none;
+	}
+}
+

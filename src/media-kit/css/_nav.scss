@@ -1,0 +1,49 @@
+$bordercolor :rgba(255,255,255,.1);
+
+nav[role=main] {
+	width: 100%;
+	font-family: 'PT Sans Narrow';
+	text-transform: uppercase;
+	font-size: 15px;
+	z-index:10;
+	border-bottom: 2px solid $bordercolor;
+
+	background: $hrld-blue;
+
+	ul {
+		list-style-type: none;
+		margin:0 auto;
+		padding:0;
+		background: green;
+		width:320px;
+		li {
+			width:60px;
+			display: block;
+			float:left;
+			padding:0 10px;
+			margin: 0;
+			&.nav-about {
+				padding-right: 9px;
+				border-right: 1px solid $bordercolor;
+			}
+			&.nav-contact {
+				padding-left: 9px;
+				border-left: 1px solid $bordercolor;
+			}
+			a {
+				color: #fff;
+				text-decoration: none;
+				width: 60px;
+				display: block;
+				text-align: center;
+				padding-top:60px;
+				padding-bottom: 12px;
+				&:hover {
+					color: #000;
+				}
+			}
+		}
+
+	}
+
+}

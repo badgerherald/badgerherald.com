@@ -1,0 +1,74 @@
+
+
+.print-slide {
+	background: #eff4f6;	
+	color:#000;
+	a {
+		color: $hrld-blue;
+		text-decoration: none;
+	}
+	h1 {
+		border-bottom-color: rgba(#000,.1);
+	}
+	.rates, .rates td {
+		border-color: rgba(#000,.1) !important;
+	}
+	.rates .top-explainer {
+		color: rgba(#000,.5);
+	}
+	.size-row {
+		padding-bottom: 30px;
+	}
+	.print-size {
+		width: 18%;
+		margin-left: 2.5%;
+		float: left;
+		font-size: 16px;
+		line-height: 16px;
+		h3 {
+			font-family: $headline;
+			font-style: inherit;
+			margin-bottom: 20px;
+		}
+		.size {
+			font-family: monospace;
+			font-weight: bold;
+			display: block;
+			margin-bottom:3px;
+			font-size: 14px;
+		}
+		.price {
+			margin: 0px;
+			display: block;
+		}
+		&:first-child {
+			margin-left: 0;
+		}
+	}
+	.rate-nav {
+		list-style: none;
+		margin: 0;
+		padding: 0;
+		float: right;
+		position: absolute;
+		right: 0;
+		top:0px;
+		li {
+			display: inline;
+			a {
+				padding: 4px 10px;
+				display: inline-block;
+				color: #000;
+				color: $hrld-blue;
+				&:hover {
+					color: black;
+				}
+				&.active {
+					color: black;
+					border: 1px solid rgba(black,0.1);
+					border-radius: 18px;
+				}
+			}
+		}
+	}
+}

@@ -1,0 +1,52 @@
+
+
+
+
+.email-slide {
+	background: #eff4f6;	
+	color:#000;
+	a {
+		color: $hrld-blue;
+		text-decoration: none;
+	}
+	h1 {
+		border-bottom-color: rgba(#000,.1);
+	}
+	h2{
+		color:$hrld-blue;
+	}
+	.rates, .rates td {
+		border-color: rgba(#000,.1) !important;
+	}
+	.rates .top-explainer {
+		color: rgba(#000,.5);
+	}
+	
+	
+	.rate-nav {
+		list-style: none;
+		margin: 0;
+		padding: 0;
+		float: right;
+		position: absolute;
+		right: 0;
+		top:0px;
+		li {
+			display: inline;
+			a {
+				padding: 4px 10px;
+				display: inline-block;
+				color: #000;
+				color: $hrld-blue;
+				&:hover {
+					color: black;
+				}
+				&.active {
+					color: black;
+					border: 1px solid rgba(black,0.1);
+					border-radius: 18px;
+				}
+			}
+		}
+	}
+}

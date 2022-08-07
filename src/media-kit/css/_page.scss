@@ -1,0 +1,53 @@
+/** =================================================================
+ *  Style for full page.
+ *  ================================================================= */
+
+$hrld-blue : #1c78d3;
+
+body {
+	background: $hrld-blue;
+	font-family: 'PT Serif', serif;
+	color: #fff;
+}
+
+h1,h2,h3,h4,h5,h6 {
+	font-style: italic;
+}
+
+.pt-sans {
+	font-family: 'PT Sans Narrow', sans-serif;
+}
+
+.num {
+	font-family: 'PT mono';
+	font-weight: bold;
+}
+
+b {
+	color: #000;
+}
+
+.slide-wrap {
+	width:flex(300,320);
+	margin:0 auto;
+}
+
+@media (min-width: 760px) {
+	.slide-wrap {
+		width:flex(700,740);
+	}
+}
+
+@media (min-width: 1060px) {
+	.slide-wrap {
+		width: flex(1020,1060);
+		max-width: 1060px;
+	}
+}
+
+
+
+
+
+
+

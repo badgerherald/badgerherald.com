@@ -1,0 +1,210 @@
+
+/** == ALL CONTENT SLIDE STYLINGS =============================================================== */
+
+/* content slides are basically everything except the hero */
+.content-slide {
+
+	padding-bottom: 200px;
+	padding-top: 200px;
+	position: relative;
+	h1 {
+		display: block;
+		border-bottom: 4px solid rgba(white,.2);
+		padding-bottom: 12px;
+		padding-top: 60px;
+		margin-top: 0;
+		font-style: italic;
+		font-size: 46px;
+		text-align: center;
+	}
+
+	.left-pane, .right-pane, .full-pane {
+		width: 100%;
+		position: relative;
+	}
+
+	hr {
+		height:4px;
+		border-width:0;
+		background: rgba(black,0.1);
+		display: block;
+	}
+}
+
+/* base: 740px. */
+
+@media (min-width: 760px) {
+	.content-slide {
+		h1 {
+			text-align: left;
+		}
+		.left-pane, .right-pane {
+			width: flex(360,740);
+			float:left;
+		}
+		.right-pane {
+			margin-left: flex(20,740);
+		}
+	
+	}
+
+
+}
+
+
+/** == ABOUT SLIDE STYLINGS ===================================================================== */
+
+.about-slide {
+
+
+
+	.left-pane {
+		
+		.newsletter {
+			margin-top: 36px;
+			.indicates-required {
+				display: none;
+			}
+			input[type=text],input[type=email] {
+				width: 80%;
+				font-family: 'pt sans narrow';
+				margin-bottom: 12px;
+				background: rgba(white,.1);
+				border: none;
+				padding: 6px 12px;
+				box-sizing: border-box;
+				color: #fff;
+				@include placeholder {
+					color: #000;
+					text-transform: uppercase;
+				}
+				&:focus {
+					border-bottom: 1px solid rgba(white,.2);
+					padding-bottom: 5px;
+					@include placeholder {
+						color: rgba(#fff,.6);
+						text-transform: uppercase;
+					}
+				}
+			}
+			.button {
+				background: #000;
+				color: #fff;
+				padding: 6px 12px;
+				border: none;
+				margin-top: 6px;
+			}
+			label {
+				display: none;
+			}
+		}
+		.staff {
+			.profile {
+				height: 60px;
+				overflow: hidden;
+				line-height: 21px;
+			}
+			.mug {
+				float:left;
+				width:80px;
+				padding-right: 20px;
+			}
+			.profile-title {
+				font-size: 14px;
+				line-height: 12px;
+			}
+			.contact-links {
+				font-size: 14px;
+				a {
+					color: #000;
+					text-decoration: none;
+					&:hover {
+						color: rgba(white,.6);
+					}
+				}
+			}
+		}
+	}
+	/* Right pane for the about slide is converted to the "by the numbers" box */
+	.right-pane {
+		background: rgba(white,.2);
+		width: flex(280,300);
+		padding: flex(10,300);
+		margin-top: 24px;
+
+		header {
+			border-bottom: 2px solid $hrld-blue;
+			padding-bottom:12px;
+			h4, h2 {
+				margin:0;
+			}
+			h4 {
+				font-family: 'PT sans narrow';
+				font-style: normal;
+				color: #000;
+				font-size:14px;
+			}
+		}
+		.market, .reach {
+			width: 50%;					
+			font-size: 16px;
+			float:left;
+			h4 {
+				font-family: 'PT sans narrow';
+				color: #000;
+				font-size:18px;
+				font-style: normal;
+				text-transform: uppercase;
+				margin:24px 0 18px;
+			}
+			ul {
+				list-style: none;
+				margin:0;
+				padding:0;
+				li {
+					color: #116abb;
+					font-style: italic;
+					margin-bottom:24px;
+					display: block;
+					.num {
+						font-size: 24px;
+						font-style: normal;
+						color: #fff;
+						padding-right: 3px;
+						display: block;
+					}
+				}
+			}
+		}
+		.us-v-them {
+			padding-left: 120px;
+			border-top: 1px solid $hrld-blue;
+			padding-bottom: 20px;
+			&.klout {
+				background: url('../img/us-v-them-klout.png') 0 20px no-repeat;
+				background-size: 100px 148px;
+				height: 168px;
+			}
+			&.size-matters {
+				background: url('../img/us-v-them-size-matters.png') 0 20px no-repeat;
+				background-size: 100px 135px;
+				height: 155px;
+			}
+			&.circulation {
+				background: url('../img/us-v-them-weekly-biweekly.png') 0 20px no-repeat;
+				background-size: 100px 120px;
+				height: 120px;
+			}
+		}
+	}
+}
+
+@media (min-width: 760px) {
+	.about-slide {
+		.right-pane {
+			width: flex(320,740);
+			padding: flex(20,740);
+
+		}
+	}
+}
