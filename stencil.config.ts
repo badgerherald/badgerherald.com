@@ -11,6 +11,7 @@ export const config: Config = {
       dir: "bin/wp-content/themes/badgerherald.com/",
       copy: [
         { src: "theme/", dest: "" },
+        { src: "media-kit/", dest: "./../../../media-kit" },
         {
           src: "../node_modules/@webpress/core/dist/collection/theme-overlay/functions.php",
           dest: "functions.php",

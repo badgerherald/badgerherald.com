@@ -12,6 +12,7 @@ services:
       - 443:443
     volumes:
       - badgerherald.com-wordpress:/var/www/html
+      - ./bin/media-kit:/var/www/html/media-kit
       - ./bin/wp-content/themes:/var/www/html/wp-content/themes/
       - ./bin/wp-content/plugins:/var/www/html/wp-content/plugins/
       - ./${WORDPRESS_UPLOADS_DIR}:/var/www/html/wp-content/uploads
@@ -22,6 +23,8 @@ services:
         max-file: 10
     environment:
       DOMAIN: ${SITE_URL}
+    depends_on:
+      - ${COMPOSE_PROJECT_NAME}-media-kit
 
   wordpress:
     build:
@@ -41,6 +44,7 @@ services:
     volumes:
       - badgerherald.com-wordpress:/var/www/html
       - ./${WORDPRESS_UPLOADS_DIR}:/var/www/html/wp-content/uploads
+      - ./bin/media-kit:/var/www/html/media-kit
       - ./bin/stencil-stats.json:/srv/stencil-stats.json
       - ./bin/wp-content/themes:/var/www/html/wp-content/themes/
       - ./bin/wp-content/plugins:/var/www/html/wp-content/plugins/
@@ -84,6 +88,12 @@ services:
         max-file: 10
     ports:
       - "6379:6379"
+
+  media-kit:
+    container_name: ${COMPOSE_PROJECT_NAME}-media-kit
+    image: php:7.4-fpm
+    volumes:
+      - ./bin/media-kit:/var/www/html/media-kit
 
   mariadb:
     container_name: ${COMPOSE_PROJECT_NAME}-mariadb
