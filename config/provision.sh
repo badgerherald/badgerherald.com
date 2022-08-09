@@ -44,6 +44,7 @@ curl -sL https://deb.nodesource.com/setup_14.x | sudo bash -
 sudo apt-get update -y
 sudo apt-get install -y nodejs
 sudo npm install -g sass
+sudo apt-get install -y gnupg2 pass
 
 # 4. Run
 #
