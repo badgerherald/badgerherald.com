@@ -24,7 +24,7 @@ services:
     environment:
       DOMAIN: ${SITE_URL}
     depends_on:
-      - ${COMPOSE_PROJECT_NAME}-media-kit
+      - media-kit
 
   wordpress:
     build:
