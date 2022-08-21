@@ -22,7 +22,7 @@
   },
   "devDependencies": {
     "@badgerherald/donate": "^0.1.5",
-    "@broadsheet.technology/analytics-bridge": "^0.0.1",
+    "@broadsheet.technology/analytics-bridge": "^0.0.3",
     "@stencil/core": "^2.12.1",
     "@stencil/router": "^1.0.1",
     "@stencil/sass": "^1.5.2",
