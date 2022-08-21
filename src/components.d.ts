@@ -11,6 +11,7 @@ export namespace Components {
     }
     interface BhPopularPosts {
         "global": Connection.Context;
+        "size": number;
     }
     interface BhSearchForm {
         "focused": boolean;
@@ -122,6 +123,7 @@ declare namespace LocalJSX {
     }
     interface BhPopularPosts {
         "global"?: Connection.Context;
+        "size"?: number;
     }
     interface BhSearchForm {
         "focused"?: boolean;

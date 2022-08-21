@@ -7,16 +7,18 @@ import { Connection } from "@webpress/core";
 })
 export class BhrldPopularPosts {
   @Prop() global: Connection.Context;
+  @Prop() size: number = 5;
 
   width(weight, maxWeight) {
-    return (weight / maxWeight) * 100 + "%";
+    return ((weight + (maxWeight - weight) * 0.15) / maxWeight) * 100 + "%";
   }
+
   render() {
     return (
       <ol class="pop-posts">
         <h2>Popular Posts</h2>
         <ab-popular-posts
-          size={8}
+          size={this.size}
           global={this.global}
           renderPost={(post, weight, maxWeight) => (
             <li>

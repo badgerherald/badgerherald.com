@@ -6,8 +6,6 @@ $container = $GLOBALS['container'] ?: new container('feature-widget');
 
     <div class="wrapper">
 
-        <ab-dash-widget class="webpress-contextual"></ab-dash-widget>
-
         <div class="feature">
 
             <?php
@@ -87,35 +85,7 @@ $container = $GLOBALS['container'] ?: new container('feature-widget');
         </div>
 
         <div class="widget">
-
-            <h3 class="title">Most Recent</h3>
-
-            <?php
-			$count = 0;
-			while( have_posts() ) : 
-				$count++;
-				if($count>4) {
-				break;
-				}
-				the_post(); 
-				?>
-
-            <a class="most-recent-post" href="<?php the_permalink(); ?>">
-
-                <?php if(has_post_thumbnail()) : ?>
-                <div class="thumbnail">
-                    <?php the_post_thumbnail(); ?>
-                </div>
-                <?php endif; ?>
-
-                <div class="title">
-                    <?php the_title(); ?><time><?php exa_time() ?></time>
-                </div>
-                <div class="clearfix"></div>
-            </a>
-
-
-            <?php endwhile ?>
+            <bh-popular-posts class="webpress-contextual" size="5"></bh-popular-posts>
 
         </div>
 

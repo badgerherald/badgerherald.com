@@ -17,7 +17,7 @@ export class BhrldSearchResults {
       </header>,
       <bh-search-results connection={new Connection(this.global.serverInfo)} />,
       <div class="sidebar">
-        <bh-popular-posts global={this.global} />
+        <bh-popular-posts size={10} global={this.global} />
       </div>,
     ];
   }

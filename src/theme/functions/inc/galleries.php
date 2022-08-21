@@ -47,7 +47,6 @@ function _exa_galleries_load_gallery_html($data) {
 	$ids = $_POST['images'];
 	$ids = explode(',',$ids);
 
-	error_log(print_r($ids,true));
 
 	$query_args = array(
 		'post__in' => $ids, 
@@ -82,12 +81,12 @@ add_action( 'wp_enqueue_scripts', '_exa_galleries_enqueue' );
  * Enqueue the gallery javascript
  */
 function _exa_galleries_bind_click_event_in_footer() { ?>
-	<script type="text/javascript">
-	jQuery( function($) {
-		$('.exa-gallery-link').exaGalleryLink();
-	});
-	</script>
-	<?php
+<script type="text/javascript">
+jQuery(function($) {
+    $('.exa-gallery-link').exaGalleryLink();
+});
+</script>
+<?php
 }
 
 /**
@@ -97,21 +96,21 @@ function _exa_galleries_bind_click_event_in_footer() { ?>
  */    
 function _exa_galleries_override_gallery_attachment_template() { ?>
 
-	<script>
-	/* Replace the default gallery settings */
-	jQuery(document).ready( function($) {
-		if( typeof wp.media.view.Settings.Gallery != 'undefined' ){
-			wp.media.view.Settings.Gallery.prototype.template = wp.template( 'exa-gallery-settings' );
-		}
-	});
-	</script>
-	<script type="text/html" id="tmpl-exa-gallery-settings">
-	<!-- Default gallery settings suppressed -->
+<script>
+/* Replace the default gallery settings */
+jQuery(document).ready(function($) {
+    if (typeof wp.media.view.Settings.Gallery != 'undefined') {
+        wp.media.view.Settings.Gallery.prototype.template = wp.template('exa-gallery-settings');
+    }
+});
+</script>
+<script type="text/html" id="tmpl-exa-gallery-settings">
+<!-- Default gallery settings suppressed -->
 
 
-	</script>
+</script>
 
-	<?php
+<?php
 }
 add_action( 'admin_footer-post.php', '_exa_galleries_override_gallery_attachment_template' );
 add_action( 'admin_footer-post-new.php', '_exa_galleries_override_gallery_attachment_template' );

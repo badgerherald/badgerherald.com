@@ -77,6 +77,8 @@ services:
         define('STRIPE_SEMESTERLY_PROD', '${STRIPE_SEMESTERLY_PROD}');
         define('RECAPTCHA_SITE_KEY', '${RECAPTCHA_SITE_KEY}');
         define('RECAPTCHA_SECRET_KEY', '${RECAPTCHA_SECRET_KEY}');
+        define('AB_CLIENT_ID', '${AB_CLIENT_ID}');
+        define('AB_CLIENT_SECRET', '${AB_CLIENT_SECRET}');
         define('WP_REDIS_HOST', 'redis');
         define('WP_CACHE_KEY_SALT', '${SITE_URL}');
         define('DISABLE_WP_CRON', true);
