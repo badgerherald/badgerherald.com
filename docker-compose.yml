@@ -54,7 +54,7 @@ services:
       - ./config/wordpress/php-fpm.conf:/usr/local/etc/php-fpm.d/zzz-my-extra.conf
     environment:
       NRIA_LICENSE_KEY: ${NRIA_LICENSE_KEY}
-      NRIA_APP_NAME: ${SITE_URL}-wordpress/app
+      NRIA_APP_NAME: ${SITE_URL}-wordpress\/app
       WORDPRESS_DB_HOST: ${WORDPRESS_DB_HOST}
       WORDPRESS_DB_USER: ${WORDPRESS_DB_USER}
       WORDPRESS_DB_PASSWORD: ${WORDPRESS_DB_PASSWORD}
