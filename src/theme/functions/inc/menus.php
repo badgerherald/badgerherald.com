@@ -14,7 +14,6 @@ function exa_menus_register() {
 	register_nav_menu( 'exa_social_media_menu', "Social Media Menu" );
 }
 add_action( 'after_setup_theme', 'exa_menus_register' );
-add_action( 'init', 'exa_menus_register' );
 
 
 function _exa_menus_add_social_media_inner_span( $args ) {
@@ -46,4 +45,3 @@ function _exa_menus_add_social_media_classname( $atts, $item, $args ) {
     return $atts;
 }
 add_filter( 'nav_menu_link_attributes', '_exa_menus_add_social_media_classname', 10, 3 );
-

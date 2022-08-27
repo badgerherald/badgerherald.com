@@ -48,7 +48,6 @@ function _bh_images_register_sizes() {
 	add_image_size( 'extra-jumbo', 336 * 7, 9999, false );
 }
 add_action( 'after_setup_theme', '_bh_images_register_sizes' );
-add_action( 'init', '_bh_images_register_sizes' );
 
 // HACK: Remove wordpress directory install:
 add_filter( 'the_content', function( $the_content ) {
@@ -65,4 +64,3 @@ function bhrld_image_size_names_choose_filter( $sizes ) {
     );
 }
 add_filter( 'image_size_names_choose', 'bhrld_image_size_names_choose_filter' );
-

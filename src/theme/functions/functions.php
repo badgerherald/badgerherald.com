@@ -176,8 +176,7 @@ function exa_setup() {
 
 }
 add_action( 'after_setup_theme', 'exa_setup' );
-add_action( 'init', 'exa_setup' );
-add_action( 'admin_init', 'exa_setup' );
+
 /**
  * Switches default core markup for search form to output valid HTML5.
  *
