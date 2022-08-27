@@ -53,6 +53,8 @@ services:
       - ./config/wordpress/php.ini:/usr/local/etc/php/conf.d/extra.ini
       - ./config/wordpress/php-fpm.conf:/usr/local/etc/php-fpm.d/zzz-my-extra.conf
     environment:
+      NRIA_LICENSE_KEY: ${NRIA_LICENSE_KEY}
+      NRIA_APP_NAME: ${SITE_URL}-wordpress\/app
       WORDPRESS_DB_HOST: ${WORDPRESS_DB_HOST}
       WORDPRESS_DB_USER: ${WORDPRESS_DB_USER}
       WORDPRESS_DB_PASSWORD: ${WORDPRESS_DB_PASSWORD}
@@ -116,8 +118,8 @@ services:
       MYSQL_PASSWORD: ${WORDPRESS_DB_PASSWORD}
       MYSQL_DATABASE: ${WORDPRESS_DB_NAME}
 
-  agent:
-    container_name: ${COMPOSE_PROJECT_NAME}-agent
+  nr-agent:
+    container_name: ${COMPOSE_PROJECT_NAME}-nr-agent
     image: newrelic/infrastructure
     cap_add:
       - SYS_PTRACE
@@ -130,6 +132,8 @@ services:
     restart: unless-stopped
     environment:
       - NRIA_LICENSE_KEY=${NRIA_LICENSE_KEY}
+  
+  
 
 volumes:
   badgerherald.com-mariadb:
