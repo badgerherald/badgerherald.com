@@ -69,10 +69,7 @@ function post_status( $new_status, $old_status, $post )
 	global $custom_post_types, $max_archive_pages;
 
 	if ( ( $new_status === "publish" || $old_status === "publish" ) )
-	{
-		wp_cache_delete( "exa_ad-two-dominant",'' );
-		wp_cache_delete( "exa_feature-widget-query",'' );
-		
+	{	
 		wp_cache_delete( "exa_list-and-banter",'' );
 		wp_cache_delete( "exa_list-and-banter-banter",'' );
 
@@ -85,9 +82,29 @@ function post_status( $new_status, $old_status, $post )
 		wp_cache_delete( "exa_old-homepage-sidebar-news",'' );
 		wp_cache_delete( "exa_old-homepage-sidebar-artsetc",'' );
 		wp_cache_delete( "exa_old-homepage-sidebar-sports",'' );
+
+		wp_cache_delete( "exa_feature-widget-query",'' );
+		wp_cache_delete( "exa_homepage-breaking",'' );
+		wp_cache_delete( "exa_ad-two-dominant",'' );
 	}
 }
 add_action(  'transition_post_status',  'post_status', 10, 3 );
+
+
+function bust_cache_on_save_post($post_id) {
+    // If this is a revision, get real post ID
+    if ( $parent_id = wp_is_post_revision( $post_id ) ) 
+        $post_id = $parent_id;
+
+	if ( get_post_status($post_id) !== 'publish' ) {
+		return;
+	}
+	
+	wp_cache_delete( "exa_feature-widget-query",'' );
+	wp_cache_delete( "exa_homepage-breaking",'' );
+	wp_cache_delete( "exa_ad-two-dominant",'' );
+}
+add_action( 'save_post', 'bust_cache_on_save_post' );
 
 /**
  * Holds static global information about the theme and page loading.
