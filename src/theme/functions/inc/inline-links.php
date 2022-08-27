@@ -151,11 +151,14 @@ function _exa_inline_embed_clicks_string( $post, $url ) {
 	}
 
 	return;
-	
 }
 
 function _exa_inline_post_from_url($url) {
-	$post_id = url_to_postid($url);
+	if ( ! $post_id = wp_cache_get("exa_inline-post-from-url-" . $url) ) {
+		$post_id = url_to_postid($url);
+		wp_cache_set("exa_inline-post-from-url-" . $url, $post_id, '', 0);
+	}
+	
 	return get_post($post_id);
 }
 
