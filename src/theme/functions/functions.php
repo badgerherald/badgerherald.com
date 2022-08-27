@@ -4,46 +4,46 @@
  */
 
 /* Setup */
-include( dirname( __FILE__ ) . '/inc/enqueue.php');		/* Base CSS & JS enqueues */
-include( dirname( __FILE__ ) . '/inc/dev.php'); 			/* Configuration for local development */
+include( __DIR__ . '/inc/enqueue.php');		/* Base CSS & JS enqueues */
+include( __DIR__ . '/inc/dev.php'); 			/* Configuration for local development */
 
 /* Taxonomies */
-include( dirname( __FILE__ ) . '/inc/topics.php');
-include( dirname( __FILE__ ) . '/inc/layout.php');
-include( dirname( __FILE__ ) . '/inc/importance.php');
-include( dirname( __FILE__ ) . '/inc/sections.php');
+include( __DIR__ . '/inc/topics.php');
+include( __DIR__ . '/inc/layout.php');
+include( __DIR__ . '/inc/importance.php');
+include( __DIR__ . '/inc/sections.php');
 
 /* Infrastructure */
-include( dirname( __FILE__ ) . '/inc/html-tags.php');
-include( dirname( __FILE__ ) . '/inc/containers.php');
-include( dirname( __FILE__ ) . '/inc/menus.php');
-include( dirname( __FILE__ ) . '/inc/images.php');
-include( dirname( __FILE__ ) . '/inc/dates-and-times.php');
-include( dirname( __FILE__ ) . '/inc/authors.php');
-include( dirname( __FILE__ ) . '/inc/embeds.php');
+include( __DIR__ . '/inc/html-tags.php');
+include( __DIR__ . '/inc/containers.php');
+include( __DIR__ . '/inc/menus.php');
+include( __DIR__ . '/inc/images.php');
+include( __DIR__ . '/inc/dates-and-times.php');
+include( __DIR__ . '/inc/authors.php');
+include( __DIR__ . '/inc/embeds.php');
 
 /* Features */
-include( dirname( __FILE__ ) . '/inc/inline-links.php');
-include( dirname( __FILE__ ) . '/inc/mastheads.php');
-include( dirname( __FILE__ ) . '/inc/galleries.php');
-include( dirname( __FILE__ ) . '/inc/popular-post-widget.php');
-include( dirname( __FILE__ ) . '/inc/analytic-dashboard.php');
-include( dirname( __FILE__ ) . '/inc/headlines.php');
-include( dirname( __FILE__ ) . '/inc/pullquotes.php');
-include( dirname( __FILE__ ) . '/inc/social.php');
-include( dirname( __FILE__ ) . '/inc/admin.php');
-include( dirname( __FILE__ ) . '/inc/services.php');
-include( dirname( __FILE__ ) . '/inc/staff-page.php');
-include( dirname( __FILE__ ) . '/inc/ads.php');
-include( dirname( __FILE__ ) . '/inc/redirects.php');
-include( dirname( __FILE__ ) . '/inc/header-charm.php');
-include( dirname( __FILE__ ) . '/inc/plugin-wp_nav_menu_extended.php');
-include( dirname( __FILE__ ) . '/inc/user-management.php');
-include( dirname( __FILE__ ) . '/inc/dirty-bird.php');
-include( dirname( __FILE__ ) . '/inc/donate.php');
+include( __DIR__ . '/inc/inline-links.php');
+include( __DIR__ . '/inc/mastheads.php');
+include( __DIR__ . '/inc/galleries.php');
+include( __DIR__ . '/inc/popular-post-widget.php');
+include( __DIR__ . '/inc/analytic-dashboard.php');
+include( __DIR__ . '/inc/headlines.php');
+include( __DIR__ . '/inc/pullquotes.php');
+include( __DIR__ . '/inc/social.php');
+include( __DIR__ . '/inc/admin.php');
+include( __DIR__ . '/inc/services.php');
+include( __DIR__ . '/inc/staff-page.php');
+include( __DIR__ . '/inc/ads.php');
+include( __DIR__ . '/inc/redirects.php');
+include( __DIR__ . '/inc/header-charm.php');
+include( __DIR__ . '/inc/plugin-wp_nav_menu_extended.php');
+include( __DIR__ . '/inc/user-management.php');
+include( __DIR__ . '/inc/dirty-bird.php');
+include( __DIR__ . '/inc/donate.php');
 
 // Include plugin 
-include( dirname( __FILE__ ) . '/donate.php');
+include( __DIR__ . '/donate.php');
 
 add_action( 'customize_preview_init', function() {
 die("The customizer is disabled. Please save and preview your site on the frontend.");

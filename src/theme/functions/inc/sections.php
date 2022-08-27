@@ -1,8 +1,8 @@
 <?php
 
 // Libraries:
-include( dirname( __FILE__ ) . '/lib/class.taxonomy-single-term.php');
-include( dirname( __FILE__ ) . '/lib/walker.taxonomy-single-term.php');
+include( __DIR__ . '/lib/class.taxonomy-single-term.php');
+include( __DIR__ . '/lib/walker.taxonomy-single-term.php');
 
 /**
  * Echos the section
@@ -116,4 +116,3 @@ function exa_default_section_save($post_ID) {
 
 }
 add_action( 'save_post', 'exa_default_section_save' );
-
