@@ -116,8 +116,8 @@ services:
       MYSQL_PASSWORD: ${WORDPRESS_DB_PASSWORD}
       MYSQL_DATABASE: ${WORDPRESS_DB_NAME}
 
-  agent:
-    container_name: ${COMPOSE_PROJECT_NAME}-agent
+  nr-agent:
+    container_name: ${COMPOSE_PROJECT_NAME}-nr-agent
     image: newrelic/infrastructure
     cap_add:
       - SYS_PTRACE
@@ -130,6 +130,8 @@ services:
     restart: unless-stopped
     environment:
       - NRIA_LICENSE_KEY=${NRIA_LICENSE_KEY}
+  
+  
 
 volumes:
   badgerherald.com-mariadb:
