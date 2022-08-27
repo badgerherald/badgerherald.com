@@ -46,7 +46,7 @@ function exa_get_topic($post = null) {
 	$post = get_post($post);
 
 	$beats = wp_get_post_terms($post->ID,"topic");
-	$category_base = get_bloginfo('url')."/".get_post_type()."/";
+
 	if( !empty($beats) ) {
 		foreach ($beats as $beat) : 
 			return $beat->name; 
