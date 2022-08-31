@@ -1,5 +1,5 @@
 import { Component, Prop, State, h } from "@stencil/core";
-import { Connection, Template, Theme } from "@webpress/core";
+import { Connection, Menu, Query, Template, Theme } from "@webpress/core";
 import "@webpress/theme";
 
 @Component({
@@ -48,10 +48,25 @@ export class ExaNameplate {
       />,
       <div class={this.menuOpen ? "menus active" : "menus"}>
         <exa-search-form />
-        <wp-menu class="primary" query={this.theme.getMenu("exa_main_menu")} />
+        <wp-menu
+          class="primary"
+          query={
+            new Query<Menu>(
+              this.query.connection,
+              Menu.QueryArgs({
+                location: "exa_main_menu",
+              })
+            )
+          }
+        />
         <wp-menu
           class="social"
-          query={this.theme.getMenu("exa_social_media_menu")}
+          query={
+            new Query<Menu>(
+              this.query.connection,
+              Menu.QueryArgs({ location: "exa_social_media_menu" })
+            )
+          }
           options={{
             classForMenuItem: (item) => "social " + item.slug,
             domForItem: (item) => <span class="hidden">{item.title}</span>,
@@ -59,7 +74,14 @@ export class ExaNameplate {
         />
         <wp-menu
           class="secondary black"
-          query={this.theme.getMenu("exa_secondary_menu")}
+          query={
+            new Query<Menu>(
+              this.query.connection,
+              Menu.QueryArgs({
+                location: "exa_secondary_menu",
+              })
+            )
+          }
         />
       </div>,
       <div class="clearfix"></div>,

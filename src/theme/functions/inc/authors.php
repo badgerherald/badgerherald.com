@@ -79,87 +79,104 @@ add_action( 'admin_enqueue_scripts', 'hrld_user_custom_fields_image' );
 
 function hrld_user_custom_fields( $user ){
 	?>
-	
-	<script language="JavaScript">
-		var file_frame;
-		jQuery(document).ready(function() {
-			
-			
-			jQuery('#user-meta-hrld_staff_banner_button').click(function() {
-				
-				var custom_uploader = wp.media({
-    					title: "Select Image",
-    					multiple: false,
-    					frame: 'select',
-    					library: { type: 'image' },
-    					orientation: 'landscape'
-					});
-					custom_uploader.on('select', function(){
-						var media_attachment = custom_uploader.state().get('selection').first().toJSON();
-						console.log(media_attachment);
-						var preview_img = jQuery('#user-meta-hrld_staff_banner_img');
-						if( preview_img.length == 0)
-							jQuery( '#user-meta-hrld_staff_banner'). parent().append('<img id="user-meta-hrld_staff_banner_img" src='+media_attachment.sizes.thumbnail.url+' /><br /><button type="button" class="button delete_button">Delete Banner</button>');
-							
-							
-							
-						else
-							jQuery('#user-meta-hrld_staff_banner_img').attr('src', media_attachment.sizes.thumbnail.url);
-						jQuery('#user-meta-hrld_staff_banner').val(media_attachment.id);
-					});
-					custom_uploader.open();
-			});
-			jQuery('.delete_button').click(function(){
-				jQuery(this).parent().children('img').remove();
-				jQuery('#user-meta-hrld_staff_banner').val();
-				jQuery(this).parent().children('br').last().remove();
-				jQuery(this).remove();
-			
-			});
-		});
-	</script>
 
-	<h3>Extra Information</h3>
+<script language="JavaScript">
+var file_frame;
+jQuery(document).ready(function() {
 
-	<table class="form-table">
-		<?php global $extra_fields; foreach($extra_fields as $field) : if( $field["type"] == 'text') : ?>
-		
-		<tr>
-			<th><label for="<?php echo $field["name"] ?>"><?php echo $field["title"] ?></label></th>
-			<td><?php if($field["name"]=="hrld_twitter_handle") echo "@"; ?><input type="<?php echo $field["type"] ?>" name="<?php echo $field["name"] ?>" id="user-meta-<?php echo $field["name"] ?>" value="<?php echo esc_attr( get_the_author_meta( $field["key"], $user->ID ) ); ?>" class="regular-text" /><br /><span class="description"><?php echo $field["description"]; ?></span></td>
-		</tr>
-		<?php elseif( $field["type"] == 'image') : ?>
-		<tr>
-			<th><label for="<?php echo $field["name"] ?>"><?php echo $field["title"] ?></label></th>
-			<td>
-				<input type="hidden" name="<?php echo $field["name"] ?>" id="user-meta-<?php echo $field["name"] ?>" value="<?php echo esc_attr( get_the_author_meta( $field["key"], $user->ID ) ); ?>" class="regular-text" />
-				<button type="button" name="<?php echo $field["name"] ?>-button" id="user-meta-<?php echo $field["name"] ?>_button" class="button" data-title="Choose Banner Image: <?php echo $user->display_name; ?>"/>Choose Image</button><br /><span class="description"><?php echo $field["description"]; ?></span><br /><br />
-				<?php if( get_the_author_meta( $field["key"], $user->ID ) != '') : ?>
-					<img id="user-meta-<?php echo $field["name"] ?>_img" src="<?php echo current(wp_get_attachment_image_src(get_the_author_meta( $field["key"], $user->ID ), 'thumbnail')); ?>" />
-					<br />
-					<button type="button" class="button delete_button">Delete Banner</button>
-				<?php endif; ?>		
-			</td>
-		</tr>
-		<?php elseif( $field["type"] == 'multi-select') : ?>
-		<tr>
-			<th><label for="<?php echo $field["name"] ?>"><?php echo $field["title"] ?></label></th>
-			<td>
-				<?php if($field["key"] = "_hrld_staff_best_posts") : ?>
-					<script>
-						jQuery(document).ready(function(){
-							<?php
+
+    jQuery('#user-meta-hrld_staff_banner_button').click(function() {
+
+        var custom_uploader = wp.media({
+            title: "Select Image",
+            multiple: false,
+            frame: 'select',
+            library: {
+                type: 'image'
+            },
+            orientation: 'landscape'
+        });
+        custom_uploader.on('select', function() {
+            var media_attachment = custom_uploader.state().get('selection').first().toJSON();
+            console.log(media_attachment);
+            var preview_img = jQuery('#user-meta-hrld_staff_banner_img');
+            if (preview_img.length == 0)
+                jQuery('#user-meta-hrld_staff_banner').parent().append(
+                    '<img id="user-meta-hrld_staff_banner_img" src=' + media_attachment.sizes
+                    .thumbnail.url +
+                    ' /><br /><button type="button" class="button delete_button">Delete Banner</button>'
+                    );
+
+
+
+            else
+                jQuery('#user-meta-hrld_staff_banner_img').attr('src', media_attachment.sizes
+                    .thumbnail.url);
+            jQuery('#user-meta-hrld_staff_banner').val(media_attachment.id);
+        });
+        custom_uploader.open();
+    });
+    jQuery('.delete_button').click(function() {
+        jQuery(this).parent().children('img').remove();
+        jQuery('#user-meta-hrld_staff_banner').val();
+        jQuery(this).parent().children('br').last().remove();
+        jQuery(this).remove();
+
+    });
+});
+</script>
+
+<h3>Extra Information</h3>
+
+<table class="form-table">
+    <?php global $extra_fields; foreach($extra_fields as $field) : if( $field["type"] == 'text') : ?>
+
+    <tr>
+        <th><label for="<?php echo $field["name"] ?>"><?php echo $field["title"] ?></label></th>
+        <td><?php if($field["name"]=="hrld_twitter_handle") echo "@"; ?><input type="<?php echo $field["type"] ?>"
+                name="<?php echo $field["name"] ?>" id="user-meta-<?php echo $field["name"] ?>"
+                value="<?php echo esc_attr( get_the_author_meta( $field["key"], $user->ID ) ); ?>"
+                class="regular-text" /><br /><span class="description"><?php echo $field["description"]; ?></span></td>
+    </tr>
+    <?php elseif( $field["type"] == 'image') : ?>
+    <tr>
+        <th><label for="<?php echo $field["name"] ?>"><?php echo $field["title"] ?></label></th>
+        <td>
+            <input type="hidden" name="<?php echo $field["name"] ?>" id="user-meta-<?php echo $field["name"] ?>"
+                value="<?php echo esc_attr( get_the_author_meta( $field["key"], $user->ID ) ); ?>"
+                class="regular-text" />
+            <button type="button" name="<?php echo $field["name"] ?>-button"
+                id="user-meta-<?php echo $field["name"] ?>_button" class="button"
+                data-title="Choose Banner Image: <?php echo $user->display_name; ?>" />Choose Image</button><br /><span
+                class="description"><?php echo $field["description"]; ?></span><br /><br />
+            <?php if( get_the_author_meta( $field["key"], $user->ID ) != '') : ?>
+            <img id="user-meta-<?php echo $field["name"] ?>_img"
+                src="<?php echo current(wp_get_attachment_image_src(get_the_author_meta( $field["key"], $user->ID ), 'thumbnail')); ?>" />
+            <br />
+            <button type="button" class="button delete_button">Delete Banner</button>
+            <?php endif; ?>
+        </td>
+    </tr>
+    <?php elseif( $field["type"] == 'multi-select') : ?>
+    <tr>
+        <th><label for="<?php echo $field["name"] ?>"><?php echo $field["title"] ?></label></th>
+        <td>
+            <?php if($field["key"] = "_hrld_staff_best_posts") : ?>
+            <script>
+            jQuery(document).ready(function() {
+                <?php
 								$best_posts = get_the_author_meta( $field["key"], $user->ID );
 								foreach($best_posts as $best_post):
 							?>
-									jQuery('option[value=<?php echo $best_post; ?>]').prop('selected', true);
-							<?php
+                jQuery('option[value=<?php echo $best_post; ?>]').prop('selected', true);
+                <?php
 								endforeach;
 							?>
-						})
-					</script>
-					<select multiple name="<?php echo $field["name"].'[]' ?>" id="user-meta-<?php echo $field["name"] ?>" style="min-height: 160px;">
-					<?php
+            })
+            </script>
+            <select multiple name="<?php echo $field["name"].'[]' ?>" id="user-meta-<?php echo $field["name"] ?>"
+                style="min-height: 160px;">
+                <?php
 						$args = array(
 							'author' => get_the_author_meta('ID', $user->ID),
 							'post_type' => 'post',
@@ -187,14 +204,14 @@ function hrld_user_custom_fields( $user ){
 							echo "<option>blank</option>";
 						endif;
 					?>
-					</select>
-				<?php endif; ?>
-				<br /><span class="description"><?php echo $field["description"]; ?></span>
-			</td>
-		</tr>
-		<?php endif; ?>
-		<?php endforeach; ?>
-	</table>
+            </select>
+            <?php endif; ?>
+            <br /><span class="description"><?php echo $field["description"]; ?></span>
+        </td>
+    </tr>
+    <?php endif; ?>
+    <?php endforeach; ?>
+</table>
 
 <?php }
 
@@ -318,7 +335,7 @@ function exa_mug_src($author_id = null, $size = 'square') {
 
 /**
  * Returns the attachment id for the author's banner, if one
- * exists. Otherwise, returns nil.
+ * exists. Otherwise, returns null.
  */
 function exa_author_banner_attachment_id($author_id = null) {
 	if(!$author_id) {

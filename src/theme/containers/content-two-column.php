@@ -10,66 +10,67 @@ $container->default_args(
 
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 
-<?php 
+    <?php 
 $args = array();
 $args['center'] = ( exa_layout() == 'feature' );
 
 exa_container('headline',$args);
 ?>
 
-<div class="<?php echo $container->classes(); ?> article-display <?php echo $container->args['layout']; ?>">
-	<div class="wrapper">
-		<main class="article-content">
-			
-			<?php if( !is_page()): // display byline and date on if it's not a page.?>
-					<div class="meta">
-						<?php /* Mug: */ ?>
-						<div class="mug-box">
-							<?php exa_mug(get_the_author_meta('ID'),'small-thumbnail') ?>
-						</div>
-						
-						<?php /* Byline: */ ?>
-						<span class="byline">
-							by <a class="author-link" href="<?php exa_the_author_link() ?>" title="<?php echo exa_properize(get_the_author()); ?> Profile">
-								   <?php the_author() ?>
-							   </a>
-						</span> &middot; <span class="meta-time"><?php the_time("M j, Y") ?></span>
-					
+    <div class="<?php echo $container->classes(); ?> article-display <?php echo $container->args['layout']; ?>">
+        <div class="wrapper">
+            <main class="article-content">
 
-						<a class="facebook-button" target="_blank" href="<?php echo exa_facebook_link(); ?>">Share</a>
-						<a class="tweet-button" target="_blank" href="<?php echo exa_tweet_link(); ?>">Tweet</a>
-					</div>
-			<?php endif; ?>
-			
+                <?php if( !is_page()): // display byline and date on if it's not a page.?>
+                <div class="meta">
+                    <?php /* Mug: */ ?>
+                    <div class="mug-box">
+                        <?php exa_mug(get_the_author_meta('ID'),'small-thumbnail') ?>
+                    </div>
 
-			<?php
+                    <?php /* Byline: */ ?>
+                    <span class="byline">
+                        by <a class="author-link" href="<?php exa_the_author_link() ?>"
+                            title="<?php echo exa_properize(get_the_author()); ?> Profile">
+                            <?php the_author() ?>
+                        </a>
+                    </span> &middot; <span class="meta-time"><?php the_time("M j, Y") ?></span>
+
+
+                    <a class="facebook-button" target="_blank" href="<?php echo exa_facebook_link(); ?>">Share</a>
+                    <a class="tweet-button" target="_blank" href="<?php echo exa_tweet_link(); ?>">Tweet</a>
+                </div>
+                <?php endif; ?>
+
+
+                <?php
 			if (exa_hero_style() == "standard" && exa_hero_media() != "none") :		
-			?>				
-			<div class="hero">
-				<?php the_post_thumbnail('image-post-size'); ?>
-				<?php exa_hero_caption(); ?>
-	
-				<div class="clearfix"></div>
-				
-			</div>
-			
-			<?php 
+			?>
+                <div class="hero">
+                    <?php the_post_thumbnail('image-post-size'); ?>
+                    <?php exa_hero_caption(); ?>
+
+                    <div class="clearfix"></div>
+
+                </div>
+
+                <?php 
 			endif; 
 			?>
 
-			<section class="article-text">
+                <section class="article-text">
 
-				<?php the_content(); ?>
+                    <?php the_content(); ?>
 
-			</section>
+                </section>
 
-		</main>
+            </main>
 
-		<?php if($container->args['layout'] == 'standard') : ?>
-		<aside class="sidebar">
+            <?php if($container->args['layout'] == 'standard') : ?>
+            <aside class="sidebar">
 
-			<div class="ad sidebar-thing">
-				<?php 
+                <div class="ad sidebar-thing">
+                    <?php 
 				$DoubleClick->place_ad(
 								'badgerherald.com-upper-sidekick',
 								array(
@@ -78,20 +79,10 @@ exa_container('headline',$args);
 									)
 								);
 				?>
-			</div>
-	
-			
-			<?php 
+                </div>
 
-				if ( true || is_active_widget("AnalyticBridgePopularPostWidget") ) {
-					echo "<div class='popular-posts sidebar-thing'>";
-					the_widget( "AnalyticBridgePopularPostWidget", array("num_posts" => 8, "title" => "Popular Posts"));
-					echo "</div>";
-				} 
-			?>
-	
-			<div class="ad sidebar-thing">
-				<?php 
+                <div class="ad sidebar-thing">
+                    <?php 
 				$DoubleClick->place_ad(
 								'badgerherald.com-lower-sidekick',
 								array(
@@ -100,19 +91,19 @@ exa_container('headline',$args);
 									)
 								);
 				?>
-			</div>
-		
-		</aside>
-	
-		<?php endif; ?>
+                </div>
 
-		<div class="clearfix"></div>
+            </aside>
 
-		
+            <?php endif; ?>
 
-	</div><!-- .wrapper -->
+            <div class="clearfix"></div>
 
-</div><!-- .container -->
+
+
+        </div><!-- .wrapper -->
+
+    </div><!-- .container -->
 
 </article><!-- #post-xx -->
 

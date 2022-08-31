@@ -1,21 +1,5 @@
 <?php
 
-/**
- * Register built in Exa navigation menus.
- *
- * @since v0.6
- */
-function exa_menus_register() {
-	// todo: should this be commented?
-	// add_theme_support('menus');
-
-	register_nav_menu( 'exa_main_menu', "Main Menu" );
-	register_nav_menu( 'exa_secondary_menu', "Secondary Menu" );
-	register_nav_menu( 'exa_social_media_menu', "Social Media Menu" );
-}
-add_action( 'after_setup_theme', 'exa_menus_register' );
-
-
 function _exa_menus_add_social_media_inner_span( $args ) {
 	if ($args['theme_location'] === 'exa_social_media_menu') {
     	$args['link_before'] = '<span class="hide">';
@@ -26,7 +10,6 @@ function _exa_menus_add_social_media_inner_span( $args ) {
 add_filter( 'wp_nav_menu_args', '_exa_menus_add_social_media_inner_span' );
 
 function _exa_menus_add_social_media_classname( $atts, $item, $args ) {
-
 	$mapping = array(
 		'twitter.com' => 'twitter',
 		'facebook.com' => 'facebook',
@@ -41,7 +24,6 @@ function _exa_menus_add_social_media_classname( $atts, $item, $args ) {
 			}
     	}
     }
-    //print_r($args);
     return $atts;
 }
 add_filter( 'nav_menu_link_attributes', '_exa_menus_add_social_media_classname', 10, 3 );

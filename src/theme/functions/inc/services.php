@@ -88,13 +88,5 @@ GTAG;
 }
 
 
-/**
- *
- * Analytics shouldn't be tracked on dev sites.
- *
- */
-//if ( !exa_dev() ){
-	// add_action('wp_footer','exa_twitter_conversion_tracker'); NO.
-	add_action('wp_footer','exa_register_chartbeat');
-	add_action('wp_footer','exa_register_google_analytics');
-//}
+add_action('wp_footer','exa_register_chartbeat');
+add_action('wp_footer','exa_register_google_analytics');
