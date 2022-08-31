@@ -26,9 +26,9 @@
     "@stencil/router": "^1.0.1",
     "@stencil/sass": "^1.5.2",
     "@types/stripe-v3": "^3.1.7",
-    "@webpress/core": "^0.0.22",
-    "@webpress/router": "^0.0.22",
-    "@webpress/theme": "^0.0.22"
+    "@webpress/core": "^0.0.23",
+    "@webpress/router": "^0.0.23",
+    "@webpress/theme": "^0.0.23"
   },
   "license": "MIT",
   "dependencies": {
