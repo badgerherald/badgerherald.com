@@ -6,5 +6,6 @@
         { "location": "exa_main_menu", "description": "Main Menu" },
         { "location": "exa_secondary_menu", "description": "Secondary Menu" },
         { "location": "exa_social_media_menu", "description": "Social Media Menu" }
-    ]
+    ],
+    "features" : []
 }
