@@ -1,9 +1,4 @@
 #nameplate {
-  display: block;
-  width: 100%;
-  border-bottom: 5px solid $blue;
-  padding-bottom: 12px;
-
   // let the logo flex some, but never get too big.
   a#logo {
     width: col(2);

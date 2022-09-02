@@ -1,6 +1,4 @@
 jQuery(document).ready(function($) {
-
-	
 	function isPreflightSize(size) {
 		var w = size[0];
 		var h = size[1];

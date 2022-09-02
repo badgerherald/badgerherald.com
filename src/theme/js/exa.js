@@ -58,17 +58,6 @@ jQuery(document).ready(function($) {
 		window.scrollTo(scrollPosition[0], scrollPosition[1])
   	}
 
-	/**
-	 * Fastclick library, to removed 300ms delay for
-	 * taps on mobile.
-	 *
-	 * @since v0.1
-	
-	$(function() {
-	    FastClick.attach(document.body);
-	});
-	 */
-
 	/** 
 	 * Scrolling for banners
 	 * Issues: bugs on iOS, safari devices.
@@ -101,115 +90,15 @@ jQuery(document).ready(function($) {
    		});
 
 	};
-	
-    /**
-     * Controls the fixed scrolling of the sidebar
-     *
-     * @since  v0.1
-     */
-	if($(".fixed-sidebar-container").length != 0){
-		var sidebar = $(".fixed-sidebar-container");
-		var sidebar_pos = sidebar.offset().top;
-		if($("#disqus_thread").length > 0){ 
-			var comments = $("#disqus_thread").offset().top;
-		} else{ 
-			var comments = 999999;
-		}
-		$(window).resize(function(){
-			if(sidebar.hasClass('fixed-sidebar')){
-				sidebar.removeClass('fixed-sidebar');
-				sidebar_pos = sidebar.offset().top;
-				if($("#disqus_thread").length > 0){ 
-					var comments = $("#disqus_thread").offset().top;
-				} else{ 
-					var comments = 999999;
-				}
-				sidebar.addClass('fixed-sidebar');
-			}
-			else{
-				sidebar_pos = sidebar.offset().top;
-				if($("#disqus_thread").length > 0){ 
-					var comments = $("#disqus_thread").offset().top;
-				} else{ 
-					var comments = 999999;
-				}
-			}
-		});
-		$(window).scroll(function(){
-			var scrollTop = $(window).scrollTop();
-			if(((scrollTop + 78) > sidebar_pos) && ((scrollTop + 78 + sidebar.height()) < comments)){
-				sidebar.addClass('fixed-sidebar')
-			} else{
-				sidebar.removeClass('fixed-sidebar');
-			}
-		});
-	}
-
-    /**
-     * Puts the Author's name in the fixed header when scrolled past the name in the body
-     * on Author pages.
-     *
-     * @since  v0.2
-     */
-    if ($(".title.author-title").length != 0) {
-        var author_name_pos = $(".author-info .author-title").offset().top;
-        $(window).resize( function() {
-            author_name_pos = $(".author-info .author-title").offset().top;
-        });
-        $(window).scroll( function() {
-            var scrollTop = $(window).scrollTop();
-            if (scrollTop > author_name_pos) {
-                $(".title.author-title").addClass("author-title-show");
-            } else {
-                $(".title.author-title").removeClass("author-title-show");
-            }
-        });
-    }
-	
-	window.setTimeout(function() {
-		$(".add-so-button").css({'top':'-30px','display':'container'}).animate({'top':'43px','display':'container'},200);
-	}, 400 /* but after 2000 ms */);
-	$('#shoutoutText').focus();
-
-
-    /**
-     * Returns $_GET variable from the url.
-     * (note: does not use jQuery)
-     * 
-     * To check the value of a get variable, use:
-     *		var value = getUrlVars()['<key>'];
-	 *
-     * This currently does not return get variables that don't have
-     * an associated value.
-     * 
-     * @since v0.2
-     * @returns object with (key => value)
-     */
-    function getUrlVars() {
-		var vars = {};
-		var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(m,key,value) {
-			vars[key] = value;
-		});
-		return vars;
-	}
-
-	$(window).scroll(function() {
-		$(window).resize();
-	});
 
 	/**
 	 *
 	 *
 	 */
 	$('.comment-button').click( function(e) {
-		
 		e.preventDefault();
 
 		// Create the pane.
 		$('.comments').show(400);
-
 	});
-
-	
-
 });
