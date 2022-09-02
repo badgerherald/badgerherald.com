@@ -1,95 +1,128 @@
+#nameplate {
+  display: block;
+  width: 100%;
+  border-bottom: 5px solid $blue;
+  padding-bottom: 12px;
+
+  // let the logo flex some, but never get too big.
+  a#logo {
+    width: col(2);
+    max-width: 220px;
+    display: block;
+    img {
+      height: auto;
+      width: 100%;
+    }
+    transition: all 0.1s;
+    &:hover {
+      transform: scale(1.03, 1.03);
+    }
+    @include breakpoint("desktop") {
+      width: col(3);
+    }
+  }
+}
 
 body {
-	background: $grey;
+  background: $grey;
 }
 
 .container {
-	@include setGrid(3, 80, 20);
-	.wrapper {
-		min-width: pageWidth(3) + px;
-		max-width: 92%;
-		margin: 0 auto;
-		position: relative;
-	}
+  @include setGrid(3, 80, 20);
+  .wrapper {
+    min-width: pageWidth(3) + px;
+    max-width: 92%;
+    margin: 0 auto;
+    position: relative;
+  }
 }
 
 @include breakpoint("mobilexl") {
-	.container {
-		.wrapper {
-			min-width: pageWidth(6) + px;
-			max-width: 95%;
-		}
-		@include setGrid(6, 80, 20);
-	}
+  .container {
+    .wrapper {
+      min-width: pageWidth(6) + px;
+      max-width: 95%;
+    }
+    @include setGrid(6, 80, 20);
+  }
 }
 @include breakpoint("tablet") {
-	.container {
-		.wrapper {
-			min-width: pageWidth(9) + px;
-		}
-		@include setGrid(9, 80, 20);
-	}
+  .container {
+    .wrapper {
+      min-width: pageWidth(9) + px;
+    }
+    @include setGrid(9, 80, 20);
+  }
 }
 
 @include breakpoint("desktop") {
-	.container {
-		.wrapper {
-			min-width: pageWidth(12) + px;
-			max-width: 90%;
-		}
-		@include setGrid(12, 80, 20);
-	}
+  .container {
+    .wrapper {
+      min-width: pageWidth(12) + px;
+      max-width: 90%;
+    }
+    @include setGrid(12, 80, 20);
+  }
 }
 
 @include breakpoint("xl") {
-	.container {
-		.wrapper {
-			min-width: pageWidth(15) + px;
-			max-width: 80%;
-		}
-		@include setGrid(15, 80, 20);
-	}
-} 
+  .container {
+    .wrapper {
+      min-width: pageWidth(15) + px;
+      max-width: 80%;
+    }
+    @include setGrid(15, 80, 20);
+  }
+}
 
 .container {
-	margin: 24px 0;
-	width: 100%;
-	position: relative;
-	&.mobile, &.tablet, &.desktop, &.xl {
-		display: none;
-	}
-	&.mobile {
-		display: block;
-	}
+  margin: 24px 0;
+  width: 100%;
+  position: relative;
+  &.mobile,
+  &.tablet,
+  &.desktop,
+  &.xl {
+    display: none;
+  }
+  &.mobile {
+    display: block;
+  }
 }
 
 .container.black {
-	background: $black;
+  background: $black;
 }
 
-@include breakpoint('tablet') {
-	.container.mobile, .container.desktop, .container.xl {
-		display: none;
-	}
-	.container.tablet {
-		display: block;
-	}
+@include breakpoint("tablet") {
+  .container.mobile,
+  .container.desktop,
+  .container.xl {
+    display: none;
+  }
+  .container.tablet {
+    display: block;
+  }
 }
 
-@include breakpoint('desktop') {
-	.container.mobile, .container.tablet, .container.xl {
-		display: none;
-	}
-	.container.desktop {
-		display: block;
-	}
+@include breakpoint("desktop") {
+  .container.mobile,
+  .container.tablet,
+  .container.xl {
+    display: none;
+  }
+  .container.desktop {
+    display: block;
+  }
 }
 
-@include breakpoint('xl') {
-	.container.mobile, .container.tablet, .container.desktop {
-		display: none;
-	}
-	.container.xl {
-		display: block;
-	}
+@include breakpoint("xl") {
+  .container.mobile,
+  .container.tablet,
+  .container.desktop {
+    display: none;
+  }
+  .container.xl {
+    display: block;
+  }
 }
