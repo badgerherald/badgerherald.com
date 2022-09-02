@@ -12,7 +12,7 @@ export namespace Components {
     interface ExaMenuButton {
         "active": boolean;
     }
-    interface ExaNameplate {
+    interface ExaNameplateMenus {
         "global": Connection.Context;
         "query": Template.Query;
         "searchQuery": string;
@@ -35,11 +35,11 @@ declare global {
         prototype: HTMLExaMenuButtonElement;
         new (): HTMLExaMenuButtonElement;
     };
-    interface HTMLExaNameplateElement extends Components.ExaNameplate, HTMLStencilElement {
+    interface HTMLExaNameplateMenusElement extends Components.ExaNameplateMenus, HTMLStencilElement {
     }
-    var HTMLExaNameplateElement: {
-        prototype: HTMLExaNameplateElement;
-        new (): HTMLExaNameplateElement;
+    var HTMLExaNameplateMenusElement: {
+        prototype: HTMLExaNameplateMenusElement;
+        new (): HTMLExaNameplateMenusElement;
     };
     interface HTMLExaSearchFormElement extends Components.ExaSearchForm, HTMLStencilElement {
     }
@@ -50,7 +50,7 @@ declare global {
     interface HTMLElementTagNameMap {
         "bh-imports": HTMLBhImportsElement;
         "exa-menu-button": HTMLExaMenuButtonElement;
-        "exa-nameplate": HTMLExaNameplateElement;
+        "exa-nameplate-menus": HTMLExaNameplateMenusElement;
         "exa-search-form": HTMLExaSearchFormElement;
     }
 }
@@ -60,7 +60,7 @@ declare namespace LocalJSX {
     interface ExaMenuButton {
         "active"?: boolean;
     }
-    interface ExaNameplate {
+    interface ExaNameplateMenus {
         "global"?: Connection.Context;
         "query"?: Template.Query;
         "searchQuery"?: string;
@@ -72,7 +72,7 @@ declare namespace LocalJSX {
     interface IntrinsicElements {
         "bh-imports": BhImports;
         "exa-menu-button": ExaMenuButton;
-        "exa-nameplate": ExaNameplate;
+        "exa-nameplate-menus": ExaNameplateMenus;
         "exa-search-form": ExaSearchForm;
     }
 }
@@ -82,7 +82,7 @@ declare module "@stencil/core" {
         interface IntrinsicElements {
             "bh-imports": LocalJSX.BhImports & JSXBase.HTMLAttributes<HTMLBhImportsElement>;
             "exa-menu-button": LocalJSX.ExaMenuButton & JSXBase.HTMLAttributes<HTMLExaMenuButtonElement>;
-            "exa-nameplate": LocalJSX.ExaNameplate & JSXBase.HTMLAttributes<HTMLExaNameplateElement>;
+            "exa-nameplate-menus": LocalJSX.ExaNameplateMenus & JSXBase.HTMLAttributes<HTMLExaNameplateMenusElement>;
             "exa-search-form": LocalJSX.ExaSearchForm & JSXBase.HTMLAttributes<HTMLExaSearchFormElement>;
         }
     }

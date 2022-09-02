@@ -3,8 +3,8 @@ import { Connection, Menu, Query, Template, Theme } from "@webpress/core";
 import "@webpress/theme";
 
 @Component({
-  tag: "exa-nameplate",
-  styleUrl: "exa-nameplate.scss",
+  tag: "exa-nameplate-menus",
+  styleUrl: "exa-nameplate-menus.scss",
 })
 export class ExaNameplate {
   @Prop() global: Connection.Context;
@@ -21,7 +21,10 @@ export class ExaNameplate {
       return;
     }
 
-    let connection = new Connection(this.global.serverInfo);
+    let connection = new Connection(
+      this.global.serverInfo,
+      this.global.preloaded
+    );
 
     this.theme = new Theme(connection, this.global.theme);
     this.query = new Template.Query(connection, {
@@ -35,13 +38,6 @@ export class ExaNameplate {
 
   render() {
     return [
-      <a class="logo" href="https://badgerherald.com/">
-        <img
-          src={
-            "/wp-content/themes/badgerherald.com/assets/img/logo/header-horizontal.png"
-          }
-        />
-      </a>,
       <exa-menu-button
         active={this.menuOpen}
         onClick={() => this.toggleMenu()}
