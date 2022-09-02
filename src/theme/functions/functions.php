@@ -35,7 +35,6 @@ include( __DIR__ . '/inc/staff-page.php');
 include( __DIR__ . '/inc/ads.php');
 include( __DIR__ . '/inc/redirects.php');
 include( __DIR__ . '/inc/header-charm.php');
-include( __DIR__ . '/inc/plugin-wp_nav_menu_extended.php');
 include( __DIR__ . '/inc/user-management.php');
 include( __DIR__ . '/inc/dirty-bird.php');
 include( __DIR__ . '/inc/donate.php');
@@ -470,9 +469,6 @@ function exa_favicon() {
 	echo "<link rel='icon' href='" . get_template_directory_uri() . "/assets/img/favicons/favicon.ico' type='image/x-icon' />";
 }
 add_action('wp_head','exa_favicon');
-
-
-
 
 
 /**

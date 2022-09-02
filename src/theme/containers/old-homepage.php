@@ -6,9 +6,9 @@ $container = $GLOBALS['container'] ?: new container('old-homepage');
 ?>
 
 <div class="<?php echo $container->classes(); ?>">
-<div class="wrapper">
+    <div class="wrapper">
 
-	<?php
+        <?php
 
 	//$beats_info is an array that holds beat names.
 	$beats = array("news" => "news",
@@ -51,8 +51,6 @@ $container = $GLOBALS['container'] ?: new container('old-homepage');
 			//loop_featured
 			//also records which posts to exclude in following steps
 			while( $featured->have_posts() ) : $featured->the_post(); 
-
-
 				if($featured->current_post == 0 && !is_paged()){
 					get_template_part( 'blocks/teaser', 'feature' );
 				} else {
@@ -115,7 +113,7 @@ $container = $GLOBALS['container'] ?: new container('old-homepage');
 			hrld_html_tag_close("div");
 
 			hrld_html_tag_open("div","",array("all-link", "all-link-$beat"));
-				hrld_html_tag_open("a","",array(),"All ".ucfirst($beat),true, array("href" => get_bloginfo('url')."/$beat/"));
+				hrld_html_tag_open("a","",array(),"All ".ucfirst($beat),true, array("href" => home_url()."/$beat/"));
 			hrld_html_tag_close("div");
 		hrld_html_tag_close("div");
 
@@ -125,5 +123,5 @@ $container = $GLOBALS['container'] ?: new container('old-homepage');
 
 	?>
 
-</div>
+    </div>
 </div>
