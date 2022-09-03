@@ -9,18 +9,15 @@
 
 /**
  * Returns a url for social
- *
- * @since v0.2
- * @author Jason Chan
  */
 function exa_social_url($url = "", $newVersion = true){
-
 	$date_change_category = 1422622800; // Fri 30 Jan, 2015 07:00:00 CT
-	if($url == "")
+	
+	if ($url == "")
 		$url = get_permalink($post -> ID);
-	if( $url != false && $url != ''){
+	if ( $url != false && $url != ''){
 		$date = get_the_date('U');
-	if( $newVersion){
+	if ( $newVersion ) {
 		if( stripos($url, home_url("/oped")) === 0 )
 			$url = str_replace("/oped", "/opinion", $url);
 		} else if( !$newVersion && $date < $date_change_category){
@@ -33,33 +30,37 @@ function exa_social_url($url = "", $newVersion = true){
 	return $url;
 }
 
-
 /**
  * Prints open graph tags to the head of wordpress pages.
- *
- * @since v0.1
- * @author Will Haynes
- * 
  * @see http://ogp.me
  */
 function exa_social_open_graph_tags() {
 
 	global $post;
 
-	if( !$post )
+	if ( !$post ) {
 		return;
-
-	$output = "\n<!-- Open Graph Tags: http://ogp.me -->\n";
+	}
 
 	/* 1. Title (string) */
 
-	$title = single_post_title( null, false );
-	$output .= "<meta property='og:title' content='$title' />\n";
-
+	if ( is_single() ) {
+		$title = single_post_title( null, false );
+	} else if ( is_front_page() ) {
+		$title = get_bloginfo('name');
+	} else {
+		$title = wp_title("&middot;", false, "right"); 
+	}
+	
 	/* 2. Description (string) */
 
-	$excerpt = htmlspecialchars(_exa_social_get_description());
-	$output .= '<meta property="og:description" content="'.$excerpt.'" />'."\n";
+	if ( is_single() ) {
+		$excerpt = htmlspecialchars(_exa_social_get_description());
+	} else if ( is_front_page() ) {
+		$excerpt = get_bloginfo('description');
+	} else {
+		$excert = "";
+	}
 
 	/* 3. Site (string) */
 
@@ -67,12 +68,26 @@ function exa_social_open_graph_tags() {
 	$output .= "<meta property='og:site_name' content='$site' />\n";
 
 	/* 4. Type (enum) */
+
+	/* 5. Url */
+	$url = home_url( add_query_arg( array(), $wp->request ) );
 	
-	// is_single: When any single Post (or attachment, or custom Post Type) page is being displayed. 
-	// (todo) type of profile is also valid.
+	/* 6. Image */
+	if ( is_single() ) {
+		$img = wp_get_attachment_url( get_post_thumbnail_id($post->ID) );
+	}
+	if ( !$img ) {
+		$img = get_template_directory_uri() . "/assets/img/misc/social-thumb.png";
+	}
+	
+	$output = "<!-- Open Graph Tags: http://ogp.me -->\n";
+	
+	$output .= "<meta property='og:title' content='".$title."' />\n";
+	$output .= '<meta property="og:description" content="'.$excerpt.'" />'."\n";
+	$output .= "<meta property='og:url' content='$url' />\n";
+	$output .= "<meta property='og:image' content='$img' />\n";
 
-	if( is_single() ) {
-
+	if ( is_single() ) {
 		// type (enum)
 		$output .= "<meta property='og:type' content='article' />\n";
 
@@ -103,48 +118,21 @@ function exa_social_open_graph_tags() {
 		}
 		// Currently unused (profile tag) (todo)
 		// $output .= "<meta property='og:article:author' content='' />\n";
-
 	} else {
-
 		// type (enum)
-		$output .= "<meta property='og:type' content='website' />\n";
-
-	}
-
-	/* 5. Url */
-
-	$url = exa_social_url(get_permalink($post->ID), false);
-	$output .= "<meta property='og:url' content='$url' />\n";
-	
-
-	/* 6. Image */
-
-	$img = wp_get_attachment_url( get_post_thumbnail_id($post->ID) );
-	if( $img ) {
-		$output .= "<meta property='og:image' content='$img' />\n";
-	} else {
-		$img = get_template_directory_uri() . "/assets/img/misc/social-thumb.png";
-		$output .= "<meta property='og:image' content='$img' />\n";
+		$output .= "<meta property='og:type' content='website' />";
 	}
 
 	/* 7. Finish up */
-
-	$output .= "\n";
 	echo $output;
-
 }
 add_action('wp_head','exa_social_open_graph_tags');
 
 /**
  * Prints twitter card text to the head of wordpress pages.
- *
- * @since v0.1
- * @author Will Haynes
- * 
  * @see https://dev.twitter.com/cards/
  */
 function exa_social_twitter_card_tags() {
-
 	global $post;
 
 	if(!$post)
@@ -156,10 +144,9 @@ function exa_social_twitter_card_tags() {
 	// single post pages.
 	if( is_single() ) :
 
-	$output .= "\n<!-- Twitter Card Tags: https://dev.twitter.com/cards/ -->\n";
+	$output .= "<!-- Twitter Card Tags: https://dev.twitter.com/cards/ -->\n";
 
 	/* 1. Card type, and image */
-
 	$img = wp_get_attachment_url( get_post_thumbnail_id($post->ID) );
 
 	if( $img ) {
@@ -170,21 +157,17 @@ function exa_social_twitter_card_tags() {
 	}
 
 	/* 2. Title */
-
 	$title = single_post_title( "", false );
 	$output .= "<meta name='twitter:title' content='$title' />\n";
 
 	/* 3. Excerpt */
-
 	$excerpt = htmlspecialchars(_exa_social_get_description());
 	$output .= '<meta name="twitter:description" content="' . $excerpt . '" />' . "\n";
 	
 	/* 4. Site */
-
 	$output .= "<meta name='twitter:site' content='@badgerherald' />\n";
 	
 	/* 5. Creator */
-
 	if(	hrld_author_has("hrld_twitter_handle") ) {
 		$twitter = get_hrld_author("hrld_twitter_handle");
 		$output .= "<meta name='twitter:creator' content='@$twitter' />\n";
@@ -200,16 +183,9 @@ function exa_social_twitter_card_tags() {
 }
 add_action('wp_head','exa_social_twitter_card_tags');
 
+
 /**
  * Generate a link that is tweetable.
- * 
- * @since v0.2
- * 
- * @param String $title the title of the link.
- * @param String $tweet (optional) the text of the tweet. Defaults to the same as title.
- * @param String $classes (optional) a class string to add to the link.
- * @param String $header (optional) if this should be a header link (<h1>,<h2>,&c.) include a 
- *               number of that size. 0 and null will both
  */
 function exa_get_tweet_link($title, $tweet = null, $classes = null, $header = null) {
 
@@ -277,4 +253,3 @@ function _exa_social_get_description($post_id = null) {
 
     return $the_excerpt; 
 }
-
