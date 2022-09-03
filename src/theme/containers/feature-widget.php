@@ -3,14 +3,10 @@ $container = $GLOBALS['container'] ?: new container('feature-widget');
 ?>
 
 <div class="<?php echo $container->classes(); ?>">
-	
-	<div class="wrapper">
+    <div class="wrapper">
+        <div class="feature">
 
-		<div class="feature">
-
-		<?php
-
-		$key = serialize($roles);
+            <?php
 
 		$query_args = array(
 			'post_status'	=> 'publish',
@@ -44,9 +40,9 @@ $container = $GLOBALS['container'] ?: new container('feature-widget');
 				Exa::addShownId(get_the_ID()); 
 				?>
 
-				<a href="<?php the_permalink(); ?>" class="story">
-					<div class="dotted-overlay-container">
-					<?php
+            <a href="<?php the_permalink(); ?>" class="story">
+                <div class="dotted-overlay-container">
+                    <?php
 						if( has_post_thumbnail()){
 								the_post_thumbnail('post-thumbnail');
 						}else{
@@ -54,41 +50,41 @@ $container = $GLOBALS['container'] ?: new container('feature-widget');
 									'style="height: 562px; background-color: #666;" />';
 						}
 					?>
-					</div>
-					<div class="title-container">
-						
-						<div class="block-headline-container">
-							<h1 class="block-headline"><span><?php the_title(); ?></span></h1>
-						</div>
+                </div>
+                <div class="title-container">
 
-						<div class="byline">
-							<div class="mug">
-								<?php exa_mug(get_the_author_meta('ID'),'small-thumbnail') ?>
-							</div>
-							<span class="author">
-								by 
-								<span class="author-name"><?php the_author() ?></span>
-							</span>
-						</div>
-						<div class="lede"><?php the_excerpt(); ?></div>
-					</div>
+                    <div class="block-headline-container">
+                        <h1 class="block-headline"><span><?php the_title(); ?></span></h1>
+                    </div>
 
-				</a>
+                    <div class="byline">
+                        <div class="mug">
+                            <?php exa_mug(get_the_author_meta('ID'),'small-thumbnail') ?>
+                        </div>
+                        <span class="author">
+                            by
+                            <span class="author-name"><?php the_author() ?></span>
+                        </span>
+                    </div>
+                    <div class="lede"><?php the_excerpt(); ?></div>
+                </div>
 
-		<?php	
+            </a>
+
+            <?php	
 				endwhile;
 			} else {
 				echo "No Posts";
 			}
 		?>
 
-		</div>
+        </div>
 
-		<div class="widget">
+        <div class="widget">
 
-			<h3 class="title">Most Recent</h3>
+            <h3 class="title">Most Recent</h3>
 
-			<?php
+            <?php
 			$count = 0;
 			while( have_posts() ) : 
 				$count++;
@@ -97,27 +93,27 @@ $container = $GLOBALS['container'] ?: new container('feature-widget');
 				}
 				the_post(); 
 				?>
-		
-				<a class="most-recent-post" href="<?php the_permalink(); ?>">
-        			
-        			<?php if(has_post_thumbnail()) : ?>
-        				<div class="thumbnail">
-            				<?php the_post_thumbnail(); ?>
-        				</div>
-        			<?php endif; ?>
-        			
-        			<div class="title">
-						<?php the_title(); ?><time><?php exa_time() ?></time>
-					</div>
-					<div class="clearfix"></div>
-				</a>
-				
 
-			<?php endwhile ?>
+            <a class="most-recent-post" href="<?php the_permalink(); ?>">
 
-		</div>
+                <?php if(has_post_thumbnail()) : ?>
+                <div class="thumbnail">
+                    <?php the_post_thumbnail(); ?>
+                </div>
+                <?php endif; ?>
 
-		<div class="clearfix"></div>
+                <div class="title">
+                    <?php the_title(); ?><time><?php exa_time() ?></time>
+                </div>
+                <div class="clearfix"></div>
+            </a>
 
-	</div>
+
+            <?php endwhile ?>
+
+        </div>
+
+        <div class="clearfix"></div>
+
+    </div>
 </div>

@@ -1,4 +1,4 @@
-FROM wordpress:5.9.1-php7.4-fpm
+FROM wordpress:5.9.1-php8.1-fpm
 
 # 1/ Install programs
 RUN pecl install redis && docker-php-ext-enable redis

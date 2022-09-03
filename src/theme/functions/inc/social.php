@@ -35,7 +35,7 @@ function exa_social_url($url = "", $newVersion = true){
  * @see http://ogp.me
  */
 function exa_social_open_graph_tags() {
-
+	global $wp;
 	global $post;
 
 	if ( !$post ) {
@@ -65,7 +65,7 @@ function exa_social_open_graph_tags() {
 	/* 3. Site (string) */
 
 	$site = "The Badger Herald";
-	$output .= "<meta property='og:site_name' content='$site' />\n";
+	
 
 	/* 4. Type (enum) */
 
@@ -73,6 +73,7 @@ function exa_social_open_graph_tags() {
 	$url = home_url( add_query_arg( array(), $wp->request ) );
 	
 	/* 6. Image */
+	$img = false;
 	if ( is_single() ) {
 		$img = wp_get_attachment_url( get_post_thumbnail_id($post->ID) );
 	}
@@ -84,6 +85,7 @@ function exa_social_open_graph_tags() {
 	
 	$output .= "<meta property='og:title' content='".$title."' />\n";
 	$output .= '<meta property="og:description" content="'.$excerpt.'" />'."\n";
+	$output .= "<meta property='og:site_name' content='$site' />\n";
 	$output .= "<meta property='og:url' content='$url' />\n";
 	$output .= "<meta property='og:image' content='$img' />\n";
 
