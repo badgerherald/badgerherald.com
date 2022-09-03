@@ -44,6 +44,7 @@ function exa_social_open_graph_tags() {
 
 	/* 1. Title (string) */
 
+	$title;
 	if ( is_single() ) {
 		$title = single_post_title( null, false );
 	} else if ( is_front_page() ) {
@@ -54,6 +55,7 @@ function exa_social_open_graph_tags() {
 	
 	/* 2. Description (string) */
 
+	$excerpt;
 	if ( is_single() ) {
 		$excerpt = htmlspecialchars(_exa_social_get_description());
 	} else if ( is_front_page() ) {
