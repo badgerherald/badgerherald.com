@@ -61,7 +61,7 @@ function exa_social_open_graph_tags() {
 	} else if ( is_front_page() ) {
 		$excerpt = get_bloginfo('description');
 	} else {
-		$excert = "";
+		$excerpt = "";
 	}
 
 	/* 3. Site (string) */
