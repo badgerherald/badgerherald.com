@@ -39,8 +39,6 @@ include( __DIR__ . '/inc/user-management.php');
 include( __DIR__ . '/inc/dirty-bird.php');
 include( __DIR__ . '/inc/donate.php');
 
-// Include plugin 
-include( __DIR__ . '/donate.php');
 
 add_action( 'customize_preview_init', function() {
 die("The customizer is disabled. Please save and preview your site on the frontend.");
