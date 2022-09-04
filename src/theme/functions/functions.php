@@ -25,7 +25,6 @@ include( __DIR__ . '/inc/embeds.php');
 include( __DIR__ . '/inc/inline-links.php');
 include( __DIR__ . '/inc/mastheads.php');
 include( __DIR__ . '/inc/galleries.php');
-include( __DIR__ . '/inc/analytic-dashboard.php');
 include( __DIR__ . '/inc/headlines.php');
 include( __DIR__ . '/inc/pullquotes.php');
 include( __DIR__ . '/inc/social.php');
