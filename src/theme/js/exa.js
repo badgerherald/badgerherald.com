@@ -2,9 +2,7 @@
  * JS functionality specific to Exa.
  */
 jQuery(document).ready(function($) {
-
 	jQuery(".snippet.inline").bind( "click", function(e) {
-		
 		e.preventDefault();
 
 		url = jQuery( this ).attr( 'href' );
@@ -22,41 +20,8 @@ jQuery(document).ready(function($) {
 			);
 
 		window.open(url,"_blank");
-
 	}); 
 
-	$(".container.nameplate .menus-button").on('click', function() {
-		$(this).toggleClass('active');
-		$(this).next('.menus').toggleClass('active');
-	});
-
-	/**
-	 * A pair of functions to turn of html scrolling.
-	 * This is to turn scrolling for a child element on.
-	 *
-	 * Don't really work correctly right now. But would be nice to have
-	 * someday.
-	 */
-	function lockScroll() {
-		// lock scroll position, but retain settings for later
-		var scrollPosition = [
-		  self.pageXOffset || document.documentElement.scrollLeft || document.body.scrollLeft,
-		  self.pageYOffset || document.documentElement.scrollTop  || document.body.scrollTop
-		];
-		var html = jQuery('html'); // it would make more sense to apply this to body, but IE7 won't have that
-		html.data('scroll-position', scrollPosition);
-		html.data('previous-overflow', html.css('overflow'));
-		html.css('overflow', 'hidden');
-		window.scrollTo(scrollPosition[0], scrollPosition[1]);
-	}
-	
-	function unlockScroll() {
-		// un-lock scroll position
-		var html = jQuery('html');
-		var scrollPosition = html.data('scroll-position');
-		html.css('overflow', html.data('previous-overflow'));
-		window.scrollTo(scrollPosition[0], scrollPosition[1])
-  	}
 
 	/** 
 	 * Scrolling for banners
@@ -66,7 +31,6 @@ jQuery(document).ready(function($) {
 	 */
 	$(window).scroll(bannerScroll);
 	function bannerScroll() {
-
 		var backgroundImgHeight = 234,
 			bannerHeight = 90;
 		var scrollTop     = $(window).scrollTop(),
@@ -77,8 +41,6 @@ jQuery(document).ready(function($) {
 			var	elementOffset = $(this).offset().top,
 			    distance      = (elementOffset - scrollTop);
 
-			// log distance: console.log(windowHeight + ',' + distance);
-
 			 if(distance > 0 && windowHeight > distance) {
 		    	
 		    	var	frac		  = (windowHeight - distance) / windowHeight,
@@ -86,19 +48,53 @@ jQuery(document).ready(function($) {
 
 		    	$(this).css({'backgroundPosition':'0 -' + pos + 'px'});
 	    	}
-
    		});
-
 	};
 
-	/**
-	 *
-	 *
-	 */
+
 	$('.comment-button').click( function(e) {
 		e.preventDefault();
 
 		// Create the pane.
 		$('.comments').show(400);
+	});
+
+
+	function isPreflightSize(size) {
+		var w = size[0];
+		var h = size[1];
+		if (w == 300 && h == 340) return true;
+		if (w == 760 && h == 340) return true;
+		if (w == 1020 && h == 420) return true;
+		if (w == 1180 && h == 420) return true;
+		return false;
+	}
+
+
+	// Remove the preflight container until its loaded.
+	jQuery(".container.preflight .dfw-unit").on("dfw:beforeAdLoaded", function(event,gptEvent) {
+		// add the class loaded to the preflight container.
+		var preflightcontainer = $(this).closest(".container.preflight");
+	});
+
+
+	// Decorate the preflight once its loaded on the page: 
+	// Adds a didLoad class to the preflight container.
+	jQuery(".container.preflight .dfw-unit").on("dfw:afterAdLoaded", function(event,gptEvent) {
+		var preflightcontainer = $(this).closest(".container.preflight");
+		preflightcontainer.addClass("loaded");
+		if (isPreflightSize(gptEvent.size)) {
+			var wrapper = $(this).closest(".wrapper");
+			preflightcontainer.addClass("decorated");
+			wrapper.removeClass("wrapper");
+		}
+	});
+
+	
+	jQuery(".ad-in-content").on("dfw:afterAdLoaded", function(event,gptEvent) {
+		if (!gptEvent.isEmpty) {
+			var adContainer = $(this).closest(".ad-in-content");
+			adContainer.css("display", "block");
+		}
 	});
 });
