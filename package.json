@@ -28,9 +28,9 @@
     "@stencil/sass": "^1.5.2",
     "@types/doubleclick-gpt": "^2019111201.0.2",
     "@types/stripe-v3": "^3.1.7",
-    "@webpress/core": "0.0.29",
-    "@webpress/router": "0.0.29",
-    "@webpress/theme": "0.0.29"
+    "@webpress/core": "^0.0.30",
+    "@webpress/router": "^0.0.30",
+    "@webpress/theme": "^0.0.30"
   },
   "license": "MIT",
   "dependencies": {
