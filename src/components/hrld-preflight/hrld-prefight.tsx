@@ -10,6 +10,7 @@ export class HeraldPreflight {
   //private adEl: HTMLElement;
   private adjustSize(event: googletag.events.SlotRenderEndedEvent) {
     console.log("ad is", event);
+    this.el.style.height = null;
     if (event.size == null) {
       this.el.classList.add("empty");
     } else if (event.size[1] <= 200) {

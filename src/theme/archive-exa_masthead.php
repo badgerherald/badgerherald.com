@@ -9,7 +9,7 @@ global $post;
 
 ?>
 
-<hrld-preflight></hrld-preflight>
+<hrld-preflight style='height:180px'></hrld-preflight>
 
 <?php
 

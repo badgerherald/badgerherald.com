@@ -1,4 +1,6 @@
 hrld-preflight {
+  transition: height 0.04s ease;
+
   &.container .wrapper {
     position: static;
   }
