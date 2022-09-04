@@ -21,7 +21,7 @@
     "build": "npm run sass-build; stencil build --stats"
   },
   "devDependencies": {
-    "@badgerherald/donate": "^0.1.5",
+    "@badgerherald/donate": "^0.1.6",
     "@broadsheet.technology/analytics-bridge": "0.0.4",
     "@stencil/core": "^2.12.1",
     "@stencil/router": "^1.0.1",
