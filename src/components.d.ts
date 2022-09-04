@@ -6,6 +6,7 @@
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { Connection, Query, SearchResult, Template, Theme } from "@webpress/core";
+import { AdMapping } from "./components/model/AdMapping";
 export namespace Components {
     interface BhImports {
     }
@@ -34,14 +35,31 @@ export namespace Components {
     interface BhSearchResultsPage {
         "global": Connection.Context;
     }
+    interface BstAdSlot {
+        "adUnitPath": string;
+        "sizeMap": AdMapping;
+        "slotRenderEnded": (
+    event: googletag.events.SlotRenderEndedEvent
+  ) => any;
+    }
     interface ExaMenuButton {
         "active": boolean;
     }
-    interface ExaNameplate {
+    interface ExaNameplateMenus {
         "global": Connection.Context;
         "query": Template.Query;
         "searchQuery": string;
         "theme": Theme;
+    }
+    interface HrldArticleSidebar {
+    }
+    interface HrldHomepageLeaderboard {
+    }
+    interface HrldHomepageSidekick {
+    }
+    interface HrldPreflight {
+    }
+    interface HrldTallAd {
     }
 }
 declare global {
@@ -93,17 +111,53 @@ declare global {
         prototype: HTMLBhSearchResultsPageElement;
         new (): HTMLBhSearchResultsPageElement;
     };
+    interface HTMLBstAdSlotElement extends Components.BstAdSlot, HTMLStencilElement {
+    }
+    var HTMLBstAdSlotElement: {
+        prototype: HTMLBstAdSlotElement;
+        new (): HTMLBstAdSlotElement;
+    };
     interface HTMLExaMenuButtonElement extends Components.ExaMenuButton, HTMLStencilElement {
     }
     var HTMLExaMenuButtonElement: {
         prototype: HTMLExaMenuButtonElement;
         new (): HTMLExaMenuButtonElement;
     };
-    interface HTMLExaNameplateElement extends Components.ExaNameplate, HTMLStencilElement {
+    interface HTMLExaNameplateMenusElement extends Components.ExaNameplateMenus, HTMLStencilElement {
     }
-    var HTMLExaNameplateElement: {
-        prototype: HTMLExaNameplateElement;
-        new (): HTMLExaNameplateElement;
+    var HTMLExaNameplateMenusElement: {
+        prototype: HTMLExaNameplateMenusElement;
+        new (): HTMLExaNameplateMenusElement;
+    };
+    interface HTMLHrldArticleSidebarElement extends Components.HrldArticleSidebar, HTMLStencilElement {
+    }
+    var HTMLHrldArticleSidebarElement: {
+        prototype: HTMLHrldArticleSidebarElement;
+        new (): HTMLHrldArticleSidebarElement;
+    };
+    interface HTMLHrldHomepageLeaderboardElement extends Components.HrldHomepageLeaderboard, HTMLStencilElement {
+    }
+    var HTMLHrldHomepageLeaderboardElement: {
+        prototype: HTMLHrldHomepageLeaderboardElement;
+        new (): HTMLHrldHomepageLeaderboardElement;
+    };
+    interface HTMLHrldHomepageSidekickElement extends Components.HrldHomepageSidekick, HTMLStencilElement {
+    }
+    var HTMLHrldHomepageSidekickElement: {
+        prototype: HTMLHrldHomepageSidekickElement;
+        new (): HTMLHrldHomepageSidekickElement;
+    };
+    interface HTMLHrldPreflightElement extends Components.HrldPreflight, HTMLStencilElement {
+    }
+    var HTMLHrldPreflightElement: {
+        prototype: HTMLHrldPreflightElement;
+        new (): HTMLHrldPreflightElement;
+    };
+    interface HTMLHrldTallAdElement extends Components.HrldTallAd, HTMLStencilElement {
+    }
+    var HTMLHrldTallAdElement: {
+        prototype: HTMLHrldTallAdElement;
+        new (): HTMLHrldTallAdElement;
     };
     interface HTMLElementTagNameMap {
         "bh-imports": HTMLBhImportsElement;
@@ -114,8 +168,14 @@ declare global {
         "bh-search-result-title": HTMLBhSearchResultTitleElement;
         "bh-search-results": HTMLBhSearchResultsElement;
         "bh-search-results-page": HTMLBhSearchResultsPageElement;
+        "bst-ad-slot": HTMLBstAdSlotElement;
         "exa-menu-button": HTMLExaMenuButtonElement;
-        "exa-nameplate": HTMLExaNameplateElement;
+        "exa-nameplate-menus": HTMLExaNameplateMenusElement;
+        "hrld-article-sidebar": HTMLHrldArticleSidebarElement;
+        "hrld-homepage-leaderboard": HTMLHrldHomepageLeaderboardElement;
+        "hrld-homepage-sidekick": HTMLHrldHomepageSidekickElement;
+        "hrld-preflight": HTMLHrldPreflightElement;
+        "hrld-tall-ad": HTMLHrldTallAdElement;
     }
 }
 declare namespace LocalJSX {
@@ -146,14 +206,31 @@ declare namespace LocalJSX {
     interface BhSearchResultsPage {
         "global"?: Connection.Context;
     }
+    interface BstAdSlot {
+        "adUnitPath": string;
+        "sizeMap": AdMapping;
+        "slotRenderEnded"?: (
+    event: googletag.events.SlotRenderEndedEvent
+  ) => any;
+    }
     interface ExaMenuButton {
         "active"?: boolean;
     }
-    interface ExaNameplate {
+    interface ExaNameplateMenus {
         "global"?: Connection.Context;
         "query"?: Template.Query;
         "searchQuery"?: string;
         "theme"?: Theme;
+    }
+    interface HrldArticleSidebar {
+    }
+    interface HrldHomepageLeaderboard {
+    }
+    interface HrldHomepageSidekick {
+    }
+    interface HrldPreflight {
+    }
+    interface HrldTallAd {
     }
     interface IntrinsicElements {
         "bh-imports": BhImports;
@@ -164,8 +241,14 @@ declare namespace LocalJSX {
         "bh-search-result-title": BhSearchResultTitle;
         "bh-search-results": BhSearchResults;
         "bh-search-results-page": BhSearchResultsPage;
+        "bst-ad-slot": BstAdSlot;
         "exa-menu-button": ExaMenuButton;
-        "exa-nameplate": ExaNameplate;
+        "exa-nameplate-menus": ExaNameplateMenus;
+        "hrld-article-sidebar": HrldArticleSidebar;
+        "hrld-homepage-leaderboard": HrldHomepageLeaderboard;
+        "hrld-homepage-sidekick": HrldHomepageSidekick;
+        "hrld-preflight": HrldPreflight;
+        "hrld-tall-ad": HrldTallAd;
     }
 }
 export { LocalJSX as JSX };
@@ -180,8 +263,14 @@ declare module "@stencil/core" {
             "bh-search-result-title": LocalJSX.BhSearchResultTitle & JSXBase.HTMLAttributes<HTMLBhSearchResultTitleElement>;
             "bh-search-results": LocalJSX.BhSearchResults & JSXBase.HTMLAttributes<HTMLBhSearchResultsElement>;
             "bh-search-results-page": LocalJSX.BhSearchResultsPage & JSXBase.HTMLAttributes<HTMLBhSearchResultsPageElement>;
+            "bst-ad-slot": LocalJSX.BstAdSlot & JSXBase.HTMLAttributes<HTMLBstAdSlotElement>;
             "exa-menu-button": LocalJSX.ExaMenuButton & JSXBase.HTMLAttributes<HTMLExaMenuButtonElement>;
-            "exa-nameplate": LocalJSX.ExaNameplate & JSXBase.HTMLAttributes<HTMLExaNameplateElement>;
+            "exa-nameplate-menus": LocalJSX.ExaNameplateMenus & JSXBase.HTMLAttributes<HTMLExaNameplateMenusElement>;
+            "hrld-article-sidebar": LocalJSX.HrldArticleSidebar & JSXBase.HTMLAttributes<HTMLHrldArticleSidebarElement>;
+            "hrld-homepage-leaderboard": LocalJSX.HrldHomepageLeaderboard & JSXBase.HTMLAttributes<HTMLHrldHomepageLeaderboardElement>;
+            "hrld-homepage-sidekick": LocalJSX.HrldHomepageSidekick & JSXBase.HTMLAttributes<HTMLHrldHomepageSidekickElement>;
+            "hrld-preflight": LocalJSX.HrldPreflight & JSXBase.HTMLAttributes<HTMLHrldPreflightElement>;
+            "hrld-tall-ad": LocalJSX.HrldTallAd & JSXBase.HTMLAttributes<HTMLHrldTallAdElement>;
         }
     }
 }
