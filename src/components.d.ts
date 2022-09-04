@@ -5,9 +5,14 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
+import { AdMapping } from "./components/model/AdMapping";
 import { Connection, Template, Theme } from "@webpress/core";
 export namespace Components {
     interface BhImports {
+    }
+    interface BstAdSlot {
+        "adUnitPath": string;
+        "sizeMap": AdMapping;
     }
     interface ExaMenuButton {
         "active": boolean;
@@ -21,6 +26,8 @@ export namespace Components {
     interface ExaSearchForm {
         "focused": boolean;
     }
+    interface HrldPreflight {
+    }
 }
 declare global {
     interface HTMLBhImportsElement extends Components.BhImports, HTMLStencilElement {
@@ -28,6 +35,12 @@ declare global {
     var HTMLBhImportsElement: {
         prototype: HTMLBhImportsElement;
         new (): HTMLBhImportsElement;
+    };
+    interface HTMLBstAdSlotElement extends Components.BstAdSlot, HTMLStencilElement {
+    }
+    var HTMLBstAdSlotElement: {
+        prototype: HTMLBstAdSlotElement;
+        new (): HTMLBstAdSlotElement;
     };
     interface HTMLExaMenuButtonElement extends Components.ExaMenuButton, HTMLStencilElement {
     }
@@ -47,15 +60,27 @@ declare global {
         prototype: HTMLExaSearchFormElement;
         new (): HTMLExaSearchFormElement;
     };
+    interface HTMLHrldPreflightElement extends Components.HrldPreflight, HTMLStencilElement {
+    }
+    var HTMLHrldPreflightElement: {
+        prototype: HTMLHrldPreflightElement;
+        new (): HTMLHrldPreflightElement;
+    };
     interface HTMLElementTagNameMap {
         "bh-imports": HTMLBhImportsElement;
+        "bst-ad-slot": HTMLBstAdSlotElement;
         "exa-menu-button": HTMLExaMenuButtonElement;
         "exa-nameplate-menus": HTMLExaNameplateMenusElement;
         "exa-search-form": HTMLExaSearchFormElement;
+        "hrld-preflight": HTMLHrldPreflightElement;
     }
 }
 declare namespace LocalJSX {
     interface BhImports {
+    }
+    interface BstAdSlot {
+        "adUnitPath": string;
+        "sizeMap": AdMapping;
     }
     interface ExaMenuButton {
         "active"?: boolean;
@@ -69,11 +94,15 @@ declare namespace LocalJSX {
     interface ExaSearchForm {
         "focused"?: boolean;
     }
+    interface HrldPreflight {
+    }
     interface IntrinsicElements {
         "bh-imports": BhImports;
+        "bst-ad-slot": BstAdSlot;
         "exa-menu-button": ExaMenuButton;
         "exa-nameplate-menus": ExaNameplateMenus;
         "exa-search-form": ExaSearchForm;
+        "hrld-preflight": HrldPreflight;
     }
 }
 export { LocalJSX as JSX };
@@ -81,9 +110,11 @@ declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
             "bh-imports": LocalJSX.BhImports & JSXBase.HTMLAttributes<HTMLBhImportsElement>;
+            "bst-ad-slot": LocalJSX.BstAdSlot & JSXBase.HTMLAttributes<HTMLBstAdSlotElement>;
             "exa-menu-button": LocalJSX.ExaMenuButton & JSXBase.HTMLAttributes<HTMLExaMenuButtonElement>;
             "exa-nameplate-menus": LocalJSX.ExaNameplateMenus & JSXBase.HTMLAttributes<HTMLExaNameplateMenusElement>;
             "exa-search-form": LocalJSX.ExaSearchForm & JSXBase.HTMLAttributes<HTMLExaSearchFormElement>;
+            "hrld-preflight": LocalJSX.HrldPreflight & JSXBase.HTMLAttributes<HTMLHrldPreflightElement>;
         }
     }
 }

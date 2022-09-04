@@ -13,7 +13,11 @@ global $post;
 
 get_header();
 
-exa_container('preflight');
+?>
+
+<hrld-preflight></hrld-preflight>
+
+<?php
 exa_container('nameplate');
 
 if ( have_posts() ) : 
@@ -25,4 +29,3 @@ else :
 endif;
 
 get_template_part('footer');
-

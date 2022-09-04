@@ -6,7 +6,9 @@
  */
 
 get_header();
-exa_container('billboard');
+?>
+<hrld-preflight></hrld-preflight>
+<?php
 exa_container('nameplate');
 exa_container('breaking-news');
 exa_container('feature-widget');
@@ -19,4 +21,3 @@ exa_container('old-homepage');
 get_footer();
 
 ?>
-
