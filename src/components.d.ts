@@ -37,6 +37,8 @@ export namespace Components {
     }
     interface HrldPreflight {
     }
+    interface HrldTallAd {
+    }
 }
 declare global {
     interface HTMLBhImportsElement extends Components.BhImports, HTMLStencilElement {
@@ -93,6 +95,12 @@ declare global {
         prototype: HTMLHrldPreflightElement;
         new (): HTMLHrldPreflightElement;
     };
+    interface HTMLHrldTallAdElement extends Components.HrldTallAd, HTMLStencilElement {
+    }
+    var HTMLHrldTallAdElement: {
+        prototype: HTMLHrldTallAdElement;
+        new (): HTMLHrldTallAdElement;
+    };
     interface HTMLElementTagNameMap {
         "bh-imports": HTMLBhImportsElement;
         "bst-ad-slot": HTMLBstAdSlotElement;
@@ -103,6 +111,7 @@ declare global {
         "hrld-homepage-leaderboard": HTMLHrldHomepageLeaderboardElement;
         "hrld-homepage-sidekick": HTMLHrldHomepageSidekickElement;
         "hrld-preflight": HTMLHrldPreflightElement;
+        "hrld-tall-ad": HTMLHrldTallAdElement;
     }
 }
 declare namespace LocalJSX {
@@ -135,6 +144,8 @@ declare namespace LocalJSX {
     }
     interface HrldPreflight {
     }
+    interface HrldTallAd {
+    }
     interface IntrinsicElements {
         "bh-imports": BhImports;
         "bst-ad-slot": BstAdSlot;
@@ -145,6 +156,7 @@ declare namespace LocalJSX {
         "hrld-homepage-leaderboard": HrldHomepageLeaderboard;
         "hrld-homepage-sidekick": HrldHomepageSidekick;
         "hrld-preflight": HrldPreflight;
+        "hrld-tall-ad": HrldTallAd;
     }
 }
 export { LocalJSX as JSX };
@@ -160,6 +172,7 @@ declare module "@stencil/core" {
             "hrld-homepage-leaderboard": LocalJSX.HrldHomepageLeaderboard & JSXBase.HTMLAttributes<HTMLHrldHomepageLeaderboardElement>;
             "hrld-homepage-sidekick": LocalJSX.HrldHomepageSidekick & JSXBase.HTMLAttributes<HTMLHrldHomepageSidekickElement>;
             "hrld-preflight": LocalJSX.HrldPreflight & JSXBase.HTMLAttributes<HTMLHrldPreflightElement>;
+            "hrld-tall-ad": LocalJSX.HrldTallAd & JSXBase.HTMLAttributes<HTMLHrldTallAdElement>;
         }
     }
 }

@@ -4,7 +4,6 @@
  * 
  */
 
-global $DoubleClick;
 $container = $GLOBALS['container'] ?: new container('header');
 
 ?>

@@ -28,7 +28,7 @@ export class BroadsheetAdSlot {
     this.hash = "ab-" + this.cyrb53(this.adUnitPath).toString(16);
     googletag.cmd.push(() => {
       this.slot = googletag
-        .defineSlot("/64222555/" + this.adUnitPath, [300, 250], this.hash)
+        .defineSlot("/8653162/" + this.adUnitPath, [300, 250], this.hash)
         .defineSizeMapping(this.sizeMap)
         .addService(googletag.pubads());
       googletag.enableServices();

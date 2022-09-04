@@ -1,6 +1,5 @@
 <?php 
 
-global $DoubleClick;
 $container = $GLOBALS['container'] ?: new container('article-display');
 $container->default_args(
 	array('layout' => 'standard')

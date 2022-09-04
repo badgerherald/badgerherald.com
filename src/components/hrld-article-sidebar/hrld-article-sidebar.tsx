@@ -25,14 +25,14 @@ export class HeraldArticleSidebar {
           adUnitPath="badgerherald.com-upper-sidekick"
           sizeMap={HeraldAdMapping({
             mobile: [],
-            desktop: [HeraldAdSize.Sidekick],
+            desktop: [HeraldAdSize.Sidekick, HeraldAdSize.TallSidekick],
           })}
         />
         <bst-ad-slot
           adUnitPath="badgerherald.com-lower-sidekick"
           sizeMap={HeraldAdMapping({
             mobile: [],
-            desktop: [HeraldAdSize.Sidekick],
+            desktop: [HeraldAdSize.Sidekick, HeraldAdSize.TallSidekick],
           })}
         />
       </div>
