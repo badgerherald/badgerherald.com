@@ -46,7 +46,7 @@ function _exa_register_content_adslot($content) {
 	}
 	return $content;
 }
-add_filter('the_content','_exa_register_content_adslot');
+//add_filter('the_content','_exa_register_content_adslot');
 
 /**
  * Inserts a string in between paragraphs.
