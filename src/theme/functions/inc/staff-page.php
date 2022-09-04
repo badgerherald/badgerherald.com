@@ -96,6 +96,10 @@ function about_class($classes) {
 	
 	global $post;
 
+	if (!$post) {
+		return $classes;
+	}
+
 	if($post->post_parent == 0 && $post->post_name != "about") 
 		return $classes;
 
