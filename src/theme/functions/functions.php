@@ -34,7 +34,6 @@ include( __DIR__ . '/inc/services.php');
 include( __DIR__ . '/inc/staff-page.php');
 include( __DIR__ . '/inc/ads.php');
 include( __DIR__ . '/inc/redirects.php');
-include( __DIR__ . '/inc/header-charm.php');
 include( __DIR__ . '/inc/user-management.php');
 include( __DIR__ . '/inc/dirty-bird.php');
 include( __DIR__ . '/inc/donate.php');
