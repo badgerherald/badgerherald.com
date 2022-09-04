@@ -141,72 +141,12 @@
       }
     }
   }
-  aside.sidebar {
+  .sidebar {
     width: 100%;
     display: block;
     top: 0;
     right: 0;
     margin-bottom: 24px;
-    .ad {
-      padding: 0 0 24px;
-    }
-    .popular-post-widget {
-      margin: 18px 0;
-      position: relative;
-      width: 100%;
-      h3 {
-        background: $black;
-        font-family: $headline;
-        text-transform: uppercase;
-        color: $truewhite;
-        margin: 0;
-        text-align: center;
-        font-size: 14px;
-        padding: 3px 20px 3px 20px;
-        display: inline;
-      }
-      a {
-        position: relative;
-        border-bottom: 1px solid $greyBorder;
-        background: white;
-        padding: 0px 10px;
-        display: block;
-        font-family: $headline;
-        color: $trueblack;
-        font-weight: 700;
-        .graph-bar {
-          background: $blue;
-          height: 2px;
-          position: absolute;
-          bottom: -1px;
-          left: 0;
-        }
-        img {
-          height: 80px;
-          display: block;
-          width: auto;
-          margin-top: 20px;
-          padding: 0px 0 20px 15px;
-          float: right;
-        }
-        h2 {
-          font-size: 16px;
-          line-height: 21px;
-          margin-bottom: 20px;
-          font-weight: bold;
-          color: $black;
-        }
-        .topic {
-          color: $darkgrey;
-          padding-top: 20px;
-          display: block;
-          font-weight: normal;
-        }
-        &:hover {
-          color: $blue;
-        }
-      }
-    }
   }
 }
 
@@ -232,13 +172,10 @@
         min-height: 18px;
       }
     }
-    aside.sidebar {
+    .sidebar {
       margin-left: gutter(2);
       width: col(3, 1);
       float: left;
-      .sidebar-thing {
-        margin-bottom: 54px;
-      }
     }
   }
 }
@@ -258,7 +195,7 @@
         }
       }
     }
-    aside.sidebar {
+    .sidebar {
       margin-left: col(1, 2);
     }
   }

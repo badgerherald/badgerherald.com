@@ -1,5 +1,5 @@
 <div class="container">
-    <div class="wrapper" id="nameplate"
+    <div id="nameplate" class="wrapper"
         style="border-bottom: 5px solid #3c74b9; width: 100%; display: block; padding-bottom: 12px;">
         <a id="logo" href="<?php echo home_url(); ?>">
             <img src="/wp-content/themes/badgerherald.com/assets/img/logo/header-horizontal.png" width="600px"

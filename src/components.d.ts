@@ -5,9 +5,17 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
+import { AdMapping } from "./components/model/AdMapping";
 import { Connection, Template, Theme } from "@webpress/core";
 export namespace Components {
     interface BhImports {
+    }
+    interface BstAdSlot {
+        "adUnitPath": string;
+        "sizeMap": AdMapping;
+        "slotRenderEnded": (
+    event: googletag.events.SlotRenderEndedEvent
+  ) => any;
     }
     interface ExaMenuButton {
         "active": boolean;
@@ -21,6 +29,16 @@ export namespace Components {
     interface ExaSearchForm {
         "focused": boolean;
     }
+    interface HrldArticleSidebar {
+    }
+    interface HrldHomepageLeaderboard {
+    }
+    interface HrldHomepageSidekick {
+    }
+    interface HrldPreflight {
+    }
+    interface HrldTallAd {
+    }
 }
 declare global {
     interface HTMLBhImportsElement extends Components.BhImports, HTMLStencilElement {
@@ -28,6 +46,12 @@ declare global {
     var HTMLBhImportsElement: {
         prototype: HTMLBhImportsElement;
         new (): HTMLBhImportsElement;
+    };
+    interface HTMLBstAdSlotElement extends Components.BstAdSlot, HTMLStencilElement {
+    }
+    var HTMLBstAdSlotElement: {
+        prototype: HTMLBstAdSlotElement;
+        new (): HTMLBstAdSlotElement;
     };
     interface HTMLExaMenuButtonElement extends Components.ExaMenuButton, HTMLStencilElement {
     }
@@ -47,15 +71,58 @@ declare global {
         prototype: HTMLExaSearchFormElement;
         new (): HTMLExaSearchFormElement;
     };
+    interface HTMLHrldArticleSidebarElement extends Components.HrldArticleSidebar, HTMLStencilElement {
+    }
+    var HTMLHrldArticleSidebarElement: {
+        prototype: HTMLHrldArticleSidebarElement;
+        new (): HTMLHrldArticleSidebarElement;
+    };
+    interface HTMLHrldHomepageLeaderboardElement extends Components.HrldHomepageLeaderboard, HTMLStencilElement {
+    }
+    var HTMLHrldHomepageLeaderboardElement: {
+        prototype: HTMLHrldHomepageLeaderboardElement;
+        new (): HTMLHrldHomepageLeaderboardElement;
+    };
+    interface HTMLHrldHomepageSidekickElement extends Components.HrldHomepageSidekick, HTMLStencilElement {
+    }
+    var HTMLHrldHomepageSidekickElement: {
+        prototype: HTMLHrldHomepageSidekickElement;
+        new (): HTMLHrldHomepageSidekickElement;
+    };
+    interface HTMLHrldPreflightElement extends Components.HrldPreflight, HTMLStencilElement {
+    }
+    var HTMLHrldPreflightElement: {
+        prototype: HTMLHrldPreflightElement;
+        new (): HTMLHrldPreflightElement;
+    };
+    interface HTMLHrldTallAdElement extends Components.HrldTallAd, HTMLStencilElement {
+    }
+    var HTMLHrldTallAdElement: {
+        prototype: HTMLHrldTallAdElement;
+        new (): HTMLHrldTallAdElement;
+    };
     interface HTMLElementTagNameMap {
         "bh-imports": HTMLBhImportsElement;
+        "bst-ad-slot": HTMLBstAdSlotElement;
         "exa-menu-button": HTMLExaMenuButtonElement;
         "exa-nameplate-menus": HTMLExaNameplateMenusElement;
         "exa-search-form": HTMLExaSearchFormElement;
+        "hrld-article-sidebar": HTMLHrldArticleSidebarElement;
+        "hrld-homepage-leaderboard": HTMLHrldHomepageLeaderboardElement;
+        "hrld-homepage-sidekick": HTMLHrldHomepageSidekickElement;
+        "hrld-preflight": HTMLHrldPreflightElement;
+        "hrld-tall-ad": HTMLHrldTallAdElement;
     }
 }
 declare namespace LocalJSX {
     interface BhImports {
+    }
+    interface BstAdSlot {
+        "adUnitPath": string;
+        "sizeMap": AdMapping;
+        "slotRenderEnded"?: (
+    event: googletag.events.SlotRenderEndedEvent
+  ) => any;
     }
     interface ExaMenuButton {
         "active"?: boolean;
@@ -69,11 +136,27 @@ declare namespace LocalJSX {
     interface ExaSearchForm {
         "focused"?: boolean;
     }
+    interface HrldArticleSidebar {
+    }
+    interface HrldHomepageLeaderboard {
+    }
+    interface HrldHomepageSidekick {
+    }
+    interface HrldPreflight {
+    }
+    interface HrldTallAd {
+    }
     interface IntrinsicElements {
         "bh-imports": BhImports;
+        "bst-ad-slot": BstAdSlot;
         "exa-menu-button": ExaMenuButton;
         "exa-nameplate-menus": ExaNameplateMenus;
         "exa-search-form": ExaSearchForm;
+        "hrld-article-sidebar": HrldArticleSidebar;
+        "hrld-homepage-leaderboard": HrldHomepageLeaderboard;
+        "hrld-homepage-sidekick": HrldHomepageSidekick;
+        "hrld-preflight": HrldPreflight;
+        "hrld-tall-ad": HrldTallAd;
     }
 }
 export { LocalJSX as JSX };
@@ -81,9 +164,15 @@ declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
             "bh-imports": LocalJSX.BhImports & JSXBase.HTMLAttributes<HTMLBhImportsElement>;
+            "bst-ad-slot": LocalJSX.BstAdSlot & JSXBase.HTMLAttributes<HTMLBstAdSlotElement>;
             "exa-menu-button": LocalJSX.ExaMenuButton & JSXBase.HTMLAttributes<HTMLExaMenuButtonElement>;
             "exa-nameplate-menus": LocalJSX.ExaNameplateMenus & JSXBase.HTMLAttributes<HTMLExaNameplateMenusElement>;
             "exa-search-form": LocalJSX.ExaSearchForm & JSXBase.HTMLAttributes<HTMLExaSearchFormElement>;
+            "hrld-article-sidebar": LocalJSX.HrldArticleSidebar & JSXBase.HTMLAttributes<HTMLHrldArticleSidebarElement>;
+            "hrld-homepage-leaderboard": LocalJSX.HrldHomepageLeaderboard & JSXBase.HTMLAttributes<HTMLHrldHomepageLeaderboardElement>;
+            "hrld-homepage-sidekick": LocalJSX.HrldHomepageSidekick & JSXBase.HTMLAttributes<HTMLHrldHomepageSidekickElement>;
+            "hrld-preflight": LocalJSX.HrldPreflight & JSXBase.HTMLAttributes<HTMLHrldPreflightElement>;
+            "hrld-tall-ad": LocalJSX.HrldTallAd & JSXBase.HTMLAttributes<HTMLHrldTallAdElement>;
         }
     }
 }

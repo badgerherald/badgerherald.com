@@ -1,0 +1,22 @@
+hrld-preflight {
+  transition: height 0.04s ease;
+
+  &.container .wrapper {
+    position: static;
+  }
+  display: block;
+  height: 180px;
+  position: relative;
+  &.leaderboard {
+    bst-ad-slot {
+      position: absolute;
+      bottom: 18px;
+    }
+  }
+  &.billboard bst-ad-slot {
+    height: 250px;
+  }
+  &.empty {
+    height: 90px;
+  }
+}

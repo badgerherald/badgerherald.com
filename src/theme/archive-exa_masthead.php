@@ -9,12 +9,11 @@ global $post;
 
 ?>
 
+<hrld-preflight style='height:180px'></hrld-preflight>
+
 <?php
 
 get_header();
-
-exa_container('preflight');
-exa_container('nameplate');
 
 if ( have_posts() ) : 
 	while ( have_posts() ) : the_post();
@@ -25,4 +24,3 @@ else :
 endif;
 
 get_template_part('footer');
-

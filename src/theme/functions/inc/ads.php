@@ -8,32 +8,7 @@
  * @since v0.6
  */
 
-/**
- * Setup doubleclick breakpoints and network codes.
- * 
- * @see https://github.com/inn/DoubleClick-for-Wordpress
- */
-function hexa_dfw_setup() {
 
-	global $DoubleClick;
-
-	if( true || hrld_is_production() ) {
-		// Production networkCode:
-		$DoubleClick->networkCode = "8653162";
-	} else {
-		// Test networkCode:
-		$DoubleClick->networkCode = "64222555";
-	}
-
-	/* breakpoints */
-	$DoubleClick->register_breakpoint('mobile',		array('minWidth'=>0,'maxWidth'=>720));
-	$DoubleClick->register_breakpoint('phone',		array('minWidth'=>0,'maxWidth'=>720));
-	$DoubleClick->register_breakpoint('tablet',		array('minWidth'=>760,'maxWidth'=>1060));
-	$DoubleClick->register_breakpoint('desktop',	array('minWidth'=>1060,'maxWidth'=>1220));
-	$DoubleClick->register_breakpoint('xl',			array('minWidth'=>1220,'maxWidth'=>9999));
-
-}
-add_action('dfw_setup','hexa_dfw_setup');
 
 /**
  * Filters content and ads an adspot for phone and tablet devices.
@@ -82,7 +57,6 @@ add_filter('the_content','_exa_register_content_adslot');
  * @since v0.6
  */
 function exa_insert_after_graph( $insertion, $content, $graph ) {
-	
 	$graphs = explode( '</p>', $content );
 	foreach ($graphs as $i => $p) {
 	    if ( trim( $p ) ) {
@@ -94,26 +68,3 @@ function exa_insert_after_graph( $insertion, $content, $graph ) {
 	}
 	return implode( '', $graphs );
 }
-
-/**
- * Support DoubleClick for WordPress even when it's not
- * installed.
- */
-if( !class_exists('DoubleClick') && !is_admin() ) {
-	class DoubleClick {
-		public function __construct($networkCode = null) {}
-		public function place_ad($identifier,$sizes,$args = null) {}
-		public function get_ad_placement($identifier,$sizes,$args = null) {}
-	}
-	$DoubleClick = new DoubleClick();
-}
-
-/** 
- * Enqueue flytedesk script
- */
-function hexa_flytedesk_footer_enqueue() {
-    //echo '<p>This is inserted at the bottom</p>';
-}
-add_action( 'wp_footer', 'hexa_flytedesk_footer_enqueue' );
-
-
