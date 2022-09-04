@@ -8,14 +8,27 @@ export class BroadsheetAdSlot {
   @Prop() adUnitPath!: string;
   @Prop() sizeMap!: AdMapping;
 
+  @Prop() slotRenderEnded: (
+    event: googletag.events.SlotRenderEndedEvent
+  ) => any;
+
   private slot: googletag.Slot;
   private hash: string;
-
+  private adEl: HTMLElement;
   componentWillLoad() {
-    this.hash = "a-" + this.cyrb53(this.adUnitPath).toString(16);
+    googletag.pubads().addEventListener("slotRenderEnded", (event) => {
+      if (event.slot != this.slot) {
+        // not our ad!!
+        return;
+      }
+      this.adEl.style.width = event.size ? event.size[0] + "px" : "0";
+      this.adEl.style.height = event.size ? event.size[1] + "px" : "0";
+      this.slotRenderEnded(event);
+    });
+    this.hash = "ab-" + this.cyrb53(this.adUnitPath).toString(16);
     googletag.cmd.push(() => {
       this.slot = googletag
-        .defineSlot("/8653162/" + this.adUnitPath, [300, 250], this.hash)
+        .defineSlot("/64222555/" + this.adUnitPath, [300, 250], this.hash)
         .defineSizeMapping(this.sizeMap)
         .addService(googletag.pubads());
       googletag.enableServices();
@@ -23,11 +36,7 @@ export class BroadsheetAdSlot {
   }
 
   render() {
-    console.log("size map", this.sizeMap);
-    return [
-      <div id={this.hash} />,
-      <a onClick={(_) => googletag.openConsole()}>Advertisement</a>,
-    ];
+    return <div id={this.hash} ref={(el) => (this.adEl = el)} />;
   }
 
   componentDidRender() {

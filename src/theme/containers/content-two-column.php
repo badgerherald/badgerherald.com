@@ -67,33 +67,7 @@ exa_container('headline',$args);
             </main>
 
             <?php if($container->args['layout'] == 'standard') : ?>
-            <aside class="sidebar">
-
-                <div class="ad sidebar-thing">
-                    <?php 
-				$DoubleClick->place_ad(
-								'badgerherald.com-upper-sidekick',
-								array(
-									'phone'=>'',
-									'desktop'=>'300x600,300x250'
-									)
-								);
-				?>
-                </div>
-
-                <div class="ad sidebar-thing">
-                    <?php 
-				$DoubleClick->place_ad(
-								'badgerherald.com-lower-sidekick',
-								array(
-									'phone'=>'',
-									'desktop'=>'300x600,300x250'
-									)
-								);
-				?>
-                </div>
-
-            </aside>
+            <hrld-article-sidebar class="sidebar"></hrld-article-sidebar>
 
             <?php endif; ?>
 

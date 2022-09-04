@@ -9,22 +9,13 @@ $container = $GLOBALS['container'] ?: new container('header');
 
 ?>
 <div class="<?php echo $container->classes(); ?>">
-	<div class="wrapper">
-		<div class="sidekick-ad">
-				<?php 
-				$DoubleClick->place_ad(
-								'badgerherald.com-upper-sidekick',
-								array(
-									'phone'=>'300x250',
-									'tablet'=>'728x90',
-									'desktop'=>'300x250'
-									)
-								);
-				?>
-		</div>
-		
-    	<div class="feature">
-			<?php
+    <div class="wrapper">
+        <div class="sidekick-ad">
+            <hrld-homepage-sidekick></hrld-homepage-sidekick>
+        </div>
+
+        <div class="feature">
+            <?php
 				$query_args = array(
 					'post_status'	=> 'publish',
 					'tax_query' => array(
@@ -55,11 +46,11 @@ $container = $GLOBALS['container'] ?: new container('header');
 						}
 						Exa::addShownId(get_the_ID()); 
 			?>
-				
-			<a href="<?php the_permalink(); ?>" class="story">
-			
-				<div class="dotted-overlay-container">
-				<?php
+
+            <a href="<?php the_permalink(); ?>" class="story">
+
+                <div class="dotted-overlay-container">
+                    <?php
 					if( has_post_thumbnail()){
 						the_post_thumbnail('post-thumbnail');
 					} else{
@@ -67,64 +58,40 @@ $container = $GLOBALS['container'] ?: new container('header');
 								'style="height: 250px; background-color: #666;" />';
 					}
 				?>
-				</div>
+                </div>
 
-				<div class="title-container">
-					
-					<div class="block-headline-container">
-						<h2 class="block-headline"><span><?php the_title(); ?></span></h2>
-					</div>
+                <div class="title-container">
 
-					<div class="byline">
-						
-						<div class="mug">
-							<?php exa_mug(get_the_author_meta('ID'),'small-thumbnail') ?>
-						</div>
-					
-						<span class="author">
-							by 
-							<span class="author-name"><?php the_author() ?></span>
-						</span>
-					</div>
-				</div>
-			</a>
+                    <div class="block-headline-container">
+                        <h2 class="block-headline"><span><?php the_title(); ?></span></h2>
+                    </div>
 
-					
-			<?php	endwhile;
+                    <div class="byline">
+
+                        <div class="mug">
+                            <?php exa_mug(get_the_author_meta('ID'),'small-thumbnail') ?>
+                        </div>
+
+                        <span class="author">
+                            by
+                            <span class="author-name"><?php the_author() ?></span>
+                        </span>
+                    </div>
+                </div>
+            </a>
+
+
+            <?php	endwhile;
 			} else {
 				// todo: test this output.
 				echo "No Posts";
 			}
 			?>
-	
-	</div>
 
-	<div class="clearfix"></div>
-	</div>
+        </div>
 
-	<div class="wrapper">
-	<div class="ad">
-	
-	<?php 
-		global $DoubleClick;
-
-		$DoubleClick->place_ad(
-			'badgerherald.com-leaderboard',
-			array(
-				'mobile' => '300x50,300x250',
-				'tablet' => '728x90',
-			),
-			array (
-				'lazyLoad' => false
-				)
-			); 
-	?> 
-
-
-	</div>
-	<div class="clearfix"></div>
-	</div>
-
+        <div class="clearfix"></div>
+    </div>
 </div>
 
-	   
+<hrld-homepage-leaderboard></hrld-homepage-leaderboard>

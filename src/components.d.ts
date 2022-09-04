@@ -13,6 +13,9 @@ export namespace Components {
     interface BstAdSlot {
         "adUnitPath": string;
         "sizeMap": AdMapping;
+        "slotRenderEnded": (
+    event: googletag.events.SlotRenderEndedEvent
+  ) => any;
     }
     interface ExaMenuButton {
         "active": boolean;
@@ -25,6 +28,12 @@ export namespace Components {
     }
     interface ExaSearchForm {
         "focused": boolean;
+    }
+    interface HrldArticleSidebar {
+    }
+    interface HrldHomepageLeaderboard {
+    }
+    interface HrldHomepageSidekick {
     }
     interface HrldPreflight {
     }
@@ -60,6 +69,24 @@ declare global {
         prototype: HTMLExaSearchFormElement;
         new (): HTMLExaSearchFormElement;
     };
+    interface HTMLHrldArticleSidebarElement extends Components.HrldArticleSidebar, HTMLStencilElement {
+    }
+    var HTMLHrldArticleSidebarElement: {
+        prototype: HTMLHrldArticleSidebarElement;
+        new (): HTMLHrldArticleSidebarElement;
+    };
+    interface HTMLHrldHomepageLeaderboardElement extends Components.HrldHomepageLeaderboard, HTMLStencilElement {
+    }
+    var HTMLHrldHomepageLeaderboardElement: {
+        prototype: HTMLHrldHomepageLeaderboardElement;
+        new (): HTMLHrldHomepageLeaderboardElement;
+    };
+    interface HTMLHrldHomepageSidekickElement extends Components.HrldHomepageSidekick, HTMLStencilElement {
+    }
+    var HTMLHrldHomepageSidekickElement: {
+        prototype: HTMLHrldHomepageSidekickElement;
+        new (): HTMLHrldHomepageSidekickElement;
+    };
     interface HTMLHrldPreflightElement extends Components.HrldPreflight, HTMLStencilElement {
     }
     var HTMLHrldPreflightElement: {
@@ -72,6 +99,9 @@ declare global {
         "exa-menu-button": HTMLExaMenuButtonElement;
         "exa-nameplate-menus": HTMLExaNameplateMenusElement;
         "exa-search-form": HTMLExaSearchFormElement;
+        "hrld-article-sidebar": HTMLHrldArticleSidebarElement;
+        "hrld-homepage-leaderboard": HTMLHrldHomepageLeaderboardElement;
+        "hrld-homepage-sidekick": HTMLHrldHomepageSidekickElement;
         "hrld-preflight": HTMLHrldPreflightElement;
     }
 }
@@ -81,6 +111,9 @@ declare namespace LocalJSX {
     interface BstAdSlot {
         "adUnitPath": string;
         "sizeMap": AdMapping;
+        "slotRenderEnded"?: (
+    event: googletag.events.SlotRenderEndedEvent
+  ) => any;
     }
     interface ExaMenuButton {
         "active"?: boolean;
@@ -94,6 +127,12 @@ declare namespace LocalJSX {
     interface ExaSearchForm {
         "focused"?: boolean;
     }
+    interface HrldArticleSidebar {
+    }
+    interface HrldHomepageLeaderboard {
+    }
+    interface HrldHomepageSidekick {
+    }
     interface HrldPreflight {
     }
     interface IntrinsicElements {
@@ -102,6 +141,9 @@ declare namespace LocalJSX {
         "exa-menu-button": ExaMenuButton;
         "exa-nameplate-menus": ExaNameplateMenus;
         "exa-search-form": ExaSearchForm;
+        "hrld-article-sidebar": HrldArticleSidebar;
+        "hrld-homepage-leaderboard": HrldHomepageLeaderboard;
+        "hrld-homepage-sidekick": HrldHomepageSidekick;
         "hrld-preflight": HrldPreflight;
     }
 }
@@ -114,6 +156,9 @@ declare module "@stencil/core" {
             "exa-menu-button": LocalJSX.ExaMenuButton & JSXBase.HTMLAttributes<HTMLExaMenuButtonElement>;
             "exa-nameplate-menus": LocalJSX.ExaNameplateMenus & JSXBase.HTMLAttributes<HTMLExaNameplateMenusElement>;
             "exa-search-form": LocalJSX.ExaSearchForm & JSXBase.HTMLAttributes<HTMLExaSearchFormElement>;
+            "hrld-article-sidebar": LocalJSX.HrldArticleSidebar & JSXBase.HTMLAttributes<HTMLHrldArticleSidebarElement>;
+            "hrld-homepage-leaderboard": LocalJSX.HrldHomepageLeaderboard & JSXBase.HTMLAttributes<HTMLHrldHomepageLeaderboardElement>;
+            "hrld-homepage-sidekick": LocalJSX.HrldHomepageSidekick & JSXBase.HTMLAttributes<HTMLHrldHomepageSidekickElement>;
             "hrld-preflight": LocalJSX.HrldPreflight & JSXBase.HTMLAttributes<HTMLHrldPreflightElement>;
         }
     }

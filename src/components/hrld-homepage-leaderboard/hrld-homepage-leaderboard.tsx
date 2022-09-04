@@ -1,21 +1,20 @@
-import { Component, Host, Element, h } from "@stencil/core";
+import { Component, Host, h } from "@stencil/core";
 import { HeraldAdMapping, HeraldAdSize } from "../model/HeraldAdSize";
 
 @Component({
-  tag: "hrld-preflight",
-  styleUrl: "hrld-preflight.scss",
+  tag: "hrld-homepage-leaderboard",
+  styleUrl: "hrld-homepage-leaderboard.scss",
 })
-export class HeraldPreflight {
-  @Element() el: HTMLElement;
-  //private adEl: HTMLElement;
+export class HeraldHomepageLeaderboard {
+  private adEl: HTMLElement;
   private adjustSize(event: googletag.events.SlotRenderEndedEvent) {
     console.log("ad is", event);
     if (event.size == null) {
-      this.el.classList.add("empty");
+      this.adEl.classList.add("empty");
     } else if (event.size[1] <= 200) {
-      this.el.classList.add("leaderboard");
+      this.adEl.classList.add("leaderboard");
     } else {
-      this.el.classList.add("billboard");
+      this.adEl.classList.add("billboard");
     }
   }
   render() {
@@ -23,12 +22,12 @@ export class HeraldPreflight {
       <Host class="container">
         <div class="wrapper">
           <bst-ad-slot
-            // ref={(el) => (this.adEl = el)}
-            adUnitPath="badgerherald.com-billboard"
+            ref={(el) => (this.adEl = el)}
+            adUnitPath="badgerherald.com-leaderboard"
             slotRenderEnded={(event) => this.adjustSize(event)}
             sizeMap={HeraldAdMapping({
               mobile: [HeraldAdSize.Sidekick],
-              tablet: [HeraldAdSize.Leaderboard, HeraldAdSize.Billboard],
+              tablet: [HeraldAdSize.Leaderboard],
             })}
           />
         </div>
