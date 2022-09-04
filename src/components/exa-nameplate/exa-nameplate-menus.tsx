@@ -51,7 +51,7 @@ export class ExaNameplate {
             new Query(
               this.query.connection,
               Menu.QueryArgs({
-                location: "1234",
+                location: "exa_main_menu",
               })
             )
           }

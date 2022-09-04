@@ -25,7 +25,6 @@ export const config: Config = {
           dest: "etc",
         },
         {
-          // analytics-bridge add-in
           src: "../node_modules/@broadsheet.technology/analytics-bridge/dist/analytics-bridge/functions",
           dest: "etc/",
         },
