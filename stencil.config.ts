@@ -21,12 +21,8 @@ export const config: Config = {
           dest: "etc",
         },
         {
-          src: "../node_modules/@badgerherald/donate/dist/collection/functions.php",
-          dest: "functions/donate.php",
-        },
-        {
-          src: "../node_modules/@badgerherald/donate/dist/collection/lib/",
-          dest: "functions/lib",
+          src: "../node_modules/@badgerherald/donate/dist/donate/functions",
+          dest: "etc",
         },
       ],
     },

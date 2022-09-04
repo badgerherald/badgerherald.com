@@ -44,7 +44,7 @@ function exa_social_open_graph_tags() {
 
 	/* 1. Title (string) */
 
-	$title;
+	$title = "The Badger Herald";
 	if ( is_single() ) {
 		$title = single_post_title( null, false );
 	} else if ( is_front_page() ) {
@@ -68,7 +68,6 @@ function exa_social_open_graph_tags() {
 
 	$site = "The Badger Herald";
 	
-
 	/* 4. Type (enum) */
 
 	/* 5. Url */
