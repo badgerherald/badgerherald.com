@@ -206,7 +206,7 @@ function _exa_social_get_description($post_id = null) {
     } else {
     	$the_excerpt = $the_post->post_content; // Gets post_content to be used as a basis for the excerpt
     	$excerpt_length = 35; // Sets excerpt length by word count
-    	$the_excerpt = strip_tags(strip_shortcodes($the_excerpt)); // Strips tags and images
+    	$the_excerpt = htmlspecialchars(_exa_social_get_description());
     	$words = explode(' ', $the_excerpt, $excerpt_length + 1);
 
     	if(count($words) > $excerpt_length) :
