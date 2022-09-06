@@ -92,9 +92,7 @@ function exa_social_open_graph_tags() {
 	$output .= "<meta property='og:url' content='$url' />\n";
 	$output .= "<meta property='og:image' content='$img' />\n";
 
-	if(	hrld_author_has("hrld_twitter_handle") ) {
-		$twitter = get_hrld_author("hrld_twitter_handle");
-	}
+	
 	if ( is_single() ) {
 
 
@@ -104,8 +102,11 @@ function exa_social_open_graph_tags() {
 		$output .= "<meta name='twitter:title' content='$title' />\n";
 		$output .= '<meta name="twitter:description" content="' . $excerpt . '" />' . "\n";
 		$output .= "<meta name='twitter:site' content='@badgerherald' />\n";
+		if(	hrld_author_has("hrld_twitter_handle") ) {
+			$twitter = get_hrld_author("hrld_twitter_handle");
+			$output .= "<meta name='twitter:creator' content='@$twitter' />\n";
+		}
 		
-		$output .= "<meta name='twitter:creator' content='@$twitter' />\n";
 		$output .= "\n";
 	
 		
