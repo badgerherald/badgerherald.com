@@ -57,7 +57,12 @@ function exa_social_open_graph_tags() {
 
 	$excerpt;
 	if ( is_single() ) {
-		$excerpt = get_the_excerpt();// htmlspecialchars(_exa_social_get_description());
+		if( exa_has_subhead( $post ) ) {
+			$excerpt = exa_get_subhead( $post->ID );
+		} else {
+			$excerpt = strip_tags(get_the_excerpt());
+		}
+		
 	} else if ( is_front_page() ) {
 		$excerpt = get_bloginfo('description');
 	} else {
@@ -182,42 +187,4 @@ function exa_get_tweet_link($title, $tweet = null, $classes = null, $header = nu
 	$dom .= "</a>";
 
 	return $dom;
-}
-
-/**
- * The excerpt to serve to facebook, twitter, google, &c.
- *
- * @since v0.1
- * 
- * @see http://wordpress.stackexchange.com/questions/26729/get-excerpt-using-get-the-excerpt-outside-a-loop
- */
-function _exa_social_get_description($post_id = null) {
-
-    $the_post = get_post($post_id);
-
-    if(!$the_post) {
-    	return;
-    }
-
-    $post_id = $the_post->ID;
-
-    if( exa_has_subhead($post_id) ) {
-    	$the_excerpt = exa_get_subhead($post_id);
-    } else {
-    	$the_excerpt = $the_post->post_content; // Gets post_content to be used as a basis for the excerpt
-    	$excerpt_length = 35; // Sets excerpt length by word count
-    	$the_excerpt = htmlspecialchars(_exa_social_get_description());
-    	$words = explode(' ', $the_excerpt, $excerpt_length + 1);
-
-    	if(count($words) > $excerpt_length) :
-    	    array_pop($words);
-    	    array_push($words, '…');
-    	    $the_excerpt = implode(' ', $words);
-    	endif;
-	}
-
-    // replace all white space with single spaces.
-    $the_excerpt = preg_replace("/\s+/", " ", $the_excerpt);
-
-    return $the_excerpt; 
 }
