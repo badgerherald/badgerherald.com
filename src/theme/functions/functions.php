@@ -61,6 +61,7 @@ function post_status( $new_status, $old_status, $post )
 
 	if ( ( $new_status === "publish" || $old_status === "publish" ) )
 	{	
+		wp_cache_delete( "exa_homepage-html",'' );
 		wp_cache_delete( "exa_list-and-banter",'' );
 		wp_cache_delete( "exa_list-and-banter-banter",'' );
 
@@ -91,9 +92,24 @@ function bust_cache_on_save_post($post_id) {
 		return;
 	}
 	
+	wp_cache_delete( "exa_homepage-html",'' );
+	wp_cache_delete( "exa_list-and-banter",'' );
+	wp_cache_delete( "exa_list-and-banter-banter",'' );
+
+	wp_cache_delete( "exa_old-homepage-featured-sports",'' );
+	wp_cache_delete( "exa_old-homepage-featured-news",'' );
+	wp_cache_delete( "exa_old-homepage-featured-artsetc",'' );
+	wp_cache_delete( "exa_old-homepage-featured-sports",'' );
+
+	wp_cache_delete( "exa_old-homepage-sidebar-sports",'' );
+	wp_cache_delete( "exa_old-homepage-sidebar-news",'' );
+	wp_cache_delete( "exa_old-homepage-sidebar-artsetc",'' );
+	wp_cache_delete( "exa_old-homepage-sidebar-sports",'' );
+
 	wp_cache_delete( "exa_feature-widget-query",'' );
 	wp_cache_delete( "exa_homepage-breaking",'' );
 	wp_cache_delete( "exa_ad-two-dominant",'' );
+	
 }
 add_action( 'save_post', 'bust_cache_on_save_post' );
 
