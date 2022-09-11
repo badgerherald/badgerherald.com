@@ -15,7 +15,6 @@ include( __DIR__ . '/inc/sections.php');
 /* Infrastructure */
 include( __DIR__ . '/inc/html-tags.php');
 include( __DIR__ . '/inc/containers.php');
-include( __DIR__ . '/inc/menus.php');
 include( __DIR__ . '/inc/images.php');
 include( __DIR__ . '/inc/dates-and-times.php');
 include( __DIR__ . '/inc/authors.php');
@@ -30,7 +29,6 @@ include( __DIR__ . '/inc/pullquotes.php');
 include( __DIR__ . '/inc/social.php');
 include( __DIR__ . '/inc/admin.php');
 include( __DIR__ . '/inc/services.php');
-include( __DIR__ . '/inc/staff-page.php');
 include( __DIR__ . '/inc/ads.php');
 include( __DIR__ . '/inc/redirects.php');
 include( __DIR__ . '/inc/user-management.php');
@@ -63,6 +61,7 @@ function post_status( $new_status, $old_status, $post )
 
 	if ( ( $new_status === "publish" || $old_status === "publish" ) )
 	{	
+		wp_cache_delete( "exa_homepage-html",'' );
 		wp_cache_delete( "exa_list-and-banter",'' );
 		wp_cache_delete( "exa_list-and-banter-banter",'' );
 
@@ -93,9 +92,24 @@ function bust_cache_on_save_post($post_id) {
 		return;
 	}
 	
+	wp_cache_delete( "exa_homepage-html",'' );
+	wp_cache_delete( "exa_list-and-banter",'' );
+	wp_cache_delete( "exa_list-and-banter-banter",'' );
+
+	wp_cache_delete( "exa_old-homepage-featured-sports",'' );
+	wp_cache_delete( "exa_old-homepage-featured-news",'' );
+	wp_cache_delete( "exa_old-homepage-featured-artsetc",'' );
+	wp_cache_delete( "exa_old-homepage-featured-sports",'' );
+
+	wp_cache_delete( "exa_old-homepage-sidebar-sports",'' );
+	wp_cache_delete( "exa_old-homepage-sidebar-news",'' );
+	wp_cache_delete( "exa_old-homepage-sidebar-artsetc",'' );
+	wp_cache_delete( "exa_old-homepage-sidebar-sports",'' );
+
 	wp_cache_delete( "exa_feature-widget-query",'' );
 	wp_cache_delete( "exa_homepage-breaking",'' );
 	wp_cache_delete( "exa_ad-two-dominant",'' );
+	
 }
 add_action( 'save_post', 'bust_cache_on_save_post' );
 
@@ -268,41 +282,7 @@ function exa_custom_excerpt_length( $length ) {
 }
 add_filter( 'excerpt_length', 'exa_custom_excerpt_length', 999 );
 
-/**
- * Filters query_vars to register shoutout parameters
- * 
- * @since 0.1
- * @param array $qvars array of query variables passed by filter.
- * @return array array of query variables appended with shoutout query variables.
- */
-function exa_add_query_vars($qvars) {
 
-	$qvars[] = "so_page"; // represents the name of the product category as shown in the URL
-	$qvars[] = "so_num"; // represents the name of the product category as shown in the URL
-	return $qvars;
-
-}
-add_filter('query_vars', 'exa_add_query_vars');
-
-/**
- * Adds rewrite rules for shoutouts.
- * 
- * @since 0.1
- * @param array $aRules rewrite rules passed in by filter.
- * @return array rewrite rules with shoutout rules appended.
- */
-function exa_add_so_rewrite_rules($aRules) {
-
-	$aNewRules = array('shoutouts/page/([^/]+)/?$' => 'index.php?pagename=shoutouts&so_page=$matches[1]');
-	$aRules = $aNewRules + $aRules;
-
-	$aNewRules = array('shoutouts/so/([^/]+)/?$' => 'index.php?pagename=shoutouts&so_num=$matches[1]');
-	$aRules = $aNewRules + $aRules;
-
-	return $aRules;
-
-}
-add_filter('rewrite_rules_array', 'exa_add_so_rewrite_rules');
 
 /**
  * Add container to video embeds
@@ -468,23 +448,6 @@ add_action('wp_head','exa_favicon');
 
 
 /**
- * Filters the single_template source for posts with the interactive category.
- * 
- * @since 0.1
- * @author Matt Neil
- * 
- * @return string the template for the post.
- */
-function exa_interactive_single_template($single_template) {
-	global $post;
-	if (in_category('interactive', $post->ID)) {
-		return $_SERVER["DOCUMENT_ROOT"] . '/interactive/'.$post->post_name.'/index.php';
-	}
-	return $single_template;
-}
-add_filter('single_template', 'exa_interactive_single_template');
-
-/**
  *
  *
  *
@@ -521,60 +484,6 @@ function hrld_html_tag_open($tag = "",$id = "",$class = array(''),$content = "",
 	return;
 
 }
-
-/**
- *
- *
- *
- * @deprecated v0.6 this whole hrld_html_tag thing is silly.
- */
-function hrld_html_tag_close($tag = ""){
-	$result = "";
-	if( $tag != ""){
-		$result = "</".$tag.">";
-	}
-
-	echo $result;
-	return;
-}
-
-/**
- *
- *
- *
- * @deprecated v0.6 this whole hrld_html_tag thing is silly.
- */
-function get_hrld_html_tag_close($tag = ""){
-	$result = "";
-	if( $tag != ""){
-		$result = "</".$tag.">";
-	}
-	return $result;
-}
-
-/**
- * Filters pinned posts from the main author query so pagination works correctly
- * 
- * @param  [type] $query [description]
- * @return [type]        [description]
- */
-function hrld_remove_pinned_author_posts($query){
-	if (is_admin() || !$query->is_main_query()) {
-		return;
-	}
-
-	if (is_author() && $query->is_main_query()) {
-		$user = get_user_by('slug', $query->query_vars['author_name']);
-		$pinned_posts = get_the_author_meta('_hrld_staff_best_posts', $user->ID);
-		if (empty($pinned_posts)) {
-			return;
-		}
-		$query->set('post__not_in', $pinned_posts);
-		return;
-	}
-}
-add_filter('pre_get_posts', 'hrld_remove_pinned_author_posts', 1);
-
 
 /**
  * Up the number of posts on banter pages
@@ -623,25 +532,6 @@ add_filter('hrld_showcase_image_data', 'exa_add_media_credit_showcase');
 global $AnalyticBridge;
         
 
-
-/**
- * This is to fix a problem somewhere in our stack. From what I can tell
- * the php process/worker is never told it's running https. Basically
- *
- * $_SERVER['https']='on'; should be set but never is.
- *
- * Well, this will fix that I guess.
- *
- */
-function _hexa_enforce_https_in_template_urls($url) {
-    if (strpos($url,"badgerherald.com") && !strpos($url,"staging.badgerherald.com")) {
-        return preg_replace("/^http:/i", "https:", $url);
-    }
-    return $url;
-}
-add_filter('stylesheet_directory_uri','_hexa_enforce_https_in_template_urls');
-add_filter('template_directory_uri','_hexa_enforce_https_in_template_urls');
-
 /**
  * Filter banter container classes
  */
@@ -653,89 +543,3 @@ function hexa_banter_container_classes($classes,$container) {
     return $classes;
 }
 add_filter("exa_container_classes","hexa_banter_container_classes",10,2);
-
-
-function hexa_register_ad_menu() {
-    register_nav_menu( 'ad-nav', __( 'Advertising Menu', 'hexa' ) );
-}
-add_action( 'after_setup_theme', 'hexa_register_ad_menu' );
-
-function hexa_editorial_report() {
-    
-    global $AnalyticBridge;
-    
-    $baseArgs = array(
-                      'post_type' => 'post',
-                      'post_status' => 'publish',
-                      'order' => 'DESC',
-                      'posts_per_page' => 20,
-                      );
-    $yesterday = array( 'date_query' => array(
-                                              array(
-                                                    'after' => 'yesterday',  // or '-2 days'
-                                                    'before' => 'today',  // or '-2 days'
-                                                    'inclusive' => true,
-                                                    ),
-                                              ),
-                       );
-    $today = array( 'date_query' => array(
-                                          array(
-                                                'after' => 'today',  // or '-2 days'
-                                                'before' => 'now',  // or '-2 days'
-                                                'inclusive' => true,
-                                                ),
-                                          ),
-                   );
-    
-    $todayQuery = new WP_Query($baseArgs + $today);
-    $yesterdayQuery = new WP_Query($baseArgs + $yesterday);
-    
-    
-    $t = date( "D", strtotime("Today") );
-    $tminus1 = date( "D", strtotime("Yesterday") );
-    
-    
-    $ret = "";
-    $ret .= "# Editorial Report\n\n";
-    $ret .= "Pageviews for content published in the past 2 days\n\n";
-    $ret .= "| Post | $tminus1 | $t | Avg&nbsp;Time |\n";
-    $ret .= "|:-----|---------:|---:|--------------:|\n";
-    $ret .= _hexa_editorial_report_loop( $todayQuery );
-    $ret .= "|  |  |  |  |\n";
-    $ret .= _hexa_editorial_report_loop( $yesterdayQuery );
-    $ret .= "\n";
-    
-    
-    
-    return $ret;
-}
-
-function _hexa_editorial_report_loop($query) {
-    $ret = "";
-    
-    while ($query->have_posts()) : $query->the_post();
-    
-    $tViews = ak_metric(get_the_id(),'ga:pageviews','today') ?: "";
-    $tMinus1Views = ak_metric(get_the_id(),'ga:pageviews','yesterday') ?: "";
-    
-    $tTop = intval( ak_metric(get_the_id(),'ga:avgTimeOnPage','today') ?: 0 );
-    $tMinus1Top = intval( ak_metric(get_the_id(),'ga:avgTimeOnPage','yesterday') ?: 0 );
-    $avgTop = "";
-    
-    if ( $tTop && $tMinus1Top ) {
-        $avgTop = intval( ( $tTop + $tMinus1Top ) / 2 ) . "s";
-    } else if ( $tTop + $tMinus1Top  ) {
-        $avgTop = ( $tTop + $tMinus1Top ) . "s ";
-    }
-    
-    $title = get_the_title();
-    $editLink = "<a href='" . get_edit_post_link() . "'>Edit</a>";
-    $viewLink = "<a href='" . get_permalink() . "'>View</a>";
-    $links = "<span class='post-links'>&nbsp; $editLink &nbsp; $viewLink</span>";
-    
-    $ret .= "| $title $links | $tMinus1Views | $tViews | $avgTop |\n";
-    
-    endwhile;
-    
-    return $ret;
-}
