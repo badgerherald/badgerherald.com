@@ -36,7 +36,6 @@ include( __DIR__ . '/inc/dirty-bird.php');
 include( __DIR__ . '/inc/donate.php');
 include( __DIR__ . '/inc/search.php');
 
-
 add_action( 'customize_preview_init', function() {
 die("The customizer is disabled. Please save and preview your site on the frontend.");
 }, 1);
