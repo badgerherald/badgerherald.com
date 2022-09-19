@@ -12,7 +12,23 @@ Continuous deployment for The Badger Herald's WordPress website. This repo conta
 
 We welcome pull requests, feature ideas or other support from anyone — and in particular from students at The University of Wisconsin. Please reach out if you'd like to get involved. We'd be happy to get you set up (and meet you!) at our offices on State Street or on a Zoom call.
 
-## Compiling the theme
+### Running the site locally.
+
+Running the site locally is a three step process:
+
+1. Clone the repo
+2. Compile the theme
+3. Build and run the docker containers
+
+#### 1. Clone the repo
+
+1. Somewhere on your computer, run:
+
+```
+git clone https://github.com/badgerherald/badgerherald.com
+```
+
+#### 2. Compiling the theme
 
 In order to use sass and stencil the theme needs to be compiled.
 
@@ -30,7 +46,7 @@ To watch for changes (during development) instead run:
 npm run watch
 ```
 
-## Running a local development server at https://192.168.19.69
+#### 3. Running a local development server at https://localhost
 
 To run a development WordPress server locally:
 
@@ -43,7 +59,7 @@ To run a development WordPress server locally:
 docker-compose up -d
 ```
 
-In a few minutes a WordPress instance will be available at **[http://192.168.19.69/](https://192.168.19.69/)**
+In a few minutes a WordPress instance will be available at **[https://localhost/](https://localhost/)**
 
 You'll have to click through the browser's self-signed ssl certificate warning the first time you visit the page
 
@@ -51,7 +67,7 @@ You'll have to click through the browser's self-signed ssl certificate warning t
 
 If you installed with a development database, you're done!
 
-If you didn't, you'll need to continue to install WordPress install and enable the "exa" theme.
+If you didn't, you'll need to continue to install WordPress install and enable the "badgerherald.com" theme.
 
 #### Setting up badgerherald.test
 
