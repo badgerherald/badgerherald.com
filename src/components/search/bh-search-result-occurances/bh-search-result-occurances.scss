@@ -1,0 +1,21 @@
+bh-search-result-occurances {
+  p {
+    margin-bottom: 12px;
+    .excerpt {
+      p {
+        display: inline;
+      }
+    }
+    .match {
+      background-color: rgba(#eeed92, 0.7);
+      color: rgba(black, 0.8);
+      .part {
+        font-weight: bolder;
+      }
+      font-style: italic;
+      padding: 0 2px;
+      margin: 0 -2px;
+      display: inline-block;
+    }
+  }
+}

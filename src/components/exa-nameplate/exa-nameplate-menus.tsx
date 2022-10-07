@@ -20,6 +20,7 @@ export class ExaNameplate {
     if (!this.global || this.query) {
       return;
     }
+    console.log(this.global);
 
     let connection = new Connection(
       this.global.serverInfo,
@@ -43,11 +44,11 @@ export class ExaNameplate {
         onClick={() => this.toggleMenu()}
       />,
       <div class={this.menuOpen ? "menus active" : "menus"}>
-        <exa-search-form />
+        <bh-search-form />
         <wp-menu
           class="primary"
           query={
-            new Query<Menu>(
+            new Query(
               this.query.connection,
               Menu.QueryArgs({
                 location: "exa_main_menu",

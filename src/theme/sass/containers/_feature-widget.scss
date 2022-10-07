@@ -7,159 +7,105 @@
  */
 
 .container.feature-widget {
-	.widget {
-		display: none;
-	}
-	a.story {
-		width:100%;
-		color: $white;
-		img {
-			width:100%;
-			height:auto;
-		}
-		.byline {
-			padding: 12px 0;
-			.mug {
-				width: 45px;
-				height: auto;
-				img {
-					width: 100%;
-					height: auto;
-					float: left;
-				}
-			}
-			font-family: $headline;
-			font-style : italic;
-			.author {
-				margin-left: 12px;
-				position: relative;
-				top:3px;
-			}
-			.author-name {
-				text-transform: uppercase;
-				font-style: normal;
-				font-weight: bold;
-				padding-left: 3px;
-			}
-		}
-		.title-container {
-			width:flex(240,300);
-			margin-left: flex(10,300);
-			position: absolute;
-			bottom: 24px;
-			z-index: 2;
-			div.lede {
-				visibility: hidden;	// these two lines are the same
-				position: absolute; // as display:none, except transitions work. (note screenreaders pick up on it)
-				color: $white;
-				font-weight: bold;
-				height: 0;
-			}
-		}
-	}
+  .widget {
+    display: none;
+  }
+  a.story {
+    width: 100%;
+    color: $white;
+    img {
+      width: 100%;
+      height: auto;
+    }
+    .byline {
+      padding: 12px 0;
+      .mug {
+        width: 45px;
+        height: auto;
+        img {
+          width: 100%;
+          height: auto;
+          float: left;
+        }
+      }
+      font-family: $headline;
+      font-style: italic;
+      .author {
+        margin-left: 12px;
+        position: relative;
+        top: 3px;
+      }
+      .author-name {
+        text-transform: uppercase;
+        font-style: normal;
+        font-weight: bold;
+        padding-left: 3px;
+      }
+    }
+    .title-container {
+      width: flex(240, 300);
+      margin-left: flex(10, 300);
+      position: absolute;
+      bottom: 24px;
+      z-index: 2;
+      div.lede {
+        visibility: hidden; // these two lines are the same
+        position: absolute; // as display:none, except transitions work. (note screenreaders pick up on it)
+        color: $white;
+        font-weight: bold;
+        height: 0;
+      }
+    }
+  }
 }
 
-@include breakpoint('tablet') {
-	.container.feature-widget {
-		a.story {
-			.title-container {
-				width: flex(600,760);
-				margin-left:80px;
-				bottom: 60px;
-			}
-			&:hover {
-				.title-container {
-					transition: all 0.5s linear;
-					div.lede {
-						display: block;
-						width: flex(460,760);
-						font-size: 16px;
-						line-height: 24px;
-						position: relative;
-						visibility: visible;
-						height: auto;
-					}
-				}
-			}
-		}
-	}
+@include breakpoint("tablet") {
+  .container.feature-widget {
+    a.story {
+      .title-container {
+        width: flex(600, 760);
+        margin-left: 80px;
+        bottom: 60px;
+      }
+      &:hover {
+        .title-container {
+          transition: all 0.5s linear;
+          div.lede {
+            display: block;
+            width: flex(460, 760);
+            font-size: 16px;
+            line-height: 24px;
+            position: relative;
+            visibility: visible;
+            height: auto;
+          }
+        }
+      }
+    }
+  }
 }
 
-@include breakpoint('desktop') {
-	.container.feature-widget {
-		.feature {
-			width: col(9);
-			position: relative;
-			float: left;
-			@include breakpoint('xl') {
-				width: col(10);
-			}
-		}
-		.widget {
-			display: block;
-			width: col(3);
-			background: $white;
-			float: left;
-			margin-left: gutter(1);
-			position: relative;
-			text-align: center;
-			padding-top: 36px;
-			display: block;
-			padding-bottom: 36px;
-			@include breakpoint('xl') {
-				width: col(4);
-				margin-left: col(1,2);
-			}
-			h3.title {
-				background: $blue;
-				margin:0;
-				padding: 3px 10px 3px;
-				display: inline-block;
-				color: $white;
-				font-family: $body;
-				text-transform: uppercase;
-				font-style: italic;
-				margin-bottom: 18px;
-				font-weight: bold;
-			}
-			.thumbnail {
-				width: 80px;
-				float:left;
-				margin-right: 10px;
-				display: none;
-				img {
-					width: 100%;
-					height: auto;
-				}
-			}
-			a.most-recent-post {
-				color: $black;
-				padding: 12px 20px;
-				display: block;
-				.title {
-					font-size: 18px;
-					font-weight: bold;
-					line-height: 21px;
-					font-family: $headline;
-					overflow: hidden;
-					time {
-						font-family: $headline;
-						color: $blue;
-						font-size: 12px;
-						line-height: 18px;
-						display: block;
-						font-weight: normal;
-						text-decoration: none;
-						text-transform: uppercase;
-					}
-				}
-				&:hover {
-					.title {
-						color: $blue;
-					}
-				}
-			}
-		}
-	}
+@include breakpoint("desktop") {
+  .container.feature-widget {
+    .feature {
+      width: col(9);
+      position: relative;
+      float: left;
+      @include breakpoint("xl") {
+        width: col(10);
+      }
+    }
+    .widget {
+      display: block;
+      width: col(3);
+      float: left;
+      margin-left: gutter(1);
+      position: relative;
+      padding-bottom: 36px;
+      @include breakpoint("xl") {
+        width: col(4);
+        margin-left: col(1, 2);
+      }
+    }
+  }
 }
-

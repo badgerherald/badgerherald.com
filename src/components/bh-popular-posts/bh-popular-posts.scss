@@ -1,0 +1,53 @@
+bh-popular-posts {
+  h2 {
+    background: $black;
+    color: white;
+    font-style: italic;
+    margin: 0;
+    display: inline-block;
+    padding: 12px 20px;
+  }
+  ab-popular-posts {
+    display: block;
+  }
+  ol.pop-posts {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    li {
+      width: 100%;
+      display: block;
+      position: relative;
+      background: white;
+      margin: 2px;
+      padding: 0;
+      margin-bottom: 2px;
+      border-bottom: 1px solid rgba(grey, 0.2);
+      p {
+        font-family: $caption;
+      }
+      .ribbon {
+        max-width: 90%;
+        min-width: 20%;
+        display: block;
+        height: 4px;
+        background-color: $blue;
+      }
+      a {
+        padding: 18px 20px;
+        display: inline-block;
+        font-family: $headline;
+        width: 100%;
+        color: $black;
+        font-size: 20px;
+        &:hover {
+          color: $blueLinkHover;
+        }
+        h4 {
+          padding: 0;
+          margin: 0;
+        }
+      }
+    }
+  }
+}

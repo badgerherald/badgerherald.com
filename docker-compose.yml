@@ -42,10 +42,10 @@ services:
         max-size: 10m
         max-file: 10
     volumes:
+      - ./bin/stencil-stats.json:/srv/stencil-stats.json
       - badgerherald.com-wordpress:/var/www/html
       - ./${WORDPRESS_UPLOADS_DIR}:/var/www/html/wp-content/uploads
       - ./bin/media-kit:/var/www/html/media-kit
-      - ./bin/stencil-stats.json:/srv/stencil-stats.json
       - ./bin/wp-content/themes:/var/www/html/wp-content/themes/
       - ./bin/wp-content/plugins:/var/www/html/wp-content/plugins/
       - ./bin/wp-content/mu-plugins:/var/www/html/wp-content/mu-plugins/
@@ -76,6 +76,8 @@ services:
         define('STRIPE_SEMESTERLY_PROD', '${STRIPE_SEMESTERLY_PROD}');
         define('RECAPTCHA_SITE_KEY', '${RECAPTCHA_SITE_KEY}');
         define('RECAPTCHA_SECRET_KEY', '${RECAPTCHA_SECRET_KEY}');
+        define('AB_CLIENT_ID', '${AB_CLIENT_ID}');
+        define('AB_CLIENT_SECRET', '${AB_CLIENT_SECRET}');
         define('WP_REDIS_HOST', 'redis');
         define('WP_CACHE_KEY_SALT', '${SITE_URL}');
         define('DISABLE_WP_CRON', true);

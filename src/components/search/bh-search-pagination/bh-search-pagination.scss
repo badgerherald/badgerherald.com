@@ -1,0 +1,31 @@
+bh-search-pagination {
+  ul {
+    margin: 0;
+    padding: 0;
+    font-family: $caption;
+    li {
+      list-style: none;
+      display: inline;
+      margin-right: 6px;
+      &:not(.next) a {
+        display: inline-block;
+        padding: 6px 10px;
+        background-color: rgba($greyText, 0.2);
+        color: $black;
+        border-radius: 2px;
+      }
+      &.current a {
+        background-color: $blue;
+        color: white;
+      }
+      &:not(.next):hover a {
+        background-color: $blueLinkHover;
+        color: white;
+      }
+      &.next a {
+        display: inline-block;
+        padding: 6px 10px;
+      }
+    }
+  }
+}

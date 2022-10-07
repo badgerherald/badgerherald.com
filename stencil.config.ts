@@ -24,6 +24,10 @@ export const config: Config = {
           src: "../node_modules/@badgerherald/donate/dist/donate/functions",
           dest: "etc",
         },
+        {
+          src: "../node_modules/@broadsheet.technology/analytics-bridge/dist/analytics-bridge/functions",
+          dest: "etc/",
+        },
       ],
     },
     {

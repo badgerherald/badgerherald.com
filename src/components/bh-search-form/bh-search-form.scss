@@ -1,0 +1,80 @@
+bh-search-form {
+  form.search {
+    width: 100%;
+    position: relative;
+    input[type="text"] {
+      width: 100%;
+      padding: 12px flex(10, 300);
+      padding-right: 40px;
+      font-family: $caption;
+      font-size: 18px;
+      outline: none;
+      border: 3px solid $grey;
+      transition: all 0.3s;
+      border-radius: 3px;
+      &:hover {
+        cursor: pointer;
+      }
+      &::placeholder {
+        color: rgba(black, 0.6);
+
+        @include breakpoint("tablet") {
+          color: transparent;
+        }
+      }
+      &:focus {
+        color: $black;
+        border: 3px solid $blue;
+      }
+      &:focus:hover {
+        cursor: inherit;
+      }
+      @include breakpoint("tablet") {
+        bottom: -3px;
+        float: right;
+        width: 36px;
+        padding: 12px 20px 12px 20px;
+        margin-right: 0px;
+        border: none;
+        &::placeholder {
+          color: transparent;
+        }
+        &.focused,
+        &:focus {
+          &::placeholder {
+            color: $greyText;
+          }
+          width: 100%;
+          border: none;
+        }
+      }
+    }
+    &:after {
+      pointer-events: none;
+      content: "s";
+      font-family: $icon;
+      padding: 4px 8px;
+      position: absolute;
+      top: 13px;
+      right: gutter(0.4);
+      width: 30px;
+      height: 30px;
+      color: $blue;
+      transition: all 0.1s;
+      cursor: pointer;
+      @include breakpoint("tablet") {
+        bottom: 4px;
+        right: 7px;
+        top: 6px;
+        font-size: 18px;
+      }
+    }
+    &:hover::after {
+      transform: scale(1.1, 1.1);
+    }
+    input[type="submit"] {
+      // the submit field.
+      display: none;
+    }
+  }
+}

@@ -68,7 +68,6 @@ function exa_inline_clicks($post,$url) {
 
 function exa_inline_increase_clicks($post,$url) {
 	$post = get_post($post);
-	error_log($post->ID);
 	$allClicks = get_post_meta($post->ID,EXA_INLINE_CLICKS_KEY,true);
 	$allClicks = $allClicks ?: array();
 	$allClicks[$url] =  array_key_exists($url,$allClicks) ? $allClicks[$url] + 1 : 1;
