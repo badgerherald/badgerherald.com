@@ -16,11 +16,15 @@
 @mixin linkColor($color) {
   @if $color == $black {
     color: $black;
-    &:hover { color: #787878; }
+    &:hover {
+      color: #787878;
+    }
   }
   @if $color == $blue {
     color: $blue;
-    &:hover { color: $blueLinkHover; }
+    &:hover {
+      color: $blueLinkHover;
+    }
   }
 }
 
@@ -32,28 +36,29 @@ wp-permalink {
 }
 
 // Global/Base styles
-*, *:before, *:after {
+*,
+*:before,
+*:after {
   box-sizing: inherit;
 }
-
 
 /**
  * BASE FONTS
  * ------------------------------------------------------------------------- 
  */
 
- body {
-	font-family: 	$body; 
-	font-size: 		$base-font-size;
-	line-height: 	$base-line-height;
+body {
+  font-family: $body;
+  font-size: $base-font-size;
+  line-height: $base-line-height;
 }
 
 a {
-	text-decoration: 	none;
-	color:				$blue;
-	&:hover {
-		color: $blueLinkHover;
-	}
+  text-decoration: none;
+  color: $blue;
+  &:hover {
+    color: $blueLinkHover;
+  }
 }
 
 /**
@@ -62,33 +67,32 @@ a {
  */
 
 wp-teaser {
-h1 {
-	font-family: 	$headline;
-  font-size: 2em;
-	a {
-		color: $black;
-	}
-}
+  h1 {
+    font-family: $headline;
+    font-size: 2em;
+    a {
+      color: $black;
+    }
+  }
 
-h2 {
-	font-family: 	$headline;
-  font-size: 1.5em;
-	a {
-		color: $black;
-	}
-	&.author-title{
-		padding-top: 6px;
-	}
-}
+  h2 {
+    font-family: $headline;
+    font-size: 1.5em;
+    a {
+      color: $black;
+    }
+    &.author-title {
+      padding-top: 6px;
+    }
+  }
 
-h3 {
-  font-family: 	$headline;
-  font-size: 1.17em;
-}
+  h3 {
+    font-family: $headline;
+    font-size: 1.17em;
+  }
 
-p {
-  margin-top: .4em;
-  margin-bottom: .5em;
-}
-
+  p {
+    margin-top: 0.4em;
+    margin-bottom: 0.5em;
+  }
 }

@@ -8,7 +8,7 @@
 $colWidth: 80;
 $gutterWidth: 20;
 
-@function pageWidth($cols:1) {
+@function pageWidth($cols: 1) {
   @return (($colWidth * $cols) + ($gutterWidth * ($cols - 1)));
 }
 
@@ -16,57 +16,63 @@ $gutterWidth: 20;
  * Grid Values
  */
 @function columnWidths($count) {
-	@return '\(var(--columnWidth) * #{$count}\)';
+  @return "\(var(--columnWidth) * #{$count}\)";
 }
 
 @function gutterWidths($count) {
-	@return '\(var(--gutterWidth) * #{$count}\)';
+  @return "\(var(--gutterWidth) * #{$count}\)";
 }
 
 @function containerWidth($cols, $additionalGutter: 0) {
-  $gutter: '\(#{$cols} - 1 + #{$additionalGutter}\)';
-	@return '\(#{columnWidths($cols)} + #{gutterWidths(#{$gutter})}\)';
+  $gutter: "\(#{$cols} - 1 + #{$additionalGutter}\)";
+  @return "\(#{columnWidths($cols)} + #{gutterWidths(#{$gutter})}\)";
 }
 
 @function colRatio($cols) {
-	@return '\(\(#{containerWidth($cols)}\) / \(#{containerWidth(var(--breakpointColumns),var(--additionalGutter))}\)\)';
+  @return "\(\(#{containerWidth($cols)}\) / \(#{containerWidth(var(--breakpointColumns),var(--additionalGutter))}\)\)";
 }
 
 @function gutterRatio($count) {
-	@return '\(\(#{gutterWidths($count)}\) / \(#{containerWidth(var(--breakpointColumns),var(--additionalGutter))}\)\)';
+  @return "\(\(#{gutterWidths($count)}\) / \(#{containerWidth(var(--breakpointColumns),var(--additionalGutter))}\)\)";
 }
 
-@function col($col, $additionalGutter: 0) { 
-	@return calc(100% * (#{colRatio($col)  + ' + ' + gutterRatio($additionalGutter)}));
+@function col($col, $additionalGutter: 0) {
+  @return calc(
+    100% * (#{colRatio($col) + " + " + gutterRatio($additionalGutter)})
+  );
 }
-  
+
 @function gutter($count: 1) {
-	@return calc(100% * #{(gutterRatio($count))});
-} 
-  
+  @return calc(100% * #{(gutterRatio($count))});
+}
+
 @mixin setCol($col, $additionalGutter: 0, $absolute: false) {
-  & *, &:after, &:before {
+  & *,
+  &:after,
+  &:before {
     --breakpointColumns: #{$col};
     --additionalGutter: #{$additionalGutter};
   }
   width: col($col, $additionalGutter);
   @if $absolute {
     position: absolute;
-  } 
-  @else {
+  } @else {
     position: relative;
   }
 }
 
 @mixin resetCol() {
-  & *, &:after, &:before {
+  & *,
+  &:after,
+  &:before {
     --breakpointColumns: unset;
     --additionalGutter: unset;
-  } 
+  }
 }
 
 @mixin setGrid($columnCount, $columnWidth, $gutterWidth, $additionalGutter: 0) {
-  &, * {
+  &,
+  * {
     --breakpointColumns: #{$columnCount};
     --additionalGutter: #{$additionalGutter};
     --gutterWidth: #{$gutterWidth};
@@ -78,26 +84,23 @@ $gutterWidth: 20;
 /***
  * Breakpoint
  */
-@mixin breakpoint($breakpoint) {
+@mixin breakpoint($breakpoint, $extra: 0) {
   @if $breakpoint == "mobilexl" {
-    @media (min-width: (pageWidth(6) + 40) + "px") {
+    @media (min-width: (pageWidth(6) + 40 + $extra) + "px") {
       @content;
     }
   }
   @if $breakpoint == "tablet" {
-    @media (min-width: (pageWidth(9) + 50) + "px") {
+    @media (min-width: (pageWidth(9) + 50 + $extra) + "px") {
       @content;
     }
-  }
-  @else if $breakpoint == "desktop" {
-    @media (min-width: (pageWidth(12) + 60) + "px") {
+  } @else if $breakpoint == "desktop" {
+    @media (min-width: (pageWidth(12) + 60 + $extra) + "px") {
       @content;
     }
-  }
-  @else if $breakpoint == "xl" {
-    @media (min-width: (pageWidth(15) + 100) + "px") {
+  } @else if $breakpoint == "xl" {
+    @media (min-width: (pageWidth(15) + 100 + $extra) + "px") {
       @content;
     }
   }
 }
-

@@ -26,7 +26,32 @@
  *
  */
 
-@import "../content-styles/_legacy-content-styles.scss";
+@import "./_gutenberg.scss";
+
+.container.article-display main.article,
+.container.article-display main.article .article-copy {
+  @include setCol(3);
+  @include breakpoint("mobilexl") {
+    @include setCol(6);
+  }
+  @include breakpoint("tablet") {
+    @include setCol(9);
+  }
+  @include breakpoint("desktop") {
+    @include setCol(9);
+  }
+  @include breakpoint("xl") {
+    @include setCol(10);
+  }
+}
+
+.container.article-display main.article .article-copy {
+  @include ShadowedGutenbergStyles();
+}
+
+.container.article-display main.article hero {
+  width: 100%;
+}
 
 .container.article-display .wrapper .donate-form {
   @include setCol(3, 2);
@@ -37,13 +62,14 @@
   }
 }
 
-/*
+/**
  * 2.0  Article header styles.
  * ----------------------------------------------------------------------------
  */
 
 .container.article-display {
-  main.article-content {
+  main.article-content,
+  main.article {
     .meta {
       min-height: 10px;
       font-family: $headline;
@@ -106,7 +132,9 @@
       }
     }
     .hero {
-      img {
+      img,
+      video {
+        aspect-ratio: attr(width) / attr(height);
         width: 100%;
         height: auto;
       }
@@ -141,12 +169,72 @@
       }
     }
   }
-  .sidebar {
+  aside.sidebar {
     width: 100%;
     display: block;
     top: 0;
     right: 0;
     margin-bottom: 24px;
+    .ad {
+      padding: 0 0 24px;
+    }
+    .popular-post-widget {
+      margin: 18px 0;
+      position: relative;
+      width: 100%;
+      h3 {
+        background: $black;
+        font-family: $headline;
+        text-transform: uppercase;
+        color: $truewhite;
+        margin: 0;
+        text-align: center;
+        font-size: 14px;
+        padding: 3px 20px 3px 20px;
+        display: inline;
+      }
+      a {
+        position: relative;
+        border-bottom: 1px solid $greyBorder;
+        background: white;
+        padding: 0px 10px;
+        display: block;
+        font-family: $headline;
+        color: $trueblack;
+        font-weight: 700;
+        .graph-bar {
+          background: $blue;
+          height: 2px;
+          position: absolute;
+          bottom: -1px;
+          left: 0;
+        }
+        img {
+          height: 80px;
+          display: block;
+          width: auto;
+          margin-top: 20px;
+          padding: 0px 0 20px 15px;
+          float: right;
+        }
+        h2 {
+          font-size: 16px;
+          line-height: 21px;
+          margin-bottom: 20px;
+          font-weight: bold;
+          color: $black;
+        }
+        .topic {
+          color: $darkgrey;
+          padding-top: 20px;
+          display: block;
+          font-weight: normal;
+        }
+        &:hover {
+          color: $blue;
+        }
+      }
+    }
   }
 }
 
@@ -172,10 +260,13 @@
         min-height: 18px;
       }
     }
-    .sidebar {
+    aside.sidebar {
       margin-left: gutter(2);
       width: col(3, 1);
       float: left;
+      .sidebar-thing {
+        margin-bottom: 54px;
+      }
     }
   }
 }
@@ -195,7 +286,7 @@
         }
       }
     }
-    .sidebar {
+    aside.sidebar {
       margin-left: col(1, 2);
     }
   }
@@ -220,28 +311,195 @@
 
 .container.article-display {
   .article-text {
-    @include printLegacyContentStyles();
-  }
+    & > :not(.shadow),
+    & > p > :not(.shadow) {
+      // .shadow is ignored
+      font-size: 16px;
+      line-height: 24px;
+      p {
+        margin-bottom: 24px;
+      }
+      a {
+        border-radius: 2px;
+        color: $darkblue;
+        &:hover {
+          color: $blue;
+        }
+      }
+      h1 {
+        font-family: $headline;
+        margin: 18px 0;
+      }
+      h2 {
+        font-family: $headline;
+        font-size: 30px;
+        margin: 24px 0px 12px;
+      }
+      h3 {
+        font-family: $headline;
+        color: $darkgrey;
+        font-weight: bold;
+        margin: 12px 0 0px;
+        font-size: 24px;
+        text-shadow: -1px 1px rgba($truewhite, 0.8);
+      }
+      h4 {
+        font-family: $body;
+        color: $black;
+        font-weight: bold;
+        font-size: 18px;
+        margin: 12px 0 12px;
+        margin-left: 15px;
+        &:before {
+          content: "*";
+          font-family: $icon;
+          position: absolute;
+          margin-left: -15px;
+          margin-top: -15px;
+        }
+      }
+      h5,
+      h6 {
+        color: $darkgrey;
+        font-weight: normal;
+        font-size: 21px;
+        font-size: 18px;
+        margin: 18px 0 12px;
+      }
 
-  // todo—why is this all alone?
-  .video-container {
-    float: left;
-    max-width: 100%;
-    @include breakpoint(tablet) {
-      margin-bottom: 24px;
+      /** Lists */
+      ul {
+        list-style-type: none;
+        margin: 24px 0;
+        li {
+          margin: 12px 0;
+          padding-left: 20px;
+          &:before {
+            content: ">";
+            font-family: $icon;
+            font-size: 0.6em;
+            position: absolute;
+            margin-left: -30px;
+          }
+        }
+      }
+      ol {
+        list-style-type: none;
+        margin: 0;
+        counter-reset: li-counter;
+        margin: 24px 0;
+        li {
+          margin: 12px 0;
+          padding-left: 20px;
+          &:before {
+            content: counter(li-counter);
+            counter-increment: li-counter;
+            font-family: $headline;
+            font-weight: bold;
+            position: absolute;
+            margin-left: -40px;
+            margin-top: 5px;
+            background: $truewhite;
+            font-size: 0.8em;
+            padding: 0px 3px;
+            display: block;
+            min-width: 20px;
+            height: 20px;
+            text-align: center;
+            line-height: 20px;
+          }
+        }
+      }
+      blockquote {
+        font-family: $headline;
+        background: $truewhite;
+        margin-left: 0;
+        border-left: 2px solid $blue;
+      }
+      blockquote p {
+        margin-left: 0;
+        padding: 12px 20px;
+        font-family: $headline;
+        font-size: 18px;
+      }
+      .ad-in-content {
+        margin: 24px 0;
+        &:before {
+          content: "Article continues after advertisement";
+          text-align: center;
+          font-family: $headline;
+          text-transform: uppercase;
+          color: $darkgrey;
+          font-size: 12px;
+          line-height: 14px;
+        }
+      }
+      .wp-caption {
+        max-width: 100% !important; // wordpress adds an element style for width;
+        font-size: 16px;
+        line-height: 18px;
+        color: $darkgrey;
+        margin: 24px 0;
+        .hrld-media-credit-name a {
+          padding-right: 3px;
+          color: $black;
+          font-weight: bold;
+          text-shadow: none;
+          // font-weight: 800;
+          text-transform: uppercase;
+          &:hover {
+            color: $blue;
+          }
+        }
+        dd {
+          margin-left: 0;
+        }
+        img {
+          width: 100%;
+          height: auto;
+        }
+        p,
+        dd {
+          margin: 6px 0px 12px;
+          &:last-child {
+            margin-bottom: 0;
+          }
+        }
+        * {
+          font-family: $headline !important;
+        }
+        .wp-caption-text {
+          max-width: 700px;
+        }
+        .hrld-media-credit {
+          margin-top: 6px;
+          display: block;
+        }
+      }
+      img {
+        aspect-ratio: attr(width) / attr(height);
+        width: 100%;
+        height: auto;
+      }
+      & > img.alignleft,
+      & > img.alignright,
+      & > img.alignnone,
+      & > img.aligncenter {
+        margin: 0px 0 24px;
+      }
     }
-    iframe {
+    .video-container {
+      float: left;
       max-width: 100%;
+      iframe {
+        max-width: 100%;
+      }
     }
   }
 }
 
 q.pullquote {
   quotes: "“" "”";
-  cite {
-    font-size: 16px;
-    font-family: $caption;
-  }
   &:before {
     display: none;
   }
@@ -253,14 +511,14 @@ q.pullquote {
     position: relative;
     top: 0px;
   }
-  &:before {
+  &:after {
     content: "";
     width: 80px;
-    height: 2px;
+    height: 3px;
     background: $greyText;
     display: block;
     position: absolute;
-    bottom: -6px;
+    bottom: 0;
   }
   display: block;
   width: 100%;
@@ -314,6 +572,96 @@ q.pullquote {
         font-size: 100px;
         padding-right: 12px;
         top: 6px;
+      }
+    }
+  }
+}
+
+@include breakpoint(tablet) {
+  .container.article-display {
+    .article-text {
+      & > :not(.shadow),
+      & > p > :not(.shadow) {
+        font-size: 20px;
+        line-height: 30px;
+        width: 100%;
+        position: relative;
+        blockquote,
+        ul,
+        ol,
+        dl {
+          li {
+            padding: 0;
+          }
+        }
+        .wp-caption {
+          position: relative;
+          font-size: 16px;
+          line-height: 24px;
+          margin: 12px 0 24px;
+          img {
+            width: 100%;
+            height: auto;
+          }
+        }
+        img.alignleft {
+          float: left;
+          // margin-left: -80px !important;
+          padding-right: 20px;
+          width: 300px !important;
+          height: auto;
+        }
+        img.alignright {
+          float: right;
+          padding-left: 20px;
+          width: 300px !important;
+          height: auto;
+        }
+        img.alignnone,
+        img.aligncenter {
+          width: 100%;
+          float: left;
+        }
+        .video-container {
+          float: left;
+          max-width: 100%;
+          margin-bottom: 24px;
+          iframe {
+            max-width: 100%;
+            //width: 100%;
+          }
+        }
+        .ad-in-content {
+          margin: 24px 0;
+        }
+      }
+    }
+  }
+}
+
+@include breakpoint(desktop) {
+  .container.article-display {
+    .article-text {
+      & > :not(.shadow),
+      & > p > :not(.shadow) {
+        img.alignnone,
+        img.aligncenter,
+        & > img.alignnone,
+        & > img.aligncenter {
+          width: 100% !important;
+          float: left;
+        }
+      }
+    }
+  }
+}
+
+@include breakpoint(xl) {
+  .container.article-display {
+    .wp-caption {
+      &.alignnone,
+      &.aligncenter {
+        width: 780px !important;
       }
     }
   }

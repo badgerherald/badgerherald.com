@@ -26,9 +26,10 @@
     "@stencil/router": "^1.0.1",
     "@stencil/sass": "^1.5.2",
     "@types/stripe-v3": "^3.1.7",
-    "@webpress/core": "^0.0.29",
-    "@webpress/router": "^0.0.29",
-    "@webpress/theme": "^0.0.29"
+    "@webpress/core": "^0.0.31",
+    "@webpress/router": "^0.0.31",
+    "@webpress/theme": "^0.0.31",
+    "@webpress/features": "file:../../wjhdev/webpress/src/packages/features/"
   },
   "license": "MIT",
   "dependencies": {

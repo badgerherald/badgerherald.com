@@ -5,7 +5,7 @@
 .sass-cache
 node_modules/
 bin
+
 *.css.map
 
-/src/theme/style.css 
-/src/theme/legacy-editor-style.css
+/src/theme/*.css 
