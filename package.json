@@ -33,6 +33,6 @@
   "license": "MIT",
   "dependencies": {
     "@types/doubleclick-gpt": "^2019111201.0.2",
-    "node-sass": "^7.0.1"
+    "node-sass": "^7.0.3"
   }
 }
