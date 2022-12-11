@@ -49,11 +49,12 @@ services:
       - ./bin/wp-content/themes:/var/www/html/wp-content/themes/
       - ./bin/wp-content/plugins:/var/www/html/wp-content/plugins/
       - ./bin/wp-content/mu-plugins:/var/www/html/wp-content/mu-plugins/
-      - ./config/wordpress/php.ini:/usr/local/etc/php/conf.d/extra.ini
-      - ./config/wordpress/php-fpm.conf:/usr/local/etc/php-fpm.d/zzz-my-extra.conf
     environment:
       NRIA_LICENSE_KEY: ${NRIA_LICENSE_KEY}
       NRIA_APP_NAME: ${SITE_URL}-wordpress\/app
+      PHP_MEMORY_LIMIT: ${PHP_MEMORY_LIMIT}
+      PHP_FPM_MAX_CHILDREN: ${PHP_FPM_MAX_CHILDREN}
+      PHP_OPCACHE_MEMORY_LIMIT: ${PHP_OPCACHE_MEMORY_LIMIT}
       WORDPRESS_DB_HOST: ${WORDPRESS_DB_HOST}
       WORDPRESS_DB_USER: ${WORDPRESS_DB_USER}
       WORDPRESS_DB_PASSWORD: ${WORDPRESS_DB_PASSWORD}
@@ -64,7 +65,7 @@ services:
         define('WP_SITEURL','https://${SITE_URL}');
         define('EXA_DEV','false');
         define('WP_CACHE',true);
-        define('WP_MEMORY_LIMIT','128M');
+        define('WP_MEMORY_LIMIT', '${PHP_MEMORY_LIMIT}');
         define('BHRLD_DEBUG', ${BHRLD_DEBUG});
         define('BHRLD_WEBMASTER_EMAIL', '${BHRLD_WEBMASTER_EMAIL}');
         define('BHRLD_SENDFROM_EMAIL', '${BHRLD_SENDFROM_EMAIL}');
