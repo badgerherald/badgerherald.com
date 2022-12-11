@@ -1,31 +1,18 @@
 <?php
-/**
- * The template for displaying 404 pages (Not Found).
- *
- * @package WordPress
- * @subpackage Twenty_Thirteen
- * @since Twenty Thirteen 1.0
- */
 
+get_header();
+exa_container('nameplate');
 
-get_header(); ?>
+?>
 
-
-
-
-<?php /* The loop */ ?>
-
-<div class="error-404">
-
-<img src="<?php bloginfo('template_url') ?>/assets/img/4-doge-4.png"/>
-<div class="error-404-message">
-	<h1>Such Error. Much Embarrassing.</h1>
-	<p><strong>4-doge-4</strong> – Sorry, We can't find what you're looking for. Doge really screwed the pooch on this one.</p>
-	<p><a href="http://badgerherald.com/">Visit our homepage</a>.</p>
-</div>
-
-
+<div class="container">
+    <div class="wrapper" style='text-align: center'>
+        <br /><br /><br /><br /><br /><br />
+        <h1>☹️</h1>
+        <h1>Sorry, we could not find this link </h1>
+        <p><a href="http://badgerherald.com/">Visit our homepage</a>.</p>
+        <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+    </div>
 </div>
 
 <?php get_footer(); ?>
-
