@@ -120,12 +120,12 @@ Once you have started the containers for the first time you may also start/stop/
 - `npm run build` - This builds the theme once and quits.
 - `npm run start` - This launches the compiler in 'watch' mode, automatically recompiling changes (to see them refresh the page). You'll typically want this running while you develop. To quit hit `cmd+c`
 
-There are a few files that running in detached mode will not capture and automatically recompile, but they mainly exist in the old parts of the website.
+There are a few files that running in watch mode will not capture and automatically recompile, but they mainly exist in the old parts of the website.
 
 ##### Stopping Docker
 
 - `docker compose down` — Stops any running containers
-- `docker compose up -v` — Same as above, but **will also destroy all Docker volumes**. Namely, you'll be left with a fresh database
+- `docker compose down -v` — Same as above, but **will also destroy all Docker volumes**. Namely, you'll be left with a fresh database
 
 ---
 
