@@ -108,17 +108,24 @@ After running for the first time, there are some commands that are good to get f
 
 ##### Starting Docker
 
-- `docker compose up` — This will run Docker or connect to the running Docker containers and continuously print the Docker log files to the terminal. To quit out of this hit `cmd+c` or terminate your terminal window
+- `docker compose up` — This will run Docker or connect to the running Docker containers and continuously print the Docker log files to the terminal. To quit out of this hit `cmd+c` (maybe repeatedly) or terminate your terminal window
 - `docker compose up -d` — Same as above, but will run in detached mode (not printing any logs to the terminal Window)
 
 You'll have to restart Docker containers every time you quit out with `cmd+c`, or if running in detached mode when your computer restarts or hibernates long enough.
 
+Once you have started the containers for the first time you may also start/stop/look at logs directly in Docker Desktop.
+
 ##### Compiling the theme
 
 - `npm run build` - This builds the theme once and quits.
-- `npm run start` - This launches the compiler in 'watch' mode, automatically recompiling changes (to see them refresh the page). You'll typically want this running while you develop.
+- `npm run start` - This launches the compiler in 'watch' mode, automatically recompiling changes (to see them refresh the page). You'll typically want this running while you develop. To quit hit `cmd+c`
 
 There are a few files that running in detached mode will not capture and automatically recompile, but they mainly exist in the old parts of the website.
+
+##### Stopping Docker
+
+- `docker compose down` — Stops any running containers
+- `docker compose up -v` — Same as above, but **will also destroy all Docker volumes**. Namely, you'll be left with a fresh database
 
 ---
 
