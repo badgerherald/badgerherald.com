@@ -13,7 +13,7 @@
 
 				<p>Established in 1969, The Badger Herald is one of the first independent and student run newspapers in America. Since its establishment, it has been awarded one of the top five independent newspapers in the country along with countless other awards.</p>
 
-				<p>Due to the physical lack of students on campus, we have decided to suspend our print issue for the rest of the semester and until in-person classes resume. In its place, we are publishing two newsletters a week to send the latest articles straight to email inboxes. </p>
+				<p>Print editions are published on the first Tuesday of each month. In addition, we publish two newsletters a week to send the latest articles straight to email inboxes. </p>
 
 				<p>Our online news expands much further. The Badger Herald operates on a 24/7 online news model to ensure we report on events the moment they happen via our website and social media outlets. The Badger Herald is UW Madison’s only 24/7 news source.</p>
 
@@ -21,14 +21,8 @@
 				<h2>Our staff</h2>
 
 				<p class="profile">
-					<img class="mug" src='img/adam-fearing-shot.jpeg'/>
-					Adam Fearing<br/>
-					<span class="profile-title">Ad Director<br/></span>
-					<span class="contact-links"><a href="mailto:	addirector@badgerherald.com">Email</a> &middot; <a href="tel://1-608-257-4712,3">608-257-4712 x3</a></span>
-				</p>
-				<p class="profile">
-					<img class="mug" src='img/philomena.jpeg'/>
-					Philomena Lindquist<br/>
+					<img class="mug" src='img/parker-johnson-shot.jpeg'/>
+					Parker Johnson<br/>
 					<span class="profile-title">Ad Director<br/></span>
 					<span class="contact-links"><a href="mailto:	addirector@badgerherald.com">Email</a> &middot; <a href="tel://1-608-257-4712,3">608-257-4712 x3</a></span>
 				</p>
