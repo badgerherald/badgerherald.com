@@ -15,10 +15,10 @@
     "loader/"
   ],
   "scripts": {
-    "start": "npm run sass-build; stencil build --dev --watch --stats",
+    "start": "npm run sass-build && stencil build --dev --watch --stats",
     "sass": "node-sass ./src/theme/sass editor-style.css -o ./src/theme/ --watch",
     "sass-build": "node-sass ./src/theme/sass editor-style.css -o ./src/theme/",
-    "build": "npm run sass-build; stencil build --stats"
+    "build": "npm run sass-build && stencil build --stats"
   },
   "devDependencies": {
     "@badgerherald/donate": "^0.1.6",
