@@ -6,7 +6,7 @@
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { AdMapping } from "./components/model/AdMapping";
-import { Connection, Template, Theme } from "@webpress/core";
+import { Connection, Query, Template, Theme } from "@webpress/core";
 export namespace Components {
     interface BhImports {
     }
@@ -22,7 +22,7 @@ export namespace Components {
     }
     interface ExaNameplateMenus {
         "global": Connection.Context;
-        "query": Template.Query;
+        "query": Query<Template>;
         "searchQuery": string;
         "theme": Theme;
     }
@@ -129,7 +129,7 @@ declare namespace LocalJSX {
     }
     interface ExaNameplateMenus {
         "global"?: Connection.Context;
-        "query"?: Template.Query;
+        "query"?: Query<Template>;
         "searchQuery"?: string;
         "theme"?: Theme;
     }

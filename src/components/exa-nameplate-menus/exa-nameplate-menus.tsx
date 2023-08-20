@@ -9,7 +9,7 @@ import "@webpress/theme";
 export class ExaNameplate {
   @Prop() global: Connection.Context;
 
-  @Prop() query: Template.Query;
+  @Prop() query: Query<Template>;
   @Prop() theme: Theme;
 
   @Prop() searchQuery: string;
@@ -27,9 +27,12 @@ export class ExaNameplate {
     );
 
     this.theme = new Theme(connection, this.global.theme);
-    this.query = new Template.Query(connection, {
-      path: window.location.pathname,
-    });
+    this.query = new Query<Template>(
+      connection,
+      Template.QueryArgs({
+        path: window.location.pathname,
+      })
+    );
   }
 
   toggleMenu() {
