@@ -1,30 +1,31 @@
-<?php 
+<?php
 
 $container = $GLOBALS['container'] ?: new container('article-display');
 $container->default_args(
 	array('layout' => 'standard')
-	);
+);
 
 ?>
 
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 
-    <?php 
-$args = array();
-$args['center'] = ( exa_layout() == 'feature' );
+    <?php
+	$args = array();
+	$args['center'] = (exa_layout() == 'feature');
 
-exa_container('headline',$args);
-?>
+	exa_container('headline', $args);
+	?>
 
     <div class="<?php echo $container->classes(); ?> article-display <?php echo $container->args['layout']; ?>">
         <div class="wrapper">
-            <main class="article-content">
+            <main class="<?php echo has_blocks() ? "article" : "article-content"; ?>">
 
-                <?php if( !is_page()): // display byline and date on if it's not a page.?>
+                <?php if (!is_page()) : // display byline and date on if it's not a page.
+				?>
                 <div class="meta">
                     <?php /* Mug: */ ?>
                     <div class="mug-box">
-                        <?php exa_mug(get_the_author_meta('ID'),'small-thumbnail') ?>
+                        <?php exa_mug(get_the_author_meta('ID'), 'small-thumbnail') ?>
                     </div>
 
                     <?php /* Byline: */ ?>
@@ -43,8 +44,8 @@ exa_container('headline',$args);
 
 
                 <?php
-			if (exa_hero_style() == "standard" && exa_hero_media() != "none") :		
-			?>
+				if (exa_hero_style() == "standard" && exa_hero_media() != "none") :
+				?>
                 <div class="hero">
                     <?php the_post_thumbnail('image-post-size'); ?>
                     <?php exa_hero_caption(); ?>
@@ -53,11 +54,11 @@ exa_container('headline',$args);
 
                 </div>
 
-                <?php 
-			endif; 
-			?>
+                <?php
+				endif;
+				?>
 
-                <section class="article-text">
+                <section class="<?php echo has_blocks() ? "article-copy" : "article-display"; ?>">
 
                     <?php the_content(); ?>
 
@@ -65,7 +66,7 @@ exa_container('headline',$args);
 
             </main>
 
-            <?php if($container->args['layout'] == 'standard') : ?>
+            <?php if ($container->args['layout'] == 'standard') : ?>
             <hrld-article-sidebar class="sidebar"></hrld-article-sidebar>
 
             <?php endif; ?>
@@ -80,8 +81,8 @@ exa_container('headline',$args);
 
 </article><!-- #post-xx -->
 
-<?php 
+<?php
 
-if( !is_page()) {
+if (!is_page()) {
 	exa_container('footnotes');
 }

@@ -1,0 +1,242 @@
+/**
+ * Shared styling for editor-style and front-end gutenberg
+ *
+ * Breakpoint Assumptions:
+ *   — Mobile:      Container is >3 columns wide
+ *   - MobileXL:    Container is >6 columns wide
+ *   - Tablet:      Container is >9 columns wide (blocks become constrained to 7)
+ *   - Desktop:     Container is >9 columns wide 
+ *   - XL:          Container is >10 columns wide
+ */
+
+@mixin ShadowedGutenbergStyles {
+  color: #141412;
+  background: #eff4f6;
+
+  //
+  // sets a standard with for all blocks
+  // to constrain to the theme's grid
+  // @see the breakpoint assumptions above
+  //
+  & > * {
+    @include setCol(3);
+    max-width: none; // resets a WordPress imposed max-width of 840px
+
+    @include breakpoint("mobilexl") {
+      @include setCol(6);
+    }
+    @include breakpoint("tablet") {
+      @include setCol(7);
+      /// wide blocks span all 9 columns
+    }
+    @include breakpoint("xl") {
+      @include setCol(8);
+      /// wide blocks span all 10 columns
+      &[data-align="wide"] {
+        @include setCol(10);
+      }
+    }
+  }
+
+  hr.wp-block-separator {
+    border-color: $greyBorder;
+    background-color: $greyBorder;
+    margin: 36px 0 36px 0;
+  }
+
+  //
+  // Image alignment & sizes
+  //
+  & > div > .wp-block[data-align="right"] > .wp-block-image,
+  & > .wp-block-image > .alignright {
+    padding-left: gutter(2);
+    margin-bottom: 24px;
+    @include breakpoint("tablet") {
+      padding-right: gutter(1);
+      margin-right: col(-2);
+      &.size-full,
+      & > figure.size-full {
+        width: col(6);
+      }
+    }
+
+    @include breakpoint("desktop") {
+      margin-left: col(1);
+      float: right;
+    }
+
+    @include breakpoint("xl") {
+      float: right;
+    }
+  }
+
+  & > div > .wp-block[data-align="left"] > .wp-block-image,
+  & > .wp-block-image > .alignleft {
+    margin-bottom: 24px;
+    padding-right: gutter(2);
+  }
+
+  & > div > .wp-block-image,
+  & > div > .wp-block > .wp-block-image,
+  & > .wp-block-image {
+    margin-bottom: 24px;
+    img {
+      width: 100%;
+      height: auto;
+    }
+
+    &.size-small,
+    .size-small {
+      /// WordPress' 'Medium' size is our 'Icon'
+      width: col(1);
+    }
+
+    &.size-medium,
+    .size-medium {
+      /// WordPress' 'Medium' size is our 'Small'
+      width: col(2);
+    }
+    &.size-large,
+    .size-large {
+      /// WordPress' 'Large' size is our 'Medium'
+      width: col(3);
+    }
+
+    &.size-full,
+    .size-full {
+      //// WordPress' 'Extra-Large' size is our 'Large'
+      width: col(3);
+    }
+
+    font-family: $caption;
+    color: $secondaryText;
+
+    figcaption {
+      display: inline-block;
+      text-align: left;
+      font-size: 16px;
+      line-height: 18px;
+      color: $darkgrey;
+      margin: 6px 0 0 0;
+
+      .hrld-media-credit-name a {
+        padding-right: 3px;
+        color: $black;
+        font-weight: bold;
+        text-shadow: none;
+        // font-weight: 800;
+        text-transform: uppercase;
+        &:hover {
+          color: $blue;
+        }
+      }
+    }
+
+    .byline {
+      grid-column: 1;
+    }
+
+    &.is-style-rounded {
+      figcaption {
+        text-align: center;
+        max-width: 80%;
+        margin: 0 auto;
+      }
+    }
+
+    @include breakpoint("mobilexl") {
+      &.size-small,
+      figure.size-small {
+        /// WordPress' 'Medium' size is our 'Icon'
+        width: col(2);
+      }
+      &.size-medium,
+      figure.size-medium {
+        /// WordPress' 'Medium' size is our 'Small'
+        width: col(3);
+      }
+      &.size-large,
+      figure.size-large {
+        /// WordPress' 'Large' size is our 'Medium'
+        width: col(4);
+      }
+      &.size-full,
+      figure.size-full {
+        //// WordPress' 'Extra-Large' size is our 'Large'
+        width: col(6);
+      }
+    }
+
+    @include breakpoint("tablet") {
+      &.size-full,
+      figure.size-full {
+        //// WordPress' 'Extra-Large' size is our 'Large'
+        width: col(7);
+      }
+    }
+
+    @include breakpoint("xl") {
+      &.size-full,
+      figure.size-full {
+        //// WordPress' 'Extra-Large' size is our 'Large'
+        width: col(8);
+      }
+    }
+  }
+
+  @include breakpoint("tablet") {
+    & > div > .wp-block[data-align="wide"] > .wp-block-image,
+    & > .wp-block-image.alignwide {
+      width: col(9);
+    }
+  }
+
+  @include breakpoint("xl") {
+    & > div > .wp-block[data-align="wide"] .wp-block-image,
+    & > .wp-block-image.alignwide {
+      width: col(10);
+    }
+  }
+
+  //
+  // Paragraph styles
+  //
+  & > div > p,
+  & > p {
+    color: #141412;
+    box-sizing: border-box;
+    font-size: 20px;
+    font-family: $body;
+    line-height: 1.5;
+    text-rendering: optimizeLegibility;
+    vertical-align: baseline;
+    margin-bottom: 24px;
+  }
+
+  //
+  // Header styles
+  //
+  & > div > h2,
+  & > h2 {
+    font-family: $headline;
+    font-size: 30px;
+    margin-top: 36px;
+    margin-bottom: 24px;
+  }
+
+  & > div > h3,
+  h3 {
+    font-family: $headline;
+    color: #3c74b9;
+    font-weight: bold;
+    font-size: 24px;
+    text-shadow: -1px 1px rgba(#fff, 0.8);
+  }
+
+  & > div > h4,
+  h4 {
+    font-family: "pt serif";
+    font-weight: bold;
+    font-size: 18px;
+  }
+}

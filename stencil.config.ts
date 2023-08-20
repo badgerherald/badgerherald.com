@@ -13,15 +13,15 @@ export const config: Config = {
         { src: "theme/", dest: "" },
         { src: "media-kit/", dest: "./../../../media-kit" },
         {
-          src: "../node_modules/@webpress/core/dist/collection/theme-overlay/functions.php",
-          dest: "functions.php",
-        },
-        {
-          src: "../node_modules/@webpress/core/dist/collection/theme-overlay/etc",
-          dest: "etc",
+          src: "../node_modules/@webpress/core/dist/collection/theme-overlay",
+          dest: "",
         },
         {
           src: "../node_modules/@badgerherald/donate/dist/donate/functions",
+          dest: "etc",
+        },
+        {
+          src: "../node_modules/@webpress/features/dist/collection/theme-overlay/etc",
           dest: "etc",
         },
       ],

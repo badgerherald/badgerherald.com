@@ -1,4 +1,5 @@
 <?php
+
 /**
  * The default template for displaying content. Used for single.
  *
@@ -11,7 +12,7 @@ global $post;
 
 ?>
 
-<?php 
+<?php
 
 exa_container('hero');
 
@@ -24,17 +25,17 @@ exa_container('hero');
 
             <main>
 
-                <?php 
-				/**
-			 	 * Header
-				 */ 
-				?>
+                <?php
+                /**
+                 * Header
+                 */
+                ?>
                 <header class="article-header">
 
                     <h1 class="article-title"><?php the_title() ?></h1>
 
 
-                    <?php if( exa_has_subhead(get_the_ID()) ) : ?>
+                    <?php if (exa_has_subhead(get_the_ID())) : ?>
 
                     <h2 class="article-subhead"><?php exa_subhead(); ?></h2>
 
@@ -45,19 +46,19 @@ exa_container('hero');
                         <aside class="aside-pane aside-author aside-pane-slim"
                             style="margin-left: -560px; top: 728px; display: none;">
 
-                            <?php exa_round_mug( get_the_author_meta('ID') ); ?>
+                            <?php exa_round_mug(get_the_author_meta('ID')); ?>
                             <h3>Also by <?php the_author() ?></h3>
 
-                            <?php 
-								// the query
-								$the_query = new WP_Query( array("author" => get_the_author_meta('ID')) ); ?>
+                            <?php
+                            // the query
+                            $the_query = new WP_Query(array("author" => get_the_author_meta('ID'))); ?>
 
-                            <?php if ( $the_query->have_posts() ) : ?>
+                            <?php if ($the_query->have_posts()) : ?>
 
                             <!-- pagination here -->
 
                             <!-- the loop -->
-                            <?php while ( $the_query->have_posts() ) : $the_query->the_post(); ?>
+                            <?php while ($the_query->have_posts()) : $the_query->the_post(); ?>
                             <p><a href="<?php the_permalink(); ?>"
                                     title="<?php the_title_attribute(); ?>"><?php the_title(); ?></a></p>
                             <?php endwhile; ?>
@@ -68,12 +69,12 @@ exa_container('hero');
                             <?php wp_reset_postdata(); ?>
 
                             <?php else : ?>
-                            <p><?php _e( 'Sorry, no posts matched your criteria.' ); ?></p>
+                            <p><?php _e('Sorry, no posts matched your criteria.'); ?></p>
                             <?php endif; ?>
 
                         </aside>
                         <div class="article-mug-box open-author-pane">
-                            <?php exa_mug(get_the_author_meta('ID'),'small-thumbnail') ?>
+                            <?php exa_mug(get_the_author_meta('ID'), 'small-thumbnail') ?>
                         </div>
 
                         <span class="meta-author">
@@ -92,19 +93,19 @@ exa_container('hero');
 
                 </header>
 
-                <?php 
-				/**
-			 	 * The sidebar to the post.
-				 */ 
-				?>
+                <?php
+                /**
+                 * The sidebar to the post.
+                 */
+                ?>
                 <hrld-article-sidebar></hrld-article-sidebar>
 
-                <?php 
-				/**
-			 	 * The article text.
-				 */ 
-				?>
-                <section class="article-text">
+                <?php
+                /**
+                 * The article text.
+                 */
+                ?>
+                <section class="<?php echo has_blocks() ? "article-copy" : "article-display"; ?>">
 
                     <?php the_content(); ?>
 
@@ -130,7 +131,7 @@ exa_container('hero');
                     <a class="comment-button open-comments-pane" href="#">Comments</a>
 
                     <?php /* LTE Disclaimer */ ?>
-                    <?php if( get_the_author() == "Letter to the Editor" ) : ?>
+                    <?php if (get_the_author() == "Letter to the Editor") : ?>
                     <p class="letter-to-editor-disclaimer"><em><strong>Letters to the editor</strong> are published on
                             the discretion of the opinion desk and editor. They may not reflect the views of the Herald.
                             Email your own letters to the editor to oped@badgerherald.com</em></p>
