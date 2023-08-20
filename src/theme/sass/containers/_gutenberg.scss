@@ -239,4 +239,70 @@
     font-weight: bold;
     font-size: 18px;
   }
+
+  /**
+ * 2.5 inline link
+ * ----------------------------------------------------------------------------
+ */
+  .snippet.inline {
+    cursor: pointer;
+    margin: 0 0 12px;
+    font: 15px/18px "PT Sans Narrow", Helvetica, Arial, Sans-Serif;
+    padding: 9px 10px;
+    display: block;
+    background: #fff;
+  }
+  .snippet.inline img.thumbnail {
+    width: 120px;
+    height: auto;
+    margin-top: 3px;
+    float: right;
+    padding: 0 0 6px 10px;
+  }
+  .snippet.inline .title {
+    color: #191919;
+    display: block;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 21px;
+  }
+  .snippet.inline .excerpt {
+    color: #2c2c2c;
+    display: block;
+    margin-top: 6px;
+  }
+  .snippet.inline .excerpt .more {
+    position: relative;
+    left: 2px;
+    font-weight: bold;
+    color: #3c74b9;
+    padding-right: 30px;
+    display: inline-block;
+  }
+  .snippet.inline:hover .title {
+    color: #3c74b9;
+  }
+  .snippet.inline:hover .excerpt .more {
+    left: 6px;
+    transition: left 0.4s ease-in-out;
+    text-decoration: underline;
+    font-style: italic;
+  }
+
+  @media (min-width: 760px) {
+    .snippet.inline {
+      padding: 18px 20px;
+      overflow: auto;
+      font: 18px/24px "PT Sans Narrow", Helvetica, Arial, Sans-Serif;
+    }
+    .snippet.inline img.thumbnail {
+      float: left;
+      padding: 0 20px 0 0;
+      width: 180px;
+    }
+    .snippet.inline .title {
+      font-size: 19px;
+      line-height: 24px;
+    }
+  }
 }
