@@ -15,13 +15,13 @@
     "loader/"
   ],
   "scripts": {
-    "start": "stencil build --dev --watch --stats",
+    "start": "npm run sass-build && stencil build --dev --watch --stats",
     "sass": "node-sass ./src/theme/sass editor-style.css -o ./src/theme/ --watch",
     "sass-build": "node-sass ./src/theme/sass editor-style.css -o ./src/theme/",
-    "build": "npm run sass-build; stencil build --stats"
+    "build": "npm run sass-build && stencil build --stats"
   },
   "devDependencies": {
-    "@badgerherald/donate": "0.1.6",
+    "@badgerherald/donate": "^0.1.6",
     "@stencil/core": "^2.12.1",
     "@stencil/router": "^1.0.1",
     "@stencil/sass": "^1.5.2",
@@ -34,6 +34,6 @@
   "license": "MIT",
   "dependencies": {
     "@types/doubleclick-gpt": "^2019111201.0.2",
-    "node-sass": "^7.0.1"
+    "node-sass": "^8.0.0"
   }
 }

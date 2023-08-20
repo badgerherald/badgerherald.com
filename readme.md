@@ -38,10 +38,19 @@ cd badgerherald.com
 
 In order to use sass and stencil the theme needs to be compiled.
 
-1. Install [Node.js & npm](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm), then:
+1. Install [Node.js & npm](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm). The easiest way to do this is to first install [Homebrew](https://brew.sh/), and then use it to install npm
+
+```bash
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+; NOTE: After you run the above line you must also run the commands
+; brew prints to add npm to your terminals path
+
+brew install node
+```
+
 2. From the root of the repo, run
 
-```
+```bash
 npm install
 npm run build
 ```
@@ -95,25 +104,39 @@ This will recompile the theme when any change is detected in `/src`
 
 ### Interacting with Docker
 
-Run:
+After running for the first time, there are some commands that are good to get familiar with
 
-```
-docker-compose up
-```
+##### Starting Docker
 
-Or, to run in detached mode run:
+- `docker compose up` — This will run Docker or connect to the running Docker containers and continuously print the Docker log files to the terminal. To quit out of this hit `cmd+c` (maybe repeatedly) or terminate your terminal window
+- `docker compose up -d` — Same as above, but will run in detached mode (not printing any logs to the terminal Window)
 
-```
-sudo docker-compose up -d
-```
+You'll have to restart Docker containers every time you quit out with `cmd+c`, or if running in detached mode when your computer restarts or hibernates long enough.
 
-You may also hit `cmd + z` to detach without stopping the docker containers.
+Once you have started the containers for the first time you may also start/stop/look at logs directly in Docker Desktop.
+
+##### Compiling the theme
+
+- `npm run build` - This builds the theme once and quits.
+- `npm run start` - This launches the compiler in 'watch' mode, automatically recompiling changes (to see them refresh the page). You'll typically want this running while you develop. To quit hit `cmd+c`
+
+There are a few files that running in watch mode will not capture and automatically recompile, but they mainly exist in the old parts of the website.
+
+##### Stopping Docker
+
+- `docker compose down` — Stops any running containers
+- `docker compose down -v` — Same as above, but **will also destroy all Docker volumes**. Namely, you'll be left with a fresh database
 
 ---
 
 ## Repository Structure
 
-The `./src` directory contained all source code. Once compiled, the root of the `./src` becomes the root of the WordPress theme directory created.
+The `./src/` directory contained all source code, split into a few areas:
+
+- `./src/components`: This contains all the Stencil JS web component code (what the compiler is primarily watching for changes to)
+- `./src/global`: Holds some shared code between `components` and `theme`. Mostly shared CSS so that the components look like the rest of the old site.
+- `./src/media-kit`: This is a completely seperate static site definition that gets hosted at advertise.badgerherald.com
+- `./src/theme`: This becomes the root of the WordPress theme directory created (e.g. `/bin/wp-content/themes/badgerherald.com`)
 
 The `./config` directory contains both server configuration files used by docker.
 
