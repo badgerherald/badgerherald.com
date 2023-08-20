@@ -49,6 +49,10 @@
   @include ShadowedGutenbergStyles();
 }
 
+.container.article-display .article-content .article-display {
+  @include ShadowedGutenbergStyles();
+}
+
 .container.article-display main.article hero {
   width: 100%;
 }
