@@ -42,5 +42,21 @@ function exa_subhead($post = null)
 function exa_get_subhead($post = null)
 {
 	$post = get_post($post);
-	return apply_filters('exa_subhead', get_post_meta($post->ID, '_exa_subhead', TRUE));
+	$subhead = get_post_meta($post->ID, "_webpress_subhead", true);
+
+	if (!empty($subhead)) {
+		return apply_filters('exa_subhead', $subhead);
+	} else {
+		$exaSubhead = get_post_meta($post->ID, '_exa_subhead', TRUE);
+		return apply_filters('exa_subhead', $exaSubhead);
+	}
 }
+
+function _filter_webpress_subhead($subhead, $post)
+{
+	if (empty($subhead)) {
+		$subhead = get_post_meta($post->ID, '_exa_subhead', TRUE);
+	}
+	return $subhead;
+}
+add_filter('webpress_subhead', '_filter_webpress_subhead', 10, 2);
