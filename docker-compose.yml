@@ -23,6 +23,7 @@ services:
         max-file: 10
     environment:
       DOMAIN: ${SITE_URL}
+      NGINX_PMA_PASSWORD: ${NGINX_PMA_PASSWORD}
     depends_on:
       - media-kit
 
@@ -135,7 +136,21 @@ services:
     environment:
       - NRIA_LICENSE_KEY=${NRIA_LICENSE_KEY}
   
-  
+  phpmyadmin:
+    container_name: phpmyadmin
+    image: phpmyadmin/phpmyadmin:5.2
+    platform: linux/amd64
+    restart: always
+    expose:
+      - 80
+    links:
+      - mariadb
+    environment:
+      PMA_HOST: ${WORDPRESS_DB_HOST}
+      PMA_ABSOLUTE_URI: https://${SITE_URL}/phpmyadmin
+      MEMORY_LIMIT: 1G
+    networks:
+      - default
 
 volumes:
   badgerherald.com-mariadb:
